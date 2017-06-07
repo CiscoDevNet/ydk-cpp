@@ -37,12 +37,12 @@ std::string ClearBgpAllGracefulRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAllGracefulRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAllGracefulRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -57,20 +57,12 @@ EntityPath ClearBgpAllGracefulRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpAllGracefulRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAllGracefulRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAllGracefulRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -126,12 +118,12 @@ std::string ClearBgpAllRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAllRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAllRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -146,20 +138,12 @@ EntityPath ClearBgpAllRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpAllRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAllRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAllRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -189,8 +173,10 @@ augment_capabilities_function ClearBgpAllRpc::get_augment_capabilities_function(
 
 ClearBgpIpAddrGracefulRpc::ClearBgpIpAddrGracefulRpc()
     :
-    ip_addr{YType::str, "ip-addr"}
+    input(std::make_shared<ClearBgpIpAddrGracefulRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-ip-addr-graceful"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -200,13 +186,13 @@ ClearBgpIpAddrGracefulRpc::~ClearBgpIpAddrGracefulRpc()
 
 bool ClearBgpIpAddrGracefulRpc::has_data() const
 {
-    return ip_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpIpAddrGracefulRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(ip_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpIpAddrGracefulRpc::get_segment_path() const
@@ -218,18 +204,17 @@ std::string ClearBgpIpAddrGracefulRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpIpAddrGracefulRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpIpAddrGracefulRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -239,29 +224,31 @@ EntityPath ClearBgpIpAddrGracefulRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpIpAddrGracefulRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpIpAddrGracefulRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpIpAddrGracefulRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrGracefulRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpIpAddrGracefulRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpIpAddrGracefulRpc::clone_ptr() const
@@ -284,10 +271,84 @@ augment_capabilities_function ClearBgpIpAddrGracefulRpc::get_augment_capabilitie
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpIpAddrLongLivedStaleRpc::ClearBgpIpAddrLongLivedStaleRpc()
+ClearBgpIpAddrGracefulRpc::Input::Input()
     :
     ip_addr{YType::str, "ip-addr"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-ip-addr-graceful";
+}
+
+ClearBgpIpAddrGracefulRpc::Input::~Input()
+{
+}
+
+bool ClearBgpIpAddrGracefulRpc::Input::has_data() const
+{
+    return ip_addr.is_set;
+}
+
+bool ClearBgpIpAddrGracefulRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpIpAddrGracefulRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpIpAddrGracefulRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-ip-addr-graceful/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpIpAddrGracefulRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrGracefulRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpIpAddrGracefulRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
+ClearBgpIpAddrLongLivedStaleRpc::ClearBgpIpAddrLongLivedStaleRpc()
+    :
+    input(std::make_shared<ClearBgpIpAddrLongLivedStaleRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-ip-addr-long-lived-stale"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -297,13 +358,13 @@ ClearBgpIpAddrLongLivedStaleRpc::~ClearBgpIpAddrLongLivedStaleRpc()
 
 bool ClearBgpIpAddrLongLivedStaleRpc::has_data() const
 {
-    return ip_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpIpAddrLongLivedStaleRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(ip_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpIpAddrLongLivedStaleRpc::get_segment_path() const
@@ -315,18 +376,17 @@ std::string ClearBgpIpAddrLongLivedStaleRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpIpAddrLongLivedStaleRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpIpAddrLongLivedStaleRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -336,29 +396,31 @@ EntityPath ClearBgpIpAddrLongLivedStaleRpc::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> ClearBgpIpAddrLongLivedStaleRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpIpAddrLongLivedStaleRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpIpAddrLongLivedStaleRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrLongLivedStaleRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpIpAddrLongLivedStaleRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpIpAddrLongLivedStaleRpc::clone_ptr() const
@@ -381,10 +443,84 @@ augment_capabilities_function ClearBgpIpAddrLongLivedStaleRpc::get_augment_capab
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpIpAddrRpc::ClearBgpIpAddrRpc()
+ClearBgpIpAddrLongLivedStaleRpc::Input::Input()
     :
     ip_addr{YType::str, "ip-addr"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-ip-addr-long-lived-stale";
+}
+
+ClearBgpIpAddrLongLivedStaleRpc::Input::~Input()
+{
+}
+
+bool ClearBgpIpAddrLongLivedStaleRpc::Input::has_data() const
+{
+    return ip_addr.is_set;
+}
+
+bool ClearBgpIpAddrLongLivedStaleRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpIpAddrLongLivedStaleRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpIpAddrLongLivedStaleRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-ip-addr-long-lived-stale/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpIpAddrLongLivedStaleRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrLongLivedStaleRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpIpAddrLongLivedStaleRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
+ClearBgpIpAddrRpc::ClearBgpIpAddrRpc()
+    :
+    input(std::make_shared<ClearBgpIpAddrRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -394,13 +530,13 @@ ClearBgpIpAddrRpc::~ClearBgpIpAddrRpc()
 
 bool ClearBgpIpAddrRpc::has_data() const
 {
-    return ip_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpIpAddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(ip_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpIpAddrRpc::get_segment_path() const
@@ -412,18 +548,17 @@ std::string ClearBgpIpAddrRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpIpAddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpIpAddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -433,29 +568,31 @@ EntityPath ClearBgpIpAddrRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpIpAddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpIpAddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpIpAddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpIpAddrRpc::clone_ptr() const
@@ -478,10 +615,84 @@ augment_capabilities_function ClearBgpIpAddrRpc::get_augment_capabilities_functi
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpIpAddrRpc::Input::Input()
+    :
+    ip_addr{YType::str, "ip-addr"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-ip-addr";
+}
+
+ClearBgpIpAddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpIpAddrRpc::Input::has_data() const
+{
+    return ip_addr.is_set;
+}
+
+bool ClearBgpIpAddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpIpAddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpIpAddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-ip-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpIpAddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpIpAddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
 ClearBgpAfiSafiAllSoftInPrefixFilterRpc::ClearBgpAfiSafiAllSoftInPrefixFilterRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"}
+    input(std::make_shared<ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-all-soft-in-prefix-filter"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -491,13 +702,13 @@ ClearBgpAfiSafiAllSoftInPrefixFilterRpc::~ClearBgpAfiSafiAllSoftInPrefixFilterRp
 
 bool ClearBgpAfiSafiAllSoftInPrefixFilterRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiAllSoftInPrefixFilterRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiAllSoftInPrefixFilterRpc::get_segment_path() const
@@ -509,18 +720,17 @@ std::string ClearBgpAfiSafiAllSoftInPrefixFilterRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiAllSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiAllSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -530,29 +740,31 @@ EntityPath ClearBgpAfiSafiAllSoftInPrefixFilterRpc::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftInPrefixFilterRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiAllSoftInPrefixFilterRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftInPrefixFilterRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiAllSoftInPrefixFilterRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftInPrefixFilterRpc::clone_ptr() const
@@ -575,10 +787,84 @@ augment_capabilities_function ClearBgpAfiSafiAllSoftInPrefixFilterRpc::get_augme
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiAllSoftInRpc::ClearBgpAfiSafiAllSoftInRpc()
+ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-all-soft-in-prefix-filter";
+}
+
+ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-all-soft-in-prefix-filter/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiAllSoftInRpc::ClearBgpAfiSafiAllSoftInRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiAllSoftInRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-all-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -588,13 +874,13 @@ ClearBgpAfiSafiAllSoftInRpc::~ClearBgpAfiSafiAllSoftInRpc()
 
 bool ClearBgpAfiSafiAllSoftInRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiAllSoftInRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiAllSoftInRpc::get_segment_path() const
@@ -606,18 +892,17 @@ std::string ClearBgpAfiSafiAllSoftInRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiAllSoftInRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiAllSoftInRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -627,29 +912,31 @@ EntityPath ClearBgpAfiSafiAllSoftInRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiAllSoftInRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiAllSoftInRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftInRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiAllSoftInRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftInRpc::clone_ptr() const
@@ -672,10 +959,84 @@ augment_capabilities_function ClearBgpAfiSafiAllSoftInRpc::get_augment_capabilit
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiAllSoftOutRpc::ClearBgpAfiSafiAllSoftOutRpc()
+ClearBgpAfiSafiAllSoftInRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-all-soft-in";
+}
+
+ClearBgpAfiSafiAllSoftInRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiAllSoftInRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiAllSoftInRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiAllSoftInRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiAllSoftInRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-all-soft-in/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftInRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftInRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiAllSoftInRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiAllSoftOutRpc::ClearBgpAfiSafiAllSoftOutRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiAllSoftOutRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-all-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -685,13 +1046,13 @@ ClearBgpAfiSafiAllSoftOutRpc::~ClearBgpAfiSafiAllSoftOutRpc()
 
 bool ClearBgpAfiSafiAllSoftOutRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiAllSoftOutRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiAllSoftOutRpc::get_segment_path() const
@@ -703,18 +1064,17 @@ std::string ClearBgpAfiSafiAllSoftOutRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiAllSoftOutRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiAllSoftOutRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -724,29 +1084,31 @@ EntityPath ClearBgpAfiSafiAllSoftOutRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiAllSoftOutRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiAllSoftOutRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftOutRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiAllSoftOutRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftOutRpc::clone_ptr() const
@@ -769,10 +1131,84 @@ augment_capabilities_function ClearBgpAfiSafiAllSoftOutRpc::get_augment_capabili
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiAllSoftRpc::ClearBgpAfiSafiAllSoftRpc()
+ClearBgpAfiSafiAllSoftOutRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-all-soft-out";
+}
+
+ClearBgpAfiSafiAllSoftOutRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiAllSoftOutRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiAllSoftOutRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiAllSoftOutRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiAllSoftOutRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-all-soft-out/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftOutRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftOutRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiAllSoftOutRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiAllSoftRpc::ClearBgpAfiSafiAllSoftRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiAllSoftRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-all-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -782,13 +1218,13 @@ ClearBgpAfiSafiAllSoftRpc::~ClearBgpAfiSafiAllSoftRpc()
 
 bool ClearBgpAfiSafiAllSoftRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiAllSoftRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiAllSoftRpc::get_segment_path() const
@@ -800,18 +1236,17 @@ std::string ClearBgpAfiSafiAllSoftRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiAllSoftRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiAllSoftRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -821,29 +1256,31 @@ EntityPath ClearBgpAfiSafiAllSoftRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiAllSoftRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiAllSoftRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiAllSoftRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftRpc::clone_ptr() const
@@ -866,11 +1303,84 @@ augment_capabilities_function ClearBgpAfiSafiAllSoftRpc::get_augment_capabilitie
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpAfiSafiAllSoftRpc::Input::Input()
+    :
+    afi_safi_name{YType::enumeration, "afi-safi-name"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-all-soft";
+}
+
+ClearBgpAfiSafiAllSoftRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiAllSoftRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiAllSoftRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiAllSoftRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiAllSoftRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-all-soft/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiAllSoftRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
 ClearBgpAfiSafiIpAddrLongLivedStaleRpc::ClearBgpAfiSafiIpAddrLongLivedStaleRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_addr{YType::str, "ip-addr"}
+    input(std::make_shared<ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-ip-addr-long-lived-stale"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -880,15 +1390,13 @@ ClearBgpAfiSafiIpAddrLongLivedStaleRpc::~ClearBgpAfiSafiIpAddrLongLivedStaleRpc(
 
 bool ClearBgpAfiSafiIpAddrLongLivedStaleRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiIpAddrLongLivedStaleRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiIpAddrLongLivedStaleRpc::get_segment_path() const
@@ -900,19 +1408,17 @@ std::string ClearBgpAfiSafiIpAddrLongLivedStaleRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiIpAddrLongLivedStaleRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiIpAddrLongLivedStaleRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -922,33 +1428,31 @@ EntityPath ClearBgpAfiSafiIpAddrLongLivedStaleRpc::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrLongLivedStaleRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiIpAddrLongLivedStaleRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrLongLivedStaleRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiIpAddrLongLivedStaleRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrLongLivedStaleRpc::clone_ptr() const
@@ -971,49 +1475,52 @@ augment_capabilities_function ClearBgpAfiSafiIpAddrLongLivedStaleRpc::get_augmen
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc()
+ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     ip_addr{YType::str, "ip-addr"}
 {
-    yang_name = "clear-bgp-afi-safi-ip-addr-soft-in-prefix-filter"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-ip-addr-long-lived-stale";
 }
 
-ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::~ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc()
+ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::has_data() const
+bool ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| ip_addr.is_set;
 }
 
-bool ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::has_operation() const
+bool ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(ip_addr.operation);
 }
 
-std::string ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_segment_path() const
+std::string ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft-in-prefix-filter";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-long-lived-stale/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -1025,26 +1532,18 @@ EntityPath ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_entity_path(Entity* a
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -1054,6 +1553,86 @@ void ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::set_value(const std::string & v
     {
         ip_addr = value;
     }
+}
+
+ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-ip-addr-soft-in-prefix-filter"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::~ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc()
+{
+}
+
+bool ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft-in-prefix-filter";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::clone_ptr() const
@@ -1076,49 +1655,52 @@ augment_capabilities_function ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::get_au
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiIpAddrSoftInRpc::ClearBgpAfiSafiIpAddrSoftInRpc()
+ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     ip_addr{YType::str, "ip-addr"}
 {
-    yang_name = "clear-bgp-afi-safi-ip-addr-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-ip-addr-soft-in-prefix-filter";
 }
 
-ClearBgpAfiSafiIpAddrSoftInRpc::~ClearBgpAfiSafiIpAddrSoftInRpc()
+ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiIpAddrSoftInRpc::has_data() const
+bool ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| ip_addr.is_set;
 }
 
-bool ClearBgpAfiSafiIpAddrSoftInRpc::has_operation() const
+bool ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(ip_addr.operation);
 }
 
-std::string ClearBgpAfiSafiIpAddrSoftInRpc::get_segment_path() const
+std::string ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft-in";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiIpAddrSoftInRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft-in-prefix-filter/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -1130,26 +1712,18 @@ EntityPath ClearBgpAfiSafiIpAddrSoftInRpc::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiIpAddrSoftInRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiIpAddrSoftInRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -1159,6 +1733,86 @@ void ClearBgpAfiSafiIpAddrSoftInRpc::set_value(const std::string & value_path, s
     {
         ip_addr = value;
     }
+}
+
+ClearBgpAfiSafiIpAddrSoftInRpc::ClearBgpAfiSafiIpAddrSoftInRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiIpAddrSoftInRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-ip-addr-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiIpAddrSoftInRpc::~ClearBgpAfiSafiIpAddrSoftInRpc()
+{
+}
+
+bool ClearBgpAfiSafiIpAddrSoftInRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiIpAddrSoftInRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiIpAddrSoftInRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft-in";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiIpAddrSoftInRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiIpAddrSoftInRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftInRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiIpAddrSoftInRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInRpc::clone_ptr() const
@@ -1181,49 +1835,52 @@ augment_capabilities_function ClearBgpAfiSafiIpAddrSoftInRpc::get_augment_capabi
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiIpAddrSoftOutRpc::ClearBgpAfiSafiIpAddrSoftOutRpc()
+ClearBgpAfiSafiIpAddrSoftInRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     ip_addr{YType::str, "ip-addr"}
 {
-    yang_name = "clear-bgp-afi-safi-ip-addr-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-ip-addr-soft-in";
 }
 
-ClearBgpAfiSafiIpAddrSoftOutRpc::~ClearBgpAfiSafiIpAddrSoftOutRpc()
+ClearBgpAfiSafiIpAddrSoftInRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiIpAddrSoftOutRpc::has_data() const
+bool ClearBgpAfiSafiIpAddrSoftInRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| ip_addr.is_set;
 }
 
-bool ClearBgpAfiSafiIpAddrSoftOutRpc::has_operation() const
+bool ClearBgpAfiSafiIpAddrSoftInRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(ip_addr.operation);
 }
 
-std::string ClearBgpAfiSafiIpAddrSoftOutRpc::get_segment_path() const
+std::string ClearBgpAfiSafiIpAddrSoftInRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft-out";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiIpAddrSoftOutRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiIpAddrSoftInRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft-in/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -1235,26 +1892,18 @@ EntityPath ClearBgpAfiSafiIpAddrSoftOutRpc::get_entity_path(Entity* ancestor) co
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiIpAddrSoftOutRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftInRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiIpAddrSoftOutRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiIpAddrSoftInRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -1264,6 +1913,86 @@ void ClearBgpAfiSafiIpAddrSoftOutRpc::set_value(const std::string & value_path, 
     {
         ip_addr = value;
     }
+}
+
+ClearBgpAfiSafiIpAddrSoftOutRpc::ClearBgpAfiSafiIpAddrSoftOutRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiIpAddrSoftOutRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-ip-addr-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiIpAddrSoftOutRpc::~ClearBgpAfiSafiIpAddrSoftOutRpc()
+{
+}
+
+bool ClearBgpAfiSafiIpAddrSoftOutRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiIpAddrSoftOutRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiIpAddrSoftOutRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft-out";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiIpAddrSoftOutRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiIpAddrSoftOutRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftOutRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiIpAddrSoftOutRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftOutRpc::clone_ptr() const
@@ -1286,49 +2015,52 @@ augment_capabilities_function ClearBgpAfiSafiIpAddrSoftOutRpc::get_augment_capab
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiIpAddrSoftRpc::ClearBgpAfiSafiIpAddrSoftRpc()
+ClearBgpAfiSafiIpAddrSoftOutRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     ip_addr{YType::str, "ip-addr"}
 {
-    yang_name = "clear-bgp-afi-safi-ip-addr-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-ip-addr-soft-out";
 }
 
-ClearBgpAfiSafiIpAddrSoftRpc::~ClearBgpAfiSafiIpAddrSoftRpc()
+ClearBgpAfiSafiIpAddrSoftOutRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiIpAddrSoftRpc::has_data() const
+bool ClearBgpAfiSafiIpAddrSoftOutRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| ip_addr.is_set;
 }
 
-bool ClearBgpAfiSafiIpAddrSoftRpc::has_operation() const
+bool ClearBgpAfiSafiIpAddrSoftOutRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(ip_addr.operation);
 }
 
-std::string ClearBgpAfiSafiIpAddrSoftRpc::get_segment_path() const
+std::string ClearBgpAfiSafiIpAddrSoftOutRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiIpAddrSoftRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiIpAddrSoftOutRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft-out/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -1340,26 +2072,18 @@ EntityPath ClearBgpAfiSafiIpAddrSoftRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftOutRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiIpAddrSoftRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftOutRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiIpAddrSoftRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiIpAddrSoftOutRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -1369,6 +2093,86 @@ void ClearBgpAfiSafiIpAddrSoftRpc::set_value(const std::string & value_path, std
     {
         ip_addr = value;
     }
+}
+
+ClearBgpAfiSafiIpAddrSoftRpc::ClearBgpAfiSafiIpAddrSoftRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiIpAddrSoftRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-ip-addr-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiIpAddrSoftRpc::~ClearBgpAfiSafiIpAddrSoftRpc()
+{
+}
+
+bool ClearBgpAfiSafiIpAddrSoftRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiIpAddrSoftRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiIpAddrSoftRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiIpAddrSoftRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiIpAddrSoftRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiIpAddrSoftRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftRpc::clone_ptr() const
@@ -1391,11 +2195,92 @@ augment_capabilities_function ClearBgpAfiSafiIpAddrSoftRpc::get_augment_capabili
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiAsSoftInPrefixFilterRpc::ClearBgpAfiSafiAsSoftInPrefixFilterRpc()
+ClearBgpAfiSafiIpAddrSoftRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    as_number{YType::str, "as-number"}
+    ip_addr{YType::str, "ip-addr"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-ip-addr-soft";
+}
+
+ClearBgpAfiSafiIpAddrSoftRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiIpAddrSoftRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_addr.is_set;
+}
+
+bool ClearBgpAfiSafiIpAddrSoftRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpAfiSafiIpAddrSoftRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiIpAddrSoftRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-ip-addr-soft/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiIpAddrSoftRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
+ClearBgpAfiSafiAsSoftInPrefixFilterRpc::ClearBgpAfiSafiAsSoftInPrefixFilterRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-as-soft-in-prefix-filter"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -1405,15 +2290,13 @@ ClearBgpAfiSafiAsSoftInPrefixFilterRpc::~ClearBgpAfiSafiAsSoftInPrefixFilterRpc(
 
 bool ClearBgpAfiSafiAsSoftInPrefixFilterRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| as_number.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiAsSoftInPrefixFilterRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(as_number.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiAsSoftInPrefixFilterRpc::get_segment_path() const
@@ -1425,19 +2308,17 @@ std::string ClearBgpAfiSafiAsSoftInPrefixFilterRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiAsSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiAsSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1447,33 +2328,31 @@ EntityPath ClearBgpAfiSafiAsSoftInPrefixFilterRpc::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftInPrefixFilterRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiAsSoftInPrefixFilterRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftInPrefixFilterRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiAsSoftInPrefixFilterRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "as-number")
-    {
-        as_number = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftInPrefixFilterRpc::clone_ptr() const
@@ -1496,49 +2375,52 @@ augment_capabilities_function ClearBgpAfiSafiAsSoftInPrefixFilterRpc::get_augmen
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiAsSoftInRpc::ClearBgpAfiSafiAsSoftInRpc()
+ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     as_number{YType::str, "as-number"}
 {
-    yang_name = "clear-bgp-afi-safi-as-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-as-soft-in-prefix-filter";
 }
 
-ClearBgpAfiSafiAsSoftInRpc::~ClearBgpAfiSafiAsSoftInRpc()
+ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiAsSoftInRpc::has_data() const
+bool ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| as_number.is_set;
 }
 
-bool ClearBgpAfiSafiAsSoftInRpc::has_operation() const
+bool ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(as_number.operation);
 }
 
-std::string ClearBgpAfiSafiAsSoftInRpc::get_segment_path() const
+std::string ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft-in";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiAsSoftInRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft-in-prefix-filter/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -1550,26 +2432,18 @@ EntityPath ClearBgpAfiSafiAsSoftInRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiAsSoftInRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiAsSoftInRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -1579,6 +2453,86 @@ void ClearBgpAfiSafiAsSoftInRpc::set_value(const std::string & value_path, std::
     {
         as_number = value;
     }
+}
+
+ClearBgpAfiSafiAsSoftInRpc::ClearBgpAfiSafiAsSoftInRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiAsSoftInRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-as-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiAsSoftInRpc::~ClearBgpAfiSafiAsSoftInRpc()
+{
+}
+
+bool ClearBgpAfiSafiAsSoftInRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiAsSoftInRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiAsSoftInRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft-in";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiAsSoftInRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiAsSoftInRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftInRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiAsSoftInRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftInRpc::clone_ptr() const
@@ -1601,49 +2555,52 @@ augment_capabilities_function ClearBgpAfiSafiAsSoftInRpc::get_augment_capabiliti
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiAsSoftOutRpc::ClearBgpAfiSafiAsSoftOutRpc()
+ClearBgpAfiSafiAsSoftInRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     as_number{YType::str, "as-number"}
 {
-    yang_name = "clear-bgp-afi-safi-as-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-as-soft-in";
 }
 
-ClearBgpAfiSafiAsSoftOutRpc::~ClearBgpAfiSafiAsSoftOutRpc()
+ClearBgpAfiSafiAsSoftInRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiAsSoftOutRpc::has_data() const
+bool ClearBgpAfiSafiAsSoftInRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| as_number.is_set;
 }
 
-bool ClearBgpAfiSafiAsSoftOutRpc::has_operation() const
+bool ClearBgpAfiSafiAsSoftInRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(as_number.operation);
 }
 
-std::string ClearBgpAfiSafiAsSoftOutRpc::get_segment_path() const
+std::string ClearBgpAfiSafiAsSoftInRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft-out";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiAsSoftOutRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiAsSoftInRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft-in/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -1655,26 +2612,18 @@ EntityPath ClearBgpAfiSafiAsSoftOutRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftInRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiAsSoftOutRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftInRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiAsSoftOutRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiAsSoftInRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -1684,6 +2633,86 @@ void ClearBgpAfiSafiAsSoftOutRpc::set_value(const std::string & value_path, std:
     {
         as_number = value;
     }
+}
+
+ClearBgpAfiSafiAsSoftOutRpc::ClearBgpAfiSafiAsSoftOutRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiAsSoftOutRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-as-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiAsSoftOutRpc::~ClearBgpAfiSafiAsSoftOutRpc()
+{
+}
+
+bool ClearBgpAfiSafiAsSoftOutRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiAsSoftOutRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiAsSoftOutRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft-out";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiAsSoftOutRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiAsSoftOutRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftOutRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiAsSoftOutRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftOutRpc::clone_ptr() const
@@ -1706,49 +2735,52 @@ augment_capabilities_function ClearBgpAfiSafiAsSoftOutRpc::get_augment_capabilit
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiAsSoftRpc::ClearBgpAfiSafiAsSoftRpc()
+ClearBgpAfiSafiAsSoftOutRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     as_number{YType::str, "as-number"}
 {
-    yang_name = "clear-bgp-afi-safi-as-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-as-soft-out";
 }
 
-ClearBgpAfiSafiAsSoftRpc::~ClearBgpAfiSafiAsSoftRpc()
+ClearBgpAfiSafiAsSoftOutRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiAsSoftRpc::has_data() const
+bool ClearBgpAfiSafiAsSoftOutRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| as_number.is_set;
 }
 
-bool ClearBgpAfiSafiAsSoftRpc::has_operation() const
+bool ClearBgpAfiSafiAsSoftOutRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(as_number.operation);
 }
 
-std::string ClearBgpAfiSafiAsSoftRpc::get_segment_path() const
+std::string ClearBgpAfiSafiAsSoftOutRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiAsSoftRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiAsSoftOutRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft-out/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -1760,26 +2792,18 @@ EntityPath ClearBgpAfiSafiAsSoftRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftOutRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiAsSoftRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftOutRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiAsSoftRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiAsSoftOutRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -1789,6 +2813,86 @@ void ClearBgpAfiSafiAsSoftRpc::set_value(const std::string & value_path, std::st
     {
         as_number = value;
     }
+}
+
+ClearBgpAfiSafiAsSoftRpc::ClearBgpAfiSafiAsSoftRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiAsSoftRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-as-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiAsSoftRpc::~ClearBgpAfiSafiAsSoftRpc()
+{
+}
+
+bool ClearBgpAfiSafiAsSoftRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiAsSoftRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiAsSoftRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiAsSoftRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiAsSoftRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiAsSoftRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftRpc::clone_ptr() const
@@ -1811,11 +2915,92 @@ augment_capabilities_function ClearBgpAfiSafiAsSoftRpc::get_augment_capabilities
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiDampeningIpPrefixRpc::ClearBgpAfiSafiDampeningIpPrefixRpc()
+ClearBgpAfiSafiAsSoftRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_prefix{YType::str, "ip-prefix"}
+    as_number{YType::str, "as-number"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-as-soft";
+}
+
+ClearBgpAfiSafiAsSoftRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiAsSoftRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| as_number.is_set;
+}
+
+bool ClearBgpAfiSafiAsSoftRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(as_number.operation);
+}
+
+std::string ClearBgpAfiSafiAsSoftRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiAsSoftRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-as-soft/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiAsSoftRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "as-number")
+    {
+        as_number = value;
+    }
+}
+
+ClearBgpAfiSafiDampeningIpPrefixRpc::ClearBgpAfiSafiDampeningIpPrefixRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiDampeningIpPrefixRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-dampening-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -1825,15 +3010,13 @@ ClearBgpAfiSafiDampeningIpPrefixRpc::~ClearBgpAfiSafiDampeningIpPrefixRpc()
 
 bool ClearBgpAfiSafiDampeningIpPrefixRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_prefix.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiDampeningIpPrefixRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_prefix.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiDampeningIpPrefixRpc::get_segment_path() const
@@ -1845,19 +3028,17 @@ std::string ClearBgpAfiSafiDampeningIpPrefixRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiDampeningIpPrefixRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiDampeningIpPrefixRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1867,33 +3048,31 @@ EntityPath ClearBgpAfiSafiDampeningIpPrefixRpc::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> ClearBgpAfiSafiDampeningIpPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiDampeningIpPrefixRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiDampeningIpPrefixRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiDampeningIpPrefixRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiDampeningIpPrefixRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-prefix")
-    {
-        ip_prefix = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiDampeningIpPrefixRpc::clone_ptr() const
@@ -1916,10 +3095,92 @@ augment_capabilities_function ClearBgpAfiSafiDampeningIpPrefixRpc::get_augment_c
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpAfiSafiDampeningIpPrefixRpc::Input::Input()
+    :
+    afi_safi_name{YType::enumeration, "afi-safi-name"},
+    ip_prefix{YType::str, "ip-prefix"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-dampening-ip-prefix";
+}
+
+ClearBgpAfiSafiDampeningIpPrefixRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiDampeningIpPrefixRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_prefix.is_set;
+}
+
+bool ClearBgpAfiSafiDampeningIpPrefixRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_prefix.operation);
+}
+
+std::string ClearBgpAfiSafiDampeningIpPrefixRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiDampeningIpPrefixRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-dampening-ip-prefix/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiDampeningIpPrefixRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiDampeningIpPrefixRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiDampeningIpPrefixRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-prefix")
+    {
+        ip_prefix = value;
+    }
+}
+
 ClearBgpAfiSafiDampeningRpc::ClearBgpAfiSafiDampeningRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"}
+    input(std::make_shared<ClearBgpAfiSafiDampeningRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-dampening"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -1929,13 +3190,13 @@ ClearBgpAfiSafiDampeningRpc::~ClearBgpAfiSafiDampeningRpc()
 
 bool ClearBgpAfiSafiDampeningRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiDampeningRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiDampeningRpc::get_segment_path() const
@@ -1947,18 +3208,17 @@ std::string ClearBgpAfiSafiDampeningRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiDampeningRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiDampeningRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1968,29 +3228,31 @@ EntityPath ClearBgpAfiSafiDampeningRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpAfiSafiDampeningRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiDampeningRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiDampeningRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiDampeningRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiDampeningRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiDampeningRpc::clone_ptr() const
@@ -2013,10 +3275,84 @@ augment_capabilities_function ClearBgpAfiSafiDampeningRpc::get_augment_capabilit
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::ClearBgpAfiSafiExternalSoftInPrefixFilterRpc()
+ClearBgpAfiSafiDampeningRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-dampening";
+}
+
+ClearBgpAfiSafiDampeningRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiDampeningRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiDampeningRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiDampeningRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiDampeningRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-dampening/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiDampeningRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiDampeningRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiDampeningRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::ClearBgpAfiSafiExternalSoftInPrefixFilterRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-external-soft-in-prefix-filter"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2026,13 +3362,13 @@ ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::~ClearBgpAfiSafiExternalSoftInPref
 
 bool ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::get_segment_path() const
@@ -2044,18 +3380,17 @@ std::string ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::get_segment_path() con
 
 }
 
-EntityPath ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2065,29 +3400,31 @@ EntityPath ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::get_entity_path(Entity*
 
 std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::clone_ptr() const
@@ -2110,10 +3447,84 @@ augment_capabilities_function ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::get_
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiExternalSoftInRpc::ClearBgpAfiSafiExternalSoftInRpc()
+ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-external-soft-in-prefix-filter";
+}
+
+ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-external-soft-in-prefix-filter/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiExternalSoftInRpc::ClearBgpAfiSafiExternalSoftInRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiExternalSoftInRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-external-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2123,13 +3534,13 @@ ClearBgpAfiSafiExternalSoftInRpc::~ClearBgpAfiSafiExternalSoftInRpc()
 
 bool ClearBgpAfiSafiExternalSoftInRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiExternalSoftInRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiExternalSoftInRpc::get_segment_path() const
@@ -2141,18 +3552,17 @@ std::string ClearBgpAfiSafiExternalSoftInRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiExternalSoftInRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiExternalSoftInRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2162,29 +3572,31 @@ EntityPath ClearBgpAfiSafiExternalSoftInRpc::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiExternalSoftInRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiExternalSoftInRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftInRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiExternalSoftInRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftInRpc::clone_ptr() const
@@ -2207,10 +3619,84 @@ augment_capabilities_function ClearBgpAfiSafiExternalSoftInRpc::get_augment_capa
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiExternalSoftOutRpc::ClearBgpAfiSafiExternalSoftOutRpc()
+ClearBgpAfiSafiExternalSoftInRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-external-soft-in";
+}
+
+ClearBgpAfiSafiExternalSoftInRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiExternalSoftInRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiExternalSoftInRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiExternalSoftInRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiExternalSoftInRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-external-soft-in/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftInRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftInRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiExternalSoftInRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiExternalSoftOutRpc::ClearBgpAfiSafiExternalSoftOutRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiExternalSoftOutRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-external-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2220,13 +3706,13 @@ ClearBgpAfiSafiExternalSoftOutRpc::~ClearBgpAfiSafiExternalSoftOutRpc()
 
 bool ClearBgpAfiSafiExternalSoftOutRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiExternalSoftOutRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiExternalSoftOutRpc::get_segment_path() const
@@ -2238,18 +3724,17 @@ std::string ClearBgpAfiSafiExternalSoftOutRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiExternalSoftOutRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiExternalSoftOutRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2259,29 +3744,31 @@ EntityPath ClearBgpAfiSafiExternalSoftOutRpc::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiExternalSoftOutRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiExternalSoftOutRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftOutRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiExternalSoftOutRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftOutRpc::clone_ptr() const
@@ -2304,10 +3791,84 @@ augment_capabilities_function ClearBgpAfiSafiExternalSoftOutRpc::get_augment_cap
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiExternalSoftRpc::ClearBgpAfiSafiExternalSoftRpc()
+ClearBgpAfiSafiExternalSoftOutRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-external-soft-out";
+}
+
+ClearBgpAfiSafiExternalSoftOutRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiExternalSoftOutRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiExternalSoftOutRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiExternalSoftOutRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiExternalSoftOutRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-external-soft-out/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftOutRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftOutRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiExternalSoftOutRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiExternalSoftRpc::ClearBgpAfiSafiExternalSoftRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiExternalSoftRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-external-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2317,13 +3878,13 @@ ClearBgpAfiSafiExternalSoftRpc::~ClearBgpAfiSafiExternalSoftRpc()
 
 bool ClearBgpAfiSafiExternalSoftRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiExternalSoftRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiExternalSoftRpc::get_segment_path() const
@@ -2335,18 +3896,17 @@ std::string ClearBgpAfiSafiExternalSoftRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiExternalSoftRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiExternalSoftRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2356,29 +3916,31 @@ EntityPath ClearBgpAfiSafiExternalSoftRpc::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiExternalSoftRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiExternalSoftRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiExternalSoftRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftRpc::clone_ptr() const
@@ -2401,12 +3963,84 @@ augment_capabilities_function ClearBgpAfiSafiExternalSoftRpc::get_augment_capabi
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpAfiSafiExternalSoftRpc::Input::Input()
+    :
+    afi_safi_name{YType::enumeration, "afi-safi-name"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-external-soft";
+}
+
+ClearBgpAfiSafiExternalSoftRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiExternalSoftRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiExternalSoftRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiExternalSoftRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiExternalSoftRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-external-soft/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiExternalSoftRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
 ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_addr{YType::str, "ip-addr"},
-    ipv4_mask{YType::str, "ipv4-mask"}
+    input(std::make_shared<ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-flap-statistics-ip-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2416,17 +4050,13 @@ ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::~ClearBgpAfiSafiFlapStatisticsIp
 
 bool ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_addr.is_set
-	|| ipv4_mask.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_addr.operation)
-	|| is_set(ipv4_mask.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_segment_path() const
@@ -2438,20 +4068,17 @@ std::string ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_segment_path() c
 
 }
 
-EntityPath ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (ipv4_mask.is_set || is_set(ipv4_mask.operation)) leaf_name_data.push_back(ipv4_mask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2461,37 +4088,31 @@ EntityPath ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_entity_path(Entit
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-    if(value_path == "ipv4-mask")
-    {
-        ipv4_mask = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::clone_ptr() const
@@ -2514,11 +4135,100 @@ augment_capabilities_function ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::ge
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiFlapStatisticsIpAddrRpc::ClearBgpAfiSafiFlapStatisticsIpAddrRpc()
+ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_addr{YType::str, "ip-addr"}
+    ip_addr{YType::str, "ip-addr"},
+    ipv4_mask{YType::str, "ipv4-mask"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-flap-statistics-ip-addr-ipv4-mask";
+}
+
+ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_addr.is_set
+	|| ipv4_mask.is_set;
+}
+
+bool ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_addr.operation)
+	|| is_set(ipv4_mask.operation);
+}
+
+std::string ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-flap-statistics-ip-addr-ipv4-mask/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (ipv4_mask.is_set || is_set(ipv4_mask.operation)) leaf_name_data.push_back(ipv4_mask.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+    if(value_path == "ipv4-mask")
+    {
+        ipv4_mask = value;
+    }
+}
+
+ClearBgpAfiSafiFlapStatisticsIpAddrRpc::ClearBgpAfiSafiFlapStatisticsIpAddrRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-flap-statistics-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2528,15 +4238,13 @@ ClearBgpAfiSafiFlapStatisticsIpAddrRpc::~ClearBgpAfiSafiFlapStatisticsIpAddrRpc(
 
 bool ClearBgpAfiSafiFlapStatisticsIpAddrRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiFlapStatisticsIpAddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiFlapStatisticsIpAddrRpc::get_segment_path() const
@@ -2548,19 +4256,17 @@ std::string ClearBgpAfiSafiFlapStatisticsIpAddrRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiFlapStatisticsIpAddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiFlapStatisticsIpAddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2570,33 +4276,31 @@ EntityPath ClearBgpAfiSafiFlapStatisticsIpAddrRpc::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiFlapStatisticsIpAddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpAddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiFlapStatisticsIpAddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddrRpc::clone_ptr() const
@@ -2619,11 +4323,92 @@ augment_capabilities_function ClearBgpAfiSafiFlapStatisticsIpAddrRpc::get_augmen
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::ClearBgpAfiSafiFlapStatisticsIpPrefixRpc()
+ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_prefix{YType::str, "ip-prefix"}
+    ip_addr{YType::str, "ip-addr"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-flap-statistics-ip-addr";
+}
+
+ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_addr.is_set;
+}
+
+bool ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-flap-statistics-ip-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
+ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::ClearBgpAfiSafiFlapStatisticsIpPrefixRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-flap-statistics-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2633,15 +4418,13 @@ ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::~ClearBgpAfiSafiFlapStatisticsIpPrefix
 
 bool ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_prefix.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_prefix.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::get_segment_path() const
@@ -2653,19 +4436,17 @@ std::string ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2675,33 +4456,31 @@ EntityPath ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-prefix")
-    {
-        ip_prefix = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::clone_ptr() const
@@ -2724,11 +4503,92 @@ augment_capabilities_function ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::get_augm
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiFlapStatisticsRegexpRpc::ClearBgpAfiSafiFlapStatisticsRegexpRpc()
+ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    regexp_pattern{YType::str, "regexp-pattern"}
+    ip_prefix{YType::str, "ip-prefix"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-flap-statistics-ip-prefix";
+}
+
+ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_prefix.is_set;
+}
+
+bool ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_prefix.operation);
+}
+
+std::string ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-flap-statistics-ip-prefix/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-prefix")
+    {
+        ip_prefix = value;
+    }
+}
+
+ClearBgpAfiSafiFlapStatisticsRegexpRpc::ClearBgpAfiSafiFlapStatisticsRegexpRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-flap-statistics-regexp"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2738,15 +4598,13 @@ ClearBgpAfiSafiFlapStatisticsRegexpRpc::~ClearBgpAfiSafiFlapStatisticsRegexpRpc(
 
 bool ClearBgpAfiSafiFlapStatisticsRegexpRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| regexp_pattern.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiFlapStatisticsRegexpRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(regexp_pattern.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiFlapStatisticsRegexpRpc::get_segment_path() const
@@ -2758,19 +4616,17 @@ std::string ClearBgpAfiSafiFlapStatisticsRegexpRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiFlapStatisticsRegexpRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiFlapStatisticsRegexpRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (regexp_pattern.is_set || is_set(regexp_pattern.operation)) leaf_name_data.push_back(regexp_pattern.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2780,33 +4636,31 @@ EntityPath ClearBgpAfiSafiFlapStatisticsRegexpRpc::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRegexpRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiFlapStatisticsRegexpRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRegexpRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiFlapStatisticsRegexpRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "regexp-pattern")
-    {
-        regexp_pattern = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRegexpRpc::clone_ptr() const
@@ -2829,11 +4683,92 @@ augment_capabilities_function ClearBgpAfiSafiFlapStatisticsRegexpRpc::get_augmen
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc()
+ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    route_policy_name{YType::str, "route-policy-name"}
+    regexp_pattern{YType::str, "regexp-pattern"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-flap-statistics-regexp";
+}
+
+ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| regexp_pattern.is_set;
+}
+
+bool ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(regexp_pattern.operation);
+}
+
+std::string ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-flap-statistics-regexp/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (regexp_pattern.is_set || is_set(regexp_pattern.operation)) leaf_name_data.push_back(regexp_pattern.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "regexp-pattern")
+    {
+        regexp_pattern = value;
+    }
+}
+
+ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-flap-statistics-route-policy"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2843,15 +4778,13 @@ ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::~ClearBgpAfiSafiFlapStatisticsRoute
 
 bool ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| route_policy_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(route_policy_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::get_segment_path() const
@@ -2863,19 +4796,17 @@ std::string ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::get_segment_path() cons
 
 }
 
-EntityPath ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2885,33 +4816,31 @@ EntityPath ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::clone_ptr() const
@@ -2934,10 +4863,92 @@ augment_capabilities_function ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::get_a
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input::Input()
+    :
+    afi_safi_name{YType::enumeration, "afi-safi-name"},
+    route_policy_name{YType::str, "route-policy-name"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-flap-statistics-route-policy";
+}
+
+ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| route_policy_name.is_set;
+}
+
+bool ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(route_policy_name.operation);
+}
+
+std::string ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-flap-statistics-route-policy/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name = value;
+    }
+}
+
 ClearBgpAfiSafiFlapStatisticsRpc::ClearBgpAfiSafiFlapStatisticsRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"}
+    input(std::make_shared<ClearBgpAfiSafiFlapStatisticsRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-flap-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -2947,13 +4958,13 @@ ClearBgpAfiSafiFlapStatisticsRpc::~ClearBgpAfiSafiFlapStatisticsRpc()
 
 bool ClearBgpAfiSafiFlapStatisticsRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiFlapStatisticsRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiFlapStatisticsRpc::get_segment_path() const
@@ -2965,18 +4976,17 @@ std::string ClearBgpAfiSafiFlapStatisticsRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiFlapStatisticsRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiFlapStatisticsRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2986,29 +4996,31 @@ EntityPath ClearBgpAfiSafiFlapStatisticsRpc::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiFlapStatisticsRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiFlapStatisticsRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiFlapStatisticsRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRpc::clone_ptr() const
@@ -3031,10 +5043,84 @@ augment_capabilities_function ClearBgpAfiSafiFlapStatisticsRpc::get_augment_capa
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::ClearBgpAfiSafiNexthopPerformanceStatisticsRpc()
+ClearBgpAfiSafiFlapStatisticsRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-flap-statistics";
+}
+
+ClearBgpAfiSafiFlapStatisticsRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiFlapStatisticsRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiFlapStatisticsRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiFlapStatisticsRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiFlapStatisticsRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-flap-statistics/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiFlapStatisticsRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::ClearBgpAfiSafiNexthopPerformanceStatisticsRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-nexthop-performance-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -3044,13 +5130,13 @@ ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::~ClearBgpAfiSafiNexthopPerforman
 
 bool ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::get_segment_path() const
@@ -3062,18 +5148,17 @@ std::string ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::get_segment_path() c
 
 }
 
-EntityPath ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3083,29 +5168,31 @@ EntityPath ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::get_entity_path(Entit
 
 std::shared_ptr<Entity> ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::clone_ptr() const
@@ -3128,11 +5215,84 @@ augment_capabilities_function ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::ge
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input::Input()
+    :
+    afi_safi_name{YType::enumeration, "afi-safi-name"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-nexthop-performance-statistics";
+}
+
+ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-nexthop-performance-statistics/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
 ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::ClearBgpAfiSafiNexthopRegistrationIpAddrRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_addr{YType::str, "ip-addr"}
+    input(std::make_shared<ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-nexthop-registration-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -3142,15 +5302,13 @@ ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::~ClearBgpAfiSafiNexthopRegistration
 
 bool ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::get_segment_path() const
@@ -3162,19 +5320,17 @@ std::string ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::get_segment_path() cons
 
 }
 
-EntityPath ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3184,33 +5340,31 @@ EntityPath ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::clone_ptr() const
@@ -3233,10 +5387,92 @@ augment_capabilities_function ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::get_a
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input::Input()
+    :
+    afi_safi_name{YType::enumeration, "afi-safi-name"},
+    ip_addr{YType::str, "ip-addr"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-nexthop-registration-ip-addr";
+}
+
+ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_addr.is_set;
+}
+
+bool ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-nexthop-registration-ip-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
 ClearBgpAfiSafiSelfOriginatedRpc::ClearBgpAfiSafiSelfOriginatedRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"}
+    input(std::make_shared<ClearBgpAfiSafiSelfOriginatedRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-self-originated"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -3246,13 +5482,13 @@ ClearBgpAfiSafiSelfOriginatedRpc::~ClearBgpAfiSafiSelfOriginatedRpc()
 
 bool ClearBgpAfiSafiSelfOriginatedRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiSelfOriginatedRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiSelfOriginatedRpc::get_segment_path() const
@@ -3264,18 +5500,17 @@ std::string ClearBgpAfiSafiSelfOriginatedRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiSelfOriginatedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiSelfOriginatedRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3285,29 +5520,31 @@ EntityPath ClearBgpAfiSafiSelfOriginatedRpc::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> ClearBgpAfiSafiSelfOriginatedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiSelfOriginatedRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiSelfOriginatedRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiSelfOriginatedRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiSelfOriginatedRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiSelfOriginatedRpc::clone_ptr() const
@@ -3330,10 +5567,84 @@ augment_capabilities_function ClearBgpAfiSafiSelfOriginatedRpc::get_augment_capa
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiShutdownRpc::ClearBgpAfiSafiShutdownRpc()
+ClearBgpAfiSafiSelfOriginatedRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-self-originated";
+}
+
+ClearBgpAfiSafiSelfOriginatedRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiSelfOriginatedRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiSelfOriginatedRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiSelfOriginatedRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiSelfOriginatedRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-self-originated/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiSelfOriginatedRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiSelfOriginatedRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiSelfOriginatedRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiShutdownRpc::ClearBgpAfiSafiShutdownRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiShutdownRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-shutdown"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -3343,13 +5654,13 @@ ClearBgpAfiSafiShutdownRpc::~ClearBgpAfiSafiShutdownRpc()
 
 bool ClearBgpAfiSafiShutdownRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiShutdownRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiShutdownRpc::get_segment_path() const
@@ -3361,18 +5672,17 @@ std::string ClearBgpAfiSafiShutdownRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiShutdownRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiShutdownRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3382,29 +5692,31 @@ EntityPath ClearBgpAfiSafiShutdownRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpAfiSafiShutdownRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiShutdownRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiShutdownRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiShutdownRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiShutdownRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiShutdownRpc::clone_ptr() const
@@ -3427,10 +5739,84 @@ augment_capabilities_function ClearBgpAfiSafiShutdownRpc::get_augment_capabiliti
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc()
+ClearBgpAfiSafiShutdownRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-shutdown";
+}
+
+ClearBgpAfiSafiShutdownRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiShutdownRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiShutdownRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiShutdownRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiShutdownRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-shutdown/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiShutdownRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiShutdownRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiShutdownRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-update-outq-address-family-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -3440,13 +5826,13 @@ ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::~ClearBgpAfiSafiUpdateOut
 
 bool ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_segment_path() const
@@ -3458,18 +5844,17 @@ std::string ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_segment_p
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3479,29 +5864,31 @@ EntityPath ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_entity_pat
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::clone_ptr() const
@@ -3524,10 +5911,84 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::ClearBgpAfiSafiUpdateOutqAddressFamilyRpc()
+ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-address-family-update-parent";
+}
+
+ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-address-family-update-parent/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
+ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::ClearBgpAfiSafiUpdateOutqAddressFamilyRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-update-outq-address-family"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -3537,13 +5998,13 @@ ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::~ClearBgpAfiSafiUpdateOutqAddressFami
 
 bool ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::get_segment_path() const
@@ -3555,18 +6016,17 @@ std::string ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3576,29 +6036,31 @@ EntityPath ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::clone_ptr() const
@@ -3621,11 +6083,84 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::get_aug
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input::Input()
+    :
+    afi_safi_name{YType::enumeration, "afi-safi-name"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-address-family";
+}
+
+ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set;
+}
+
+bool ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation);
+}
+
+std::string ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-address-family/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+}
+
 ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_addr{YType::str, "ip-addr"}
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr-refresh-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -3635,15 +6170,13 @@ ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::~ClearBgpAfiSafiU
 
 bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_segment_path() const
@@ -3655,19 +6188,17 @@ std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_s
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3677,33 +6208,31 @@ EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_en
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::clone_ptr() const
@@ -3726,49 +6255,52 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpda
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc()
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     ip_addr{YType::str, "ip-addr"}
 {
-    yang_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr-refresh"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr-refresh-update-parent";
 }
 
-ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::~ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc()
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::has_data() const
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| ip_addr.is_set;
 }
 
-bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::has_operation() const
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(ip_addr.operation);
 }
 
-std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_segment_path() const
+std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr-refresh";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr-refresh-update-parent/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -3780,26 +6312,18 @@ EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_entity_path(En
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -3809,6 +6333,86 @@ void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::set_value(const std::str
     {
         ip_addr = value;
     }
+}
+
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr-refresh"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::~ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr-refresh";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::clone_ptr() const
@@ -3831,49 +6435,52 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc:
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc()
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     ip_addr{YType::str, "ip-addr"}
 {
-    yang_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr-refresh";
 }
 
-ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::~ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc()
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::has_data() const
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| ip_addr.is_set;
 }
 
-bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::has_operation() const
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(ip_addr.operation);
 }
 
-std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_segment_path() const
+std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr-update-parent";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr-refresh/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -3885,26 +6492,18 @@ EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_entity_pa
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -3914,6 +6513,86 @@ void ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::set_value(const std
     {
         ip_addr = value;
     }
+}
+
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::~ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr-update-parent";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::clone_ptr() const
@@ -3936,49 +6615,52 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParen
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc()
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     ip_addr{YType::str, "ip-addr"}
 {
-    yang_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr-update-parent";
 }
 
-ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::~ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc()
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::has_data() const
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| ip_addr.is_set;
 }
 
-bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::has_operation() const
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(ip_addr.operation);
 }
 
-std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_segment_path() const
+std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr-update-parent/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -3990,26 +6672,18 @@ EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_entity_path(Entity* a
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -4019,6 +6693,86 @@ void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::set_value(const std::string & v
     {
         ip_addr = value;
     }
+}
+
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::~ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::clone_ptr() const
@@ -4041,12 +6795,92 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::get_au
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc()
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    sub_group{YType::str, "sub-group"},
-    update_group{YType::str, "update-group"}
+    ip_addr{YType::str, "ip-addr"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-neighbor-ip-addr";
+}
+
+ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_addr.is_set;
+}
+
+bool ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-neighbor-ip-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -4056,17 +6890,13 @@ ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::~ClearBgpAfiSafiUpd
 
 bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| sub_group.is_set
-	|| update_group.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(sub_group.operation)
-	|| is_set(update_group.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_segment_path() const
@@ -4078,20 +6908,17 @@ std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_seg
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (sub_group.is_set || is_set(sub_group.operation)) leaf_name_data.push_back(sub_group.get_name_leafdata());
-    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4101,37 +6928,31 @@ EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_enti
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "sub-group")
-    {
-        sub_group = value;
-    }
-    if(value_path == "update-group")
-    {
-        update_group = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::clone_ptr() const
@@ -4154,27 +6975,27 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdate
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc()
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     sub_group{YType::str, "sub-group"},
     update_group{YType::str, "update-group"}
 {
-    yang_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group-update-parent";
 }
 
-ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc()
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::has_data() const
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| sub_group.is_set
 	|| update_group.is_set;
 }
 
-bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::has_operation() const
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
@@ -4182,24 +7003,27 @@ bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::has_operation() const
 	|| is_set(update_group.operation);
 }
 
-std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_segment_path() const
+std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group-sub-group";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group-sub-group-update-parent/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -4212,26 +7036,18 @@ EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_entity_path(Enti
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -4245,6 +7061,86 @@ void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::set_value(const std::strin
     {
         update_group = value;
     }
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group-sub-group";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::clone_ptr() const
@@ -4267,12 +7163,100 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::g
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc()
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    refresh_sub_group{YType::str, "refresh-sub-group"},
+    sub_group{YType::str, "sub-group"},
     update_group{YType::str, "update-group"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group";
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| sub_group.is_set
+	|| update_group.is_set;
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(sub_group.operation)
+	|| is_set(update_group.operation);
+}
+
+std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group-sub-group/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (sub_group.is_set || is_set(sub_group.operation)) leaf_name_data.push_back(sub_group.get_name_leafdata());
+    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "sub-group")
+    {
+        sub_group = value;
+    }
+    if(value_path == "update-group")
+    {
+        update_group = value;
+    }
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group-refresh-sub-group-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -4282,17 +7266,13 @@ ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::~Cle
 
 bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| refresh_sub_group.is_set
-	|| update_group.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(refresh_sub_group.operation)
-	|| is_set(update_group.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_segment_path() const
@@ -4304,20 +7284,17 @@ std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdatePar
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (refresh_sub_group.is_set || is_set(refresh_sub_group.operation)) leaf_name_data.push_back(refresh_sub_group.get_name_leafdata());
-    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4327,37 +7304,31 @@ EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdatePare
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "refresh-sub-group")
-    {
-        refresh_sub_group = value;
-    }
-    if(value_path == "update-group")
-    {
-        update_group = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::clone_ptr() const
@@ -4380,27 +7351,27 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefres
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc()
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     refresh_sub_group{YType::str, "refresh-sub-group"},
     update_group{YType::str, "update-group"}
 {
-    yang_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group-refresh-sub-group"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group-refresh-sub-group-update-parent";
 }
 
-ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc()
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::has_data() const
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| refresh_sub_group.is_set
 	|| update_group.is_set;
 }
 
-bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::has_operation() const
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
@@ -4408,24 +7379,27 @@ bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::has_operati
 	|| is_set(update_group.operation);
 }
 
-std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_segment_path() const
+std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group-sub-group-refresh-sub-group";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group-sub-group-refresh-sub-group-update-parent/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -4438,26 +7412,18 @@ EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_e
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -4471,6 +7437,86 @@ void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::set_value(c
     {
         update_group = value;
     }
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group-refresh-sub-group"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group-sub-group-refresh-sub-group";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::clone_ptr() const
@@ -4493,11 +7539,100 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefres
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc()
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
+    refresh_sub_group{YType::str, "refresh-sub-group"},
     update_group{YType::str, "update-group"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-update-group-sub-group-refresh-sub-group";
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| refresh_sub_group.is_set
+	|| update_group.is_set;
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(refresh_sub_group.operation)
+	|| is_set(update_group.operation);
+}
+
+std::string ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group-sub-group-refresh-sub-group/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (refresh_sub_group.is_set || is_set(refresh_sub_group.operation)) leaf_name_data.push_back(refresh_sub_group.get_name_leafdata());
+    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "refresh-sub-group")
+    {
+        refresh_sub_group = value;
+    }
+    if(value_path == "update-group")
+    {
+        update_group = value;
+    }
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-afi-safi-update-outq-update-group-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -4507,15 +7642,13 @@ ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::~ClearBgpAfiSafiUpdateOutqU
 
 bool ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| update_group.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(update_group.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::get_segment_path() const
@@ -4527,19 +7660,17 @@ std::string ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::get_segment_pat
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4549,33 +7680,31 @@ EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::get_entity_path(
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "update-group")
-    {
-        update_group = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::clone_ptr() const
@@ -4598,49 +7727,52 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRp
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupRpc()
+ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     update_group{YType::str, "update-group"}
 {
-    yang_name = "clear-bgp-afi-safi-update-outq-update-group"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-update-group-update-parent";
 }
 
-ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::~ClearBgpAfiSafiUpdateOutqUpdateGroupRpc()
+ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input::~Input()
 {
 }
 
-bool ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::has_data() const
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| update_group.is_set;
 }
 
-bool ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::has_operation() const
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(update_group.operation);
 }
 
-std::string ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_segment_path() const
+std::string ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group-update-parent/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
@@ -4652,26 +7784,18 @@ EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_entity_path(Entity* ance
 
 }
 
-std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -4681,6 +7805,86 @@ void ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::set_value(const std::string & valu
     {
         update_group = value;
     }
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::ClearBgpAfiSafiUpdateOutqUpdateGroupRpc()
+    :
+    input(std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-afi-safi-update-outq-update-group"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::~ClearBgpAfiSafiUpdateOutqUpdateGroupRpc()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::clone_ptr() const
@@ -4703,10 +7907,92 @@ augment_capabilities_function ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::get_augme
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input::Input()
+    :
+    afi_safi_name{YType::enumeration, "afi-safi-name"},
+    update_group{YType::str, "update-group"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-afi-safi-update-outq-update-group";
+}
+
+ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| update_group.is_set;
+}
+
+bool ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(update_group.operation);
+}
+
+std::string ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-afi-safi-update-outq-update-group/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "update-group")
+    {
+        update_group = value;
+    }
+}
+
 ClearBgpAsGracefulRpc::ClearBgpAsGracefulRpc()
     :
-    as_number{YType::str, "as-number"}
+    input(std::make_shared<ClearBgpAsGracefulRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-as-graceful"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -4716,13 +8002,13 @@ ClearBgpAsGracefulRpc::~ClearBgpAsGracefulRpc()
 
 bool ClearBgpAsGracefulRpc::has_data() const
 {
-    return as_number.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAsGracefulRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(as_number.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAsGracefulRpc::get_segment_path() const
@@ -4734,18 +8020,17 @@ std::string ClearBgpAsGracefulRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAsGracefulRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAsGracefulRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4755,29 +8040,31 @@ EntityPath ClearBgpAsGracefulRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpAsGracefulRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAsGracefulRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAsGracefulRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAsGracefulRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAsGracefulRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "as-number")
-    {
-        as_number = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAsGracefulRpc::clone_ptr() const
@@ -4800,10 +8087,84 @@ augment_capabilities_function ClearBgpAsGracefulRpc::get_augment_capabilities_fu
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpAsRpc::ClearBgpAsRpc()
+ClearBgpAsGracefulRpc::Input::Input()
     :
     as_number{YType::str, "as-number"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-as-graceful";
+}
+
+ClearBgpAsGracefulRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAsGracefulRpc::Input::has_data() const
+{
+    return as_number.is_set;
+}
+
+bool ClearBgpAsGracefulRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(as_number.operation);
+}
+
+std::string ClearBgpAsGracefulRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAsGracefulRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-as-graceful/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAsGracefulRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAsGracefulRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAsGracefulRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "as-number")
+    {
+        as_number = value;
+    }
+}
+
+ClearBgpAsRpc::ClearBgpAsRpc()
+    :
+    input(std::make_shared<ClearBgpAsRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-as"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -4813,13 +8174,13 @@ ClearBgpAsRpc::~ClearBgpAsRpc()
 
 bool ClearBgpAsRpc::has_data() const
 {
-    return as_number.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpAsRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(as_number.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpAsRpc::get_segment_path() const
@@ -4831,18 +8192,17 @@ std::string ClearBgpAsRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpAsRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpAsRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4852,29 +8212,31 @@ EntityPath ClearBgpAsRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpAsRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpAsRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpAsRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAsRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpAsRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "as-number")
-    {
-        as_number = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpAsRpc::clone_ptr() const
@@ -4897,11 +8259,84 @@ augment_capabilities_function ClearBgpAsRpc::get_augment_capabilities_function()
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpAsRpc::Input::Input()
+    :
+    as_number{YType::str, "as-number"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-as";
+}
+
+ClearBgpAsRpc::Input::~Input()
+{
+}
+
+bool ClearBgpAsRpc::Input::has_data() const
+{
+    return as_number.is_set;
+}
+
+bool ClearBgpAsRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(as_number.operation);
+}
+
+std::string ClearBgpAsRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpAsRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-as/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpAsRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpAsRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpAsRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "as-number")
+    {
+        as_number = value;
+    }
+}
+
 ClearBgpBestpathIpAddrIpNetmaskRpc::ClearBgpBestpathIpAddrIpNetmaskRpc()
     :
-    ip_addr{YType::str, "ip-addr"},
-    ip_netmask{YType::str, "ip-netmask"}
+    input(std::make_shared<ClearBgpBestpathIpAddrIpNetmaskRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -4911,15 +8346,13 @@ ClearBgpBestpathIpAddrIpNetmaskRpc::~ClearBgpBestpathIpAddrIpNetmaskRpc()
 
 bool ClearBgpBestpathIpAddrIpNetmaskRpc::has_data() const
 {
-    return ip_addr.is_set
-	|| ip_netmask.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathIpAddrIpNetmaskRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(ip_addr.operation)
-	|| is_set(ip_netmask.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathIpAddrIpNetmaskRpc::get_segment_path() const
@@ -4931,19 +8364,17 @@ std::string ClearBgpBestpathIpAddrIpNetmaskRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (ip_netmask.is_set || is_set(ip_netmask.operation)) leaf_name_data.push_back(ip_netmask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4953,33 +8384,31 @@ EntityPath ClearBgpBestpathIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ClearBgpBestpathIpAddrIpNetmaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathIpAddrIpNetmaskRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathIpAddrIpNetmaskRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpAddrIpNetmaskRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathIpAddrIpNetmaskRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-    if(value_path == "ip-netmask")
-    {
-        ip_netmask = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathIpAddrIpNetmaskRpc::clone_ptr() const
@@ -5002,10 +8431,92 @@ augment_capabilities_function ClearBgpBestpathIpAddrIpNetmaskRpc::get_augment_ca
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpBestpathIpAddrIpNetmaskRpc::Input::Input()
+    :
+    ip_addr{YType::str, "ip-addr"},
+    ip_netmask{YType::str, "ip-netmask"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-ip-addr-ip-netmask";
+}
+
+ClearBgpBestpathIpAddrIpNetmaskRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathIpAddrIpNetmaskRpc::Input::has_data() const
+{
+    return ip_addr.is_set
+	|| ip_netmask.is_set;
+}
+
+bool ClearBgpBestpathIpAddrIpNetmaskRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(ip_addr.operation)
+	|| is_set(ip_netmask.operation);
+}
+
+std::string ClearBgpBestpathIpAddrIpNetmaskRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathIpAddrIpNetmaskRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-ip-addr-ip-netmask/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (ip_netmask.is_set || is_set(ip_netmask.operation)) leaf_name_data.push_back(ip_netmask.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathIpAddrIpNetmaskRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpAddrIpNetmaskRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathIpAddrIpNetmaskRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+    if(value_path == "ip-netmask")
+    {
+        ip_netmask = value;
+    }
+}
+
 ClearBgpBestpathIpAddrRpc::ClearBgpBestpathIpAddrRpc()
     :
-    ip_addr{YType::str, "ip-addr"}
+    input(std::make_shared<ClearBgpBestpathIpAddrRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -5015,13 +8526,13 @@ ClearBgpBestpathIpAddrRpc::~ClearBgpBestpathIpAddrRpc()
 
 bool ClearBgpBestpathIpAddrRpc::has_data() const
 {
-    return ip_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathIpAddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(ip_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathIpAddrRpc::get_segment_path() const
@@ -5033,18 +8544,17 @@ std::string ClearBgpBestpathIpAddrRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathIpAddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathIpAddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5054,29 +8564,31 @@ EntityPath ClearBgpBestpathIpAddrRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpBestpathIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathIpAddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathIpAddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpAddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathIpAddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathIpAddrRpc::clone_ptr() const
@@ -5099,10 +8611,84 @@ augment_capabilities_function ClearBgpBestpathIpAddrRpc::get_augment_capabilitie
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpBestpathIpAddrRpc::Input::Input()
+    :
+    ip_addr{YType::str, "ip-addr"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-ip-addr";
+}
+
+ClearBgpBestpathIpAddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathIpAddrRpc::Input::has_data() const
+{
+    return ip_addr.is_set;
+}
+
+bool ClearBgpBestpathIpAddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpBestpathIpAddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathIpAddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-ip-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathIpAddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpAddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathIpAddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
 ClearBgpBestpathIpPrefixRpc::ClearBgpBestpathIpPrefixRpc()
     :
-    ip_prefix{YType::str, "ip-prefix"}
+    input(std::make_shared<ClearBgpBestpathIpPrefixRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -5112,13 +8698,13 @@ ClearBgpBestpathIpPrefixRpc::~ClearBgpBestpathIpPrefixRpc()
 
 bool ClearBgpBestpathIpPrefixRpc::has_data() const
 {
-    return ip_prefix.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathIpPrefixRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(ip_prefix.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathIpPrefixRpc::get_segment_path() const
@@ -5130,18 +8716,17 @@ std::string ClearBgpBestpathIpPrefixRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathIpPrefixRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathIpPrefixRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5151,29 +8736,31 @@ EntityPath ClearBgpBestpathIpPrefixRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpBestpathIpPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathIpPrefixRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathIpPrefixRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpPrefixRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathIpPrefixRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "ip-prefix")
-    {
-        ip_prefix = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathIpPrefixRpc::clone_ptr() const
@@ -5196,12 +8783,84 @@ augment_capabilities_function ClearBgpBestpathIpPrefixRpc::get_augment_capabilit
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpBestpathIpPrefixRpc::Input::Input()
+    :
+    ip_prefix{YType::str, "ip-prefix"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-ip-prefix";
+}
+
+ClearBgpBestpathIpPrefixRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathIpPrefixRpc::Input::has_data() const
+{
+    return ip_prefix.is_set;
+}
+
+bool ClearBgpBestpathIpPrefixRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(ip_prefix.operation);
+}
+
+std::string ClearBgpBestpathIpPrefixRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathIpPrefixRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-ip-prefix/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathIpPrefixRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpPrefixRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathIpPrefixRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "ip-prefix")
+    {
+        ip_prefix = value;
+    }
+}
+
 ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_addr{YType::str, "ip-addr"},
-    ip_netmask{YType::str, "ip-netmask"}
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -5211,17 +8870,13 @@ ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::~ClearBgpBestpathAfiSafiIpAddrIpNetma
 
 bool ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_addr.is_set
-	|| ip_netmask.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_addr.operation)
-	|| is_set(ip_netmask.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::get_segment_path() const
@@ -5233,20 +8888,17 @@ std::string ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (ip_netmask.is_set || is_set(ip_netmask.operation)) leaf_name_data.push_back(ip_netmask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5256,37 +8908,31 @@ EntityPath ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-    if(value_path == "ip-netmask")
-    {
-        ip_netmask = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::clone_ptr() const
@@ -5309,11 +8955,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::get_aug
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiIpAddrRpc::ClearBgpBestpathAfiSafiIpAddrRpc()
+ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_addr{YType::str, "ip-addr"}
+    ip_addr{YType::str, "ip-addr"},
+    ip_netmask{YType::str, "ip-netmask"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ip-addr-ip-netmask";
+}
+
+ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_addr.is_set
+	|| ip_netmask.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_addr.operation)
+	|| is_set(ip_netmask.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ip-addr-ip-netmask/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (ip_netmask.is_set || is_set(ip_netmask.operation)) leaf_name_data.push_back(ip_netmask.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+    if(value_path == "ip-netmask")
+    {
+        ip_netmask = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiIpAddrRpc::ClearBgpBestpathAfiSafiIpAddrRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpAddrRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -5323,15 +9058,13 @@ ClearBgpBestpathAfiSafiIpAddrRpc::~ClearBgpBestpathAfiSafiIpAddrRpc()
 
 bool ClearBgpBestpathAfiSafiIpAddrRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpAddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpAddrRpc::get_segment_path() const
@@ -5343,19 +9076,17 @@ std::string ClearBgpBestpathAfiSafiIpAddrRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpAddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpAddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5365,33 +9096,31 @@ EntityPath ClearBgpBestpathAfiSafiIpAddrRpc::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpAddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpAddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpAddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpAddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddrRpc::clone_ptr() const
@@ -5414,11 +9143,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpAddrRpc::get_augment_capa
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiIpPrefixRpc::ClearBgpBestpathAfiSafiIpPrefixRpc()
+ClearBgpBestpathAfiSafiIpAddrRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_prefix{YType::str, "ip-prefix"}
+    ip_addr{YType::str, "ip-addr"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ip-addr";
+}
+
+ClearBgpBestpathAfiSafiIpAddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpAddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_addr.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpAddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpAddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpAddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ip-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpAddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpAddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiIpPrefixRpc::ClearBgpBestpathAfiSafiIpPrefixRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpPrefixRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -5428,15 +9238,13 @@ ClearBgpBestpathAfiSafiIpPrefixRpc::~ClearBgpBestpathAfiSafiIpPrefixRpc()
 
 bool ClearBgpBestpathAfiSafiIpPrefixRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_prefix.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpPrefixRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_prefix.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpPrefixRpc::get_segment_path() const
@@ -5448,19 +9256,17 @@ std::string ClearBgpBestpathAfiSafiIpPrefixRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpPrefixRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpPrefixRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5470,33 +9276,31 @@ EntityPath ClearBgpBestpathAfiSafiIpPrefixRpc::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpPrefixRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpPrefixRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpPrefixRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpPrefixRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-prefix")
-    {
-        ip_prefix = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpPrefixRpc::clone_ptr() const
@@ -5519,13 +9323,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpPrefixRpc::get_augment_ca
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc()
+ClearBgpBestpathAfiSafiIpPrefixRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    bridge_domain_name{YType::str, "bridge-domain-name"},
-    ip_addr{YType::str, "ip-addr"},
-    ip_netmask{YType::str, "ip-netmask"}
+    ip_prefix{YType::str, "ip-prefix"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ip-prefix";
+}
+
+ClearBgpBestpathAfiSafiIpPrefixRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpPrefixRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_prefix.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpPrefixRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_prefix.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpPrefixRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpPrefixRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ip-prefix/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpPrefixRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpPrefixRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpPrefixRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-prefix")
+    {
+        ip_prefix = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-bridge-domain-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -5535,19 +9418,13 @@ ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::~ClearBgpBestpathAfiSafiB
 
 bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| bridge_domain_name.is_set
-	|| ip_addr.is_set
-	|| ip_netmask.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(bridge_domain_name.operation)
-	|| is_set(ip_addr.operation)
-	|| is_set(ip_netmask.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::get_segment_path() const
@@ -5559,21 +9436,17 @@ std::string ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::get_segment_p
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (bridge_domain_name.is_set || is_set(bridge_domain_name.operation)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (ip_netmask.is_set || is_set(ip_netmask.operation)) leaf_name_data.push_back(ip_netmask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5583,41 +9456,31 @@ EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::get_entity_pat
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "bridge-domain-name")
-    {
-        bridge_domain_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-    if(value_path == "ip-netmask")
-    {
-        ip_netmask = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::clone_ptr() const
@@ -5640,57 +9503,64 @@ augment_capabilities_function ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc()
+ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     bridge_domain_name{YType::str, "bridge-domain-name"},
-    ip_addr{YType::str, "ip-addr"}
+    ip_addr{YType::str, "ip-addr"},
+    ip_netmask{YType::str, "ip-netmask"}
 {
-    yang_name = "clear-bgp-bestpath-afi-safi-bridge-domain-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-bridge-domain-ip-addr-ip-netmask";
 }
 
-ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::~ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc()
+ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input::~Input()
 {
 }
 
-bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::has_data() const
+bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input::has_data() const
 {
     return afi_safi_name.is_set
 	|| bridge_domain_name.is_set
-	|| ip_addr.is_set;
+	|| ip_addr.is_set
+	|| ip_netmask.is_set;
 }
 
-bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::has_operation() const
+bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(bridge_domain_name.operation)
-	|| is_set(ip_addr.operation);
+	|| is_set(ip_addr.operation)
+	|| is_set(ip_netmask.operation);
 }
 
-std::string ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_segment_path() const
+std::string ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-bridge-domain-ip-addr";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-bridge-domain-ip-addr-ip-netmask/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
     if (bridge_domain_name.is_set || is_set(bridge_domain_name.operation)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
     if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (ip_netmask.is_set || is_set(ip_netmask.operation)) leaf_name_data.push_back(ip_netmask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5698,26 +9568,18 @@ EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_entity_path(Entity*
 
 }
 
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
@@ -5731,6 +9593,90 @@ void ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::set_value(const std::string &
     {
         ip_addr = value;
     }
+    if(value_path == "ip-netmask")
+    {
+        ip_netmask = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input>())
+{
+    input->parent = this;
+
+    yang_name = "clear-bgp-bestpath-afi-safi-bridge-domain-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+}
+
+ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::~ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc()
+{
+}
+
+bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::has_data() const
+{
+    return (input !=  nullptr && input->has_data());
+}
+
+bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::has_operation() const
+{
+    return is_set(operation)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-bridge-domain-ip-addr";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::set_value(const std::string & value_path, std::string value)
+{
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::clone_ptr() const
@@ -5753,12 +9699,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::get_
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc()
+ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     bridge_domain_name{YType::str, "bridge-domain-name"},
-    ip_prefix{YType::str, "ip-prefix"}
+    ip_addr{YType::str, "ip-addr"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-bridge-domain-ip-addr";
+}
+
+ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| bridge_domain_name.is_set
+	|| ip_addr.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(bridge_domain_name.operation)
+	|| is_set(ip_addr.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-bridge-domain-ip-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (bridge_domain_name.is_set || is_set(bridge_domain_name.operation)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "bridge-domain-name")
+    {
+        bridge_domain_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-bridge-domain-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -5768,17 +9802,13 @@ ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::~ClearBgpBestpathAfiSafiBridgeDo
 
 bool ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| bridge_domain_name.is_set
-	|| ip_prefix.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(bridge_domain_name.operation)
-	|| is_set(ip_prefix.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::get_segment_path() const
@@ -5790,20 +9820,17 @@ std::string ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::get_segment_path() c
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (bridge_domain_name.is_set || is_set(bridge_domain_name.operation)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
-    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5813,37 +9840,31 @@ EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::get_entity_path(Entit
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "bridge-domain-name")
-    {
-        bridge_domain_name = value;
-    }
-    if(value_path == "ip-prefix")
-    {
-        ip_prefix = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::clone_ptr() const
@@ -5866,13 +9887,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::ge
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc()
+ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_addr{YType::str, "ip-addr"},
-    ip_netmask{YType::str, "ip-netmask"},
-    rd{YType::str, "rd"}
+    bridge_domain_name{YType::str, "bridge-domain-name"},
+    ip_prefix{YType::str, "ip-prefix"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-bridge-domain-ip-prefix";
+}
+
+ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| bridge_domain_name.is_set
+	|| ip_prefix.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(bridge_domain_name.operation)
+	|| is_set(ip_prefix.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-bridge-domain-ip-prefix/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (bridge_domain_name.is_set || is_set(bridge_domain_name.operation)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
+    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "bridge-domain-name")
+    {
+        bridge_domain_name = value;
+    }
+    if(value_path == "ip-prefix")
+    {
+        ip_prefix = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-rd-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -5882,19 +9990,13 @@ ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::~ClearBgpBestpathAfiSafiRdIpAddrIpN
 
 bool ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_addr.is_set
-	|| ip_netmask.is_set
-	|| rd.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_addr.operation)
-	|| is_set(ip_netmask.operation)
-	|| is_set(rd.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::get_segment_path() const
@@ -5906,21 +10008,17 @@ std::string ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::get_segment_path() cons
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (ip_netmask.is_set || is_set(ip_netmask.operation)) leaf_name_data.push_back(ip_netmask.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5930,41 +10028,31 @@ EntityPath ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-    if(value_path == "ip-netmask")
-    {
-        ip_netmask = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::clone_ptr() const
@@ -5987,12 +10075,108 @@ augment_capabilities_function ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::get_a
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiRdIpAddrRpc::ClearBgpBestpathAfiSafiRdIpAddrRpc()
+ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     ip_addr{YType::str, "ip-addr"},
+    ip_netmask{YType::str, "ip-netmask"},
     rd{YType::str, "rd"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-rd-ip-addr-ip-netmask";
+}
+
+ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_addr.is_set
+	|| ip_netmask.is_set
+	|| rd.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_addr.operation)
+	|| is_set(ip_netmask.operation)
+	|| is_set(rd.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-ip-addr-ip-netmask/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (ip_netmask.is_set || is_set(ip_netmask.operation)) leaf_name_data.push_back(ip_netmask.get_name_leafdata());
+    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+    if(value_path == "ip-netmask")
+    {
+        ip_netmask = value;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiRdIpAddrRpc::ClearBgpBestpathAfiSafiRdIpAddrRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiRdIpAddrRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-rd-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6002,17 +10186,13 @@ ClearBgpBestpathAfiSafiRdIpAddrRpc::~ClearBgpBestpathAfiSafiRdIpAddrRpc()
 
 bool ClearBgpBestpathAfiSafiRdIpAddrRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_addr.is_set
-	|| rd.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiRdIpAddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_addr.operation)
-	|| is_set(rd.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiRdIpAddrRpc::get_segment_path() const
@@ -6024,20 +10204,17 @@ std::string ClearBgpBestpathAfiSafiRdIpAddrRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiRdIpAddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiRdIpAddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6047,37 +10224,31 @@ EntityPath ClearBgpBestpathAfiSafiRdIpAddrRpc::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiRdIpAddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdIpAddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpAddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiRdIpAddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddrRpc::clone_ptr() const
@@ -6100,12 +10271,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiRdIpAddrRpc::get_augment_ca
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiRdIpPrefixRpc::ClearBgpBestpathAfiSafiRdIpPrefixRpc()
+ClearBgpBestpathAfiSafiRdIpAddrRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ip_prefix{YType::str, "ip-prefix"},
+    ip_addr{YType::str, "ip-addr"},
     rd{YType::str, "rd"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-rd-ip-addr";
+}
+
+ClearBgpBestpathAfiSafiRdIpAddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiRdIpAddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_addr.is_set
+	|| rd.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiRdIpAddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_addr.operation)
+	|| is_set(rd.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiRdIpAddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiRdIpAddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-ip-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpAddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiRdIpAddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiRdIpPrefixRpc::ClearBgpBestpathAfiSafiRdIpPrefixRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-rd-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6115,17 +10374,13 @@ ClearBgpBestpathAfiSafiRdIpPrefixRpc::~ClearBgpBestpathAfiSafiRdIpPrefixRpc()
 
 bool ClearBgpBestpathAfiSafiRdIpPrefixRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ip_prefix.is_set
-	|| rd.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiRdIpPrefixRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ip_prefix.operation)
-	|| is_set(rd.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiRdIpPrefixRpc::get_segment_path() const
@@ -6137,20 +10392,17 @@ std::string ClearBgpBestpathAfiSafiRdIpPrefixRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiRdIpPrefixRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiRdIpPrefixRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6160,37 +10412,31 @@ EntityPath ClearBgpBestpathAfiSafiRdIpPrefixRpc::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdIpPrefixRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpPrefixRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiRdIpPrefixRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ip-prefix")
-    {
-        ip_prefix = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpPrefixRpc::clone_ptr() const
@@ -6213,12 +10459,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiRdIpPrefixRpc::get_augment_
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc()
+ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_addr{YType::str, "ipv4-addr"},
-    ipv4_mask{YType::str, "ipv4-mask"}
+    ip_prefix{YType::str, "ip-prefix"},
+    rd{YType::str, "rd"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-rd-ip-prefix";
+}
+
+ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ip_prefix.is_set
+	|| rd.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ip_prefix.operation)
+	|| is_set(rd.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-ip-prefix/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
+    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ip-prefix")
+    {
+        ip_prefix = value;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6228,17 +10562,13 @@ ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::~ClearBgpBestpathAfiSafiIpv4AddrIpv4
 
 bool ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ipv4_addr.is_set
-	|| ipv4_mask.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_addr.operation)
-	|| is_set(ipv4_mask.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::get_segment_path() const
@@ -6250,20 +10580,17 @@ std::string ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
-    if (ipv4_mask.is_set || is_set(ipv4_mask.operation)) leaf_name_data.push_back(ipv4_mask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6273,37 +10600,31 @@ EntityPath ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-addr")
-    {
-        ipv4_addr = value;
-    }
-    if(value_path == "ipv4-mask")
-    {
-        ipv4_mask = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::clone_ptr() const
@@ -6326,11 +10647,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::get_au
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiIpv4AddrRpc::ClearBgpBestpathAfiSafiIpv4AddrRpc()
+ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_addr{YType::str, "ipv4-addr"}
+    ipv4_addr{YType::str, "ipv4-addr"},
+    ipv4_mask{YType::str, "ipv4-mask"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ipv4-addr-ipv4-mask";
+}
+
+ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ipv4_addr.is_set
+	|| ipv4_mask.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ipv4_addr.operation)
+	|| is_set(ipv4_mask.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ipv4-addr-ipv4-mask/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
+    if (ipv4_mask.is_set || is_set(ipv4_mask.operation)) leaf_name_data.push_back(ipv4_mask.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ipv4-addr")
+    {
+        ipv4_addr = value;
+    }
+    if(value_path == "ipv4-mask")
+    {
+        ipv4_mask = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiIpv4AddrRpc::ClearBgpBestpathAfiSafiIpv4AddrRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpv4AddrRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6340,15 +10750,13 @@ ClearBgpBestpathAfiSafiIpv4AddrRpc::~ClearBgpBestpathAfiSafiIpv4AddrRpc()
 
 bool ClearBgpBestpathAfiSafiIpv4AddrRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ipv4_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpv4AddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpv4AddrRpc::get_segment_path() const
@@ -6360,19 +10768,17 @@ std::string ClearBgpBestpathAfiSafiIpv4AddrRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpv4AddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpv4AddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6382,33 +10788,31 @@ EntityPath ClearBgpBestpathAfiSafiIpv4AddrRpc::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4AddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpv4AddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpv4AddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4AddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpv4AddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-addr")
-    {
-        ipv4_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4AddrRpc::clone_ptr() const
@@ -6431,11 +10835,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpv4AddrRpc::get_augment_ca
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiIpv4PrefixRpc::ClearBgpBestpathAfiSafiIpv4PrefixRpc()
+ClearBgpBestpathAfiSafiIpv4AddrRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_prefix{YType::str, "ipv4-prefix"}
+    ipv4_addr{YType::str, "ipv4-addr"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ipv4-addr";
+}
+
+ClearBgpBestpathAfiSafiIpv4AddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpv4AddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ipv4_addr.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpv4AddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ipv4_addr.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpv4AddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpv4AddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ipv4-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4AddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4AddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpv4AddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ipv4-addr")
+    {
+        ipv4_addr = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiIpv4PrefixRpc::ClearBgpBestpathAfiSafiIpv4PrefixRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6445,15 +10930,13 @@ ClearBgpBestpathAfiSafiIpv4PrefixRpc::~ClearBgpBestpathAfiSafiIpv4PrefixRpc()
 
 bool ClearBgpBestpathAfiSafiIpv4PrefixRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ipv4_prefix.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpv4PrefixRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_prefix.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpv4PrefixRpc::get_segment_path() const
@@ -6465,19 +10948,17 @@ std::string ClearBgpBestpathAfiSafiIpv4PrefixRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpv4PrefixRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpv4PrefixRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_prefix.is_set || is_set(ipv4_prefix.operation)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6487,33 +10968,31 @@ EntityPath ClearBgpBestpathAfiSafiIpv4PrefixRpc::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpv4PrefixRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4PrefixRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpv4PrefixRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-prefix")
-    {
-        ipv4_prefix = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4PrefixRpc::clone_ptr() const
@@ -6536,12 +11015,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpv4PrefixRpc::get_augment_
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiRdIpv4AddrRpc::ClearBgpBestpathAfiSafiRdIpv4AddrRpc()
+ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_addr{YType::str, "ipv4-addr"},
-    rd{YType::str, "rd"}
+    ipv4_prefix{YType::str, "ipv4-prefix"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ipv4-prefix";
+}
+
+ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ipv4_prefix.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ipv4_prefix.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ipv4-prefix/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ipv4_prefix.is_set || is_set(ipv4_prefix.operation)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ipv4-prefix")
+    {
+        ipv4_prefix = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiRdIpv4AddrRpc::ClearBgpBestpathAfiSafiRdIpv4AddrRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-rd-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6551,17 +11110,13 @@ ClearBgpBestpathAfiSafiRdIpv4AddrRpc::~ClearBgpBestpathAfiSafiRdIpv4AddrRpc()
 
 bool ClearBgpBestpathAfiSafiRdIpv4AddrRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ipv4_addr.is_set
-	|| rd.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiRdIpv4AddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_addr.operation)
-	|| is_set(rd.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiRdIpv4AddrRpc::get_segment_path() const
@@ -6573,20 +11128,17 @@ std::string ClearBgpBestpathAfiSafiRdIpv4AddrRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiRdIpv4AddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiRdIpv4AddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6596,37 +11148,31 @@ EntityPath ClearBgpBestpathAfiSafiRdIpv4AddrRpc::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv4AddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdIpv4AddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpv4AddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiRdIpv4AddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-addr")
-    {
-        ipv4_addr = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv4AddrRpc::clone_ptr() const
@@ -6649,12 +11195,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiRdIpv4AddrRpc::get_augment_
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::ClearBgpBestpathAfiSafiVrfIpv4AddrRpc()
+ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     ipv4_addr{YType::str, "ipv4-addr"},
-    vrf_name{YType::str, "vrf-name"}
+    rd{YType::str, "rd"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-rd-ipv4-addr";
+}
+
+ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ipv4_addr.is_set
+	|| rd.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ipv4_addr.operation)
+	|| is_set(rd.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-ipv4-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
+    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ipv4-addr")
+    {
+        ipv4_addr = value;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::ClearBgpBestpathAfiSafiVrfIpv4AddrRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-vrf-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6664,17 +11298,13 @@ ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::~ClearBgpBestpathAfiSafiVrfIpv4AddrRpc()
 
 bool ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ipv4_addr.is_set
-	|| vrf_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_addr.operation)
-	|| is_set(vrf_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::get_segment_path() const
@@ -6686,20 +11316,17 @@ std::string ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6709,37 +11336,31 @@ EntityPath ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-addr")
-    {
-        ipv4_addr = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::clone_ptr() const
@@ -6762,11 +11383,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::get_augment
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiNetworkRpc::ClearBgpBestpathAfiSafiNetworkRpc()
+ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    network{YType::str, "network"}
+    ipv4_addr{YType::str, "ipv4-addr"},
+    vrf_name{YType::str, "vrf-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-vrf-ipv4-addr";
+}
+
+ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ipv4_addr.is_set
+	|| vrf_name.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ipv4_addr.operation)
+	|| is_set(vrf_name.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-vrf-ipv4-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ipv4-addr")
+    {
+        ipv4_addr = value;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiNetworkRpc::ClearBgpBestpathAfiSafiNetworkRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiNetworkRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6776,15 +11486,13 @@ ClearBgpBestpathAfiSafiNetworkRpc::~ClearBgpBestpathAfiSafiNetworkRpc()
 
 bool ClearBgpBestpathAfiSafiNetworkRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| network.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiNetworkRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(network.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiNetworkRpc::get_segment_path() const
@@ -6796,19 +11504,17 @@ std::string ClearBgpBestpathAfiSafiNetworkRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiNetworkRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiNetworkRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (network.is_set || is_set(network.operation)) leaf_name_data.push_back(network.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6818,33 +11524,31 @@ EntityPath ClearBgpBestpathAfiSafiNetworkRpc::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiNetworkRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiNetworkRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiNetworkRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiNetworkRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiNetworkRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "network")
-    {
-        network = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiNetworkRpc::clone_ptr() const
@@ -6867,12 +11571,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiNetworkRpc::get_augment_cap
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiRdNetworkRpc::ClearBgpBestpathAfiSafiRdNetworkRpc()
+ClearBgpBestpathAfiSafiNetworkRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    network{YType::str, "network"},
-    rd{YType::str, "rd"}
+    network{YType::str, "network"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-network";
+}
+
+ClearBgpBestpathAfiSafiNetworkRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiNetworkRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| network.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiNetworkRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(network.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiNetworkRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiNetworkRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-network/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (network.is_set || is_set(network.operation)) leaf_name_data.push_back(network.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiNetworkRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiNetworkRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiNetworkRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "network")
+    {
+        network = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiRdNetworkRpc::ClearBgpBestpathAfiSafiRdNetworkRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiRdNetworkRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-rd-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6882,17 +11666,13 @@ ClearBgpBestpathAfiSafiRdNetworkRpc::~ClearBgpBestpathAfiSafiRdNetworkRpc()
 
 bool ClearBgpBestpathAfiSafiRdNetworkRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| network.is_set
-	|| rd.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiRdNetworkRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(network.operation)
-	|| is_set(rd.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiRdNetworkRpc::get_segment_path() const
@@ -6904,20 +11684,17 @@ std::string ClearBgpBestpathAfiSafiRdNetworkRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiRdNetworkRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiRdNetworkRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (network.is_set || is_set(network.operation)) leaf_name_data.push_back(network.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6927,37 +11704,31 @@ EntityPath ClearBgpBestpathAfiSafiRdNetworkRpc::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdNetworkRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiRdNetworkRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdNetworkRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdNetworkRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiRdNetworkRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "network")
-    {
-        network = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdNetworkRpc::clone_ptr() const
@@ -6980,12 +11751,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiRdNetworkRpc::get_augment_c
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiVrfNetworkRpc::ClearBgpBestpathAfiSafiVrfNetworkRpc()
+ClearBgpBestpathAfiSafiRdNetworkRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
     network{YType::str, "network"},
-    vrf_name{YType::str, "vrf-name"}
+    rd{YType::str, "rd"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-rd-network";
+}
+
+ClearBgpBestpathAfiSafiRdNetworkRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiRdNetworkRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| network.is_set
+	|| rd.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiRdNetworkRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(network.operation)
+	|| is_set(rd.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiRdNetworkRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiRdNetworkRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-network/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (network.is_set || is_set(network.operation)) leaf_name_data.push_back(network.get_name_leafdata());
+    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdNetworkRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdNetworkRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiRdNetworkRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "network")
+    {
+        network = value;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiVrfNetworkRpc::ClearBgpBestpathAfiSafiVrfNetworkRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiVrfNetworkRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-vrf-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -6995,17 +11854,13 @@ ClearBgpBestpathAfiSafiVrfNetworkRpc::~ClearBgpBestpathAfiSafiVrfNetworkRpc()
 
 bool ClearBgpBestpathAfiSafiVrfNetworkRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| network.is_set
-	|| vrf_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiVrfNetworkRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(network.operation)
-	|| is_set(vrf_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiVrfNetworkRpc::get_segment_path() const
@@ -7017,20 +11872,17 @@ std::string ClearBgpBestpathAfiSafiVrfNetworkRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiVrfNetworkRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiVrfNetworkRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (network.is_set || is_set(network.operation)) leaf_name_data.push_back(network.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7040,37 +11892,31 @@ EntityPath ClearBgpBestpathAfiSafiVrfNetworkRpc::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfNetworkRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiVrfNetworkRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiVrfNetworkRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfNetworkRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiVrfNetworkRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "network")
-    {
-        network = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfNetworkRpc::clone_ptr() const
@@ -7093,11 +11939,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiVrfNetworkRpc::get_augment_
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::ClearBgpBestpathAfiSafiRtConstraintNetworkRpc()
+ClearBgpBestpathAfiSafiVrfNetworkRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    rt_constraint_network{YType::str, "rt-constraint-network"}
+    network{YType::str, "network"},
+    vrf_name{YType::str, "vrf-name"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-vrf-network";
+}
+
+ClearBgpBestpathAfiSafiVrfNetworkRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiVrfNetworkRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| network.is_set
+	|| vrf_name.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiVrfNetworkRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(network.operation)
+	|| is_set(vrf_name.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiVrfNetworkRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiVrfNetworkRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-vrf-network/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (network.is_set || is_set(network.operation)) leaf_name_data.push_back(network.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfNetworkRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfNetworkRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiVrfNetworkRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "network")
+    {
+        network = value;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::ClearBgpBestpathAfiSafiRtConstraintNetworkRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-rt-constraint-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -7107,15 +12042,13 @@ ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::~ClearBgpBestpathAfiSafiRtConstra
 
 bool ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| rt_constraint_network.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(rt_constraint_network.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::get_segment_path() const
@@ -7127,19 +12060,17 @@ std::string ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::get_segment_path() co
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (rt_constraint_network.is_set || is_set(rt_constraint_network.operation)) leaf_name_data.push_back(rt_constraint_network.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7149,33 +12080,31 @@ EntityPath ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::get_entity_path(Entity
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "rt-constraint-network")
-    {
-        rt_constraint_network = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::clone_ptr() const
@@ -7198,11 +12127,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::get
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc()
+ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_tunnel_network{YType::str, "ipv4-tunnel-network"}
+    rt_constraint_network{YType::str, "rt-constraint-network"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-rt-constraint-network";
+}
+
+ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| rt_constraint_network.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(rt_constraint_network.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rt-constraint-network/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (rt_constraint_network.is_set || is_set(rt_constraint_network.operation)) leaf_name_data.push_back(rt_constraint_network.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "rt-constraint-network")
+    {
+        rt_constraint_network = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ipv4-tunnel-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -7212,15 +12222,13 @@ ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::~ClearBgpBestpathAfiSafiIpv4TunnelN
 
 bool ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ipv4_tunnel_network.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_tunnel_network.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::get_segment_path() const
@@ -7232,19 +12240,17 @@ std::string ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::get_segment_path() cons
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_tunnel_network.is_set || is_set(ipv4_tunnel_network.operation)) leaf_name_data.push_back(ipv4_tunnel_network.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7254,33 +12260,31 @@ EntityPath ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-tunnel-network")
-    {
-        ipv4_tunnel_network = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::clone_ptr() const
@@ -7303,12 +12307,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::get_a
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc()
+ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_addr{YType::str, "ipv6-addr"},
-    ipv6_netmask{YType::str, "ipv6-netmask"}
+    ipv4_tunnel_network{YType::str, "ipv4-tunnel-network"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ipv4-tunnel-network";
+}
+
+ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ipv4_tunnel_network.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ipv4_tunnel_network.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ipv4-tunnel-network/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ipv4_tunnel_network.is_set || is_set(ipv4_tunnel_network.operation)) leaf_name_data.push_back(ipv4_tunnel_network.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ipv4-tunnel-network")
+    {
+        ipv4_tunnel_network = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -7318,17 +12402,13 @@ ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::~ClearBgpBestpathAfiSafiIpv6AddrI
 
 bool ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ipv6_addr.is_set
-	|| ipv6_netmask.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_addr.operation)
-	|| is_set(ipv6_netmask.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::get_segment_path() const
@@ -7340,20 +12420,17 @@ std::string ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::get_segment_path() co
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
-    if (ipv6_netmask.is_set || is_set(ipv6_netmask.operation)) leaf_name_data.push_back(ipv6_netmask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7363,37 +12440,31 @@ EntityPath ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::get_entity_path(Entity
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-addr")
-    {
-        ipv6_addr = value;
-    }
-    if(value_path == "ipv6-netmask")
-    {
-        ipv6_netmask = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::clone_ptr() const
@@ -7416,11 +12487,100 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::get
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiIpv6AddrRpc::ClearBgpBestpathAfiSafiIpv6AddrRpc()
+ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_addr{YType::str, "ipv6-addr"}
+    ipv6_addr{YType::str, "ipv6-addr"},
+    ipv6_netmask{YType::str, "ipv6-netmask"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ipv6-addr-ipv6-netmask";
+}
+
+ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ipv6_addr.is_set
+	|| ipv6_netmask.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ipv6_addr.operation)
+	|| is_set(ipv6_netmask.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ipv6-addr-ipv6-netmask/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
+    if (ipv6_netmask.is_set || is_set(ipv6_netmask.operation)) leaf_name_data.push_back(ipv6_netmask.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ipv6-addr")
+    {
+        ipv6_addr = value;
+    }
+    if(value_path == "ipv6-netmask")
+    {
+        ipv6_netmask = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiIpv6AddrRpc::ClearBgpBestpathAfiSafiIpv6AddrRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpv6AddrRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -7430,15 +12590,13 @@ ClearBgpBestpathAfiSafiIpv6AddrRpc::~ClearBgpBestpathAfiSafiIpv6AddrRpc()
 
 bool ClearBgpBestpathAfiSafiIpv6AddrRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ipv6_addr.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpv6AddrRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_addr.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpv6AddrRpc::get_segment_path() const
@@ -7450,19 +12608,17 @@ std::string ClearBgpBestpathAfiSafiIpv6AddrRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpv6AddrRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpv6AddrRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7472,33 +12628,31 @@ EntityPath ClearBgpBestpathAfiSafiIpv6AddrRpc::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6AddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpv6AddrRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpv6AddrRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6AddrRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpv6AddrRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-addr")
-    {
-        ipv6_addr = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6AddrRpc::clone_ptr() const
@@ -7521,11 +12675,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpv6AddrRpc::get_augment_ca
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiIpv6PrefixRpc::ClearBgpBestpathAfiSafiIpv6PrefixRpc()
+ClearBgpBestpathAfiSafiIpv6AddrRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_prefix{YType::str, "ipv6-prefix"}
+    ipv6_addr{YType::str, "ipv6-addr"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ipv6-addr";
+}
+
+ClearBgpBestpathAfiSafiIpv6AddrRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpv6AddrRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ipv6_addr.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpv6AddrRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ipv6_addr.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpv6AddrRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpv6AddrRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ipv6-addr/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6AddrRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6AddrRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpv6AddrRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ipv6-addr")
+    {
+        ipv6_addr = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiIpv6PrefixRpc::ClearBgpBestpathAfiSafiIpv6PrefixRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -7535,15 +12770,13 @@ ClearBgpBestpathAfiSafiIpv6PrefixRpc::~ClearBgpBestpathAfiSafiIpv6PrefixRpc()
 
 bool ClearBgpBestpathAfiSafiIpv6PrefixRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| ipv6_prefix.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiIpv6PrefixRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_prefix.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiIpv6PrefixRpc::get_segment_path() const
@@ -7555,19 +12788,17 @@ std::string ClearBgpBestpathAfiSafiIpv6PrefixRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiIpv6PrefixRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiIpv6PrefixRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_prefix.is_set || is_set(ipv6_prefix.operation)) leaf_name_data.push_back(ipv6_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7577,33 +12808,31 @@ EntityPath ClearBgpBestpathAfiSafiIpv6PrefixRpc::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiIpv6PrefixRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6PrefixRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiIpv6PrefixRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-prefix")
-    {
-        ipv6_prefix = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6PrefixRpc::clone_ptr() const
@@ -7626,11 +12855,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiIpv6PrefixRpc::get_augment_
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiRdRpc::ClearBgpBestpathAfiSafiRdRpc()
+ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    rd{YType::str, "rd"}
+    ipv6_prefix{YType::str, "ipv6-prefix"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-ipv6-prefix";
+}
+
+ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| ipv6_prefix.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(ipv6_prefix.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-ipv6-prefix/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (ipv6_prefix.is_set || is_set(ipv6_prefix.operation)) leaf_name_data.push_back(ipv6_prefix.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "ipv6-prefix")
+    {
+        ipv6_prefix = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiRdRpc::ClearBgpBestpathAfiSafiRdRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiRdRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-rd"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -7640,15 +12950,13 @@ ClearBgpBestpathAfiSafiRdRpc::~ClearBgpBestpathAfiSafiRdRpc()
 
 bool ClearBgpBestpathAfiSafiRdRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| rd.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiRdRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(rd.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiRdRpc::get_segment_path() const
@@ -7660,19 +12968,17 @@ std::string ClearBgpBestpathAfiSafiRdRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiRdRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiRdRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7682,33 +12988,31 @@ EntityPath ClearBgpBestpathAfiSafiRdRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiRdRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiRdRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdRpc::clone_ptr() const
@@ -7731,11 +13035,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiRdRpc::get_augment_capabili
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiVrfRpc::ClearBgpBestpathAfiSafiVrfRpc()
+ClearBgpBestpathAfiSafiRdRpc::Input::Input()
     :
     afi_safi_name{YType::enumeration, "afi-safi-name"},
-    vrf_name{YType::str, "vrf-name"}
+    rd{YType::str, "rd"}
 {
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-rd";
+}
+
+ClearBgpBestpathAfiSafiRdRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiRdRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| rd.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiRdRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(rd.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiRdRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiRdRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiRdRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+    }
+}
+
+ClearBgpBestpathAfiSafiVrfRpc::ClearBgpBestpathAfiSafiVrfRpc()
+    :
+    input(std::make_shared<ClearBgpBestpathAfiSafiVrfRpc::Input>())
+{
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi-vrf"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -7745,15 +13130,13 @@ ClearBgpBestpathAfiSafiVrfRpc::~ClearBgpBestpathAfiSafiVrfRpc()
 
 bool ClearBgpBestpathAfiSafiVrfRpc::has_data() const
 {
-    return afi_safi_name.is_set
-	|| vrf_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiVrfRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(vrf_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiVrfRpc::get_segment_path() const
@@ -7765,19 +13148,17 @@ std::string ClearBgpBestpathAfiSafiVrfRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiVrfRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiVrfRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7787,33 +13168,31 @@ EntityPath ClearBgpBestpathAfiSafiVrfRpc::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiVrfRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiVrfRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiVrfRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfRpc::clone_ptr() const
@@ -7836,10 +13215,92 @@ augment_capabilities_function ClearBgpBestpathAfiSafiVrfRpc::get_augment_capabil
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+ClearBgpBestpathAfiSafiVrfRpc::Input::Input()
+    :
+    afi_safi_name{YType::enumeration, "afi-safi-name"},
+    vrf_name{YType::str, "vrf-name"}
+{
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi-vrf";
+}
+
+ClearBgpBestpathAfiSafiVrfRpc::Input::~Input()
+{
+}
+
+bool ClearBgpBestpathAfiSafiVrfRpc::Input::has_data() const
+{
+    return afi_safi_name.is_set
+	|| vrf_name.is_set;
+}
+
+bool ClearBgpBestpathAfiSafiVrfRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(afi_safi_name.operation)
+	|| is_set(vrf_name.operation);
+}
+
+std::string ClearBgpBestpathAfiSafiVrfRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ClearBgpBestpathAfiSafiVrfRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-vrf/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ClearBgpBestpathAfiSafiVrfRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+    }
+}
+
 ClearBgpBestpathAfiSafiRpc::ClearBgpBestpathAfiSafiRpc()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"}
+    input(std::make_shared<ClearBgpBestpathAfiSafiRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "clear-bgp-bestpath-afi-safi"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
 }
 
@@ -7849,13 +13310,13 @@ ClearBgpBestpathAfiSafiRpc::~ClearBgpBestpathAfiSafiRpc()
 
 bool ClearBgpBestpathAfiSafiRpc::has_data() const
 {
-    return afi_safi_name.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ClearBgpBestpathAfiSafiRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ClearBgpBestpathAfiSafiRpc::get_segment_path() const
@@ -7867,18 +13328,17 @@ std::string ClearBgpBestpathAfiSafiRpc::get_segment_path() const
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7888,29 +13348,31 @@ EntityPath ClearBgpBestpathAfiSafiRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<ClearBgpBestpathAfiSafiRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void ClearBgpBestpathAfiSafiRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
 }
 
 std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRpc::clone_ptr() const
@@ -7933,8150 +13395,52 @@ augment_capabilities_function ClearBgpBestpathAfiSafiRpc::get_augment_capabiliti
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::ClearBgpBestpathAfiSafiSrPolicyPrefixRpc()
+ClearBgpBestpathAfiSafiRpc::Input::Input()
     :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    sr_policy_prefix{YType::str, "sr-policy-prefix"}
+    afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
-    yang_name = "clear-bgp-bestpath-afi-safi-sr-policy-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
+    yang_name = "input"; yang_parent_name = "clear-bgp-bestpath-afi-safi";
 }
 
-ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::~ClearBgpBestpathAfiSafiSrPolicyPrefixRpc()
+ClearBgpBestpathAfiSafiRpc::Input::~Input()
 {
 }
 
-bool ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::has_data() const
+bool ClearBgpBestpathAfiSafiRpc::Input::has_data() const
 {
-    return afi_safi_name.is_set
-	|| sr_policy_prefix.is_set;
+    return afi_safi_name.is_set;
 }
 
-bool ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::has_operation() const
+bool ClearBgpBestpathAfiSafiRpc::Input::has_operation() const
 {
     return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(sr_policy_prefix.operation);
+	|| is_set(afi_safi_name.operation);
 }
 
-std::string ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::get_segment_path() const
+std::string ClearBgpBestpathAfiSafiRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-sr-policy-prefix";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ClearBgpBestpathAfiSafiRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi/" << get_segment_path();
     }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (sr_policy_prefix.is_set || is_set(sr_policy_prefix.operation)) leaf_name_data.push_back(sr_policy_prefix.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "sr-policy-prefix")
-    {
-        sr_policy_prefix = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiSrPolicyPrefixRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiSrPolicyPrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    bridge_domain_name{YType::str, "bridge-domain-name"},
-    ipv4_prefix{YType::str, "ipv4-prefix"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-bridge-domain-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::~ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| bridge_domain_name.is_set
-	|| ipv4_prefix.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(bridge_domain_name.operation)
-	|| is_set(ipv4_prefix.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-bridge-domain-ipv4-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (bridge_domain_name.is_set || is_set(bridge_domain_name.operation)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
-    if (ipv4_prefix.is_set || is_set(ipv4_prefix.operation)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "bridge-domain-name")
-    {
-        bridge_domain_name = value;
-    }
-    if(value_path == "ipv4-prefix")
-    {
-        ipv4_prefix = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiBridgeDomainIpv4PrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::ClearBgpBestpathAfiSafiRdIpv4PrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_prefix{YType::str, "ipv4-prefix"},
-    rd{YType::str, "rd"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-rd-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::~ClearBgpBestpathAfiSafiRdIpv4PrefixRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv4_prefix.is_set
-	|| rd.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_prefix.operation)
-	|| is_set(rd.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-ipv4-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_prefix.is_set || is_set(ipv4_prefix.operation)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-prefix")
-    {
-        ipv4_prefix = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiRdIpv4PrefixRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiRdIpv4PrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_prefix{YType::str, "ipv4-prefix"},
-    mp2mp{YType::str, "mp2mp"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-mp2mp-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::~ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv4_prefix.is_set
-	|| mp2mp.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_prefix.operation)
-	|| is_set(mp2mp.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-mp2mp-ipv4-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_prefix.is_set || is_set(ipv4_prefix.operation)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
-    if (mp2mp.is_set || is_set(mp2mp.operation)) leaf_name_data.push_back(mp2mp.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-prefix")
-    {
-        ipv4_prefix = value;
-    }
-    if(value_path == "mp2mp")
-    {
-        mp2mp = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiMp2MpIpv4PrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_prefix{YType::str, "ipv4-prefix"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-vrf-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::~ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv4_prefix.is_set
-	|| vrf_name.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_prefix.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-vrf-ipv4-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_prefix.is_set || is_set(ipv4_prefix.operation)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-prefix")
-    {
-        ipv4_prefix = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiVrfIpv4PrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_addr{YType::str, "ipv4-addr"},
-    ipv4_mask{YType::str, "ipv4-mask"},
-    rd{YType::str, "rd"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-rd-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::~ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv4_addr.is_set
-	|| ipv4_mask.is_set
-	|| rd.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_addr.operation)
-	|| is_set(ipv4_mask.operation)
-	|| is_set(rd.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-ipv4-addr-ipv4-mask";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
-    if (ipv4_mask.is_set || is_set(ipv4_mask.operation)) leaf_name_data.push_back(ipv4_mask.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-addr")
-    {
-        ipv4_addr = value;
-    }
-    if(value_path == "ipv4-mask")
-    {
-        ipv4_mask = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiRdIpv4AddrIpv4MaskRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_addr{YType::str, "ipv4-addr"},
-    ipv4_mask{YType::str, "ipv4-mask"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-vrf-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::~ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv4_addr.is_set
-	|| ipv4_mask.is_set
-	|| vrf_name.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_addr.operation)
-	|| is_set(ipv4_mask.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-vrf-ipv4-addr-ipv4-mask";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
-    if (ipv4_mask.is_set || is_set(ipv4_mask.operation)) leaf_name_data.push_back(ipv4_mask.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-addr")
-    {
-        ipv4_addr = value;
-    }
-    if(value_path == "ipv4-mask")
-    {
-        ipv4_mask = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiVrfIpv4AddrIpv4MaskRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_addr{YType::str, "ipv6-addr"},
-    ipv6_netmask{YType::str, "ipv6-netmask"},
-    rd{YType::str, "rd"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-rd-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::~ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv6_addr.is_set
-	|| ipv6_netmask.is_set
-	|| rd.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_addr.operation)
-	|| is_set(ipv6_netmask.operation)
-	|| is_set(rd.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-ipv6-addr-ipv6-netmask";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
-    if (ipv6_netmask.is_set || is_set(ipv6_netmask.operation)) leaf_name_data.push_back(ipv6_netmask.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-addr")
-    {
-        ipv6_addr = value;
-    }
-    if(value_path == "ipv6-netmask")
-    {
-        ipv6_netmask = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiRdIpv6AddrIpv6NetmaskRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiRdIpv6AddrRpc::ClearBgpBestpathAfiSafiRdIpv6AddrRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_addr{YType::str, "ipv6-addr"},
-    rd{YType::str, "rd"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-rd-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiRdIpv6AddrRpc::~ClearBgpBestpathAfiSafiRdIpv6AddrRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv6AddrRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv6_addr.is_set
-	|| rd.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv6AddrRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_addr.operation)
-	|| is_set(rd.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv6AddrRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-ipv6-addr";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiRdIpv6AddrRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv6AddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdIpv6AddrRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiRdIpv6AddrRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-addr")
-    {
-        ipv6_addr = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv6AddrRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiRdIpv6AddrRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv6AddrRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv6AddrRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiRdIpv6AddrRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::ClearBgpBestpathAfiSafiRdIpv6PrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_prefix{YType::str, "ipv6-prefix"},
-    rd{YType::str, "rd"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-rd-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::~ClearBgpBestpathAfiSafiRdIpv6PrefixRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv6_prefix.is_set
-	|| rd.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_prefix.operation)
-	|| is_set(rd.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-rd-ipv6-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_prefix.is_set || is_set(ipv6_prefix.operation)) leaf_name_data.push_back(ipv6_prefix.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-prefix")
-    {
-        ipv6_prefix = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiRdIpv6PrefixRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiRdIpv6PrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_addr{YType::str, "ipv6-addr"},
-    ipv6_netmask{YType::str, "ipv6-netmask"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-vrf-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::~ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv6_addr.is_set
-	|| ipv6_netmask.is_set
-	|| vrf_name.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_addr.operation)
-	|| is_set(ipv6_netmask.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-vrf-ipv6-addr-ipv6-netmask";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
-    if (ipv6_netmask.is_set || is_set(ipv6_netmask.operation)) leaf_name_data.push_back(ipv6_netmask.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-addr")
-    {
-        ipv6_addr = value;
-    }
-    if(value_path == "ipv6-netmask")
-    {
-        ipv6_netmask = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiVrfIpv6AddrIpv6NetmaskRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::ClearBgpBestpathAfiSafiVrfIpv6AddrRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_addr{YType::str, "ipv6-addr"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-vrf-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::~ClearBgpBestpathAfiSafiVrfIpv6AddrRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv6_addr.is_set
-	|| vrf_name.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_addr.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-vrf-ipv6-addr";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-addr")
-    {
-        ipv6_addr = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiVrfIpv6AddrRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiVrfIpv6AddrRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_prefix{YType::str, "ipv6-prefix"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "clear-bgp-bestpath-afi-safi-vrf-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::~ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc()
-{
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv6_prefix.is_set
-	|| vrf_name.is_set;
-}
-
-bool ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_prefix.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-afi-safi-vrf-ipv6-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_prefix.is_set || is_set(ipv6_prefix.operation)) leaf_name_data.push_back(ipv6_prefix.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-prefix")
-    {
-        ipv6_prefix = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc>();
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathAfiSafiVrfIpv6PrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfIpAddrIpNetmaskRpc::ClearBgpBestpathVrfIpAddrIpNetmaskRpc()
-    :
-    ip_addr{YType::str, "ip-addr"},
-    ip_netmask{YType::str, "ip-netmask"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfIpAddrIpNetmaskRpc::~ClearBgpBestpathVrfIpAddrIpNetmaskRpc()
-{
-}
-
-bool ClearBgpBestpathVrfIpAddrIpNetmaskRpc::has_data() const
-{
-    return ip_addr.is_set
-	|| ip_netmask.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfIpAddrIpNetmaskRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(ip_addr.operation)
-	|| is_set(ip_netmask.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfIpAddrIpNetmaskRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-ip-addr-ip-netmask";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfIpAddrIpNetmaskRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (ip_netmask.is_set || is_set(ip_netmask.operation)) leaf_name_data.push_back(ip_netmask.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfIpAddrIpNetmaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfIpAddrIpNetmaskRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfIpAddrIpNetmaskRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-    if(value_path == "ip-netmask")
-    {
-        ip_netmask = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfIpAddrIpNetmaskRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfIpAddrIpNetmaskRpc>();
-}
-
-std::string ClearBgpBestpathVrfIpAddrIpNetmaskRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfIpAddrIpNetmaskRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfIpAddrIpNetmaskRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfIpAddrRpc::ClearBgpBestpathVrfIpAddrRpc()
-    :
-    ip_addr{YType::str, "ip-addr"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfIpAddrRpc::~ClearBgpBestpathVrfIpAddrRpc()
-{
-}
-
-bool ClearBgpBestpathVrfIpAddrRpc::has_data() const
-{
-    return ip_addr.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfIpAddrRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(ip_addr.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfIpAddrRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-ip-addr";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfIpAddrRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfIpAddrRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfIpAddrRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfIpAddrRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfIpAddrRpc>();
-}
-
-std::string ClearBgpBestpathVrfIpAddrRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfIpAddrRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfIpAddrRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfIpPrefixRpc::ClearBgpBestpathVrfIpPrefixRpc()
-    :
-    ip_prefix{YType::str, "ip-prefix"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfIpPrefixRpc::~ClearBgpBestpathVrfIpPrefixRpc()
-{
-}
-
-bool ClearBgpBestpathVrfIpPrefixRpc::has_data() const
-{
-    return ip_prefix.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfIpPrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(ip_prefix.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfIpPrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-ip-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfIpPrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfIpPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfIpPrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfIpPrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "ip-prefix")
-    {
-        ip_prefix = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfIpPrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfIpPrefixRpc>();
-}
-
-std::string ClearBgpBestpathVrfIpPrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfIpPrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfIpPrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_prefix{YType::str, "ipv4-prefix"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::~ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv4_prefix.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_prefix.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-ipv4-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_prefix.is_set || is_set(ipv4_prefix.operation)) leaf_name_data.push_back(ipv4_prefix.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-prefix")
-    {
-        ipv4_prefix = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiIpv4PrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_addr{YType::str, "ipv4-addr"},
-    ipv4_mask{YType::str, "ipv4-mask"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::~ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv4_addr.is_set
-	|| ipv4_mask.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_addr.operation)
-	|| is_set(ipv4_mask.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-ipv4-addr-ipv4-mask";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
-    if (ipv4_mask.is_set || is_set(ipv4_mask.operation)) leaf_name_data.push_back(ipv4_mask.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-addr")
-    {
-        ipv4_addr = value;
-    }
-    if(value_path == "ipv4-mask")
-    {
-        ipv4_mask = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4MaskRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::ClearBgpBestpathVrfAfiSafiIpv4AddrRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv4_addr{YType::str, "ipv4-addr"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::~ClearBgpBestpathVrfAfiSafiIpv4AddrRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv4_addr.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv4_addr.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-ipv4-addr";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv4_addr.is_set || is_set(ipv4_addr.operation)) leaf_name_data.push_back(ipv4_addr.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv4-addr")
-    {
-        ipv4_addr = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiIpv4AddrRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiIpv4AddrRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiNetworkRpc::ClearBgpBestpathVrfAfiSafiNetworkRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    network{YType::str, "network"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiNetworkRpc::~ClearBgpBestpathVrfAfiSafiNetworkRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiNetworkRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| network.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiNetworkRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(network.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiNetworkRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-network";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiNetworkRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (network.is_set || is_set(network.operation)) leaf_name_data.push_back(network.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiNetworkRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiNetworkRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiNetworkRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "network")
-    {
-        network = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiNetworkRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiNetworkRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiNetworkRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiNetworkRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiNetworkRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiRdNetworkRpc::ClearBgpBestpathVrfAfiSafiRdNetworkRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    network{YType::str, "network"},
-    rd{YType::str, "rd"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-rd-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiRdNetworkRpc::~ClearBgpBestpathVrfAfiSafiRdNetworkRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiRdNetworkRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| network.is_set
-	|| rd.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiRdNetworkRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(network.operation)
-	|| is_set(rd.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiRdNetworkRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-rd-network";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiRdNetworkRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (network.is_set || is_set(network.operation)) leaf_name_data.push_back(network.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiRdNetworkRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiRdNetworkRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiRdNetworkRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "network")
-    {
-        network = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiRdNetworkRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiRdNetworkRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiRdNetworkRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiRdNetworkRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiRdNetworkRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::ClearBgpBestpathVrfAfiSafiVrfNetworkRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    network{YType::str, "network"},
-    vrf_all{YType::str, "vrf-all"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-vrf-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::~ClearBgpBestpathVrfAfiSafiVrfNetworkRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| network.is_set
-	|| vrf_all.is_set
-	|| vrf_name.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(network.operation)
-	|| is_set(vrf_all.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-vrf-network";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (network.is_set || is_set(network.operation)) leaf_name_data.push_back(network.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "network")
-    {
-        network = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiVrfNetworkRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiVrfNetworkRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_addr{YType::str, "ipv6-addr"},
-    ipv6_netmask{YType::str, "ipv6-netmask"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::~ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv6_addr.is_set
-	|| ipv6_netmask.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_addr.operation)
-	|| is_set(ipv6_netmask.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-ipv6-addr-ipv6-netmask";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
-    if (ipv6_netmask.is_set || is_set(ipv6_netmask.operation)) leaf_name_data.push_back(ipv6_netmask.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-addr")
-    {
-        ipv6_addr = value;
-    }
-    if(value_path == "ipv6-netmask")
-    {
-        ipv6_netmask = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6NetmaskRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::ClearBgpBestpathVrfAfiSafiIpv6AddrRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_addr{YType::str, "ipv6-addr"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::~ClearBgpBestpathVrfAfiSafiIpv6AddrRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv6_addr.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_addr.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-ipv6-addr";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_addr.is_set || is_set(ipv6_addr.operation)) leaf_name_data.push_back(ipv6_addr.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-addr")
-    {
-        ipv6_addr = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiIpv6AddrRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiIpv6AddrRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    ipv6_prefix{YType::str, "ipv6-prefix"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::~ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| ipv6_prefix.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(ipv6_prefix.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-ipv6-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (ipv6_prefix.is_set || is_set(ipv6_prefix.operation)) leaf_name_data.push_back(ipv6_prefix.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "ipv6-prefix")
-    {
-        ipv6_prefix = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiIpv6PrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiRdRpc::ClearBgpBestpathVrfAfiSafiRdRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    rd{YType::str, "rd"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-rd"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiRdRpc::~ClearBgpBestpathVrfAfiSafiRdRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiRdRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| rd.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiRdRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(rd.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiRdRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-rd";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiRdRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiRdRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiRdRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiRdRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiRdRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiRdRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiRdRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiRdRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiRdRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiVrfRpc::ClearBgpBestpathVrfAfiSafiVrfRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    vrf_all{YType::str, "vrf-all"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi-vrf"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiVrfRpc::~ClearBgpBestpathVrfAfiSafiVrfRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiVrfRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| vrf_all.is_set
-	|| vrf_name.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiVrfRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(vrf_all.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiVrfRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi-vrf";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiVrfRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiVrfRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiVrfRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiVrfRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiVrfRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiVrfRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiVrfRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiVrfRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiVrfRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpBestpathVrfAfiSafiRpc::ClearBgpBestpathVrfAfiSafiRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    vrf_all{YType::str, "vrf-all"}
-{
-    yang_name = "clear-bgp-bestpath-vrf-afi-safi"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpBestpathVrfAfiSafiRpc::~ClearBgpBestpathVrfAfiSafiRpc()
-{
-}
-
-bool ClearBgpBestpathVrfAfiSafiRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| vrf_all.is_set;
-}
-
-bool ClearBgpBestpathVrfAfiSafiRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(vrf_all.operation);
-}
-
-std::string ClearBgpBestpathVrfAfiSafiRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-bestpath-vrf-afi-safi";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpBestpathVrfAfiSafiRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (vrf_all.is_set || is_set(vrf_all.operation)) leaf_name_data.push_back(vrf_all.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpBestpathVrfAfiSafiRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpBestpathVrfAfiSafiRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "vrf-all")
-    {
-        vrf_all = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpBestpathVrfAfiSafiRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpBestpathVrfAfiSafiRpc>();
-}
-
-std::string ClearBgpBestpathVrfAfiSafiRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpBestpathVrfAfiSafiRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpBestpathVrfAfiSafiRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpExternalGracefulRpc::ClearBgpExternalGracefulRpc()
-{
-    yang_name = "clear-bgp-external-graceful"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpExternalGracefulRpc::~ClearBgpExternalGracefulRpc()
-{
-}
-
-bool ClearBgpExternalGracefulRpc::has_data() const
-{
-    return false;
-}
-
-bool ClearBgpExternalGracefulRpc::has_operation() const
-{
-    return is_set(operation);
-}
-
-std::string ClearBgpExternalGracefulRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-external-graceful";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpExternalGracefulRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpExternalGracefulRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpExternalGracefulRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpExternalGracefulRpc::set_value(const std::string & value_path, std::string value)
-{
-}
-
-std::shared_ptr<Entity> ClearBgpExternalGracefulRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpExternalGracefulRpc>();
-}
-
-std::string ClearBgpExternalGracefulRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpExternalGracefulRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpExternalGracefulRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpExternalRpc::ClearBgpExternalRpc()
-{
-    yang_name = "clear-bgp-external"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpExternalRpc::~ClearBgpExternalRpc()
-{
-}
-
-bool ClearBgpExternalRpc::has_data() const
-{
-    return false;
-}
-
-bool ClearBgpExternalRpc::has_operation() const
-{
-    return is_set(operation);
-}
-
-std::string ClearBgpExternalRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-external";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpExternalRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpExternalRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpExternalRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpExternalRpc::set_value(const std::string & value_path, std::string value)
-{
-}
-
-std::shared_ptr<Entity> ClearBgpExternalRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpExternalRpc>();
-}
-
-std::string ClearBgpExternalRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpExternalRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpExternalRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAllGracefulRpc::ClearBgpInstanceAllGracefulRpc()
-    :
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-all-graceful"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAllGracefulRpc::~ClearBgpInstanceAllGracefulRpc()
-{
-}
-
-bool ClearBgpInstanceAllGracefulRpc::has_data() const
-{
-    return instance_name.is_set;
-}
-
-bool ClearBgpInstanceAllGracefulRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAllGracefulRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-all-graceful";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAllGracefulRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAllGracefulRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAllGracefulRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAllGracefulRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAllGracefulRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAllGracefulRpc>();
-}
-
-std::string ClearBgpInstanceAllGracefulRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAllGracefulRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAllGracefulRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAllRpc::ClearBgpInstanceAllRpc()
-    :
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-all"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAllRpc::~ClearBgpInstanceAllRpc()
-{
-}
-
-bool ClearBgpInstanceAllRpc::has_data() const
-{
-    return instance_name.is_set;
-}
-
-bool ClearBgpInstanceAllRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAllRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-all";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAllRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAllRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAllRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAllRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAllRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAllRpc>();
-}
-
-std::string ClearBgpInstanceAllRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAllRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAllRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceIpAddrGracefulRpc::ClearBgpInstanceIpAddrGracefulRpc()
-    :
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-ip-addr-graceful"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceIpAddrGracefulRpc::~ClearBgpInstanceIpAddrGracefulRpc()
-{
-}
-
-bool ClearBgpInstanceIpAddrGracefulRpc::has_data() const
-{
-    return instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceIpAddrGracefulRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceIpAddrGracefulRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-ip-addr-graceful";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceIpAddrGracefulRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceIpAddrGracefulRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceIpAddrGracefulRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceIpAddrGracefulRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceIpAddrGracefulRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceIpAddrGracefulRpc>();
-}
-
-std::string ClearBgpInstanceIpAddrGracefulRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceIpAddrGracefulRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceIpAddrGracefulRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceIpAddrLongLivedStaleRpc::ClearBgpInstanceIpAddrLongLivedStaleRpc()
-    :
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-ip-addr-long-lived-stale"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceIpAddrLongLivedStaleRpc::~ClearBgpInstanceIpAddrLongLivedStaleRpc()
-{
-}
-
-bool ClearBgpInstanceIpAddrLongLivedStaleRpc::has_data() const
-{
-    return instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceIpAddrLongLivedStaleRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceIpAddrLongLivedStaleRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-ip-addr-long-lived-stale";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceIpAddrLongLivedStaleRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceIpAddrLongLivedStaleRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceIpAddrLongLivedStaleRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceIpAddrLongLivedStaleRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceIpAddrLongLivedStaleRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceIpAddrLongLivedStaleRpc>();
-}
-
-std::string ClearBgpInstanceIpAddrLongLivedStaleRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceIpAddrLongLivedStaleRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceIpAddrLongLivedStaleRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceIpAddrRpc::ClearBgpInstanceIpAddrRpc()
-    :
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceIpAddrRpc::~ClearBgpInstanceIpAddrRpc()
-{
-}
-
-bool ClearBgpInstanceIpAddrRpc::has_data() const
-{
-    return instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceIpAddrRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceIpAddrRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-ip-addr";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceIpAddrRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceIpAddrRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceIpAddrRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceIpAddrRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceIpAddrRpc>();
-}
-
-std::string ClearBgpInstanceIpAddrRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceIpAddrRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceIpAddrRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-all-soft-in-prefix-filter"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::~ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-all-soft-in-prefix-filter";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiAllSoftInPrefixFilterRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiAllSoftInRpc::ClearBgpInstanceAfiSafiAllSoftInRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-all-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiAllSoftInRpc::~ClearBgpInstanceAfiSafiAllSoftInRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiAllSoftInRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiAllSoftInRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftInRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-all-soft-in";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiAllSoftInRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAllSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiAllSoftInRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiAllSoftInRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAllSoftInRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiAllSoftInRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftInRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftInRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiAllSoftInRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiAllSoftOutRpc::ClearBgpInstanceAfiSafiAllSoftOutRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-all-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiAllSoftOutRpc::~ClearBgpInstanceAfiSafiAllSoftOutRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiAllSoftOutRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiAllSoftOutRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftOutRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-all-soft-out";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiAllSoftOutRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAllSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiAllSoftOutRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiAllSoftOutRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAllSoftOutRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiAllSoftOutRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftOutRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftOutRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiAllSoftOutRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiAllSoftRpc::ClearBgpInstanceAfiSafiAllSoftRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-all-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiAllSoftRpc::~ClearBgpInstanceAfiSafiAllSoftRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiAllSoftRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiAllSoftRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-all-soft";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiAllSoftRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAllSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiAllSoftRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiAllSoftRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAllSoftRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiAllSoftRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiAllSoftRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiAllSoftRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-ip-addr-long-lived-stale"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::~ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-ip-addr-long-lived-stale";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiIpAddrLongLivedStaleRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-ip-addr-soft-in-prefix-filter"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::~ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-ip-addr-soft-in-prefix-filter";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilterRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiIpAddrSoftInRpc::ClearBgpInstanceAfiSafiIpAddrSoftInRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-ip-addr-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiIpAddrSoftInRpc::~ClearBgpInstanceAfiSafiIpAddrSoftInRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrSoftInRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrSoftInRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftInRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-ip-addr-soft-in";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiIpAddrSoftInRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiIpAddrSoftInRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiIpAddrSoftInRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrSoftInRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiIpAddrSoftInRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftInRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftInRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiIpAddrSoftInRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::ClearBgpInstanceAfiSafiIpAddrSoftOutRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-ip-addr-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::~ClearBgpInstanceAfiSafiIpAddrSoftOutRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-ip-addr-soft-out";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiIpAddrSoftOutRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiIpAddrSoftOutRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiIpAddrSoftRpc::ClearBgpInstanceAfiSafiIpAddrSoftRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-ip-addr-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiIpAddrSoftRpc::~ClearBgpInstanceAfiSafiIpAddrSoftRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrSoftRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiIpAddrSoftRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-ip-addr-soft";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiIpAddrSoftRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiIpAddrSoftRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiIpAddrSoftRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiIpAddrSoftRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiIpAddrSoftRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiIpAddrSoftRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiIpAddrSoftRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    as_number{YType::str, "as-number"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-as-soft-in-prefix-filter"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::~ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| as_number.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(as_number.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-as-soft-in-prefix-filter";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "as-number")
-    {
-        as_number = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiAsSoftInPrefixFilterRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiAsSoftInRpc::ClearBgpInstanceAfiSafiAsSoftInRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    as_number{YType::str, "as-number"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-as-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiAsSoftInRpc::~ClearBgpInstanceAfiSafiAsSoftInRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiAsSoftInRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| as_number.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiAsSoftInRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(as_number.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftInRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-as-soft-in";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiAsSoftInRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAsSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiAsSoftInRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiAsSoftInRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "as-number")
-    {
-        as_number = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAsSoftInRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiAsSoftInRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftInRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftInRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiAsSoftInRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiAsSoftOutRpc::ClearBgpInstanceAfiSafiAsSoftOutRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    as_number{YType::str, "as-number"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-as-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiAsSoftOutRpc::~ClearBgpInstanceAfiSafiAsSoftOutRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiAsSoftOutRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| as_number.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiAsSoftOutRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(as_number.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftOutRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-as-soft-out";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiAsSoftOutRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAsSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiAsSoftOutRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiAsSoftOutRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "as-number")
-    {
-        as_number = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAsSoftOutRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiAsSoftOutRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftOutRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftOutRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiAsSoftOutRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiAsSoftRpc::ClearBgpInstanceAfiSafiAsSoftRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    as_number{YType::str, "as-number"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-as-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiAsSoftRpc::~ClearBgpInstanceAfiSafiAsSoftRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiAsSoftRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| as_number.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiAsSoftRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(as_number.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-as-soft";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiAsSoftRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (as_number.is_set || is_set(as_number.operation)) leaf_name_data.push_back(as_number.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAsSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiAsSoftRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiAsSoftRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "as-number")
-    {
-        as_number = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiAsSoftRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiAsSoftRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiAsSoftRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiAsSoftRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::ClearBgpInstanceAfiSafiDampeningIpPrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_prefix{YType::str, "ip-prefix"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-dampening-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::~ClearBgpInstanceAfiSafiDampeningIpPrefixRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_prefix.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_prefix.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-dampening-ip-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-prefix")
-    {
-        ip_prefix = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiDampeningIpPrefixRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiDampeningIpPrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiDampeningRpc::ClearBgpInstanceAfiSafiDampeningRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-dampening"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiDampeningRpc::~ClearBgpInstanceAfiSafiDampeningRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiDampeningRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiDampeningRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiDampeningRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-dampening";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiDampeningRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiDampeningRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiDampeningRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiDampeningRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiDampeningRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiDampeningRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiDampeningRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiDampeningRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiDampeningRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-external-soft-in-prefix-filter"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::~ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-external-soft-in-prefix-filter";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiExternalSoftInPrefixFilterRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiExternalSoftInRpc::ClearBgpInstanceAfiSafiExternalSoftInRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-external-soft-in"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiExternalSoftInRpc::~ClearBgpInstanceAfiSafiExternalSoftInRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiExternalSoftInRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiExternalSoftInRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftInRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-external-soft-in";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiExternalSoftInRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiExternalSoftInRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiExternalSoftInRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiExternalSoftInRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiExternalSoftInRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiExternalSoftInRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftInRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftInRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiExternalSoftInRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiExternalSoftOutRpc::ClearBgpInstanceAfiSafiExternalSoftOutRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-external-soft-out"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiExternalSoftOutRpc::~ClearBgpInstanceAfiSafiExternalSoftOutRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiExternalSoftOutRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiExternalSoftOutRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftOutRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-external-soft-out";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiExternalSoftOutRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiExternalSoftOutRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiExternalSoftOutRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiExternalSoftOutRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiExternalSoftOutRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiExternalSoftOutRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftOutRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftOutRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiExternalSoftOutRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiExternalSoftRpc::ClearBgpInstanceAfiSafiExternalSoftRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-external-soft"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiExternalSoftRpc::~ClearBgpInstanceAfiSafiExternalSoftRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiExternalSoftRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiExternalSoftRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-external-soft";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiExternalSoftRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiExternalSoftRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiExternalSoftRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiExternalSoftRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiExternalSoftRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiExternalSoftRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiExternalSoftRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiExternalSoftRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"},
-    ipv4_mask{YType::str, "ipv4-mask"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-flap-statistics-ip-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::~ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set
-	|| ipv4_mask.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation)
-	|| is_set(ipv4_mask.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-flap-statistics-ip-addr-ipv4-mask";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (ipv4_mask.is_set || is_set(ipv4_mask.operation)) leaf_name_data.push_back(ipv4_mask.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-    if(value_path == "ipv4-mask")
-    {
-        ipv4_mask = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-flap-statistics-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::~ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-flap-statistics-ip-addr";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiFlapStatisticsIpAddrRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_prefix{YType::str, "ip-prefix"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-flap-statistics-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::~ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_prefix.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_prefix.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-flap-statistics-ip-prefix";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_prefix.is_set || is_set(ip_prefix.operation)) leaf_name_data.push_back(ip_prefix.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-prefix")
-    {
-        ip_prefix = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiFlapStatisticsIpPrefixRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    regexp_pattern{YType::str, "regexp-pattern"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-flap-statistics-regexp"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::~ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| regexp_pattern.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(regexp_pattern.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-flap-statistics-regexp";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (regexp_pattern.is_set || is_set(regexp_pattern.operation)) leaf_name_data.push_back(regexp_pattern.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "regexp-pattern")
-    {
-        regexp_pattern = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiFlapStatisticsRegexpRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    route_policy_name{YType::str, "route-policy-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-flap-statistics-route-policy"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::~ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| route_policy_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(route_policy_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-flap-statistics-route-policy";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicyRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsRpc::ClearBgpInstanceAfiSafiFlapStatisticsRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-flap-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiFlapStatisticsRpc::~ClearBgpInstanceAfiSafiFlapStatisticsRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiFlapStatisticsRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-flap-statistics";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiFlapStatisticsRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiFlapStatisticsRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiFlapStatisticsRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiFlapStatisticsRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiFlapStatisticsRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiFlapStatisticsRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiFlapStatisticsRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-nexthop-performance-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::~ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-nexthop-performance-statistics";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiNexthopPerformanceStatisticsRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-nexthop-registration-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::~ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-nexthop-registration-ip-addr";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiNexthopRegistrationIpAddrRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiSelfOriginatedRpc::ClearBgpInstanceAfiSafiSelfOriginatedRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-self-originated"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiSelfOriginatedRpc::~ClearBgpInstanceAfiSafiSelfOriginatedRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiSelfOriginatedRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiSelfOriginatedRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiSelfOriginatedRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-self-originated";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiSelfOriginatedRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiSelfOriginatedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiSelfOriginatedRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiSelfOriginatedRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiSelfOriginatedRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiSelfOriginatedRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiSelfOriginatedRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiSelfOriginatedRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiSelfOriginatedRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiShutdownRpc::ClearBgpInstanceAfiSafiShutdownRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-shutdown"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiShutdownRpc::~ClearBgpInstanceAfiSafiShutdownRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiShutdownRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiShutdownRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiShutdownRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-shutdown";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiShutdownRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiShutdownRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiShutdownRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiShutdownRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiShutdownRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiShutdownRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiShutdownRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiShutdownRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiShutdownRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-address-family-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::~ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-address-family-update-parent";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-address-family"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::~ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-address-family";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-neighbor-ip-addr-refresh-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::~ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-neighbor-ip-addr-refresh-update-parent";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-neighbor-ip-addr-refresh"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::~ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-neighbor-ip-addr-refresh";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-neighbor-ip-addr-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::~ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-neighbor-ip-addr-update-parent";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    ip_addr{YType::str, "ip-addr"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-neighbor-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::~ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| ip_addr.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(ip_addr.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-neighbor-ip-addr";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (ip_addr.is_set || is_set(ip_addr.operation)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "ip-addr")
-    {
-        ip_addr = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    sub_group{YType::str, "sub-group"},
-    update_group{YType::str, "update-group"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-update-group-sub-group-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::~ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| sub_group.is_set
-	|| update_group.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(sub_group.operation)
-	|| is_set(update_group.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-update-group-sub-group-update-parent";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (sub_group.is_set || is_set(sub_group.operation)) leaf_name_data.push_back(sub_group.get_name_leafdata());
-    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "sub-group")
-    {
-        sub_group = value;
-    }
-    if(value_path == "update-group")
-    {
-        update_group = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    sub_group{YType::str, "sub-group"},
-    update_group{YType::str, "update-group"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-update-group-sub-group"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::~ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| sub_group.is_set
-	|| update_group.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(sub_group.operation)
-	|| is_set(update_group.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-update-group-sub-group";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (sub_group.is_set || is_set(sub_group.operation)) leaf_name_data.push_back(sub_group.get_name_leafdata());
-    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "sub-group")
-    {
-        sub_group = value;
-    }
-    if(value_path == "update-group")
-    {
-        update_group = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    refresh_sub_group{YType::str, "refresh-sub-group"},
-    update_group{YType::str, "update-group"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-update-group-sub-group-refresh-sub-group-update-parent"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::~ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| refresh_sub_group.is_set
-	|| update_group.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(refresh_sub_group.operation)
-	|| is_set(update_group.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-update-group-sub-group-refresh-sub-group-update-parent";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (refresh_sub_group.is_set || is_set(refresh_sub_group.operation)) leaf_name_data.push_back(refresh_sub_group.get_name_leafdata());
-    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_children()
-{
-    return children;
-}
-
-void ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "refresh-sub-group")
-    {
-        refresh_sub_group = value;
-    }
-    if(value_path == "update-group")
-    {
-        update_group = value;
-    }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc()
-    :
-    afi_safi_name{YType::enumeration, "afi-safi-name"},
-    instance_name{YType::str, "instance-name"},
-    refresh_sub_group{YType::str, "refresh-sub-group"},
-    update_group{YType::str, "update-group"}
-{
-    yang_name = "clear-bgp-instance-afi-safi-update-outq-update-group-sub-group-refresh-sub-group"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act";
-}
-
-ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::~ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc()
-{
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::has_data() const
-{
-    return afi_safi_name.is_set
-	|| instance_name.is_set
-	|| refresh_sub_group.is_set
-	|| update_group.is_set;
-}
-
-bool ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(instance_name.operation)
-	|| is_set(refresh_sub_group.operation)
-	|| is_set(update_group.operation);
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-afi-safi-update-outq-update-group-sub-group-refresh-sub-group";
-
-    return path_buffer.str();
-
-}
-
-EntityPath ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
+    else
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
     }
 
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (refresh_sub_group.is_set || is_set(refresh_sub_group.operation)) leaf_name_data.push_back(refresh_sub_group.get_name_leafdata());
-    if (update_group.is_set || is_set(update_group.operation)) leaf_name_data.push_back(update_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16084,63 +13448,23 @@ EntityPath ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRp
 
 }
 
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::set_value(const std::string & value_path, std::string value)
+void ClearBgpBestpathAfiSafiRpc::Input::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "afi-safi-name")
     {
         afi_safi_name = value;
-    }
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-    }
-    if(value_path == "refresh-sub-group")
-    {
-        refresh_sub_group = value;
-    }
-    if(value_path == "update-group")
-    {
-        update_group = value;
     }
-}
-
-std::shared_ptr<Entity> ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::clone_ptr() const
-{
-    return std::make_shared<ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc>();
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
 }
 
 const Enum::YLeaf InstanceNameEnum::all {0, "all"};

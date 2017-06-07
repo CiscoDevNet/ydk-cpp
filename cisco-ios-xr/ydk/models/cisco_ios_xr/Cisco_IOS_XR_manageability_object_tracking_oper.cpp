@@ -21,28 +21,20 @@ ObjectTracking::ObjectTracking()
 	,tracks(std::make_shared<ObjectTracking::Tracks>())
 {
     track_briefs->parent = this;
-    children["track-briefs"] = track_briefs;
 
     track_type_interface->parent = this;
-    children["track-type-interface"] = track_type_interface;
 
     track_type_interface_brief->parent = this;
-    children["track-type-interface-brief"] = track_type_interface_brief;
 
     track_type_ipv4_route->parent = this;
-    children["track-type-ipv4-route"] = track_type_ipv4_route;
 
     track_type_ipv4_route_brief->parent = this;
-    children["track-type-ipv4-route-brief"] = track_type_ipv4_route_brief;
 
     track_type_rtr_reachability->parent = this;
-    children["track-type-rtr-reachability"] = track_type_rtr_reachability;
 
     track_type_rtr_reachability_brief->parent = this;
-    children["track-type-rtr-reachability-brief"] = track_type_rtr_reachability_brief;
 
     tracks->parent = this;
-    children["tracks"] = tracks;
 
     yang_name = "object-tracking"; yang_parent_name = "Cisco-IOS-XR-manageability-object-tracking-oper";
 }
@@ -85,12 +77,12 @@ std::string ObjectTracking::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -105,202 +97,122 @@ EntityPath ObjectTracking::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-briefs")
     {
-        if(track_briefs != nullptr)
-        {
-            children["track-briefs"] = track_briefs;
-        }
-        else
+        if(track_briefs == nullptr)
         {
             track_briefs = std::make_shared<ObjectTracking::TrackBriefs>();
-            track_briefs->parent = this;
-            children["track-briefs"] = track_briefs;
         }
-        return children.at("track-briefs");
+        return track_briefs;
     }
 
     if(child_yang_name == "track-type-interface")
     {
-        if(track_type_interface != nullptr)
-        {
-            children["track-type-interface"] = track_type_interface;
-        }
-        else
+        if(track_type_interface == nullptr)
         {
             track_type_interface = std::make_shared<ObjectTracking::TrackTypeInterface>();
-            track_type_interface->parent = this;
-            children["track-type-interface"] = track_type_interface;
         }
-        return children.at("track-type-interface");
+        return track_type_interface;
     }
 
     if(child_yang_name == "track-type-interface-brief")
     {
-        if(track_type_interface_brief != nullptr)
-        {
-            children["track-type-interface-brief"] = track_type_interface_brief;
-        }
-        else
+        if(track_type_interface_brief == nullptr)
         {
             track_type_interface_brief = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief>();
-            track_type_interface_brief->parent = this;
-            children["track-type-interface-brief"] = track_type_interface_brief;
         }
-        return children.at("track-type-interface-brief");
+        return track_type_interface_brief;
     }
 
     if(child_yang_name == "track-type-ipv4-route")
     {
-        if(track_type_ipv4_route != nullptr)
-        {
-            children["track-type-ipv4-route"] = track_type_ipv4_route;
-        }
-        else
+        if(track_type_ipv4_route == nullptr)
         {
             track_type_ipv4_route = std::make_shared<ObjectTracking::TrackTypeIpv4Route>();
-            track_type_ipv4_route->parent = this;
-            children["track-type-ipv4-route"] = track_type_ipv4_route;
         }
-        return children.at("track-type-ipv4-route");
+        return track_type_ipv4_route;
     }
 
     if(child_yang_name == "track-type-ipv4-route-brief")
     {
-        if(track_type_ipv4_route_brief != nullptr)
-        {
-            children["track-type-ipv4-route-brief"] = track_type_ipv4_route_brief;
-        }
-        else
+        if(track_type_ipv4_route_brief == nullptr)
         {
             track_type_ipv4_route_brief = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief>();
-            track_type_ipv4_route_brief->parent = this;
-            children["track-type-ipv4-route-brief"] = track_type_ipv4_route_brief;
         }
-        return children.at("track-type-ipv4-route-brief");
+        return track_type_ipv4_route_brief;
     }
 
     if(child_yang_name == "track-type-rtr-reachability")
     {
-        if(track_type_rtr_reachability != nullptr)
-        {
-            children["track-type-rtr-reachability"] = track_type_rtr_reachability;
-        }
-        else
+        if(track_type_rtr_reachability == nullptr)
         {
             track_type_rtr_reachability = std::make_shared<ObjectTracking::TrackTypeRtrReachability>();
-            track_type_rtr_reachability->parent = this;
-            children["track-type-rtr-reachability"] = track_type_rtr_reachability;
         }
-        return children.at("track-type-rtr-reachability");
+        return track_type_rtr_reachability;
     }
 
     if(child_yang_name == "track-type-rtr-reachability-brief")
     {
-        if(track_type_rtr_reachability_brief != nullptr)
-        {
-            children["track-type-rtr-reachability-brief"] = track_type_rtr_reachability_brief;
-        }
-        else
+        if(track_type_rtr_reachability_brief == nullptr)
         {
             track_type_rtr_reachability_brief = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief>();
-            track_type_rtr_reachability_brief->parent = this;
-            children["track-type-rtr-reachability-brief"] = track_type_rtr_reachability_brief;
         }
-        return children.at("track-type-rtr-reachability-brief");
+        return track_type_rtr_reachability_brief;
     }
 
     if(child_yang_name == "tracks")
     {
-        if(tracks != nullptr)
-        {
-            children["tracks"] = tracks;
-        }
-        else
+        if(tracks == nullptr)
         {
             tracks = std::make_shared<ObjectTracking::Tracks>();
-            tracks->parent = this;
-            children["tracks"] = tracks;
         }
-        return children.at("tracks");
+        return tracks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::get_children() const
 {
-    if(children.find("track-briefs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_briefs != nullptr)
     {
-        if(track_briefs != nullptr)
-        {
-            children["track-briefs"] = track_briefs;
-        }
+        children["track-briefs"] = track_briefs;
     }
 
-    if(children.find("track-type-interface") == children.end())
+    if(track_type_interface != nullptr)
     {
-        if(track_type_interface != nullptr)
-        {
-            children["track-type-interface"] = track_type_interface;
-        }
+        children["track-type-interface"] = track_type_interface;
     }
 
-    if(children.find("track-type-interface-brief") == children.end())
+    if(track_type_interface_brief != nullptr)
     {
-        if(track_type_interface_brief != nullptr)
-        {
-            children["track-type-interface-brief"] = track_type_interface_brief;
-        }
+        children["track-type-interface-brief"] = track_type_interface_brief;
     }
 
-    if(children.find("track-type-ipv4-route") == children.end())
+    if(track_type_ipv4_route != nullptr)
     {
-        if(track_type_ipv4_route != nullptr)
-        {
-            children["track-type-ipv4-route"] = track_type_ipv4_route;
-        }
+        children["track-type-ipv4-route"] = track_type_ipv4_route;
     }
 
-    if(children.find("track-type-ipv4-route-brief") == children.end())
+    if(track_type_ipv4_route_brief != nullptr)
     {
-        if(track_type_ipv4_route_brief != nullptr)
-        {
-            children["track-type-ipv4-route-brief"] = track_type_ipv4_route_brief;
-        }
+        children["track-type-ipv4-route-brief"] = track_type_ipv4_route_brief;
     }
 
-    if(children.find("track-type-rtr-reachability") == children.end())
+    if(track_type_rtr_reachability != nullptr)
     {
-        if(track_type_rtr_reachability != nullptr)
-        {
-            children["track-type-rtr-reachability"] = track_type_rtr_reachability;
-        }
+        children["track-type-rtr-reachability"] = track_type_rtr_reachability;
     }
 
-    if(children.find("track-type-rtr-reachability-brief") == children.end())
+    if(track_type_rtr_reachability_brief != nullptr)
     {
-        if(track_type_rtr_reachability_brief != nullptr)
-        {
-            children["track-type-rtr-reachability-brief"] = track_type_rtr_reachability_brief;
-        }
+        children["track-type-rtr-reachability-brief"] = track_type_rtr_reachability_brief;
     }
 
-    if(children.find("tracks") == children.end())
+    if(tracks != nullptr)
     {
-        if(tracks != nullptr)
-        {
-            children["tracks"] = tracks;
-        }
+        children["tracks"] = tracks;
     }
 
     return children;
@@ -368,7 +280,7 @@ std::string ObjectTracking::TrackTypeInterface::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -391,15 +303,6 @@ EntityPath ObjectTracking::TrackTypeInterface::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-info")
     {
         for(auto const & c : track_info)
@@ -407,28 +310,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo>();
         c->parent = this;
-        track_info.push_back(std::move(c));
-        children[segment_path] = track_info.back();
-        return children.at(segment_path);
+        track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -455,19 +354,14 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackInfo()
 	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces>())
 {
     bool_tracks->parent = this;
-    children["bool-tracks"] = bool_tracks;
 
     delayed->parent = this;
-    children["delayed"] = delayed;
 
     threshold_tracks->parent = this;
-    children["threshold-tracks"] = threshold_tracks;
 
     track_type_info->parent = this;
-    children["track-type-info"] = track_type_info;
 
     tracking_interaces->parent = this;
-    children["tracking-interaces"] = tracking_interaces;
 
     yang_name = "track-info"; yang_parent_name = "track-type-interface";
 }
@@ -518,7 +412,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::get_segment_path() co
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -548,133 +442,80 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::get_entity_path(Entity
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bool-tracks")
     {
-        if(bool_tracks != nullptr)
-        {
-            children["bool-tracks"] = bool_tracks;
-        }
-        else
+        if(bool_tracks == nullptr)
         {
             bool_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks>();
-            bool_tracks->parent = this;
-            children["bool-tracks"] = bool_tracks;
         }
-        return children.at("bool-tracks");
+        return bool_tracks;
     }
 
     if(child_yang_name == "delayed")
     {
-        if(delayed != nullptr)
-        {
-            children["delayed"] = delayed;
-        }
-        else
+        if(delayed == nullptr)
         {
             delayed = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::Delayed>();
-            delayed->parent = this;
-            children["delayed"] = delayed;
         }
-        return children.at("delayed");
+        return delayed;
     }
 
     if(child_yang_name == "threshold-tracks")
     {
-        if(threshold_tracks != nullptr)
-        {
-            children["threshold-tracks"] = threshold_tracks;
-        }
-        else
+        if(threshold_tracks == nullptr)
         {
             threshold_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks>();
-            threshold_tracks->parent = this;
-            children["threshold-tracks"] = threshold_tracks;
         }
-        return children.at("threshold-tracks");
+        return threshold_tracks;
     }
 
     if(child_yang_name == "track-type-info")
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
-        else
+        if(track_type_info == nullptr)
         {
             track_type_info = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo>();
-            track_type_info->parent = this;
-            children["track-type-info"] = track_type_info;
         }
-        return children.at("track-type-info");
+        return track_type_info;
     }
 
     if(child_yang_name == "tracking-interaces")
     {
-        if(tracking_interaces != nullptr)
-        {
-            children["tracking-interaces"] = tracking_interaces;
-        }
-        else
+        if(tracking_interaces == nullptr)
         {
             tracking_interaces = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces>();
-            tracking_interaces->parent = this;
-            children["tracking-interaces"] = tracking_interaces;
         }
-        return children.at("tracking-interaces");
+        return tracking_interaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::get_children() const
 {
-    if(children.find("bool-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bool_tracks != nullptr)
     {
-        if(bool_tracks != nullptr)
-        {
-            children["bool-tracks"] = bool_tracks;
-        }
+        children["bool-tracks"] = bool_tracks;
     }
 
-    if(children.find("delayed") == children.end())
+    if(delayed != nullptr)
     {
-        if(delayed != nullptr)
-        {
-            children["delayed"] = delayed;
-        }
+        children["delayed"] = delayed;
     }
 
-    if(children.find("threshold-tracks") == children.end())
+    if(threshold_tracks != nullptr)
     {
-        if(threshold_tracks != nullptr)
-        {
-            children["threshold-tracks"] = threshold_tracks;
-        }
+        children["threshold-tracks"] = threshold_tracks;
     }
 
-    if(children.find("track-type-info") == children.end())
+    if(track_type_info != nullptr)
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
+        children["track-type-info"] = track_type_info;
     }
 
-    if(children.find("tracking-interaces") == children.end())
+    if(tracking_interaces != nullptr)
     {
-        if(tracking_interaces != nullptr)
-        {
-            children["tracking-interaces"] = tracking_interaces;
-        }
+        children["tracking-interaces"] = tracking_interaces;
     }
 
     return children;
@@ -722,16 +563,12 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::TrackTypeInfo()
 	,route_tracks(std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks>())
 {
     bfd_tracks->parent = this;
-    children["bfd-tracks"] = bfd_tracks;
 
     interface_tracks->parent = this;
-    children["interface-tracks"] = interface_tracks;
 
     ipsla_tracks->parent = this;
-    children["ipsla-tracks"] = ipsla_tracks;
 
     route_tracks->parent = this;
-    children["route-tracks"] = route_tracks;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info";
 }
@@ -768,7 +605,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_se
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -792,110 +629,66 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_ent
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-tracks")
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
-        else
+        if(bfd_tracks == nullptr)
         {
             bfd_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks>();
-            bfd_tracks->parent = this;
-            children["bfd-tracks"] = bfd_tracks;
         }
-        return children.at("bfd-tracks");
+        return bfd_tracks;
     }
 
     if(child_yang_name == "interface-tracks")
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
-        else
+        if(interface_tracks == nullptr)
         {
             interface_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks>();
-            interface_tracks->parent = this;
-            children["interface-tracks"] = interface_tracks;
         }
-        return children.at("interface-tracks");
+        return interface_tracks;
     }
 
     if(child_yang_name == "ipsla-tracks")
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
-        else
+        if(ipsla_tracks == nullptr)
         {
             ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks>();
-            ipsla_tracks->parent = this;
-            children["ipsla-tracks"] = ipsla_tracks;
         }
-        return children.at("ipsla-tracks");
+        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
-        else
+        if(route_tracks == nullptr)
         {
             route_tracks = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks>();
-            route_tracks->parent = this;
-            children["route-tracks"] = route_tracks;
         }
-        return children.at("route-tracks");
+        return route_tracks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_children() const
 {
-    if(children.find("bfd-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_tracks != nullptr)
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
+        children["bfd-tracks"] = bfd_tracks;
     }
 
-    if(children.find("interface-tracks") == children.end())
+    if(interface_tracks != nullptr)
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
+        children["interface-tracks"] = interface_tracks;
     }
 
-    if(children.find("ipsla-tracks") == children.end())
+    if(ipsla_tracks != nullptr)
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
+        children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(children.find("route-tracks") == children.end())
+    if(route_tracks != nullptr)
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
+        children["route-tracks"] = route_tracks;
     }
 
     return children;
@@ -940,7 +733,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::Interf
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -964,20 +757,12 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::Interfa
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1029,7 +814,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteT
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1056,20 +841,12 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTr
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1130,7 +907,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaT
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1156,20 +933,12 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTr
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1229,7 +998,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTra
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1256,20 +1025,12 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTrac
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1331,7 +1092,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_segme
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1354,15 +1115,6 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_entity
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bool-track-info")
     {
         for(auto const & c : bool_track_info)
@@ -1370,28 +1122,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTrack
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo>();
         c->parent = this;
-        bool_track_info.push_back(std::move(c));
-        children[segment_path] = bool_track_info.back();
-        return children.at(segment_path);
+        bool_track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bool_track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1438,7 +1186,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrack
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1464,20 +1212,12 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackI
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1535,7 +1275,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1558,15 +1298,6 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_e
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-track-info")
     {
         for(auto const & c : threshold_track_info)
@@ -1574,28 +1305,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::Threshold
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
         c->parent = this;
-        threshold_track_info.push_back(std::move(c));
-        children[segment_path] = threshold_track_info.back();
-        return children.at(segment_path);
+        threshold_track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1642,7 +1369,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::Thre
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1668,20 +1395,12 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::Thres
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1739,7 +1458,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::ge
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1762,15 +1481,6 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-tracking-info")
     {
         for(auto const & c : interface_tracking_info)
@@ -1778,28 +1488,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingI
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
         c->parent = this;
-        interface_tracking_info.push_back(std::move(c));
-        children[segment_path] = interface_tracking_info.back();
-        return children.at(segment_path);
+        interface_tracking_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_tracking_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1840,7 +1546,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::In
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1864,20 +1570,12 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::Int
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1923,7 +1621,7 @@ std::string ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_segment_
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1948,20 +1646,12 @@ EntityPath ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_entity_pa
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2015,7 +1705,7 @@ std::string ObjectTracking::TrackBriefs::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::TrackBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2038,15 +1728,6 @@ EntityPath ObjectTracking::TrackBriefs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectTracking::TrackBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-brief")
     {
         for(auto const & c : track_brief)
@@ -2054,28 +1735,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackBriefs::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief>();
         c->parent = this;
-        track_brief.push_back(std::move(c));
-        children[segment_path] = track_brief.back();
-        return children.at(segment_path);
+        track_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2126,7 +1803,7 @@ std::string ObjectTracking::TrackBriefs::TrackBrief::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::TrackBriefs::TrackBrief::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackBriefs::TrackBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2150,15 +1827,6 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-info-brief")
     {
         for(auto const & c : track_info_brief)
@@ -2166,28 +1834,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief>();
         c->parent = this;
-        track_info_brief.push_back(std::move(c));
-        children[segment_path] = track_info_brief.back();
-        return children.at(segment_path);
+        track_info_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackBriefs::TrackBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track_info_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2210,7 +1874,6 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackInfoBrief()
     track_type_info(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo>())
 {
     track_type_info->parent = this;
-    children["track-type-info"] = track_type_info;
 
     yang_name = "track-info-brief"; yang_parent_name = "track-brief";
 }
@@ -2245,7 +1908,7 @@ std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_segment
 
 }
 
-EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2271,41 +1934,24 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_entity_p
 
 std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-type-info")
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
-        else
+        if(track_type_info == nullptr)
         {
             track_type_info = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo>();
-            track_type_info->parent = this;
-            children["track-type-info"] = track_type_info;
         }
-        return children.at("track-type-info");
+        return track_type_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_children() const
 {
-    if(children.find("track-type-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
+        children["track-type-info"] = track_type_info;
     }
 
     return children;
@@ -2337,16 +1983,12 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::TrackTyp
 	,route_tracks(std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
 {
     bfd_tracks->parent = this;
-    children["bfd-tracks"] = bfd_tracks;
 
     interface_tracks->parent = this;
-    children["interface-tracks"] = interface_tracks;
 
     ipsla_tracks->parent = this;
-    children["ipsla-tracks"] = ipsla_tracks;
 
     route_tracks->parent = this;
-    children["route-tracks"] = route_tracks;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info-brief";
 }
@@ -2383,7 +2025,7 @@ std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2407,110 +2049,66 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-tracks")
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
-        else
+        if(bfd_tracks == nullptr)
         {
             bfd_tracks = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
-            bfd_tracks->parent = this;
-            children["bfd-tracks"] = bfd_tracks;
         }
-        return children.at("bfd-tracks");
+        return bfd_tracks;
     }
 
     if(child_yang_name == "interface-tracks")
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
-        else
+        if(interface_tracks == nullptr)
         {
             interface_tracks = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
-            interface_tracks->parent = this;
-            children["interface-tracks"] = interface_tracks;
         }
-        return children.at("interface-tracks");
+        return interface_tracks;
     }
 
     if(child_yang_name == "ipsla-tracks")
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
-        else
+        if(ipsla_tracks == nullptr)
         {
             ipsla_tracks = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
-            ipsla_tracks->parent = this;
-            children["ipsla-tracks"] = ipsla_tracks;
         }
-        return children.at("ipsla-tracks");
+        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
-        else
+        if(route_tracks == nullptr)
         {
             route_tracks = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>();
-            route_tracks->parent = this;
-            children["route-tracks"] = route_tracks;
         }
-        return children.at("route-tracks");
+        return route_tracks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
-    if(children.find("bfd-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_tracks != nullptr)
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
+        children["bfd-tracks"] = bfd_tracks;
     }
 
-    if(children.find("interface-tracks") == children.end())
+    if(interface_tracks != nullptr)
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
+        children["interface-tracks"] = interface_tracks;
     }
 
-    if(children.find("ipsla-tracks") == children.end())
+    if(ipsla_tracks != nullptr)
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
+        children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(children.find("route-tracks") == children.end())
+    if(route_tracks != nullptr)
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
+        children["route-tracks"] = route_tracks;
     }
 
     return children;
@@ -2555,7 +2153,7 @@ std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2579,20 +2177,12 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2644,7 +2234,7 @@ std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2671,20 +2261,12 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2745,7 +2327,7 @@ std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2771,20 +2353,12 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2844,7 +2418,7 @@ std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2871,20 +2445,12 @@ EntityPath ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2946,7 +2512,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2969,15 +2535,6 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-info")
     {
         for(auto const & c : track_info)
@@ -2985,28 +2542,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo>();
         c->parent = this;
-        track_info.push_back(std::move(c));
-        children[segment_path] = track_info.back();
-        return children.at(segment_path);
+        track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3033,19 +2586,14 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackInfo()
 	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces>())
 {
     bool_tracks->parent = this;
-    children["bool-tracks"] = bool_tracks;
 
     delayed->parent = this;
-    children["delayed"] = delayed;
 
     threshold_tracks->parent = this;
-    children["threshold-tracks"] = threshold_tracks;
 
     track_type_info->parent = this;
-    children["track-type-info"] = track_type_info;
 
     tracking_interaces->parent = this;
-    children["tracking-interaces"] = tracking_interaces;
 
     yang_name = "track-info"; yang_parent_name = "track-type-rtr-reachability";
 }
@@ -3096,7 +2644,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_segment_pat
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3126,133 +2674,80 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_entity_path(
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bool-tracks")
     {
-        if(bool_tracks != nullptr)
-        {
-            children["bool-tracks"] = bool_tracks;
-        }
-        else
+        if(bool_tracks == nullptr)
         {
             bool_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks>();
-            bool_tracks->parent = this;
-            children["bool-tracks"] = bool_tracks;
         }
-        return children.at("bool-tracks");
+        return bool_tracks;
     }
 
     if(child_yang_name == "delayed")
     {
-        if(delayed != nullptr)
-        {
-            children["delayed"] = delayed;
-        }
-        else
+        if(delayed == nullptr)
         {
             delayed = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed>();
-            delayed->parent = this;
-            children["delayed"] = delayed;
         }
-        return children.at("delayed");
+        return delayed;
     }
 
     if(child_yang_name == "threshold-tracks")
     {
-        if(threshold_tracks != nullptr)
-        {
-            children["threshold-tracks"] = threshold_tracks;
-        }
-        else
+        if(threshold_tracks == nullptr)
         {
             threshold_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks>();
-            threshold_tracks->parent = this;
-            children["threshold-tracks"] = threshold_tracks;
         }
-        return children.at("threshold-tracks");
+        return threshold_tracks;
     }
 
     if(child_yang_name == "track-type-info")
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
-        else
+        if(track_type_info == nullptr)
         {
             track_type_info = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo>();
-            track_type_info->parent = this;
-            children["track-type-info"] = track_type_info;
         }
-        return children.at("track-type-info");
+        return track_type_info;
     }
 
     if(child_yang_name == "tracking-interaces")
     {
-        if(tracking_interaces != nullptr)
-        {
-            children["tracking-interaces"] = tracking_interaces;
-        }
-        else
+        if(tracking_interaces == nullptr)
         {
             tracking_interaces = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces>();
-            tracking_interaces->parent = this;
-            children["tracking-interaces"] = tracking_interaces;
         }
-        return children.at("tracking-interaces");
+        return tracking_interaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_children() const
 {
-    if(children.find("bool-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bool_tracks != nullptr)
     {
-        if(bool_tracks != nullptr)
-        {
-            children["bool-tracks"] = bool_tracks;
-        }
+        children["bool-tracks"] = bool_tracks;
     }
 
-    if(children.find("delayed") == children.end())
+    if(delayed != nullptr)
     {
-        if(delayed != nullptr)
-        {
-            children["delayed"] = delayed;
-        }
+        children["delayed"] = delayed;
     }
 
-    if(children.find("threshold-tracks") == children.end())
+    if(threshold_tracks != nullptr)
     {
-        if(threshold_tracks != nullptr)
-        {
-            children["threshold-tracks"] = threshold_tracks;
-        }
+        children["threshold-tracks"] = threshold_tracks;
     }
 
-    if(children.find("track-type-info") == children.end())
+    if(track_type_info != nullptr)
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
+        children["track-type-info"] = track_type_info;
     }
 
-    if(children.find("tracking-interaces") == children.end())
+    if(tracking_interaces != nullptr)
     {
-        if(tracking_interaces != nullptr)
-        {
-            children["tracking-interaces"] = tracking_interaces;
-        }
+        children["tracking-interaces"] = tracking_interaces;
     }
 
     return children;
@@ -3300,16 +2795,12 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::TrackTypeInf
 	,route_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks>())
 {
     bfd_tracks->parent = this;
-    children["bfd-tracks"] = bfd_tracks;
 
     interface_tracks->parent = this;
-    children["interface-tracks"] = interface_tracks;
 
     ipsla_tracks->parent = this;
-    children["ipsla-tracks"] = ipsla_tracks;
 
     route_tracks->parent = this;
-    children["route-tracks"] = route_tracks;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info";
 }
@@ -3346,7 +2837,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3370,110 +2861,66 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::g
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-tracks")
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
-        else
+        if(bfd_tracks == nullptr)
         {
             bfd_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks>();
-            bfd_tracks->parent = this;
-            children["bfd-tracks"] = bfd_tracks;
         }
-        return children.at("bfd-tracks");
+        return bfd_tracks;
     }
 
     if(child_yang_name == "interface-tracks")
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
-        else
+        if(interface_tracks == nullptr)
         {
             interface_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks>();
-            interface_tracks->parent = this;
-            children["interface-tracks"] = interface_tracks;
         }
-        return children.at("interface-tracks");
+        return interface_tracks;
     }
 
     if(child_yang_name == "ipsla-tracks")
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
-        else
+        if(ipsla_tracks == nullptr)
         {
             ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks>();
-            ipsla_tracks->parent = this;
-            children["ipsla-tracks"] = ipsla_tracks;
         }
-        return children.at("ipsla-tracks");
+        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
-        else
+        if(route_tracks == nullptr)
         {
             route_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks>();
-            route_tracks->parent = this;
-            children["route-tracks"] = route_tracks;
         }
-        return children.at("route-tracks");
+        return route_tracks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_children() const
 {
-    if(children.find("bfd-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_tracks != nullptr)
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
+        children["bfd-tracks"] = bfd_tracks;
     }
 
-    if(children.find("interface-tracks") == children.end())
+    if(interface_tracks != nullptr)
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
+        children["interface-tracks"] = interface_tracks;
     }
 
-    if(children.find("ipsla-tracks") == children.end())
+    if(ipsla_tracks != nullptr)
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
+        children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(children.find("route-tracks") == children.end())
+    if(route_tracks != nullptr)
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
+        children["route-tracks"] = route_tracks;
     }
 
     return children;
@@ -3518,7 +2965,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3542,20 +2989,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::I
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3607,7 +3046,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3634,20 +3073,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::R
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3708,7 +3139,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3734,20 +3165,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::I
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3807,7 +3230,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3834,20 +3257,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::B
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3909,7 +3324,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3932,15 +3347,6 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bool-track-info")
     {
         for(auto const & c : bool_track_info)
@@ -3948,28 +3354,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Boo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo>();
         c->parent = this;
-        bool_track_info.push_back(std::move(c));
-        children[segment_path] = bool_track_info.back();
-        return children.at(segment_path);
+        bool_track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bool_track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4016,7 +3418,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::Boo
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4042,20 +3444,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::Bool
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4113,7 +3507,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4136,15 +3530,6 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks:
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-track-info")
     {
         for(auto const & c : threshold_track_info)
@@ -4152,28 +3537,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Thr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
         c->parent = this;
-        threshold_track_info.push_back(std::move(c));
-        children[segment_path] = threshold_track_info.back();
-        return children.at(segment_path);
+        threshold_track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4220,7 +3601,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4246,20 +3627,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks:
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4317,7 +3690,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInterac
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4340,15 +3713,6 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInterace
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-tracking-info")
     {
         for(auto const & c : interface_tracking_info)
@@ -4356,28 +3720,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Tra
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
         c->parent = this;
-        interface_tracking_info.push_back(std::move(c));
-        children[segment_path] = interface_tracking_info.back();
-        return children.at(segment_path);
+        interface_tracking_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_tracking_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4418,7 +3778,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInterac
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4442,20 +3802,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInterace
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4501,7 +3853,7 @@ std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_se
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4526,20 +3878,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_ent
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4593,7 +3937,7 @@ std::string ObjectTracking::TrackTypeRtrReachabilityBrief::get_segment_path() co
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4616,15 +3960,6 @@ EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::get_entity_path(Entity
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-info-brief")
     {
         for(auto const & c : track_info_brief)
@@ -4632,28 +3967,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief>();
         c->parent = this;
-        track_info_brief.push_back(std::move(c));
-        children[segment_path] = track_info_brief.back();
-        return children.at(segment_path);
+        track_info_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachabilityBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track_info_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4672,7 +4003,6 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackInfoBrief()
     track_type_info(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo>())
 {
     track_type_info->parent = this;
-    children["track-type-info"] = track_type_info;
 
     yang_name = "track-info-brief"; yang_parent_name = "track-type-rtr-reachability-brief";
 }
@@ -4707,7 +4037,7 @@ std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_s
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4733,41 +4063,24 @@ EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_en
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-type-info")
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
-        else
+        if(track_type_info == nullptr)
         {
             track_type_info = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo>();
-            track_type_info->parent = this;
-            children["track-type-info"] = track_type_info;
         }
-        return children.at("track-type-info");
+        return track_type_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_children() const
 {
-    if(children.find("track-type-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
+        children["track-type-info"] = track_type_info;
     }
 
     return children;
@@ -4799,16 +4112,12 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Tr
 	,route_tracks(std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
 {
     bfd_tracks->parent = this;
-    children["bfd-tracks"] = bfd_tracks;
 
     interface_tracks->parent = this;
-    children["interface-tracks"] = interface_tracks;
 
     ipsla_tracks->parent = this;
-    children["ipsla-tracks"] = ipsla_tracks;
 
     route_tracks->parent = this;
-    children["route-tracks"] = route_tracks;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info-brief";
 }
@@ -4845,7 +4154,7 @@ std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::Track
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4869,110 +4178,66 @@ EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackT
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-tracks")
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
-        else
+        if(bfd_tracks == nullptr)
         {
             bfd_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
-            bfd_tracks->parent = this;
-            children["bfd-tracks"] = bfd_tracks;
         }
-        return children.at("bfd-tracks");
+        return bfd_tracks;
     }
 
     if(child_yang_name == "interface-tracks")
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
-        else
+        if(interface_tracks == nullptr)
         {
             interface_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
-            interface_tracks->parent = this;
-            children["interface-tracks"] = interface_tracks;
         }
-        return children.at("interface-tracks");
+        return interface_tracks;
     }
 
     if(child_yang_name == "ipsla-tracks")
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
-        else
+        if(ipsla_tracks == nullptr)
         {
             ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
-            ipsla_tracks->parent = this;
-            children["ipsla-tracks"] = ipsla_tracks;
         }
-        return children.at("ipsla-tracks");
+        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
-        else
+        if(route_tracks == nullptr)
         {
             route_tracks = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>();
-            route_tracks->parent = this;
-            children["route-tracks"] = route_tracks;
         }
-        return children.at("route-tracks");
+        return route_tracks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
-    if(children.find("bfd-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_tracks != nullptr)
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
+        children["bfd-tracks"] = bfd_tracks;
     }
 
-    if(children.find("interface-tracks") == children.end())
+    if(interface_tracks != nullptr)
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
+        children["interface-tracks"] = interface_tracks;
     }
 
-    if(children.find("ipsla-tracks") == children.end())
+    if(ipsla_tracks != nullptr)
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
+        children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(children.find("route-tracks") == children.end())
+    if(route_tracks != nullptr)
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
+        children["route-tracks"] = route_tracks;
     }
 
     return children;
@@ -5017,7 +4282,7 @@ std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::Track
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5041,20 +4306,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackT
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5106,7 +4363,7 @@ std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::Track
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5133,20 +4390,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackT
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5207,7 +4456,7 @@ std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::Track
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5233,20 +4482,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackT
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5306,7 +4547,7 @@ std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::Track
 
 }
 
-EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5333,20 +4574,12 @@ EntityPath ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackT
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5408,7 +4641,7 @@ std::string ObjectTracking::Tracks::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::Tracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5431,15 +4664,6 @@ EntityPath ObjectTracking::Tracks::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track")
     {
         for(auto const & c : track)
@@ -5447,28 +4671,24 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::Tracks::Track>();
         c->parent = this;
-        track.push_back(std::move(c));
-        children[segment_path] = track.back();
-        return children.at(segment_path);
+        track.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5519,7 +4739,7 @@ std::string ObjectTracking::Tracks::Track::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5543,15 +4763,6 @@ EntityPath ObjectTracking::Tracks::Track::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-info")
     {
         for(auto const & c : track_info)
@@ -5559,28 +4770,24 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo>();
         c->parent = this;
-        track_info.push_back(std::move(c));
-        children[segment_path] = track_info.back();
-        return children.at(segment_path);
+        track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5611,19 +4818,14 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackInfo()
 	,tracking_interaces(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces>())
 {
     bool_tracks->parent = this;
-    children["bool-tracks"] = bool_tracks;
 
     delayed->parent = this;
-    children["delayed"] = delayed;
 
     threshold_tracks->parent = this;
-    children["threshold-tracks"] = threshold_tracks;
 
     track_type_info->parent = this;
-    children["track-type-info"] = track_type_info;
 
     tracking_interaces->parent = this;
-    children["tracking-interaces"] = tracking_interaces;
 
     yang_name = "track-info"; yang_parent_name = "track";
 }
@@ -5674,7 +4876,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5704,133 +4906,80 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bool-tracks")
     {
-        if(bool_tracks != nullptr)
-        {
-            children["bool-tracks"] = bool_tracks;
-        }
-        else
+        if(bool_tracks == nullptr)
         {
             bool_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks>();
-            bool_tracks->parent = this;
-            children["bool-tracks"] = bool_tracks;
         }
-        return children.at("bool-tracks");
+        return bool_tracks;
     }
 
     if(child_yang_name == "delayed")
     {
-        if(delayed != nullptr)
-        {
-            children["delayed"] = delayed;
-        }
-        else
+        if(delayed == nullptr)
         {
             delayed = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::Delayed>();
-            delayed->parent = this;
-            children["delayed"] = delayed;
         }
-        return children.at("delayed");
+        return delayed;
     }
 
     if(child_yang_name == "threshold-tracks")
     {
-        if(threshold_tracks != nullptr)
-        {
-            children["threshold-tracks"] = threshold_tracks;
-        }
-        else
+        if(threshold_tracks == nullptr)
         {
             threshold_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks>();
-            threshold_tracks->parent = this;
-            children["threshold-tracks"] = threshold_tracks;
         }
-        return children.at("threshold-tracks");
+        return threshold_tracks;
     }
 
     if(child_yang_name == "track-type-info")
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
-        else
+        if(track_type_info == nullptr)
         {
             track_type_info = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo>();
-            track_type_info->parent = this;
-            children["track-type-info"] = track_type_info;
         }
-        return children.at("track-type-info");
+        return track_type_info;
     }
 
     if(child_yang_name == "tracking-interaces")
     {
-        if(tracking_interaces != nullptr)
-        {
-            children["tracking-interaces"] = tracking_interaces;
-        }
-        else
+        if(tracking_interaces == nullptr)
         {
             tracking_interaces = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces>();
-            tracking_interaces->parent = this;
-            children["tracking-interaces"] = tracking_interaces;
         }
-        return children.at("tracking-interaces");
+        return tracking_interaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::get_children() const
 {
-    if(children.find("bool-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bool_tracks != nullptr)
     {
-        if(bool_tracks != nullptr)
-        {
-            children["bool-tracks"] = bool_tracks;
-        }
+        children["bool-tracks"] = bool_tracks;
     }
 
-    if(children.find("delayed") == children.end())
+    if(delayed != nullptr)
     {
-        if(delayed != nullptr)
-        {
-            children["delayed"] = delayed;
-        }
+        children["delayed"] = delayed;
     }
 
-    if(children.find("threshold-tracks") == children.end())
+    if(threshold_tracks != nullptr)
     {
-        if(threshold_tracks != nullptr)
-        {
-            children["threshold-tracks"] = threshold_tracks;
-        }
+        children["threshold-tracks"] = threshold_tracks;
     }
 
-    if(children.find("track-type-info") == children.end())
+    if(track_type_info != nullptr)
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
+        children["track-type-info"] = track_type_info;
     }
 
-    if(children.find("tracking-interaces") == children.end())
+    if(tracking_interaces != nullptr)
     {
-        if(tracking_interaces != nullptr)
-        {
-            children["tracking-interaces"] = tracking_interaces;
-        }
+        children["tracking-interaces"] = tracking_interaces;
     }
 
     return children;
@@ -5878,16 +5027,12 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::TrackTypeInfo()
 	,route_tracks(std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks>())
 {
     bfd_tracks->parent = this;
-    children["bfd-tracks"] = bfd_tracks;
 
     interface_tracks->parent = this;
-    children["interface-tracks"] = interface_tracks;
 
     ipsla_tracks->parent = this;
-    children["ipsla-tracks"] = ipsla_tracks;
 
     route_tracks->parent = this;
-    children["route-tracks"] = route_tracks;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info";
 }
@@ -5924,7 +5069,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_segment
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5948,110 +5093,66 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_entity_p
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-tracks")
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
-        else
+        if(bfd_tracks == nullptr)
         {
             bfd_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks>();
-            bfd_tracks->parent = this;
-            children["bfd-tracks"] = bfd_tracks;
         }
-        return children.at("bfd-tracks");
+        return bfd_tracks;
     }
 
     if(child_yang_name == "interface-tracks")
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
-        else
+        if(interface_tracks == nullptr)
         {
             interface_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks>();
-            interface_tracks->parent = this;
-            children["interface-tracks"] = interface_tracks;
         }
-        return children.at("interface-tracks");
+        return interface_tracks;
     }
 
     if(child_yang_name == "ipsla-tracks")
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
-        else
+        if(ipsla_tracks == nullptr)
         {
             ipsla_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks>();
-            ipsla_tracks->parent = this;
-            children["ipsla-tracks"] = ipsla_tracks;
         }
-        return children.at("ipsla-tracks");
+        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
-        else
+        if(route_tracks == nullptr)
         {
             route_tracks = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks>();
-            route_tracks->parent = this;
-            children["route-tracks"] = route_tracks;
         }
-        return children.at("route-tracks");
+        return route_tracks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_children() const
 {
-    if(children.find("bfd-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_tracks != nullptr)
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
+        children["bfd-tracks"] = bfd_tracks;
     }
 
-    if(children.find("interface-tracks") == children.end())
+    if(interface_tracks != nullptr)
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
+        children["interface-tracks"] = interface_tracks;
     }
 
-    if(children.find("ipsla-tracks") == children.end())
+    if(ipsla_tracks != nullptr)
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
+        children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(children.find("route-tracks") == children.end())
+    if(route_tracks != nullptr)
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
+        children["route-tracks"] = route_tracks;
     }
 
     return children;
@@ -6096,7 +5197,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTr
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6120,20 +5221,12 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTra
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6185,7 +5278,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6212,20 +5305,12 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks:
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6286,7 +5371,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6312,20 +5397,12 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks:
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6385,7 +5462,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6412,20 +5489,12 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::g
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6487,7 +5556,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_segment_pa
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6510,15 +5579,6 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_entity_path
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bool-track-info")
     {
         for(auto const & c : bool_track_info)
@@ -6526,28 +5586,24 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo>();
         c->parent = this;
-        bool_track_info.push_back(std::move(c));
-        children[segment_path] = bool_track_info.back();
-        return children.at(segment_path);
+        bool_track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bool_track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6594,7 +5650,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo:
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6620,20 +5676,12 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6691,7 +5739,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_segme
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6714,15 +5762,6 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_entity
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-track-info")
     {
         for(auto const & c : threshold_track_info)
@@ -6730,28 +5769,24 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTrack
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
         c->parent = this;
-        threshold_track_info.push_back(std::move(c));
-        children[segment_path] = threshold_track_info.back();
-        return children.at(segment_path);
+        threshold_track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6798,7 +5833,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::Threshold
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6824,20 +5859,12 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdT
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6895,7 +5922,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_seg
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6918,15 +5945,6 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_enti
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-tracking-info")
     {
         for(auto const & c : interface_tracking_info)
@@ -6934,28 +5952,24 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackingIntera
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
         c->parent = this;
-        interface_tracking_info.push_back(std::move(c));
-        children[segment_path] = interface_tracking_info.back();
-        return children.at(segment_path);
+        interface_tracking_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_tracking_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6996,7 +6010,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::Interfa
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7020,20 +6034,12 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::Interfac
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7079,7 +6085,7 @@ std::string ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_segment_path(
 
 }
 
-EntityPath ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7104,20 +6110,12 @@ EntityPath ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_entity_path(En
 
 std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7171,7 +6169,7 @@ std::string ObjectTracking::TrackTypeIpv4RouteBrief::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7194,15 +6192,6 @@ EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-info-brief")
     {
         for(auto const & c : track_info_brief)
@@ -7210,28 +6199,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief>();
         c->parent = this;
-        track_info_brief.push_back(std::move(c));
-        children[segment_path] = track_info_brief.back();
-        return children.at(segment_path);
+        track_info_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4RouteBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track_info_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7250,7 +6235,6 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackInfoBrief()
     track_type_info(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo>())
 {
     track_type_info->parent = this;
-    children["track-type-info"] = track_type_info;
 
     yang_name = "track-info-brief"; yang_parent_name = "track-type-ipv4-route-brief";
 }
@@ -7285,7 +6269,7 @@ std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_segment
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7311,41 +6295,24 @@ EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_entity_p
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-type-info")
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
-        else
+        if(track_type_info == nullptr)
         {
             track_type_info = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo>();
-            track_type_info->parent = this;
-            children["track-type-info"] = track_type_info;
         }
-        return children.at("track-type-info");
+        return track_type_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_children() const
 {
-    if(children.find("track-type-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
+        children["track-type-info"] = track_type_info;
     }
 
     return children;
@@ -7377,16 +6344,12 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::TrackTyp
 	,route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
 {
     bfd_tracks->parent = this;
-    children["bfd-tracks"] = bfd_tracks;
 
     interface_tracks->parent = this;
-    children["interface-tracks"] = interface_tracks;
 
     ipsla_tracks->parent = this;
-    children["ipsla-tracks"] = ipsla_tracks;
 
     route_tracks->parent = this;
-    children["route-tracks"] = route_tracks;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info-brief";
 }
@@ -7423,7 +6386,7 @@ std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7447,110 +6410,66 @@ EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-tracks")
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
-        else
+        if(bfd_tracks == nullptr)
         {
             bfd_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
-            bfd_tracks->parent = this;
-            children["bfd-tracks"] = bfd_tracks;
         }
-        return children.at("bfd-tracks");
+        return bfd_tracks;
     }
 
     if(child_yang_name == "interface-tracks")
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
-        else
+        if(interface_tracks == nullptr)
         {
             interface_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
-            interface_tracks->parent = this;
-            children["interface-tracks"] = interface_tracks;
         }
-        return children.at("interface-tracks");
+        return interface_tracks;
     }
 
     if(child_yang_name == "ipsla-tracks")
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
-        else
+        if(ipsla_tracks == nullptr)
         {
             ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
-            ipsla_tracks->parent = this;
-            children["ipsla-tracks"] = ipsla_tracks;
         }
-        return children.at("ipsla-tracks");
+        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
-        else
+        if(route_tracks == nullptr)
         {
             route_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>();
-            route_tracks->parent = this;
-            children["route-tracks"] = route_tracks;
         }
-        return children.at("route-tracks");
+        return route_tracks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
-    if(children.find("bfd-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_tracks != nullptr)
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
+        children["bfd-tracks"] = bfd_tracks;
     }
 
-    if(children.find("interface-tracks") == children.end())
+    if(interface_tracks != nullptr)
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
+        children["interface-tracks"] = interface_tracks;
     }
 
-    if(children.find("ipsla-tracks") == children.end())
+    if(ipsla_tracks != nullptr)
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
+        children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(children.find("route-tracks") == children.end())
+    if(route_tracks != nullptr)
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
+        children["route-tracks"] = route_tracks;
     }
 
     return children;
@@ -7595,7 +6514,7 @@ std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7619,20 +6538,12 @@ EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7684,7 +6595,7 @@ std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7711,20 +6622,12 @@ EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7785,7 +6688,7 @@ std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7811,20 +6714,12 @@ EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7884,7 +6779,7 @@ std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7911,20 +6806,12 @@ EntityPath ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7986,7 +6873,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8009,15 +6896,6 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-info")
     {
         for(auto const & c : track_info)
@@ -8025,28 +6903,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo>();
         c->parent = this;
-        track_info.push_back(std::move(c));
-        children[segment_path] = track_info.back();
-        return children.at(segment_path);
+        track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8073,19 +6947,14 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackInfo()
 	,tracking_interaces(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces>())
 {
     bool_tracks->parent = this;
-    children["bool-tracks"] = bool_tracks;
 
     delayed->parent = this;
-    children["delayed"] = delayed;
 
     threshold_tracks->parent = this;
-    children["threshold-tracks"] = threshold_tracks;
 
     track_type_info->parent = this;
-    children["track-type-info"] = track_type_info;
 
     tracking_interaces->parent = this;
-    children["tracking-interaces"] = tracking_interaces;
 
     yang_name = "track-info"; yang_parent_name = "track-type-ipv4-route";
 }
@@ -8136,7 +7005,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_segment_path() co
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8166,133 +7035,80 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_entity_path(Entity
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bool-tracks")
     {
-        if(bool_tracks != nullptr)
-        {
-            children["bool-tracks"] = bool_tracks;
-        }
-        else
+        if(bool_tracks == nullptr)
         {
             bool_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks>();
-            bool_tracks->parent = this;
-            children["bool-tracks"] = bool_tracks;
         }
-        return children.at("bool-tracks");
+        return bool_tracks;
     }
 
     if(child_yang_name == "delayed")
     {
-        if(delayed != nullptr)
-        {
-            children["delayed"] = delayed;
-        }
-        else
+        if(delayed == nullptr)
         {
             delayed = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed>();
-            delayed->parent = this;
-            children["delayed"] = delayed;
         }
-        return children.at("delayed");
+        return delayed;
     }
 
     if(child_yang_name == "threshold-tracks")
     {
-        if(threshold_tracks != nullptr)
-        {
-            children["threshold-tracks"] = threshold_tracks;
-        }
-        else
+        if(threshold_tracks == nullptr)
         {
             threshold_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks>();
-            threshold_tracks->parent = this;
-            children["threshold-tracks"] = threshold_tracks;
         }
-        return children.at("threshold-tracks");
+        return threshold_tracks;
     }
 
     if(child_yang_name == "track-type-info")
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
-        else
+        if(track_type_info == nullptr)
         {
             track_type_info = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo>();
-            track_type_info->parent = this;
-            children["track-type-info"] = track_type_info;
         }
-        return children.at("track-type-info");
+        return track_type_info;
     }
 
     if(child_yang_name == "tracking-interaces")
     {
-        if(tracking_interaces != nullptr)
-        {
-            children["tracking-interaces"] = tracking_interaces;
-        }
-        else
+        if(tracking_interaces == nullptr)
         {
             tracking_interaces = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces>();
-            tracking_interaces->parent = this;
-            children["tracking-interaces"] = tracking_interaces;
         }
-        return children.at("tracking-interaces");
+        return tracking_interaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_children() const
 {
-    if(children.find("bool-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bool_tracks != nullptr)
     {
-        if(bool_tracks != nullptr)
-        {
-            children["bool-tracks"] = bool_tracks;
-        }
+        children["bool-tracks"] = bool_tracks;
     }
 
-    if(children.find("delayed") == children.end())
+    if(delayed != nullptr)
     {
-        if(delayed != nullptr)
-        {
-            children["delayed"] = delayed;
-        }
+        children["delayed"] = delayed;
     }
 
-    if(children.find("threshold-tracks") == children.end())
+    if(threshold_tracks != nullptr)
     {
-        if(threshold_tracks != nullptr)
-        {
-            children["threshold-tracks"] = threshold_tracks;
-        }
+        children["threshold-tracks"] = threshold_tracks;
     }
 
-    if(children.find("track-type-info") == children.end())
+    if(track_type_info != nullptr)
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
+        children["track-type-info"] = track_type_info;
     }
 
-    if(children.find("tracking-interaces") == children.end())
+    if(tracking_interaces != nullptr)
     {
-        if(tracking_interaces != nullptr)
-        {
-            children["tracking-interaces"] = tracking_interaces;
-        }
+        children["tracking-interaces"] = tracking_interaces;
     }
 
     return children;
@@ -8340,16 +7156,12 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::TrackTypeInfo()
 	,route_tracks(std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks>())
 {
     bfd_tracks->parent = this;
-    children["bfd-tracks"] = bfd_tracks;
 
     interface_tracks->parent = this;
-    children["interface-tracks"] = interface_tracks;
 
     ipsla_tracks->parent = this;
-    children["ipsla-tracks"] = ipsla_tracks;
 
     route_tracks->parent = this;
-    children["route-tracks"] = route_tracks;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info";
 }
@@ -8386,7 +7198,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_se
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8410,110 +7222,66 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_ent
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-tracks")
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
-        else
+        if(bfd_tracks == nullptr)
         {
             bfd_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks>();
-            bfd_tracks->parent = this;
-            children["bfd-tracks"] = bfd_tracks;
         }
-        return children.at("bfd-tracks");
+        return bfd_tracks;
     }
 
     if(child_yang_name == "interface-tracks")
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
-        else
+        if(interface_tracks == nullptr)
         {
             interface_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks>();
-            interface_tracks->parent = this;
-            children["interface-tracks"] = interface_tracks;
         }
-        return children.at("interface-tracks");
+        return interface_tracks;
     }
 
     if(child_yang_name == "ipsla-tracks")
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
-        else
+        if(ipsla_tracks == nullptr)
         {
             ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks>();
-            ipsla_tracks->parent = this;
-            children["ipsla-tracks"] = ipsla_tracks;
         }
-        return children.at("ipsla-tracks");
+        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
-        else
+        if(route_tracks == nullptr)
         {
             route_tracks = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks>();
-            route_tracks->parent = this;
-            children["route-tracks"] = route_tracks;
         }
-        return children.at("route-tracks");
+        return route_tracks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_children() const
 {
-    if(children.find("bfd-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_tracks != nullptr)
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
+        children["bfd-tracks"] = bfd_tracks;
     }
 
-    if(children.find("interface-tracks") == children.end())
+    if(interface_tracks != nullptr)
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
+        children["interface-tracks"] = interface_tracks;
     }
 
-    if(children.find("ipsla-tracks") == children.end())
+    if(ipsla_tracks != nullptr)
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
+        children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(children.find("route-tracks") == children.end())
+    if(route_tracks != nullptr)
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
+        children["route-tracks"] = route_tracks;
     }
 
     return children;
@@ -8558,7 +7326,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::Interf
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8582,20 +7350,12 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::Interfa
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8647,7 +7407,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteT
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8674,20 +7434,12 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTr
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8748,7 +7500,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaT
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8774,20 +7526,12 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTr
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8847,7 +7591,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTra
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8874,20 +7618,12 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTrac
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8949,7 +7685,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_segme
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8972,15 +7708,6 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_entity
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bool-track-info")
     {
         for(auto const & c : bool_track_info)
@@ -8988,28 +7715,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTrack
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo>();
         c->parent = this;
-        bool_track_info.push_back(std::move(c));
-        children[segment_path] = bool_track_info.back();
-        return children.at(segment_path);
+        bool_track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : bool_track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9056,7 +7779,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrack
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9082,20 +7805,12 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackI
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9153,7 +7868,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9176,15 +7891,6 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_e
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "threshold-track-info")
     {
         for(auto const & c : threshold_track_info)
@@ -9192,28 +7898,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Threshold
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
         c->parent = this;
-        threshold_track_info.push_back(std::move(c));
-        children[segment_path] = threshold_track_info.back();
-        return children.at(segment_path);
+        threshold_track_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : threshold_track_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9260,7 +7962,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::Thre
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9286,20 +7988,12 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::Thres
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9357,7 +8051,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::ge
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9380,15 +8074,6 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-tracking-info")
     {
         for(auto const & c : interface_tracking_info)
@@ -9396,28 +8081,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingI
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
         c->parent = this;
-        interface_tracking_info.push_back(std::move(c));
-        children[segment_path] = interface_tracking_info.back();
-        return children.at(segment_path);
+        interface_tracking_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_tracking_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9458,7 +8139,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::In
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9482,20 +8163,12 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::Int
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9541,7 +8214,7 @@ std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_segment_
 
 }
 
-EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9566,20 +8239,12 @@ EntityPath ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_entity_pa
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9633,7 +8298,7 @@ std::string ObjectTracking::TrackTypeInterfaceBrief::get_segment_path() const
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterfaceBrief::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterfaceBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9656,15 +8321,6 @@ EntityPath ObjectTracking::TrackTypeInterfaceBrief::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-info-brief")
     {
         for(auto const & c : track_info_brief)
@@ -9672,28 +8328,24 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief>();
         c->parent = this;
-        track_info_brief.push_back(std::move(c));
-        children[segment_path] = track_info_brief.back();
-        return children.at(segment_path);
+        track_info_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterfaceBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : track_info_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9712,7 +8364,6 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackInfoBrief()
     track_type_info(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo>())
 {
     track_type_info->parent = this;
-    children["track-type-info"] = track_type_info;
 
     yang_name = "track-info-brief"; yang_parent_name = "track-type-interface-brief";
 }
@@ -9747,7 +8398,7 @@ std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_segment
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9773,41 +8424,24 @@ EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_entity_p
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "track-type-info")
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
-        else
+        if(track_type_info == nullptr)
         {
             track_type_info = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo>();
-            track_type_info->parent = this;
-            children["track-type-info"] = track_type_info;
         }
-        return children.at("track-type-info");
+        return track_type_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_children() const
 {
-    if(children.find("track-type-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(track_type_info != nullptr)
     {
-        if(track_type_info != nullptr)
-        {
-            children["track-type-info"] = track_type_info;
-        }
+        children["track-type-info"] = track_type_info;
     }
 
     return children;
@@ -9839,16 +8473,12 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::TrackTyp
 	,route_tracks(std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>())
 {
     bfd_tracks->parent = this;
-    children["bfd-tracks"] = bfd_tracks;
 
     interface_tracks->parent = this;
-    children["interface-tracks"] = interface_tracks;
 
     ipsla_tracks->parent = this;
-    children["ipsla-tracks"] = ipsla_tracks;
 
     route_tracks->parent = this;
-    children["route-tracks"] = route_tracks;
 
     yang_name = "track-type-info"; yang_parent_name = "track-info-brief";
 }
@@ -9885,7 +8515,7 @@ std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9909,110 +8539,66 @@ EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-tracks")
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
-        else
+        if(bfd_tracks == nullptr)
         {
             bfd_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks>();
-            bfd_tracks->parent = this;
-            children["bfd-tracks"] = bfd_tracks;
         }
-        return children.at("bfd-tracks");
+        return bfd_tracks;
     }
 
     if(child_yang_name == "interface-tracks")
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
-        else
+        if(interface_tracks == nullptr)
         {
             interface_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks>();
-            interface_tracks->parent = this;
-            children["interface-tracks"] = interface_tracks;
         }
-        return children.at("interface-tracks");
+        return interface_tracks;
     }
 
     if(child_yang_name == "ipsla-tracks")
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
-        else
+        if(ipsla_tracks == nullptr)
         {
             ipsla_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks>();
-            ipsla_tracks->parent = this;
-            children["ipsla-tracks"] = ipsla_tracks;
         }
-        return children.at("ipsla-tracks");
+        return ipsla_tracks;
     }
 
     if(child_yang_name == "route-tracks")
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
-        else
+        if(route_tracks == nullptr)
         {
             route_tracks = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks>();
-            route_tracks->parent = this;
-            children["route-tracks"] = route_tracks;
         }
-        return children.at("route-tracks");
+        return route_tracks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
-    if(children.find("bfd-tracks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_tracks != nullptr)
     {
-        if(bfd_tracks != nullptr)
-        {
-            children["bfd-tracks"] = bfd_tracks;
-        }
+        children["bfd-tracks"] = bfd_tracks;
     }
 
-    if(children.find("interface-tracks") == children.end())
+    if(interface_tracks != nullptr)
     {
-        if(interface_tracks != nullptr)
-        {
-            children["interface-tracks"] = interface_tracks;
-        }
+        children["interface-tracks"] = interface_tracks;
     }
 
-    if(children.find("ipsla-tracks") == children.end())
+    if(ipsla_tracks != nullptr)
     {
-        if(ipsla_tracks != nullptr)
-        {
-            children["ipsla-tracks"] = ipsla_tracks;
-        }
+        children["ipsla-tracks"] = ipsla_tracks;
     }
 
-    if(children.find("route-tracks") == children.end())
+    if(route_tracks != nullptr)
     {
-        if(route_tracks != nullptr)
-        {
-            children["route-tracks"] = route_tracks;
-        }
+        children["route-tracks"] = route_tracks;
     }
 
     return children;
@@ -10057,7 +8643,7 @@ std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10081,20 +8667,12 @@ EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10146,7 +8724,7 @@ std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10173,20 +8751,12 @@ EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10247,7 +8817,7 @@ std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10273,20 +8843,12 @@ EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10346,7 +8908,7 @@ std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeIn
 
 }
 
-EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
+const EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10373,20 +8935,12 @@ EntityPath ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInf
 
 std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

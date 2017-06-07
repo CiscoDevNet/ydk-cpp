@@ -23,19 +23,16 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pw_id; //type: uint32
         YLeaf local_address; //type: string
         YLeaf remote_address; //type: string
         YLeaf description; //type: string
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::RemoteSignalling::StatusTlv
 
@@ -48,19 +45,16 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pw_id; //type: uint32
         YLeaf local_address; //type: string
         YLeaf remote_address; //type: string
         YLeaf description; //type: string
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::RemoteSignalling::Tlv
 
@@ -73,13 +67,11 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ImpostionStats; //type: L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats
         class DispostionStats; //type: L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats
@@ -88,8 +80,7 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats> dispostion_stats;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats> impostion_stats;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::SequenceNumber> sequence_number;
-
-
+        
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics
 
 
@@ -101,13 +92,11 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ImpositionStat; //type: L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::ImpositionStat
         class ImpositionMtuDrop; //type: L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::ImpositionMtuDrop
@@ -126,8 +115,7 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::L2FsbiDrop> l2fsbi_drop;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::Multicast> multicast;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::UnknownUnicast> unknown_unicast;
-
-
+        
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats
 
 
@@ -139,17 +127,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::ImpositionStat
 
@@ -162,17 +147,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::ImpositionMtuDrop
 
@@ -185,17 +167,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::ImpostionTailDrop
 
@@ -208,17 +187,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::L2FsbiDrop
 
@@ -231,17 +207,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::Multicast
 
@@ -254,17 +227,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::Broadcast
 
@@ -277,17 +247,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::KnownUnicast
 
@@ -300,17 +267,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::ImpostionStats::UnknownUnicast
 
@@ -323,13 +287,11 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DispositionStat; //type: L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::DispositionStat
         class DispositionMtuDrop; //type: L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::DispositionMtuDrop
@@ -358,8 +320,7 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::MulticastDrop> multicast_drop;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::ReceivedDrops> received_drops;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::UnicastDrop> unicast_drop;
-
-
+        
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats
 
 
@@ -371,17 +332,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::DispositionStat
 
@@ -394,17 +352,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::DispositionMtuDrop
 
@@ -417,17 +372,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::DispositionTailDrop
 
@@ -440,17 +392,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::MulticastDrop
 
@@ -463,17 +412,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::UnicastDrop
 
@@ -486,17 +432,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::BroadcastDrop
 
@@ -509,17 +452,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::ReceivedDrops
 
@@ -532,17 +472,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::DaiDrop
 
@@ -555,17 +492,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::IpsgDrop
 
@@ -578,17 +512,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::DispositionOoODrops
 
@@ -601,17 +532,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::DispositionP2MpStats
 
@@ -624,17 +552,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::KnownUnicast
 
@@ -647,17 +572,14 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::DispostionStats::MacMove
 
@@ -670,19 +592,16 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sequence_number_sent; //type: uint32
         YLeaf sequence_number_expected; //type: uint32
         YLeaf bypassed_inbound_sequence_packet; //type: uint64
         YLeaf bypassed_out_sequence_packet; //type: uint64
-
-
 
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::Statistics::SequenceNumber
 
@@ -695,12 +614,11 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf local_available; //type: boolean
         YLeaf local_label; //type: uint32
@@ -717,8 +635,6 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
         YLeaf remote_p2mp_id; //type: uint32
         YLeaf remote_flags; //type: uint8
 
-
-
 }; // L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::P2MpPw
 
 
@@ -730,26 +646,23 @@ class L2Vpnv2::Nodes::Node::XconnectBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf main_total_up; //type: uint32
         YLeaf main_total_down; //type: uint32
         YLeaf main_total_unresolved; //type: uint32
         YLeaf undefined_xc; //type: uint32
         YLeaf memory_state; //type: L2VpnMemoryStateEnum
-
         class EncapsulationReportMatrix; //type: L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix
         class EncapsulationTotal; //type: L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix> > encapsulation_report_matrix;
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal> > encapsulation_total;
-
-
+        
 }; // L2Vpnv2::Nodes::Node::XconnectBrief
 
 
@@ -761,19 +674,16 @@ class L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ac1; //type: L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1> > ac1;
-
-
+        
 }; // L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix
 
 
@@ -785,19 +695,16 @@ class L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1 : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ac2; //type: L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1::Ac2
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1::Ac2> > ac2;
-
-
+        
 }; // L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1
 
 
@@ -809,20 +716,17 @@ class L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1::Ac2 :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ac1_encapsulation; //type: L2VpnAcEncapEnum
         YLeaf ac2_encapsulation; //type: L2VpnAcEncapEnum
         YLeafList up_count; //type: list of  uint32
         YLeafList down_count; //type: list of  uint32
         YLeafList unresolved_count; //type: list of  uint32
-
-
 
 }; // L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1::Ac2
 
@@ -835,20 +739,17 @@ class L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ac1_encapsulation; //type: L2VpnAcEncapEnum
         YLeaf ac2_encapsulation; //type: L2VpnAcEncapEnum
         YLeafList up_count; //type: list of  uint32
         YLeafList down_count; //type: list of  uint32
         YLeafList unresolved_count; //type: list of  uint32
-
-
 
 }; // L2Vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal
 
@@ -860,17 +761,15 @@ class L2Vpn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class PseudowireHeadend; //type: L2Vpn::PseudowireHeadend
         class Discoveries; //type: L2Vpn::Discoveries
@@ -933,8 +832,7 @@ class L2Vpn : public Entity
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::XconnectMp2Mps> xconnect_mp2mps;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::XconnectSummary> xconnect_summary;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects> xconnects;
-
-
+        
 }; // L2Vpn
 
 
@@ -946,21 +844,18 @@ class L2Vpn::PseudowireHeadend : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DetailInterfaces; //type: L2Vpn::PseudowireHeadend::DetailInterfaces
         class Summary; //type: L2Vpn::PseudowireHeadend::Summary
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::PseudowireHeadend::DetailInterfaces> detail_interfaces;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::PseudowireHeadend::Summary> summary;
-
-
+        
 }; // L2Vpn::PseudowireHeadend
 
 
@@ -972,19 +867,16 @@ class L2Vpn::PseudowireHeadend::DetailInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DetailInterface; //type: L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface> > detail_interface;
-
-
+        
 }; // L2Vpn::PseudowireHeadend::DetailInterfaces
 
 
@@ -996,12 +888,11 @@ class L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_state; //type: PwhePortImStateEnum
@@ -1012,14 +903,12 @@ class L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface : public Entit
         YLeaf l2_overhead; //type: uint32
         YLeaf vctype; //type: uint32
         YLeaf control_word; //type: boolean
-
         class L2Address; //type: L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address
         class GenericInterfaceList; //type: L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList> generic_interface_list;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address> l2_address;
-
-
+        
 }; // L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface
 
 
@@ -1031,20 +920,17 @@ class L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_type; //type: L2VpnPwheIntfEnum
-
         class MacAddress; //type: L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress> mac_address;
-
-
+        
 }; // L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address
 
 
@@ -1056,16 +942,13 @@ class L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::Ma
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
-
-
 
 }; // L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress
 
@@ -1078,21 +961,18 @@ class L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf generic_interface_list_name; //type: string
         YLeaf id; //type: uint32
-
         class InterfaceDetail; //type: L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail> > interface_detail;
-
-
+        
 }; // L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList
 
 
@@ -1104,20 +984,17 @@ class L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf bundle_interface_name; //type: string
         YLeaf interface_state; //type: PwhePortImStateEnum
         YLeaf replicate_state; //type: L2VpnPwheIflistRepStatusEnum
         YLeaf misconfigured; //type: boolean
-
-
 
 }; // L2Vpn::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail
 
@@ -1130,12 +1007,11 @@ class L2Vpn::PseudowireHeadend::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interfaces; //type: uint32
         YLeaf up_interfaces; //type: uint32
@@ -1150,8 +1026,6 @@ class L2Vpn::PseudowireHeadend::Summary : public Entity
         YLeaf down_pseudowire_iw_interfaces; //type: uint32
         YLeaf admin_down_pseudowire_iw_interfaces; //type: uint32
 
-
-
 }; // L2Vpn::PseudowireHeadend::Summary
 
 
@@ -1163,19 +1037,16 @@ class L2Vpn::Discoveries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Discovery; //type: L2Vpn::Discoveries::Discovery
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery> > discovery;
-
-
+        
 }; // L2Vpn::Discoveries
 
 
@@ -1187,12 +1058,11 @@ class L2Vpn::Discoveries::Discovery : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_name; //type: L2VpnServiceEnum
         YLeaf group_name; //type: string
@@ -1204,12 +1074,10 @@ class L2Vpn::Discoveries::Discovery : public Entity
         YLeaf group_name_xr; //type: string
         YLeaf vpn_name_xr; //type: string
         YLeaf is_service_connected; //type: boolean
-
         class SignallingInfo; //type: L2Vpn::Discoveries::Discovery::SignallingInfo
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo> signalling_info;
-
-
+        
 }; // L2Vpn::Discoveries::Discovery
 
 
@@ -1221,22 +1089,19 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ad_signalling_method; //type: L2VpnAdSigMethodEnum
-
         class BgpSigInfo; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo
         class LdpSigInfo; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo> bgp_sig_info;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo> ldp_sig_info;
-
-
+        
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo
 
 
@@ -1248,23 +1113,20 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number_edges; //type: uint32
         YLeaf number_remote_edges; //type: uint32
-
         class Edge; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge
         class Redge; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge> > edge;
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge> > redge;
-
-
+        
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo
 
 
@@ -1276,21 +1138,18 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf edge_id; //type: uint32
         YLeaf label_count; //type: uint32
-
         class LabelBlock; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock> > label_block;
-
-
+        
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge
 
 
@@ -1302,12 +1161,11 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBloc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label_time_created; //type: uint32
         YLeaf label_base; //type: uint32
@@ -1317,8 +1175,6 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBloc
         YLeaf next_hop; //type: string
         YLeaf label_error; //type: L2VpnAdLsdErrEnum
         YLeafList status_vector; //type: list of  uint8
-
-
 
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock
 
@@ -1331,21 +1187,18 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf edge_id; //type: uint32
         YLeaf label_count; //type: uint32
-
         class LabelBlock; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock> > label_block;
-
-
+        
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge
 
 
@@ -1357,12 +1210,11 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf label_time_created; //type: uint32
         YLeaf label_base; //type: uint32
@@ -1372,8 +1224,6 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlo
         YLeaf next_hop; //type: string
         YLeaf label_error; //type: L2VpnAdLsdErrEnum
         YLeafList status_vector; //type: list of  uint8
-
-
 
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock
 
@@ -1386,23 +1236,20 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf local_l2_router_id; //type: string
         YLeaf number_remote_edges; //type: uint32
-
         class LocalVplsId; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId
         class RemoteNlri; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId> local_vpls_id;
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri> > remote_nlri;
-
-
+        
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo
 
 
@@ -1414,15 +1261,13 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vpls_id_type; //type: L2VpnAdVplsIdEnum
-
         class Auto_; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_
         class TwoByteAs; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs
         class V4Addr; //type: L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr
@@ -1430,8 +1275,7 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId : p
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_> auto_;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs> two_byte_as;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr> v4_addr;
-
-
+        
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId
 
 
@@ -1443,17 +1287,14 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Au
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf asn; //type: uint16
         YLeaf vpn_id; //type: uint32
-
-
 
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_
 
@@ -1466,17 +1307,14 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Tw
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf two_byte_as; //type: uint16
         YLeaf four_byte_index; //type: uint32
-
-
 
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs
 
@@ -1489,17 +1327,14 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_address; //type: string
         YLeaf two_byte_index; //type: uint16
-
-
 
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr
 
@@ -1512,19 +1347,16 @@ class L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nlri_time_created; //type: uint32
         YLeaf local_address; //type: string
         YLeaf remote_address; //type: string
         YLeaf remote_l2_router_id; //type: string
-
-
 
 }; // L2Vpn::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri
 
@@ -1537,18 +1369,15 @@ class L2Vpn::FlexibleXconnectServiceSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number_fxc; //type: uint32
         YLeaf number_fxc_up; //type: uint32
         YLeaf number_fxc_down; //type: uint32
-
-
 
 }; // L2Vpn::FlexibleXconnectServiceSummary
 
@@ -1561,19 +1390,16 @@ class L2Vpn::MainInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MainInterface; //type: L2Vpn::MainInterfaces::MainInterface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::MainInterfaces::MainInterface> > main_interface;
-
-
+        
 }; // L2Vpn::MainInterfaces
 
 
@@ -1585,22 +1411,19 @@ class L2Vpn::MainInterfaces::MainInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
         class MainInterfaceInstances; //type: L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances
         class MainInterfaceInfo; //type: L2Vpn::MainInterfaces::MainInterface::MainInterfaceInfo
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::MainInterfaces::MainInterface::MainInterfaceInfo> main_interface_info;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances> main_interface_instances;
-
-
+        
 }; // L2Vpn::MainInterfaces::MainInterface
 
 
@@ -1612,19 +1435,16 @@ class L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MainInterfaceInstance; //type: L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance> > main_interface_instance;
-
-
+        
 }; // L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances
 
 
@@ -1636,22 +1456,19 @@ class L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instance; //type: int32
-
         class MainInterfaceInstanceInfo; //type: L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance::MainInterfaceInstanceInfo
         class MainInterfaceInstanceBridgePorts; //type: L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance::MainInterfaceInstanceBridgePorts
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance::MainInterfaceInstanceBridgePorts> main_interface_instance_bridge_ports;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance::MainInterfaceInstanceInfo> main_interface_instance_info;
-
-
+        
 }; // L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance
 
 
@@ -1663,12 +1480,11 @@ class L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf configured_instance; //type: uint32
         YLeaf flush_count; //type: uint32
@@ -1676,8 +1492,6 @@ class L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfac
         YLeaf instance_flags; //type: uint32
         YLeaf instance_id; //type: uint32
         YLeaf instance_state; //type: L2VpnMainIfInstanceStateEnum
-
-
 
 }; // L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance::MainInterfaceInstanceInfo
 
@@ -1690,19 +1504,16 @@ class L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MainInterfaceInstanceBridgePort; //type: L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance::MainInterfaceInstanceBridgePorts::MainInterfaceInstanceBridgePort
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance::MainInterfaceInstanceBridgePorts::MainInterfaceInstanceBridgePort> > main_interface_instance_bridge_port;
-
-
+        
 }; // L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance::MainInterfaceInstanceBridgePorts
 
 
@@ -1714,18 +1525,15 @@ class L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bridge_port; //type: string
         YLeaf bridge_port_xr; //type: string
         YLeaf instance_id; //type: uint32
-
-
 
 }; // L2Vpn::MainInterfaces::MainInterface::MainInterfaceInstances::MainInterfaceInstance::MainInterfaceInstanceBridgePorts::MainInterfaceInstanceBridgePort
 
@@ -1738,18 +1546,15 @@ class L2Vpn::MainInterfaces::MainInterface::MainInterfaceInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf main_interface_handle; //type: string
         YLeaf protected_; //type: L2VpnMainIfProtectectedEnum
         YLeaf interface_count; //type: uint32
-
-
 
 }; // L2Vpn::MainInterfaces::MainInterface::MainInterfaceInfo
 
@@ -1762,21 +1567,18 @@ class L2Vpn::IccpSm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IccpSmSummary; //type: L2Vpn::IccpSm::IccpSmSummary
         class IccpGroups; //type: L2Vpn::IccpSm::IccpGroups
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups> iccp_groups;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpSmSummary> iccp_sm_summary;
-
-
+        
 }; // L2Vpn::IccpSm
 
 
@@ -1788,12 +1590,11 @@ class L2Vpn::IccpSm::IccpSmSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf groups; //type: uint32
         YLeaf unresolved_groups; //type: uint32
@@ -1810,8 +1611,6 @@ class L2Vpn::IccpSm::IccpSmSummary : public Entity
         YLeaf unsynchronized_ports; //type: uint32
         YLeaf reverting_ports; //type: uint32
 
-
-
 }; // L2Vpn::IccpSm::IccpSmSummary
 
 
@@ -1823,19 +1622,16 @@ class L2Vpn::IccpSm::IccpGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IccpGroup; //type: L2Vpn::IccpSm::IccpGroups::IccpGroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups::IccpGroup> > iccp_group;
-
-
+        
 }; // L2Vpn::IccpSm::IccpGroups
 
 
@@ -1847,22 +1643,19 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf group_id; //type: uint32
-
         class IccpGroupInfo; //type: L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo
         class IccpPorts; //type: L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo> iccp_group_info;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts> iccp_ports;
-
-
+        
 }; // L2Vpn::IccpSm::IccpGroups::IccpGroup
 
 
@@ -1874,12 +1667,11 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf group_id; //type: uint32
         YLeaf local_node_id; //type: uint8
@@ -1887,12 +1679,10 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo : public Entity
         YLeaf state; //type: IccpSmStateEnum
         YLeaf iccp_transport_up; //type: boolean
         YLeaf iccp_member_up; //type: boolean
-
         class Ports; //type: L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports> > ports;
-
-
+        
 }; // L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo
 
 
@@ -1904,23 +1694,20 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf mac_flush_tcn; //type: boolean
-
         class LocalPort; //type: L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::LocalPort
         class RemotePort; //type: L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::RemotePort
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::LocalPort> local_port;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::RemotePort> remote_port;
-
-
+        
 }; // L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports
 
 
@@ -1932,12 +1719,11 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::LocalPort : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_state; //type: IccpSmPortStateEnum
         YLeaf port_fail_code; //type: uint8
@@ -1946,8 +1732,6 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::LocalPort : pu
         YLeaf vlan_vector; //type: string
         YLeaf reversion_time; //type: uint32
         YLeaf reversion_time_remaining; //type: uint32
-
-
 
 }; // L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::LocalPort
 
@@ -1960,12 +1744,11 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::RemotePort : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_state; //type: IccpSmPortStateEnum
         YLeaf port_fail_code; //type: uint8
@@ -1974,8 +1757,6 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::RemotePort : p
         YLeaf vlan_vector; //type: string
         YLeaf reversion_time; //type: uint32
         YLeaf reversion_time_remaining; //type: uint32
-
-
 
 }; // L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports::RemotePort
 
@@ -1988,19 +1769,16 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IccpPort; //type: L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort> > iccp_port;
-
-
+        
 }; // L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts
 
 
@@ -2012,24 +1790,21 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface; //type: string
         YLeaf interface_name; //type: string
         YLeaf mac_flush_tcn; //type: boolean
-
         class LocalPort; //type: L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::LocalPort
         class RemotePort; //type: L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::RemotePort
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::LocalPort> local_port;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::RemotePort> remote_port;
-
-
+        
 }; // L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort
 
 
@@ -2041,12 +1816,11 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::LocalPort : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_state; //type: IccpSmPortStateEnum
         YLeaf port_fail_code; //type: uint8
@@ -2055,8 +1829,6 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::LocalPort : pub
         YLeaf vlan_vector; //type: string
         YLeaf reversion_time; //type: uint32
         YLeaf reversion_time_remaining; //type: uint32
-
-
 
 }; // L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::LocalPort
 
@@ -2069,12 +1841,11 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::RemotePort : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_state; //type: IccpSmPortStateEnum
         YLeaf port_fail_code; //type: uint8
@@ -2083,8 +1854,6 @@ class L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::RemotePort : pu
         YLeaf vlan_vector; //type: string
         YLeaf reversion_time; //type: uint32
         YLeaf reversion_time_remaining; //type: uint32
-
-
 
 }; // L2Vpn::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::RemotePort
 
@@ -2097,12 +1866,11 @@ class L2Vpn::BridgeSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number_groups; //type: uint32
         YLeaf number_bridge_domains; //type: uint32
@@ -2128,8 +1896,6 @@ class L2Vpn::BridgeSummary : public Entity
         YLeaf partially_programmed_pseudowires; //type: uint32
         YLeaf partially_programmed_a_cs; //type: uint32
 
-
-
 }; // L2Vpn::BridgeSummary
 
 
@@ -2141,19 +1907,17 @@ class L2Vpn::Nsr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf process_role; //type: uint8
         YLeaf process_state; //type: uint8
         YLeaf sync_flags; //type: uint32
         YLeaf sw_install_in_progress; //type: boolean
         YLeafList state_transition_time; //type: list of  uint32
-
         class FailoverStatus; //type: L2Vpn::Nsr::FailoverStatus
         class NsrStatus; //type: L2Vpn::Nsr::NsrStatus
         class IssuStatus; //type: L2Vpn::Nsr::IssuStatus
@@ -2167,8 +1931,7 @@ class L2Vpn::Nsr : public Entity
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Nsr::NsrStatus> nsr_status;
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Nsr::ReportCard> > report_card;
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Nsr::XidInfo> > xid_info;
-
-
+        
 }; // L2Vpn::Nsr
 
 
@@ -2180,18 +1943,15 @@ class L2Vpn::Nsr::FailoverStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf triggered_time; //type: uint32
         YLeaf start_time; //type: uint32
         YLeaf master_time; //type: uint32
-
-
 
 }; // L2Vpn::Nsr::FailoverStatus
 
@@ -2204,22 +1964,19 @@ class L2Vpn::Nsr::NsrStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf role; //type: L2VpnProcRoleEnum
-
         class IdtStatus; //type: L2Vpn::Nsr::NsrStatus::IdtStatus
         class PreviOusIdtStatus; //type: L2Vpn::Nsr::NsrStatus::PreviOusIdtStatus
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Nsr::NsrStatus::IdtStatus> idt_status;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Nsr::NsrStatus::PreviOusIdtStatus> previ_ous_idt_status;
-
-
+        
 }; // L2Vpn::Nsr::NsrStatus
 
 
@@ -2231,12 +1988,11 @@ class L2Vpn::Nsr::NsrStatus::IdtStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sync_status; //type: L2VpnSyncStatusEnum
         YLeaf not_ready_reason; //type: L2VpnProcNsrNotReadyReasonEnum
@@ -2244,8 +2000,6 @@ class L2Vpn::Nsr::NsrStatus::IdtStatus : public Entity
         YLeaf idt_end_time; //type: uint32
         YLeaf declare_time; //type: uint32
         YLeaf withdraw_time; //type: uint32
-
-
 
 }; // L2Vpn::Nsr::NsrStatus::IdtStatus
 
@@ -2258,12 +2012,11 @@ class L2Vpn::Nsr::NsrStatus::PreviOusIdtStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sync_status; //type: L2VpnSyncStatusEnum
         YLeaf not_ready_reason; //type: L2VpnProcNsrNotReadyReasonEnum
@@ -2271,8 +2024,6 @@ class L2Vpn::Nsr::NsrStatus::PreviOusIdtStatus : public Entity
         YLeaf idt_end_time; //type: uint32
         YLeaf declare_time; //type: uint32
         YLeaf withdraw_time; //type: uint32
-
-
 
 }; // L2Vpn::Nsr::NsrStatus::PreviOusIdtStatus
 
@@ -2285,22 +2036,19 @@ class L2Vpn::Nsr::IssuStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf role; //type: L2VpnProcRoleEnum
-
         class IdtStatus; //type: L2Vpn::Nsr::IssuStatus::IdtStatus
         class PreviOusIdtStatus; //type: L2Vpn::Nsr::IssuStatus::PreviOusIdtStatus
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Nsr::IssuStatus::IdtStatus> idt_status;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Nsr::IssuStatus::PreviOusIdtStatus> previ_ous_idt_status;
-
-
+        
 }; // L2Vpn::Nsr::IssuStatus
 
 
@@ -2312,12 +2060,11 @@ class L2Vpn::Nsr::IssuStatus::IdtStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sync_status; //type: L2VpnSyncStatusEnum
         YLeaf not_ready_reason; //type: L2VpnProcNsrNotReadyReasonEnum
@@ -2325,8 +2072,6 @@ class L2Vpn::Nsr::IssuStatus::IdtStatus : public Entity
         YLeaf idt_end_time; //type: uint32
         YLeaf declare_time; //type: uint32
         YLeaf withdraw_time; //type: uint32
-
-
 
 }; // L2Vpn::Nsr::IssuStatus::IdtStatus
 
@@ -2339,12 +2084,11 @@ class L2Vpn::Nsr::IssuStatus::PreviOusIdtStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sync_status; //type: L2VpnSyncStatusEnum
         YLeaf not_ready_reason; //type: L2VpnProcNsrNotReadyReasonEnum
@@ -2352,8 +2096,6 @@ class L2Vpn::Nsr::IssuStatus::PreviOusIdtStatus : public Entity
         YLeaf idt_end_time; //type: uint32
         YLeaf declare_time; //type: uint32
         YLeaf withdraw_time; //type: uint32
-
-
 
 }; // L2Vpn::Nsr::IssuStatus::PreviOusIdtStatus
 
@@ -2366,17 +2108,14 @@ class L2Vpn::Nsr::XidInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf app_type; //type: L2VpnIdMgrAppEnum
         YLeaf sent_ids; //type: uint32
-
-
 
 }; // L2Vpn::Nsr::XidInfo
 
@@ -2389,20 +2128,17 @@ class L2Vpn::Nsr::ReportCard : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf collaborator_is_connected; //type: boolean
         YLeaf connection_change_time; //type: uint32
         YLeaf collaborator_idt_done; //type: boolean
         YLeaf idt_time; //type: uint32
         YLeaf collaborator_skipped; //type: boolean
-
-
 
 }; // L2Vpn::Nsr::ReportCard
 
@@ -2415,20 +2151,17 @@ class L2Vpn::Nsr::EventHistory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf previous_state; //type: uint8
         YLeaf new_state; //type: uint8
         YLeaf process_event; //type: uint16
         YLeaf process_collaborator; //type: uint16
         YLeaf event_timestamp; //type: uint32
-
-
 
 }; // L2Vpn::Nsr::EventHistory
 
@@ -2441,12 +2174,11 @@ class L2Vpn::GlobalSettings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pw_grouping_enabled; //type: boolean
         YLeaf pw_status_enabled; //type: boolean
@@ -2462,8 +2194,6 @@ class L2Vpn::GlobalSettings : public Entity
         YLeaf process_fsm; //type: string
         YLeaf going_active; //type: boolean
 
-
-
 }; // L2Vpn::GlobalSettings
 
 
@@ -2475,19 +2205,16 @@ class L2Vpn::Pwr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Summary; //type: L2Vpn::Pwr::Summary
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Pwr::Summary> summary;
-
-
+        
 }; // L2Vpn::Pwr
 
 
@@ -2499,26 +2226,23 @@ class L2Vpn::Pwr::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bgp_router_id; //type: string
         YLeaf cfg_router_id; //type: string
         YLeaf bgp_as; //type: uint32
         YLeaf cfg_global_id; //type: uint32
         YLeaf l2vpn_has_bgp_eod; //type: boolean
-
         class RdAuto; //type: L2Vpn::Pwr::Summary::RdAuto
         class RdConfigured; //type: L2Vpn::Pwr::Summary::RdConfigured
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Pwr::Summary::RdAuto> rd_auto;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Pwr::Summary::RdConfigured> rd_configured;
-
-
+        
 }; // L2Vpn::Pwr::Summary
 
 
@@ -2530,15 +2254,13 @@ class L2Vpn::Pwr::Summary::RdAuto : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rd; //type: L2VpnAdRdEnum
-
         class Auto_; //type: L2Vpn::Pwr::Summary::RdAuto::Auto_
         class TwoByteAs; //type: L2Vpn::Pwr::Summary::RdAuto::TwoByteAs
         class FourByteAs; //type: L2Vpn::Pwr::Summary::RdAuto::FourByteAs
@@ -2548,8 +2270,7 @@ class L2Vpn::Pwr::Summary::RdAuto : public Entity
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Pwr::Summary::RdAuto::FourByteAs> four_byte_as;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Pwr::Summary::RdAuto::TwoByteAs> two_byte_as;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Pwr::Summary::RdAuto::V4Addr> v4_addr;
-
-
+        
 }; // L2Vpn::Pwr::Summary::RdAuto
 
 
@@ -2561,17 +2282,14 @@ class L2Vpn::Pwr::Summary::RdAuto::Auto_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_id; //type: string
         YLeaf auto_index; //type: uint16
-
-
 
 }; // L2Vpn::Pwr::Summary::RdAuto::Auto_
 
@@ -2584,17 +2302,14 @@ class L2Vpn::Pwr::Summary::RdAuto::TwoByteAs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf two_byte_as; //type: uint16
         YLeaf four_byte_index; //type: uint32
-
-
 
 }; // L2Vpn::Pwr::Summary::RdAuto::TwoByteAs
 
@@ -2607,17 +2322,14 @@ class L2Vpn::Pwr::Summary::RdAuto::FourByteAs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf four_byte_as; //type: uint32
         YLeaf two_byte_index; //type: uint16
-
-
 
 }; // L2Vpn::Pwr::Summary::RdAuto::FourByteAs
 
@@ -2630,17 +2342,14 @@ class L2Vpn::Pwr::Summary::RdAuto::V4Addr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_address; //type: string
         YLeaf two_byte_index; //type: uint16
-
-
 
 }; // L2Vpn::Pwr::Summary::RdAuto::V4Addr
 
@@ -2653,15 +2362,13 @@ class L2Vpn::Pwr::Summary::RdConfigured : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rd; //type: L2VpnAdRdEnum
-
         class Auto_; //type: L2Vpn::Pwr::Summary::RdConfigured::Auto_
         class TwoByteAs; //type: L2Vpn::Pwr::Summary::RdConfigured::TwoByteAs
         class FourByteAs; //type: L2Vpn::Pwr::Summary::RdConfigured::FourByteAs
@@ -2671,8 +2378,7 @@ class L2Vpn::Pwr::Summary::RdConfigured : public Entity
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Pwr::Summary::RdConfigured::FourByteAs> four_byte_as;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Pwr::Summary::RdConfigured::TwoByteAs> two_byte_as;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Pwr::Summary::RdConfigured::V4Addr> v4_addr;
-
-
+        
 }; // L2Vpn::Pwr::Summary::RdConfigured
 
 
@@ -2684,17 +2390,14 @@ class L2Vpn::Pwr::Summary::RdConfigured::Auto_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf router_id; //type: string
         YLeaf auto_index; //type: uint16
-
-
 
 }; // L2Vpn::Pwr::Summary::RdConfigured::Auto_
 
@@ -2707,17 +2410,14 @@ class L2Vpn::Pwr::Summary::RdConfigured::TwoByteAs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf two_byte_as; //type: uint16
         YLeaf four_byte_index; //type: uint32
-
-
 
 }; // L2Vpn::Pwr::Summary::RdConfigured::TwoByteAs
 
@@ -2730,17 +2430,14 @@ class L2Vpn::Pwr::Summary::RdConfigured::FourByteAs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf four_byte_as; //type: uint32
         YLeaf two_byte_index; //type: uint16
-
-
 
 }; // L2Vpn::Pwr::Summary::RdConfigured::FourByteAs
 
@@ -2753,17 +2450,14 @@ class L2Vpn::Pwr::Summary::RdConfigured::V4Addr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_address; //type: string
         YLeaf two_byte_index; //type: uint16
-
-
 
 }; // L2Vpn::Pwr::Summary::RdConfigured::V4Addr
 
@@ -2776,19 +2470,16 @@ class L2Vpn::XconnectMp2MpCe2Ces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class XconnectMp2MpCe2Ce; //type: L2Vpn::XconnectMp2MpCe2Ces::XconnectMp2MpCe2Ce
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::XconnectMp2MpCe2Ces::XconnectMp2MpCe2Ce> > xconnect_mp2mp_ce2ce;
-
-
+        
 }; // L2Vpn::XconnectMp2MpCe2Ces
 
 
@@ -2800,12 +2491,11 @@ class L2Vpn::XconnectMp2MpCe2Ces::XconnectMp2MpCe2Ce : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf group_name; //type: string
         YLeaf mp2_mp_name; //type: string
@@ -2814,8 +2504,6 @@ class L2Vpn::XconnectMp2MpCe2Ces::XconnectMp2MpCe2Ce : public Entity
         YLeaf local_customer_edge_id; //type: uint16
         YLeaf remote_customer_edge_id; //type: uint16
         YLeaf ce_added; //type: boolean
-
-
 
 }; // L2Vpn::XconnectMp2MpCe2Ces::XconnectMp2MpCe2Ce
 
@@ -2828,19 +2516,16 @@ class L2Vpn::Xconnects : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Xconnect; //type: L2Vpn::Xconnects::Xconnect
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect> > xconnect;
-
-
+        
 }; // L2Vpn::Xconnects
 
 
@@ -2852,12 +2537,11 @@ class L2Vpn::Xconnects::Xconnect : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf group_name; //type: string
         YLeaf xconnect_name; //type: string
@@ -2869,7 +2553,6 @@ class L2Vpn::Xconnects::Xconnect : public Entity
         YLeaf diag_mask; //type: uint32
         YLeaf description; //type: string
         YLeaf is_mp2mp; //type: boolean
-
         class Backup; //type: L2Vpn::Xconnects::Xconnect::Backup
         class Segment1; //type: L2Vpn::Xconnects::Xconnect::Segment1
         class Segment2; //type: L2Vpn::Xconnects::Xconnect::Segment2
@@ -2881,8 +2564,7 @@ class L2Vpn::Xconnects::Xconnect : public Entity
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Ce2Ce> ce2ce;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Segment1> segment1;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Segment2> segment2;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect
 
 
@@ -2894,22 +2576,19 @@ class L2Vpn::Xconnects::Xconnect::Backup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf segment_type; //type: L2VpnSegmentEnum
-
         class AttachmentCircuit; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit
         class PseudoWire; //type: L2Vpn::Xconnects::Xconnect::Backup::PseudoWire
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit> attachment_circuit;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::PseudoWire> pseudo_wire;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup
 
 
@@ -2921,12 +2600,11 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf state; //type: L2VpnSegmentStateEnum
         YLeaf msti; //type: string
@@ -2951,7 +2629,6 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit : public Entity
         YLeaf redundancy_object_id; //type: uint64
         YLeaf is_ac_partially_programmed; //type: boolean
         YLeaf evpn_internal_label; //type: uint32
-
         class Interface; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
         class Statistics; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics
         class L2VpnProtection; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::L2VpnProtection
@@ -2959,8 +2636,7 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit : public Entity
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface> interface;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::L2VpnProtection> l2vpn_protection;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics> statistics;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit
 
 
@@ -2972,22 +2648,19 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf mtu; //type: uint32
         YLeaf payload_bytes; //type: uint16
-
         class Parameters; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters> parameters;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 
 
@@ -2999,15 +2672,13 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: L2VpnInterfaceEnum
-
         class Ethernet; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet
         class Vlan; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan
         class Tdm; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm
@@ -3023,8 +2694,7 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw> pseudowire_iw;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm> tdm;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan> vlan;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters
 
 
@@ -3036,16 +2706,13 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf xconnect_tags; //type: uint8
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet
 
@@ -3058,12 +2725,11 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf xconnect_tags; //type: uint8
         YLeaf vlan_rewrite_tag; //type: uint16
@@ -3071,12 +2737,10 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
         YLeaf encapsulation_type; //type: uint8
         YLeaf outer_tag; //type: uint16
         YLeafList rewrite_tag; //type: list of  uint16
-
         class VlanRange; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange> > vlan_range;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan
 
 
@@ -3088,17 +2752,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf lower; //type: uint16
         YLeaf upper; //type: uint16
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange
 
@@ -3111,22 +2772,19 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf timeslot_group; //type: string
         YLeaf timeslot_rate; //type: uint8
         YLeaf tdm_mode; //type: L2VpnTdmModeEnum
-
         class TdmOptions; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions> tdm_options;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm
 
 
@@ -3138,12 +2796,11 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf payload_bytes; //type: uint16
         YLeaf bit_rate; //type: uint32
@@ -3154,8 +2811,6 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
         YLeaf rtp_header_payload_type; //type: uint8
         YLeaf timestamp_clock_freq; //type: uint16
         YLeaf ssrc; //type: uint32
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions
 
@@ -3168,20 +2823,17 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf maximum_number_cells_packed; //type: uint16
         YLeaf maximum_number_cells_un_packed; //type: uint16
         YLeaf atm_mode; //type: L2VpnAtmModeEnum
         YLeaf vpi; //type: uint16
         YLeaf vci; //type: uint16
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm
 
@@ -3194,17 +2846,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fr_mode; //type: L2VpnFrModeEnum
         YLeaf dlci; //type: uint32
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr
 
@@ -3217,21 +2866,18 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: boolean
         YLeaf internal_label; //type: uint32
-
         class InterfaceList; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList> interface_list;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther
 
 
@@ -3243,21 +2889,18 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_list_name; //type: string
         YLeaf interface_list_id; //type: uint32
-
         class Interface_; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_> > interface;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList
 
 
@@ -3269,17 +2912,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf replicate_status; //type: IflistRepStatusEnum
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_
 
@@ -3292,21 +2932,18 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_valid; //type: boolean
         YLeaf internal_label; //type: uint32
-
         class InterfaceList; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList
 
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList> interface_list;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw
 
 
@@ -3318,21 +2955,18 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_list_name; //type: string
         YLeaf interface_list_id; //type: uint32
-
         class Interface_; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_> > interface;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList
 
 
@@ -3344,17 +2978,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Paramete
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf replicate_status; //type: IflistRepStatusEnum
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_
 
@@ -3367,13 +2998,11 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ImpostionStats; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats
         class DispostionStats; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats
@@ -3382,8 +3011,7 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics : public
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats> dispostion_stats;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats> impostion_stats;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber> sequence_number;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics
 
 
@@ -3395,13 +3023,11 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ImpositionStat; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat
         class ImpositionMtuDrop; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop
@@ -3420,8 +3046,7 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop> l2fsbi_drop;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast> multicast;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast> unknown_unicast;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats
 
 
@@ -3433,17 +3058,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat
 
@@ -3456,17 +3078,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop
 
@@ -3479,17 +3098,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop
 
@@ -3502,17 +3118,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop
 
@@ -3525,17 +3138,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast
 
@@ -3548,17 +3158,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast
 
@@ -3571,17 +3178,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast
 
@@ -3594,17 +3198,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Imposti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast
 
@@ -3617,13 +3218,11 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DispositionStat; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat
         class DispositionMtuDrop; //type: L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop
@@ -3652,8 +3251,7 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop> multicast_drop;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops> received_drops;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop> unicast_drop;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats
 
 
@@ -3665,17 +3263,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat
 
@@ -3688,17 +3283,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop
 
@@ -3711,17 +3303,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop
 
@@ -3734,17 +3323,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop
 
@@ -3757,17 +3343,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop
 
@@ -3780,17 +3363,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop
 
@@ -3803,17 +3383,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops
 
@@ -3826,17 +3403,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop
 
@@ -3849,17 +3423,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop
 
@@ -3872,17 +3443,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops
 
@@ -3895,17 +3463,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats
 
@@ -3918,17 +3483,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast
 
@@ -3941,17 +3503,14 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Dispost
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf packet_counts; //type: uint64
         YLeaf byte_counts; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove
 
@@ -3964,19 +3523,16 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Sequenc
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sequence_number_sent; //type: uint32
         YLeaf sequence_number_expected; //type: uint32
         YLeaf bypassed_inbound_sequence_packet; //type: uint64
         YLeaf bypassed_out_sequence_packet; //type: uint64
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber
 
@@ -3989,20 +3545,17 @@ class L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::L2VpnProtection : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf protection_type; //type: L2VpnProtectionEnum
         YLeaf protection_configured; //type: L2VpnProtectionRoleEnum
         YLeaf protection_name; //type: string
         YLeaf protected_name; //type: string
         YLeaf active; //type: boolean
-
-
 
 }; // L2Vpn::Xconnects::Xconnect::Backup::AttachmentCircuit::L2VpnProtection
 
@@ -4015,12 +3568,11 @@ class L2Vpn::Xconnects::Xconnect::Backup::PseudoWire : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf local_source_address; //type: string
         YLeaf ipv6_local_source_address; //type: string
@@ -4101,7 +3653,6 @@ class L2Vpn::Xconnects::Xconnect::Backup::PseudoWire : public Entity
         YLeaf admited_bw; //type: uint32
         YLeaf forward_class; //type: uint8
         YLeaf table_policy_name; //type: string
-
         class PeerId; //type: L2Vpn::Xconnects::Xconnect::Backup::PseudoWire::PeerId
         class EncapsulationInfo; //type: L2Vpn::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo
         class LocalInterface; //type: L2Vpn::Xconnects::Xconnect::Backup::PseudoWire::LocalInterface
@@ -4121,8 +3672,7 @@ class L2Vpn::Xconnects::Xconnect::Backup::PseudoWire : public Entity
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::PseudoWire::RemoteInterface> remote_interface;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::PseudoWire::RemoteSignalling> remote_signalling;
         std::shared_ptr<Cisco_IOS_XR_l2vpn_oper::L2Vpn::Xconnects::Xconnect::Backup::PseudoWire::Statistics> statistics;
-
-
+        
 }; // L2Vpn::Xconnects::Xconnect::Backup::PseudoWire
 
 

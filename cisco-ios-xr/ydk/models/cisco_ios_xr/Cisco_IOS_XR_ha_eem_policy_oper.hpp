@@ -18,17 +18,15 @@ class Eem : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class DirUser; //type: Eem::DirUser
         class EnvVariables; //type: Eem::EnvVariables
@@ -41,8 +39,7 @@ class Eem : public Entity
         std::shared_ptr<Cisco_IOS_XR_ha_eem_policy_oper::Eem::EnvVariables> env_variables;
         std::shared_ptr<Cisco_IOS_XR_ha_eem_policy_oper::Eem::RefreshTime> refresh_time;
         std::shared_ptr<Cisco_IOS_XR_ha_eem_policy_oper::Eem::RegPolicies> reg_policies;
-
-
+        
 }; // Eem
 
 
@@ -54,21 +51,18 @@ class Eem::DirUser : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Library; //type: Eem::DirUser::Library
         class Policy; //type: Eem::DirUser::Policy
 
         std::shared_ptr<Cisco_IOS_XR_ha_eem_policy_oper::Eem::DirUser::Library> library;
         std::shared_ptr<Cisco_IOS_XR_ha_eem_policy_oper::Eem::DirUser::Policy> policy;
-
-
+        
 }; // Eem::DirUser
 
 
@@ -80,17 +74,14 @@ class Eem::DirUser::Library : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy; //type: string
         YLeaf library; //type: string
-
-
 
 }; // Eem::DirUser::Library
 
@@ -103,17 +94,14 @@ class Eem::DirUser::Policy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy; //type: string
         YLeaf library; //type: string
-
-
 
 }; // Eem::DirUser::Policy
 
@@ -126,19 +114,16 @@ class Eem::EnvVariables : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EnvVariable; //type: Eem::EnvVariables::EnvVariable
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ha_eem_policy_oper::Eem::EnvVariables::EnvVariable> > env_variable;
-
-
+        
 }; // Eem::EnvVariables
 
 
@@ -150,18 +135,15 @@ class Eem::EnvVariables::EnvVariable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf name_xr; //type: string
         YLeaf value_; //type: string
-
-
 
 }; // Eem::EnvVariables::EnvVariable
 
@@ -174,16 +156,13 @@ class Eem::RefreshTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf refreshtime; //type: uint32
-
-
 
 }; // Eem::RefreshTime
 
@@ -196,19 +175,16 @@ class Eem::RegPolicies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class RegPolicy; //type: Eem::RegPolicies::RegPolicy
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ha_eem_policy_oper::Eem::RegPolicies::RegPolicy> > reg_policy;
-
-
+        
 }; // Eem::RegPolicies
 
 
@@ -220,12 +196,11 @@ class Eem::RegPolicies::RegPolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf type; //type: string
@@ -238,8 +213,6 @@ class Eem::RegPolicies::RegPolicy : public Entity
         YLeaf username; //type: string
         YLeaf description; //type: string
 
-
-
 }; // Eem::RegPolicies::RegPolicy
 
 
@@ -251,19 +224,16 @@ class Eem::AvlPolicies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AvlPolicy; //type: Eem::AvlPolicies::AvlPolicy
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ha_eem_policy_oper::Eem::AvlPolicies::AvlPolicy> > avl_policy;
-
-
+        
 }; // Eem::AvlPolicies
 
 
@@ -275,19 +245,16 @@ class Eem::AvlPolicies::AvlPolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf type; //type: string
         YLeaf time_created; //type: string
         YLeaf policy_name; //type: string
-
-
 
 }; // Eem::AvlPolicies::AvlPolicy
 

@@ -18,17 +18,15 @@ class ObjectTracking : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class TrackTypeInterface; //type: ObjectTracking::TrackTypeInterface
         class TrackBriefs; //type: ObjectTracking::TrackBriefs
@@ -47,8 +45,7 @@ class ObjectTracking : public Entity
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability> track_type_rtr_reachability;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief> track_type_rtr_reachability_brief;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks> tracks;
-
-
+        
 }; // ObjectTracking
 
 
@@ -60,19 +57,16 @@ class ObjectTracking::TrackTypeInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrackInfo; //type: ObjectTracking::TrackTypeInterface::TrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo> > track_info;
-
-
+        
 }; // ObjectTracking::TrackTypeInterface
 
 
@@ -84,12 +78,11 @@ class ObjectTracking::TrackTypeInterface::TrackInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tracke_name; //type: string
         YLeaf type; //type: TrackEnum
@@ -98,7 +91,6 @@ class ObjectTracking::TrackTypeInterface::TrackInfo : public Entity
         YLeaf seconds_last_change; //type: uint64
         YLeaf threshold_up; //type: uint32
         YLeaf threshold_down; //type: uint32
-
         class TrackTypeInfo; //type: ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo
         class BoolTracks; //type: ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks
         class ThresholdTracks; //type: ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks
@@ -110,8 +102,7 @@ class ObjectTracking::TrackTypeInterface::TrackInfo : public Entity
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks> threshold_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo> track_type_info;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces> tracking_interaces;
-
-
+        
 }; // ObjectTracking::TrackTypeInterface::TrackInfo
 
 
@@ -123,15 +114,13 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminant; //type: TrackEnum
-
         class InterfaceTracks; //type: ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks
         class RouteTracks; //type: ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks
         class IpslaTracks; //type: ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks
@@ -141,8 +130,7 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo : public Enti
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks> interface_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks> ipsla_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks> route_tracks;
-
-
+        
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo
 
 
@@ -154,16 +142,13 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTra
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks
 
@@ -176,19 +161,16 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: uint32
         YLeaf prefix_length; //type: uint32
         YLeaf vrf; //type: string
         YLeaf next_hop; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks
 
@@ -201,18 +183,15 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipsla_op_id; //type: uint32
         YLeaf rtt; //type: uint32
         YLeaf return_code; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks
 
@@ -225,19 +204,16 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf destination_address; //type: uint32
         YLeaf rate; //type: uint32
         YLeaf debounce_count; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks
 
@@ -250,19 +226,16 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BoolTrackInfo; //type: ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo> > bool_track_info;
-
-
+        
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks
 
 
@@ -274,18 +247,15 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf track_state; //type: boolean
         YLeaf with_not; //type: boolean
-
-
 
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo
 
@@ -298,19 +268,16 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThresholdTrackInfo; //type: ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo> > threshold_track_info;
-
-
+        
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks
 
 
@@ -322,18 +289,15 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdT
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf track_state; //type: boolean
         YLeaf weight; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
@@ -346,19 +310,16 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceTrackingInfo; //type: ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo> > interface_tracking_info;
-
-
+        
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces
 
 
@@ -370,16 +331,13 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::Interfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
@@ -392,17 +350,14 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::Delayed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_remaining; //type: uint32
         YLeaf track_state; //type: boolean
-
-
 
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::Delayed
 
@@ -415,19 +370,16 @@ class ObjectTracking::TrackBriefs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrackBrief; //type: ObjectTracking::TrackBriefs::TrackBrief
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief> > track_brief;
-
-
+        
 }; // ObjectTracking::TrackBriefs
 
 
@@ -439,20 +391,17 @@ class ObjectTracking::TrackBriefs::TrackBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf track_name; //type: string
-
         class TrackInfoBrief; //type: ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief> > track_info_brief;
-
-
+        
 }; // ObjectTracking::TrackBriefs::TrackBrief
 
 
@@ -464,22 +413,19 @@ class ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tracke_name; //type: string
         YLeaf type; //type: TrackEnum
         YLeaf track_state; //type: boolean
-
         class TrackTypeInfo; //type: ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo
 
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo> track_type_info;
-
-
+        
 }; // ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief
 
 
@@ -491,15 +437,13 @@ class ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminant; //type: TrackEnum
-
         class InterfaceTracks; //type: ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks
         class RouteTracks; //type: ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks
         class IpslaTracks; //type: ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
@@ -509,8 +453,7 @@ class ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo : p
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks> interface_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks> ipsla_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks> route_tracks;
-
-
+        
 }; // ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo
 
 
@@ -522,16 +465,13 @@ class ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks
 
@@ -544,19 +484,16 @@ class ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Ro
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: uint32
         YLeaf prefix_length; //type: uint32
         YLeaf vrf; //type: string
         YLeaf next_hop; //type: string
-
-
 
 }; // ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks
 
@@ -569,18 +506,15 @@ class ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipsla_op_id; //type: uint32
         YLeaf rtt; //type: uint32
         YLeaf return_code; //type: uint32
-
-
 
 }; // ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
 
@@ -593,19 +527,16 @@ class ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Bf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf destination_address; //type: uint32
         YLeaf rate; //type: uint32
         YLeaf debounce_count; //type: uint32
-
-
 
 }; // ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks
 
@@ -618,19 +549,16 @@ class ObjectTracking::TrackTypeRtrReachability : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrackInfo; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo> > track_info;
-
-
+        
 }; // ObjectTracking::TrackTypeRtrReachability
 
 
@@ -642,12 +570,11 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tracke_name; //type: string
         YLeaf type; //type: TrackEnum
@@ -656,7 +583,6 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo : public Entity
         YLeaf seconds_last_change; //type: uint64
         YLeaf threshold_up; //type: uint32
         YLeaf threshold_down; //type: uint32
-
         class TrackTypeInfo; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo
         class BoolTracks; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks
         class ThresholdTracks; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks
@@ -668,8 +594,7 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo : public Entity
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks> threshold_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo> track_type_info;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces> tracking_interaces;
-
-
+        
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo
 
 
@@ -681,15 +606,13 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminant; //type: TrackEnum
-
         class InterfaceTracks; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks
         class RouteTracks; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks
         class IpslaTracks; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks
@@ -699,8 +622,7 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo : publi
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks> interface_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks> ipsla_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks> route_tracks;
-
-
+        
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo
 
 
@@ -712,16 +634,13 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::Interf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks
 
@@ -734,19 +653,16 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteT
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: uint32
         YLeaf prefix_length; //type: uint32
         YLeaf vrf; //type: string
         YLeaf next_hop; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks
 
@@ -759,18 +675,15 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaT
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipsla_op_id; //type: uint32
         YLeaf rtt; //type: uint32
         YLeaf return_code; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks
 
@@ -783,19 +696,16 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTra
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf destination_address; //type: uint32
         YLeaf rate; //type: uint32
         YLeaf debounce_count; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks
 
@@ -808,19 +718,16 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BoolTrackInfo; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo> > bool_track_info;
-
-
+        
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks
 
 
@@ -832,18 +739,15 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrack
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf track_state; //type: boolean
         YLeaf with_not; //type: boolean
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo
 
@@ -856,19 +760,16 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThresholdTrackInfo; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo> > threshold_track_info;
-
-
+        
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks
 
 
@@ -880,18 +781,15 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::Thre
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf track_state; //type: boolean
         YLeaf weight; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
@@ -904,19 +802,16 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceTrackingInfo; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo> > interface_tracking_info;
-
-
+        
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces
 
 
@@ -928,16 +823,13 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
@@ -950,17 +842,14 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_remaining; //type: uint32
         YLeaf track_state; //type: boolean
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed
 
@@ -973,19 +862,16 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrackInfoBrief; //type: ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief> > track_info_brief;
-
-
+        
 }; // ObjectTracking::TrackTypeRtrReachabilityBrief
 
 
@@ -997,22 +883,19 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tracke_name; //type: string
         YLeaf type; //type: TrackEnum
         YLeaf track_state; //type: boolean
-
         class TrackTypeInfo; //type: ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo
 
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo> track_type_info;
-
-
+        
 }; // ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief
 
 
@@ -1024,15 +907,13 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminant; //type: TrackEnum
-
         class InterfaceTracks; //type: ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks
         class RouteTracks; //type: ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks
         class IpslaTracks; //type: ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
@@ -1042,8 +923,7 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeIn
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks> interface_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks> ipsla_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks> route_tracks;
-
-
+        
 }; // ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo
 
 
@@ -1055,16 +935,13 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks
 
@@ -1077,19 +954,16 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: uint32
         YLeaf prefix_length; //type: uint32
         YLeaf vrf; //type: string
         YLeaf next_hop; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks
 
@@ -1102,18 +976,15 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipsla_op_id; //type: uint32
         YLeaf rtt; //type: uint32
         YLeaf return_code; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
 
@@ -1126,19 +997,16 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf destination_address; //type: uint32
         YLeaf rate; //type: uint32
         YLeaf debounce_count; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks
 
@@ -1151,19 +1019,16 @@ class ObjectTracking::Tracks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Track; //type: ObjectTracking::Tracks::Track
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track> > track;
-
-
+        
 }; // ObjectTracking::Tracks
 
 
@@ -1175,20 +1040,17 @@ class ObjectTracking::Tracks::Track : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf track_name; //type: string
-
         class TrackInfo; //type: ObjectTracking::Tracks::Track::TrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo> > track_info;
-
-
+        
 }; // ObjectTracking::Tracks::Track
 
 
@@ -1200,12 +1062,11 @@ class ObjectTracking::Tracks::Track::TrackInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tracke_name; //type: string
         YLeaf type; //type: TrackEnum
@@ -1214,7 +1075,6 @@ class ObjectTracking::Tracks::Track::TrackInfo : public Entity
         YLeaf seconds_last_change; //type: uint64
         YLeaf threshold_up; //type: uint32
         YLeaf threshold_down; //type: uint32
-
         class TrackTypeInfo; //type: ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo
         class BoolTracks; //type: ObjectTracking::Tracks::Track::TrackInfo::BoolTracks
         class ThresholdTracks; //type: ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks
@@ -1226,8 +1086,7 @@ class ObjectTracking::Tracks::Track::TrackInfo : public Entity
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks> threshold_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo> track_type_info;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces> tracking_interaces;
-
-
+        
 }; // ObjectTracking::Tracks::Track::TrackInfo
 
 
@@ -1239,15 +1098,13 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminant; //type: TrackEnum
-
         class InterfaceTracks; //type: ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks
         class RouteTracks; //type: ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks
         class IpslaTracks; //type: ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks
@@ -1257,8 +1114,7 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo : public Entity
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks> interface_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks> ipsla_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks> route_tracks;
-
-
+        
 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo
 
 
@@ -1270,16 +1126,13 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks
 
@@ -1292,19 +1145,16 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: uint32
         YLeaf prefix_length; //type: uint32
         YLeaf vrf; //type: string
         YLeaf next_hop; //type: string
-
-
 
 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks
 
@@ -1317,18 +1167,15 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipsla_op_id; //type: uint32
         YLeaf rtt; //type: uint32
         YLeaf return_code; //type: uint32
-
-
 
 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks
 
@@ -1341,19 +1188,16 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf destination_address; //type: uint32
         YLeaf rate; //type: uint32
         YLeaf debounce_count; //type: uint32
-
-
 
 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks
 
@@ -1366,19 +1210,16 @@ class ObjectTracking::Tracks::Track::TrackInfo::BoolTracks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BoolTrackInfo; //type: ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo> > bool_track_info;
-
-
+        
 }; // ObjectTracking::Tracks::Track::TrackInfo::BoolTracks
 
 
@@ -1390,18 +1231,15 @@ class ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf track_state; //type: boolean
         YLeaf with_not; //type: boolean
-
-
 
 }; // ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo
 
@@ -1414,19 +1252,16 @@ class ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThresholdTrackInfo; //type: ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo> > threshold_track_info;
-
-
+        
 }; // ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks
 
 
@@ -1438,18 +1273,15 @@ class ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf track_state; //type: boolean
         YLeaf weight; //type: uint32
-
-
 
 }; // ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
@@ -1462,19 +1294,16 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceTrackingInfo; //type: ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo> > interface_tracking_info;
-
-
+        
 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces
 
 
@@ -1486,16 +1315,13 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
@@ -1508,17 +1334,14 @@ class ObjectTracking::Tracks::Track::TrackInfo::Delayed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_remaining; //type: uint32
         YLeaf track_state; //type: boolean
-
-
 
 }; // ObjectTracking::Tracks::Track::TrackInfo::Delayed
 
@@ -1531,19 +1354,16 @@ class ObjectTracking::TrackTypeIpv4RouteBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrackInfoBrief; //type: ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief> > track_info_brief;
-
-
+        
 }; // ObjectTracking::TrackTypeIpv4RouteBrief
 
 
@@ -1555,22 +1375,19 @@ class ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tracke_name; //type: string
         YLeaf type; //type: TrackEnum
         YLeaf track_state; //type: boolean
-
         class TrackTypeInfo; //type: ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo
 
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo> track_type_info;
-
-
+        
 }; // ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief
 
 
@@ -1582,15 +1399,13 @@ class ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminant; //type: TrackEnum
-
         class InterfaceTracks; //type: ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks
         class RouteTracks; //type: ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks
         class IpslaTracks; //type: ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
@@ -1600,8 +1415,7 @@ class ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo : p
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks> interface_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks> ipsla_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks> route_tracks;
-
-
+        
 }; // ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo
 
 
@@ -1613,16 +1427,13 @@ class ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks
 
@@ -1635,19 +1446,16 @@ class ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Ro
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: uint32
         YLeaf prefix_length; //type: uint32
         YLeaf vrf; //type: string
         YLeaf next_hop; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks
 
@@ -1660,18 +1468,15 @@ class ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipsla_op_id; //type: uint32
         YLeaf rtt; //type: uint32
         YLeaf return_code; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
 
@@ -1684,19 +1489,16 @@ class ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Bf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf destination_address; //type: uint32
         YLeaf rate; //type: uint32
         YLeaf debounce_count; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks
 
@@ -1709,19 +1511,16 @@ class ObjectTracking::TrackTypeIpv4Route : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrackInfo; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo> > track_info;
-
-
+        
 }; // ObjectTracking::TrackTypeIpv4Route
 
 
@@ -1733,12 +1532,11 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tracke_name; //type: string
         YLeaf type; //type: TrackEnum
@@ -1747,7 +1545,6 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo : public Entity
         YLeaf seconds_last_change; //type: uint64
         YLeaf threshold_up; //type: uint32
         YLeaf threshold_down; //type: uint32
-
         class TrackTypeInfo; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo
         class BoolTracks; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks
         class ThresholdTracks; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks
@@ -1759,8 +1556,7 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo : public Entity
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks> threshold_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo> track_type_info;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces> tracking_interaces;
-
-
+        
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo
 
 
@@ -1772,15 +1568,13 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminant; //type: TrackEnum
-
         class InterfaceTracks; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks
         class RouteTracks; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks
         class IpslaTracks; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks
@@ -1790,8 +1584,7 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo : public Enti
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks> interface_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks> ipsla_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks> route_tracks;
-
-
+        
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo
 
 
@@ -1803,16 +1596,13 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTra
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks
 
@@ -1825,19 +1615,16 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: uint32
         YLeaf prefix_length; //type: uint32
         YLeaf vrf; //type: string
         YLeaf next_hop; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks
 
@@ -1850,18 +1637,15 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipsla_op_id; //type: uint32
         YLeaf rtt; //type: uint32
         YLeaf return_code; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks
 
@@ -1874,19 +1658,16 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf destination_address; //type: uint32
         YLeaf rate; //type: uint32
         YLeaf debounce_count; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks
 
@@ -1899,19 +1680,16 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BoolTrackInfo; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo> > bool_track_info;
-
-
+        
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks
 
 
@@ -1923,18 +1701,15 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf track_state; //type: boolean
         YLeaf with_not; //type: boolean
-
-
 
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo
 
@@ -1947,19 +1722,16 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThresholdTrackInfo; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo> > threshold_track_info;
-
-
+        
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks
 
 
@@ -1971,18 +1743,15 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdT
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf track_state; //type: boolean
         YLeaf weight; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
@@ -1995,19 +1764,16 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InterfaceTrackingInfo; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo> > interface_tracking_info;
-
-
+        
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces
 
 
@@ -2019,16 +1785,13 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::Interfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
@@ -2041,17 +1804,14 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time_remaining; //type: uint32
         YLeaf track_state; //type: boolean
-
-
 
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed
 
@@ -2064,19 +1824,16 @@ class ObjectTracking::TrackTypeInterfaceBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TrackInfoBrief; //type: ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief> > track_info_brief;
-
-
+        
 }; // ObjectTracking::TrackTypeInterfaceBrief
 
 
@@ -2088,22 +1845,19 @@ class ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf tracke_name; //type: string
         YLeaf type; //type: TrackEnum
         YLeaf track_state; //type: boolean
-
         class TrackTypeInfo; //type: ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo
 
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo> track_type_info;
-
-
+        
 }; // ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief
 
 
@@ -2115,15 +1869,13 @@ class ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discriminant; //type: TrackEnum
-
         class InterfaceTracks; //type: ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks
         class RouteTracks; //type: ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks
         class IpslaTracks; //type: ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
@@ -2133,8 +1885,7 @@ class ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo : p
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks> interface_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks> ipsla_tracks;
         std::shared_ptr<Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks> route_tracks;
-
-
+        
 }; // ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo
 
 
@@ -2146,16 +1897,13 @@ class ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks
 
@@ -2168,19 +1916,16 @@ class ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Ro
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: uint32
         YLeaf prefix_length; //type: uint32
         YLeaf vrf; //type: string
         YLeaf next_hop; //type: string
-
-
 
 }; // ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks
 
@@ -2193,18 +1938,15 @@ class ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipsla_op_id; //type: uint32
         YLeaf rtt; //type: uint32
         YLeaf return_code; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks
 
@@ -2217,19 +1959,16 @@ class ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Bf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf destination_address; //type: uint32
         YLeaf rate; //type: uint32
         YLeaf debounce_count; //type: uint32
-
-
 
 }; // ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks
 

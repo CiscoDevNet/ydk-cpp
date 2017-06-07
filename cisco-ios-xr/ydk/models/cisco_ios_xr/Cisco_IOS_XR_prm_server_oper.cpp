@@ -14,7 +14,6 @@ HardwareModule::HardwareModule()
     nodes(std::make_shared<HardwareModule::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper";
 }
@@ -43,12 +42,12 @@ std::string HardwareModule::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<HardwareModule::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string HardwareModule::Nodes::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath HardwareModule::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HardwareModule::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> HardwareModule::Nodes::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HardwareModule::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ HardwareModule::Nodes::Node::Node()
     np(std::make_shared<HardwareModule::Nodes::Node::Np>())
 {
     np->parent = this;
-    children["np"] = np;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -273,7 +241,7 @@ std::string HardwareModule::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath HardwareModule::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "np")
     {
-        if(np != nullptr)
-        {
-            children["np"] = np;
-        }
-        else
+        if(np == nullptr)
         {
             np = std::make_shared<HardwareModule::Nodes::Node::Np>();
-            np->parent = this;
-            children["np"] = np;
         }
-        return children.at("np");
+        return np;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::get_children() const
 {
-    if(children.find("np") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(np != nullptr)
     {
-        if(np != nullptr)
-        {
-            children["np"] = np;
-        }
+        children["np"] = np;
     }
 
     return children;
@@ -351,10 +302,8 @@ HardwareModule::Nodes::Node::Np::Np()
 	,platform_drop(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop>())
 {
     cpu->parent = this;
-    children["cpu"] = cpu;
 
     platform_drop->parent = this;
-    children["platform-drop"] = platform_drop;
 
     yang_name = "np"; yang_parent_name = "node";
 }
@@ -385,7 +334,7 @@ std::string HardwareModule::Nodes::Node::Np::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::Nodes::Node::Np::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::Np::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -408,64 +357,38 @@ EntityPath HardwareModule::Nodes::Node::Np::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cpu")
     {
-        if(cpu != nullptr)
-        {
-            children["cpu"] = cpu;
-        }
-        else
+        if(cpu == nullptr)
         {
             cpu = std::make_shared<HardwareModule::Nodes::Node::Np::Cpu>();
-            cpu->parent = this;
-            children["cpu"] = cpu;
         }
-        return children.at("cpu");
+        return cpu;
     }
 
     if(child_yang_name == "platform-drop")
     {
-        if(platform_drop != nullptr)
-        {
-            children["platform-drop"] = platform_drop;
-        }
-        else
+        if(platform_drop == nullptr)
         {
             platform_drop = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop>();
-            platform_drop->parent = this;
-            children["platform-drop"] = platform_drop;
         }
-        return children.at("platform-drop");
+        return platform_drop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::Np::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::get_children() const
 {
-    if(children.find("cpu") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cpu != nullptr)
     {
-        if(cpu != nullptr)
-        {
-            children["cpu"] = cpu;
-        }
+        children["cpu"] = cpu;
     }
 
-    if(children.find("platform-drop") == children.end())
+    if(platform_drop != nullptr)
     {
-        if(platform_drop != nullptr)
-        {
-            children["platform-drop"] = platform_drop;
-        }
+        children["platform-drop"] = platform_drop;
     }
 
     return children;
@@ -480,7 +403,6 @@ HardwareModule::Nodes::Node::Np::Cpu::Cpu()
     indexes(std::make_shared<HardwareModule::Nodes::Node::Np::Cpu::Indexes>())
 {
     indexes->parent = this;
-    children["indexes"] = indexes;
 
     yang_name = "cpu"; yang_parent_name = "np";
 }
@@ -509,7 +431,7 @@ std::string HardwareModule::Nodes::Node::Np::Cpu::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::Nodes::Node::Np::Cpu::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::Np::Cpu::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -532,41 +454,24 @@ EntityPath HardwareModule::Nodes::Node::Np::Cpu::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "indexes")
     {
-        if(indexes != nullptr)
-        {
-            children["indexes"] = indexes;
-        }
-        else
+        if(indexes == nullptr)
         {
             indexes = std::make_shared<HardwareModule::Nodes::Node::Np::Cpu::Indexes>();
-            indexes->parent = this;
-            children["indexes"] = indexes;
         }
-        return children.at("indexes");
+        return indexes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::Np::Cpu::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::get_children() const
 {
-    if(children.find("indexes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(indexes != nullptr)
     {
-        if(indexes != nullptr)
-        {
-            children["indexes"] = indexes;
-        }
+        children["indexes"] = indexes;
     }
 
     return children;
@@ -614,7 +519,7 @@ std::string HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_segment_path() co
 
 }
 
-EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -637,15 +542,6 @@ EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_entity_path(Entity
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "index")
     {
         for(auto const & c : index_)
@@ -653,28 +549,24 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_>();
         c->parent = this;
-        index_.push_back(std::move(c));
-        children[segment_path] = index_.back();
-        return children.at(segment_path);
+        index_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : index_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -736,7 +628,7 @@ std::string HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_segment_p
 
 }
 
-EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -767,20 +659,12 @@ EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_entity_pat
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -826,10 +710,8 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::PlatformDrop()
 	,indxes(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes>())
 {
     idxes->parent = this;
-    children["idxes"] = idxes;
 
     indxes->parent = this;
-    children["indxes"] = indxes;
 
     yang_name = "platform-drop"; yang_parent_name = "np";
 }
@@ -860,7 +742,7 @@ std::string HardwareModule::Nodes::Node::Np::PlatformDrop::get_segment_path() co
 
 }
 
-EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -883,64 +765,38 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::get_entity_path(Entity
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "idxes")
     {
-        if(idxes != nullptr)
-        {
-            children["idxes"] = idxes;
-        }
-        else
+        if(idxes == nullptr)
         {
             idxes = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes>();
-            idxes->parent = this;
-            children["idxes"] = idxes;
         }
-        return children.at("idxes");
+        return idxes;
     }
 
     if(child_yang_name == "indxes")
     {
-        if(indxes != nullptr)
-        {
-            children["indxes"] = indxes;
-        }
-        else
+        if(indxes == nullptr)
         {
             indxes = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes>();
-            indxes->parent = this;
-            children["indxes"] = indxes;
         }
-        return children.at("indxes");
+        return indxes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::Np::PlatformDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::get_children() const
 {
-    if(children.find("idxes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(idxes != nullptr)
     {
-        if(idxes != nullptr)
-        {
-            children["idxes"] = idxes;
-        }
+        children["idxes"] = idxes;
     }
 
-    if(children.find("indxes") == children.end())
+    if(indxes != nullptr)
     {
-        if(indxes != nullptr)
-        {
-            children["indxes"] = indxes;
-        }
+        children["indxes"] = indxes;
     }
 
     return children;
@@ -988,7 +844,7 @@ std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_segment_p
 
 }
 
-EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1011,15 +867,6 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_entity_pat
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "indx")
     {
         for(auto const & c : indx)
@@ -1027,28 +874,24 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx>();
         c->parent = this;
-        indx.push_back(std::move(c));
-        children[segment_path] = indx.back();
-        return children.at(segment_path);
+        indx.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : indx)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1125,7 +968,7 @@ std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_seg
 
 }
 
-EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1161,20 +1004,12 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_enti
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1272,7 +1107,7 @@ std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_segment_pa
 
 }
 
-EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1295,15 +1130,6 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_entity_path
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "idx")
     {
         for(auto const & c : idx)
@@ -1311,28 +1137,24 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx>();
         c->parent = this;
-        idx.push_back(std::move(c));
-        children[segment_path] = idx.back();
-        return children.at(segment_path);
+        idx.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : idx)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1379,7 +1201,7 @@ std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_segme
 
 }
 
-EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1405,20 +1227,12 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_entity
 
 std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1443,7 +1257,6 @@ Prm::Prm()
     nodes(std::make_shared<Prm::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "prm"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper";
 }
@@ -1472,12 +1285,12 @@ std::string Prm::get_segment_path() const
 
 }
 
-EntityPath Prm::get_entity_path(Entity* ancestor) const
+const EntityPath Prm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1492,41 +1305,24 @@ EntityPath Prm::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Prm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Prm::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Prm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Prm::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -1594,7 +1390,7 @@ std::string Prm::Nodes::get_segment_path() const
 
 }
 
-EntityPath Prm::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Prm::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1617,15 +1413,6 @@ EntityPath Prm::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Prm::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -1633,28 +1420,24 @@ std::shared_ptr<Entity> Prm::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Prm::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Prm::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1671,7 +1454,6 @@ Prm::Nodes::Node::Node()
     server(std::make_shared<Prm::Nodes::Node::Server>())
 {
     server->parent = this;
-    children["server"] = server;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -1702,7 +1484,7 @@ std::string Prm::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Prm::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Prm::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1726,41 +1508,24 @@ EntityPath Prm::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Prm::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "server")
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
-        else
+        if(server == nullptr)
         {
             server = std::make_shared<Prm::Nodes::Node::Server>();
-            server->parent = this;
-            children["server"] = server;
         }
-        return children.at("server");
+        return server;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Prm::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::get_children() const
 {
-    if(children.find("server") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(server != nullptr)
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
+        children["server"] = server;
     }
 
     return children;
@@ -1779,7 +1544,6 @@ Prm::Nodes::Node::Server::Server()
     resource(std::make_shared<Prm::Nodes::Node::Server::Resource>())
 {
     resource->parent = this;
-    children["resource"] = resource;
 
     yang_name = "server"; yang_parent_name = "node";
 }
@@ -1808,7 +1572,7 @@ std::string Prm::Nodes::Node::Server::get_segment_path() const
 
 }
 
-EntityPath Prm::Nodes::Node::Server::get_entity_path(Entity* ancestor) const
+const EntityPath Prm::Nodes::Node::Server::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1831,41 +1595,24 @@ EntityPath Prm::Nodes::Node::Server::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Prm::Nodes::Node::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "resource")
     {
-        if(resource != nullptr)
-        {
-            children["resource"] = resource;
-        }
-        else
+        if(resource == nullptr)
         {
             resource = std::make_shared<Prm::Nodes::Node::Server::Resource>();
-            resource->parent = this;
-            children["resource"] = resource;
         }
-        return children.at("resource");
+        return resource;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Prm::Nodes::Node::Server::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::get_children() const
 {
-    if(children.find("resource") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(resource != nullptr)
     {
-        if(resource != nullptr)
-        {
-            children["resource"] = resource;
-        }
+        children["resource"] = resource;
     }
 
     return children;
@@ -1880,7 +1627,6 @@ Prm::Nodes::Node::Server::Resource::Resource()
     indexes(std::make_shared<Prm::Nodes::Node::Server::Resource::Indexes>())
 {
     indexes->parent = this;
-    children["indexes"] = indexes;
 
     yang_name = "resource"; yang_parent_name = "server";
 }
@@ -1909,7 +1655,7 @@ std::string Prm::Nodes::Node::Server::Resource::get_segment_path() const
 
 }
 
-EntityPath Prm::Nodes::Node::Server::Resource::get_entity_path(Entity* ancestor) const
+const EntityPath Prm::Nodes::Node::Server::Resource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1932,41 +1678,24 @@ EntityPath Prm::Nodes::Node::Server::Resource::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "indexes")
     {
-        if(indexes != nullptr)
-        {
-            children["indexes"] = indexes;
-        }
-        else
+        if(indexes == nullptr)
         {
             indexes = std::make_shared<Prm::Nodes::Node::Server::Resource::Indexes>();
-            indexes->parent = this;
-            children["indexes"] = indexes;
         }
-        return children.at("indexes");
+        return indexes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Prm::Nodes::Node::Server::Resource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::get_children() const
 {
-    if(children.find("indexes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(indexes != nullptr)
     {
-        if(indexes != nullptr)
-        {
-            children["indexes"] = indexes;
-        }
+        children["indexes"] = indexes;
     }
 
     return children;
@@ -2014,7 +1743,7 @@ std::string Prm::Nodes::Node::Server::Resource::Indexes::get_segment_path() cons
 
 }
 
-EntityPath Prm::Nodes::Node::Server::Resource::Indexes::get_entity_path(Entity* ancestor) const
+const EntityPath Prm::Nodes::Node::Server::Resource::Indexes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2037,15 +1766,6 @@ EntityPath Prm::Nodes::Node::Server::Resource::Indexes::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "index")
     {
         for(auto const & c : index_)
@@ -2053,28 +1773,24 @@ std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Prm::Nodes::Node::Server::Resource::Indexes::Index_>();
         c->parent = this;
-        index_.push_back(std::move(c));
-        children[segment_path] = index_.back();
-        return children.at(segment_path);
+        index_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Prm::Nodes::Node::Server::Resource::Indexes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::Indexes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : index_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2142,7 +1858,7 @@ std::string Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_segment_pat
 
 }
 
-EntityPath Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_entity_path(Entity* ancestor) const
+const EntityPath Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2175,20 +1891,12 @@ EntityPath Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_entity_path(
 
 std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

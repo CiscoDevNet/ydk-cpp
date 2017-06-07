@@ -17,9 +17,6 @@ class ObjectIdentityIdentity : public virtual Identity
         ~ObjectIdentityIdentity();
 
 
-
-
-
 }; // ObjectIdentityIdentity
 
 

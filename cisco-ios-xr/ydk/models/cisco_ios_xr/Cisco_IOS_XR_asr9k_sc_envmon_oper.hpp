@@ -18,23 +18,20 @@ class EnvironmentalMonitoring : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Racks; //type: EnvironmentalMonitoring::Racks
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks> racks;
-
-
+        
 }; // EnvironmentalMonitoring
 
 
@@ -46,19 +43,16 @@ class EnvironmentalMonitoring::Racks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rack; //type: EnvironmentalMonitoring::Racks::Rack
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack> > rack;
-
-
+        
 }; // EnvironmentalMonitoring::Racks
 
 
@@ -70,20 +64,17 @@ class EnvironmentalMonitoring::Racks::Rack : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rack; //type: int32
-
         class Slots; //type: EnvironmentalMonitoring::Racks::Rack::Slots
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots> slots;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack
 
 
@@ -95,19 +86,16 @@ class EnvironmentalMonitoring::Racks::Rack::Slots : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Slot; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot> > slot;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots
 
 
@@ -119,20 +107,17 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf slot; //type: string
-
         class Modules; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules> modules;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot
 
 
@@ -144,19 +129,16 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Module; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module> > module;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules
 
 
@@ -168,22 +150,19 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf module; //type: string
-
         class Power; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power
         class SensorTypes; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power> power;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes> sensor_types;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module
 
 
@@ -195,19 +174,16 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PowerBag; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag> power_bag;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power
 
 
@@ -219,12 +195,11 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf power_value; //type: int32
         YLeaf power_max_value; //type: int32
@@ -237,8 +212,6 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power:
         YLeaf power_oper_state; //type: uint32
         YLeaf power_state_enter_reason; //type: string
 
-
-
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag
 
 
@@ -250,19 +223,16 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SensorType; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType> > sensor_type;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes
 
 
@@ -274,20 +244,17 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: string
-
         class SensorNames; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames> sensor_names;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType
 
 
@@ -299,19 +266,16 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SensorName; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName> > sensor_name;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames
 
 
@@ -323,23 +287,20 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf value_brief; //type: int32
-
         class Thresholds; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds
         class ValueDetailed; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds> thresholds;
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed> value_detailed;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName
 
 
@@ -351,19 +312,16 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Threshold; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold> > threshold;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds
 
 
@@ -375,22 +333,19 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: string
         YLeaf trap; //type: boolean
         YLeaf value_brief; //type: int32
-
         class ValueDetailed; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed> value_detailed;
-
-
+        
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold
 
 
@@ -402,20 +357,17 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_severity; //type: uint32
         YLeaf threshold_relation; //type: uint32
         YLeaf threshold_value; //type: uint32
         YLeaf threshold_evaluation; //type: boolean
         YLeaf threshold_notification_enabled; //type: boolean
-
-
 
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed
 
@@ -428,12 +380,11 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf field_validity_bitmap; //type: uint32
         YLeaf device_description; //type: string
@@ -447,8 +398,6 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
         YLeaf status; //type: uint32
         YLeaf age_time_stamp; //type: uint32
         YLeaf update_rate; //type: uint32
-
-
 
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed
 

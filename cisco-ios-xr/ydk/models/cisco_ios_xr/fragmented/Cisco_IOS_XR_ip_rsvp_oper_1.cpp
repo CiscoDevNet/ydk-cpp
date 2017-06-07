@@ -77,7 +77,7 @@ std::string RsvpStandby::Counters::MessageSummary::BundleTransmittedMessages::ge
 
 }
 
-EntityPath RsvpStandby::Counters::MessageSummary::BundleTransmittedMessages::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::MessageSummary::BundleTransmittedMessages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -113,20 +113,12 @@ EntityPath RsvpStandby::Counters::MessageSummary::BundleTransmittedMessages::get
 
 std::shared_ptr<Entity> RsvpStandby::Counters::MessageSummary::BundleTransmittedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::MessageSummary::BundleTransmittedMessages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::MessageSummary::BundleTransmittedMessages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -192,10 +184,8 @@ RsvpStandby::Counters::PrefixFiltering::PrefixFiltering()
 	,interfaces(std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces>())
 {
     accesses->parent = this;
-    children["accesses"] = accesses;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "prefix-filtering"; yang_parent_name = "counters";
 }
@@ -226,7 +216,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -249,64 +239,38 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accesses")
     {
-        if(accesses != nullptr)
-        {
-            children["accesses"] = accesses;
-        }
-        else
+        if(accesses == nullptr)
         {
             accesses = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Accesses>();
-            accesses->parent = this;
-            children["accesses"] = accesses;
         }
-        return children.at("accesses");
+        return accesses;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::get_children() const
 {
-    if(children.find("accesses") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accesses != nullptr)
     {
-        if(accesses != nullptr)
-        {
-            children["accesses"] = accesses;
-        }
+        children["accesses"] = accesses;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -354,7 +318,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Accesses::get_segment_path()
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -377,15 +341,6 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::get_entity_path(Ent
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Accesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "access")
     {
         for(auto const & c : access)
@@ -393,28 +348,24 @@ std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Accesses::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Accesses::Access>();
         c->parent = this;
-        access.push_back(std::move(c));
-        children[segment_path] = access.back();
-        return children.at(segment_path);
+        access.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Accesses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Accesses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : access)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -434,16 +385,12 @@ RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Access()
 	,total(std::make_shared<RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total>())
 {
     dropped->parent = this;
-    children["dropped"] = dropped;
 
     forwarded->parent = this;
-    children["forwarded"] = forwarded;
 
     locally_destined->parent = this;
-    children["locally-destined"] = locally_destined;
 
     total->parent = this;
-    children["total"] = total;
 
     yang_name = "access"; yang_parent_name = "accesses";
 }
@@ -480,7 +427,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Accesses::Access::get_segmen
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -504,110 +451,66 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::get_entity_
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dropped")
     {
-        if(dropped != nullptr)
-        {
-            children["dropped"] = dropped;
-        }
-        else
+        if(dropped == nullptr)
         {
             dropped = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Dropped>();
-            dropped->parent = this;
-            children["dropped"] = dropped;
         }
-        return children.at("dropped");
+        return dropped;
     }
 
     if(child_yang_name == "forwarded")
     {
-        if(forwarded != nullptr)
-        {
-            children["forwarded"] = forwarded;
-        }
-        else
+        if(forwarded == nullptr)
         {
             forwarded = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Forwarded>();
-            forwarded->parent = this;
-            children["forwarded"] = forwarded;
         }
-        return children.at("forwarded");
+        return forwarded;
     }
 
     if(child_yang_name == "locally-destined")
     {
-        if(locally_destined != nullptr)
-        {
-            children["locally-destined"] = locally_destined;
-        }
-        else
+        if(locally_destined == nullptr)
         {
             locally_destined = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Accesses::Access::LocallyDestined>();
-            locally_destined->parent = this;
-            children["locally-destined"] = locally_destined;
         }
-        return children.at("locally-destined");
+        return locally_destined;
     }
 
     if(child_yang_name == "total")
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
-        else
+        if(total == nullptr)
         {
             total = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total>();
-            total->parent = this;
-            children["total"] = total;
         }
-        return children.at("total");
+        return total;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Accesses::Access::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::get_children() const
 {
-    if(children.find("dropped") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dropped != nullptr)
     {
-        if(dropped != nullptr)
-        {
-            children["dropped"] = dropped;
-        }
+        children["dropped"] = dropped;
     }
 
-    if(children.find("forwarded") == children.end())
+    if(forwarded != nullptr)
     {
-        if(forwarded != nullptr)
-        {
-            children["forwarded"] = forwarded;
-        }
+        children["forwarded"] = forwarded;
     }
 
-    if(children.find("locally-destined") == children.end())
+    if(locally_destined != nullptr)
     {
-        if(locally_destined != nullptr)
-        {
-            children["locally-destined"] = locally_destined;
-        }
+        children["locally-destined"] = locally_destined;
     }
 
-    if(children.find("total") == children.end())
+    if(total != nullptr)
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
+        children["total"] = total;
     }
 
     return children;
@@ -661,7 +564,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Forwarded:
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -688,20 +591,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Forwarded::
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -765,7 +660,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Accesses::Access::LocallyDes
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -792,20 +687,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::LocallyDest
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -869,7 +756,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Dropped::g
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Dropped::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Dropped::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -896,20 +783,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Dropped::ge
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Dropped::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Dropped::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -973,7 +852,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total::get
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1000,20 +879,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total::get_
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1043,10 +914,8 @@ RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces()
 	,summary(std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "interfaces"; yang_parent_name = "prefix-filtering";
 }
@@ -1077,7 +946,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::get_segment_path
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1100,64 +969,38 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -1177,22 +1020,16 @@ RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Summary()
 	,total(std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Total>())
 {
     default_action_dropped->parent = this;
-    children["default-action-dropped"] = default_action_dropped;
 
     default_action_processed->parent = this;
-    children["default-action-processed"] = default_action_processed;
 
     dropped->parent = this;
-    children["dropped"] = dropped;
 
     forwarded->parent = this;
-    children["forwarded"] = forwarded;
 
     locally_destined->parent = this;
-    children["locally-destined"] = locally_destined;
 
     total->parent = this;
-    children["total"] = total;
 
     yang_name = "summary"; yang_parent_name = "interfaces";
 }
@@ -1231,7 +1068,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::get_seg
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1254,156 +1091,94 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::get_enti
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-action-dropped")
     {
-        if(default_action_dropped != nullptr)
-        {
-            children["default-action-dropped"] = default_action_dropped;
-        }
-        else
+        if(default_action_dropped == nullptr)
         {
             default_action_dropped = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped>();
-            default_action_dropped->parent = this;
-            children["default-action-dropped"] = default_action_dropped;
         }
-        return children.at("default-action-dropped");
+        return default_action_dropped;
     }
 
     if(child_yang_name == "default-action-processed")
     {
-        if(default_action_processed != nullptr)
-        {
-            children["default-action-processed"] = default_action_processed;
-        }
-        else
+        if(default_action_processed == nullptr)
         {
             default_action_processed = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed>();
-            default_action_processed->parent = this;
-            children["default-action-processed"] = default_action_processed;
         }
-        return children.at("default-action-processed");
+        return default_action_processed;
     }
 
     if(child_yang_name == "dropped")
     {
-        if(dropped != nullptr)
-        {
-            children["dropped"] = dropped;
-        }
-        else
+        if(dropped == nullptr)
         {
             dropped = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Dropped>();
-            dropped->parent = this;
-            children["dropped"] = dropped;
         }
-        return children.at("dropped");
+        return dropped;
     }
 
     if(child_yang_name == "forwarded")
     {
-        if(forwarded != nullptr)
-        {
-            children["forwarded"] = forwarded;
-        }
-        else
+        if(forwarded == nullptr)
         {
             forwarded = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Forwarded>();
-            forwarded->parent = this;
-            children["forwarded"] = forwarded;
         }
-        return children.at("forwarded");
+        return forwarded;
     }
 
     if(child_yang_name == "locally-destined")
     {
-        if(locally_destined != nullptr)
-        {
-            children["locally-destined"] = locally_destined;
-        }
-        else
+        if(locally_destined == nullptr)
         {
             locally_destined = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined>();
-            locally_destined->parent = this;
-            children["locally-destined"] = locally_destined;
         }
-        return children.at("locally-destined");
+        return locally_destined;
     }
 
     if(child_yang_name == "total")
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
-        else
+        if(total == nullptr)
         {
             total = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Total>();
-            total->parent = this;
-            children["total"] = total;
         }
-        return children.at("total");
+        return total;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::get_children() const
 {
-    if(children.find("default-action-dropped") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_action_dropped != nullptr)
     {
-        if(default_action_dropped != nullptr)
-        {
-            children["default-action-dropped"] = default_action_dropped;
-        }
+        children["default-action-dropped"] = default_action_dropped;
     }
 
-    if(children.find("default-action-processed") == children.end())
+    if(default_action_processed != nullptr)
     {
-        if(default_action_processed != nullptr)
-        {
-            children["default-action-processed"] = default_action_processed;
-        }
+        children["default-action-processed"] = default_action_processed;
     }
 
-    if(children.find("dropped") == children.end())
+    if(dropped != nullptr)
     {
-        if(dropped != nullptr)
-        {
-            children["dropped"] = dropped;
-        }
+        children["dropped"] = dropped;
     }
 
-    if(children.find("forwarded") == children.end())
+    if(forwarded != nullptr)
     {
-        if(forwarded != nullptr)
-        {
-            children["forwarded"] = forwarded;
-        }
+        children["forwarded"] = forwarded;
     }
 
-    if(children.find("locally-destined") == children.end())
+    if(locally_destined != nullptr)
     {
-        if(locally_destined != nullptr)
-        {
-            children["locally-destined"] = locally_destined;
-        }
+        children["locally-destined"] = locally_destined;
     }
 
-    if(children.find("total") == children.end())
+    if(total != nullptr)
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
+        children["total"] = total;
     }
 
     return children;
@@ -1453,7 +1228,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Forward
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1480,20 +1255,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Forwarde
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1557,7 +1324,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Locally
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1584,20 +1351,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::LocallyD
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1661,7 +1420,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Dropped
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Dropped::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Dropped::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1688,20 +1447,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Dropped:
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Dropped::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Dropped::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1765,7 +1516,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Default
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1792,20 +1543,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultA
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1869,7 +1612,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Default
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1896,20 +1639,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultA
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1973,7 +1708,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Total::
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Total::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Total::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2000,20 +1735,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Total::g
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Total::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::Total::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2075,7 +1802,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::get
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2098,15 +1825,6 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::get_
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -2114,28 +1832,24 @@ std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Inte
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2157,22 +1871,16 @@ RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Inte
 	,total(std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total>())
 {
     default_action_dropped->parent = this;
-    children["default-action-dropped"] = default_action_dropped;
 
     default_action_processed->parent = this;
-    children["default-action-processed"] = default_action_processed;
 
     dropped->parent = this;
-    children["dropped"] = dropped;
 
     forwarded->parent = this;
-    children["forwarded"] = forwarded;
 
     locally_destined->parent = this;
-    children["locally-destined"] = locally_destined;
 
     total->parent = this;
-    children["total"] = total;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -2213,7 +1921,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Int
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2237,156 +1945,94 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-action-dropped")
     {
-        if(default_action_dropped != nullptr)
-        {
-            children["default-action-dropped"] = default_action_dropped;
-        }
-        else
+        if(default_action_dropped == nullptr)
         {
             default_action_dropped = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped>();
-            default_action_dropped->parent = this;
-            children["default-action-dropped"] = default_action_dropped;
         }
-        return children.at("default-action-dropped");
+        return default_action_dropped;
     }
 
     if(child_yang_name == "default-action-processed")
     {
-        if(default_action_processed != nullptr)
-        {
-            children["default-action-processed"] = default_action_processed;
-        }
-        else
+        if(default_action_processed == nullptr)
         {
             default_action_processed = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed>();
-            default_action_processed->parent = this;
-            children["default-action-processed"] = default_action_processed;
         }
-        return children.at("default-action-processed");
+        return default_action_processed;
     }
 
     if(child_yang_name == "dropped")
     {
-        if(dropped != nullptr)
-        {
-            children["dropped"] = dropped;
-        }
-        else
+        if(dropped == nullptr)
         {
             dropped = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped>();
-            dropped->parent = this;
-            children["dropped"] = dropped;
         }
-        return children.at("dropped");
+        return dropped;
     }
 
     if(child_yang_name == "forwarded")
     {
-        if(forwarded != nullptr)
-        {
-            children["forwarded"] = forwarded;
-        }
-        else
+        if(forwarded == nullptr)
         {
             forwarded = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded>();
-            forwarded->parent = this;
-            children["forwarded"] = forwarded;
         }
-        return children.at("forwarded");
+        return forwarded;
     }
 
     if(child_yang_name == "locally-destined")
     {
-        if(locally_destined != nullptr)
-        {
-            children["locally-destined"] = locally_destined;
-        }
-        else
+        if(locally_destined == nullptr)
         {
             locally_destined = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined>();
-            locally_destined->parent = this;
-            children["locally-destined"] = locally_destined;
         }
-        return children.at("locally-destined");
+        return locally_destined;
     }
 
     if(child_yang_name == "total")
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
-        else
+        if(total == nullptr)
         {
             total = std::make_shared<RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total>();
-            total->parent = this;
-            children["total"] = total;
         }
-        return children.at("total");
+        return total;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_children() const
 {
-    if(children.find("default-action-dropped") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_action_dropped != nullptr)
     {
-        if(default_action_dropped != nullptr)
-        {
-            children["default-action-dropped"] = default_action_dropped;
-        }
+        children["default-action-dropped"] = default_action_dropped;
     }
 
-    if(children.find("default-action-processed") == children.end())
+    if(default_action_processed != nullptr)
     {
-        if(default_action_processed != nullptr)
-        {
-            children["default-action-processed"] = default_action_processed;
-        }
+        children["default-action-processed"] = default_action_processed;
     }
 
-    if(children.find("dropped") == children.end())
+    if(dropped != nullptr)
     {
-        if(dropped != nullptr)
-        {
-            children["dropped"] = dropped;
-        }
+        children["dropped"] = dropped;
     }
 
-    if(children.find("forwarded") == children.end())
+    if(forwarded != nullptr)
     {
-        if(forwarded != nullptr)
-        {
-            children["forwarded"] = forwarded;
-        }
+        children["forwarded"] = forwarded;
     }
 
-    if(children.find("locally-destined") == children.end())
+    if(locally_destined != nullptr)
     {
-        if(locally_destined != nullptr)
-        {
-            children["locally-destined"] = locally_destined;
-        }
+        children["locally-destined"] = locally_destined;
     }
 
-    if(children.find("total") == children.end())
+    if(total != nullptr)
     {
-        if(total != nullptr)
-        {
-            children["total"] = total;
-        }
+        children["total"] = total;
     }
 
     return children;
@@ -2440,7 +2086,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Int
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2467,20 +2113,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2544,7 +2182,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Int
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2571,20 +2209,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2648,7 +2278,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Int
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2675,20 +2305,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2752,7 +2374,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Int
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2779,20 +2401,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2856,7 +2470,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Int
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2883,20 +2497,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2960,7 +2566,7 @@ std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Int
 
 }
 
-EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2987,20 +2593,12 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
 
 std::shared_ptr<Entity> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3029,7 +2627,6 @@ RsvpStandby::Counters::OutOfResource::OutOfResource()
     interfaces(std::make_shared<RsvpStandby::Counters::OutOfResource::Interfaces>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     yang_name = "out-of-resource"; yang_parent_name = "counters";
 }
@@ -3058,7 +2655,7 @@ std::string RsvpStandby::Counters::OutOfResource::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Counters::OutOfResource::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::OutOfResource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3081,41 +2678,24 @@ EntityPath RsvpStandby::Counters::OutOfResource::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> RsvpStandby::Counters::OutOfResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<RsvpStandby::Counters::OutOfResource::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::OutOfResource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::OutOfResource::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
     return children;
@@ -3131,10 +2711,8 @@ RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces()
 	,summary(std::make_shared<RsvpStandby::Counters::OutOfResource::Interfaces::Summary>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "interfaces"; yang_parent_name = "out-of-resource";
 }
@@ -3165,7 +2743,7 @@ std::string RsvpStandby::Counters::OutOfResource::Interfaces::get_segment_path()
 
 }
 
-EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3188,64 +2766,38 @@ EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::get_entity_path(Ent
 
 std::shared_ptr<Entity> RsvpStandby::Counters::OutOfResource::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<RsvpStandby::Counters::OutOfResource::Interfaces::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::OutOfResource::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::OutOfResource::Interfaces::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -3286,7 +2838,7 @@ std::string RsvpStandby::Counters::OutOfResource::Interfaces::Summary::get_segme
 
 }
 
-EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3310,20 +2862,12 @@ EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::Summary::get_entity
 
 std::shared_ptr<Entity> RsvpStandby::Counters::OutOfResource::Interfaces::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::OutOfResource::Interfaces::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::OutOfResource::Interfaces::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3373,7 +2917,7 @@ std::string RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::get_s
 
 }
 
-EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3396,15 +2940,6 @@ EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::get_en
 
 std::shared_ptr<Entity> RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3412,28 +2947,24 @@ std::shared_ptr<Entity> RsvpStandby::Counters::OutOfResource::Interfaces::Interf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3477,7 +3008,7 @@ std::string RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::Inter
 
 }
 
-EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3502,20 +3033,12 @@ EntityPath RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::Interf
 
 std::shared_ptr<Entity> RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::OutOfResource::Interfaces::Interfaces_::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3569,7 +3092,7 @@ std::string RsvpStandby::Counters::InterfaceEvents::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Counters::InterfaceEvents::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::InterfaceEvents::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3592,15 +3115,6 @@ EntityPath RsvpStandby::Counters::InterfaceEvents::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> RsvpStandby::Counters::InterfaceEvents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-event")
     {
         for(auto const & c : interface_event)
@@ -3608,28 +3122,24 @@ std::shared_ptr<Entity> RsvpStandby::Counters::InterfaceEvents::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::Counters::InterfaceEvents::InterfaceEvent>();
         c->parent = this;
-        interface_event.push_back(std::move(c));
-        children[segment_path] = interface_event.back();
-        return children.at(segment_path);
+        interface_event.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::InterfaceEvents::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::InterfaceEvents::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_event)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3679,7 +3189,7 @@ std::string RsvpStandby::Counters::InterfaceEvents::InterfaceEvent::get_segment_
 
 }
 
-EntityPath RsvpStandby::Counters::InterfaceEvents::InterfaceEvent::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::InterfaceEvents::InterfaceEvent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3706,20 +3216,12 @@ EntityPath RsvpStandby::Counters::InterfaceEvents::InterfaceEvent::get_entity_pa
 
 std::shared_ptr<Entity> RsvpStandby::Counters::InterfaceEvents::InterfaceEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::InterfaceEvents::InterfaceEvent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::InterfaceEvents::InterfaceEvent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3792,7 +3294,7 @@ std::string RsvpStandby::Counters::Nsr::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Counters::Nsr::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::Nsr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3822,20 +3324,12 @@ EntityPath RsvpStandby::Counters::Nsr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::Counters::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::Nsr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::Nsr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3920,7 +3414,7 @@ std::string RsvpStandby::Counters::Issu::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Counters::Issu::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::Issu::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3950,20 +3444,12 @@ EntityPath RsvpStandby::Counters::Issu::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::Counters::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::Issu::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::Issu::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4045,7 +3531,7 @@ std::string RsvpStandby::Counters::Database::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Counters::Database::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::Database::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4074,20 +3560,12 @@ EntityPath RsvpStandby::Counters::Database::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> RsvpStandby::Counters::Database::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::Database::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::Database::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4157,7 +3635,7 @@ std::string RsvpStandby::Counters::EventSyncs::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Counters::EventSyncs::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::EventSyncs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4180,15 +3658,6 @@ EntityPath RsvpStandby::Counters::EventSyncs::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> RsvpStandby::Counters::EventSyncs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "event-sync")
     {
         for(auto const & c : event_sync)
@@ -4196,28 +3665,24 @@ std::shared_ptr<Entity> RsvpStandby::Counters::EventSyncs::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::Counters::EventSyncs::EventSync>();
         c->parent = this;
-        event_sync.push_back(std::move(c));
-        children[segment_path] = event_sync.back();
-        return children.at(segment_path);
+        event_sync.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::EventSyncs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::EventSyncs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : event_sync)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4267,7 +3732,7 @@ std::string RsvpStandby::Counters::EventSyncs::EventSync::get_segment_path() con
 
 }
 
-EntityPath RsvpStandby::Counters::EventSyncs::EventSync::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Counters::EventSyncs::EventSync::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4294,20 +3759,12 @@ EntityPath RsvpStandby::Counters::EventSyncs::EventSync::get_entity_path(Entity*
 
 std::shared_ptr<Entity> RsvpStandby::Counters::EventSyncs::EventSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Counters::EventSyncs::EventSync::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Counters::EventSyncs::EventSync::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4369,7 +3826,7 @@ std::string RsvpStandby::InterfaceDetaileds::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::InterfaceDetaileds::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceDetaileds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4392,15 +3849,6 @@ EntityPath RsvpStandby::InterfaceDetaileds::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-detailed")
     {
         for(auto const & c : interface_detailed)
@@ -4408,28 +3856,24 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed>();
         c->parent = this;
-        interface_detailed.push_back(std::move(c));
-        children[segment_path] = interface_detailed.back();
-        return children.at(segment_path);
+        interface_detailed.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceDetaileds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceDetaileds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_detailed)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4470,10 +3914,8 @@ RsvpStandby::InterfaceDetaileds::InterfaceDetailed::InterfaceDetailed()
 	,flags(std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags>())
 {
     bandwidth_information->parent = this;
-    children["bandwidth-information"] = bandwidth_information;
 
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "interface-detailed"; yang_parent_name = "interface-detaileds";
 }
@@ -4562,7 +4004,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::get_segment_path
 
 }
 
-EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4609,43 +4051,22 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bandwidth-information")
     {
-        if(bandwidth_information != nullptr)
-        {
-            children["bandwidth-information"] = bandwidth_information;
-        }
-        else
+        if(bandwidth_information == nullptr)
         {
             bandwidth_information = std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation>();
-            bandwidth_information->parent = this;
-            children["bandwidth-information"] = bandwidth_information;
         }
-        return children.at("bandwidth-information");
+        return bandwidth_information;
     }
 
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     if(child_yang_name == "neighbor-array")
@@ -4655,44 +4076,34 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray>();
         c->parent = this;
-        neighbor_array.push_back(std::move(c));
-        children[segment_path] = neighbor_array.back();
-        return children.at(segment_path);
+        neighbor_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceDetaileds::InterfaceDetailed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::get_children() const
 {
-    if(children.find("bandwidth-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth_information != nullptr)
     {
-        if(bandwidth_information != nullptr)
-        {
-            children["bandwidth-information"] = bandwidth_information;
-        }
+        children["bandwidth-information"] = bandwidth_information;
     }
 
-    if(children.find("flags") == children.end())
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     for (auto const & c : neighbor_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4806,10 +4217,8 @@ RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::Bandwi
 	,standard_dste_interface(std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface>())
 {
     pre_standard_dste_interface->parent = this;
-    children["pre-standard-dste-interface"] = pre_standard_dste_interface;
 
     standard_dste_interface->parent = this;
-    children["standard-dste-interface"] = standard_dste_interface;
 
     yang_name = "bandwidth-information"; yang_parent_name = "interface-detailed";
 }
@@ -4842,7 +4251,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInforma
 
 }
 
-EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4866,64 +4275,38 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformat
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pre-standard-dste-interface")
     {
-        if(pre_standard_dste_interface != nullptr)
-        {
-            children["pre-standard-dste-interface"] = pre_standard_dste_interface;
-        }
-        else
+        if(pre_standard_dste_interface == nullptr)
         {
             pre_standard_dste_interface = std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface>();
-            pre_standard_dste_interface->parent = this;
-            children["pre-standard-dste-interface"] = pre_standard_dste_interface;
         }
-        return children.at("pre-standard-dste-interface");
+        return pre_standard_dste_interface;
     }
 
     if(child_yang_name == "standard-dste-interface")
     {
-        if(standard_dste_interface != nullptr)
-        {
-            children["standard-dste-interface"] = standard_dste_interface;
-        }
-        else
+        if(standard_dste_interface == nullptr)
         {
             standard_dste_interface = std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface>();
-            standard_dste_interface->parent = this;
-            children["standard-dste-interface"] = standard_dste_interface;
         }
-        return children.at("standard-dste-interface");
+        return standard_dste_interface;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_children() const
 {
-    if(children.find("pre-standard-dste-interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pre_standard_dste_interface != nullptr)
     {
-        if(pre_standard_dste_interface != nullptr)
-        {
-            children["pre-standard-dste-interface"] = pre_standard_dste_interface;
-        }
+        children["pre-standard-dste-interface"] = pre_standard_dste_interface;
     }
 
-    if(children.find("standard-dste-interface") == children.end())
+    if(standard_dste_interface != nullptr)
     {
-        if(standard_dste_interface != nullptr)
-        {
-            children["standard-dste-interface"] = standard_dste_interface;
-        }
+        children["standard-dste-interface"] = standard_dste_interface;
     }
 
     return children;
@@ -4983,7 +4366,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInforma
 
 }
 
-EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5012,20 +4395,12 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformat
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5109,7 +4484,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInforma
 
 }
 
-EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5140,20 +4515,12 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformat
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5257,7 +4624,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags::get_segme
 
 }
 
-EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5292,20 +4659,12 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags::get_entity
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5371,7 +4730,6 @@ RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborArray
     expiry_time(std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime>())
 {
     expiry_time->parent = this;
-    children["expiry-time"] = expiry_time;
 
     yang_name = "neighbor-array"; yang_parent_name = "interface-detailed";
 }
@@ -5418,7 +4776,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::g
 
 }
 
-EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5445,28 +4803,13 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ge
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "expiry-time")
     {
-        if(expiry_time != nullptr)
-        {
-            children["expiry-time"] = expiry_time;
-        }
-        else
+        if(expiry_time == nullptr)
         {
             expiry_time = std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime>();
-            expiry_time->parent = this;
-            children["expiry-time"] = expiry_time;
         }
-        return children.at("expiry-time");
+        return expiry_time;
     }
 
     if(child_yang_name == "neighbor-message-id")
@@ -5476,36 +4819,29 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Neig
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId>();
         c->parent = this;
-        neighbor_message_id.push_back(std::move(c));
-        children[segment_path] = neighbor_message_id.back();
-        return children.at(segment_path);
+        neighbor_message_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_children() const
 {
-    if(children.find("expiry-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(expiry_time != nullptr)
     {
-        if(expiry_time != nullptr)
-        {
-            children["expiry-time"] = expiry_time;
-        }
+        children["expiry-time"] = expiry_time;
     }
 
     for (auto const & c : neighbor_message_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5565,7 +4901,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::E
 
 }
 
-EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5590,20 +4926,12 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::Ex
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5650,7 +4978,7 @@ std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::N
 
 }
 
-EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5674,20 +5002,12 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::Ne
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5714,10 +5034,8 @@ RsvpStandby::GracefulRestart::GracefulRestart()
 	,recovery_timer_exp_time(std::make_shared<RsvpStandby::GracefulRestart::RecoveryTimerExpTime>())
 {
     recovery_time_left->parent = this;
-    children["recovery-time-left"] = recovery_time_left;
 
     recovery_timer_exp_time->parent = this;
-    children["recovery-timer-exp-time"] = recovery_timer_exp_time;
 
     yang_name = "graceful-restart"; yang_parent_name = "rsvp-standby";
 }
@@ -5774,7 +5092,7 @@ std::string RsvpStandby::GracefulRestart::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::GracefulRestart::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::GracefulRestart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5805,15 +5123,6 @@ EntityPath RsvpStandby::GracefulRestart::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-node-address")
     {
         for(auto const & c : local_node_address)
@@ -5821,74 +5130,52 @@ std::shared_ptr<Entity> RsvpStandby::GracefulRestart::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::GracefulRestart::LocalNodeAddress>();
         c->parent = this;
-        local_node_address.push_back(std::move(c));
-        children[segment_path] = local_node_address.back();
-        return children.at(segment_path);
+        local_node_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "recovery-time-left")
     {
-        if(recovery_time_left != nullptr)
-        {
-            children["recovery-time-left"] = recovery_time_left;
-        }
-        else
+        if(recovery_time_left == nullptr)
         {
             recovery_time_left = std::make_shared<RsvpStandby::GracefulRestart::RecoveryTimeLeft>();
-            recovery_time_left->parent = this;
-            children["recovery-time-left"] = recovery_time_left;
         }
-        return children.at("recovery-time-left");
+        return recovery_time_left;
     }
 
     if(child_yang_name == "recovery-timer-exp-time")
     {
-        if(recovery_timer_exp_time != nullptr)
-        {
-            children["recovery-timer-exp-time"] = recovery_timer_exp_time;
-        }
-        else
+        if(recovery_timer_exp_time == nullptr)
         {
             recovery_timer_exp_time = std::make_shared<RsvpStandby::GracefulRestart::RecoveryTimerExpTime>();
-            recovery_timer_exp_time->parent = this;
-            children["recovery-timer-exp-time"] = recovery_timer_exp_time;
         }
-        return children.at("recovery-timer-exp-time");
+        return recovery_timer_exp_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::GracefulRestart::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::GracefulRestart::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : local_node_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("recovery-time-left") == children.end())
+    if(recovery_time_left != nullptr)
     {
-        if(recovery_time_left != nullptr)
-        {
-            children["recovery-time-left"] = recovery_time_left;
-        }
+        children["recovery-time-left"] = recovery_time_left;
     }
 
-    if(children.find("recovery-timer-exp-time") == children.end())
+    if(recovery_timer_exp_time != nullptr)
     {
-        if(recovery_timer_exp_time != nullptr)
-        {
-            children["recovery-timer-exp-time"] = recovery_timer_exp_time;
-        }
+        children["recovery-timer-exp-time"] = recovery_timer_exp_time;
     }
 
     return children;
@@ -5964,7 +5251,7 @@ std::string RsvpStandby::GracefulRestart::RecoveryTimeLeft::get_segment_path() c
 
 }
 
-EntityPath RsvpStandby::GracefulRestart::RecoveryTimeLeft::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::GracefulRestart::RecoveryTimeLeft::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5989,20 +5276,12 @@ EntityPath RsvpStandby::GracefulRestart::RecoveryTimeLeft::get_entity_path(Entit
 
 std::shared_ptr<Entity> RsvpStandby::GracefulRestart::RecoveryTimeLeft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::GracefulRestart::RecoveryTimeLeft::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::GracefulRestart::RecoveryTimeLeft::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6052,7 +5331,7 @@ std::string RsvpStandby::GracefulRestart::RecoveryTimerExpTime::get_segment_path
 
 }
 
-EntityPath RsvpStandby::GracefulRestart::RecoveryTimerExpTime::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::GracefulRestart::RecoveryTimerExpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6077,20 +5356,12 @@ EntityPath RsvpStandby::GracefulRestart::RecoveryTimerExpTime::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::GracefulRestart::RecoveryTimerExpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::GracefulRestart::RecoveryTimerExpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::GracefulRestart::RecoveryTimerExpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6140,7 +5411,7 @@ std::string RsvpStandby::GracefulRestart::LocalNodeAddress::get_segment_path() c
 
 }
 
-EntityPath RsvpStandby::GracefulRestart::LocalNodeAddress::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::GracefulRestart::LocalNodeAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6165,20 +5436,12 @@ EntityPath RsvpStandby::GracefulRestart::LocalNodeAddress::get_entity_path(Entit
 
 std::shared_ptr<Entity> RsvpStandby::GracefulRestart::LocalNodeAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::GracefulRestart::LocalNodeAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::GracefulRestart::LocalNodeAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6232,7 +5495,7 @@ std::string RsvpStandby::HelloInterfaceInstanceBriefs::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::HelloInterfaceInstanceBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::HelloInterfaceInstanceBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6255,15 +5518,6 @@ EntityPath RsvpStandby::HelloInterfaceInstanceBriefs::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> RsvpStandby::HelloInterfaceInstanceBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hello-interface-instance-brief")
     {
         for(auto const & c : hello_interface_instance_brief)
@@ -6271,28 +5525,24 @@ std::shared_ptr<Entity> RsvpStandby::HelloInterfaceInstanceBriefs::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief>();
         c->parent = this;
-        hello_interface_instance_brief.push_back(std::move(c));
-        children[segment_path] = hello_interface_instance_brief.back();
-        return children.at(segment_path);
+        hello_interface_instance_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::HelloInterfaceInstanceBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::HelloInterfaceInstanceBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hello_interface_instance_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6304,8 +5554,8 @@ void RsvpStandby::HelloInterfaceInstanceBriefs::set_value(const std::string & va
 
 RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::HelloInterfaceInstanceBrief()
     :
-    destination_address{YType::str, "destination-address"},
     source_address{YType::str, "source-address"},
+    destination_address{YType::str, "destination-address"},
     destination_address_xr{YType::str, "destination-address-xr"},
     hello_interface{YType::str, "hello-interface"},
     instance_type{YType::enumeration, "instance-type"},
@@ -6320,8 +5570,8 @@ RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::~HelloIn
 
 bool RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::has_data() const
 {
-    return destination_address.is_set
-	|| source_address.is_set
+    return source_address.is_set
+	|| destination_address.is_set
 	|| destination_address_xr.is_set
 	|| hello_interface.is_set
 	|| instance_type.is_set
@@ -6331,8 +5581,8 @@ bool RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::has
 bool RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::has_operation() const
 {
     return is_set(operation)
-	|| is_set(destination_address.operation)
 	|| is_set(source_address.operation)
+	|| is_set(destination_address.operation)
 	|| is_set(destination_address_xr.operation)
 	|| is_set(hello_interface.operation)
 	|| is_set(instance_type.operation)
@@ -6342,13 +5592,13 @@ bool RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::has
 std::string RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-interface-instance-brief" <<"[destination-address='" <<destination_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "hello-interface-instance-brief" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6362,8 +5612,8 @@ EntityPath RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrie
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (destination_address_xr.is_set || is_set(destination_address_xr.operation)) leaf_name_data.push_back(destination_address_xr.get_name_leafdata());
     if (hello_interface.is_set || is_set(hello_interface.operation)) leaf_name_data.push_back(hello_interface.get_name_leafdata());
     if (instance_type.is_set || is_set(instance_type.operation)) leaf_name_data.push_back(instance_type.get_name_leafdata());
@@ -6377,32 +5627,24 @@ EntityPath RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrie
 
 std::shared_ptr<Entity> RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void RsvpStandby::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-    }
     if(value_path == "source-address")
     {
         source_address = value;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
     }
     if(value_path == "destination-address-xr")
     {
@@ -6460,7 +5702,7 @@ std::string RsvpStandby::HelloInterfaceInstanceDetails::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::HelloInterfaceInstanceDetails::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::HelloInterfaceInstanceDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6483,15 +5725,6 @@ EntityPath RsvpStandby::HelloInterfaceInstanceDetails::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> RsvpStandby::HelloInterfaceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hello-interface-instance-detail")
     {
         for(auto const & c : hello_interface_instance_detail)
@@ -6499,28 +5732,24 @@ std::shared_ptr<Entity> RsvpStandby::HelloInterfaceInstanceDetails::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail>();
         c->parent = this;
-        hello_interface_instance_detail.push_back(std::move(c));
-        children[segment_path] = hello_interface_instance_detail.back();
-        return children.at(segment_path);
+        hello_interface_instance_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::HelloInterfaceInstanceDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::HelloInterfaceInstanceDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hello_interface_instance_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6532,8 +5761,8 @@ void RsvpStandby::HelloInterfaceInstanceDetails::set_value(const std::string & v
 
 RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::HelloInterfaceInstanceDetail()
     :
-    destination_address{YType::str, "destination-address"},
     source_address{YType::str, "source-address"},
+    destination_address{YType::str, "destination-address"},
     destination_address_xr{YType::str, "destination-address-xr"},
     destination_instance{YType::uint32, "destination-instance"},
     hello_global_neighbor_id{YType::str, "hello-global-neighbor-id"},
@@ -6547,7 +5776,6 @@ RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::HelloI
     last_message_sent_time(std::make_shared<RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime>())
 {
     last_message_sent_time->parent = this;
-    children["last-message-sent-time"] = last_message_sent_time;
 
     yang_name = "hello-interface-instance-detail"; yang_parent_name = "hello-interface-instance-details";
 }
@@ -6558,8 +5786,8 @@ RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::~Hello
 
 bool RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::has_data() const
 {
-    return destination_address.is_set
-	|| source_address.is_set
+    return source_address.is_set
+	|| destination_address.is_set
 	|| destination_address_xr.is_set
 	|| destination_instance.is_set
 	|| hello_global_neighbor_id.is_set
@@ -6575,8 +5803,8 @@ bool RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::h
 bool RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::has_operation() const
 {
     return is_set(operation)
-	|| is_set(destination_address.operation)
 	|| is_set(source_address.operation)
+	|| is_set(destination_address.operation)
 	|| is_set(destination_address_xr.operation)
 	|| is_set(destination_instance.operation)
 	|| is_set(hello_global_neighbor_id.operation)
@@ -6592,13 +5820,13 @@ bool RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::h
 std::string RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-interface-instance-detail" <<"[destination-address='" <<destination_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "hello-interface-instance-detail" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6612,8 +5840,8 @@ EntityPath RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDet
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (destination_address_xr.is_set || is_set(destination_address_xr.operation)) leaf_name_data.push_back(destination_address_xr.get_name_leafdata());
     if (destination_instance.is_set || is_set(destination_instance.operation)) leaf_name_data.push_back(destination_instance.get_name_leafdata());
     if (hello_global_neighbor_id.is_set || is_set(hello_global_neighbor_id.operation)) leaf_name_data.push_back(hello_global_neighbor_id.get_name_leafdata());
@@ -6632,41 +5860,24 @@ EntityPath RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDet
 
 std::shared_ptr<Entity> RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "last-message-sent-time")
     {
-        if(last_message_sent_time != nullptr)
-        {
-            children["last-message-sent-time"] = last_message_sent_time;
-        }
-        else
+        if(last_message_sent_time == nullptr)
         {
             last_message_sent_time = std::make_shared<RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime>();
-            last_message_sent_time->parent = this;
-            children["last-message-sent-time"] = last_message_sent_time;
         }
-        return children.at("last-message-sent-time");
+        return last_message_sent_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_children() const
 {
-    if(children.find("last-message-sent-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(last_message_sent_time != nullptr)
     {
-        if(last_message_sent_time != nullptr)
-        {
-            children["last-message-sent-time"] = last_message_sent_time;
-        }
+        children["last-message-sent-time"] = last_message_sent_time;
     }
 
     return children;
@@ -6674,13 +5885,13 @@ std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::HelloInterfaceInst
 
 void RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-    }
     if(value_path == "source-address")
     {
         source_address = value;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
     }
     if(value_path == "destination-address-xr")
     {
@@ -6754,7 +5965,7 @@ std::string RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDe
 
 }
 
-EntityPath RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6779,20 +5990,12 @@ EntityPath RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDet
 
 std::shared_ptr<Entity> RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6846,7 +6049,7 @@ std::string RsvpStandby::InterfaceNeighborDetails::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::InterfaceNeighborDetails::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceNeighborDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6869,15 +6072,6 @@ EntityPath RsvpStandby::InterfaceNeighborDetails::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-neighbor-detail")
     {
         for(auto const & c : interface_neighbor_detail)
@@ -6885,28 +6079,24 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborDetails::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail>();
         c->parent = this;
-        interface_neighbor_detail.push_back(std::move(c));
-        children[segment_path] = interface_neighbor_detail.back();
-        return children.at(segment_path);
+        interface_neighbor_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceNeighborDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceNeighborDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_neighbor_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6960,7 +6150,7 @@ std::string RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::get_
 
 }
 
-EntityPath RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6985,15 +6175,6 @@ EntityPath RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::get_e
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-neighbor-list-detail")
     {
         for(auto const & c : interface_neighbor_list_detail)
@@ -7001,28 +6182,24 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborDetails::InterfaceNeighbor
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail>();
         c->parent = this;
-        interface_neighbor_list_detail.push_back(std::move(c));
-        children[segment_path] = interface_neighbor_list_detail.back();
-        return children.at(segment_path);
+        interface_neighbor_list_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_neighbor_list_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7086,7 +6263,7 @@ std::string RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::Inte
 
 }
 
-EntityPath RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7115,20 +6292,12 @@ EntityPath RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::Inter
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7165,7 +6334,6 @@ RsvpStandby::Nsr::Nsr()
     status(std::make_shared<RsvpStandby::Nsr::Status>())
 {
     status->parent = this;
-    children["status"] = status;
 
     yang_name = "nsr"; yang_parent_name = "rsvp-standby";
 }
@@ -7194,7 +6362,7 @@ std::string RsvpStandby::Nsr::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Nsr::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Nsr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7217,41 +6385,24 @@ EntityPath RsvpStandby::Nsr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "status")
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
-        else
+        if(status == nullptr)
         {
             status = std::make_shared<RsvpStandby::Nsr::Status>();
-            status->parent = this;
-            children["status"] = status;
         }
-        return children.at("status");
+        return status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Nsr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Nsr::get_children() const
 {
-    if(children.find("status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(status != nullptr)
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
+        children["status"] = status;
     }
 
     return children;
@@ -7269,10 +6420,8 @@ RsvpStandby::Nsr::Status::Status()
 	,previous_idt_status(std::make_shared<RsvpStandby::Nsr::Status::PreviousIdtStatus>())
 {
     idt_status->parent = this;
-    children["idt-status"] = idt_status;
 
     previous_idt_status->parent = this;
-    children["previous-idt-status"] = previous_idt_status;
 
     yang_name = "status"; yang_parent_name = "nsr";
 }
@@ -7305,7 +6454,7 @@ std::string RsvpStandby::Nsr::Status::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Nsr::Status::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Nsr::Status::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7329,64 +6478,38 @@ EntityPath RsvpStandby::Nsr::Status::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::Nsr::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "idt-status")
     {
-        if(idt_status != nullptr)
-        {
-            children["idt-status"] = idt_status;
-        }
-        else
+        if(idt_status == nullptr)
         {
             idt_status = std::make_shared<RsvpStandby::Nsr::Status::IdtStatus>();
-            idt_status->parent = this;
-            children["idt-status"] = idt_status;
         }
-        return children.at("idt-status");
+        return idt_status;
     }
 
     if(child_yang_name == "previous-idt-status")
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
-        else
+        if(previous_idt_status == nullptr)
         {
             previous_idt_status = std::make_shared<RsvpStandby::Nsr::Status::PreviousIdtStatus>();
-            previous_idt_status->parent = this;
-            children["previous-idt-status"] = previous_idt_status;
         }
-        return children.at("previous-idt-status");
+        return previous_idt_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Nsr::Status::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Nsr::Status::get_children() const
 {
-    if(children.find("idt-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(idt_status != nullptr)
     {
-        if(idt_status != nullptr)
-        {
-            children["idt-status"] = idt_status;
-        }
+        children["idt-status"] = idt_status;
     }
 
-    if(children.find("previous-idt-status") == children.end())
+    if(previous_idt_status != nullptr)
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
+        children["previous-idt-status"] = previous_idt_status;
     }
 
     return children;
@@ -7446,7 +6569,7 @@ std::string RsvpStandby::Nsr::Status::IdtStatus::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Nsr::Status::IdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Nsr::Status::IdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7475,20 +6598,12 @@ EntityPath RsvpStandby::Nsr::Status::IdtStatus::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> RsvpStandby::Nsr::Status::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Nsr::Status::IdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Nsr::Status::IdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7566,7 +6681,7 @@ std::string RsvpStandby::Nsr::Status::PreviousIdtStatus::get_segment_path() cons
 
 }
 
-EntityPath RsvpStandby::Nsr::Status::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Nsr::Status::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7595,20 +6710,12 @@ EntityPath RsvpStandby::Nsr::Status::PreviousIdtStatus::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> RsvpStandby::Nsr::Status::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Nsr::Status::PreviousIdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Nsr::Status::PreviousIdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7650,13 +6757,10 @@ RsvpStandby::Summary::Summary()
 	,nsr_status(std::make_shared<RsvpStandby::Summary::NsrStatus>())
 {
     database_counters->parent = this;
-    children["database-counters"] = database_counters;
 
     issu_status->parent = this;
-    children["issu-status"] = issu_status;
 
     nsr_status->parent = this;
-    children["nsr-status"] = nsr_status;
 
     yang_name = "summary"; yang_parent_name = "rsvp-standby";
 }
@@ -7693,7 +6797,7 @@ std::string RsvpStandby::Summary::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7718,87 +6822,52 @@ EntityPath RsvpStandby::Summary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "database-counters")
     {
-        if(database_counters != nullptr)
-        {
-            children["database-counters"] = database_counters;
-        }
-        else
+        if(database_counters == nullptr)
         {
             database_counters = std::make_shared<RsvpStandby::Summary::DatabaseCounters>();
-            database_counters->parent = this;
-            children["database-counters"] = database_counters;
         }
-        return children.at("database-counters");
+        return database_counters;
     }
 
     if(child_yang_name == "issu-status")
     {
-        if(issu_status != nullptr)
-        {
-            children["issu-status"] = issu_status;
-        }
-        else
+        if(issu_status == nullptr)
         {
             issu_status = std::make_shared<RsvpStandby::Summary::IssuStatus>();
-            issu_status->parent = this;
-            children["issu-status"] = issu_status;
         }
-        return children.at("issu-status");
+        return issu_status;
     }
 
     if(child_yang_name == "nsr-status")
     {
-        if(nsr_status != nullptr)
-        {
-            children["nsr-status"] = nsr_status;
-        }
-        else
+        if(nsr_status == nullptr)
         {
             nsr_status = std::make_shared<RsvpStandby::Summary::NsrStatus>();
-            nsr_status->parent = this;
-            children["nsr-status"] = nsr_status;
         }
-        return children.at("nsr-status");
+        return nsr_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::get_children() const
 {
-    if(children.find("database-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(database_counters != nullptr)
     {
-        if(database_counters != nullptr)
-        {
-            children["database-counters"] = database_counters;
-        }
+        children["database-counters"] = database_counters;
     }
 
-    if(children.find("issu-status") == children.end())
+    if(issu_status != nullptr)
     {
-        if(issu_status != nullptr)
-        {
-            children["issu-status"] = issu_status;
-        }
+        children["issu-status"] = issu_status;
     }
 
-    if(children.find("nsr-status") == children.end())
+    if(nsr_status != nullptr)
     {
-        if(nsr_status != nullptr)
-        {
-            children["nsr-status"] = nsr_status;
-        }
+        children["nsr-status"] = nsr_status;
     }
 
     return children;
@@ -7824,10 +6893,8 @@ RsvpStandby::Summary::IssuStatus::IssuStatus()
 	,previous_idt_status(std::make_shared<RsvpStandby::Summary::IssuStatus::PreviousIdtStatus>())
 {
     idt_status->parent = this;
-    children["idt-status"] = idt_status;
 
     previous_idt_status->parent = this;
-    children["previous-idt-status"] = previous_idt_status;
 
     yang_name = "issu-status"; yang_parent_name = "summary";
 }
@@ -7860,7 +6927,7 @@ std::string RsvpStandby::Summary::IssuStatus::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Summary::IssuStatus::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Summary::IssuStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7884,64 +6951,38 @@ EntityPath RsvpStandby::Summary::IssuStatus::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> RsvpStandby::Summary::IssuStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "idt-status")
     {
-        if(idt_status != nullptr)
-        {
-            children["idt-status"] = idt_status;
-        }
-        else
+        if(idt_status == nullptr)
         {
             idt_status = std::make_shared<RsvpStandby::Summary::IssuStatus::IdtStatus>();
-            idt_status->parent = this;
-            children["idt-status"] = idt_status;
         }
-        return children.at("idt-status");
+        return idt_status;
     }
 
     if(child_yang_name == "previous-idt-status")
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
-        else
+        if(previous_idt_status == nullptr)
         {
             previous_idt_status = std::make_shared<RsvpStandby::Summary::IssuStatus::PreviousIdtStatus>();
-            previous_idt_status->parent = this;
-            children["previous-idt-status"] = previous_idt_status;
         }
-        return children.at("previous-idt-status");
+        return previous_idt_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Summary::IssuStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::IssuStatus::get_children() const
 {
-    if(children.find("idt-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(idt_status != nullptr)
     {
-        if(idt_status != nullptr)
-        {
-            children["idt-status"] = idt_status;
-        }
+        children["idt-status"] = idt_status;
     }
 
-    if(children.find("previous-idt-status") == children.end())
+    if(previous_idt_status != nullptr)
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
+        children["previous-idt-status"] = previous_idt_status;
     }
 
     return children;
@@ -8001,7 +7042,7 @@ std::string RsvpStandby::Summary::IssuStatus::IdtStatus::get_segment_path() cons
 
 }
 
-EntityPath RsvpStandby::Summary::IssuStatus::IdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Summary::IssuStatus::IdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8030,20 +7071,12 @@ EntityPath RsvpStandby::Summary::IssuStatus::IdtStatus::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> RsvpStandby::Summary::IssuStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Summary::IssuStatus::IdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::IssuStatus::IdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8121,7 +7154,7 @@ std::string RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_segment_pat
 
 }
 
-EntityPath RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8150,20 +7183,12 @@ EntityPath RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_entity_path(
 
 std::shared_ptr<Entity> RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8203,10 +7228,8 @@ RsvpStandby::Summary::NsrStatus::NsrStatus()
 	,previous_idt_status(std::make_shared<RsvpStandby::Summary::NsrStatus::PreviousIdtStatus>())
 {
     idt_status->parent = this;
-    children["idt-status"] = idt_status;
 
     previous_idt_status->parent = this;
-    children["previous-idt-status"] = previous_idt_status;
 
     yang_name = "nsr-status"; yang_parent_name = "summary";
 }
@@ -8239,7 +7262,7 @@ std::string RsvpStandby::Summary::NsrStatus::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Summary::NsrStatus::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Summary::NsrStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8263,64 +7286,38 @@ EntityPath RsvpStandby::Summary::NsrStatus::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> RsvpStandby::Summary::NsrStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "idt-status")
     {
-        if(idt_status != nullptr)
-        {
-            children["idt-status"] = idt_status;
-        }
-        else
+        if(idt_status == nullptr)
         {
             idt_status = std::make_shared<RsvpStandby::Summary::NsrStatus::IdtStatus>();
-            idt_status->parent = this;
-            children["idt-status"] = idt_status;
         }
-        return children.at("idt-status");
+        return idt_status;
     }
 
     if(child_yang_name == "previous-idt-status")
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
-        else
+        if(previous_idt_status == nullptr)
         {
             previous_idt_status = std::make_shared<RsvpStandby::Summary::NsrStatus::PreviousIdtStatus>();
-            previous_idt_status->parent = this;
-            children["previous-idt-status"] = previous_idt_status;
         }
-        return children.at("previous-idt-status");
+        return previous_idt_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Summary::NsrStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::NsrStatus::get_children() const
 {
-    if(children.find("idt-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(idt_status != nullptr)
     {
-        if(idt_status != nullptr)
-        {
-            children["idt-status"] = idt_status;
-        }
+        children["idt-status"] = idt_status;
     }
 
-    if(children.find("previous-idt-status") == children.end())
+    if(previous_idt_status != nullptr)
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
+        children["previous-idt-status"] = previous_idt_status;
     }
 
     return children;
@@ -8380,7 +7377,7 @@ std::string RsvpStandby::Summary::NsrStatus::IdtStatus::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Summary::NsrStatus::IdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Summary::NsrStatus::IdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8409,20 +7406,12 @@ EntityPath RsvpStandby::Summary::NsrStatus::IdtStatus::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> RsvpStandby::Summary::NsrStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Summary::NsrStatus::IdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::NsrStatus::IdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8500,7 +7489,7 @@ std::string RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_segment_path
 
 }
 
-EntityPath RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8529,20 +7518,12 @@ EntityPath RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8620,7 +7601,7 @@ std::string RsvpStandby::Summary::DatabaseCounters::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Summary::DatabaseCounters::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Summary::DatabaseCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8649,20 +7630,12 @@ EntityPath RsvpStandby::Summary::DatabaseCounters::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> RsvpStandby::Summary::DatabaseCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Summary::DatabaseCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::DatabaseCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8732,7 +7705,7 @@ std::string RsvpStandby::Frrs::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Frrs::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Frrs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8755,15 +7728,6 @@ EntityPath RsvpStandby::Frrs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::Frrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr")
     {
         for(auto const & c : frr)
@@ -8771,28 +7735,24 @@ std::shared_ptr<Entity> RsvpStandby::Frrs::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::Frrs::Frr>();
         c->parent = this;
-        frr.push_back(std::move(c));
-        children[segment_path] = frr.back();
-        return children.at(segment_path);
+        frr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Frrs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Frrs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8822,10 +7782,8 @@ RsvpStandby::Frrs::Frr::Frr()
 	,session(std::make_shared<RsvpStandby::Frrs::Frr::Session>())
 {
     s2l_sub_lsp->parent = this;
-    children["s2l-sub-lsp"] = s2l_sub_lsp;
 
     session->parent = this;
-    children["session"] = session;
 
     yang_name = "frr"; yang_parent_name = "frrs";
 }
@@ -8882,7 +7840,7 @@ std::string RsvpStandby::Frrs::Frr::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Frrs::Frr::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Frrs::Frr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8918,64 +7876,38 @@ EntityPath RsvpStandby::Frrs::Frr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::Frrs::Frr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "s2l-sub-lsp")
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
-        else
+        if(s2l_sub_lsp == nullptr)
         {
             s2l_sub_lsp = std::make_shared<RsvpStandby::Frrs::Frr::S2LSubLsp>();
-            s2l_sub_lsp->parent = this;
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
         }
-        return children.at("s2l-sub-lsp");
+        return s2l_sub_lsp;
     }
 
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<RsvpStandby::Frrs::Frr::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Frrs::Frr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Frrs::Frr::get_children() const
 {
-    if(children.find("s2l-sub-lsp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(s2l_sub_lsp != nullptr)
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
+        children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
-    if(children.find("session") == children.end())
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
     return children;
@@ -9042,7 +7974,6 @@ RsvpStandby::Frrs::Frr::Session::Session()
     rsvp_session(std::make_shared<RsvpStandby::Frrs::Frr::Session::RsvpSession>())
 {
     rsvp_session->parent = this;
-    children["rsvp-session"] = rsvp_session;
 
     yang_name = "session"; yang_parent_name = "frr";
 }
@@ -9071,7 +8002,7 @@ std::string RsvpStandby::Frrs::Frr::Session::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Frrs::Frr::Session::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Frrs::Frr::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9094,41 +8025,24 @@ EntityPath RsvpStandby::Frrs::Frr::Session::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> RsvpStandby::Frrs::Frr::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rsvp-session")
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
-        else
+        if(rsvp_session == nullptr)
         {
             rsvp_session = std::make_shared<RsvpStandby::Frrs::Frr::Session::RsvpSession>();
-            rsvp_session->parent = this;
-            children["rsvp-session"] = rsvp_session;
         }
-        return children.at("rsvp-session");
+        return rsvp_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Frrs::Frr::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Frrs::Frr::Session::get_children() const
 {
-    if(children.find("rsvp-session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_session != nullptr)
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
+        children["rsvp-session"] = rsvp_session;
     }
 
     return children;
@@ -9148,16 +8062,12 @@ RsvpStandby::Frrs::Frr::Session::RsvpSession::RsvpSession()
 	,ipv4_uni_session(std::make_shared<RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4UniSession>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv4_lsp_session->parent = this;
-    children["ipv4-lsp-session"] = ipv4_lsp_session;
 
     ipv4_p2mp_lsp_session->parent = this;
-    children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
 
     ipv4_uni_session->parent = this;
-    children["ipv4-uni-session"] = ipv4_uni_session;
 
     yang_name = "rsvp-session"; yang_parent_name = "session";
 }
@@ -9194,7 +8104,7 @@ std::string RsvpStandby::Frrs::Frr::Session::RsvpSession::get_segment_path() con
 
 }
 
-EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9218,110 +8128,66 @@ EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::get_entity_path(Entity*
 
 std::shared_ptr<Entity> RsvpStandby::Frrs::Frr::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv4-lsp-session")
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
-        else
+        if(ipv4_lsp_session == nullptr)
         {
             ipv4_lsp_session = std::make_shared<RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4LspSession>();
-            ipv4_lsp_session->parent = this;
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
         }
-        return children.at("ipv4-lsp-session");
+        return ipv4_lsp_session;
     }
 
     if(child_yang_name == "ipv4-p2mp-lsp-session")
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
-        else
+        if(ipv4_p2mp_lsp_session == nullptr)
         {
             ipv4_p2mp_lsp_session = std::make_shared<RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4P2MpLspSession>();
-            ipv4_p2mp_lsp_session->parent = this;
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
         }
-        return children.at("ipv4-p2mp-lsp-session");
+        return ipv4_p2mp_lsp_session;
     }
 
     if(child_yang_name == "ipv4-uni-session")
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
-        else
+        if(ipv4_uni_session == nullptr)
         {
             ipv4_uni_session = std::make_shared<RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4UniSession>();
-            ipv4_uni_session->parent = this;
-            children["ipv4-uni-session"] = ipv4_uni_session;
         }
-        return children.at("ipv4-uni-session");
+        return ipv4_uni_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Frrs::Frr::Session::RsvpSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Frrs::Frr::Session::RsvpSession::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv4-lsp-session") == children.end())
+    if(ipv4_lsp_session != nullptr)
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
+        children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
-    if(children.find("ipv4-p2mp-lsp-session") == children.end())
+    if(ipv4_p2mp_lsp_session != nullptr)
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
+        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    if(children.find("ipv4-uni-session") == children.end())
+    if(ipv4_uni_session != nullptr)
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
+        children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     return children;
@@ -9372,7 +8238,7 @@ std::string RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4::get_segment_path
 
 }
 
-EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9398,20 +8264,12 @@ EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9468,7 +8326,7 @@ std::string RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_se
 
 }
 
-EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9494,20 +8352,12 @@ EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_ent
 
 std::shared_ptr<Entity> RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9564,7 +8414,7 @@ std::string RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_se
 
 }
 
-EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9590,20 +8440,12 @@ EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_ent
 
 std::shared_ptr<Entity> RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9660,7 +8502,7 @@ std::string RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4P2MpLspSession::ge
 
 }
 
-EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9686,20 +8528,12 @@ EntityPath RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4P2MpLspSession::get
 
 std::shared_ptr<Entity> RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4P2MpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4P2MpLspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Frrs::Frr::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9750,7 +8584,7 @@ std::string RsvpStandby::Frrs::Frr::S2LSubLsp::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::Frrs::Frr::S2LSubLsp::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::Frrs::Frr::S2LSubLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9774,20 +8608,12 @@ EntityPath RsvpStandby::Frrs::Frr::S2LSubLsp::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> RsvpStandby::Frrs::Frr::S2LSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::Frrs::Frr::S2LSubLsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Frrs::Frr::S2LSubLsp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9837,7 +8663,7 @@ std::string RsvpStandby::RequestBriefs::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9860,15 +8686,6 @@ EntityPath RsvpStandby::RequestBriefs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "request-brief")
     {
         for(auto const & c : request_brief)
@@ -9876,28 +8693,24 @@ std::shared_ptr<Entity> RsvpStandby::RequestBriefs::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief>();
         c->parent = this;
-        request_brief.push_back(std::move(c));
-        children[segment_path] = request_brief.back();
-        return children.at(segment_path);
+        request_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : request_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9930,22 +8743,16 @@ RsvpStandby::RequestBriefs::RequestBrief::RequestBrief()
 	,style(std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Style>())
 {
     filter->parent = this;
-    children["filter"] = filter;
 
     flow_spec->parent = this;
-    children["flow-spec"] = flow_spec;
 
     generic_flow_spec->parent = this;
-    children["generic-flow-spec"] = generic_flow_spec;
 
     s2l_sub_lsp->parent = this;
-    children["s2l-sub-lsp"] = s2l_sub_lsp;
 
     session->parent = this;
-    children["session"] = session;
 
     style->parent = this;
-    children["style"] = style;
 
     yang_name = "request-brief"; yang_parent_name = "request-briefs";
 }
@@ -10008,7 +8815,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10043,156 +8850,94 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "filter")
     {
-        if(filter != nullptr)
-        {
-            children["filter"] = filter;
-        }
-        else
+        if(filter == nullptr)
         {
             filter = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Filter>();
-            filter->parent = this;
-            children["filter"] = filter;
         }
-        return children.at("filter");
+        return filter;
     }
 
     if(child_yang_name == "flow-spec")
     {
-        if(flow_spec != nullptr)
-        {
-            children["flow-spec"] = flow_spec;
-        }
-        else
+        if(flow_spec == nullptr)
         {
             flow_spec = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::FlowSpec>();
-            flow_spec->parent = this;
-            children["flow-spec"] = flow_spec;
         }
-        return children.at("flow-spec");
+        return flow_spec;
     }
 
     if(child_yang_name == "generic-flow-spec")
     {
-        if(generic_flow_spec != nullptr)
-        {
-            children["generic-flow-spec"] = generic_flow_spec;
-        }
-        else
+        if(generic_flow_spec == nullptr)
         {
             generic_flow_spec = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec>();
-            generic_flow_spec->parent = this;
-            children["generic-flow-spec"] = generic_flow_spec;
         }
-        return children.at("generic-flow-spec");
+        return generic_flow_spec;
     }
 
     if(child_yang_name == "s2l-sub-lsp")
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
-        else
+        if(s2l_sub_lsp == nullptr)
         {
             s2l_sub_lsp = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::S2LSubLsp>();
-            s2l_sub_lsp->parent = this;
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
         }
-        return children.at("s2l-sub-lsp");
+        return s2l_sub_lsp;
     }
 
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "style")
     {
-        if(style != nullptr)
-        {
-            children["style"] = style;
-        }
-        else
+        if(style == nullptr)
         {
             style = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Style>();
-            style->parent = this;
-            children["style"] = style;
         }
-        return children.at("style");
+        return style;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::get_children() const
 {
-    if(children.find("filter") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(filter != nullptr)
     {
-        if(filter != nullptr)
-        {
-            children["filter"] = filter;
-        }
+        children["filter"] = filter;
     }
 
-    if(children.find("flow-spec") == children.end())
+    if(flow_spec != nullptr)
     {
-        if(flow_spec != nullptr)
-        {
-            children["flow-spec"] = flow_spec;
-        }
+        children["flow-spec"] = flow_spec;
     }
 
-    if(children.find("generic-flow-spec") == children.end())
+    if(generic_flow_spec != nullptr)
     {
-        if(generic_flow_spec != nullptr)
-        {
-            children["generic-flow-spec"] = generic_flow_spec;
-        }
+        children["generic-flow-spec"] = generic_flow_spec;
     }
 
-    if(children.find("s2l-sub-lsp") == children.end())
+    if(s2l_sub_lsp != nullptr)
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
+        children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
-    if(children.find("session") == children.end())
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("style") == children.end())
+    if(style != nullptr)
     {
-        if(style != nullptr)
-        {
-            children["style"] = style;
-        }
+        children["style"] = style;
     }
 
     return children;
@@ -10255,7 +9000,6 @@ RsvpStandby::RequestBriefs::RequestBrief::Session::Session()
     rsvp_session(std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession>())
 {
     rsvp_session->parent = this;
-    children["rsvp-session"] = rsvp_session;
 
     yang_name = "session"; yang_parent_name = "request-brief";
 }
@@ -10284,7 +9028,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Session::get_segment_path(
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10307,41 +9051,24 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::get_entity_path(En
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rsvp-session")
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
-        else
+        if(rsvp_session == nullptr)
         {
             rsvp_session = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession>();
-            rsvp_session->parent = this;
-            children["rsvp-session"] = rsvp_session;
         }
-        return children.at("rsvp-session");
+        return rsvp_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Session::get_children() const
 {
-    if(children.find("rsvp-session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_session != nullptr)
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
+        children["rsvp-session"] = rsvp_session;
     }
 
     return children;
@@ -10361,16 +9088,12 @@ RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::RsvpSession()
 	,ipv4_uni_session(std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv4_lsp_session->parent = this;
-    children["ipv4-lsp-session"] = ipv4_lsp_session;
 
     ipv4_p2mp_lsp_session->parent = this;
-    children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
 
     ipv4_uni_session->parent = this;
-    children["ipv4-uni-session"] = ipv4_uni_session;
 
     yang_name = "rsvp-session"; yang_parent_name = "session";
 }
@@ -10407,7 +9130,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::get_
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10431,110 +9154,66 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::get_e
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv4-lsp-session")
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
-        else
+        if(ipv4_lsp_session == nullptr)
         {
             ipv4_lsp_session = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession>();
-            ipv4_lsp_session->parent = this;
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
         }
-        return children.at("ipv4-lsp-session");
+        return ipv4_lsp_session;
     }
 
     if(child_yang_name == "ipv4-p2mp-lsp-session")
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
-        else
+        if(ipv4_p2mp_lsp_session == nullptr)
         {
             ipv4_p2mp_lsp_session = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2MpLspSession>();
-            ipv4_p2mp_lsp_session->parent = this;
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
         }
-        return children.at("ipv4-p2mp-lsp-session");
+        return ipv4_p2mp_lsp_session;
     }
 
     if(child_yang_name == "ipv4-uni-session")
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
-        else
+        if(ipv4_uni_session == nullptr)
         {
             ipv4_uni_session = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession>();
-            ipv4_uni_session->parent = this;
-            children["ipv4-uni-session"] = ipv4_uni_session;
         }
-        return children.at("ipv4-uni-session");
+        return ipv4_uni_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv4-lsp-session") == children.end())
+    if(ipv4_lsp_session != nullptr)
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
+        children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
-    if(children.find("ipv4-p2mp-lsp-session") == children.end())
+    if(ipv4_p2mp_lsp_session != nullptr)
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
+        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    if(children.find("ipv4-uni-session") == children.end())
+    if(ipv4_uni_session != nullptr)
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
+        children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     return children;
@@ -10585,7 +9264,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10611,20 +9290,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4:
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10681,7 +9352,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10707,20 +9378,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4L
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10777,7 +9440,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10803,20 +9466,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4U
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10873,7 +9528,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10899,20 +9554,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10963,7 +9610,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::S2LSubLsp::get_segment_pat
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::S2LSubLsp::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::S2LSubLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10987,20 +9634,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::S2LSubLsp::get_entity_path(
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::S2LSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::S2LSubLsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::S2LSubLsp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11064,7 +9703,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::FlowSpec::get_segment_path
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::FlowSpec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::FlowSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11095,20 +9734,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::FlowSpec::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::FlowSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::FlowSpec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11155,7 +9786,6 @@ RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::GenericFlowSpec()
     g709otn_flow_spec(std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::G709OtnFlowSpec>())
 {
     g709otn_flow_spec->parent = this;
-    children["g709otn-flow-spec"] = g709otn_flow_spec;
 
     yang_name = "generic-flow-spec"; yang_parent_name = "request-brief";
 }
@@ -11186,7 +9816,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::get_segme
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11210,41 +9840,24 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::get_entity
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g709otn-flow-spec")
     {
-        if(g709otn_flow_spec != nullptr)
-        {
-            children["g709otn-flow-spec"] = g709otn_flow_spec;
-        }
-        else
+        if(g709otn_flow_spec == nullptr)
         {
             g709otn_flow_spec = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::G709OtnFlowSpec>();
-            g709otn_flow_spec->parent = this;
-            children["g709otn-flow-spec"] = g709otn_flow_spec;
         }
-        return children.at("g709otn-flow-spec");
+        return g709otn_flow_spec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::get_children() const
 {
-    if(children.find("g709otn-flow-spec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g709otn_flow_spec != nullptr)
     {
-        if(g709otn_flow_spec != nullptr)
-        {
-            children["g709otn-flow-spec"] = g709otn_flow_spec;
-        }
+        children["g709otn-flow-spec"] = g709otn_flow_spec;
     }
 
     return children;
@@ -11298,7 +9911,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::G709OtnFl
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::G709OtnFlowSpec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::G709OtnFlowSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11325,20 +9938,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::G709OtnFlo
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::G709OtnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::G709OtnFlowSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::G709OtnFlowSpec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11367,7 +9972,6 @@ RsvpStandby::RequestBriefs::RequestBrief::Filter::Filter()
     rsvp_filter(std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter>())
 {
     rsvp_filter->parent = this;
-    children["rsvp-filter"] = rsvp_filter;
 
     yang_name = "filter"; yang_parent_name = "request-brief";
 }
@@ -11396,7 +10000,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Filter::get_segment_path()
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11419,41 +10023,24 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::get_entity_path(Ent
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rsvp-filter")
     {
-        if(rsvp_filter != nullptr)
-        {
-            children["rsvp-filter"] = rsvp_filter;
-        }
-        else
+        if(rsvp_filter == nullptr)
         {
             rsvp_filter = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter>();
-            rsvp_filter->parent = this;
-            children["rsvp-filter"] = rsvp_filter;
         }
-        return children.at("rsvp-filter");
+        return rsvp_filter;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Filter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Filter::get_children() const
 {
-    if(children.find("rsvp-filter") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_filter != nullptr)
     {
-        if(rsvp_filter != nullptr)
-        {
-            children["rsvp-filter"] = rsvp_filter;
-        }
+        children["rsvp-filter"] = rsvp_filter;
     }
 
     return children;
@@ -11471,10 +10058,8 @@ RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::RsvpFilter()
 	,udp_ipv4_session(std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session>())
 {
     p2mp_ipv4_session->parent = this;
-    children["p2mp-ipv4-session"] = p2mp_ipv4_session;
 
     udp_ipv4_session->parent = this;
-    children["udp-ipv4-session"] = udp_ipv4_session;
 
     yang_name = "rsvp-filter"; yang_parent_name = "filter";
 }
@@ -11507,7 +10092,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_se
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11531,64 +10116,38 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_ent
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2mp-ipv4-session")
     {
-        if(p2mp_ipv4_session != nullptr)
-        {
-            children["p2mp-ipv4-session"] = p2mp_ipv4_session;
-        }
-        else
+        if(p2mp_ipv4_session == nullptr)
         {
             p2mp_ipv4_session = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2MpIpv4Session>();
-            p2mp_ipv4_session->parent = this;
-            children["p2mp-ipv4-session"] = p2mp_ipv4_session;
         }
-        return children.at("p2mp-ipv4-session");
+        return p2mp_ipv4_session;
     }
 
     if(child_yang_name == "udp-ipv4-session")
     {
-        if(udp_ipv4_session != nullptr)
-        {
-            children["udp-ipv4-session"] = udp_ipv4_session;
-        }
-        else
+        if(udp_ipv4_session == nullptr)
         {
             udp_ipv4_session = std::make_shared<RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session>();
-            udp_ipv4_session->parent = this;
-            children["udp-ipv4-session"] = udp_ipv4_session;
         }
-        return children.at("udp-ipv4-session");
+        return udp_ipv4_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_children() const
 {
-    if(children.find("p2mp-ipv4-session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(p2mp_ipv4_session != nullptr)
     {
-        if(p2mp_ipv4_session != nullptr)
-        {
-            children["p2mp-ipv4-session"] = p2mp_ipv4_session;
-        }
+        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
     }
 
-    if(children.find("udp-ipv4-session") == children.end())
+    if(udp_ipv4_session != nullptr)
     {
-        if(udp_ipv4_session != nullptr)
-        {
-            children["udp-ipv4-session"] = udp_ipv4_session;
-        }
+        children["udp-ipv4-session"] = udp_ipv4_session;
     }
 
     return children;
@@ -11636,7 +10195,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11661,20 +10220,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11730,7 +10281,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2MpIp
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2MpIpv4Session::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2MpIpv4Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11757,20 +10308,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2MpIpv
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2MpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2MpIpv4Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2MpIpv4Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11825,7 +10368,7 @@ std::string RsvpStandby::RequestBriefs::RequestBrief::Style::get_segment_path() 
 
 }
 
-EntityPath RsvpStandby::RequestBriefs::RequestBrief::Style::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestBriefs::RequestBrief::Style::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11849,20 +10392,12 @@ EntityPath RsvpStandby::RequestBriefs::RequestBrief::Style::get_entity_path(Enti
 
 std::shared_ptr<Entity> RsvpStandby::RequestBriefs::RequestBrief::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestBriefs::RequestBrief::Style::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestBriefs::RequestBrief::Style::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11912,7 +10447,7 @@ std::string RsvpStandby::RequestDetails::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::RequestDetails::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11935,15 +10470,6 @@ EntityPath RsvpStandby::RequestDetails::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "request-detail")
     {
         for(auto const & c : request_detail)
@@ -11951,28 +10477,24 @@ std::shared_ptr<Entity> RsvpStandby::RequestDetails::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::RequestDetails::RequestDetail>();
         c->parent = this;
-        request_detail.push_back(std::move(c));
-        children[segment_path] = request_detail.back();
-        return children.at(segment_path);
+        request_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : request_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12011,40 +10533,28 @@ RsvpStandby::RequestDetails::RequestDetail::RequestDetail()
 	,style(std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Style>())
 {
     filter->parent = this;
-    children["filter"] = filter;
 
     flow_spec->parent = this;
-    children["flow-spec"] = flow_spec;
 
     generic_flow_spec->parent = this;
-    children["generic-flow-spec"] = generic_flow_spec;
 
     header->parent = this;
-    children["header"] = header;
 
     hop->parent = this;
-    children["hop"] = hop;
 
     policy_flags->parent = this;
-    children["policy-flags"] = policy_flags;
 
     policy_query_flags->parent = this;
-    children["policy-query-flags"] = policy_query_flags;
 
     policy_sources->parent = this;
-    children["policy-sources"] = policy_sources;
 
     req_flags->parent = this;
-    children["req-flags"] = req_flags;
 
     s2l_sub_lsp->parent = this;
-    children["s2l-sub-lsp"] = s2l_sub_lsp;
 
     session->parent = this;
-    children["session"] = session;
 
     style->parent = this;
-    children["style"] = style;
 
     yang_name = "request-detail"; yang_parent_name = "request-details";
 }
@@ -12139,7 +10649,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12174,133 +10684,76 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "filter")
     {
-        if(filter != nullptr)
-        {
-            children["filter"] = filter;
-        }
-        else
+        if(filter == nullptr)
         {
             filter = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Filter>();
-            filter->parent = this;
-            children["filter"] = filter;
         }
-        return children.at("filter");
+        return filter;
     }
 
     if(child_yang_name == "flow-spec")
     {
-        if(flow_spec != nullptr)
-        {
-            children["flow-spec"] = flow_spec;
-        }
-        else
+        if(flow_spec == nullptr)
         {
             flow_spec = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::FlowSpec>();
-            flow_spec->parent = this;
-            children["flow-spec"] = flow_spec;
         }
-        return children.at("flow-spec");
+        return flow_spec;
     }
 
     if(child_yang_name == "generic-flow-spec")
     {
-        if(generic_flow_spec != nullptr)
-        {
-            children["generic-flow-spec"] = generic_flow_spec;
-        }
-        else
+        if(generic_flow_spec == nullptr)
         {
             generic_flow_spec = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec>();
-            generic_flow_spec->parent = this;
-            children["generic-flow-spec"] = generic_flow_spec;
         }
-        return children.at("generic-flow-spec");
+        return generic_flow_spec;
     }
 
     if(child_yang_name == "header")
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
-        else
+        if(header == nullptr)
         {
             header = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Header>();
-            header->parent = this;
-            children["header"] = header;
         }
-        return children.at("header");
+        return header;
     }
 
     if(child_yang_name == "hop")
     {
-        if(hop != nullptr)
-        {
-            children["hop"] = hop;
-        }
-        else
+        if(hop == nullptr)
         {
             hop = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Hop>();
-            hop->parent = this;
-            children["hop"] = hop;
         }
-        return children.at("hop");
+        return hop;
     }
 
     if(child_yang_name == "policy-flags")
     {
-        if(policy_flags != nullptr)
-        {
-            children["policy-flags"] = policy_flags;
-        }
-        else
+        if(policy_flags == nullptr)
         {
             policy_flags = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::PolicyFlags>();
-            policy_flags->parent = this;
-            children["policy-flags"] = policy_flags;
         }
-        return children.at("policy-flags");
+        return policy_flags;
     }
 
     if(child_yang_name == "policy-query-flags")
     {
-        if(policy_query_flags != nullptr)
-        {
-            children["policy-query-flags"] = policy_query_flags;
-        }
-        else
+        if(policy_query_flags == nullptr)
         {
             policy_query_flags = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags>();
-            policy_query_flags->parent = this;
-            children["policy-query-flags"] = policy_query_flags;
         }
-        return children.at("policy-query-flags");
+        return policy_query_flags;
     }
 
     if(child_yang_name == "policy-sources")
     {
-        if(policy_sources != nullptr)
-        {
-            children["policy-sources"] = policy_sources;
-        }
-        else
+        if(policy_sources == nullptr)
         {
             policy_sources = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::PolicySources>();
-            policy_sources->parent = this;
-            children["policy-sources"] = policy_sources;
         }
-        return children.at("policy-sources");
+        return policy_sources;
     }
 
     if(child_yang_name == "psb-key")
@@ -12310,30 +10763,22 @@ std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::PsbKey>();
         c->parent = this;
-        psb_key.push_back(std::move(c));
-        children[segment_path] = psb_key.back();
-        return children.at(segment_path);
+        psb_key.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "req-flags")
     {
-        if(req_flags != nullptr)
-        {
-            children["req-flags"] = req_flags;
-        }
-        else
+        if(req_flags == nullptr)
         {
             req_flags = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::ReqFlags>();
-            req_flags->parent = this;
-            children["req-flags"] = req_flags;
         }
-        return children.at("req-flags");
+        return req_flags;
     }
 
     if(child_yang_name == "rsb-key")
@@ -12343,177 +10788,116 @@ std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::RsbKey>();
         c->parent = this;
-        rsb_key.push_back(std::move(c));
-        children[segment_path] = rsb_key.back();
-        return children.at(segment_path);
+        rsb_key.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "s2l-sub-lsp")
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
-        else
+        if(s2l_sub_lsp == nullptr)
         {
             s2l_sub_lsp = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::S2LSubLsp>();
-            s2l_sub_lsp->parent = this;
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
         }
-        return children.at("s2l-sub-lsp");
+        return s2l_sub_lsp;
     }
 
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "style")
     {
-        if(style != nullptr)
-        {
-            children["style"] = style;
-        }
-        else
+        if(style == nullptr)
         {
             style = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Style>();
-            style->parent = this;
-            children["style"] = style;
         }
-        return children.at("style");
+        return style;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::get_children() const
 {
-    if(children.find("filter") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(filter != nullptr)
     {
-        if(filter != nullptr)
-        {
-            children["filter"] = filter;
-        }
+        children["filter"] = filter;
     }
 
-    if(children.find("flow-spec") == children.end())
+    if(flow_spec != nullptr)
     {
-        if(flow_spec != nullptr)
-        {
-            children["flow-spec"] = flow_spec;
-        }
+        children["flow-spec"] = flow_spec;
     }
 
-    if(children.find("generic-flow-spec") == children.end())
+    if(generic_flow_spec != nullptr)
     {
-        if(generic_flow_spec != nullptr)
-        {
-            children["generic-flow-spec"] = generic_flow_spec;
-        }
+        children["generic-flow-spec"] = generic_flow_spec;
     }
 
-    if(children.find("header") == children.end())
+    if(header != nullptr)
     {
-        if(header != nullptr)
-        {
-            children["header"] = header;
-        }
+        children["header"] = header;
     }
 
-    if(children.find("hop") == children.end())
+    if(hop != nullptr)
     {
-        if(hop != nullptr)
-        {
-            children["hop"] = hop;
-        }
+        children["hop"] = hop;
     }
 
-    if(children.find("policy-flags") == children.end())
+    if(policy_flags != nullptr)
     {
-        if(policy_flags != nullptr)
-        {
-            children["policy-flags"] = policy_flags;
-        }
+        children["policy-flags"] = policy_flags;
     }
 
-    if(children.find("policy-query-flags") == children.end())
+    if(policy_query_flags != nullptr)
     {
-        if(policy_query_flags != nullptr)
-        {
-            children["policy-query-flags"] = policy_query_flags;
-        }
+        children["policy-query-flags"] = policy_query_flags;
     }
 
-    if(children.find("policy-sources") == children.end())
+    if(policy_sources != nullptr)
     {
-        if(policy_sources != nullptr)
-        {
-            children["policy-sources"] = policy_sources;
-        }
+        children["policy-sources"] = policy_sources;
     }
 
     for (auto const & c : psb_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("req-flags") == children.end())
+    if(req_flags != nullptr)
     {
-        if(req_flags != nullptr)
-        {
-            children["req-flags"] = req_flags;
-        }
+        children["req-flags"] = req_flags;
     }
 
     for (auto const & c : rsb_key)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("s2l-sub-lsp") == children.end())
+    if(s2l_sub_lsp != nullptr)
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
+        children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
-    if(children.find("session") == children.end())
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("style") == children.end())
+    if(style != nullptr)
     {
-        if(style != nullptr)
-        {
-            children["style"] = style;
-        }
+        children["style"] = style;
     }
 
     return children;
@@ -12576,7 +10960,6 @@ RsvpStandby::RequestDetails::RequestDetail::Session::Session()
     rsvp_session(std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession>())
 {
     rsvp_session->parent = this;
-    children["rsvp-session"] = rsvp_session;
 
     yang_name = "session"; yang_parent_name = "request-detail";
 }
@@ -12605,7 +10988,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Session::get_segment_pat
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12628,41 +11011,24 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::get_entity_path(
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rsvp-session")
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
-        else
+        if(rsvp_session == nullptr)
         {
             rsvp_session = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession>();
-            rsvp_session->parent = this;
-            children["rsvp-session"] = rsvp_session;
         }
-        return children.at("rsvp-session");
+        return rsvp_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Session::get_children() const
 {
-    if(children.find("rsvp-session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_session != nullptr)
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
+        children["rsvp-session"] = rsvp_session;
     }
 
     return children;
@@ -12682,16 +11048,12 @@ RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::RsvpSession()
 	,ipv4_uni_session(std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv4_lsp_session->parent = this;
-    children["ipv4-lsp-session"] = ipv4_lsp_session;
 
     ipv4_p2mp_lsp_session->parent = this;
-    children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
 
     ipv4_uni_session->parent = this;
-    children["ipv4-uni-session"] = ipv4_uni_session;
 
     yang_name = "rsvp-session"; yang_parent_name = "session";
 }
@@ -12728,7 +11090,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::ge
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12752,110 +11114,66 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::get
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv4-lsp-session")
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
-        else
+        if(ipv4_lsp_session == nullptr)
         {
             ipv4_lsp_session = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession>();
-            ipv4_lsp_session->parent = this;
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
         }
-        return children.at("ipv4-lsp-session");
+        return ipv4_lsp_session;
     }
 
     if(child_yang_name == "ipv4-p2mp-lsp-session")
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
-        else
+        if(ipv4_p2mp_lsp_session == nullptr)
         {
             ipv4_p2mp_lsp_session = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2MpLspSession>();
-            ipv4_p2mp_lsp_session->parent = this;
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
         }
-        return children.at("ipv4-p2mp-lsp-session");
+        return ipv4_p2mp_lsp_session;
     }
 
     if(child_yang_name == "ipv4-uni-session")
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
-        else
+        if(ipv4_uni_session == nullptr)
         {
             ipv4_uni_session = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession>();
-            ipv4_uni_session->parent = this;
-            children["ipv4-uni-session"] = ipv4_uni_session;
         }
-        return children.at("ipv4-uni-session");
+        return ipv4_uni_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv4-lsp-session") == children.end())
+    if(ipv4_lsp_session != nullptr)
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
+        children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
-    if(children.find("ipv4-p2mp-lsp-session") == children.end())
+    if(ipv4_p2mp_lsp_session != nullptr)
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
+        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    if(children.find("ipv4-uni-session") == children.end())
+    if(ipv4_uni_session != nullptr)
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
+        children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     return children;
@@ -12906,7 +11224,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ip
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12932,20 +11250,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13002,7 +11312,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ip
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13028,20 +11338,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13098,7 +11400,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ip
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13124,20 +11426,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13194,7 +11488,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ip
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13220,20 +11514,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2MpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2MpLspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13284,7 +11570,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::S2LSubLsp::get_segment_p
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::S2LSubLsp::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::S2LSubLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13308,20 +11594,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::S2LSubLsp::get_entity_pat
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::S2LSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::S2LSubLsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::S2LSubLsp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13385,7 +11663,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::FlowSpec::get_segment_pa
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::FlowSpec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::FlowSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13416,20 +11694,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::FlowSpec::get_entity_path
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::FlowSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::FlowSpec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13476,7 +11746,6 @@ RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::GenericFlowSpec()
     g709otn_flow_spec(std::make_shared<RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::G709OtnFlowSpec>())
 {
     g709otn_flow_spec->parent = this;
-    children["g709otn-flow-spec"] = g709otn_flow_spec;
 
     yang_name = "generic-flow-spec"; yang_parent_name = "request-detail";
 }
@@ -13507,7 +11776,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::get_seg
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13531,41 +11800,24 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::get_enti
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g709otn-flow-spec")
     {
-        if(g709otn_flow_spec != nullptr)
-        {
-            children["g709otn-flow-spec"] = g709otn_flow_spec;
-        }
-        else
+        if(g709otn_flow_spec == nullptr)
         {
             g709otn_flow_spec = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::G709OtnFlowSpec>();
-            g709otn_flow_spec->parent = this;
-            children["g709otn-flow-spec"] = g709otn_flow_spec;
         }
-        return children.at("g709otn-flow-spec");
+        return g709otn_flow_spec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::get_children() const
 {
-    if(children.find("g709otn-flow-spec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g709otn_flow_spec != nullptr)
     {
-        if(g709otn_flow_spec != nullptr)
-        {
-            children["g709otn-flow-spec"] = g709otn_flow_spec;
-        }
+        children["g709otn-flow-spec"] = g709otn_flow_spec;
     }
 
     return children;
@@ -13619,7 +11871,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::G709Otn
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::G709OtnFlowSpec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::G709OtnFlowSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13646,20 +11898,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::G709OtnF
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::G709OtnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::G709OtnFlowSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::G709OtnFlowSpec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13688,7 +11932,6 @@ RsvpStandby::RequestDetails::RequestDetail::Filter::Filter()
     rsvp_filter(std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter>())
 {
     rsvp_filter->parent = this;
-    children["rsvp-filter"] = rsvp_filter;
 
     yang_name = "filter"; yang_parent_name = "request-detail";
 }
@@ -13717,7 +11960,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Filter::get_segment_path
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13740,41 +11983,24 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rsvp-filter")
     {
-        if(rsvp_filter != nullptr)
-        {
-            children["rsvp-filter"] = rsvp_filter;
-        }
-        else
+        if(rsvp_filter == nullptr)
         {
             rsvp_filter = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter>();
-            rsvp_filter->parent = this;
-            children["rsvp-filter"] = rsvp_filter;
         }
-        return children.at("rsvp-filter");
+        return rsvp_filter;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Filter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Filter::get_children() const
 {
-    if(children.find("rsvp-filter") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_filter != nullptr)
     {
-        if(rsvp_filter != nullptr)
-        {
-            children["rsvp-filter"] = rsvp_filter;
-        }
+        children["rsvp-filter"] = rsvp_filter;
     }
 
     return children;
@@ -13792,10 +12018,8 @@ RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::RsvpFilter()
 	,udp_ipv4_session(std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session>())
 {
     p2mp_ipv4_session->parent = this;
-    children["p2mp-ipv4-session"] = p2mp_ipv4_session;
 
     udp_ipv4_session->parent = this;
-    children["udp-ipv4-session"] = udp_ipv4_session;
 
     yang_name = "rsvp-filter"; yang_parent_name = "filter";
 }
@@ -13828,7 +12052,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::get_
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13852,64 +12076,38 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::get_e
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2mp-ipv4-session")
     {
-        if(p2mp_ipv4_session != nullptr)
-        {
-            children["p2mp-ipv4-session"] = p2mp_ipv4_session;
-        }
-        else
+        if(p2mp_ipv4_session == nullptr)
         {
             p2mp_ipv4_session = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::P2MpIpv4Session>();
-            p2mp_ipv4_session->parent = this;
-            children["p2mp-ipv4-session"] = p2mp_ipv4_session;
         }
-        return children.at("p2mp-ipv4-session");
+        return p2mp_ipv4_session;
     }
 
     if(child_yang_name == "udp-ipv4-session")
     {
-        if(udp_ipv4_session != nullptr)
-        {
-            children["udp-ipv4-session"] = udp_ipv4_session;
-        }
-        else
+        if(udp_ipv4_session == nullptr)
         {
             udp_ipv4_session = std::make_shared<RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session>();
-            udp_ipv4_session->parent = this;
-            children["udp-ipv4-session"] = udp_ipv4_session;
         }
-        return children.at("udp-ipv4-session");
+        return udp_ipv4_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::get_children() const
 {
-    if(children.find("p2mp-ipv4-session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(p2mp_ipv4_session != nullptr)
     {
-        if(p2mp_ipv4_session != nullptr)
-        {
-            children["p2mp-ipv4-session"] = p2mp_ipv4_session;
-        }
+        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
     }
 
-    if(children.find("udp-ipv4-session") == children.end())
+    if(udp_ipv4_session != nullptr)
     {
-        if(udp_ipv4_session != nullptr)
-        {
-            children["udp-ipv4-session"] = udp_ipv4_session;
-        }
+        children["udp-ipv4-session"] = udp_ipv4_session;
     }
 
     return children;
@@ -13957,7 +12155,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpI
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13982,20 +12180,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIp
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14051,7 +12241,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::P2Mp
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::P2MpIpv4Session::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::P2MpIpv4Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14078,20 +12268,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::P2MpI
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::P2MpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::P2MpIpv4Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::P2MpIpv4Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14146,7 +12328,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Style::get_segment_path(
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Style::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Style::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14170,20 +12352,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Style::get_entity_path(En
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Style::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Style::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14259,7 +12433,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::ReqFlags::get_segment_pa
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::ReqFlags::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::ReqFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14294,20 +12468,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::ReqFlags::get_entity_path
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::ReqFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::ReqFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::ReqFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14397,7 +12563,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Hop::get_segment_path() 
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Hop::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Hop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14422,20 +12588,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Hop::get_entity_path(Enti
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Hop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Hop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14500,7 +12658,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::Header::get_segment_path
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::Header::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::Header::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14530,20 +12688,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::Header::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::Header::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::Header::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14622,7 +12772,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::PolicySources::get_segme
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::PolicySources::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::PolicySources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14650,20 +12800,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::PolicySources::get_entity
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::PolicySources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::PolicySources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::PolicySources::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14728,7 +12870,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::PolicyFlags::get_segment
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::PolicyFlags::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::PolicyFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14754,20 +12896,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::PolicyFlags::get_entity_p
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::PolicyFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::PolicyFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::PolicyFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14827,7 +12961,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags::get_se
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14854,20 +12988,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags::get_ent
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::PolicyQueryFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14952,7 +13078,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::PsbKey::get_segment_path
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::PsbKey::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::PsbKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14986,20 +13112,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::PsbKey::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::PsbKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::PsbKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::PsbKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15112,7 +13230,7 @@ std::string RsvpStandby::RequestDetails::RequestDetail::RsbKey::get_segment_path
 
 }
 
-EntityPath RsvpStandby::RequestDetails::RequestDetail::RsbKey::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::RequestDetails::RequestDetail::RsbKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15146,20 +13264,12 @@ EntityPath RsvpStandby::RequestDetails::RequestDetail::RsbKey::get_entity_path(E
 
 std::shared_ptr<Entity> RsvpStandby::RequestDetails::RequestDetail::RsbKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::RequestDetails::RequestDetail::RsbKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RequestDetails::RequestDetail::RsbKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15249,7 +13359,7 @@ std::string RsvpStandby::InterfaceBriefs::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::InterfaceBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15272,15 +13382,6 @@ EntityPath RsvpStandby::InterfaceBriefs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-brief")
     {
         for(auto const & c : interface_brief)
@@ -15288,28 +13389,24 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceBriefs::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::InterfaceBriefs::InterfaceBrief>();
         c->parent = this;
-        interface_brief.push_back(std::move(c));
-        children[segment_path] = interface_brief.back();
-        return children.at(segment_path);
+        interface_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15327,7 +13424,6 @@ RsvpStandby::InterfaceBriefs::InterfaceBrief::InterfaceBrief()
     bandwidth_information(std::make_shared<RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation>())
 {
     bandwidth_information->parent = this;
-    children["bandwidth-information"] = bandwidth_information;
 
     yang_name = "interface-brief"; yang_parent_name = "interface-briefs";
 }
@@ -15360,7 +13456,7 @@ std::string RsvpStandby::InterfaceBriefs::InterfaceBrief::get_segment_path() con
 
 }
 
-EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15385,41 +13481,24 @@ EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::get_entity_path(Entity*
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceBriefs::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bandwidth-information")
     {
-        if(bandwidth_information != nullptr)
-        {
-            children["bandwidth-information"] = bandwidth_information;
-        }
-        else
+        if(bandwidth_information == nullptr)
         {
             bandwidth_information = std::make_shared<RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation>();
-            bandwidth_information->parent = this;
-            children["bandwidth-information"] = bandwidth_information;
         }
-        return children.at("bandwidth-information");
+        return bandwidth_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceBriefs::InterfaceBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceBriefs::InterfaceBrief::get_children() const
 {
-    if(children.find("bandwidth-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth_information != nullptr)
     {
-        if(bandwidth_information != nullptr)
-        {
-            children["bandwidth-information"] = bandwidth_information;
-        }
+        children["bandwidth-information"] = bandwidth_information;
     }
 
     return children;
@@ -15445,10 +13524,8 @@ RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::BandwidthInf
 	,standard_dste_interface(std::make_shared<RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::StandardDsteInterface>())
 {
     pre_standard_dste_interface->parent = this;
-    children["pre-standard-dste-interface"] = pre_standard_dste_interface;
 
     standard_dste_interface->parent = this;
-    children["standard-dste-interface"] = standard_dste_interface;
 
     yang_name = "bandwidth-information"; yang_parent_name = "interface-brief";
 }
@@ -15481,7 +13558,7 @@ std::string RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::
 
 }
 
-EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15505,64 +13582,38 @@ EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::g
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pre-standard-dste-interface")
     {
-        if(pre_standard_dste_interface != nullptr)
-        {
-            children["pre-standard-dste-interface"] = pre_standard_dste_interface;
-        }
-        else
+        if(pre_standard_dste_interface == nullptr)
         {
             pre_standard_dste_interface = std::make_shared<RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::PreStandardDsteInterface>();
-            pre_standard_dste_interface->parent = this;
-            children["pre-standard-dste-interface"] = pre_standard_dste_interface;
         }
-        return children.at("pre-standard-dste-interface");
+        return pre_standard_dste_interface;
     }
 
     if(child_yang_name == "standard-dste-interface")
     {
-        if(standard_dste_interface != nullptr)
-        {
-            children["standard-dste-interface"] = standard_dste_interface;
-        }
-        else
+        if(standard_dste_interface == nullptr)
         {
             standard_dste_interface = std::make_shared<RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::StandardDsteInterface>();
-            standard_dste_interface->parent = this;
-            children["standard-dste-interface"] = standard_dste_interface;
         }
-        return children.at("standard-dste-interface");
+        return standard_dste_interface;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::get_children() const
 {
-    if(children.find("pre-standard-dste-interface") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pre_standard_dste_interface != nullptr)
     {
-        if(pre_standard_dste_interface != nullptr)
-        {
-            children["pre-standard-dste-interface"] = pre_standard_dste_interface;
-        }
+        children["pre-standard-dste-interface"] = pre_standard_dste_interface;
     }
 
-    if(children.find("standard-dste-interface") == children.end())
+    if(standard_dste_interface != nullptr)
     {
-        if(standard_dste_interface != nullptr)
-        {
-            children["standard-dste-interface"] = standard_dste_interface;
-        }
+        children["standard-dste-interface"] = standard_dste_interface;
     }
 
     return children;
@@ -15622,7 +13673,7 @@ std::string RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::
 
 }
 
-EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::PreStandardDsteInterface::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::PreStandardDsteInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15651,20 +13702,12 @@ EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::P
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::PreStandardDsteInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15748,7 +13791,7 @@ std::string RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::
 
 }
 
-EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::StandardDsteInterface::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::StandardDsteInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15779,20 +13822,12 @@ EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::S
 
 std::shared_ptr<Entity> RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::StandardDsteInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::StandardDsteInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15870,7 +13905,7 @@ std::string RsvpStandby::SessionDetaileds::get_segment_path() const
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15893,15 +13928,6 @@ EntityPath RsvpStandby::SessionDetaileds::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-detailed")
     {
         for(auto const & c : session_detailed)
@@ -15909,28 +13935,24 @@ std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed>();
         c->parent = this;
-        session_detailed.push_back(std::move(c));
-        children[segment_path] = session_detailed.back();
-        return children.at(segment_path);
+        session_detailed.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_detailed)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15954,10 +13976,8 @@ RsvpStandby::SessionDetaileds::SessionDetailed::SessionDetailed()
 	,s2l_sub_lsp(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp>())
 {
     compact->parent = this;
-    children["compact"] = compact;
 
     s2l_sub_lsp->parent = this;
-    children["s2l-sub-lsp"] = s2l_sub_lsp;
 
     yang_name = "session-detailed"; yang_parent_name = "session-detaileds";
 }
@@ -16012,7 +14032,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::get_segment_path() c
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16042,28 +14062,13 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::get_entity_path(Entit
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "compact")
     {
-        if(compact != nullptr)
-        {
-            children["compact"] = compact;
-        }
-        else
+        if(compact == nullptr)
         {
             compact = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact>();
-            compact->parent = this;
-            children["compact"] = compact;
         }
-        return children.at("compact");
+        return compact;
     }
 
     if(child_yang_name == "psb-rsb-info")
@@ -16073,59 +14078,43 @@ std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo>();
         c->parent = this;
-        psb_rsb_info.push_back(std::move(c));
-        children[segment_path] = psb_rsb_info.back();
-        return children.at(segment_path);
+        psb_rsb_info.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "s2l-sub-lsp")
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
-        else
+        if(s2l_sub_lsp == nullptr)
         {
             s2l_sub_lsp = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp>();
-            s2l_sub_lsp->parent = this;
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
         }
-        return children.at("s2l-sub-lsp");
+        return s2l_sub_lsp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::get_children() const
 {
-    if(children.find("compact") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(compact != nullptr)
     {
-        if(compact != nullptr)
-        {
-            children["compact"] = compact;
-        }
+        children["compact"] = compact;
     }
 
     for (auto const & c : psb_rsb_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("s2l-sub-lsp") == children.end())
+    if(s2l_sub_lsp != nullptr)
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
+        children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
     return children;
@@ -16173,7 +14162,6 @@ RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Compact()
     session(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session>())
 {
     session->parent = this;
-    children["session"] = session;
 
     yang_name = "compact"; yang_parent_name = "session-detailed";
 }
@@ -16210,7 +14198,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_segment
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16237,41 +14225,24 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_entity_p
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_children() const
 {
-    if(children.find("session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
     return children;
@@ -16302,7 +14273,6 @@ RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Session()
     rsvp_session(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession>())
 {
     rsvp_session->parent = this;
-    children["rsvp-session"] = rsvp_session;
 
     yang_name = "session"; yang_parent_name = "compact";
 }
@@ -16331,7 +14301,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::ge
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16354,41 +14324,24 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rsvp-session")
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
-        else
+        if(rsvp_session == nullptr)
         {
             rsvp_session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession>();
-            rsvp_session->parent = this;
-            children["rsvp-session"] = rsvp_session;
         }
-        return children.at("rsvp-session");
+        return rsvp_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_children() const
 {
-    if(children.find("rsvp-session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_session != nullptr)
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
+        children["rsvp-session"] = rsvp_session;
     }
 
     return children;
@@ -16408,16 +14361,12 @@ RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::R
 	,ipv4_uni_session(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv4_lsp_session->parent = this;
-    children["ipv4-lsp-session"] = ipv4_lsp_session;
 
     ipv4_p2mp_lsp_session->parent = this;
-    children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
 
     ipv4_uni_session->parent = this;
-    children["ipv4-uni-session"] = ipv4_uni_session;
 
     yang_name = "rsvp-session"; yang_parent_name = "session";
 }
@@ -16454,7 +14403,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rs
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16478,110 +14427,66 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rsv
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv4-lsp-session")
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
-        else
+        if(ipv4_lsp_session == nullptr)
         {
             ipv4_lsp_session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession>();
-            ipv4_lsp_session->parent = this;
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
         }
-        return children.at("ipv4-lsp-session");
+        return ipv4_lsp_session;
     }
 
     if(child_yang_name == "ipv4-p2mp-lsp-session")
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
-        else
+        if(ipv4_p2mp_lsp_session == nullptr)
         {
             ipv4_p2mp_lsp_session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession>();
-            ipv4_p2mp_lsp_session->parent = this;
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
         }
-        return children.at("ipv4-p2mp-lsp-session");
+        return ipv4_p2mp_lsp_session;
     }
 
     if(child_yang_name == "ipv4-uni-session")
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
-        else
+        if(ipv4_uni_session == nullptr)
         {
             ipv4_uni_session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession>();
-            ipv4_uni_session->parent = this;
-            children["ipv4-uni-session"] = ipv4_uni_session;
         }
-        return children.at("ipv4-uni-session");
+        return ipv4_uni_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv4-lsp-session") == children.end())
+    if(ipv4_lsp_session != nullptr)
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
+        children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
-    if(children.find("ipv4-p2mp-lsp-session") == children.end())
+    if(ipv4_p2mp_lsp_session != nullptr)
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
+        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    if(children.find("ipv4-uni-session") == children.end())
+    if(ipv4_uni_session != nullptr)
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
+        children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     return children;
@@ -16632,7 +14537,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rs
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16658,20 +14563,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rsv
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16728,7 +14625,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rs
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16754,20 +14651,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rsv
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16824,7 +14713,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rs
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16850,20 +14739,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rsv
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16920,7 +14801,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rs
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16946,20 +14827,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Rsv
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17010,7 +14883,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_segme
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17034,20 +14907,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_entity
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17107,7 +14972,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_segm
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17130,15 +14995,6 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_entit
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "psb-info")
     {
         for(auto const & c : psb_info)
@@ -17146,15 +15002,13 @@ std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo>();
         c->parent = this;
-        psb_info.push_back(std::move(c));
-        children[segment_path] = psb_info.back();
-        return children.at(segment_path);
+        psb_info.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rsb-info")
@@ -17164,36 +15018,29 @@ std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo>();
         c->parent = this;
-        rsb_info.push_back(std::move(c));
-        children[segment_path] = rsb_info.back();
-        return children.at(segment_path);
+        rsb_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : psb_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : rsb_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17228,22 +15075,16 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::PsbInfo()
 	,traffic_spec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec>())
 {
     association->parent = this;
-    children["association"] = association;
 
     generic_in_label->parent = this;
-    children["generic-in-label"] = generic_in_label;
 
     generic_traffic_spec->parent = this;
-    children["generic-traffic-spec"] = generic_traffic_spec;
 
     protection->parent = this;
-    children["protection"] = protection;
 
     reverse_lsp->parent = this;
-    children["reverse-lsp"] = reverse_lsp;
 
     traffic_spec->parent = this;
-    children["traffic-spec"] = traffic_spec;
 
     yang_name = "psb-info"; yang_parent_name = "psb-rsb-info";
 }
@@ -17330,7 +15171,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17367,28 +15208,13 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "association")
     {
-        if(association != nullptr)
-        {
-            children["association"] = association;
-        }
-        else
+        if(association == nullptr)
         {
             association = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association>();
-            association->parent = this;
-            children["association"] = association;
         }
-        return children.at("association");
+        return association;
     }
 
     if(child_yang_name == "ero")
@@ -17398,75 +15224,49 @@ std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero>();
         c->parent = this;
-        ero.push_back(std::move(c));
-        children[segment_path] = ero.back();
-        return children.at(segment_path);
+        ero.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "generic-in-label")
     {
-        if(generic_in_label != nullptr)
-        {
-            children["generic-in-label"] = generic_in_label;
-        }
-        else
+        if(generic_in_label == nullptr)
         {
             generic_in_label = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel>();
-            generic_in_label->parent = this;
-            children["generic-in-label"] = generic_in_label;
         }
-        return children.at("generic-in-label");
+        return generic_in_label;
     }
 
     if(child_yang_name == "generic-traffic-spec")
     {
-        if(generic_traffic_spec != nullptr)
-        {
-            children["generic-traffic-spec"] = generic_traffic_spec;
-        }
-        else
+        if(generic_traffic_spec == nullptr)
         {
             generic_traffic_spec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec>();
-            generic_traffic_spec->parent = this;
-            children["generic-traffic-spec"] = generic_traffic_spec;
         }
-        return children.at("generic-traffic-spec");
+        return generic_traffic_spec;
     }
 
     if(child_yang_name == "protection")
     {
-        if(protection != nullptr)
-        {
-            children["protection"] = protection;
-        }
-        else
+        if(protection == nullptr)
         {
             protection = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection>();
-            protection->parent = this;
-            children["protection"] = protection;
         }
-        return children.at("protection");
+        return protection;
     }
 
     if(child_yang_name == "reverse-lsp")
     {
-        if(reverse_lsp != nullptr)
-        {
-            children["reverse-lsp"] = reverse_lsp;
-        }
-        else
+        if(reverse_lsp == nullptr)
         {
             reverse_lsp = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp>();
-            reverse_lsp->parent = this;
-            children["reverse-lsp"] = reverse_lsp;
         }
-        return children.at("reverse-lsp");
+        return reverse_lsp;
     }
 
     if(child_yang_name == "rro")
@@ -17476,99 +15276,68 @@ std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro>();
         c->parent = this;
-        rro.push_back(std::move(c));
-        children[segment_path] = rro.back();
-        return children.at(segment_path);
+        rro.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "traffic-spec")
     {
-        if(traffic_spec != nullptr)
-        {
-            children["traffic-spec"] = traffic_spec;
-        }
-        else
+        if(traffic_spec == nullptr)
         {
             traffic_spec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec>();
-            traffic_spec->parent = this;
-            children["traffic-spec"] = traffic_spec;
         }
-        return children.at("traffic-spec");
+        return traffic_spec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_children() const
 {
-    if(children.find("association") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(association != nullptr)
     {
-        if(association != nullptr)
-        {
-            children["association"] = association;
-        }
+        children["association"] = association;
     }
 
     for (auto const & c : ero)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("generic-in-label") == children.end())
+    if(generic_in_label != nullptr)
     {
-        if(generic_in_label != nullptr)
-        {
-            children["generic-in-label"] = generic_in_label;
-        }
+        children["generic-in-label"] = generic_in_label;
     }
 
-    if(children.find("generic-traffic-spec") == children.end())
+    if(generic_traffic_spec != nullptr)
     {
-        if(generic_traffic_spec != nullptr)
-        {
-            children["generic-traffic-spec"] = generic_traffic_spec;
-        }
+        children["generic-traffic-spec"] = generic_traffic_spec;
     }
 
-    if(children.find("protection") == children.end())
+    if(protection != nullptr)
     {
-        if(protection != nullptr)
-        {
-            children["protection"] = protection;
-        }
+        children["protection"] = protection;
     }
 
-    if(children.find("reverse-lsp") == children.end())
+    if(reverse_lsp != nullptr)
     {
-        if(reverse_lsp != nullptr)
-        {
-            children["reverse-lsp"] = reverse_lsp;
-        }
+        children["reverse-lsp"] = reverse_lsp;
     }
 
     for (auto const & c : rro)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("traffic-spec") == children.end())
+    if(traffic_spec != nullptr)
     {
-        if(traffic_spec != nullptr)
-        {
-            children["traffic-spec"] = traffic_spec;
-        }
+        children["traffic-spec"] = traffic_spec;
     }
 
     return children;
@@ -17641,7 +15410,6 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLa
     generalized_label(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel>())
 {
     generalized_label->parent = this;
-    children["generalized-label"] = generalized_label;
 
     yang_name = "generic-in-label"; yang_parent_name = "psb-info";
 }
@@ -17672,7 +15440,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17696,41 +15464,24 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generalized-label")
     {
-        if(generalized_label != nullptr)
-        {
-            children["generalized-label"] = generalized_label;
-        }
-        else
+        if(generalized_label == nullptr)
         {
             generalized_label = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel>();
-            generalized_label->parent = this;
-            children["generalized-label"] = generalized_label;
         }
-        return children.at("generalized-label");
+        return generalized_label;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_children() const
 {
-    if(children.find("generalized-label") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generalized_label != nullptr)
     {
-        if(generalized_label != nullptr)
-        {
-            children["generalized-label"] = generalized_label;
-        }
+        children["generalized-label"] = generalized_label;
     }
 
     return children;
@@ -17785,7 +15536,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17810,20 +15561,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17878,7 +15621,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17906,20 +15649,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17955,10 +15690,8 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTraf
 	,intsrv_tspec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec>())
 {
     g709otn_tspec->parent = this;
-    children["g709otn-tspec"] = g709otn_tspec;
 
     intsrv_tspec->parent = this;
-    children["intsrv-tspec"] = intsrv_tspec;
 
     yang_name = "generic-traffic-spec"; yang_parent_name = "psb-info";
 }
@@ -17991,7 +15724,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18015,64 +15748,38 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g709otn-tspec")
     {
-        if(g709otn_tspec != nullptr)
-        {
-            children["g709otn-tspec"] = g709otn_tspec;
-        }
-        else
+        if(g709otn_tspec == nullptr)
         {
             g709otn_tspec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec>();
-            g709otn_tspec->parent = this;
-            children["g709otn-tspec"] = g709otn_tspec;
         }
-        return children.at("g709otn-tspec");
+        return g709otn_tspec;
     }
 
     if(child_yang_name == "intsrv-tspec")
     {
-        if(intsrv_tspec != nullptr)
-        {
-            children["intsrv-tspec"] = intsrv_tspec;
-        }
-        else
+        if(intsrv_tspec == nullptr)
         {
             intsrv_tspec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec>();
-            intsrv_tspec->parent = this;
-            children["intsrv-tspec"] = intsrv_tspec;
         }
-        return children.at("intsrv-tspec");
+        return intsrv_tspec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_children() const
 {
-    if(children.find("g709otn-tspec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g709otn_tspec != nullptr)
     {
-        if(g709otn_tspec != nullptr)
-        {
-            children["g709otn-tspec"] = g709otn_tspec;
-        }
+        children["g709otn-tspec"] = g709otn_tspec;
     }
 
-    if(children.find("intsrv-tspec") == children.end())
+    if(intsrv_tspec != nullptr)
     {
-        if(intsrv_tspec != nullptr)
-        {
-            children["intsrv-tspec"] = intsrv_tspec;
-        }
+        children["intsrv-tspec"] = intsrv_tspec;
     }
 
     return children;
@@ -18126,7 +15833,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18153,20 +15860,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18233,7 +15932,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18261,20 +15960,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18312,16 +16003,12 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association
 	,ipv6(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6>())
 {
     extended_ipv4->parent = this;
-    children["extended-ipv4"] = extended_ipv4;
 
     extended_ipv6->parent = this;
-    children["extended-ipv6"] = extended_ipv6;
 
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "association"; yang_parent_name = "psb-info";
 }
@@ -18358,7 +16045,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18382,110 +16069,66 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "extended-ipv4")
     {
-        if(extended_ipv4 != nullptr)
-        {
-            children["extended-ipv4"] = extended_ipv4;
-        }
-        else
+        if(extended_ipv4 == nullptr)
         {
             extended_ipv4 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4>();
-            extended_ipv4->parent = this;
-            children["extended-ipv4"] = extended_ipv4;
         }
-        return children.at("extended-ipv4");
+        return extended_ipv4;
     }
 
     if(child_yang_name == "extended-ipv6")
     {
-        if(extended_ipv6 != nullptr)
-        {
-            children["extended-ipv6"] = extended_ipv6;
-        }
-        else
+        if(extended_ipv6 == nullptr)
         {
             extended_ipv6 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6>();
-            extended_ipv6->parent = this;
-            children["extended-ipv6"] = extended_ipv6;
         }
-        return children.at("extended-ipv6");
+        return extended_ipv6;
     }
 
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_children() const
 {
-    if(children.find("extended-ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(extended_ipv4 != nullptr)
     {
-        if(extended_ipv4 != nullptr)
-        {
-            children["extended-ipv4"] = extended_ipv4;
-        }
+        children["extended-ipv4"] = extended_ipv4;
     }
 
-    if(children.find("extended-ipv6") == children.end())
+    if(extended_ipv6 != nullptr)
     {
-        if(extended_ipv6 != nullptr)
-        {
-            children["extended-ipv6"] = extended_ipv6;
-        }
+        children["extended-ipv6"] = extended_ipv6;
     }
 
-    if(children.find("ipv4") == children.end())
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -18536,7 +16179,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18562,20 +16205,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18632,7 +16267,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18658,20 +16293,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18743,7 +16370,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18772,20 +16399,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18865,7 +16484,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18894,20 +16513,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18946,10 +16557,8 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection:
 	,lsp_flags(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags>())
 {
     link_flags->parent = this;
-    children["link-flags"] = link_flags;
 
     lsp_flags->parent = this;
-    children["lsp-flags"] = lsp_flags;
 
     yang_name = "protection"; yang_parent_name = "psb-info";
 }
@@ -18988,7 +16597,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19015,64 +16624,38 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "link-flags")
     {
-        if(link_flags != nullptr)
-        {
-            children["link-flags"] = link_flags;
-        }
-        else
+        if(link_flags == nullptr)
         {
             link_flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags>();
-            link_flags->parent = this;
-            children["link-flags"] = link_flags;
         }
-        return children.at("link-flags");
+        return link_flags;
     }
 
     if(child_yang_name == "lsp-flags")
     {
-        if(lsp_flags != nullptr)
-        {
-            children["lsp-flags"] = lsp_flags;
-        }
-        else
+        if(lsp_flags == nullptr)
         {
             lsp_flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags>();
-            lsp_flags->parent = this;
-            children["lsp-flags"] = lsp_flags;
         }
-        return children.at("lsp-flags");
+        return lsp_flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_children() const
 {
-    if(children.find("link-flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(link_flags != nullptr)
     {
-        if(link_flags != nullptr)
-        {
-            children["link-flags"] = link_flags;
-        }
+        children["link-flags"] = link_flags;
     }
 
-    if(children.find("lsp-flags") == children.end())
+    if(lsp_flags != nullptr)
     {
-        if(lsp_flags != nullptr)
-        {
-            children["lsp-flags"] = lsp_flags;
-        }
+        children["lsp-flags"] = lsp_flags;
     }
 
     return children;
@@ -19141,7 +16724,7 @@ std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo:
 
 }
 
-EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_entity_path(Entity* ancestor) const
+const EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19169,20 +16752,12 @@ EntityPath RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::
 
 std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

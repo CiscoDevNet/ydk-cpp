@@ -10,160 +10,46 @@
 namespace ydk {
 namespace Cisco_IOS_XR_ifmgr_cfg {
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePorts()
-{
-    yang_name = "remote-ports"; yang_parent_name = "nv-satellite-fabric-link";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::~RemotePorts()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::has_data() const
-{
-    for (std::size_t index=0; index<remote_port.size(); index++)
-    {
-        if(remote_port[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::has_operation() const
-{
-    for (std::size_t index=0; index<remote_port.size(); index++)
-    {
-        if(remote_port[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-ports";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RemotePorts' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "remote-port")
-    {
-        for(auto const & c : remote_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort>();
-        c->parent = this;
-        remote_port.push_back(std::move(c));
-        children[segment_path] = remote_port.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::get_children()
-{
-    for (auto const & c : remote_port)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::RemotePort()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Switching()
     :
-    port_type{YType::str, "port-type"},
-    slot{YType::uint32, "slot"},
-    sub_slot{YType::uint32, "sub-slot"},
-    port_range{YType::str, "port-range"}
+    endpoint(nullptr) // presence node
+	,transit(nullptr) // presence node
 {
-    yang_name = "remote-port"; yang_parent_name = "remote-ports";
+    yang_name = "switching"; yang_parent_name = "tunnel-te-attributes";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::~RemotePort()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::~Switching()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::has_data() const
 {
-    return port_type.is_set
-	|| slot.is_set
-	|| sub_slot.is_set
-	|| port_range.is_set;
+    return (endpoint !=  nullptr && endpoint->has_data())
+	|| (transit !=  nullptr && transit->has_data());
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::has_operation() const
 {
     return is_set(operation)
-	|| is_set(port_type.operation)
-	|| is_set(slot.operation)
-	|| is_set(sub_slot.operation)
-	|| is_set(port_range.operation);
+	|| (endpoint !=  nullptr && endpoint->has_operation())
+	|| (transit !=  nullptr && transit->has_operation());
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-port" <<"[port-type='" <<port_type <<"']" <<"[slot='" <<slot <<"']" <<"[sub-slot='" <<sub_slot <<"']";
+    path_buffer << "switching";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RemotePort' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'Switching' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -172,10 +58,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (port_type.is_set || is_set(port_type.operation)) leaf_name_data.push_back(port_type.get_name_leafdata());
-    if (slot.is_set || is_set(slot.operation)) leaf_name_data.push_back(slot.get_name_leafdata());
-    if (sub_slot.is_set || is_set(sub_slot.operation)) leaf_name_data.push_back(sub_slot.get_name_leafdata());
-    if (port_range.is_set || is_set(port_range.operation)) leaf_name_data.push_back(port_range.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -183,91 +65,89 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLin
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "endpoint")
     {
-        return children.at(child_yang_name);
+        if(endpoint == nullptr)
+        {
+            endpoint = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint>();
+        }
+        return endpoint;
     }
-    else if(children.find(segment_path) != children.end())
+
+    if(child_yang_name == "transit")
     {
-        return children.at(segment_path);
+        if(transit == nullptr)
+        {
+            transit = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit>();
+        }
+        return transit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(endpoint != nullptr)
+    {
+        children["endpoint"] = endpoint;
+    }
+
+    if(transit != nullptr)
+    {
+        children["transit"] = transit;
+    }
+
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "port-type")
-    {
-        port_type = value;
-    }
-    if(value_path == "slot")
-    {
-        slot = value;
-    }
-    if(value_path == "sub-slot")
-    {
-        sub_slot = value;
-    }
-    if(value_path == "port-range")
-    {
-        port_range = value;
-    }
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Qos()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit::Transit()
     :
-    input(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input>())
-	,output(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output>())
+    capability{YType::enumeration, "capability"},
+    encoding{YType::enumeration, "encoding"}
 {
-    input->parent = this;
-    children["input"] = input;
-
-    output->parent = this;
-    children["output"] = output;
-
-    yang_name = "qos"; yang_parent_name = "nv-satellite-fabric-link";
+    yang_name = "transit"; yang_parent_name = "switching";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::~Qos()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit::~Transit()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit::has_data() const
 {
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
+    return capability.is_set
+	|| encoding.is_set;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
+	|| is_set(capability.operation)
+	|| is_set(encoding.operation);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-qos-ma-sat-cfg:qos";
+    path_buffer << "transit";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Qos' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'Transit' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -276,6 +156,8 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (capability.is_set || is_set(capability.operation)) leaf_name_data.push_back(capability.get_name_leafdata());
+    if (encoding.is_set || is_set(encoding.operation)) leaf_name_data.push_back(encoding.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -283,220 +165,69 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLin
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "input")
-    {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
-        {
-            input = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input>();
-            input->parent = this;
-            children["input"] = input;
-        }
-        return children.at("input");
-    }
-
-    if(child_yang_name == "output")
-    {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
-        {
-            output = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output>();
-            output->parent = this;
-            children["output"] = output;
-        }
-        return children.at("output");
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit::get_children() const
 {
-    if(children.find("input") == children.end())
-    {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-    }
-
-    if(children.find("output") == children.end())
-    {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-    }
-
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Transit::set_value(const std::string & value_path, std::string value)
 {
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::Output()
-{
-    yang_name = "output"; yang_parent_name = "qos";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::~Output()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::has_data() const
-{
-    for (std::size_t index=0; index<service_policy.size(); index++)
+    if(value_path == "capability")
     {
-        if(service_policy[index]->has_data())
-            return true;
+        capability = value;
     }
-    return false;
+    if(value_path == "encoding")
+    {
+        encoding = value;
+    }
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::has_operation() const
-{
-    for (std::size_t index=0; index<service_policy.size(); index++)
-    {
-        if(service_policy[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Output' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "service-policy")
-    {
-        for(auto const & c : service_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy>();
-        c->parent = this;
-        service_policy.push_back(std::move(c));
-        children[segment_path] = service_policy.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::get_children()
-{
-    for (auto const & c : service_policy)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy::ServicePolicy()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint::Endpoint()
     :
-    service_policy_name{YType::str, "service-policy-name"}
+    capability{YType::enumeration, "capability"},
+    encoding{YType::enumeration, "encoding"}
 {
-    yang_name = "service-policy"; yang_parent_name = "output";
+    yang_name = "endpoint"; yang_parent_name = "switching";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy::~ServicePolicy()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint::~Endpoint()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint::has_data() const
 {
-    return service_policy_name.is_set;
+    return capability.is_set
+	|| encoding.is_set;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint::has_operation() const
 {
     return is_set(operation)
-	|| is_set(service_policy_name.operation);
+	|| is_set(capability.operation)
+	|| is_set(encoding.operation);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-policy" <<"[service-policy-name='" <<service_policy_name <<"']";
+    path_buffer << "endpoint";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ServicePolicy' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'Endpoint' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -505,7 +236,8 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (service_policy_name.is_set || is_set(service_policy_name.operation)) leaf_name_data.push_back(service_policy_name.get_name_leafdata());
+    if (capability.is_set || is_set(capability.operation)) leaf_name_data.push_back(capability.get_name_leafdata());
+    if (encoding.is_set || is_set(encoding.operation)) leaf_name_data.push_back(encoding.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -513,178 +245,69 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLin
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Switching::Endpoint::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "service-policy-name")
+    if(value_path == "capability")
     {
-        service_policy_name = value;
+        capability = value;
+    }
+    if(value_path == "encoding")
+    {
+        encoding = value;
     }
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::Input()
-{
-    yang_name = "input"; yang_parent_name = "qos";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::~Input()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::has_data() const
-{
-    for (std::size_t index=0; index<service_policy.size(); index++)
-    {
-        if(service_policy[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::has_operation() const
-{
-    for (std::size_t index=0; index<service_policy.size(); index++)
-    {
-        if(service_policy[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Input' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "service-policy")
-    {
-        for(auto const & c : service_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy>();
-        c->parent = this;
-        service_policy.push_back(std::move(c));
-        children[segment_path] = service_policy.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::get_children()
-{
-    for (auto const & c : service_policy)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy::ServicePolicy()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Pce::Pce()
     :
-    service_policy_name{YType::str, "service-policy-name"}
+    delegation{YType::empty, "delegation"},
+    enable{YType::empty, "enable"}
 {
-    yang_name = "service-policy"; yang_parent_name = "input";
+    yang_name = "pce"; yang_parent_name = "tunnel-te-attributes";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy::~ServicePolicy()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Pce::~Pce()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Pce::has_data() const
 {
-    return service_policy_name.is_set;
+    return delegation.is_set
+	|| enable.is_set;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Pce::has_operation() const
 {
     return is_set(operation)
-	|| is_set(service_policy_name.operation);
+	|| is_set(delegation.operation)
+	|| is_set(enable.operation);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Pce::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-policy" <<"[service-policy-name='" <<service_policy_name <<"']";
+    path_buffer << "pce";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Pce::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ServicePolicy' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'Pce' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -693,196 +316,8 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (service_policy_name.is_set || is_set(service_policy_name.operation)) leaf_name_data.push_back(service_policy_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "service-policy-name")
-    {
-        service_policy_name = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::EthernetFeatures()
-    :
-    cfm(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm>())
-{
-    cfm->parent = this;
-    children["cfm"] = cfm;
-
-    yang_name = "ethernet-features"; yang_parent_name = "nv-satellite-fabric-link";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::~EthernetFeatures()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::has_data() const
-{
-    return (cfm !=  nullptr && cfm->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::has_operation() const
-{
-    return is_set(operation)
-	|| (cfm !=  nullptr && cfm->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ethernet-cfm-sat-cfg:ethernet-features";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EthernetFeatures' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "cfm")
-    {
-        if(cfm != nullptr)
-        {
-            children["cfm"] = cfm;
-        }
-        else
-        {
-            cfm = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm>();
-            cfm->parent = this;
-            children["cfm"] = cfm;
-        }
-        return children.at("cfm");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::get_children()
-{
-    if(children.find("cfm") == children.end())
-    {
-        if(cfm != nullptr)
-        {
-            children["cfm"] = cfm;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::Cfm()
-    :
-    continuity_check_interval{YType::enumeration, "continuity-check-interval"},
-    enable{YType::empty, "enable"},
-    level{YType::uint32, "level"}
-{
-    yang_name = "cfm"; yang_parent_name = "ethernet-features";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::~Cfm()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::has_data() const
-{
-    return continuity_check_interval.is_set
-	|| enable.is_set
-	|| level.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(continuity_check_interval.operation)
-	|| is_set(enable.operation)
-	|| is_set(level.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cfm";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Cfm' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (continuity_check_interval.is_set || is_set(continuity_check_interval.operation)) leaf_name_data.push_back(continuity_check_interval.get_name_leafdata());
+    if (delegation.is_set || is_set(delegation.operation)) leaf_name_data.push_back(delegation.get_name_leafdata());
     if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (level.is_set || is_set(level.operation)) leaf_name_data.push_back(level.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -890,91 +325,1401 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLin
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Pce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Pce::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Pce::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "continuity-check-interval")
+    if(value_path == "delegation")
     {
-        continuity_check_interval = value;
+        delegation = value;
     }
     if(value_path == "enable")
     {
         enable = value;
     }
-    if(value_path == "level")
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::TunnelPathSelection()
+    :
+    path_selection_cost_limit{YType::uint32, "path-selection-cost-limit"},
+    path_selection_hop_limit{YType::uint32, "path-selection-hop-limit"},
+    tiebreaker{YType::enumeration, "tiebreaker"}
+    	,
+    invalidation(nullptr) // presence node
+{
+    yang_name = "tunnel-path-selection"; yang_parent_name = "tunnel-te-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::~TunnelPathSelection()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::has_data() const
+{
+    return path_selection_cost_limit.is_set
+	|| path_selection_hop_limit.is_set
+	|| tiebreaker.is_set
+	|| (invalidation !=  nullptr && invalidation->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(path_selection_cost_limit.operation)
+	|| is_set(path_selection_hop_limit.operation)
+	|| is_set(tiebreaker.operation)
+	|| (invalidation !=  nullptr && invalidation->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tunnel-path-selection";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
     {
-        level = value;
+        throw(YCPPInvalidArgumentError{"ancestor for 'TunnelPathSelection' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path_selection_cost_limit.is_set || is_set(path_selection_cost_limit.operation)) leaf_name_data.push_back(path_selection_cost_limit.get_name_leafdata());
+    if (path_selection_hop_limit.is_set || is_set(path_selection_hop_limit.operation)) leaf_name_data.push_back(path_selection_hop_limit.get_name_leafdata());
+    if (tiebreaker.is_set || is_set(tiebreaker.operation)) leaf_name_data.push_back(tiebreaker.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "invalidation")
+    {
+        if(invalidation == nullptr)
+        {
+            invalidation = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation>();
+        }
+        return invalidation;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(invalidation != nullptr)
+    {
+        children["invalidation"] = invalidation;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "path-selection-cost-limit")
+    {
+        path_selection_cost_limit = value;
+    }
+    if(value_path == "path-selection-hop-limit")
+    {
+        path_selection_hop_limit = value;
+    }
+    if(value_path == "tiebreaker")
+    {
+        tiebreaker = value;
     }
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::NvSatelliteFabricNetwork()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation::Invalidation()
     :
-    enable{YType::empty, "enable"}
+    path_invalidation_action{YType::enumeration, "path-invalidation-action"},
+    path_invalidation_timeout{YType::uint32, "path-invalidation-timeout"}
+{
+    yang_name = "invalidation"; yang_parent_name = "tunnel-path-selection";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation::~Invalidation()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation::has_data() const
+{
+    return path_invalidation_action.is_set
+	|| path_invalidation_timeout.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(path_invalidation_action.operation)
+	|| is_set(path_invalidation_timeout.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "invalidation";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Invalidation' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path_invalidation_action.is_set || is_set(path_invalidation_action.operation)) leaf_name_data.push_back(path_invalidation_action.get_name_leafdata());
+    if (path_invalidation_timeout.is_set || is_set(path_invalidation_timeout.operation)) leaf_name_data.push_back(path_invalidation_timeout.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::TunnelPathSelection::Invalidation::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "path-invalidation-action")
+    {
+        path_invalidation_action = value;
+    }
+    if(value_path == "path-invalidation-timeout")
+    {
+        path_invalidation_timeout = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AutoBandwidth()
+    :
+    application_frequency{YType::uint32, "application-frequency"},
+    collection_only{YType::empty, "collection-only"},
+    enabled{YType::boolean, "enabled"},
+    overflow_enable{YType::boolean, "overflow-enable"},
+    underflow_enable{YType::boolean, "underflow-enable"}
     	,
-    redundancy(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy>())
-	,satellites(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites>())
+    adjustment_threshold(nullptr) // presence node
+	,bandwidth_limits(nullptr) // presence node
+	,overflow(nullptr) // presence node
+	,underflow(nullptr) // presence node
 {
-    redundancy->parent = this;
-    children["redundancy"] = redundancy;
-
-    satellites->parent = this;
-    children["satellites"] = satellites;
-
-    yang_name = "nv-satellite-fabric-network"; yang_parent_name = "interface-configuration";
+    yang_name = "auto-bandwidth"; yang_parent_name = "tunnel-te-attributes";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::~NvSatelliteFabricNetwork()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::~AutoBandwidth()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::has_data() const
+{
+    return application_frequency.is_set
+	|| collection_only.is_set
+	|| enabled.is_set
+	|| overflow_enable.is_set
+	|| underflow_enable.is_set
+	|| (adjustment_threshold !=  nullptr && adjustment_threshold->has_data())
+	|| (bandwidth_limits !=  nullptr && bandwidth_limits->has_data())
+	|| (overflow !=  nullptr && overflow->has_data())
+	|| (underflow !=  nullptr && underflow->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(application_frequency.operation)
+	|| is_set(collection_only.operation)
+	|| is_set(enabled.operation)
+	|| is_set(overflow_enable.operation)
+	|| is_set(underflow_enable.operation)
+	|| (adjustment_threshold !=  nullptr && adjustment_threshold->has_operation())
+	|| (bandwidth_limits !=  nullptr && bandwidth_limits->has_operation())
+	|| (overflow !=  nullptr && overflow->has_operation())
+	|| (underflow !=  nullptr && underflow->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto-bandwidth";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'AutoBandwidth' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (application_frequency.is_set || is_set(application_frequency.operation)) leaf_name_data.push_back(application_frequency.get_name_leafdata());
+    if (collection_only.is_set || is_set(collection_only.operation)) leaf_name_data.push_back(collection_only.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (overflow_enable.is_set || is_set(overflow_enable.operation)) leaf_name_data.push_back(overflow_enable.get_name_leafdata());
+    if (underflow_enable.is_set || is_set(underflow_enable.operation)) leaf_name_data.push_back(underflow_enable.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "adjustment-threshold")
+    {
+        if(adjustment_threshold == nullptr)
+        {
+            adjustment_threshold = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold>();
+        }
+        return adjustment_threshold;
+    }
+
+    if(child_yang_name == "bandwidth-limits")
+    {
+        if(bandwidth_limits == nullptr)
+        {
+            bandwidth_limits = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits>();
+        }
+        return bandwidth_limits;
+    }
+
+    if(child_yang_name == "overflow")
+    {
+        if(overflow == nullptr)
+        {
+            overflow = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow>();
+        }
+        return overflow;
+    }
+
+    if(child_yang_name == "underflow")
+    {
+        if(underflow == nullptr)
+        {
+            underflow = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow>();
+        }
+        return underflow;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjustment_threshold != nullptr)
+    {
+        children["adjustment-threshold"] = adjustment_threshold;
+    }
+
+    if(bandwidth_limits != nullptr)
+    {
+        children["bandwidth-limits"] = bandwidth_limits;
+    }
+
+    if(overflow != nullptr)
+    {
+        children["overflow"] = overflow;
+    }
+
+    if(underflow != nullptr)
+    {
+        children["underflow"] = underflow;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "application-frequency")
+    {
+        application_frequency = value;
+    }
+    if(value_path == "collection-only")
+    {
+        collection_only = value;
+    }
+    if(value_path == "enabled")
+    {
+        enabled = value;
+    }
+    if(value_path == "overflow-enable")
+    {
+        overflow_enable = value;
+    }
+    if(value_path == "underflow-enable")
+    {
+        underflow_enable = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow::Underflow()
+    :
+    underflow_threshold_limit{YType::uint32, "underflow-threshold-limit"},
+    underflow_threshold_percent{YType::uint32, "underflow-threshold-percent"},
+    underflow_threshold_value{YType::uint32, "underflow-threshold-value"}
+{
+    yang_name = "underflow"; yang_parent_name = "auto-bandwidth";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow::~Underflow()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow::has_data() const
+{
+    return underflow_threshold_limit.is_set
+	|| underflow_threshold_percent.is_set
+	|| underflow_threshold_value.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(underflow_threshold_limit.operation)
+	|| is_set(underflow_threshold_percent.operation)
+	|| is_set(underflow_threshold_value.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "underflow";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Underflow' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (underflow_threshold_limit.is_set || is_set(underflow_threshold_limit.operation)) leaf_name_data.push_back(underflow_threshold_limit.get_name_leafdata());
+    if (underflow_threshold_percent.is_set || is_set(underflow_threshold_percent.operation)) leaf_name_data.push_back(underflow_threshold_percent.get_name_leafdata());
+    if (underflow_threshold_value.is_set || is_set(underflow_threshold_value.operation)) leaf_name_data.push_back(underflow_threshold_value.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Underflow::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "underflow-threshold-limit")
+    {
+        underflow_threshold_limit = value;
+    }
+    if(value_path == "underflow-threshold-percent")
+    {
+        underflow_threshold_percent = value;
+    }
+    if(value_path == "underflow-threshold-value")
+    {
+        underflow_threshold_value = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow::Overflow()
+    :
+    overflow_threshold_limit{YType::uint32, "overflow-threshold-limit"},
+    overflow_threshold_percent{YType::uint32, "overflow-threshold-percent"},
+    overflow_threshold_value{YType::uint32, "overflow-threshold-value"}
+{
+    yang_name = "overflow"; yang_parent_name = "auto-bandwidth";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow::~Overflow()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow::has_data() const
+{
+    return overflow_threshold_limit.is_set
+	|| overflow_threshold_percent.is_set
+	|| overflow_threshold_value.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(overflow_threshold_limit.operation)
+	|| is_set(overflow_threshold_percent.operation)
+	|| is_set(overflow_threshold_value.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "overflow";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Overflow' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (overflow_threshold_limit.is_set || is_set(overflow_threshold_limit.operation)) leaf_name_data.push_back(overflow_threshold_limit.get_name_leafdata());
+    if (overflow_threshold_percent.is_set || is_set(overflow_threshold_percent.operation)) leaf_name_data.push_back(overflow_threshold_percent.get_name_leafdata());
+    if (overflow_threshold_value.is_set || is_set(overflow_threshold_value.operation)) leaf_name_data.push_back(overflow_threshold_value.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::Overflow::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "overflow-threshold-limit")
+    {
+        overflow_threshold_limit = value;
+    }
+    if(value_path == "overflow-threshold-percent")
+    {
+        overflow_threshold_percent = value;
+    }
+    if(value_path == "overflow-threshold-value")
+    {
+        overflow_threshold_value = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits::BandwidthLimits()
+    :
+    bandwidth_max_limit{YType::uint32, "bandwidth-max-limit"},
+    bandwidth_min_limit{YType::uint32, "bandwidth-min-limit"}
+{
+    yang_name = "bandwidth-limits"; yang_parent_name = "auto-bandwidth";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits::~BandwidthLimits()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits::has_data() const
+{
+    return bandwidth_max_limit.is_set
+	|| bandwidth_min_limit.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(bandwidth_max_limit.operation)
+	|| is_set(bandwidth_min_limit.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bandwidth-limits";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'BandwidthLimits' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bandwidth_max_limit.is_set || is_set(bandwidth_max_limit.operation)) leaf_name_data.push_back(bandwidth_max_limit.get_name_leafdata());
+    if (bandwidth_min_limit.is_set || is_set(bandwidth_min_limit.operation)) leaf_name_data.push_back(bandwidth_min_limit.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::BandwidthLimits::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "bandwidth-max-limit")
+    {
+        bandwidth_max_limit = value;
+    }
+    if(value_path == "bandwidth-min-limit")
+    {
+        bandwidth_min_limit = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold::AdjustmentThreshold()
+    :
+    adjustment_threshold_percent{YType::uint32, "adjustment-threshold-percent"},
+    adjustment_threshold_value{YType::uint32, "adjustment-threshold-value"}
+{
+    yang_name = "adjustment-threshold"; yang_parent_name = "auto-bandwidth";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold::~AdjustmentThreshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold::has_data() const
+{
+    return adjustment_threshold_percent.is_set
+	|| adjustment_threshold_value.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(adjustment_threshold_percent.operation)
+	|| is_set(adjustment_threshold_value.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjustment-threshold";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'AdjustmentThreshold' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (adjustment_threshold_percent.is_set || is_set(adjustment_threshold_percent.operation)) leaf_name_data.push_back(adjustment_threshold_percent.get_name_leafdata());
+    if (adjustment_threshold_value.is_set || is_set(adjustment_threshold_value.operation)) leaf_name_data.push_back(adjustment_threshold_value.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AutoBandwidth::AdjustmentThreshold::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "adjustment-threshold-percent")
+    {
+        adjustment_threshold_percent = value;
+    }
+    if(value_path == "adjustment-threshold-value")
+    {
+        adjustment_threshold_value = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Priority::Priority()
+    :
+    hold_priority{YType::uint32, "hold-priority"},
+    setup_priority{YType::uint32, "setup-priority"}
+{
+    yang_name = "priority"; yang_parent_name = "tunnel-te-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Priority::~Priority()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Priority::has_data() const
+{
+    return hold_priority.is_set
+	|| setup_priority.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Priority::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(hold_priority.operation)
+	|| is_set(setup_priority.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Priority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "priority";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Priority::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Priority' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Priority::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Priority::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "hold-priority")
+    {
+        hold_priority = value;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AffinityMask::AffinityMask()
+    :
+    affinity{YType::str, "affinity"},
+    mask{YType::str, "mask"}
+{
+    yang_name = "affinity-mask"; yang_parent_name = "tunnel-te-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AffinityMask::~AffinityMask()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AffinityMask::has_data() const
+{
+    return affinity.is_set
+	|| mask.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AffinityMask::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity.operation)
+	|| is_set(mask.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AffinityMask::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-mask";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AffinityMask::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'AffinityMask' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity.is_set || is_set(affinity.operation)) leaf_name_data.push_back(affinity.get_name_leafdata());
+    if (mask.is_set || is_set(mask.operation)) leaf_name_data.push_back(mask.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AffinityMask::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::AffinityMask::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity")
+    {
+        affinity = value;
+    }
+    if(value_path == "mask")
+    {
+        mask = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Logging::Logging()
+    :
+    all{YType::empty, "all"},
+    bandwidth_change_message{YType::empty, "bandwidth-change-message"},
+    bfd_state_message{YType::empty, "bfd-state-message"},
+    insufficient_bw_message{YType::empty, "insufficient-bw-message"},
+    lsp_switch_over_change_message{YType::empty, "lsp-switch-over-change-message"},
+    pcalc_failure_message{YType::empty, "pcalc-failure-message"},
+    record_route_messsage{YType::empty, "record-route-messsage"},
+    reoptimize_attempts_message{YType::empty, "reoptimize-attempts-message"},
+    reoptimized_message{YType::empty, "reoptimized-message"},
+    reroute_messsage{YType::empty, "reroute-messsage"},
+    state_message{YType::empty, "state-message"}
+{
+    yang_name = "logging"; yang_parent_name = "tunnel-te-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Logging::~Logging()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Logging::has_data() const
+{
+    return all.is_set
+	|| bandwidth_change_message.is_set
+	|| bfd_state_message.is_set
+	|| insufficient_bw_message.is_set
+	|| lsp_switch_over_change_message.is_set
+	|| pcalc_failure_message.is_set
+	|| record_route_messsage.is_set
+	|| reoptimize_attempts_message.is_set
+	|| reoptimized_message.is_set
+	|| reroute_messsage.is_set
+	|| state_message.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Logging::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(all.operation)
+	|| is_set(bandwidth_change_message.operation)
+	|| is_set(bfd_state_message.operation)
+	|| is_set(insufficient_bw_message.operation)
+	|| is_set(lsp_switch_over_change_message.operation)
+	|| is_set(pcalc_failure_message.operation)
+	|| is_set(record_route_messsage.operation)
+	|| is_set(reoptimize_attempts_message.operation)
+	|| is_set(reoptimized_message.operation)
+	|| is_set(reroute_messsage.operation)
+	|| is_set(state_message.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Logging::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "logging";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Logging::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Logging' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (all.is_set || is_set(all.operation)) leaf_name_data.push_back(all.get_name_leafdata());
+    if (bandwidth_change_message.is_set || is_set(bandwidth_change_message.operation)) leaf_name_data.push_back(bandwidth_change_message.get_name_leafdata());
+    if (bfd_state_message.is_set || is_set(bfd_state_message.operation)) leaf_name_data.push_back(bfd_state_message.get_name_leafdata());
+    if (insufficient_bw_message.is_set || is_set(insufficient_bw_message.operation)) leaf_name_data.push_back(insufficient_bw_message.get_name_leafdata());
+    if (lsp_switch_over_change_message.is_set || is_set(lsp_switch_over_change_message.operation)) leaf_name_data.push_back(lsp_switch_over_change_message.get_name_leafdata());
+    if (pcalc_failure_message.is_set || is_set(pcalc_failure_message.operation)) leaf_name_data.push_back(pcalc_failure_message.get_name_leafdata());
+    if (record_route_messsage.is_set || is_set(record_route_messsage.operation)) leaf_name_data.push_back(record_route_messsage.get_name_leafdata());
+    if (reoptimize_attempts_message.is_set || is_set(reoptimize_attempts_message.operation)) leaf_name_data.push_back(reoptimize_attempts_message.get_name_leafdata());
+    if (reoptimized_message.is_set || is_set(reoptimized_message.operation)) leaf_name_data.push_back(reoptimized_message.get_name_leafdata());
+    if (reroute_messsage.is_set || is_set(reroute_messsage.operation)) leaf_name_data.push_back(reroute_messsage.get_name_leafdata());
+    if (state_message.is_set || is_set(state_message.operation)) leaf_name_data.push_back(state_message.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Logging::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Logging::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "all")
+    {
+        all = value;
+    }
+    if(value_path == "bandwidth-change-message")
+    {
+        bandwidth_change_message = value;
+    }
+    if(value_path == "bfd-state-message")
+    {
+        bfd_state_message = value;
+    }
+    if(value_path == "insufficient-bw-message")
+    {
+        insufficient_bw_message = value;
+    }
+    if(value_path == "lsp-switch-over-change-message")
+    {
+        lsp_switch_over_change_message = value;
+    }
+    if(value_path == "pcalc-failure-message")
+    {
+        pcalc_failure_message = value;
+    }
+    if(value_path == "record-route-messsage")
+    {
+        record_route_messsage = value;
+    }
+    if(value_path == "reoptimize-attempts-message")
+    {
+        reoptimize_attempts_message = value;
+    }
+    if(value_path == "reoptimized-message")
+    {
+        reoptimized_message = value;
+    }
+    if(value_path == "reroute-messsage")
+    {
+        reroute_messsage = value;
+    }
+    if(value_path == "state-message")
+    {
+        state_message = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Bandwidth::Bandwidth()
+    :
+    bandwidth{YType::uint32, "bandwidth"},
+    class_or_pool_type{YType::uint32, "class-or-pool-type"},
+    dste_type{YType::enumeration, "dste-type"}
+{
+    yang_name = "bandwidth"; yang_parent_name = "tunnel-te-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Bandwidth::~Bandwidth()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Bandwidth::has_data() const
+{
+    return bandwidth.is_set
+	|| class_or_pool_type.is_set
+	|| dste_type.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Bandwidth::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(bandwidth.operation)
+	|| is_set(class_or_pool_type.operation)
+	|| is_set(dste_type.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Bandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bandwidth";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Bandwidth::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Bandwidth' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (class_or_pool_type.is_set || is_set(class_or_pool_type.operation)) leaf_name_data.push_back(class_or_pool_type.get_name_leafdata());
+    if (dste_type.is_set || is_set(dste_type.operation)) leaf_name_data.push_back(dste_type.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Bandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Bandwidth::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth = value;
+    }
+    if(value_path == "class-or-pool-type")
+    {
+        class_or_pool_type = value;
+    }
+    if(value_path == "dste-type")
+    {
+        dste_type = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Autoroute()
+    :
+    destination{YType::empty, "destination"}
+    	,
+    autoroute_announce(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce>())
+	,destination_xr(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr>())
+	,metric(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric>())
+{
+    autoroute_announce->parent = this;
+
+    destination_xr->parent = this;
+
+    metric->parent = this;
+
+    yang_name = "autoroute"; yang_parent_name = "tunnel-te-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::~Autoroute()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::has_data() const
+{
+    return destination.is_set
+	|| (autoroute_announce !=  nullptr && autoroute_announce->has_data())
+	|| (destination_xr !=  nullptr && destination_xr->has_data())
+	|| (metric !=  nullptr && metric->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(destination.operation)
+	|| (autoroute_announce !=  nullptr && autoroute_announce->has_operation())
+	|| (destination_xr !=  nullptr && destination_xr->has_operation())
+	|| (metric !=  nullptr && metric->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "autoroute";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Autoroute' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "autoroute-announce")
+    {
+        if(autoroute_announce == nullptr)
+        {
+            autoroute_announce = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce>();
+        }
+        return autoroute_announce;
+    }
+
+    if(child_yang_name == "destination-xr")
+    {
+        if(destination_xr == nullptr)
+        {
+            destination_xr = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr>();
+        }
+        return destination_xr;
+    }
+
+    if(child_yang_name == "metric")
+    {
+        if(metric == nullptr)
+        {
+            metric = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric>();
+        }
+        return metric;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(autoroute_announce != nullptr)
+    {
+        children["autoroute-announce"] = autoroute_announce;
+    }
+
+    if(destination_xr != nullptr)
+    {
+        children["destination-xr"] = destination_xr;
+    }
+
+    if(metric != nullptr)
+    {
+        children["metric"] = metric;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "destination")
+    {
+        destination = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric::Metric()
+    :
+    absolute_metric{YType::uint32, "absolute-metric"},
+    constant_metric{YType::uint32, "constant-metric"},
+    metric_type{YType::enumeration, "metric-type"},
+    relative_metric{YType::int32, "relative-metric"}
+{
+    yang_name = "metric"; yang_parent_name = "autoroute";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric::~Metric()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric::has_data() const
+{
+    return absolute_metric.is_set
+	|| constant_metric.is_set
+	|| metric_type.is_set
+	|| relative_metric.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(absolute_metric.operation)
+	|| is_set(constant_metric.operation)
+	|| is_set(metric_type.operation)
+	|| is_set(relative_metric.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Metric' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (absolute_metric.is_set || is_set(absolute_metric.operation)) leaf_name_data.push_back(absolute_metric.get_name_leafdata());
+    if (constant_metric.is_set || is_set(constant_metric.operation)) leaf_name_data.push_back(constant_metric.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (relative_metric.is_set || is_set(relative_metric.operation)) leaf_name_data.push_back(relative_metric.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Metric::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "absolute-metric")
+    {
+        absolute_metric = value;
+    }
+    if(value_path == "constant-metric")
+    {
+        constant_metric = value;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+    }
+    if(value_path == "relative-metric")
+    {
+        relative_metric = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::AutorouteAnnounce()
+    :
+    enable{YType::empty, "enable"},
+    include_ipv6{YType::empty, "include-ipv6"}
+    	,
+    exclude_traffic(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic>())
+	,metric(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric>())
+{
+    exclude_traffic->parent = this;
+
+    metric->parent = this;
+
+    yang_name = "autoroute-announce"; yang_parent_name = "autoroute";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::~AutorouteAnnounce()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::has_data() const
 {
     return enable.is_set
-	|| (redundancy !=  nullptr && redundancy->has_data())
-	|| (satellites !=  nullptr && satellites->has_data());
+	|| include_ipv6.is_set
+	|| (exclude_traffic !=  nullptr && exclude_traffic->has_data())
+	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (redundancy !=  nullptr && redundancy->has_operation())
-	|| (satellites !=  nullptr && satellites->has_operation());
+	|| is_set(include_ipv6.operation)
+	|| (exclude_traffic !=  nullptr && exclude_traffic->has_operation())
+	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-fabric-network";
+    path_buffer << "autoroute-announce";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NvSatelliteFabricNetwork' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'AutorouteAnnounce' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -984,6 +1729,7 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (include_ipv6.is_set || is_set(include_ipv6.operation)) leaf_name_data.push_back(include_ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -991,129 +1737,269 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "exclude-traffic")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "redundancy")
-    {
-        if(redundancy != nullptr)
+        if(exclude_traffic == nullptr)
         {
-            children["redundancy"] = redundancy;
+            exclude_traffic = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic>();
         }
-        else
-        {
-            redundancy = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy>();
-            redundancy->parent = this;
-            children["redundancy"] = redundancy;
-        }
-        return children.at("redundancy");
+        return exclude_traffic;
     }
 
-    if(child_yang_name == "satellites")
+    if(child_yang_name == "metric")
     {
-        if(satellites != nullptr)
+        if(metric == nullptr)
         {
-            children["satellites"] = satellites;
+            metric = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric>();
         }
-        else
-        {
-            satellites = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites>();
-            satellites->parent = this;
-            children["satellites"] = satellites;
-        }
-        return children.at("satellites");
+        return metric;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::get_children() const
 {
-    if(children.find("redundancy") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(exclude_traffic != nullptr)
     {
-        if(redundancy != nullptr)
-        {
-            children["redundancy"] = redundancy;
-        }
+        children["exclude-traffic"] = exclude_traffic;
     }
 
-    if(children.find("satellites") == children.end())
+    if(metric != nullptr)
     {
-        if(satellites != nullptr)
-        {
-            children["satellites"] = satellites;
-        }
+        children["metric"] = metric;
     }
 
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "enable")
     {
         enable = value;
     }
+    if(value_path == "include-ipv6")
+    {
+        include_ipv6 = value;
+    }
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellites()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::ExcludeTraffic()
     :
-    qos(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos>())
+    segment_routing{YType::empty, "segment-routing"}
 {
-    qos->parent = this;
-    children["qos"] = qos;
-
-    yang_name = "satellites"; yang_parent_name = "nv-satellite-fabric-network";
+    yang_name = "exclude-traffic"; yang_parent_name = "autoroute-announce";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::~Satellites()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::~ExcludeTraffic()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::has_data() const
 {
-    for (std::size_t index=0; index<satellite.size(); index++)
-    {
-        if(satellite[index]->has_data())
-            return true;
-    }
-    return (qos !=  nullptr && qos->has_data());
+    return segment_routing.is_set;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::has_operation() const
 {
-    for (std::size_t index=0; index<satellite.size(); index++)
-    {
-        if(satellite[index]->has_operation())
-            return true;
-    }
     return is_set(operation)
-	|| (qos !=  nullptr && qos->has_operation());
+	|| is_set(segment_routing.operation);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "satellites";
+    path_buffer << "exclude-traffic";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Satellites' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'ExcludeTraffic' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (segment_routing.is_set || is_set(segment_routing.operation)) leaf_name_data.push_back(segment_routing.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "segment-routing")
+    {
+        segment_routing = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::Metric()
+    :
+    absolute_metric{YType::uint32, "absolute-metric"},
+    constant_metric{YType::uint32, "constant-metric"},
+    metric_type{YType::enumeration, "metric-type"},
+    relative_metric{YType::int32, "relative-metric"}
+{
+    yang_name = "metric"; yang_parent_name = "autoroute-announce";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::~Metric()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::has_data() const
+{
+    return absolute_metric.is_set
+	|| constant_metric.is_set
+	|| metric_type.is_set
+	|| relative_metric.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(absolute_metric.operation)
+	|| is_set(constant_metric.operation)
+	|| is_set(metric_type.operation)
+	|| is_set(relative_metric.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Metric' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (absolute_metric.is_set || is_set(absolute_metric.operation)) leaf_name_data.push_back(absolute_metric.get_name_leafdata());
+    if (constant_metric.is_set || is_set(constant_metric.operation)) leaf_name_data.push_back(constant_metric.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (relative_metric.is_set || is_set(relative_metric.operation)) leaf_name_data.push_back(relative_metric.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "absolute-metric")
+    {
+        absolute_metric = value;
+    }
+    if(value_path == "constant-metric")
+    {
+        constant_metric = value;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+    }
+    if(value_path == "relative-metric")
+    {
+        relative_metric = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::DestinationXr()
+{
+    yang_name = "destination-xr"; yang_parent_name = "autoroute";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::~DestinationXr()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::has_data() const
+{
+    for (std::size_t index=0; index<destination.size(); index++)
+    {
+        if(destination[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::has_operation() const
+{
+    for (std::size_t index=0; index<destination.size(); index++)
+    {
+        if(destination[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination-xr";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'DestinationXr' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1129,125 +2015,2686 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "destination")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "qos")
-    {
-        if(qos != nullptr)
-        {
-            children["qos"] = qos;
-        }
-        else
-        {
-            qos = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos>();
-            qos->parent = this;
-            children["qos"] = qos;
-        }
-        return children.at("qos");
-    }
-
-    if(child_yang_name == "satellite")
-    {
-        for(auto const & c : satellite)
+        for(auto const & c : destination)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite>();
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination>();
         c->parent = this;
-        satellite.push_back(std::move(c));
-        children[segment_path] = satellite.back();
-        return children.at(segment_path);
+        destination.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::get_children() const
 {
-    if(children.find("qos") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : destination)
     {
-        if(qos != nullptr)
-        {
-            children["qos"] = qos;
-        }
-    }
-
-    for (auto const & c : satellite)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::set_value(const std::string & value_path, std::string value)
 {
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::Satellite()
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination::Destination()
     :
-    satellite_id{YType::uint32, "satellite-id"},
+    destination_address{YType::str, "destination-address"}
+{
+    yang_name = "destination"; yang_parent_name = "destination-xr";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination::~Destination()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination::has_data() const
+{
+    return destination_address.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(destination_address.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination" <<"[destination-address='" <<destination_address <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Destination' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::DestinationXr::Destination::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::PolicyClasses()
+    :
+    policy_class{YType::uint32, "policy-class"}
+{
+    yang_name = "policy-classes"; yang_parent_name = "tunnel-te-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::~PolicyClasses()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::has_data() const
+{
+    for (auto const & leaf : policy_class.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::has_operation() const
+{
+    for (auto const & leaf : policy_class.getYLeafs())
+    {
+        if(is_set(leaf.operation))
+            return true;
+    }
+    return is_set(operation)
+	|| is_set(policy_class.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-classes";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PolicyClasses' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto policy_class_name_datas = policy_class.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), policy_class_name_datas.begin(), policy_class_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "policy-class")
+    {
+        policy_class.append(value);
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypes()
+{
+    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "tunnel-te-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::~NewStyleAffinityAffinityTypes()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::has_data() const
+{
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    {
+        if(new_style_affinity_affinity_type[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::has_operation() const
+{
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    {
+        if(new_style_affinity_affinity_type[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    {
+        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-types";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypes' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "new-style-affinity-affinity-type")
+    {
+        for(auto const & c : new_style_affinity_affinity_type)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
+        c->parent = this;
+        new_style_affinity_affinity_type.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1_affinity2.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
+    {
+        for(auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
+        c->parent = this;
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : new_style_affinity_affinity_type)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::set_value(const std::string & value_path, std::string value)
+{
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::NewStyleAffinityAffinityType()
+    :
+    affinity_type{YType::enumeration, "affinity-type"}
+{
+    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::~NewStyleAffinityAffinityType()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_data() const
+{
+    return affinity_type.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type" <<"[affinity-type='" <<affinity_type <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityType' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::~NewStyleAffinityAffinityTypeAffinity1()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::NewStyleAffinityAffinityTypeAffinity1Affinity2()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::~NewStyleAffinityAffinityTypeAffinity1Affinity2()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1Affinity2' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"},
+    affinity3{YType::str, "affinity3"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set
+	|| affinity3.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation)
+	|| is_set(affinity3.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+    if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+    if(value_path == "affinity3")
+    {
+        affinity3 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"},
+    affinity3{YType::str, "affinity3"},
+    affinity4{YType::str, "affinity4"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set
+	|| affinity3.is_set
+	|| affinity4.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation)
+	|| is_set(affinity3.operation)
+	|| is_set(affinity4.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+    if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
+    if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+    if(value_path == "affinity3")
+    {
+        affinity3 = value;
+    }
+    if(value_path == "affinity4")
+    {
+        affinity4 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"},
+    affinity3{YType::str, "affinity3"},
+    affinity4{YType::str, "affinity4"},
+    affinity5{YType::str, "affinity5"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set
+	|| affinity3.is_set
+	|| affinity4.is_set
+	|| affinity5.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation)
+	|| is_set(affinity3.operation)
+	|| is_set(affinity4.operation)
+	|| is_set(affinity5.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+    if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
+    if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
+    if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+    if(value_path == "affinity3")
+    {
+        affinity3 = value;
+    }
+    if(value_path == "affinity4")
+    {
+        affinity4 = value;
+    }
+    if(value_path == "affinity5")
+    {
+        affinity5 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"},
+    affinity3{YType::str, "affinity3"},
+    affinity4{YType::str, "affinity4"},
+    affinity5{YType::str, "affinity5"},
+    affinity6{YType::str, "affinity6"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set
+	|| affinity3.is_set
+	|| affinity4.is_set
+	|| affinity5.is_set
+	|| affinity6.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation)
+	|| is_set(affinity3.operation)
+	|| is_set(affinity4.operation)
+	|| is_set(affinity5.operation)
+	|| is_set(affinity6.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+    if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
+    if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
+    if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
+    if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+    if(value_path == "affinity3")
+    {
+        affinity3 = value;
+    }
+    if(value_path == "affinity4")
+    {
+        affinity4 = value;
+    }
+    if(value_path == "affinity5")
+    {
+        affinity5 = value;
+    }
+    if(value_path == "affinity6")
+    {
+        affinity6 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"},
+    affinity3{YType::str, "affinity3"},
+    affinity4{YType::str, "affinity4"},
+    affinity5{YType::str, "affinity5"},
+    affinity6{YType::str, "affinity6"},
+    affinity7{YType::str, "affinity7"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set
+	|| affinity3.is_set
+	|| affinity4.is_set
+	|| affinity5.is_set
+	|| affinity6.is_set
+	|| affinity7.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation)
+	|| is_set(affinity3.operation)
+	|| is_set(affinity4.operation)
+	|| is_set(affinity5.operation)
+	|| is_set(affinity6.operation)
+	|| is_set(affinity7.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+    if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
+    if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
+    if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
+    if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
+    if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+    if(value_path == "affinity3")
+    {
+        affinity3 = value;
+    }
+    if(value_path == "affinity4")
+    {
+        affinity4 = value;
+    }
+    if(value_path == "affinity5")
+    {
+        affinity5 = value;
+    }
+    if(value_path == "affinity6")
+    {
+        affinity6 = value;
+    }
+    if(value_path == "affinity7")
+    {
+        affinity7 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"},
+    affinity3{YType::str, "affinity3"},
+    affinity4{YType::str, "affinity4"},
+    affinity5{YType::str, "affinity5"},
+    affinity6{YType::str, "affinity6"},
+    affinity7{YType::str, "affinity7"},
+    affinity8{YType::str, "affinity8"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set
+	|| affinity3.is_set
+	|| affinity4.is_set
+	|| affinity5.is_set
+	|| affinity6.is_set
+	|| affinity7.is_set
+	|| affinity8.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation)
+	|| is_set(affinity3.operation)
+	|| is_set(affinity4.operation)
+	|| is_set(affinity5.operation)
+	|| is_set(affinity6.operation)
+	|| is_set(affinity7.operation)
+	|| is_set(affinity8.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+    if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
+    if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
+    if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
+    if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
+    if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
+    if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+    if(value_path == "affinity3")
+    {
+        affinity3 = value;
+    }
+    if(value_path == "affinity4")
+    {
+        affinity4 = value;
+    }
+    if(value_path == "affinity5")
+    {
+        affinity5 = value;
+    }
+    if(value_path == "affinity6")
+    {
+        affinity6 = value;
+    }
+    if(value_path == "affinity7")
+    {
+        affinity7 = value;
+    }
+    if(value_path == "affinity8")
+    {
+        affinity8 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"},
+    affinity3{YType::str, "affinity3"},
+    affinity4{YType::str, "affinity4"},
+    affinity5{YType::str, "affinity5"},
+    affinity6{YType::str, "affinity6"},
+    affinity7{YType::str, "affinity7"},
+    affinity8{YType::str, "affinity8"},
+    affinity9{YType::str, "affinity9"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set
+	|| affinity3.is_set
+	|| affinity4.is_set
+	|| affinity5.is_set
+	|| affinity6.is_set
+	|| affinity7.is_set
+	|| affinity8.is_set
+	|| affinity9.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation)
+	|| is_set(affinity3.operation)
+	|| is_set(affinity4.operation)
+	|| is_set(affinity5.operation)
+	|| is_set(affinity6.operation)
+	|| is_set(affinity7.operation)
+	|| is_set(affinity8.operation)
+	|| is_set(affinity9.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+    if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
+    if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
+    if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
+    if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
+    if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
+    if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
+    if (affinity9.is_set || is_set(affinity9.operation)) leaf_name_data.push_back(affinity9.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+    if(value_path == "affinity3")
+    {
+        affinity3 = value;
+    }
+    if(value_path == "affinity4")
+    {
+        affinity4 = value;
+    }
+    if(value_path == "affinity5")
+    {
+        affinity5 = value;
+    }
+    if(value_path == "affinity6")
+    {
+        affinity6 = value;
+    }
+    if(value_path == "affinity7")
+    {
+        affinity7 = value;
+    }
+    if(value_path == "affinity8")
+    {
+        affinity8 = value;
+    }
+    if(value_path == "affinity9")
+    {
+        affinity9 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"},
+    affinity3{YType::str, "affinity3"},
+    affinity4{YType::str, "affinity4"},
+    affinity5{YType::str, "affinity5"},
+    affinity6{YType::str, "affinity6"},
+    affinity7{YType::str, "affinity7"},
+    affinity8{YType::str, "affinity8"},
+    affinity9{YType::str, "affinity9"},
+    affinity10{YType::str, "affinity10"}
+{
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set
+	|| affinity3.is_set
+	|| affinity4.is_set
+	|| affinity5.is_set
+	|| affinity6.is_set
+	|| affinity7.is_set
+	|| affinity8.is_set
+	|| affinity9.is_set
+	|| affinity10.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation)
+	|| is_set(affinity3.operation)
+	|| is_set(affinity4.operation)
+	|| is_set(affinity5.operation)
+	|| is_set(affinity6.operation)
+	|| is_set(affinity7.operation)
+	|| is_set(affinity8.operation)
+	|| is_set(affinity9.operation)
+	|| is_set(affinity10.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity10='" <<affinity10 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+    if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
+    if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
+    if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
+    if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
+    if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
+    if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
+    if (affinity9.is_set || is_set(affinity9.operation)) leaf_name_data.push_back(affinity9.get_name_leafdata());
+    if (affinity10.is_set || is_set(affinity10.operation)) leaf_name_data.push_back(affinity10.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+    if(value_path == "affinity3")
+    {
+        affinity3 = value;
+    }
+    if(value_path == "affinity4")
+    {
+        affinity4 = value;
+    }
+    if(value_path == "affinity5")
+    {
+        affinity5 = value;
+    }
+    if(value_path == "affinity6")
+    {
+        affinity6 = value;
+    }
+    if(value_path == "affinity7")
+    {
+        affinity7 = value;
+    }
+    if(value_path == "affinity8")
+    {
+        affinity8 = value;
+    }
+    if(value_path == "affinity9")
+    {
+        affinity9 = value;
+    }
+    if(value_path == "affinity10")
+    {
+        affinity10 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::FastReroute()
+    :
+    bandwidth_protection{YType::uint32, "bandwidth-protection"},
+    node_protection{YType::uint32, "node-protection"}
+{
+    yang_name = "fast-reroute"; yang_parent_name = "tunnel-te-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::~FastReroute()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::has_data() const
+{
+    return bandwidth_protection.is_set
+	|| node_protection.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(bandwidth_protection.operation)
+	|| is_set(node_protection.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fast-reroute";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'FastReroute' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bandwidth_protection.is_set || is_set(bandwidth_protection.operation)) leaf_name_data.push_back(bandwidth_protection.get_name_leafdata());
+    if (node_protection.is_set || is_set(node_protection.operation)) leaf_name_data.push_back(node_protection.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "bandwidth-protection")
+    {
+        bandwidth_protection = value;
+    }
+    if(value_path == "node-protection")
+    {
+        node_protection = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::TransportProfileTunnel()
+    :
+    source{YType::str, "source"}
+    	,
+    bfd(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd>())
+	,destination(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination>())
+	,fault(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault>())
+	,protect_lsp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp>())
+	,working_lsp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp>())
+{
+    bfd->parent = this;
+
+    destination->parent = this;
+
+    fault->parent = this;
+
+    protect_lsp->parent = this;
+
+    working_lsp->parent = this;
+
+    yang_name = "transport-profile-tunnel"; yang_parent_name = "interface-configuration";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::~TransportProfileTunnel()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::has_data() const
+{
+    return source.is_set
+	|| (bfd !=  nullptr && bfd->has_data())
+	|| (destination !=  nullptr && destination->has_data())
+	|| (fault !=  nullptr && fault->has_data())
+	|| (protect_lsp !=  nullptr && protect_lsp->has_data())
+	|| (working_lsp !=  nullptr && working_lsp->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(source.operation)
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (destination !=  nullptr && destination->has_operation())
+	|| (fault !=  nullptr && fault->has_operation())
+	|| (protect_lsp !=  nullptr && protect_lsp->has_operation())
+	|| (working_lsp !=  nullptr && working_lsp->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:transport-profile-tunnel";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'TransportProfileTunnel' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bfd")
+    {
+        if(bfd == nullptr)
+        {
+            bfd = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd>();
+        }
+        return bfd;
+    }
+
+    if(child_yang_name == "destination")
+    {
+        if(destination == nullptr)
+        {
+            destination = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination>();
+        }
+        return destination;
+    }
+
+    if(child_yang_name == "fault")
+    {
+        if(fault == nullptr)
+        {
+            fault = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault>();
+        }
+        return fault;
+    }
+
+    if(child_yang_name == "protect-lsp")
+    {
+        if(protect_lsp == nullptr)
+        {
+            protect_lsp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp>();
+        }
+        return protect_lsp;
+    }
+
+    if(child_yang_name == "working-lsp")
+    {
+        if(working_lsp == nullptr)
+        {
+            working_lsp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp>();
+        }
+        return working_lsp;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd != nullptr)
+    {
+        children["bfd"] = bfd;
+    }
+
+    if(destination != nullptr)
+    {
+        children["destination"] = destination;
+    }
+
+    if(fault != nullptr)
+    {
+        children["fault"] = fault;
+    }
+
+    if(protect_lsp != nullptr)
+    {
+        children["protect-lsp"] = protect_lsp;
+    }
+
+    if(working_lsp != nullptr)
+    {
+        children["working-lsp"] = working_lsp;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "source")
+    {
+        source = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::Bfd()
+    :
+    detection_multiplier{YType::uint32, "detection-multiplier"},
+    enable{YType::empty, "enable"},
+    multiplier_standby{YType::uint32, "multiplier-standby"}
+    	,
+    min_interval(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval>())
+	,min_interval_standby(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby>())
+{
+    min_interval->parent = this;
+
+    min_interval_standby->parent = this;
+
+    yang_name = "bfd"; yang_parent_name = "transport-profile-tunnel";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::~Bfd()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::has_data() const
+{
+    return detection_multiplier.is_set
+	|| enable.is_set
+	|| multiplier_standby.is_set
+	|| (min_interval !=  nullptr && min_interval->has_data())
+	|| (min_interval_standby !=  nullptr && min_interval_standby->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(detection_multiplier.operation)
+	|| is_set(enable.operation)
+	|| is_set(multiplier_standby.operation)
+	|| (min_interval !=  nullptr && min_interval->has_operation())
+	|| (min_interval_standby !=  nullptr && min_interval_standby->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Bfd' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (multiplier_standby.is_set || is_set(multiplier_standby.operation)) leaf_name_data.push_back(multiplier_standby.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "min-interval")
+    {
+        if(min_interval == nullptr)
+        {
+            min_interval = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval>();
+        }
+        return min_interval;
+    }
+
+    if(child_yang_name == "min-interval-standby")
+    {
+        if(min_interval_standby == nullptr)
+        {
+            min_interval_standby = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby>();
+        }
+        return min_interval_standby;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(min_interval != nullptr)
+    {
+        children["min-interval"] = min_interval;
+    }
+
+    if(min_interval_standby != nullptr)
+    {
+        children["min-interval-standby"] = min_interval_standby;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier = value;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+    }
+    if(value_path == "multiplier-standby")
+    {
+        multiplier_standby = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::MinInterval()
+    :
+    interval_ms{YType::uint32, "interval-ms"},
+    interval_us{YType::uint32, "interval-us"}
+{
+    yang_name = "min-interval"; yang_parent_name = "bfd";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::~MinInterval()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::has_data() const
+{
+    return interval_ms.is_set
+	|| interval_us.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(interval_ms.operation)
+	|| is_set(interval_us.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "min-interval";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'MinInterval' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interval_ms.is_set || is_set(interval_ms.operation)) leaf_name_data.push_back(interval_ms.get_name_leafdata());
+    if (interval_us.is_set || is_set(interval_us.operation)) leaf_name_data.push_back(interval_us.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "interval-ms")
+    {
+        interval_ms = value;
+    }
+    if(value_path == "interval-us")
+    {
+        interval_us = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::MinIntervalStandby()
+    :
+    interval_standby_ms{YType::uint32, "interval-standby-ms"},
+    interval_standby_us{YType::uint32, "interval-standby-us"}
+{
+    yang_name = "min-interval-standby"; yang_parent_name = "bfd";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::~MinIntervalStandby()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::has_data() const
+{
+    return interval_standby_ms.is_set
+	|| interval_standby_us.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(interval_standby_ms.operation)
+	|| is_set(interval_standby_us.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "min-interval-standby";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'MinIntervalStandby' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interval_standby_ms.is_set || is_set(interval_standby_ms.operation)) leaf_name_data.push_back(interval_standby_ms.get_name_leafdata());
+    if (interval_standby_us.is_set || is_set(interval_standby_us.operation)) leaf_name_data.push_back(interval_standby_us.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "interval-standby-ms")
+    {
+        interval_standby_ms = value;
+    }
+    if(value_path == "interval-standby-us")
+    {
+        interval_standby_us = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::WorkingLsp()
+    :
+    in_label{YType::uint32, "in-label"},
+    lockout{YType::empty, "lockout"},
+    lsp_id{YType::uint32, "lsp-id"}
+    	,
+    out_label(nullptr) // presence node
+{
+    yang_name = "working-lsp"; yang_parent_name = "transport-profile-tunnel";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::~WorkingLsp()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::has_data() const
+{
+    return in_label.is_set
+	|| lockout.is_set
+	|| lsp_id.is_set
+	|| (out_label !=  nullptr && out_label->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(in_label.operation)
+	|| is_set(lockout.operation)
+	|| is_set(lsp_id.operation)
+	|| (out_label !=  nullptr && out_label->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "working-lsp";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'WorkingLsp' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (in_label.is_set || is_set(in_label.operation)) leaf_name_data.push_back(in_label.get_name_leafdata());
+    if (lockout.is_set || is_set(lockout.operation)) leaf_name_data.push_back(lockout.get_name_leafdata());
+    if (lsp_id.is_set || is_set(lsp_id.operation)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "out-label")
+    {
+        if(out_label == nullptr)
+        {
+            out_label = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel>();
+        }
+        return out_label;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(out_label != nullptr)
+    {
+        children["out-label"] = out_label;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "in-label")
+    {
+        in_label = value;
+    }
+    if(value_path == "lockout")
+    {
+        lockout = value;
+    }
+    if(value_path == "lsp-id")
+    {
+        lsp_id = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::OutLabel()
+    :
+    label{YType::uint32, "label"},
+    link{YType::uint32, "link"}
+{
+    yang_name = "out-label"; yang_parent_name = "working-lsp";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::~OutLabel()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::has_data() const
+{
+    return label.is_set
+	|| link.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(label.operation)
+	|| is_set(link.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "out-label";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'OutLabel' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.operation)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (link.is_set || is_set(link.operation)) leaf_name_data.push_back(link.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "label")
+    {
+        label = value;
+    }
+    if(value_path == "link")
+    {
+        link = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::Destination()
+    :
+    global_id{YType::uint32, "global-id"},
+    node_id{YType::str, "node-id"},
+    tunnel_id{YType::uint32, "tunnel-id"}
+{
+    yang_name = "destination"; yang_parent_name = "transport-profile-tunnel";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::~Destination()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::has_data() const
+{
+    return global_id.is_set
+	|| node_id.is_set
+	|| tunnel_id.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(global_id.operation)
+	|| is_set(node_id.operation)
+	|| is_set(tunnel_id.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Destination' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (global_id.is_set || is_set(global_id.operation)) leaf_name_data.push_back(global_id.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "global-id")
+    {
+        global_id = value;
+    }
+    if(value_path == "node-id")
+    {
+        node_id = value;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::Fault()
+    :
     enable{YType::empty, "enable"}
     	,
-    remote_ports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts>())
+    protection_trigger(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger>())
 {
-    remote_ports->parent = this;
-    children["remote-ports"] = remote_ports;
+    protection_trigger->parent = this;
 
-    yang_name = "satellite"; yang_parent_name = "satellites";
+    yang_name = "fault"; yang_parent_name = "transport-profile-tunnel";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::~Satellite()
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::~Fault()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::has_data() const
 {
-    return satellite_id.is_set
-	|| enable.is_set
-	|| (remote_ports !=  nullptr && remote_ports->has_data());
+    return enable.is_set
+	|| (protection_trigger !=  nullptr && protection_trigger->has_data());
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::has_operation() const
 {
     return is_set(operation)
-	|| is_set(satellite_id.operation)
 	|| is_set(enable.operation)
-	|| (remote_ports !=  nullptr && remote_ports->has_operation());
+	|| (protection_trigger !=  nullptr && protection_trigger->has_operation());
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "satellite" <<"[satellite-id='" <<satellite_id <<"']";
+    path_buffer << "fault";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Satellite' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'Fault' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1256,7 +4703,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (satellite_id.is_set || is_set(satellite_id.operation)) leaf_name_data.push_back(satellite_id.get_name_leafdata());
     if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
@@ -1265,104 +4711,584 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "protection-trigger")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "remote-ports")
-    {
-        if(remote_ports != nullptr)
+        if(protection_trigger == nullptr)
         {
-            children["remote-ports"] = remote_ports;
+            protection_trigger = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger>();
         }
-        else
-        {
-            remote_ports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts>();
-            remote_ports->parent = this;
-            children["remote-ports"] = remote_ports;
-        }
-        return children.at("remote-ports");
+        return protection_trigger;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::get_children() const
 {
-    if(children.find("remote-ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protection_trigger != nullptr)
     {
-        if(remote_ports != nullptr)
-        {
-            children["remote-ports"] = remote_ports;
-        }
+        children["protection-trigger"] = protection_trigger;
     }
 
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "satellite-id")
-    {
-        satellite_id = value;
-    }
     if(value_path == "enable")
     {
         enable = value;
     }
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePorts()
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::ProtectionTrigger()
+    :
+    ais{YType::boolean, "ais"},
+    ldi{YType::boolean, "ldi"},
+    lkr{YType::boolean, "lkr"}
 {
-    yang_name = "remote-ports"; yang_parent_name = "satellite";
+    yang_name = "protection-trigger"; yang_parent_name = "fault";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::~RemotePorts()
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::~ProtectionTrigger()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::has_data() const
 {
-    for (std::size_t index=0; index<remote_port.size(); index++)
-    {
-        if(remote_port[index]->has_data())
-            return true;
-    }
-    return false;
+    return ais.is_set
+	|| ldi.is_set
+	|| lkr.is_set;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::has_operation() const
 {
-    for (std::size_t index=0; index<remote_port.size(); index++)
-    {
-        if(remote_port[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(ais.operation)
+	|| is_set(ldi.operation)
+	|| is_set(lkr.operation);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-ports";
+    path_buffer << "protection-trigger";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RemotePorts' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'ProtectionTrigger' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ais.is_set || is_set(ais.operation)) leaf_name_data.push_back(ais.get_name_leafdata());
+    if (ldi.is_set || is_set(ldi.operation)) leaf_name_data.push_back(ldi.get_name_leafdata());
+    if (lkr.is_set || is_set(lkr.operation)) leaf_name_data.push_back(lkr.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "ais")
+    {
+        ais = value;
+    }
+    if(value_path == "ldi")
+    {
+        ldi = value;
+    }
+    if(value_path == "lkr")
+    {
+        lkr = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::ProtectLsp()
+    :
+    in_label{YType::uint32, "in-label"},
+    lockout{YType::empty, "lockout"},
+    lsp_id{YType::uint32, "lsp-id"}
+    	,
+    out_label(nullptr) // presence node
+{
+    yang_name = "protect-lsp"; yang_parent_name = "transport-profile-tunnel";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::~ProtectLsp()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::has_data() const
+{
+    return in_label.is_set
+	|| lockout.is_set
+	|| lsp_id.is_set
+	|| (out_label !=  nullptr && out_label->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(in_label.operation)
+	|| is_set(lockout.operation)
+	|| is_set(lsp_id.operation)
+	|| (out_label !=  nullptr && out_label->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "protect-lsp";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'ProtectLsp' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (in_label.is_set || is_set(in_label.operation)) leaf_name_data.push_back(in_label.get_name_leafdata());
+    if (lockout.is_set || is_set(lockout.operation)) leaf_name_data.push_back(lockout.get_name_leafdata());
+    if (lsp_id.is_set || is_set(lsp_id.operation)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "out-label")
+    {
+        if(out_label == nullptr)
+        {
+            out_label = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel>();
+        }
+        return out_label;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(out_label != nullptr)
+    {
+        children["out-label"] = out_label;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "in-label")
+    {
+        in_label = value;
+    }
+    if(value_path == "lockout")
+    {
+        lockout = value;
+    }
+    if(value_path == "lsp-id")
+    {
+        lsp_id = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::OutLabel()
+    :
+    label{YType::uint32, "label"},
+    link{YType::uint32, "link"}
+{
+    yang_name = "out-label"; yang_parent_name = "protect-lsp";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::~OutLabel()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::has_data() const
+{
+    return label.is_set
+	|| link.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(label.operation)
+	|| is_set(link.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "out-label";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'OutLabel' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.operation)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (link.is_set || is_set(link.operation)) leaf_name_data.push_back(link.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "label")
+    {
+        label = value;
+    }
+    if(value_path == "link")
+    {
+        link = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::MteTunnelAttributes()
+    :
+    fast_reroute{YType::empty, "fast-reroute"},
+    impose_explicit_null{YType::empty, "impose-explicit-null"},
+    path_selection_metric{YType::enumeration, "path-selection-metric"},
+    record_route{YType::empty, "record-route"},
+    signalled_name{YType::str, "signalled-name"},
+    signalled_payload{YType::str, "signalled-payload"}
+    	,
+    affinity_mask(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask>())
+	,bandwidth(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth>())
+	,destination_leafs(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs>())
+	,logging(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging>())
+	,new_style_affinities(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities>())
+	,priority(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority>())
+{
+    affinity_mask->parent = this;
+
+    bandwidth->parent = this;
+
+    destination_leafs->parent = this;
+
+    logging->parent = this;
+
+    new_style_affinities->parent = this;
+
+    priority->parent = this;
+
+    yang_name = "mte-tunnel-attributes"; yang_parent_name = "interface-configuration";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::~MteTunnelAttributes()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::has_data() const
+{
+    return fast_reroute.is_set
+	|| impose_explicit_null.is_set
+	|| path_selection_metric.is_set
+	|| record_route.is_set
+	|| signalled_name.is_set
+	|| signalled_payload.is_set
+	|| (affinity_mask !=  nullptr && affinity_mask->has_data())
+	|| (bandwidth !=  nullptr && bandwidth->has_data())
+	|| (destination_leafs !=  nullptr && destination_leafs->has_data())
+	|| (logging !=  nullptr && logging->has_data())
+	|| (new_style_affinities !=  nullptr && new_style_affinities->has_data())
+	|| (priority !=  nullptr && priority->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(fast_reroute.operation)
+	|| is_set(impose_explicit_null.operation)
+	|| is_set(path_selection_metric.operation)
+	|| is_set(record_route.operation)
+	|| is_set(signalled_name.operation)
+	|| is_set(signalled_payload.operation)
+	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (destination_leafs !=  nullptr && destination_leafs->has_operation())
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (new_style_affinities !=  nullptr && new_style_affinities->has_operation())
+	|| (priority !=  nullptr && priority->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mte-tunnel-attributes";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'MteTunnelAttributes' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fast_reroute.is_set || is_set(fast_reroute.operation)) leaf_name_data.push_back(fast_reroute.get_name_leafdata());
+    if (impose_explicit_null.is_set || is_set(impose_explicit_null.operation)) leaf_name_data.push_back(impose_explicit_null.get_name_leafdata());
+    if (path_selection_metric.is_set || is_set(path_selection_metric.operation)) leaf_name_data.push_back(path_selection_metric.get_name_leafdata());
+    if (record_route.is_set || is_set(record_route.operation)) leaf_name_data.push_back(record_route.get_name_leafdata());
+    if (signalled_name.is_set || is_set(signalled_name.operation)) leaf_name_data.push_back(signalled_name.get_name_leafdata());
+    if (signalled_payload.is_set || is_set(signalled_payload.operation)) leaf_name_data.push_back(signalled_payload.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-mask")
+    {
+        if(affinity_mask == nullptr)
+        {
+            affinity_mask = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask>();
+        }
+        return affinity_mask;
+    }
+
+    if(child_yang_name == "bandwidth")
+    {
+        if(bandwidth == nullptr)
+        {
+            bandwidth = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth>();
+        }
+        return bandwidth;
+    }
+
+    if(child_yang_name == "destination-leafs")
+    {
+        if(destination_leafs == nullptr)
+        {
+            destination_leafs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs>();
+        }
+        return destination_leafs;
+    }
+
+    if(child_yang_name == "logging")
+    {
+        if(logging == nullptr)
+        {
+            logging = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging>();
+        }
+        return logging;
+    }
+
+    if(child_yang_name == "new-style-affinities")
+    {
+        if(new_style_affinities == nullptr)
+        {
+            new_style_affinities = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities>();
+        }
+        return new_style_affinities;
+    }
+
+    if(child_yang_name == "priority")
+    {
+        if(priority == nullptr)
+        {
+            priority = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority>();
+        }
+        return priority;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity_mask != nullptr)
+    {
+        children["affinity-mask"] = affinity_mask;
+    }
+
+    if(bandwidth != nullptr)
+    {
+        children["bandwidth"] = bandwidth;
+    }
+
+    if(destination_leafs != nullptr)
+    {
+        children["destination-leafs"] = destination_leafs;
+    }
+
+    if(logging != nullptr)
+    {
+        children["logging"] = logging;
+    }
+
+    if(new_style_affinities != nullptr)
+    {
+        children["new-style-affinities"] = new_style_affinities;
+    }
+
+    if(priority != nullptr)
+    {
+        children["priority"] = priority;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "fast-reroute")
+    {
+        fast_reroute = value;
+    }
+    if(value_path == "impose-explicit-null")
+    {
+        impose_explicit_null = value;
+    }
+    if(value_path == "path-selection-metric")
+    {
+        path_selection_metric = value;
+    }
+    if(value_path == "record-route")
+    {
+        record_route = value;
+    }
+    if(value_path == "signalled-name")
+    {
+        signalled_name = value;
+    }
+    if(value_path == "signalled-payload")
+    {
+        signalled_payload = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeafs()
+{
+    yang_name = "destination-leafs"; yang_parent_name = "mte-tunnel-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::~DestinationLeafs()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::has_data() const
+{
+    for (std::size_t index=0; index<destination_leaf.size(); index++)
+    {
+        if(destination_leaf[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::has_operation() const
+{
+    for (std::size_t index=0; index<destination_leaf.size(); index++)
+    {
+        if(destination_leaf[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination-leafs";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'DestinationLeafs' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1378,101 +5304,96 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "destination-leaf")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "remote-port")
-    {
-        for(auto const & c : remote_port)
+        for(auto const & c : destination_leaf)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort>();
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf>();
         c->parent = this;
-        remote_port.push_back(std::move(c));
-        children[segment_path] = remote_port.back();
-        return children.at(segment_path);
+        destination_leaf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::get_children() const
 {
-    for (auto const & c : remote_port)
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : destination_leaf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::set_value(const std::string & value_path, std::string value)
 {
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::RemotePort()
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::DestinationLeaf()
     :
-    port_type{YType::str, "port-type"},
-    slot{YType::uint32, "slot"},
-    sub_slot{YType::uint32, "sub-slot"},
-    port_range{YType::str, "port-range"}
+    address{YType::str, "address"},
+    destination{YType::empty, "destination"},
+    destination_disable{YType::empty, "destination-disable"}
+    	,
+    path_options(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions>())
+	,s2l_logging(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging>())
 {
-    yang_name = "remote-port"; yang_parent_name = "remote-ports";
+    path_options->parent = this;
+
+    s2l_logging->parent = this;
+
+    yang_name = "destination-leaf"; yang_parent_name = "destination-leafs";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::~RemotePort()
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::~DestinationLeaf()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::has_data() const
 {
-    return port_type.is_set
-	|| slot.is_set
-	|| sub_slot.is_set
-	|| port_range.is_set;
+    return address.is_set
+	|| destination.is_set
+	|| destination_disable.is_set
+	|| (path_options !=  nullptr && path_options->has_data())
+	|| (s2l_logging !=  nullptr && s2l_logging->has_data());
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::has_operation() const
 {
     return is_set(operation)
-	|| is_set(port_type.operation)
-	|| is_set(slot.operation)
-	|| is_set(sub_slot.operation)
-	|| is_set(port_range.operation);
+	|| is_set(address.operation)
+	|| is_set(destination.operation)
+	|| is_set(destination_disable.operation)
+	|| (path_options !=  nullptr && path_options->has_operation())
+	|| (s2l_logging !=  nullptr && s2l_logging->has_operation());
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-port" <<"[port-type='" <<port_type <<"']" <<"[slot='" <<slot <<"']" <<"[sub-slot='" <<sub_slot <<"']";
+    path_buffer << "destination-leaf" <<"[address='" <<address <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RemotePort' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'DestinationLeaf' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1481,10 +5402,9 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (port_type.is_set || is_set(port_type.operation)) leaf_name_data.push_back(port_type.get_name_leafdata());
-    if (slot.is_set || is_set(slot.operation)) leaf_name_data.push_back(slot.get_name_leafdata());
-    if (sub_slot.is_set || is_set(sub_slot.operation)) leaf_name_data.push_back(sub_slot.get_name_leafdata());
-    if (port_range.is_set || is_set(port_range.operation)) leaf_name_data.push_back(port_range.get_name_leafdata());
+    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (destination_disable.is_set || is_set(destination_disable.operation)) leaf_name_data.push_back(destination_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1492,91 +5412,107 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "path-options")
     {
-        return children.at(child_yang_name);
+        if(path_options == nullptr)
+        {
+            path_options = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions>();
+        }
+        return path_options;
     }
-    else if(children.find(segment_path) != children.end())
+
+    if(child_yang_name == "s2l-logging")
     {
-        return children.at(segment_path);
+        if(s2l_logging == nullptr)
+        {
+            s2l_logging = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging>();
+        }
+        return s2l_logging;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_options != nullptr)
+    {
+        children["path-options"] = path_options;
+    }
+
+    if(s2l_logging != nullptr)
+    {
+        children["s2l-logging"] = s2l_logging;
+    }
+
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "port-type")
+    if(value_path == "address")
     {
-        port_type = value;
+        address = value;
     }
-    if(value_path == "slot")
+    if(value_path == "destination")
     {
-        slot = value;
+        destination = value;
     }
-    if(value_path == "sub-slot")
+    if(value_path == "destination-disable")
     {
-        sub_slot = value;
-    }
-    if(value_path == "port-range")
-    {
-        port_range = value;
+        destination_disable = value;
     }
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Qos()
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging::S2LLogging()
     :
-    input(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input>())
-	,output(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output>())
+    s2l_insufficient_bw_messsage{YType::empty, "s2l-insufficient-bw-messsage"},
+    s2l_pcalc_failure_message{YType::empty, "s2l-pcalc-failure-message"},
+    s2l_reroute_messsage{YType::empty, "s2l-reroute-messsage"},
+    s2l_state_message{YType::empty, "s2l-state-message"}
 {
-    input->parent = this;
-    children["input"] = input;
-
-    output->parent = this;
-    children["output"] = output;
-
-    yang_name = "qos"; yang_parent_name = "satellites";
+    yang_name = "s2l-logging"; yang_parent_name = "destination-leaf";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::~Qos()
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging::~S2LLogging()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging::has_data() const
 {
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
+    return s2l_insufficient_bw_messsage.is_set
+	|| s2l_pcalc_failure_message.is_set
+	|| s2l_reroute_messsage.is_set
+	|| s2l_state_message.is_set;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
+	|| is_set(s2l_insufficient_bw_messsage.operation)
+	|| is_set(s2l_pcalc_failure_message.operation)
+	|| is_set(s2l_reroute_messsage.operation)
+	|| is_set(s2l_state_message.operation);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-qos-ma-sat-cfg:qos";
+    path_buffer << "s2l-logging";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Qos' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'S2LLogging' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1585,6 +5521,10 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (s2l_insufficient_bw_messsage.is_set || is_set(s2l_insufficient_bw_messsage.operation)) leaf_name_data.push_back(s2l_insufficient_bw_messsage.get_name_leafdata());
+    if (s2l_pcalc_failure_message.is_set || is_set(s2l_pcalc_failure_message.operation)) leaf_name_data.push_back(s2l_pcalc_failure_message.get_name_leafdata());
+    if (s2l_reroute_messsage.is_set || is_set(s2l_reroute_messsage.operation)) leaf_name_data.push_back(s2l_reroute_messsage.get_name_leafdata());
+    if (s2l_state_message.is_set || is_set(s2l_state_message.operation)) leaf_name_data.push_back(s2l_state_message.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1592,119 +5532,81 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "input")
-    {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
-        {
-            input = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input>();
-            input->parent = this;
-            children["input"] = input;
-        }
-        return children.at("input");
-    }
-
-    if(child_yang_name == "output")
-    {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
-        {
-            output = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output>();
-            output->parent = this;
-            children["output"] = output;
-        }
-        return children.at("output");
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging::get_children() const
 {
-    if(children.find("input") == children.end())
-    {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-    }
-
-    if(children.find("output") == children.end())
-    {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-    }
-
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2LLogging::set_value(const std::string & value_path, std::string value)
 {
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::Output()
-{
-    yang_name = "output"; yang_parent_name = "qos";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::~Output()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::has_data() const
-{
-    for (std::size_t index=0; index<service_policy.size(); index++)
+    if(value_path == "s2l-insufficient-bw-messsage")
     {
-        if(service_policy[index]->has_data())
+        s2l_insufficient_bw_messsage = value;
+    }
+    if(value_path == "s2l-pcalc-failure-message")
+    {
+        s2l_pcalc_failure_message = value;
+    }
+    if(value_path == "s2l-reroute-messsage")
+    {
+        s2l_reroute_messsage = value;
+    }
+    if(value_path == "s2l-state-message")
+    {
+        s2l_state_message = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOptions()
+{
+    yang_name = "path-options"; yang_parent_name = "destination-leaf";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::~PathOptions()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::has_data() const
+{
+    for (std::size_t index=0; index<path_option.size(); index++)
+    {
+        if(path_option[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::has_operation() const
 {
-    for (std::size_t index=0; index<service_policy.size(); index++)
+    for (std::size_t index=0; index<path_option.size(); index++)
     {
-        if(service_policy[index]->has_operation())
+        if(path_option[index]->has_operation())
             return true;
     }
     return is_set(operation);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "output";
+    path_buffer << "path-options";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Output' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'PathOptions' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1720,87 +5622,1377 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "path-option")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        for(auto const & c : path_option)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption>();
+        c->parent = this;
+        path_option.push_back(c);
+        return c;
     }
 
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : path_option)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::set_value(const std::string & value_path, std::string value)
+{
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption::PathOption()
+    :
+    preference_level{YType::uint32, "preference-level"},
+    lockdown{YType::enumeration, "lockdown"},
+    path_id{YType::uint32, "path-id"},
+    path_name{YType::str, "path-name"},
+    path_type{YType::enumeration, "path-type"},
+    verbatim{YType::enumeration, "verbatim"}
+{
+    yang_name = "path-option"; yang_parent_name = "path-options";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption::~PathOption()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption::has_data() const
+{
+    return preference_level.is_set
+	|| lockdown.is_set
+	|| path_id.is_set
+	|| path_name.is_set
+	|| path_type.is_set
+	|| verbatim.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(preference_level.operation)
+	|| is_set(lockdown.operation)
+	|| is_set(path_id.operation)
+	|| is_set(path_name.operation)
+	|| is_set(path_type.operation)
+	|| is_set(verbatim.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-option" <<"[preference-level='" <<preference_level <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PathOption' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (preference_level.is_set || is_set(preference_level.operation)) leaf_name_data.push_back(preference_level.get_name_leafdata());
+    if (lockdown.is_set || is_set(lockdown.operation)) leaf_name_data.push_back(lockdown.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (path_name.is_set || is_set(path_name.operation)) leaf_name_data.push_back(path_name.get_name_leafdata());
+    if (path_type.is_set || is_set(path_type.operation)) leaf_name_data.push_back(path_type.get_name_leafdata());
+    if (verbatim.is_set || is_set(verbatim.operation)) leaf_name_data.push_back(verbatim.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "preference-level")
+    {
+        preference_level = value;
+    }
+    if(value_path == "lockdown")
+    {
+        lockdown = value;
+    }
+    if(value_path == "path-id")
+    {
+        path_id = value;
+    }
+    if(value_path == "path-name")
+    {
+        path_name = value;
+    }
+    if(value_path == "path-type")
+    {
+        path_type = value;
+    }
+    if(value_path == "verbatim")
+    {
+        verbatim = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority::Priority()
+    :
+    hold_priority{YType::uint32, "hold-priority"},
+    setup_priority{YType::uint32, "setup-priority"}
+{
+    yang_name = "priority"; yang_parent_name = "mte-tunnel-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority::~Priority()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority::has_data() const
+{
+    return hold_priority.is_set
+	|| setup_priority.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(hold_priority.operation)
+	|| is_set(setup_priority.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "priority";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Priority' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "hold-priority")
+    {
+        hold_priority = value;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinities()
+{
+    yang_name = "new-style-affinities"; yang_parent_name = "mte-tunnel-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::~NewStyleAffinities()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::has_data() const
+{
+    for (std::size_t index=0; index<new_style_affinity.size(); index++)
+    {
+        if(new_style_affinity[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::has_operation() const
+{
+    for (std::size_t index=0; index<new_style_affinity.size(); index++)
+    {
+        if(new_style_affinity[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinities";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinities' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "new-style-affinity")
+    {
+        for(auto const & c : new_style_affinity)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity>();
+        c->parent = this;
+        new_style_affinity.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : new_style_affinity)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::set_value(const std::string & value_path, std::string value)
+{
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity::NewStyleAffinity()
+    :
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"},
+    affinity2{YType::str, "affinity2"},
+    affinity3{YType::str, "affinity3"},
+    affinity4{YType::str, "affinity4"},
+    affinity5{YType::str, "affinity5"},
+    affinity6{YType::str, "affinity6"},
+    affinity7{YType::str, "affinity7"},
+    affinity8{YType::str, "affinity8"},
+    affinity9{YType::str, "affinity9"},
+    affinity10{YType::str, "affinity10"}
+{
+    yang_name = "new-style-affinity"; yang_parent_name = "new-style-affinities";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity::~NewStyleAffinity()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity::has_data() const
+{
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set
+	|| affinity3.is_set
+	|| affinity4.is_set
+	|| affinity5.is_set
+	|| affinity6.is_set
+	|| affinity7.is_set
+	|| affinity8.is_set
+	|| affinity9.is_set
+	|| affinity10.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation)
+	|| is_set(affinity2.operation)
+	|| is_set(affinity3.operation)
+	|| is_set(affinity4.operation)
+	|| is_set(affinity5.operation)
+	|| is_set(affinity6.operation)
+	|| is_set(affinity7.operation)
+	|| is_set(affinity8.operation)
+	|| is_set(affinity9.operation)
+	|| is_set(affinity10.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "new-style-affinity" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity10='" <<affinity10 <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NewStyleAffinity' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
+    if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
+    if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
+    if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
+    if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
+    if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
+    if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
+    if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
+    if (affinity9.is_set || is_set(affinity9.operation)) leaf_name_data.push_back(affinity9.get_name_leafdata());
+    if (affinity10.is_set || is_set(affinity10.operation)) leaf_name_data.push_back(affinity10.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities::NewStyleAffinity::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
+    }
+    if(value_path == "affinity2")
+    {
+        affinity2 = value;
+    }
+    if(value_path == "affinity3")
+    {
+        affinity3 = value;
+    }
+    if(value_path == "affinity4")
+    {
+        affinity4 = value;
+    }
+    if(value_path == "affinity5")
+    {
+        affinity5 = value;
+    }
+    if(value_path == "affinity6")
+    {
+        affinity6 = value;
+    }
+    if(value_path == "affinity7")
+    {
+        affinity7 = value;
+    }
+    if(value_path == "affinity8")
+    {
+        affinity8 = value;
+    }
+    if(value_path == "affinity9")
+    {
+        affinity9 = value;
+    }
+    if(value_path == "affinity10")
+    {
+        affinity10 = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth::Bandwidth()
+    :
+    bandwidth{YType::uint32, "bandwidth"},
+    class_or_pool_type{YType::uint32, "class-or-pool-type"},
+    dste_type{YType::enumeration, "dste-type"}
+{
+    yang_name = "bandwidth"; yang_parent_name = "mte-tunnel-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth::~Bandwidth()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth::has_data() const
+{
+    return bandwidth.is_set
+	|| class_or_pool_type.is_set
+	|| dste_type.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(bandwidth.operation)
+	|| is_set(class_or_pool_type.operation)
+	|| is_set(dste_type.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bandwidth";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Bandwidth' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (class_or_pool_type.is_set || is_set(class_or_pool_type.operation)) leaf_name_data.push_back(class_or_pool_type.get_name_leafdata());
+    if (dste_type.is_set || is_set(dste_type.operation)) leaf_name_data.push_back(dste_type.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth = value;
+    }
+    if(value_path == "class-or-pool-type")
+    {
+        class_or_pool_type = value;
+    }
+    if(value_path == "dste-type")
+    {
+        dste_type = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask::AffinityMask()
+    :
+    affinity{YType::str, "affinity"},
+    mask{YType::str, "mask"}
+{
+    yang_name = "affinity-mask"; yang_parent_name = "mte-tunnel-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask::~AffinityMask()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask::has_data() const
+{
+    return affinity.is_set
+	|| mask.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(affinity.operation)
+	|| is_set(mask.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-mask";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'AffinityMask' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity.is_set || is_set(affinity.operation)) leaf_name_data.push_back(affinity.get_name_leafdata());
+    if (mask.is_set || is_set(mask.operation)) leaf_name_data.push_back(mask.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "affinity")
+    {
+        affinity = value;
+    }
+    if(value_path == "mask")
+    {
+        mask = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging::Logging()
+    :
+    all{YType::empty, "all"},
+    bandwidth_change_message{YType::empty, "bandwidth-change-message"},
+    insufficient_bw_message{YType::empty, "insufficient-bw-message"},
+    pcalc_failure_message{YType::empty, "pcalc-failure-message"},
+    reoptimize_attempts_message{YType::empty, "reoptimize-attempts-message"},
+    reoptimized_message{YType::empty, "reoptimized-message"},
+    reroute_messsage{YType::empty, "reroute-messsage"},
+    state_message{YType::empty, "state-message"},
+    sub_lsp_state_message{YType::empty, "sub-lsp-state-message"}
+{
+    yang_name = "logging"; yang_parent_name = "mte-tunnel-attributes";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging::~Logging()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging::has_data() const
+{
+    return all.is_set
+	|| bandwidth_change_message.is_set
+	|| insufficient_bw_message.is_set
+	|| pcalc_failure_message.is_set
+	|| reoptimize_attempts_message.is_set
+	|| reoptimized_message.is_set
+	|| reroute_messsage.is_set
+	|| state_message.is_set
+	|| sub_lsp_state_message.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(all.operation)
+	|| is_set(bandwidth_change_message.operation)
+	|| is_set(insufficient_bw_message.operation)
+	|| is_set(pcalc_failure_message.operation)
+	|| is_set(reoptimize_attempts_message.operation)
+	|| is_set(reoptimized_message.operation)
+	|| is_set(reroute_messsage.operation)
+	|| is_set(state_message.operation)
+	|| is_set(sub_lsp_state_message.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "logging";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Logging' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (all.is_set || is_set(all.operation)) leaf_name_data.push_back(all.get_name_leafdata());
+    if (bandwidth_change_message.is_set || is_set(bandwidth_change_message.operation)) leaf_name_data.push_back(bandwidth_change_message.get_name_leafdata());
+    if (insufficient_bw_message.is_set || is_set(insufficient_bw_message.operation)) leaf_name_data.push_back(insufficient_bw_message.get_name_leafdata());
+    if (pcalc_failure_message.is_set || is_set(pcalc_failure_message.operation)) leaf_name_data.push_back(pcalc_failure_message.get_name_leafdata());
+    if (reoptimize_attempts_message.is_set || is_set(reoptimize_attempts_message.operation)) leaf_name_data.push_back(reoptimize_attempts_message.get_name_leafdata());
+    if (reoptimized_message.is_set || is_set(reoptimized_message.operation)) leaf_name_data.push_back(reoptimized_message.get_name_leafdata());
+    if (reroute_messsage.is_set || is_set(reroute_messsage.operation)) leaf_name_data.push_back(reroute_messsage.get_name_leafdata());
+    if (state_message.is_set || is_set(state_message.operation)) leaf_name_data.push_back(state_message.get_name_leafdata());
+    if (sub_lsp_state_message.is_set || is_set(sub_lsp_state_message.operation)) leaf_name_data.push_back(sub_lsp_state_message.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "all")
+    {
+        all = value;
+    }
+    if(value_path == "bandwidth-change-message")
+    {
+        bandwidth_change_message = value;
+    }
+    if(value_path == "insufficient-bw-message")
+    {
+        insufficient_bw_message = value;
+    }
+    if(value_path == "pcalc-failure-message")
+    {
+        pcalc_failure_message = value;
+    }
+    if(value_path == "reoptimize-attempts-message")
+    {
+        reoptimize_attempts_message = value;
+    }
+    if(value_path == "reoptimized-message")
+    {
+        reoptimized_message = value;
+    }
+    if(value_path == "reroute-messsage")
+    {
+        reroute_messsage = value;
+    }
+    if(value_path == "state-message")
+    {
+        state_message = value;
+    }
+    if(value_path == "sub-lsp-state-message")
+    {
+        sub_lsp_state_message = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::ClientPort()
+    :
+    channels(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels>())
+	,logical_channel_assignments(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments>())
+{
+    channels->parent = this;
+
+    logical_channel_assignments->parent = this;
+
+    yang_name = "client-port"; yang_parent_name = "interface-configuration";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::~ClientPort()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::has_data() const
+{
+    return (channels !=  nullptr && channels->has_data())
+	|| (logical_channel_assignments !=  nullptr && logical_channel_assignments->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::has_operation() const
+{
+    return is_set(operation)
+	|| (channels !=  nullptr && channels->has_operation())
+	|| (logical_channel_assignments !=  nullptr && logical_channel_assignments->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::ClientPort::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-openconfig-optical-client-cfg:client-port";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::ClientPort::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'ClientPort' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::ClientPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "channels")
+    {
+        if(channels == nullptr)
+        {
+            channels = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels>();
+        }
+        return channels;
+    }
+
+    if(child_yang_name == "logical-channel-assignments")
+    {
+        if(logical_channel_assignments == nullptr)
+        {
+            logical_channel_assignments = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments>();
+        }
+        return logical_channel_assignments;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::ClientPort::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(channels != nullptr)
+    {
+        children["channels"] = channels;
+    }
+
+    if(logical_channel_assignments != nullptr)
+    {
+        children["logical-channel-assignments"] = logical_channel_assignments;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::ClientPort::set_value(const std::string & value_path, std::string value)
+{
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignments()
+{
+    yang_name = "logical-channel-assignments"; yang_parent_name = "client-port";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::~LogicalChannelAssignments()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::has_data() const
+{
+    for (std::size_t index=0; index<logical_channel_assignment.size(); index++)
+    {
+        if(logical_channel_assignment[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::has_operation() const
+{
+    for (std::size_t index=0; index<logical_channel_assignment.size(); index++)
+    {
+        if(logical_channel_assignment[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "logical-channel-assignments";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'LogicalChannelAssignments' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "logical-channel-assignment")
+    {
+        for(auto const & c : logical_channel_assignment)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment>();
+        c->parent = this;
+        logical_channel_assignment.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : logical_channel_assignment)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::set_value(const std::string & value_path, std::string value)
+{
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment::LogicalChannelAssignment()
+    :
+    assignment_index{YType::int32, "assignment-index"},
+    allocation{YType::int32, "allocation"},
+    description{YType::str, "description"},
+    logical_channel_id{YType::int32, "logical-channel-id"}
+{
+    yang_name = "logical-channel-assignment"; yang_parent_name = "logical-channel-assignments";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment::~LogicalChannelAssignment()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment::has_data() const
+{
+    return assignment_index.is_set
+	|| allocation.is_set
+	|| description.is_set
+	|| logical_channel_id.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(assignment_index.operation)
+	|| is_set(allocation.operation)
+	|| is_set(description.operation)
+	|| is_set(logical_channel_id.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "logical-channel-assignment" <<"[assignment-index='" <<assignment_index <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'LogicalChannelAssignment' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (assignment_index.is_set || is_set(assignment_index.operation)) leaf_name_data.push_back(assignment_index.get_name_leafdata());
+    if (allocation.is_set || is_set(allocation.operation)) leaf_name_data.push_back(allocation.get_name_leafdata());
+    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (logical_channel_id.is_set || is_set(logical_channel_id.operation)) leaf_name_data.push_back(logical_channel_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::ClientPort::LogicalChannelAssignments::LogicalChannelAssignment::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "assignment-index")
+    {
+        assignment_index = value;
+    }
+    if(value_path == "allocation")
+    {
+        allocation = value;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+    }
+    if(value_path == "logical-channel-id")
+    {
+        logical_channel_id = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channels()
+{
+    yang_name = "channels"; yang_parent_name = "client-port";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::~Channels()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::has_data() const
+{
+    for (std::size_t index=0; index<channel.size(); index++)
+    {
+        if(channel[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::has_operation() const
+{
+    for (std::size_t index=0; index<channel.size(); index++)
+    {
+        if(channel[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "channels";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Channels' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "channel")
+    {
+        for(auto const & c : channel)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel>();
+        c->parent = this;
+        channel.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : channel)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::set_value(const std::string & value_path, std::string value)
+{
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel::Channel()
+    :
+    index_{YType::int32, "index"},
+    channel_description{YType::str, "channel-description"}
+{
+    yang_name = "channel"; yang_parent_name = "channels";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel::~Channel()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel::has_data() const
+{
+    return index_.is_set
+	|| channel_description.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(index_.operation)
+	|| is_set(channel_description.operation);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "channel" <<"[index='" <<index_ <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Channel' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (channel_description.is_set || is_set(channel_description.operation)) leaf_name_data.push_back(channel_description.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::ClientPort::Channels::Channel::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "index")
+    {
+        index_ = value;
+    }
+    if(value_path == "channel-description")
+    {
+        channel_description = value;
+    }
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Pbr::Pbr()
+    :
+    service_policy_in{YType::str, "service-policy-in"}
+    	,
+    service_policy(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy>())
+{
+    service_policy->parent = this;
+
+    yang_name = "pbr"; yang_parent_name = "interface-configuration";
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Pbr::~Pbr()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::has_data() const
+{
+    return service_policy_in.is_set
+	|| (service_policy !=  nullptr && service_policy->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(service_policy_in.operation)
+	|| (service_policy !=  nullptr && service_policy->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Pbr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pbr-cfg:pbr";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::Pbr::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Pbr' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (service_policy_in.is_set || is_set(service_policy_in.operation)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
     if(child_yang_name == "service-policy")
     {
-        for(auto const & c : service_policy)
+        if(service_policy == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
+            service_policy = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy>();
         }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy>();
-        c->parent = this;
-        service_policy.push_back(std::move(c));
-        children[segment_path] = service_policy.back();
-        return children.at(segment_path);
+        return service_policy;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Pbr::get_children() const
 {
-    for (auto const & c : service_policy)
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy != nullptr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children["service-policy"] = service_policy;
     }
 
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Pbr::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in = value;
+    }
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy::ServicePolicy()
+InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::ServicePolicy()
     :
-    service_policy_name{YType::str, "service-policy-name"}
+    input{YType::str, "input"}
 {
-    yang_name = "service-policy"; yang_parent_name = "output";
+    yang_name = "service-policy"; yang_parent_name = "pbr";
 }
 
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy::~ServicePolicy()
+InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::~ServicePolicy()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::has_data() const
 {
-    return service_policy_name.is_set;
+    return input.is_set;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::has_operation() const
 {
     return is_set(operation)
-	|| is_set(service_policy_name.operation);
+	|| is_set(input.operation);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-policy" <<"[service-policy-name='" <<service_policy_name <<"']";
+    path_buffer << "service-policy";
 
     return path_buffer.str();
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1814,7 +7006,7 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (service_policy_name.is_set || is_set(service_policy_name.operation)) leaf_name_data.push_back(service_policy_name.get_name_leafdata());
+    if (input.is_set || is_set(input.operation)) leaf_name_data.push_back(input.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1822,2625 +7014,22 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNet
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "service-policy-name")
+    if(value_path == "input")
     {
-        service_policy_name = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::Input()
-{
-    yang_name = "input"; yang_parent_name = "qos";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::~Input()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::has_data() const
-{
-    for (std::size_t index=0; index<service_policy.size(); index++)
-    {
-        if(service_policy[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::has_operation() const
-{
-    for (std::size_t index=0; index<service_policy.size(); index++)
-    {
-        if(service_policy[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Input' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "service-policy")
-    {
-        for(auto const & c : service_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy>();
-        c->parent = this;
-        service_policy.push_back(std::move(c));
-        children[segment_path] = service_policy.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::get_children()
-{
-    for (auto const & c : service_policy)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy::ServicePolicy()
-    :
-    service_policy_name{YType::str, "service-policy-name"}
-{
-    yang_name = "service-policy"; yang_parent_name = "input";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy::~ServicePolicy()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy::has_data() const
-{
-    return service_policy_name.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(service_policy_name.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-policy" <<"[service-policy-name='" <<service_policy_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ServicePolicy' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (service_policy_name.is_set || is_set(service_policy_name.operation)) leaf_name_data.push_back(service_policy_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "service-policy-name")
-    {
-        service_policy_name = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::Redundancy()
-    :
-    iccp_group{YType::uint32, "iccp-group"},
-    minimum_preferred_links{YType::uint32, "minimum-preferred-links"}
-{
-    yang_name = "redundancy"; yang_parent_name = "nv-satellite-fabric-network";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::~Redundancy()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::has_data() const
-{
-    return iccp_group.is_set
-	|| minimum_preferred_links.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(iccp_group.operation)
-	|| is_set(minimum_preferred_links.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "redundancy";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Redundancy' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (iccp_group.is_set || is_set(iccp_group.operation)) leaf_name_data.push_back(iccp_group.get_name_leafdata());
-    if (minimum_preferred_links.is_set || is_set(minimum_preferred_links.operation)) leaf_name_data.push_back(minimum_preferred_links.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "iccp-group")
-    {
-        iccp_group = value;
-    }
-    if(value_path == "minimum-preferred-links")
-    {
-        minimum_preferred_links = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSessions()
-{
-    yang_name = "span-monitor-sessions"; yang_parent_name = "interface-configuration";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::~SpanMonitorSessions()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::has_data() const
-{
-    for (std::size_t index=0; index<span_monitor_session.size(); index++)
-    {
-        if(span_monitor_session[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::has_operation() const
-{
-    for (std::size_t index=0; index<span_monitor_session.size(); index++)
-    {
-        if(span_monitor_session[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-Ethernet-SPAN-cfg:span-monitor-sessions";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpanMonitorSessions' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "span-monitor-session")
-    {
-        for(auto const & c : span_monitor_session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession>();
-        c->parent = this;
-        span_monitor_session.push_back(std::move(c));
-        children[segment_path] = span_monitor_session.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::get_children()
-{
-    for (auto const & c : span_monitor_session)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::SpanMonitorSession()
-    :
-    session_class{YType::enumeration, "session-class"},
-    acl{YType::empty, "acl"},
-    mirror_first{YType::uint32, "mirror-first"},
-    mirror_interval{YType::enumeration, "mirror-interval"}
-    	,
-    attachment(nullptr) // presence node
-{
-    yang_name = "span-monitor-session"; yang_parent_name = "span-monitor-sessions";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::~SpanMonitorSession()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::has_data() const
-{
-    return session_class.is_set
-	|| acl.is_set
-	|| mirror_first.is_set
-	|| mirror_interval.is_set
-	|| (attachment !=  nullptr && attachment->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(session_class.operation)
-	|| is_set(acl.operation)
-	|| is_set(mirror_first.operation)
-	|| is_set(mirror_interval.operation)
-	|| (attachment !=  nullptr && attachment->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "span-monitor-session" <<"[session-class='" <<session_class <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpanMonitorSession' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (session_class.is_set || is_set(session_class.operation)) leaf_name_data.push_back(session_class.get_name_leafdata());
-    if (acl.is_set || is_set(acl.operation)) leaf_name_data.push_back(acl.get_name_leafdata());
-    if (mirror_first.is_set || is_set(mirror_first.operation)) leaf_name_data.push_back(mirror_first.get_name_leafdata());
-    if (mirror_interval.is_set || is_set(mirror_interval.operation)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "attachment")
-    {
-        if(attachment != nullptr)
-        {
-            children["attachment"] = attachment;
-        }
-        else
-        {
-            attachment = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment>();
-            attachment->parent = this;
-            children["attachment"] = attachment;
-        }
-        return children.at("attachment");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::get_children()
-{
-    if(children.find("attachment") == children.end())
-    {
-        if(attachment != nullptr)
-        {
-            children["attachment"] = attachment;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "session-class")
-    {
-        session_class = value;
-    }
-    if(value_path == "acl")
-    {
-        acl = value;
-    }
-    if(value_path == "mirror-first")
-    {
-        mirror_first = value;
-    }
-    if(value_path == "mirror-interval")
-    {
-        mirror_interval = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment::Attachment()
-    :
-    direction{YType::enumeration, "direction"},
-    port_level_enable{YType::empty, "port-level-enable"},
-    session_name{YType::str, "session-name"}
-{
-    yang_name = "attachment"; yang_parent_name = "span-monitor-session";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment::~Attachment()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment::has_data() const
-{
-    return direction.is_set
-	|| port_level_enable.is_set
-	|| session_name.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(port_level_enable.operation)
-	|| is_set(session_name.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "attachment";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Attachment' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (port_level_enable.is_set || is_set(port_level_enable.operation)) leaf_name_data.push_back(port_level_enable.get_name_leafdata());
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "direction")
-    {
-        direction = value;
-    }
-    if(value_path == "port-level-enable")
-    {
-        port_level_enable = value;
-    }
-    if(value_path == "session-name")
-    {
-        session_name = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp::CiscoIosXrPppMaCfg_Ppp()
-{
-    yang_name = "Cisco-IOS-XR-ppp-ma-cfg_ppp"; yang_parent_name = "interface-configuration";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp::~CiscoIosXrPppMaCfg_Ppp()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp::has_data() const
-{
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp::has_operation() const
-{
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ppp-ma-cfg:Cisco-IOS-XR-ppp-ma-cfg_ppp";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CiscoIosXrPppMaCfg_Ppp' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Ipv4Network()
-    :
-    forwarding_enable{YType::empty, "forwarding-enable"},
-    icmp_mask_reply{YType::empty, "icmp-mask-reply"},
-    mtu{YType::uint32, "mtu"},
-    point_to_point{YType::empty, "point-to-point"},
-    tcp_mss_adjust_enable{YType::empty, "tcp-mss-adjust-enable"},
-    ttl_propagate_disable{YType::empty, "ttl-propagate-disable"}
-    	,
-    addresses(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses>())
-	,bgp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp>())
-	,bgp_pa(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa>())
-	,helper_addresses(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses>())
-	,verify(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify>())
-{
-    addresses->parent = this;
-    children["addresses"] = addresses;
-
-    bgp->parent = this;
-    children["bgp"] = bgp;
-
-    bgp_pa->parent = this;
-    children["bgp-pa"] = bgp_pa;
-
-    helper_addresses->parent = this;
-    children["helper-addresses"] = helper_addresses;
-
-    verify->parent = this;
-    children["verify"] = verify;
-
-    yang_name = "ipv4-network"; yang_parent_name = "interface-configuration";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::~Ipv4Network()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::has_data() const
-{
-    return forwarding_enable.is_set
-	|| icmp_mask_reply.is_set
-	|| mtu.is_set
-	|| point_to_point.is_set
-	|| tcp_mss_adjust_enable.is_set
-	|| ttl_propagate_disable.is_set
-	|| (addresses !=  nullptr && addresses->has_data())
-	|| (bgp !=  nullptr && bgp->has_data())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_data())
-	|| (helper_addresses !=  nullptr && helper_addresses->has_data())
-	|| (verify !=  nullptr && verify->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(forwarding_enable.operation)
-	|| is_set(icmp_mask_reply.operation)
-	|| is_set(mtu.operation)
-	|| is_set(point_to_point.operation)
-	|| is_set(tcp_mss_adjust_enable.operation)
-	|| is_set(ttl_propagate_disable.operation)
-	|| (addresses !=  nullptr && addresses->has_operation())
-	|| (bgp !=  nullptr && bgp->has_operation())
-	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
-	|| (helper_addresses !=  nullptr && helper_addresses->has_operation())
-	|| (verify !=  nullptr && verify->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-io-cfg:ipv4-network";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4Network' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (forwarding_enable.is_set || is_set(forwarding_enable.operation)) leaf_name_data.push_back(forwarding_enable.get_name_leafdata());
-    if (icmp_mask_reply.is_set || is_set(icmp_mask_reply.operation)) leaf_name_data.push_back(icmp_mask_reply.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (point_to_point.is_set || is_set(point_to_point.operation)) leaf_name_data.push_back(point_to_point.get_name_leafdata());
-    if (tcp_mss_adjust_enable.is_set || is_set(tcp_mss_adjust_enable.operation)) leaf_name_data.push_back(tcp_mss_adjust_enable.get_name_leafdata());
-    if (ttl_propagate_disable.is_set || is_set(ttl_propagate_disable.operation)) leaf_name_data.push_back(ttl_propagate_disable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "addresses")
-    {
-        if(addresses != nullptr)
-        {
-            children["addresses"] = addresses;
-        }
-        else
-        {
-            addresses = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses>();
-            addresses->parent = this;
-            children["addresses"] = addresses;
-        }
-        return children.at("addresses");
-    }
-
-    if(child_yang_name == "bgp")
-    {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
-        else
-        {
-            bgp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp>();
-            bgp->parent = this;
-            children["bgp"] = bgp;
-        }
-        return children.at("bgp");
-    }
-
-    if(child_yang_name == "bgp-pa")
-    {
-        if(bgp_pa != nullptr)
-        {
-            children["bgp-pa"] = bgp_pa;
-        }
-        else
-        {
-            bgp_pa = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa>();
-            bgp_pa->parent = this;
-            children["bgp-pa"] = bgp_pa;
-        }
-        return children.at("bgp-pa");
-    }
-
-    if(child_yang_name == "helper-addresses")
-    {
-        if(helper_addresses != nullptr)
-        {
-            children["helper-addresses"] = helper_addresses;
-        }
-        else
-        {
-            helper_addresses = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses>();
-            helper_addresses->parent = this;
-            children["helper-addresses"] = helper_addresses;
-        }
-        return children.at("helper-addresses");
-    }
-
-    if(child_yang_name == "verify")
-    {
-        if(verify != nullptr)
-        {
-            children["verify"] = verify;
-        }
-        else
-        {
-            verify = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify>();
-            verify->parent = this;
-            children["verify"] = verify;
-        }
-        return children.at("verify");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::get_children()
-{
-    if(children.find("addresses") == children.end())
-    {
-        if(addresses != nullptr)
-        {
-            children["addresses"] = addresses;
-        }
-    }
-
-    if(children.find("bgp") == children.end())
-    {
-        if(bgp != nullptr)
-        {
-            children["bgp"] = bgp;
-        }
-    }
-
-    if(children.find("bgp-pa") == children.end())
-    {
-        if(bgp_pa != nullptr)
-        {
-            children["bgp-pa"] = bgp_pa;
-        }
-    }
-
-    if(children.find("helper-addresses") == children.end())
-    {
-        if(helper_addresses != nullptr)
-        {
-            children["helper-addresses"] = helper_addresses;
-        }
-    }
-
-    if(children.find("verify") == children.end())
-    {
-        if(verify != nullptr)
-        {
-            children["verify"] = verify;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "forwarding-enable")
-    {
-        forwarding_enable = value;
-    }
-    if(value_path == "icmp-mask-reply")
-    {
-        icmp_mask_reply = value;
-    }
-    if(value_path == "mtu")
-    {
-        mtu = value;
-    }
-    if(value_path == "point-to-point")
-    {
-        point_to_point = value;
-    }
-    if(value_path == "tcp-mss-adjust-enable")
-    {
-        tcp_mss_adjust_enable = value;
-    }
-    if(value_path == "ttl-propagate-disable")
-    {
-        ttl_propagate_disable = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::BgpPa()
-    :
-    input(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input>())
-	,output(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output>())
-{
-    input->parent = this;
-    children["input"] = input;
-
-    output->parent = this;
-    children["output"] = output;
-
-    yang_name = "bgp-pa"; yang_parent_name = "ipv4-network";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::~BgpPa()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::has_data() const
-{
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::has_operation() const
-{
-    return is_set(operation)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bgp-pa";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BgpPa' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "input")
-    {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
-        {
-            input = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input>();
-            input->parent = this;
-            children["input"] = input;
-        }
-        return children.at("input");
-    }
-
-    if(child_yang_name == "output")
-    {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
-        {
-            output = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output>();
-            output->parent = this;
-            children["output"] = output;
-        }
-        return children.at("output");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::get_children()
-{
-    if(children.find("input") == children.end())
-    {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-    }
-
-    if(children.find("output") == children.end())
-    {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input::Input()
-    :
-    destination_accounting{YType::boolean, "destination-accounting"},
-    source_accounting{YType::boolean, "source-accounting"}
-{
-    yang_name = "input"; yang_parent_name = "bgp-pa";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input::~Input()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input::has_data() const
-{
-    return destination_accounting.is_set
-	|| source_accounting.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(destination_accounting.operation)
-	|| is_set(source_accounting.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Input' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_accounting.is_set || is_set(destination_accounting.operation)) leaf_name_data.push_back(destination_accounting.get_name_leafdata());
-    if (source_accounting.is_set || is_set(source_accounting.operation)) leaf_name_data.push_back(source_accounting.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "destination-accounting")
-    {
-        destination_accounting = value;
-    }
-    if(value_path == "source-accounting")
-    {
-        source_accounting = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output::Output()
-    :
-    destination_accounting{YType::boolean, "destination-accounting"},
-    source_accounting{YType::boolean, "source-accounting"}
-{
-    yang_name = "output"; yang_parent_name = "bgp-pa";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output::~Output()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output::has_data() const
-{
-    return destination_accounting.is_set
-	|| source_accounting.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(destination_accounting.operation)
-	|| is_set(source_accounting.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Output' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_accounting.is_set || is_set(destination_accounting.operation)) leaf_name_data.push_back(destination_accounting.get_name_leafdata());
-    if (source_accounting.is_set || is_set(source_accounting.operation)) leaf_name_data.push_back(source_accounting.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "destination-accounting")
-    {
-        destination_accounting = value;
-    }
-    if(value_path == "source-accounting")
-    {
-        source_accounting = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify::Verify()
-    :
-    default_ping{YType::enumeration, "default-ping"},
-    reachable{YType::enumeration, "reachable"},
-    self_ping{YType::enumeration, "self-ping"}
-{
-    yang_name = "verify"; yang_parent_name = "ipv4-network";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify::~Verify()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify::has_data() const
-{
-    return default_ping.is_set
-	|| reachable.is_set
-	|| self_ping.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(default_ping.operation)
-	|| is_set(reachable.operation)
-	|| is_set(self_ping.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "verify";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Verify' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (default_ping.is_set || is_set(default_ping.operation)) leaf_name_data.push_back(default_ping.get_name_leafdata());
-    if (reachable.is_set || is_set(reachable.operation)) leaf_name_data.push_back(reachable.get_name_leafdata());
-    if (self_ping.is_set || is_set(self_ping.operation)) leaf_name_data.push_back(self_ping.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "default-ping")
-    {
-        default_ping = value;
-    }
-    if(value_path == "reachable")
-    {
-        reachable = value;
-    }
-    if(value_path == "self-ping")
-    {
-        self_ping = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Bgp()
-    :
-    flow_tag(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag>())
-	,qppb(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb>())
-{
-    flow_tag->parent = this;
-    children["flow-tag"] = flow_tag;
-
-    qppb->parent = this;
-    children["qppb"] = qppb;
-
-    yang_name = "bgp"; yang_parent_name = "ipv4-network";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::~Bgp()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::has_data() const
-{
-    return (flow_tag !=  nullptr && flow_tag->has_data())
-	|| (qppb !=  nullptr && qppb->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::has_operation() const
-{
-    return is_set(operation)
-	|| (flow_tag !=  nullptr && flow_tag->has_operation())
-	|| (qppb !=  nullptr && qppb->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bgp";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bgp' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "flow-tag")
-    {
-        if(flow_tag != nullptr)
-        {
-            children["flow-tag"] = flow_tag;
-        }
-        else
-        {
-            flow_tag = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag>();
-            flow_tag->parent = this;
-            children["flow-tag"] = flow_tag;
-        }
-        return children.at("flow-tag");
-    }
-
-    if(child_yang_name == "qppb")
-    {
-        if(qppb != nullptr)
-        {
-            children["qppb"] = qppb;
-        }
-        else
-        {
-            qppb = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb>();
-            qppb->parent = this;
-            children["qppb"] = qppb;
-        }
-        return children.at("qppb");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::get_children()
-{
-    if(children.find("flow-tag") == children.end())
-    {
-        if(flow_tag != nullptr)
-        {
-            children["flow-tag"] = flow_tag;
-        }
-    }
-
-    if(children.find("qppb") == children.end())
-    {
-        if(qppb != nullptr)
-        {
-            children["qppb"] = qppb;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Qppb()
-    :
-    input(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input>())
-{
-    input->parent = this;
-    children["input"] = input;
-
-    yang_name = "qppb"; yang_parent_name = "bgp";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::~Qppb()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::has_data() const
-{
-    return (input !=  nullptr && input->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::has_operation() const
-{
-    return is_set(operation)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qppb";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Qppb' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "input")
-    {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
-        {
-            input = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input>();
-            input->parent = this;
-            children["input"] = input;
-        }
-        return children.at("input");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::get_children()
-{
-    if(children.find("input") == children.end())
-    {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input::Input()
-    :
-    destination{YType::enumeration, "destination"},
-    source{YType::enumeration, "source"}
-{
-    yang_name = "input"; yang_parent_name = "qppb";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input::~Input()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input::has_data() const
-{
-    return destination.is_set
-	|| source.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(source.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Input' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "destination")
-    {
-        destination = value;
-    }
-    if(value_path == "source")
-    {
-        source = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTag()
-    :
-    flow_tag_input(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput>())
-{
-    flow_tag_input->parent = this;
-    children["flow-tag-input"] = flow_tag_input;
-
-    yang_name = "flow-tag"; yang_parent_name = "bgp";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::~FlowTag()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::has_data() const
-{
-    return (flow_tag_input !=  nullptr && flow_tag_input->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::has_operation() const
-{
-    return is_set(operation)
-	|| (flow_tag_input !=  nullptr && flow_tag_input->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow-tag";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FlowTag' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "flow-tag-input")
-    {
-        if(flow_tag_input != nullptr)
-        {
-            children["flow-tag-input"] = flow_tag_input;
-        }
-        else
-        {
-            flow_tag_input = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput>();
-            flow_tag_input->parent = this;
-            children["flow-tag-input"] = flow_tag_input;
-        }
-        return children.at("flow-tag-input");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::get_children()
-{
-    if(children.find("flow-tag-input") == children.end())
-    {
-        if(flow_tag_input != nullptr)
-        {
-            children["flow-tag-input"] = flow_tag_input;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput::FlowTagInput()
-    :
-    destination{YType::boolean, "destination"},
-    source{YType::boolean, "source"}
-{
-    yang_name = "flow-tag-input"; yang_parent_name = "flow-tag";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput::~FlowTagInput()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput::has_data() const
-{
-    return destination.is_set
-	|| source.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(source.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow-tag-input";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FlowTagInput' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "destination")
-    {
-        destination = value;
-    }
-    if(value_path == "source")
-    {
-        source = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Addresses()
-    :
-    dhcp{YType::empty, "dhcp"},
-    unnumbered{YType::str, "unnumbered"}
-    	,
-    primary(nullptr) // presence node
-	,secondaries(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries>())
-{
-    secondaries->parent = this;
-    children["secondaries"] = secondaries;
-
-    yang_name = "addresses"; yang_parent_name = "ipv4-network";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::~Addresses()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::has_data() const
-{
-    return dhcp.is_set
-	|| unnumbered.is_set
-	|| (primary !=  nullptr && primary->has_data())
-	|| (secondaries !=  nullptr && secondaries->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(dhcp.operation)
-	|| is_set(unnumbered.operation)
-	|| (primary !=  nullptr && primary->has_operation())
-	|| (secondaries !=  nullptr && secondaries->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "addresses";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Addresses' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dhcp.is_set || is_set(dhcp.operation)) leaf_name_data.push_back(dhcp.get_name_leafdata());
-    if (unnumbered.is_set || is_set(unnumbered.operation)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "primary")
-    {
-        if(primary != nullptr)
-        {
-            children["primary"] = primary;
-        }
-        else
-        {
-            primary = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary>();
-            primary->parent = this;
-            children["primary"] = primary;
-        }
-        return children.at("primary");
-    }
-
-    if(child_yang_name == "secondaries")
-    {
-        if(secondaries != nullptr)
-        {
-            children["secondaries"] = secondaries;
-        }
-        else
-        {
-            secondaries = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries>();
-            secondaries->parent = this;
-            children["secondaries"] = secondaries;
-        }
-        return children.at("secondaries");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::get_children()
-{
-    if(children.find("primary") == children.end())
-    {
-        if(primary != nullptr)
-        {
-            children["primary"] = primary;
-        }
-    }
-
-    if(children.find("secondaries") == children.end())
-    {
-        if(secondaries != nullptr)
-        {
-            children["secondaries"] = secondaries;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "dhcp")
-    {
-        dhcp = value;
-    }
-    if(value_path == "unnumbered")
-    {
-        unnumbered = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondaries()
-{
-    yang_name = "secondaries"; yang_parent_name = "addresses";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::~Secondaries()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::has_data() const
-{
-    for (std::size_t index=0; index<secondary.size(); index++)
-    {
-        if(secondary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::has_operation() const
-{
-    for (std::size_t index=0; index<secondary.size(); index++)
-    {
-        if(secondary[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "secondaries";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Secondaries' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "secondary")
-    {
-        for(auto const & c : secondary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary>();
-        c->parent = this;
-        secondary.push_back(std::move(c));
-        children[segment_path] = secondary.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::get_children()
-{
-    for (auto const & c : secondary)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary::Secondary()
-    :
-    address{YType::str, "address"},
-    netmask{YType::str, "netmask"},
-    route_tag{YType::uint32, "route-tag"}
-{
-    yang_name = "secondary"; yang_parent_name = "secondaries";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary::~Secondary()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary::has_data() const
-{
-    return address.is_set
-	|| netmask.is_set
-	|| route_tag.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(netmask.operation)
-	|| is_set(route_tag.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "secondary" <<"[address='" <<address <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Secondary' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.operation)) leaf_name_data.push_back(netmask.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "address")
-    {
-        address = value;
-    }
-    if(value_path == "netmask")
-    {
-        netmask = value;
-    }
-    if(value_path == "route-tag")
-    {
-        route_tag = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::Primary()
-    :
-    address{YType::str, "address"},
-    netmask{YType::str, "netmask"},
-    route_tag{YType::uint32, "route-tag"}
-{
-    yang_name = "primary"; yang_parent_name = "addresses";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::~Primary()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::has_data() const
-{
-    return address.is_set
-	|| netmask.is_set
-	|| route_tag.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(netmask.operation)
-	|| is_set(route_tag.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "primary";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Primary' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.operation)) leaf_name_data.push_back(netmask.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "address")
-    {
-        address = value;
-    }
-    if(value_path == "netmask")
-    {
-        netmask = value;
-    }
-    if(value_path == "route-tag")
-    {
-        route_tag = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddresses()
-{
-    yang_name = "helper-addresses"; yang_parent_name = "ipv4-network";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::~HelperAddresses()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::has_data() const
-{
-    for (std::size_t index=0; index<helper_address.size(); index++)
-    {
-        if(helper_address[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::has_operation() const
-{
-    for (std::size_t index=0; index<helper_address.size(); index++)
-    {
-        if(helper_address[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "helper-addresses";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HelperAddresses' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "helper-address")
-    {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress>();
-        c->parent = this;
-        helper_address.push_back(std::move(c));
-        children[segment_path] = helper_address.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::get_children()
-{
-    for (auto const & c : helper_address)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress::HelperAddress()
-    :
-    address{YType::str, "address"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "helper-address"; yang_parent_name = "helper-addresses";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress::~HelperAddress()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress::has_data() const
-{
-    return address.is_set
-	|| vrf_name.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[address='" <<address <<"']" <<"[vrf-name='" <<vrf_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HelperAddress' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "address")
-    {
-        address = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding::Ipv4NetworkForwarding()
-    :
-    directed_broadcast{YType::empty, "directed-broadcast"},
-    redirects{YType::empty, "redirects"},
-    unreachables{YType::empty, "unreachables"}
-{
-    yang_name = "ipv4-network-forwarding"; yang_parent_name = "interface-configuration";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding::~Ipv4NetworkForwarding()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding::has_data() const
-{
-    return directed_broadcast.is_set
-	|| redirects.is_set
-	|| unreachables.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(directed_broadcast.operation)
-	|| is_set(redirects.operation)
-	|| is_set(unreachables.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-io-cfg:ipv4-network-forwarding";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4NetworkForwarding' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (directed_broadcast.is_set || is_set(directed_broadcast.operation)) leaf_name_data.push_back(directed_broadcast.get_name_leafdata());
-    if (redirects.is_set || is_set(redirects.operation)) leaf_name_data.push_back(redirects.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.operation)) leaf_name_data.push_back(unreachables.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "directed-broadcast")
-    {
-        directed_broadcast = value;
-    }
-    if(value_path == "redirects")
-    {
-        redirects = value;
-    }
-    if(value_path == "unreachables")
-    {
-        unreachables = value;
+        input = value;
     }
 }
 
@@ -4470,70 +7059,48 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Performa
 	,sts_minute15(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15>())
 {
     ethernet_hour24->parent = this;
-    children["ethernet-hour24"] = ethernet_hour24;
 
     ethernet_minute15->parent = this;
-    children["ethernet-minute15"] = ethernet_minute15;
 
     ethernet_second30->parent = this;
-    children["ethernet-second30"] = ethernet_second30;
 
     ho_vc_hour24->parent = this;
-    children["ho-vc-hour24"] = ho_vc_hour24;
 
     ho_vc_minute15->parent = this;
-    children["ho-vc-minute15"] = ho_vc_minute15;
 
     hour24->parent = this;
-    children["hour24"] = hour24;
 
     hour24_gfp->parent = this;
-    children["hour24-gfp"] = hour24_gfp;
 
     hour24_path->parent = this;
-    children["hour24-path"] = hour24_path;
 
     hour24otn_tcms->parent = this;
-    children["hour24otn-tcms"] = hour24otn_tcms;
 
     minute15->parent = this;
-    children["minute15"] = minute15;
 
     minute15_gfp->parent = this;
-    children["minute15-gfp"] = minute15_gfp;
 
     minute15_path->parent = this;
-    children["minute15-path"] = minute15_path;
 
     minute15otn_tcms->parent = this;
-    children["minute15otn-tcms"] = minute15otn_tcms;
 
     oc_hour24->parent = this;
-    children["oc-hour24"] = oc_hour24;
 
     oc_minute15->parent = this;
-    children["oc-minute15"] = oc_minute15;
 
     second30->parent = this;
-    children["second30"] = second30;
 
     sonet_hour24->parent = this;
-    children["sonet-hour24"] = sonet_hour24;
 
     sonet_minute15->parent = this;
-    children["sonet-minute15"] = sonet_minute15;
 
     stm_hour24->parent = this;
-    children["stm-hour24"] = stm_hour24;
 
     stm_minute15->parent = this;
-    children["stm-minute15"] = stm_minute15;
 
     sts_hour24->parent = this;
-    children["sts-hour24"] = sts_hour24;
 
     sts_minute15->parent = this;
-    children["sts-minute15"] = sts_minute15;
 
     yang_name = "performance-management"; yang_parent_name = "interface-configuration";
 }
@@ -4604,7 +7171,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4627,524 +7194,318 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ethernet-hour24")
     {
-        if(ethernet_hour24 != nullptr)
-        {
-            children["ethernet-hour24"] = ethernet_hour24;
-        }
-        else
+        if(ethernet_hour24 == nullptr)
         {
             ethernet_hour24 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24>();
-            ethernet_hour24->parent = this;
-            children["ethernet-hour24"] = ethernet_hour24;
         }
-        return children.at("ethernet-hour24");
+        return ethernet_hour24;
     }
 
     if(child_yang_name == "ethernet-minute15")
     {
-        if(ethernet_minute15 != nullptr)
-        {
-            children["ethernet-minute15"] = ethernet_minute15;
-        }
-        else
+        if(ethernet_minute15 == nullptr)
         {
             ethernet_minute15 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15>();
-            ethernet_minute15->parent = this;
-            children["ethernet-minute15"] = ethernet_minute15;
         }
-        return children.at("ethernet-minute15");
+        return ethernet_minute15;
     }
 
     if(child_yang_name == "ethernet-second30")
     {
-        if(ethernet_second30 != nullptr)
-        {
-            children["ethernet-second30"] = ethernet_second30;
-        }
-        else
+        if(ethernet_second30 == nullptr)
         {
             ethernet_second30 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30>();
-            ethernet_second30->parent = this;
-            children["ethernet-second30"] = ethernet_second30;
         }
-        return children.at("ethernet-second30");
+        return ethernet_second30;
     }
 
     if(child_yang_name == "ho-vc-hour24")
     {
-        if(ho_vc_hour24 != nullptr)
-        {
-            children["ho-vc-hour24"] = ho_vc_hour24;
-        }
-        else
+        if(ho_vc_hour24 == nullptr)
         {
             ho_vc_hour24 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24>();
-            ho_vc_hour24->parent = this;
-            children["ho-vc-hour24"] = ho_vc_hour24;
         }
-        return children.at("ho-vc-hour24");
+        return ho_vc_hour24;
     }
 
     if(child_yang_name == "ho-vc-minute15")
     {
-        if(ho_vc_minute15 != nullptr)
-        {
-            children["ho-vc-minute15"] = ho_vc_minute15;
-        }
-        else
+        if(ho_vc_minute15 == nullptr)
         {
             ho_vc_minute15 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15>();
-            ho_vc_minute15->parent = this;
-            children["ho-vc-minute15"] = ho_vc_minute15;
         }
-        return children.at("ho-vc-minute15");
+        return ho_vc_minute15;
     }
 
     if(child_yang_name == "hour24")
     {
-        if(hour24 != nullptr)
-        {
-            children["hour24"] = hour24;
-        }
-        else
+        if(hour24 == nullptr)
         {
             hour24 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24>();
-            hour24->parent = this;
-            children["hour24"] = hour24;
         }
-        return children.at("hour24");
+        return hour24;
     }
 
     if(child_yang_name == "hour24-gfp")
     {
-        if(hour24_gfp != nullptr)
-        {
-            children["hour24-gfp"] = hour24_gfp;
-        }
-        else
+        if(hour24_gfp == nullptr)
         {
             hour24_gfp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp>();
-            hour24_gfp->parent = this;
-            children["hour24-gfp"] = hour24_gfp;
         }
-        return children.at("hour24-gfp");
+        return hour24_gfp;
     }
 
     if(child_yang_name == "hour24-path")
     {
-        if(hour24_path != nullptr)
-        {
-            children["hour24-path"] = hour24_path;
-        }
-        else
+        if(hour24_path == nullptr)
         {
             hour24_path = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path>();
-            hour24_path->parent = this;
-            children["hour24-path"] = hour24_path;
         }
-        return children.at("hour24-path");
+        return hour24_path;
     }
 
     if(child_yang_name == "hour24otn-tcms")
     {
-        if(hour24otn_tcms != nullptr)
-        {
-            children["hour24otn-tcms"] = hour24otn_tcms;
-        }
-        else
+        if(hour24otn_tcms == nullptr)
         {
             hour24otn_tcms = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms>();
-            hour24otn_tcms->parent = this;
-            children["hour24otn-tcms"] = hour24otn_tcms;
         }
-        return children.at("hour24otn-tcms");
+        return hour24otn_tcms;
     }
 
     if(child_yang_name == "minute15")
     {
-        if(minute15 != nullptr)
-        {
-            children["minute15"] = minute15;
-        }
-        else
+        if(minute15 == nullptr)
         {
             minute15 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15>();
-            minute15->parent = this;
-            children["minute15"] = minute15;
         }
-        return children.at("minute15");
+        return minute15;
     }
 
     if(child_yang_name == "minute15-gfp")
     {
-        if(minute15_gfp != nullptr)
-        {
-            children["minute15-gfp"] = minute15_gfp;
-        }
-        else
+        if(minute15_gfp == nullptr)
         {
             minute15_gfp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp>();
-            minute15_gfp->parent = this;
-            children["minute15-gfp"] = minute15_gfp;
         }
-        return children.at("minute15-gfp");
+        return minute15_gfp;
     }
 
     if(child_yang_name == "minute15-path")
     {
-        if(minute15_path != nullptr)
-        {
-            children["minute15-path"] = minute15_path;
-        }
-        else
+        if(minute15_path == nullptr)
         {
             minute15_path = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path>();
-            minute15_path->parent = this;
-            children["minute15-path"] = minute15_path;
         }
-        return children.at("minute15-path");
+        return minute15_path;
     }
 
     if(child_yang_name == "minute15otn-tcms")
     {
-        if(minute15otn_tcms != nullptr)
-        {
-            children["minute15otn-tcms"] = minute15otn_tcms;
-        }
-        else
+        if(minute15otn_tcms == nullptr)
         {
             minute15otn_tcms = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms>();
-            minute15otn_tcms->parent = this;
-            children["minute15otn-tcms"] = minute15otn_tcms;
         }
-        return children.at("minute15otn-tcms");
+        return minute15otn_tcms;
     }
 
     if(child_yang_name == "oc-hour24")
     {
-        if(oc_hour24 != nullptr)
-        {
-            children["oc-hour24"] = oc_hour24;
-        }
-        else
+        if(oc_hour24 == nullptr)
         {
             oc_hour24 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24>();
-            oc_hour24->parent = this;
-            children["oc-hour24"] = oc_hour24;
         }
-        return children.at("oc-hour24");
+        return oc_hour24;
     }
 
     if(child_yang_name == "oc-minute15")
     {
-        if(oc_minute15 != nullptr)
-        {
-            children["oc-minute15"] = oc_minute15;
-        }
-        else
+        if(oc_minute15 == nullptr)
         {
             oc_minute15 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15>();
-            oc_minute15->parent = this;
-            children["oc-minute15"] = oc_minute15;
         }
-        return children.at("oc-minute15");
+        return oc_minute15;
     }
 
     if(child_yang_name == "second30")
     {
-        if(second30 != nullptr)
-        {
-            children["second30"] = second30;
-        }
-        else
+        if(second30 == nullptr)
         {
             second30 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30>();
-            second30->parent = this;
-            children["second30"] = second30;
         }
-        return children.at("second30");
+        return second30;
     }
 
     if(child_yang_name == "sonet-hour24")
     {
-        if(sonet_hour24 != nullptr)
-        {
-            children["sonet-hour24"] = sonet_hour24;
-        }
-        else
+        if(sonet_hour24 == nullptr)
         {
             sonet_hour24 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24>();
-            sonet_hour24->parent = this;
-            children["sonet-hour24"] = sonet_hour24;
         }
-        return children.at("sonet-hour24");
+        return sonet_hour24;
     }
 
     if(child_yang_name == "sonet-minute15")
     {
-        if(sonet_minute15 != nullptr)
-        {
-            children["sonet-minute15"] = sonet_minute15;
-        }
-        else
+        if(sonet_minute15 == nullptr)
         {
             sonet_minute15 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15>();
-            sonet_minute15->parent = this;
-            children["sonet-minute15"] = sonet_minute15;
         }
-        return children.at("sonet-minute15");
+        return sonet_minute15;
     }
 
     if(child_yang_name == "stm-hour24")
     {
-        if(stm_hour24 != nullptr)
-        {
-            children["stm-hour24"] = stm_hour24;
-        }
-        else
+        if(stm_hour24 == nullptr)
         {
             stm_hour24 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24>();
-            stm_hour24->parent = this;
-            children["stm-hour24"] = stm_hour24;
         }
-        return children.at("stm-hour24");
+        return stm_hour24;
     }
 
     if(child_yang_name == "stm-minute15")
     {
-        if(stm_minute15 != nullptr)
-        {
-            children["stm-minute15"] = stm_minute15;
-        }
-        else
+        if(stm_minute15 == nullptr)
         {
             stm_minute15 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15>();
-            stm_minute15->parent = this;
-            children["stm-minute15"] = stm_minute15;
         }
-        return children.at("stm-minute15");
+        return stm_minute15;
     }
 
     if(child_yang_name == "sts-hour24")
     {
-        if(sts_hour24 != nullptr)
-        {
-            children["sts-hour24"] = sts_hour24;
-        }
-        else
+        if(sts_hour24 == nullptr)
         {
             sts_hour24 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24>();
-            sts_hour24->parent = this;
-            children["sts-hour24"] = sts_hour24;
         }
-        return children.at("sts-hour24");
+        return sts_hour24;
     }
 
     if(child_yang_name == "sts-minute15")
     {
-        if(sts_minute15 != nullptr)
-        {
-            children["sts-minute15"] = sts_minute15;
-        }
-        else
+        if(sts_minute15 == nullptr)
         {
             sts_minute15 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15>();
-            sts_minute15->parent = this;
-            children["sts-minute15"] = sts_minute15;
         }
-        return children.at("sts-minute15");
+        return sts_minute15;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::get_children() const
 {
-    if(children.find("ethernet-hour24") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ethernet_hour24 != nullptr)
     {
-        if(ethernet_hour24 != nullptr)
-        {
-            children["ethernet-hour24"] = ethernet_hour24;
-        }
+        children["ethernet-hour24"] = ethernet_hour24;
     }
 
-    if(children.find("ethernet-minute15") == children.end())
+    if(ethernet_minute15 != nullptr)
     {
-        if(ethernet_minute15 != nullptr)
-        {
-            children["ethernet-minute15"] = ethernet_minute15;
-        }
+        children["ethernet-minute15"] = ethernet_minute15;
     }
 
-    if(children.find("ethernet-second30") == children.end())
+    if(ethernet_second30 != nullptr)
     {
-        if(ethernet_second30 != nullptr)
-        {
-            children["ethernet-second30"] = ethernet_second30;
-        }
+        children["ethernet-second30"] = ethernet_second30;
     }
 
-    if(children.find("ho-vc-hour24") == children.end())
+    if(ho_vc_hour24 != nullptr)
     {
-        if(ho_vc_hour24 != nullptr)
-        {
-            children["ho-vc-hour24"] = ho_vc_hour24;
-        }
+        children["ho-vc-hour24"] = ho_vc_hour24;
     }
 
-    if(children.find("ho-vc-minute15") == children.end())
+    if(ho_vc_minute15 != nullptr)
     {
-        if(ho_vc_minute15 != nullptr)
-        {
-            children["ho-vc-minute15"] = ho_vc_minute15;
-        }
+        children["ho-vc-minute15"] = ho_vc_minute15;
     }
 
-    if(children.find("hour24") == children.end())
+    if(hour24 != nullptr)
     {
-        if(hour24 != nullptr)
-        {
-            children["hour24"] = hour24;
-        }
+        children["hour24"] = hour24;
     }
 
-    if(children.find("hour24-gfp") == children.end())
+    if(hour24_gfp != nullptr)
     {
-        if(hour24_gfp != nullptr)
-        {
-            children["hour24-gfp"] = hour24_gfp;
-        }
+        children["hour24-gfp"] = hour24_gfp;
     }
 
-    if(children.find("hour24-path") == children.end())
+    if(hour24_path != nullptr)
     {
-        if(hour24_path != nullptr)
-        {
-            children["hour24-path"] = hour24_path;
-        }
+        children["hour24-path"] = hour24_path;
     }
 
-    if(children.find("hour24otn-tcms") == children.end())
+    if(hour24otn_tcms != nullptr)
     {
-        if(hour24otn_tcms != nullptr)
-        {
-            children["hour24otn-tcms"] = hour24otn_tcms;
-        }
+        children["hour24otn-tcms"] = hour24otn_tcms;
     }
 
-    if(children.find("minute15") == children.end())
+    if(minute15 != nullptr)
     {
-        if(minute15 != nullptr)
-        {
-            children["minute15"] = minute15;
-        }
+        children["minute15"] = minute15;
     }
 
-    if(children.find("minute15-gfp") == children.end())
+    if(minute15_gfp != nullptr)
     {
-        if(minute15_gfp != nullptr)
-        {
-            children["minute15-gfp"] = minute15_gfp;
-        }
+        children["minute15-gfp"] = minute15_gfp;
     }
 
-    if(children.find("minute15-path") == children.end())
+    if(minute15_path != nullptr)
     {
-        if(minute15_path != nullptr)
-        {
-            children["minute15-path"] = minute15_path;
-        }
+        children["minute15-path"] = minute15_path;
     }
 
-    if(children.find("minute15otn-tcms") == children.end())
+    if(minute15otn_tcms != nullptr)
     {
-        if(minute15otn_tcms != nullptr)
-        {
-            children["minute15otn-tcms"] = minute15otn_tcms;
-        }
+        children["minute15otn-tcms"] = minute15otn_tcms;
     }
 
-    if(children.find("oc-hour24") == children.end())
+    if(oc_hour24 != nullptr)
     {
-        if(oc_hour24 != nullptr)
-        {
-            children["oc-hour24"] = oc_hour24;
-        }
+        children["oc-hour24"] = oc_hour24;
     }
 
-    if(children.find("oc-minute15") == children.end())
+    if(oc_minute15 != nullptr)
     {
-        if(oc_minute15 != nullptr)
-        {
-            children["oc-minute15"] = oc_minute15;
-        }
+        children["oc-minute15"] = oc_minute15;
     }
 
-    if(children.find("second30") == children.end())
+    if(second30 != nullptr)
     {
-        if(second30 != nullptr)
-        {
-            children["second30"] = second30;
-        }
+        children["second30"] = second30;
     }
 
-    if(children.find("sonet-hour24") == children.end())
+    if(sonet_hour24 != nullptr)
     {
-        if(sonet_hour24 != nullptr)
-        {
-            children["sonet-hour24"] = sonet_hour24;
-        }
+        children["sonet-hour24"] = sonet_hour24;
     }
 
-    if(children.find("sonet-minute15") == children.end())
+    if(sonet_minute15 != nullptr)
     {
-        if(sonet_minute15 != nullptr)
-        {
-            children["sonet-minute15"] = sonet_minute15;
-        }
+        children["sonet-minute15"] = sonet_minute15;
     }
 
-    if(children.find("stm-hour24") == children.end())
+    if(stm_hour24 != nullptr)
     {
-        if(stm_hour24 != nullptr)
-        {
-            children["stm-hour24"] = stm_hour24;
-        }
+        children["stm-hour24"] = stm_hour24;
     }
 
-    if(children.find("stm-minute15") == children.end())
+    if(stm_minute15 != nullptr)
     {
-        if(stm_minute15 != nullptr)
-        {
-            children["stm-minute15"] = stm_minute15;
-        }
+        children["stm-minute15"] = stm_minute15;
     }
 
-    if(children.find("sts-hour24") == children.end())
+    if(sts_hour24 != nullptr)
     {
-        if(sts_hour24 != nullptr)
-        {
-            children["sts-hour24"] = sts_hour24;
-        }
+        children["sts-hour24"] = sts_hour24;
     }
 
-    if(children.find("sts-minute15") == children.end())
+    if(sts_minute15 != nullptr)
     {
-        if(sts_minute15 != nullptr)
-        {
-            children["sts-minute15"] = sts_minute15;
-        }
+        children["sts-minute15"] = sts_minute15;
     }
 
     return children;
@@ -5159,7 +7520,6 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour2
     stm_hour24_stm(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm>())
 {
     stm_hour24_stm->parent = this;
-    children["stm-hour24-stm"] = stm_hour24_stm;
 
     yang_name = "stm-hour24"; yang_parent_name = "performance-management";
 }
@@ -5188,7 +7548,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5211,41 +7571,24 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stm-hour24-stm")
     {
-        if(stm_hour24_stm != nullptr)
-        {
-            children["stm-hour24-stm"] = stm_hour24_stm;
-        }
-        else
+        if(stm_hour24_stm == nullptr)
         {
             stm_hour24_stm = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm>();
-            stm_hour24_stm->parent = this;
-            children["stm-hour24-stm"] = stm_hour24_stm;
         }
-        return children.at("stm-hour24-stm");
+        return stm_hour24_stm;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::get_children() const
 {
-    if(children.find("stm-hour24-stm") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stm_hour24_stm != nullptr)
     {
-        if(stm_hour24_stm != nullptr)
-        {
-            children["stm-hour24-stm"] = stm_hour24_stm;
-        }
+        children["stm-hour24-stm"] = stm_hour24_stm;
     }
 
     return children;
@@ -5261,10 +7604,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour2
 	,stm_hour24_stm_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds>())
 {
     stm_hour24_stm_reports->parent = this;
-    children["stm-hour24-stm-reports"] = stm_hour24_stm_reports;
 
     stm_hour24_stm_thresholds->parent = this;
-    children["stm-hour24-stm-thresholds"] = stm_hour24_stm_thresholds;
 
     yang_name = "stm-hour24-stm"; yang_parent_name = "stm-hour24";
 }
@@ -5295,7 +7636,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5318,64 +7659,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stm-hour24-stm-reports")
     {
-        if(stm_hour24_stm_reports != nullptr)
-        {
-            children["stm-hour24-stm-reports"] = stm_hour24_stm_reports;
-        }
-        else
+        if(stm_hour24_stm_reports == nullptr)
         {
             stm_hour24_stm_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports>();
-            stm_hour24_stm_reports->parent = this;
-            children["stm-hour24-stm-reports"] = stm_hour24_stm_reports;
         }
-        return children.at("stm-hour24-stm-reports");
+        return stm_hour24_stm_reports;
     }
 
     if(child_yang_name == "stm-hour24-stm-thresholds")
     {
-        if(stm_hour24_stm_thresholds != nullptr)
-        {
-            children["stm-hour24-stm-thresholds"] = stm_hour24_stm_thresholds;
-        }
-        else
+        if(stm_hour24_stm_thresholds == nullptr)
         {
             stm_hour24_stm_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds>();
-            stm_hour24_stm_thresholds->parent = this;
-            children["stm-hour24-stm-thresholds"] = stm_hour24_stm_thresholds;
         }
-        return children.at("stm-hour24-stm-thresholds");
+        return stm_hour24_stm_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::get_children() const
 {
-    if(children.find("stm-hour24-stm-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stm_hour24_stm_reports != nullptr)
     {
-        if(stm_hour24_stm_reports != nullptr)
-        {
-            children["stm-hour24-stm-reports"] = stm_hour24_stm_reports;
-        }
+        children["stm-hour24-stm-reports"] = stm_hour24_stm_reports;
     }
 
-    if(children.find("stm-hour24-stm-thresholds") == children.end())
+    if(stm_hour24_stm_thresholds != nullptr)
     {
-        if(stm_hour24_stm_thresholds != nullptr)
-        {
-            children["stm-hour24-stm-thresholds"] = stm_hour24_stm_thresholds;
-        }
+        children["stm-hour24-stm-thresholds"] = stm_hour24_stm_thresholds;
     }
 
     return children;
@@ -5423,7 +7738,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5446,15 +7761,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stm-hour24-stm-report")
     {
         for(auto const & c : stm_hour24_stm_report)
@@ -5462,28 +7768,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::StmHour24StmReport>();
         c->parent = this;
-        stm_hour24_stm_report.push_back(std::move(c));
-        children[segment_path] = stm_hour24_stm_report.back();
-        return children.at(segment_path);
+        stm_hour24_stm_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : stm_hour24_stm_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5527,7 +7829,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::StmHour24StmReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::StmHour24StmReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5552,20 +7854,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::StmHour24StmReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::StmHour24StmReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmReports::StmHour24StmReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5619,7 +7913,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5642,15 +7936,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stm-hour24-stm-threshold")
     {
         for(auto const & c : stm_hour24_stm_threshold)
@@ -5658,28 +7943,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::StmHour24StmThreshold>();
         c->parent = this;
-        stm_hour24_stm_threshold.push_back(std::move(c));
-        children[segment_path] = stm_hour24_stm_threshold.back();
-        return children.at(segment_path);
+        stm_hour24_stm_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : stm_hour24_stm_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5723,7 +8004,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::StmHour24StmThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::StmHour24StmThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5748,20 +8029,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::StmHour24StmThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::StmHour24StmThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmHour24::StmHour24Stm::StmHour24StmThresholds::StmHour24StmThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5782,7 +8055,6 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15
     minute15_gfp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_>())
 {
     minute15_gfp->parent = this;
-    children["minute15-gfp"] = minute15_gfp;
 
     yang_name = "minute15-gfp"; yang_parent_name = "performance-management";
 }
@@ -5811,7 +8083,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5834,41 +8106,24 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-gfp")
     {
-        if(minute15_gfp != nullptr)
-        {
-            children["minute15-gfp"] = minute15_gfp;
-        }
-        else
+        if(minute15_gfp == nullptr)
         {
             minute15_gfp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_>();
-            minute15_gfp->parent = this;
-            children["minute15-gfp"] = minute15_gfp;
         }
-        return children.at("minute15-gfp");
+        return minute15_gfp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::get_children() const
 {
-    if(children.find("minute15-gfp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(minute15_gfp != nullptr)
     {
-        if(minute15_gfp != nullptr)
-        {
-            children["minute15-gfp"] = minute15_gfp;
-        }
+        children["minute15-gfp"] = minute15_gfp;
     }
 
     return children;
@@ -5884,10 +8139,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15
 	,minute15_gfp_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds>())
 {
     minute15_gfp_reports->parent = this;
-    children["minute15-gfp-reports"] = minute15_gfp_reports;
 
     minute15_gfp_thresholds->parent = this;
-    children["minute15-gfp-thresholds"] = minute15_gfp_thresholds;
 
     yang_name = "minute15-gfp"; yang_parent_name = "minute15-gfp";
 }
@@ -5918,7 +8171,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5941,64 +8194,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-gfp-reports")
     {
-        if(minute15_gfp_reports != nullptr)
-        {
-            children["minute15-gfp-reports"] = minute15_gfp_reports;
-        }
-        else
+        if(minute15_gfp_reports == nullptr)
         {
             minute15_gfp_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports>();
-            minute15_gfp_reports->parent = this;
-            children["minute15-gfp-reports"] = minute15_gfp_reports;
         }
-        return children.at("minute15-gfp-reports");
+        return minute15_gfp_reports;
     }
 
     if(child_yang_name == "minute15-gfp-thresholds")
     {
-        if(minute15_gfp_thresholds != nullptr)
-        {
-            children["minute15-gfp-thresholds"] = minute15_gfp_thresholds;
-        }
-        else
+        if(minute15_gfp_thresholds == nullptr)
         {
             minute15_gfp_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds>();
-            minute15_gfp_thresholds->parent = this;
-            children["minute15-gfp-thresholds"] = minute15_gfp_thresholds;
         }
-        return children.at("minute15-gfp-thresholds");
+        return minute15_gfp_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::get_children() const
 {
-    if(children.find("minute15-gfp-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(minute15_gfp_reports != nullptr)
     {
-        if(minute15_gfp_reports != nullptr)
-        {
-            children["minute15-gfp-reports"] = minute15_gfp_reports;
-        }
+        children["minute15-gfp-reports"] = minute15_gfp_reports;
     }
 
-    if(children.find("minute15-gfp-thresholds") == children.end())
+    if(minute15_gfp_thresholds != nullptr)
     {
-        if(minute15_gfp_thresholds != nullptr)
-        {
-            children["minute15-gfp-thresholds"] = minute15_gfp_thresholds;
-        }
+        children["minute15-gfp-thresholds"] = minute15_gfp_thresholds;
     }
 
     return children;
@@ -6046,7 +8273,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6069,15 +8296,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-gfp-report")
     {
         for(auto const & c : minute15_gfp_report)
@@ -6085,28 +8303,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::Minute15GfpReport>();
         c->parent = this;
-        minute15_gfp_report.push_back(std::move(c));
-        children[segment_path] = minute15_gfp_report.back();
-        return children.at(segment_path);
+        minute15_gfp_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : minute15_gfp_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6147,7 +8361,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::Minute15GfpReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::Minute15GfpReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6171,20 +8385,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::Minute15GfpReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::Minute15GfpReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpReports::Minute15GfpReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6234,7 +8440,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6257,15 +8463,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-gfp-threshold")
     {
         for(auto const & c : minute15_gfp_threshold)
@@ -6273,28 +8470,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::Minute15GfpThreshold>();
         c->parent = this;
-        minute15_gfp_threshold.push_back(std::move(c));
-        children[segment_path] = minute15_gfp_threshold.back();
-        return children.at(segment_path);
+        minute15_gfp_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : minute15_gfp_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6338,7 +8531,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::Minute15GfpThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::Minute15GfpThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6363,20 +8556,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::Minute15GfpThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::Minute15GfpThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Gfp::Minute15Gfp_::Minute15GfpThresholds::Minute15GfpThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6398,10 +8583,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMin
 	,sonet_minute15_path(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path>())
 {
     sonet_minute15_ocn->parent = this;
-    children["sonet-minute15-ocn"] = sonet_minute15_ocn;
 
     sonet_minute15_path->parent = this;
-    children["sonet-minute15-path"] = sonet_minute15_path;
 
     yang_name = "sonet-minute15"; yang_parent_name = "performance-management";
 }
@@ -6432,7 +8615,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6455,64 +8638,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sonet-minute15-ocn")
     {
-        if(sonet_minute15_ocn != nullptr)
-        {
-            children["sonet-minute15-ocn"] = sonet_minute15_ocn;
-        }
-        else
+        if(sonet_minute15_ocn == nullptr)
         {
             sonet_minute15_ocn = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn>();
-            sonet_minute15_ocn->parent = this;
-            children["sonet-minute15-ocn"] = sonet_minute15_ocn;
         }
-        return children.at("sonet-minute15-ocn");
+        return sonet_minute15_ocn;
     }
 
     if(child_yang_name == "sonet-minute15-path")
     {
-        if(sonet_minute15_path != nullptr)
-        {
-            children["sonet-minute15-path"] = sonet_minute15_path;
-        }
-        else
+        if(sonet_minute15_path == nullptr)
         {
             sonet_minute15_path = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path>();
-            sonet_minute15_path->parent = this;
-            children["sonet-minute15-path"] = sonet_minute15_path;
         }
-        return children.at("sonet-minute15-path");
+        return sonet_minute15_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::get_children() const
 {
-    if(children.find("sonet-minute15-ocn") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sonet_minute15_ocn != nullptr)
     {
-        if(sonet_minute15_ocn != nullptr)
-        {
-            children["sonet-minute15-ocn"] = sonet_minute15_ocn;
-        }
+        children["sonet-minute15-ocn"] = sonet_minute15_ocn;
     }
 
-    if(children.find("sonet-minute15-path") == children.end())
+    if(sonet_minute15_path != nullptr)
     {
-        if(sonet_minute15_path != nullptr)
-        {
-            children["sonet-minute15-path"] = sonet_minute15_path;
-        }
+        children["sonet-minute15-path"] = sonet_minute15_path;
     }
 
     return children;
@@ -6528,10 +8685,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMin
 	,sonet_minute15_path_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds>())
 {
     sonet_minute15_path_reports->parent = this;
-    children["sonet-minute15-path-reports"] = sonet_minute15_path_reports;
 
     sonet_minute15_path_thresholds->parent = this;
-    children["sonet-minute15-path-thresholds"] = sonet_minute15_path_thresholds;
 
     yang_name = "sonet-minute15-path"; yang_parent_name = "sonet-minute15";
 }
@@ -6562,7 +8717,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6585,64 +8740,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sonet-minute15-path-reports")
     {
-        if(sonet_minute15_path_reports != nullptr)
-        {
-            children["sonet-minute15-path-reports"] = sonet_minute15_path_reports;
-        }
-        else
+        if(sonet_minute15_path_reports == nullptr)
         {
             sonet_minute15_path_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports>();
-            sonet_minute15_path_reports->parent = this;
-            children["sonet-minute15-path-reports"] = sonet_minute15_path_reports;
         }
-        return children.at("sonet-minute15-path-reports");
+        return sonet_minute15_path_reports;
     }
 
     if(child_yang_name == "sonet-minute15-path-thresholds")
     {
-        if(sonet_minute15_path_thresholds != nullptr)
-        {
-            children["sonet-minute15-path-thresholds"] = sonet_minute15_path_thresholds;
-        }
-        else
+        if(sonet_minute15_path_thresholds == nullptr)
         {
             sonet_minute15_path_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds>();
-            sonet_minute15_path_thresholds->parent = this;
-            children["sonet-minute15-path-thresholds"] = sonet_minute15_path_thresholds;
         }
-        return children.at("sonet-minute15-path-thresholds");
+        return sonet_minute15_path_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::get_children() const
 {
-    if(children.find("sonet-minute15-path-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sonet_minute15_path_reports != nullptr)
     {
-        if(sonet_minute15_path_reports != nullptr)
-        {
-            children["sonet-minute15-path-reports"] = sonet_minute15_path_reports;
-        }
+        children["sonet-minute15-path-reports"] = sonet_minute15_path_reports;
     }
 
-    if(children.find("sonet-minute15-path-thresholds") == children.end())
+    if(sonet_minute15_path_thresholds != nullptr)
     {
-        if(sonet_minute15_path_thresholds != nullptr)
-        {
-            children["sonet-minute15-path-thresholds"] = sonet_minute15_path_thresholds;
-        }
+        children["sonet-minute15-path-thresholds"] = sonet_minute15_path_thresholds;
     }
 
     return children;
@@ -6690,7 +8819,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6713,15 +8842,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sonet-minute15-path-report")
     {
         for(auto const & c : sonet_minute15_path_report)
@@ -6729,28 +8849,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::SonetMinute15PathReport>();
         c->parent = this;
-        sonet_minute15_path_report.push_back(std::move(c));
-        children[segment_path] = sonet_minute15_path_report.back();
-        return children.at(segment_path);
+        sonet_minute15_path_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sonet_minute15_path_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6791,7 +8907,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::SonetMinute15PathReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::SonetMinute15PathReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6815,20 +8931,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::SonetMinute15PathReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::SonetMinute15PathReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathReports::SonetMinute15PathReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6878,7 +8986,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6901,15 +9009,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sonet-minute15-path-threshold")
     {
         for(auto const & c : sonet_minute15_path_threshold)
@@ -6917,28 +9016,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::SonetMinute15PathThreshold>();
         c->parent = this;
-        sonet_minute15_path_threshold.push_back(std::move(c));
-        children[segment_path] = sonet_minute15_path_threshold.back();
-        return children.at(segment_path);
+        sonet_minute15_path_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sonet_minute15_path_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6982,7 +9077,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::SonetMinute15PathThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::SonetMinute15PathThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7007,20 +9102,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::SonetMinute15PathThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::SonetMinute15PathThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Path::SonetMinute15PathThresholds::SonetMinute15PathThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7042,10 +9129,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMin
 	,sonet_minute15_ocn_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds>())
 {
     sonet_minute15_ocn_reports->parent = this;
-    children["sonet-minute15-ocn-reports"] = sonet_minute15_ocn_reports;
 
     sonet_minute15_ocn_thresholds->parent = this;
-    children["sonet-minute15-ocn-thresholds"] = sonet_minute15_ocn_thresholds;
 
     yang_name = "sonet-minute15-ocn"; yang_parent_name = "sonet-minute15";
 }
@@ -7076,7 +9161,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7099,64 +9184,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sonet-minute15-ocn-reports")
     {
-        if(sonet_minute15_ocn_reports != nullptr)
-        {
-            children["sonet-minute15-ocn-reports"] = sonet_minute15_ocn_reports;
-        }
-        else
+        if(sonet_minute15_ocn_reports == nullptr)
         {
             sonet_minute15_ocn_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports>();
-            sonet_minute15_ocn_reports->parent = this;
-            children["sonet-minute15-ocn-reports"] = sonet_minute15_ocn_reports;
         }
-        return children.at("sonet-minute15-ocn-reports");
+        return sonet_minute15_ocn_reports;
     }
 
     if(child_yang_name == "sonet-minute15-ocn-thresholds")
     {
-        if(sonet_minute15_ocn_thresholds != nullptr)
-        {
-            children["sonet-minute15-ocn-thresholds"] = sonet_minute15_ocn_thresholds;
-        }
-        else
+        if(sonet_minute15_ocn_thresholds == nullptr)
         {
             sonet_minute15_ocn_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds>();
-            sonet_minute15_ocn_thresholds->parent = this;
-            children["sonet-minute15-ocn-thresholds"] = sonet_minute15_ocn_thresholds;
         }
-        return children.at("sonet-minute15-ocn-thresholds");
+        return sonet_minute15_ocn_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::get_children() const
 {
-    if(children.find("sonet-minute15-ocn-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sonet_minute15_ocn_reports != nullptr)
     {
-        if(sonet_minute15_ocn_reports != nullptr)
-        {
-            children["sonet-minute15-ocn-reports"] = sonet_minute15_ocn_reports;
-        }
+        children["sonet-minute15-ocn-reports"] = sonet_minute15_ocn_reports;
     }
 
-    if(children.find("sonet-minute15-ocn-thresholds") == children.end())
+    if(sonet_minute15_ocn_thresholds != nullptr)
     {
-        if(sonet_minute15_ocn_thresholds != nullptr)
-        {
-            children["sonet-minute15-ocn-thresholds"] = sonet_minute15_ocn_thresholds;
-        }
+        children["sonet-minute15-ocn-thresholds"] = sonet_minute15_ocn_thresholds;
     }
 
     return children;
@@ -7204,7 +9263,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7227,15 +9286,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sonet-minute15-ocn-report")
     {
         for(auto const & c : sonet_minute15_ocn_report)
@@ -7243,28 +9293,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::SonetMinute15OcnReport>();
         c->parent = this;
-        sonet_minute15_ocn_report.push_back(std::move(c));
-        children[segment_path] = sonet_minute15_ocn_report.back();
-        return children.at(segment_path);
+        sonet_minute15_ocn_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sonet_minute15_ocn_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7305,7 +9351,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::SonetMinute15OcnReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::SonetMinute15OcnReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7329,20 +9375,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::SonetMinute15OcnReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::SonetMinute15OcnReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnReports::SonetMinute15OcnReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7392,7 +9430,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7415,15 +9453,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sonet-minute15-ocn-threshold")
     {
         for(auto const & c : sonet_minute15_ocn_threshold)
@@ -7431,28 +9460,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::SonetMinute15OcnThreshold>();
         c->parent = this;
-        sonet_minute15_ocn_threshold.push_back(std::move(c));
-        children[segment_path] = sonet_minute15_ocn_threshold.back();
-        return children.at(segment_path);
+        sonet_minute15_ocn_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sonet_minute15_ocn_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7496,7 +9521,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::SonetMinute15OcnThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::SonetMinute15OcnThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7521,20 +9546,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::SonetMinute15OcnThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::SonetMinute15OcnThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetMinute15::SonetMinute15Ocn::SonetMinute15OcnThresholds::SonetMinute15OcnThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7555,7 +9572,6 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gf
     hour24_gfp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_>())
 {
     hour24_gfp->parent = this;
-    children["hour24-gfp"] = hour24_gfp;
 
     yang_name = "hour24-gfp"; yang_parent_name = "performance-management";
 }
@@ -7584,7 +9600,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7607,41 +9623,24 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24-gfp")
     {
-        if(hour24_gfp != nullptr)
-        {
-            children["hour24-gfp"] = hour24_gfp;
-        }
-        else
+        if(hour24_gfp == nullptr)
         {
             hour24_gfp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_>();
-            hour24_gfp->parent = this;
-            children["hour24-gfp"] = hour24_gfp;
         }
-        return children.at("hour24-gfp");
+        return hour24_gfp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::get_children() const
 {
-    if(children.find("hour24-gfp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hour24_gfp != nullptr)
     {
-        if(hour24_gfp != nullptr)
-        {
-            children["hour24-gfp"] = hour24_gfp;
-        }
+        children["hour24-gfp"] = hour24_gfp;
     }
 
     return children;
@@ -7657,10 +9656,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gf
 	,hour24_gfp_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds>())
 {
     hour24_gfp_reports->parent = this;
-    children["hour24-gfp-reports"] = hour24_gfp_reports;
 
     hour24_gfp_thresholds->parent = this;
-    children["hour24-gfp-thresholds"] = hour24_gfp_thresholds;
 
     yang_name = "hour24-gfp"; yang_parent_name = "hour24-gfp";
 }
@@ -7691,7 +9688,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7714,64 +9711,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24-gfp-reports")
     {
-        if(hour24_gfp_reports != nullptr)
-        {
-            children["hour24-gfp-reports"] = hour24_gfp_reports;
-        }
-        else
+        if(hour24_gfp_reports == nullptr)
         {
             hour24_gfp_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports>();
-            hour24_gfp_reports->parent = this;
-            children["hour24-gfp-reports"] = hour24_gfp_reports;
         }
-        return children.at("hour24-gfp-reports");
+        return hour24_gfp_reports;
     }
 
     if(child_yang_name == "hour24-gfp-thresholds")
     {
-        if(hour24_gfp_thresholds != nullptr)
-        {
-            children["hour24-gfp-thresholds"] = hour24_gfp_thresholds;
-        }
-        else
+        if(hour24_gfp_thresholds == nullptr)
         {
             hour24_gfp_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds>();
-            hour24_gfp_thresholds->parent = this;
-            children["hour24-gfp-thresholds"] = hour24_gfp_thresholds;
         }
-        return children.at("hour24-gfp-thresholds");
+        return hour24_gfp_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::get_children() const
 {
-    if(children.find("hour24-gfp-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hour24_gfp_reports != nullptr)
     {
-        if(hour24_gfp_reports != nullptr)
-        {
-            children["hour24-gfp-reports"] = hour24_gfp_reports;
-        }
+        children["hour24-gfp-reports"] = hour24_gfp_reports;
     }
 
-    if(children.find("hour24-gfp-thresholds") == children.end())
+    if(hour24_gfp_thresholds != nullptr)
     {
-        if(hour24_gfp_thresholds != nullptr)
-        {
-            children["hour24-gfp-thresholds"] = hour24_gfp_thresholds;
-        }
+        children["hour24-gfp-thresholds"] = hour24_gfp_thresholds;
     }
 
     return children;
@@ -7819,7 +9790,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7842,15 +9813,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24-gfp-report")
     {
         for(auto const & c : hour24_gfp_report)
@@ -7858,28 +9820,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::Hour24GfpReport>();
         c->parent = this;
-        hour24_gfp_report.push_back(std::move(c));
-        children[segment_path] = hour24_gfp_report.back();
-        return children.at(segment_path);
+        hour24_gfp_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hour24_gfp_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7920,7 +9878,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::Hour24GfpReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::Hour24GfpReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7944,20 +9902,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::Hour24GfpReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::Hour24GfpReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpReports::Hour24GfpReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8007,7 +9957,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8030,15 +9980,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24-gfp-threshold")
     {
         for(auto const & c : hour24_gfp_threshold)
@@ -8046,28 +9987,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::Hour24GfpThreshold>();
         c->parent = this;
-        hour24_gfp_threshold.push_back(std::move(c));
-        children[segment_path] = hour24_gfp_threshold.back();
-        return children.at(segment_path);
+        hour24_gfp_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hour24_gfp_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8111,7 +10048,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::Hour24GfpThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::Hour24GfpThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8136,20 +10073,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::Hour24GfpThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::Hour24GfpThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Gfp::Hour24Gfp_::Hour24GfpThresholds::Hour24GfpThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8170,7 +10099,6 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ethernet
     hour24_ether(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether>())
 {
     hour24_ether->parent = this;
-    children["hour24-ether"] = hour24_ether;
 
     yang_name = "ethernet-hour24"; yang_parent_name = "performance-management";
 }
@@ -8199,7 +10127,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8222,41 +10150,24 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24-ether")
     {
-        if(hour24_ether != nullptr)
-        {
-            children["hour24-ether"] = hour24_ether;
-        }
-        else
+        if(hour24_ether == nullptr)
         {
             hour24_ether = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether>();
-            hour24_ether->parent = this;
-            children["hour24-ether"] = hour24_ether;
         }
-        return children.at("hour24-ether");
+        return hour24_ether;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::get_children() const
 {
-    if(children.find("hour24-ether") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hour24_ether != nullptr)
     {
-        if(hour24_ether != nullptr)
-        {
-            children["hour24-ether"] = hour24_ether;
-        }
+        children["hour24-ether"] = hour24_ether;
     }
 
     return children;
@@ -8272,10 +10183,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ethernet
 	,hour24_ether_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds>())
 {
     hour24_ether_reports->parent = this;
-    children["hour24-ether-reports"] = hour24_ether_reports;
 
     hour24_ether_thresholds->parent = this;
-    children["hour24-ether-thresholds"] = hour24_ether_thresholds;
 
     yang_name = "hour24-ether"; yang_parent_name = "ethernet-hour24";
 }
@@ -8306,7 +10215,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8329,64 +10238,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24-ether-reports")
     {
-        if(hour24_ether_reports != nullptr)
-        {
-            children["hour24-ether-reports"] = hour24_ether_reports;
-        }
-        else
+        if(hour24_ether_reports == nullptr)
         {
             hour24_ether_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports>();
-            hour24_ether_reports->parent = this;
-            children["hour24-ether-reports"] = hour24_ether_reports;
         }
-        return children.at("hour24-ether-reports");
+        return hour24_ether_reports;
     }
 
     if(child_yang_name == "hour24-ether-thresholds")
     {
-        if(hour24_ether_thresholds != nullptr)
-        {
-            children["hour24-ether-thresholds"] = hour24_ether_thresholds;
-        }
-        else
+        if(hour24_ether_thresholds == nullptr)
         {
             hour24_ether_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds>();
-            hour24_ether_thresholds->parent = this;
-            children["hour24-ether-thresholds"] = hour24_ether_thresholds;
         }
-        return children.at("hour24-ether-thresholds");
+        return hour24_ether_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::get_children() const
 {
-    if(children.find("hour24-ether-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hour24_ether_reports != nullptr)
     {
-        if(hour24_ether_reports != nullptr)
-        {
-            children["hour24-ether-reports"] = hour24_ether_reports;
-        }
+        children["hour24-ether-reports"] = hour24_ether_reports;
     }
 
-    if(children.find("hour24-ether-thresholds") == children.end())
+    if(hour24_ether_thresholds != nullptr)
     {
-        if(hour24_ether_thresholds != nullptr)
-        {
-            children["hour24-ether-thresholds"] = hour24_ether_thresholds;
-        }
+        children["hour24-ether-thresholds"] = hour24_ether_thresholds;
     }
 
     return children;
@@ -8434,7 +10317,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8457,15 +10340,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24-ether-threshold")
     {
         for(auto const & c : hour24_ether_threshold)
@@ -8473,28 +10347,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::Hour24EtherThreshold>();
         c->parent = this;
-        hour24_ether_threshold.push_back(std::move(c));
-        children[segment_path] = hour24_ether_threshold.back();
-        return children.at(segment_path);
+        hour24_ether_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hour24_ether_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8538,7 +10408,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::Hour24EtherThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::Hour24EtherThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8563,20 +10433,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::Hour24EtherThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::Hour24EtherThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::Hour24EtherThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8630,7 +10492,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8653,15 +10515,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24-ether-report")
     {
         for(auto const & c : hour24_ether_report)
@@ -8669,28 +10522,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::Hour24EtherReport>();
         c->parent = this;
-        hour24_ether_report.push_back(std::move(c));
-        children[segment_path] = hour24_ether_report.back();
-        return children.at(segment_path);
+        hour24_ether_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hour24_ether_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8731,7 +10580,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::Hour24EtherReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::Hour24EtherReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8755,20 +10604,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::Hour24EtherReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::Hour24EtherReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::Hour24EtherReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8818,7 +10659,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8841,15 +10682,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15otn-tcm")
     {
         for(auto const & c : minute15otn_tcm)
@@ -8857,28 +10689,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm>();
         c->parent = this;
-        minute15otn_tcm.push_back(std::move(c));
-        children[segment_path] = minute15otn_tcm.back();
-        return children.at(segment_path);
+        minute15otn_tcm.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : minute15otn_tcm)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8896,10 +10724,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15
 	,minute15otn_tcm_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports>())
 {
     min15_otn_tcm_threshes->parent = this;
-    children["min15-otn-tcm-threshes"] = min15_otn_tcm_threshes;
 
     minute15otn_tcm_reports->parent = this;
-    children["minute15otn-tcm-reports"] = minute15otn_tcm_reports;
 
     yang_name = "minute15otn-tcm"; yang_parent_name = "minute15otn-tcms";
 }
@@ -8932,7 +10758,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8956,64 +10782,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "min15-otn-tcm-threshes")
     {
-        if(min15_otn_tcm_threshes != nullptr)
-        {
-            children["min15-otn-tcm-threshes"] = min15_otn_tcm_threshes;
-        }
-        else
+        if(min15_otn_tcm_threshes == nullptr)
         {
             min15_otn_tcm_threshes = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes>();
-            min15_otn_tcm_threshes->parent = this;
-            children["min15-otn-tcm-threshes"] = min15_otn_tcm_threshes;
         }
-        return children.at("min15-otn-tcm-threshes");
+        return min15_otn_tcm_threshes;
     }
 
     if(child_yang_name == "minute15otn-tcm-reports")
     {
-        if(minute15otn_tcm_reports != nullptr)
-        {
-            children["minute15otn-tcm-reports"] = minute15otn_tcm_reports;
-        }
-        else
+        if(minute15otn_tcm_reports == nullptr)
         {
             minute15otn_tcm_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports>();
-            minute15otn_tcm_reports->parent = this;
-            children["minute15otn-tcm-reports"] = minute15otn_tcm_reports;
         }
-        return children.at("minute15otn-tcm-reports");
+        return minute15otn_tcm_reports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::get_children() const
 {
-    if(children.find("min15-otn-tcm-threshes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(min15_otn_tcm_threshes != nullptr)
     {
-        if(min15_otn_tcm_threshes != nullptr)
-        {
-            children["min15-otn-tcm-threshes"] = min15_otn_tcm_threshes;
-        }
+        children["min15-otn-tcm-threshes"] = min15_otn_tcm_threshes;
     }
 
-    if(children.find("minute15otn-tcm-reports") == children.end())
+    if(minute15otn_tcm_reports != nullptr)
     {
-        if(minute15otn_tcm_reports != nullptr)
-        {
-            children["minute15otn-tcm-reports"] = minute15otn_tcm_reports;
-        }
+        children["minute15otn-tcm-reports"] = minute15otn_tcm_reports;
     }
 
     return children;
@@ -9065,7 +10865,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9088,15 +10888,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "min15-otn-tcm-thresh")
     {
         for(auto const & c : min15_otn_tcm_thresh)
@@ -9104,28 +10895,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::Min15OtnTcmThresh>();
         c->parent = this;
-        min15_otn_tcm_thresh.push_back(std::move(c));
-        children[segment_path] = min15_otn_tcm_thresh.back();
-        return children.at(segment_path);
+        min15_otn_tcm_thresh.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : min15_otn_tcm_thresh)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9169,7 +10956,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::Min15OtnTcmThresh::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::Min15OtnTcmThresh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9194,20 +10981,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::Min15OtnTcmThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::Min15OtnTcmThresh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Min15OtnTcmThreshes::Min15OtnTcmThresh::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9261,7 +11040,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9284,15 +11063,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15otn-tcm-report")
     {
         for(auto const & c : minute15otn_tcm_report)
@@ -9300,28 +11070,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::Minute15OtnTcmReport>();
         c->parent = this;
-        minute15otn_tcm_report.push_back(std::move(c));
-        children[segment_path] = minute15otn_tcm_report.back();
-        return children.at(segment_path);
+        minute15otn_tcm_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : minute15otn_tcm_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9365,7 +11131,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::Minute15OtnTcmReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::Minute15OtnTcmReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9390,20 +11156,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::Minute15OtnTcmReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::Minute15OtnTcmReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15OtnTcms::Minute15OtnTcm::Minute15OtnTcmReports::Minute15OtnTcmReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9424,7 +11182,6 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24
     oc_hour24_ocn(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn>())
 {
     oc_hour24_ocn->parent = this;
-    children["oc-hour24-ocn"] = oc_hour24_ocn;
 
     yang_name = "oc-hour24"; yang_parent_name = "performance-management";
 }
@@ -9453,7 +11210,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9476,41 +11233,24 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-hour24-ocn")
     {
-        if(oc_hour24_ocn != nullptr)
-        {
-            children["oc-hour24-ocn"] = oc_hour24_ocn;
-        }
-        else
+        if(oc_hour24_ocn == nullptr)
         {
             oc_hour24_ocn = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn>();
-            oc_hour24_ocn->parent = this;
-            children["oc-hour24-ocn"] = oc_hour24_ocn;
         }
-        return children.at("oc-hour24-ocn");
+        return oc_hour24_ocn;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::get_children() const
 {
-    if(children.find("oc-hour24-ocn") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oc_hour24_ocn != nullptr)
     {
-        if(oc_hour24_ocn != nullptr)
-        {
-            children["oc-hour24-ocn"] = oc_hour24_ocn;
-        }
+        children["oc-hour24-ocn"] = oc_hour24_ocn;
     }
 
     return children;
@@ -9526,10 +11266,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24
 	,oc_hour24_ocn_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds>())
 {
     oc_hour24_ocn_reports->parent = this;
-    children["oc-hour24-ocn-reports"] = oc_hour24_ocn_reports;
 
     oc_hour24_ocn_thresholds->parent = this;
-    children["oc-hour24-ocn-thresholds"] = oc_hour24_ocn_thresholds;
 
     yang_name = "oc-hour24-ocn"; yang_parent_name = "oc-hour24";
 }
@@ -9560,7 +11298,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9583,64 +11321,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-hour24-ocn-reports")
     {
-        if(oc_hour24_ocn_reports != nullptr)
-        {
-            children["oc-hour24-ocn-reports"] = oc_hour24_ocn_reports;
-        }
-        else
+        if(oc_hour24_ocn_reports == nullptr)
         {
             oc_hour24_ocn_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports>();
-            oc_hour24_ocn_reports->parent = this;
-            children["oc-hour24-ocn-reports"] = oc_hour24_ocn_reports;
         }
-        return children.at("oc-hour24-ocn-reports");
+        return oc_hour24_ocn_reports;
     }
 
     if(child_yang_name == "oc-hour24-ocn-thresholds")
     {
-        if(oc_hour24_ocn_thresholds != nullptr)
-        {
-            children["oc-hour24-ocn-thresholds"] = oc_hour24_ocn_thresholds;
-        }
-        else
+        if(oc_hour24_ocn_thresholds == nullptr)
         {
             oc_hour24_ocn_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds>();
-            oc_hour24_ocn_thresholds->parent = this;
-            children["oc-hour24-ocn-thresholds"] = oc_hour24_ocn_thresholds;
         }
-        return children.at("oc-hour24-ocn-thresholds");
+        return oc_hour24_ocn_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::get_children() const
 {
-    if(children.find("oc-hour24-ocn-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oc_hour24_ocn_reports != nullptr)
     {
-        if(oc_hour24_ocn_reports != nullptr)
-        {
-            children["oc-hour24-ocn-reports"] = oc_hour24_ocn_reports;
-        }
+        children["oc-hour24-ocn-reports"] = oc_hour24_ocn_reports;
     }
 
-    if(children.find("oc-hour24-ocn-thresholds") == children.end())
+    if(oc_hour24_ocn_thresholds != nullptr)
     {
-        if(oc_hour24_ocn_thresholds != nullptr)
-        {
-            children["oc-hour24-ocn-thresholds"] = oc_hour24_ocn_thresholds;
-        }
+        children["oc-hour24-ocn-thresholds"] = oc_hour24_ocn_thresholds;
     }
 
     return children;
@@ -9688,7 +11400,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9711,15 +11423,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-hour24-ocn-report")
     {
         for(auto const & c : oc_hour24_ocn_report)
@@ -9727,28 +11430,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::OcHour24OcnReport>();
         c->parent = this;
-        oc_hour24_ocn_report.push_back(std::move(c));
-        children[segment_path] = oc_hour24_ocn_report.back();
-        return children.at(segment_path);
+        oc_hour24_ocn_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : oc_hour24_ocn_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9792,7 +11491,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::OcHour24OcnReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::OcHour24OcnReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9817,20 +11516,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::OcHour24OcnReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::OcHour24OcnReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::OcHour24OcnReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9884,7 +11575,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9907,15 +11598,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oc-hour24-ocn-threshold")
     {
         for(auto const & c : oc_hour24_ocn_threshold)
@@ -9923,28 +11605,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::OcHour24OcnThreshold>();
         c->parent = this;
-        oc_hour24_ocn_threshold.push_back(std::move(c));
-        children[segment_path] = oc_hour24_ocn_threshold.back();
-        return children.at(segment_path);
+        oc_hour24_ocn_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : oc_hour24_ocn_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9988,7 +11666,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::OcHour24OcnThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::OcHour24OcnThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10013,20 +11691,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::OcHour24OcnThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::OcHour24OcnThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::OcHour24OcnThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10047,7 +11717,6 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ethernet
     minute15_ether(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether>())
 {
     minute15_ether->parent = this;
-    children["minute15-ether"] = minute15_ether;
 
     yang_name = "ethernet-minute15"; yang_parent_name = "performance-management";
 }
@@ -10076,7 +11745,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10099,41 +11768,24 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-ether")
     {
-        if(minute15_ether != nullptr)
-        {
-            children["minute15-ether"] = minute15_ether;
-        }
-        else
+        if(minute15_ether == nullptr)
         {
             minute15_ether = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether>();
-            minute15_ether->parent = this;
-            children["minute15-ether"] = minute15_ether;
         }
-        return children.at("minute15-ether");
+        return minute15_ether;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::get_children() const
 {
-    if(children.find("minute15-ether") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(minute15_ether != nullptr)
     {
-        if(minute15_ether != nullptr)
-        {
-            children["minute15-ether"] = minute15_ether;
-        }
+        children["minute15-ether"] = minute15_ether;
     }
 
     return children;
@@ -10149,10 +11801,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ethernet
 	,minute15_ether_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds>())
 {
     minute15_ether_reports->parent = this;
-    children["minute15-ether-reports"] = minute15_ether_reports;
 
     minute15_ether_thresholds->parent = this;
-    children["minute15-ether-thresholds"] = minute15_ether_thresholds;
 
     yang_name = "minute15-ether"; yang_parent_name = "ethernet-minute15";
 }
@@ -10183,7 +11833,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10206,64 +11856,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-ether-reports")
     {
-        if(minute15_ether_reports != nullptr)
-        {
-            children["minute15-ether-reports"] = minute15_ether_reports;
-        }
-        else
+        if(minute15_ether_reports == nullptr)
         {
             minute15_ether_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports>();
-            minute15_ether_reports->parent = this;
-            children["minute15-ether-reports"] = minute15_ether_reports;
         }
-        return children.at("minute15-ether-reports");
+        return minute15_ether_reports;
     }
 
     if(child_yang_name == "minute15-ether-thresholds")
     {
-        if(minute15_ether_thresholds != nullptr)
-        {
-            children["minute15-ether-thresholds"] = minute15_ether_thresholds;
-        }
-        else
+        if(minute15_ether_thresholds == nullptr)
         {
             minute15_ether_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds>();
-            minute15_ether_thresholds->parent = this;
-            children["minute15-ether-thresholds"] = minute15_ether_thresholds;
         }
-        return children.at("minute15-ether-thresholds");
+        return minute15_ether_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::get_children() const
 {
-    if(children.find("minute15-ether-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(minute15_ether_reports != nullptr)
     {
-        if(minute15_ether_reports != nullptr)
-        {
-            children["minute15-ether-reports"] = minute15_ether_reports;
-        }
+        children["minute15-ether-reports"] = minute15_ether_reports;
     }
 
-    if(children.find("minute15-ether-thresholds") == children.end())
+    if(minute15_ether_thresholds != nullptr)
     {
-        if(minute15_ether_thresholds != nullptr)
-        {
-            children["minute15-ether-thresholds"] = minute15_ether_thresholds;
-        }
+        children["minute15-ether-thresholds"] = minute15_ether_thresholds;
     }
 
     return children;
@@ -10311,7 +11935,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10334,15 +11958,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-ether-threshold")
     {
         for(auto const & c : minute15_ether_threshold)
@@ -10350,28 +11965,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::Minute15EtherThreshold>();
         c->parent = this;
-        minute15_ether_threshold.push_back(std::move(c));
-        children[segment_path] = minute15_ether_threshold.back();
-        return children.at(segment_path);
+        minute15_ether_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : minute15_ether_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10415,7 +12026,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::Minute15EtherThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::Minute15EtherThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10440,20 +12051,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::Minute15EtherThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::Minute15EtherThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::Minute15EtherThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10507,7 +12110,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10530,15 +12133,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "minute15-ether-report")
     {
         for(auto const & c : minute15_ether_report)
@@ -10546,28 +12140,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::Minute15EtherReport>();
         c->parent = this;
-        minute15_ether_report.push_back(std::move(c));
-        children[segment_path] = minute15_ether_report.back();
-        return children.at(segment_path);
+        minute15_ether_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : minute15_ether_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10608,7 +12198,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::Minute15EtherReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::Minute15EtherReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10632,20 +12222,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::Minute15EtherReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::Minute15EtherReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::Minute15EtherReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10662,7 +12244,6 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour
     ho_vc_hour24ho_vc(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc>())
 {
     ho_vc_hour24ho_vc->parent = this;
-    children["ho-vc-hour24ho-vc"] = ho_vc_hour24ho_vc;
 
     yang_name = "ho-vc-hour24"; yang_parent_name = "performance-management";
 }
@@ -10691,7 +12272,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10714,41 +12295,24 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24ho-vc")
     {
-        if(ho_vc_hour24ho_vc != nullptr)
-        {
-            children["ho-vc-hour24ho-vc"] = ho_vc_hour24ho_vc;
-        }
-        else
+        if(ho_vc_hour24ho_vc == nullptr)
         {
             ho_vc_hour24ho_vc = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc>();
-            ho_vc_hour24ho_vc->parent = this;
-            children["ho-vc-hour24ho-vc"] = ho_vc_hour24ho_vc;
         }
-        return children.at("ho-vc-hour24ho-vc");
+        return ho_vc_hour24ho_vc;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::get_children() const
 {
-    if(children.find("ho-vc-hour24ho-vc") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_hour24ho_vc != nullptr)
     {
-        if(ho_vc_hour24ho_vc != nullptr)
-        {
-            children["ho-vc-hour24ho-vc"] = ho_vc_hour24ho_vc;
-        }
+        children["ho-vc-hour24ho-vc"] = ho_vc_hour24ho_vc;
     }
 
     return children;
@@ -10764,10 +12328,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour
 	,ho_vc_hour24ho_vc_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds>())
 {
     ho_vc_hour24ho_vc_reports->parent = this;
-    children["ho-vc-hour24ho-vc-reports"] = ho_vc_hour24ho_vc_reports;
 
     ho_vc_hour24ho_vc_thresholds->parent = this;
-    children["ho-vc-hour24ho-vc-thresholds"] = ho_vc_hour24ho_vc_thresholds;
 
     yang_name = "ho-vc-hour24ho-vc"; yang_parent_name = "ho-vc-hour24";
 }
@@ -10798,7 +12360,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10821,64 +12383,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24ho-vc-reports")
     {
-        if(ho_vc_hour24ho_vc_reports != nullptr)
-        {
-            children["ho-vc-hour24ho-vc-reports"] = ho_vc_hour24ho_vc_reports;
-        }
-        else
+        if(ho_vc_hour24ho_vc_reports == nullptr)
         {
             ho_vc_hour24ho_vc_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports>();
-            ho_vc_hour24ho_vc_reports->parent = this;
-            children["ho-vc-hour24ho-vc-reports"] = ho_vc_hour24ho_vc_reports;
         }
-        return children.at("ho-vc-hour24ho-vc-reports");
+        return ho_vc_hour24ho_vc_reports;
     }
 
     if(child_yang_name == "ho-vc-hour24ho-vc-thresholds")
     {
-        if(ho_vc_hour24ho_vc_thresholds != nullptr)
-        {
-            children["ho-vc-hour24ho-vc-thresholds"] = ho_vc_hour24ho_vc_thresholds;
-        }
-        else
+        if(ho_vc_hour24ho_vc_thresholds == nullptr)
         {
             ho_vc_hour24ho_vc_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds>();
-            ho_vc_hour24ho_vc_thresholds->parent = this;
-            children["ho-vc-hour24ho-vc-thresholds"] = ho_vc_hour24ho_vc_thresholds;
         }
-        return children.at("ho-vc-hour24ho-vc-thresholds");
+        return ho_vc_hour24ho_vc_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::get_children() const
 {
-    if(children.find("ho-vc-hour24ho-vc-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_hour24ho_vc_reports != nullptr)
     {
-        if(ho_vc_hour24ho_vc_reports != nullptr)
-        {
-            children["ho-vc-hour24ho-vc-reports"] = ho_vc_hour24ho_vc_reports;
-        }
+        children["ho-vc-hour24ho-vc-reports"] = ho_vc_hour24ho_vc_reports;
     }
 
-    if(children.find("ho-vc-hour24ho-vc-thresholds") == children.end())
+    if(ho_vc_hour24ho_vc_thresholds != nullptr)
     {
-        if(ho_vc_hour24ho_vc_thresholds != nullptr)
-        {
-            children["ho-vc-hour24ho-vc-thresholds"] = ho_vc_hour24ho_vc_thresholds;
-        }
+        children["ho-vc-hour24ho-vc-thresholds"] = ho_vc_hour24ho_vc_thresholds;
     }
 
     return children;
@@ -10926,7 +12462,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10949,15 +12485,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24ho-vc-report")
     {
         for(auto const & c : ho_vc_hour24ho_vc_report)
@@ -10965,28 +12492,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport>();
         c->parent = this;
-        ho_vc_hour24ho_vc_report.push_back(std::move(c));
-        children[segment_path] = ho_vc_hour24ho_vc_report.back();
-        return children.at(segment_path);
+        ho_vc_hour24ho_vc_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_hour24ho_vc_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11030,7 +12553,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11055,20 +12578,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11122,7 +12637,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11145,15 +12660,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24ho-vc-threshold")
     {
         for(auto const & c : ho_vc_hour24ho_vc_threshold)
@@ -11161,28 +12667,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThreshold>();
         c->parent = this;
-        ho_vc_hour24ho_vc_threshold.push_back(std::move(c));
-        children[segment_path] = ho_vc_hour24ho_vc_threshold.back();
-        return children.at(segment_path);
+        ho_vc_hour24ho_vc_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_hour24ho_vc_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11226,7 +12728,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11251,20 +12753,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11287,13 +12781,10 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30
 	,second30otn(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn>())
 {
     second30_optics->parent = this;
-    children["second30-optics"] = second30_optics;
 
     second30fec->parent = this;
-    children["second30fec"] = second30fec;
 
     second30otn->parent = this;
-    children["second30otn"] = second30otn;
 
     yang_name = "second30"; yang_parent_name = "performance-management";
 }
@@ -11326,7 +12817,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11349,87 +12840,52 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30-optics")
     {
-        if(second30_optics != nullptr)
-        {
-            children["second30-optics"] = second30_optics;
-        }
-        else
+        if(second30_optics == nullptr)
         {
             second30_optics = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics>();
-            second30_optics->parent = this;
-            children["second30-optics"] = second30_optics;
         }
-        return children.at("second30-optics");
+        return second30_optics;
     }
 
     if(child_yang_name == "second30fec")
     {
-        if(second30fec != nullptr)
-        {
-            children["second30fec"] = second30fec;
-        }
-        else
+        if(second30fec == nullptr)
         {
             second30fec = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec>();
-            second30fec->parent = this;
-            children["second30fec"] = second30fec;
         }
-        return children.at("second30fec");
+        return second30fec;
     }
 
     if(child_yang_name == "second30otn")
     {
-        if(second30otn != nullptr)
-        {
-            children["second30otn"] = second30otn;
-        }
-        else
+        if(second30otn == nullptr)
         {
             second30otn = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn>();
-            second30otn->parent = this;
-            children["second30otn"] = second30otn;
         }
-        return children.at("second30otn");
+        return second30otn;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::get_children() const
 {
-    if(children.find("second30-optics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(second30_optics != nullptr)
     {
-        if(second30_optics != nullptr)
-        {
-            children["second30-optics"] = second30_optics;
-        }
+        children["second30-optics"] = second30_optics;
     }
 
-    if(children.find("second30fec") == children.end())
+    if(second30fec != nullptr)
     {
-        if(second30fec != nullptr)
-        {
-            children["second30fec"] = second30fec;
-        }
+        children["second30fec"] = second30fec;
     }
 
-    if(children.find("second30otn") == children.end())
+    if(second30otn != nullptr)
     {
-        if(second30otn != nullptr)
-        {
-            children["second30otn"] = second30otn;
-        }
+        children["second30otn"] = second30otn;
     }
 
     return children;
@@ -11445,10 +12901,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30
 	,second30fec_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds>())
 {
     second30fec_reports->parent = this;
-    children["second30fec-reports"] = second30fec_reports;
 
     second30fec_thresholds->parent = this;
-    children["second30fec-thresholds"] = second30fec_thresholds;
 
     yang_name = "second30fec"; yang_parent_name = "second30";
 }
@@ -11479,7 +12933,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11502,64 +12956,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30fec-reports")
     {
-        if(second30fec_reports != nullptr)
-        {
-            children["second30fec-reports"] = second30fec_reports;
-        }
-        else
+        if(second30fec_reports == nullptr)
         {
             second30fec_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports>();
-            second30fec_reports->parent = this;
-            children["second30fec-reports"] = second30fec_reports;
         }
-        return children.at("second30fec-reports");
+        return second30fec_reports;
     }
 
     if(child_yang_name == "second30fec-thresholds")
     {
-        if(second30fec_thresholds != nullptr)
-        {
-            children["second30fec-thresholds"] = second30fec_thresholds;
-        }
-        else
+        if(second30fec_thresholds == nullptr)
         {
             second30fec_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds>();
-            second30fec_thresholds->parent = this;
-            children["second30fec-thresholds"] = second30fec_thresholds;
         }
-        return children.at("second30fec-thresholds");
+        return second30fec_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::get_children() const
 {
-    if(children.find("second30fec-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(second30fec_reports != nullptr)
     {
-        if(second30fec_reports != nullptr)
-        {
-            children["second30fec-reports"] = second30fec_reports;
-        }
+        children["second30fec-reports"] = second30fec_reports;
     }
 
-    if(children.find("second30fec-thresholds") == children.end())
+    if(second30fec_thresholds != nullptr)
     {
-        if(second30fec_thresholds != nullptr)
-        {
-            children["second30fec-thresholds"] = second30fec_thresholds;
-        }
+        children["second30fec-thresholds"] = second30fec_thresholds;
     }
 
     return children;
@@ -11607,7 +13035,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11630,15 +13058,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30fec-threshold")
     {
         for(auto const & c : second30fec_threshold)
@@ -11646,28 +13065,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::Second30FecThreshold>();
         c->parent = this;
-        second30fec_threshold.push_back(std::move(c));
-        children[segment_path] = second30fec_threshold.back();
-        return children.at(segment_path);
+        second30fec_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : second30fec_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11711,7 +13126,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::Second30FecThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::Second30FecThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11736,20 +13151,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::Second30FecThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::Second30FecThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::Second30FecThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11803,7 +13210,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11826,15 +13233,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30fec-report")
     {
         for(auto const & c : second30fec_report)
@@ -11842,28 +13240,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::Second30FecReport>();
         c->parent = this;
-        second30fec_report.push_back(std::move(c));
-        children[segment_path] = second30fec_report.back();
-        return children.at(segment_path);
+        second30fec_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : second30fec_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11907,7 +13301,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::Second30FecReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::Second30FecReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11932,20 +13326,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::Second30FecReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::Second30FecReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::Second30FecReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11967,10 +13353,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30
 	,second30_optics_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds>())
 {
     second30_optics_reports->parent = this;
-    children["second30-optics-reports"] = second30_optics_reports;
 
     second30_optics_thresholds->parent = this;
-    children["second30-optics-thresholds"] = second30_optics_thresholds;
 
     yang_name = "second30-optics"; yang_parent_name = "second30";
 }
@@ -12001,7 +13385,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12024,64 +13408,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30-optics-reports")
     {
-        if(second30_optics_reports != nullptr)
-        {
-            children["second30-optics-reports"] = second30_optics_reports;
-        }
-        else
+        if(second30_optics_reports == nullptr)
         {
             second30_optics_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports>();
-            second30_optics_reports->parent = this;
-            children["second30-optics-reports"] = second30_optics_reports;
         }
-        return children.at("second30-optics-reports");
+        return second30_optics_reports;
     }
 
     if(child_yang_name == "second30-optics-thresholds")
     {
-        if(second30_optics_thresholds != nullptr)
-        {
-            children["second30-optics-thresholds"] = second30_optics_thresholds;
-        }
-        else
+        if(second30_optics_thresholds == nullptr)
         {
             second30_optics_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds>();
-            second30_optics_thresholds->parent = this;
-            children["second30-optics-thresholds"] = second30_optics_thresholds;
         }
-        return children.at("second30-optics-thresholds");
+        return second30_optics_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::get_children() const
 {
-    if(children.find("second30-optics-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(second30_optics_reports != nullptr)
     {
-        if(second30_optics_reports != nullptr)
-        {
-            children["second30-optics-reports"] = second30_optics_reports;
-        }
+        children["second30-optics-reports"] = second30_optics_reports;
     }
 
-    if(children.find("second30-optics-thresholds") == children.end())
+    if(second30_optics_thresholds != nullptr)
     {
-        if(second30_optics_thresholds != nullptr)
-        {
-            children["second30-optics-thresholds"] = second30_optics_thresholds;
-        }
+        children["second30-optics-thresholds"] = second30_optics_thresholds;
     }
 
     return children;
@@ -12129,7 +13487,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12152,15 +13510,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30-optics-report")
     {
         for(auto const & c : second30_optics_report)
@@ -12168,28 +13517,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport>();
         c->parent = this;
-        second30_optics_report.push_back(std::move(c));
-        children[segment_path] = second30_optics_report.back();
-        return children.at(segment_path);
+        second30_optics_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : second30_optics_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12230,7 +13575,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12254,20 +13599,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12317,7 +13654,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12340,15 +13677,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30-optics-threshold")
     {
         for(auto const & c : second30_optics_threshold)
@@ -12356,28 +13684,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold>();
         c->parent = this;
-        second30_optics_threshold.push_back(std::move(c));
-        children[segment_path] = second30_optics_threshold.back();
-        return children.at(segment_path);
+        second30_optics_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : second30_optics_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12421,7 +13745,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12446,20 +13770,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12481,10 +13797,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30
 	,second30otn_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports>())
 {
     second30_otn_threshes->parent = this;
-    children["second30-otn-threshes"] = second30_otn_threshes;
 
     second30otn_reports->parent = this;
-    children["second30otn-reports"] = second30otn_reports;
 
     yang_name = "second30otn"; yang_parent_name = "second30";
 }
@@ -12515,7 +13829,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12538,64 +13852,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30-otn-threshes")
     {
-        if(second30_otn_threshes != nullptr)
-        {
-            children["second30-otn-threshes"] = second30_otn_threshes;
-        }
-        else
+        if(second30_otn_threshes == nullptr)
         {
             second30_otn_threshes = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes>();
-            second30_otn_threshes->parent = this;
-            children["second30-otn-threshes"] = second30_otn_threshes;
         }
-        return children.at("second30-otn-threshes");
+        return second30_otn_threshes;
     }
 
     if(child_yang_name == "second30otn-reports")
     {
-        if(second30otn_reports != nullptr)
-        {
-            children["second30otn-reports"] = second30otn_reports;
-        }
-        else
+        if(second30otn_reports == nullptr)
         {
             second30otn_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports>();
-            second30otn_reports->parent = this;
-            children["second30otn-reports"] = second30otn_reports;
         }
-        return children.at("second30otn-reports");
+        return second30otn_reports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::get_children() const
 {
-    if(children.find("second30-otn-threshes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(second30_otn_threshes != nullptr)
     {
-        if(second30_otn_threshes != nullptr)
-        {
-            children["second30-otn-threshes"] = second30_otn_threshes;
-        }
+        children["second30-otn-threshes"] = second30_otn_threshes;
     }
 
-    if(children.find("second30otn-reports") == children.end())
+    if(second30otn_reports != nullptr)
     {
-        if(second30otn_reports != nullptr)
-        {
-            children["second30otn-reports"] = second30otn_reports;
-        }
+        children["second30otn-reports"] = second30otn_reports;
     }
 
     return children;
@@ -12643,7 +13931,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12666,15 +13954,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30-otn-thresh")
     {
         for(auto const & c : second30_otn_thresh)
@@ -12682,28 +13961,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::Second30OtnThresh>();
         c->parent = this;
-        second30_otn_thresh.push_back(std::move(c));
-        children[segment_path] = second30_otn_thresh.back();
-        return children.at(segment_path);
+        second30_otn_thresh.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : second30_otn_thresh)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12747,7 +14022,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::Second30OtnThresh::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::Second30OtnThresh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12772,20 +14047,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::Second30OtnThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::Second30OtnThresh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::Second30OtnThresh::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12839,7 +14106,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12862,15 +14129,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "second30otn-report")
     {
         for(auto const & c : second30otn_report)
@@ -12878,28 +14136,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::Second30OtnReport>();
         c->parent = this;
-        second30otn_report.push_back(std::move(c));
-        children[segment_path] = second30otn_report.back();
-        return children.at(segment_path);
+        second30otn_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : second30otn_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12943,7 +14197,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::Second30OtnReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::Second30OtnReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12968,20 +14222,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::Second30OtnReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::Second30OtnReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::Second30OtnReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13035,7 +14281,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13058,15 +14304,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24otn-tcm")
     {
         for(auto const & c : hour24otn_tcm)
@@ -13074,28 +14311,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm>();
         c->parent = this;
-        hour24otn_tcm.push_back(std::move(c));
-        children[segment_path] = hour24otn_tcm.back();
-        return children.at(segment_path);
+        hour24otn_tcm.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hour24otn_tcm)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13113,10 +14346,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Ot
 	,hour24otn_tcm_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds>())
 {
     hour24otn_tcm_reports->parent = this;
-    children["hour24otn-tcm-reports"] = hour24otn_tcm_reports;
 
     hour24otn_tcm_thresholds->parent = this;
-    children["hour24otn-tcm-thresholds"] = hour24otn_tcm_thresholds;
 
     yang_name = "hour24otn-tcm"; yang_parent_name = "hour24otn-tcms";
 }
@@ -13149,7 +14380,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13173,64 +14404,38 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24otn-tcm-reports")
     {
-        if(hour24otn_tcm_reports != nullptr)
-        {
-            children["hour24otn-tcm-reports"] = hour24otn_tcm_reports;
-        }
-        else
+        if(hour24otn_tcm_reports == nullptr)
         {
             hour24otn_tcm_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports>();
-            hour24otn_tcm_reports->parent = this;
-            children["hour24otn-tcm-reports"] = hour24otn_tcm_reports;
         }
-        return children.at("hour24otn-tcm-reports");
+        return hour24otn_tcm_reports;
     }
 
     if(child_yang_name == "hour24otn-tcm-thresholds")
     {
-        if(hour24otn_tcm_thresholds != nullptr)
-        {
-            children["hour24otn-tcm-thresholds"] = hour24otn_tcm_thresholds;
-        }
-        else
+        if(hour24otn_tcm_thresholds == nullptr)
         {
             hour24otn_tcm_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds>();
-            hour24otn_tcm_thresholds->parent = this;
-            children["hour24otn-tcm-thresholds"] = hour24otn_tcm_thresholds;
         }
-        return children.at("hour24otn-tcm-thresholds");
+        return hour24otn_tcm_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::get_children() const
 {
-    if(children.find("hour24otn-tcm-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hour24otn_tcm_reports != nullptr)
     {
-        if(hour24otn_tcm_reports != nullptr)
-        {
-            children["hour24otn-tcm-reports"] = hour24otn_tcm_reports;
-        }
+        children["hour24otn-tcm-reports"] = hour24otn_tcm_reports;
     }
 
-    if(children.find("hour24otn-tcm-thresholds") == children.end())
+    if(hour24otn_tcm_thresholds != nullptr)
     {
-        if(hour24otn_tcm_thresholds != nullptr)
-        {
-            children["hour24otn-tcm-thresholds"] = hour24otn_tcm_thresholds;
-        }
+        children["hour24otn-tcm-thresholds"] = hour24otn_tcm_thresholds;
     }
 
     return children;
@@ -13282,7 +14487,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13305,15 +14510,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24otn-tcm-threshold")
     {
         for(auto const & c : hour24otn_tcm_threshold)
@@ -13321,28 +14517,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::Hour24OtnTcmThreshold>();
         c->parent = this;
-        hour24otn_tcm_threshold.push_back(std::move(c));
-        children[segment_path] = hour24otn_tcm_threshold.back();
-        return children.at(segment_path);
+        hour24otn_tcm_threshold.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hour24otn_tcm_threshold)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13386,7 +14578,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::Hour24OtnTcmThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::Hour24OtnTcmThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13411,20 +14603,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::Hour24OtnTcmThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::Hour24OtnTcmThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::Hour24OtnTcmThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13478,7 +14662,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13501,15 +14685,6 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hour24otn-tcm-report")
     {
         for(auto const & c : hour24otn_tcm_report)
@@ -13517,28 +14692,24 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::Hour24OtnTcmReport>();
         c->parent = this;
-        hour24otn_tcm_report.push_back(std::move(c));
-        children[segment_path] = hour24otn_tcm_report.back();
-        return children.at(segment_path);
+        hour24otn_tcm_report.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hour24otn_tcm_report)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13582,7 +14753,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::Hour24OtnTcmReport::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::Hour24OtnTcmReport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13607,20 +14778,12 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::Hour24OtnTcmReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::Hour24OtnTcmReport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::Hour24OtnTcmReport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13641,7 +14804,6 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinut
     sts_minute15_path(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path>())
 {
     sts_minute15_path->parent = this;
-    children["sts-minute15-path"] = sts_minute15_path;
 
     yang_name = "sts-minute15"; yang_parent_name = "performance-management";
 }
@@ -13670,7 +14832,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13693,41 +14855,24 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sts-minute15-path")
     {
-        if(sts_minute15_path != nullptr)
-        {
-            children["sts-minute15-path"] = sts_minute15_path;
-        }
-        else
+        if(sts_minute15_path == nullptr)
         {
             sts_minute15_path = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path>();
-            sts_minute15_path->parent = this;
-            children["sts-minute15-path"] = sts_minute15_path;
         }
-        return children.at("sts-minute15-path");
+        return sts_minute15_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::get_children() const
 {
-    if(children.find("sts-minute15-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sts_minute15_path != nullptr)
     {
-        if(sts_minute15_path != nullptr)
-        {
-            children["sts-minute15-path"] = sts_minute15_path;
-        }
+        children["sts-minute15-path"] = sts_minute15_path;
     }
 
     return children;
@@ -13743,10 +14888,8 @@ InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinut
 	,sts_minute15_path_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds>())
 {
     sts_minute15_path_reports->parent = this;
-    children["sts-minute15-path-reports"] = sts_minute15_path_reports;
 
     sts_minute15_path_thresholds->parent = this;
-    children["sts-minute15-path-thresholds"] = sts_minute15_path_thresholds;
 
     yang_name = "sts-minute15-path"; yang_parent_name = "sts-minute15";
 }
@@ -13777,7 +14920,7 @@ std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManageme
 
 }
 
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13800,2722 +14943,44 @@ EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagemen
 
 std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sts-minute15-path-reports")
     {
-        if(sts_minute15_path_reports != nullptr)
-        {
-            children["sts-minute15-path-reports"] = sts_minute15_path_reports;
-        }
-        else
+        if(sts_minute15_path_reports == nullptr)
         {
             sts_minute15_path_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports>();
-            sts_minute15_path_reports->parent = this;
-            children["sts-minute15-path-reports"] = sts_minute15_path_reports;
         }
-        return children.at("sts-minute15-path-reports");
+        return sts_minute15_path_reports;
     }
 
     if(child_yang_name == "sts-minute15-path-thresholds")
     {
-        if(sts_minute15_path_thresholds != nullptr)
-        {
-            children["sts-minute15-path-thresholds"] = sts_minute15_path_thresholds;
-        }
-        else
+        if(sts_minute15_path_thresholds == nullptr)
         {
             sts_minute15_path_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds>();
-            sts_minute15_path_thresholds->parent = this;
-            children["sts-minute15-path-thresholds"] = sts_minute15_path_thresholds;
         }
-        return children.at("sts-minute15-path-thresholds");
+        return sts_minute15_path_thresholds;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::get_children() const
 {
-    if(children.find("sts-minute15-path-reports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sts_minute15_path_reports != nullptr)
     {
-        if(sts_minute15_path_reports != nullptr)
-        {
-            children["sts-minute15-path-reports"] = sts_minute15_path_reports;
-        }
+        children["sts-minute15-path-reports"] = sts_minute15_path_reports;
     }
 
-    if(children.find("sts-minute15-path-thresholds") == children.end())
+    if(sts_minute15_path_thresholds != nullptr)
     {
-        if(sts_minute15_path_thresholds != nullptr)
-        {
-            children["sts-minute15-path-thresholds"] = sts_minute15_path_thresholds;
-        }
+        children["sts-minute15-path-thresholds"] = sts_minute15_path_thresholds;
     }
 
     return children;
 }
 
 void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReports()
-{
-    yang_name = "sts-minute15-path-reports"; yang_parent_name = "sts-minute15-path";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::~StsMinute15PathReports()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::has_data() const
-{
-    for (std::size_t index=0; index<sts_minute15_path_report.size(); index++)
-    {
-        if(sts_minute15_path_report[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::has_operation() const
-{
-    for (std::size_t index=0; index<sts_minute15_path_report.size(); index++)
-    {
-        if(sts_minute15_path_report[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sts-minute15-path-reports";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StsMinute15PathReports' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "sts-minute15-path-report")
-    {
-        for(auto const & c : sts_minute15_path_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport>();
-        c->parent = this;
-        sts_minute15_path_report.push_back(std::move(c));
-        children[segment_path] = sts_minute15_path_report.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::get_children()
-{
-    for (auto const & c : sts_minute15_path_report)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::StsMinute15PathReport()
-    :
-    path_report{YType::enumeration, "path-report"},
-    enable{YType::enumeration, "enable"}
-{
-    yang_name = "sts-minute15-path-report"; yang_parent_name = "sts-minute15-path-reports";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::~StsMinute15PathReport()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::has_data() const
-{
-    return path_report.is_set
-	|| enable.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(path_report.operation)
-	|| is_set(enable.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sts-minute15-path-report" <<"[path-report='" <<path_report <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StsMinute15PathReport' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (path_report.is_set || is_set(path_report.operation)) leaf_name_data.push_back(path_report.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "path-report")
-    {
-        path_report = value;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThresholds()
-{
-    yang_name = "sts-minute15-path-thresholds"; yang_parent_name = "sts-minute15-path";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::~StsMinute15PathThresholds()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::has_data() const
-{
-    for (std::size_t index=0; index<sts_minute15_path_threshold.size(); index++)
-    {
-        if(sts_minute15_path_threshold[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::has_operation() const
-{
-    for (std::size_t index=0; index<sts_minute15_path_threshold.size(); index++)
-    {
-        if(sts_minute15_path_threshold[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sts-minute15-path-thresholds";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StsMinute15PathThresholds' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "sts-minute15-path-threshold")
-    {
-        for(auto const & c : sts_minute15_path_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold>();
-        c->parent = this;
-        sts_minute15_path_threshold.push_back(std::move(c));
-        children[segment_path] = sts_minute15_path_threshold.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::get_children()
-{
-    for (auto const & c : sts_minute15_path_threshold)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::StsMinute15PathThreshold()
-    :
-    path_threshold{YType::enumeration, "path-threshold"},
-    path_threshold_value{YType::int32, "path-threshold-value"}
-{
-    yang_name = "sts-minute15-path-threshold"; yang_parent_name = "sts-minute15-path-thresholds";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::~StsMinute15PathThreshold()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::has_data() const
-{
-    return path_threshold.is_set
-	|| path_threshold_value.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(path_threshold.operation)
-	|| is_set(path_threshold_value.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sts-minute15-path-threshold" <<"[path-threshold='" <<path_threshold <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StsMinute15PathThreshold' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (path_threshold.is_set || is_set(path_threshold.operation)) leaf_name_data.push_back(path_threshold.get_name_leafdata());
-    if (path_threshold_value.is_set || is_set(path_threshold_value.operation)) leaf_name_data.push_back(path_threshold_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "path-threshold")
-    {
-        path_threshold = value;
-    }
-    if(value_path == "path-threshold-value")
-    {
-        path_threshold_value = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24()
-    :
-    hour24_optics(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics>())
-	,hour24fec(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec>())
-	,hour24otn(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn>())
-{
-    hour24_optics->parent = this;
-    children["hour24-optics"] = hour24_optics;
-
-    hour24fec->parent = this;
-    children["hour24fec"] = hour24fec;
-
-    hour24otn->parent = this;
-    children["hour24otn"] = hour24otn;
-
-    yang_name = "hour24"; yang_parent_name = "performance-management";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::~Hour24()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::has_data() const
-{
-    return (hour24_optics !=  nullptr && hour24_optics->has_data())
-	|| (hour24fec !=  nullptr && hour24fec->has_data())
-	|| (hour24otn !=  nullptr && hour24otn->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::has_operation() const
-{
-    return is_set(operation)
-	|| (hour24_optics !=  nullptr && hour24_optics->has_operation())
-	|| (hour24fec !=  nullptr && hour24fec->has_operation())
-	|| (hour24otn !=  nullptr && hour24otn->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24-optics")
-    {
-        if(hour24_optics != nullptr)
-        {
-            children["hour24-optics"] = hour24_optics;
-        }
-        else
-        {
-            hour24_optics = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics>();
-            hour24_optics->parent = this;
-            children["hour24-optics"] = hour24_optics;
-        }
-        return children.at("hour24-optics");
-    }
-
-    if(child_yang_name == "hour24fec")
-    {
-        if(hour24fec != nullptr)
-        {
-            children["hour24fec"] = hour24fec;
-        }
-        else
-        {
-            hour24fec = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec>();
-            hour24fec->parent = this;
-            children["hour24fec"] = hour24fec;
-        }
-        return children.at("hour24fec");
-    }
-
-    if(child_yang_name == "hour24otn")
-    {
-        if(hour24otn != nullptr)
-        {
-            children["hour24otn"] = hour24otn;
-        }
-        else
-        {
-            hour24otn = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn>();
-            hour24otn->parent = this;
-            children["hour24otn"] = hour24otn;
-        }
-        return children.at("hour24otn");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::get_children()
-{
-    if(children.find("hour24-optics") == children.end())
-    {
-        if(hour24_optics != nullptr)
-        {
-            children["hour24-optics"] = hour24_optics;
-        }
-    }
-
-    if(children.find("hour24fec") == children.end())
-    {
-        if(hour24fec != nullptr)
-        {
-            children["hour24fec"] = hour24fec;
-        }
-    }
-
-    if(children.find("hour24otn") == children.end())
-    {
-        if(hour24otn != nullptr)
-        {
-            children["hour24otn"] = hour24otn;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24Otn()
-    :
-    hour24otn_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports>())
-	,hour24otn_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds>())
-{
-    hour24otn_reports->parent = this;
-    children["hour24otn-reports"] = hour24otn_reports;
-
-    hour24otn_thresholds->parent = this;
-    children["hour24otn-thresholds"] = hour24otn_thresholds;
-
-    yang_name = "hour24otn"; yang_parent_name = "hour24";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::~Hour24Otn()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::has_data() const
-{
-    return (hour24otn_reports !=  nullptr && hour24otn_reports->has_data())
-	|| (hour24otn_thresholds !=  nullptr && hour24otn_thresholds->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::has_operation() const
-{
-    return is_set(operation)
-	|| (hour24otn_reports !=  nullptr && hour24otn_reports->has_operation())
-	|| (hour24otn_thresholds !=  nullptr && hour24otn_thresholds->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24otn";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24Otn' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24otn-reports")
-    {
-        if(hour24otn_reports != nullptr)
-        {
-            children["hour24otn-reports"] = hour24otn_reports;
-        }
-        else
-        {
-            hour24otn_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports>();
-            hour24otn_reports->parent = this;
-            children["hour24otn-reports"] = hour24otn_reports;
-        }
-        return children.at("hour24otn-reports");
-    }
-
-    if(child_yang_name == "hour24otn-thresholds")
-    {
-        if(hour24otn_thresholds != nullptr)
-        {
-            children["hour24otn-thresholds"] = hour24otn_thresholds;
-        }
-        else
-        {
-            hour24otn_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds>();
-            hour24otn_thresholds->parent = this;
-            children["hour24otn-thresholds"] = hour24otn_thresholds;
-        }
-        return children.at("hour24otn-thresholds");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::get_children()
-{
-    if(children.find("hour24otn-reports") == children.end())
-    {
-        if(hour24otn_reports != nullptr)
-        {
-            children["hour24otn-reports"] = hour24otn_reports;
-        }
-    }
-
-    if(children.find("hour24otn-thresholds") == children.end())
-    {
-        if(hour24otn_thresholds != nullptr)
-        {
-            children["hour24otn-thresholds"] = hour24otn_thresholds;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThresholds()
-{
-    yang_name = "hour24otn-thresholds"; yang_parent_name = "hour24otn";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::~Hour24OtnThresholds()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::has_data() const
-{
-    for (std::size_t index=0; index<hour24otn_threshold.size(); index++)
-    {
-        if(hour24otn_threshold[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::has_operation() const
-{
-    for (std::size_t index=0; index<hour24otn_threshold.size(); index++)
-    {
-        if(hour24otn_threshold[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24otn-thresholds";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24OtnThresholds' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24otn-threshold")
-    {
-        for(auto const & c : hour24otn_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold>();
-        c->parent = this;
-        hour24otn_threshold.push_back(std::move(c));
-        children[segment_path] = hour24otn_threshold.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::get_children()
-{
-    for (auto const & c : hour24otn_threshold)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::Hour24OtnThreshold()
-    :
-    otn_threshold{YType::enumeration, "otn-threshold"},
-    otn_threshold_value{YType::int32, "otn-threshold-value"}
-{
-    yang_name = "hour24otn-threshold"; yang_parent_name = "hour24otn-thresholds";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::~Hour24OtnThreshold()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::has_data() const
-{
-    return otn_threshold.is_set
-	|| otn_threshold_value.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(otn_threshold.operation)
-	|| is_set(otn_threshold_value.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24otn-threshold" <<"[otn-threshold='" <<otn_threshold <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24OtnThreshold' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (otn_threshold.is_set || is_set(otn_threshold.operation)) leaf_name_data.push_back(otn_threshold.get_name_leafdata());
-    if (otn_threshold_value.is_set || is_set(otn_threshold_value.operation)) leaf_name_data.push_back(otn_threshold_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "otn-threshold")
-    {
-        otn_threshold = value;
-    }
-    if(value_path == "otn-threshold-value")
-    {
-        otn_threshold_value = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReports()
-{
-    yang_name = "hour24otn-reports"; yang_parent_name = "hour24otn";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::~Hour24OtnReports()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::has_data() const
-{
-    for (std::size_t index=0; index<hour24otn_report.size(); index++)
-    {
-        if(hour24otn_report[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::has_operation() const
-{
-    for (std::size_t index=0; index<hour24otn_report.size(); index++)
-    {
-        if(hour24otn_report[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24otn-reports";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24OtnReports' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24otn-report")
-    {
-        for(auto const & c : hour24otn_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport>();
-        c->parent = this;
-        hour24otn_report.push_back(std::move(c));
-        children[segment_path] = hour24otn_report.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::get_children()
-{
-    for (auto const & c : hour24otn_report)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::Hour24OtnReport()
-    :
-    otn_report{YType::enumeration, "otn-report"},
-    enable{YType::enumeration, "enable"}
-{
-    yang_name = "hour24otn-report"; yang_parent_name = "hour24otn-reports";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::~Hour24OtnReport()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::has_data() const
-{
-    return otn_report.is_set
-	|| enable.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(otn_report.operation)
-	|| is_set(enable.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24otn-report" <<"[otn-report='" <<otn_report <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24OtnReport' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (otn_report.is_set || is_set(otn_report.operation)) leaf_name_data.push_back(otn_report.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "otn-report")
-    {
-        otn_report = value;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24Optics()
-    :
-    hour24_optics_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports>())
-	,hour24_optics_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds>())
-{
-    hour24_optics_reports->parent = this;
-    children["hour24-optics-reports"] = hour24_optics_reports;
-
-    hour24_optics_thresholds->parent = this;
-    children["hour24-optics-thresholds"] = hour24_optics_thresholds;
-
-    yang_name = "hour24-optics"; yang_parent_name = "hour24";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::~Hour24Optics()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::has_data() const
-{
-    return (hour24_optics_reports !=  nullptr && hour24_optics_reports->has_data())
-	|| (hour24_optics_thresholds !=  nullptr && hour24_optics_thresholds->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::has_operation() const
-{
-    return is_set(operation)
-	|| (hour24_optics_reports !=  nullptr && hour24_optics_reports->has_operation())
-	|| (hour24_optics_thresholds !=  nullptr && hour24_optics_thresholds->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24-optics";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24Optics' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24-optics-reports")
-    {
-        if(hour24_optics_reports != nullptr)
-        {
-            children["hour24-optics-reports"] = hour24_optics_reports;
-        }
-        else
-        {
-            hour24_optics_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports>();
-            hour24_optics_reports->parent = this;
-            children["hour24-optics-reports"] = hour24_optics_reports;
-        }
-        return children.at("hour24-optics-reports");
-    }
-
-    if(child_yang_name == "hour24-optics-thresholds")
-    {
-        if(hour24_optics_thresholds != nullptr)
-        {
-            children["hour24-optics-thresholds"] = hour24_optics_thresholds;
-        }
-        else
-        {
-            hour24_optics_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds>();
-            hour24_optics_thresholds->parent = this;
-            children["hour24-optics-thresholds"] = hour24_optics_thresholds;
-        }
-        return children.at("hour24-optics-thresholds");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::get_children()
-{
-    if(children.find("hour24-optics-reports") == children.end())
-    {
-        if(hour24_optics_reports != nullptr)
-        {
-            children["hour24-optics-reports"] = hour24_optics_reports;
-        }
-    }
-
-    if(children.find("hour24-optics-thresholds") == children.end())
-    {
-        if(hour24_optics_thresholds != nullptr)
-        {
-            children["hour24-optics-thresholds"] = hour24_optics_thresholds;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThresholds()
-{
-    yang_name = "hour24-optics-thresholds"; yang_parent_name = "hour24-optics";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::~Hour24OpticsThresholds()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::has_data() const
-{
-    for (std::size_t index=0; index<hour24_optics_threshold.size(); index++)
-    {
-        if(hour24_optics_threshold[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::has_operation() const
-{
-    for (std::size_t index=0; index<hour24_optics_threshold.size(); index++)
-    {
-        if(hour24_optics_threshold[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24-optics-thresholds";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24OpticsThresholds' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24-optics-threshold")
-    {
-        for(auto const & c : hour24_optics_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold>();
-        c->parent = this;
-        hour24_optics_threshold.push_back(std::move(c));
-        children[segment_path] = hour24_optics_threshold.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::get_children()
-{
-    for (auto const & c : hour24_optics_threshold)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::Hour24OpticsThreshold()
-    :
-    optics_threshold{YType::enumeration, "optics-threshold"},
-    dbm{YType::int32, "dbm"},
-    optics_threshold_value{YType::int32, "optics-threshold-value"}
-{
-    yang_name = "hour24-optics-threshold"; yang_parent_name = "hour24-optics-thresholds";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::~Hour24OpticsThreshold()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::has_data() const
-{
-    return optics_threshold.is_set
-	|| dbm.is_set
-	|| optics_threshold_value.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(optics_threshold.operation)
-	|| is_set(dbm.operation)
-	|| is_set(optics_threshold_value.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24-optics-threshold" <<"[optics-threshold='" <<optics_threshold <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24OpticsThreshold' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (optics_threshold.is_set || is_set(optics_threshold.operation)) leaf_name_data.push_back(optics_threshold.get_name_leafdata());
-    if (dbm.is_set || is_set(dbm.operation)) leaf_name_data.push_back(dbm.get_name_leafdata());
-    if (optics_threshold_value.is_set || is_set(optics_threshold_value.operation)) leaf_name_data.push_back(optics_threshold_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "optics-threshold")
-    {
-        optics_threshold = value;
-    }
-    if(value_path == "dbm")
-    {
-        dbm = value;
-    }
-    if(value_path == "optics-threshold-value")
-    {
-        optics_threshold_value = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReports()
-{
-    yang_name = "hour24-optics-reports"; yang_parent_name = "hour24-optics";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::~Hour24OpticsReports()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::has_data() const
-{
-    for (std::size_t index=0; index<hour24_optics_report.size(); index++)
-    {
-        if(hour24_optics_report[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::has_operation() const
-{
-    for (std::size_t index=0; index<hour24_optics_report.size(); index++)
-    {
-        if(hour24_optics_report[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24-optics-reports";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24OpticsReports' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24-optics-report")
-    {
-        for(auto const & c : hour24_optics_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport>();
-        c->parent = this;
-        hour24_optics_report.push_back(std::move(c));
-        children[segment_path] = hour24_optics_report.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::get_children()
-{
-    for (auto const & c : hour24_optics_report)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::Hour24OpticsReport()
-    :
-    optics_report{YType::enumeration, "optics-report"}
-{
-    yang_name = "hour24-optics-report"; yang_parent_name = "hour24-optics-reports";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::~Hour24OpticsReport()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::has_data() const
-{
-    return optics_report.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(optics_report.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24-optics-report" <<"[optics-report='" <<optics_report <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24OpticsReport' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (optics_report.is_set || is_set(optics_report.operation)) leaf_name_data.push_back(optics_report.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "optics-report")
-    {
-        optics_report = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24Fec()
-    :
-    hour24fec_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports>())
-	,hour24fec_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds>())
-{
-    hour24fec_reports->parent = this;
-    children["hour24fec-reports"] = hour24fec_reports;
-
-    hour24fec_thresholds->parent = this;
-    children["hour24fec-thresholds"] = hour24fec_thresholds;
-
-    yang_name = "hour24fec"; yang_parent_name = "hour24";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::~Hour24Fec()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::has_data() const
-{
-    return (hour24fec_reports !=  nullptr && hour24fec_reports->has_data())
-	|| (hour24fec_thresholds !=  nullptr && hour24fec_thresholds->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::has_operation() const
-{
-    return is_set(operation)
-	|| (hour24fec_reports !=  nullptr && hour24fec_reports->has_operation())
-	|| (hour24fec_thresholds !=  nullptr && hour24fec_thresholds->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24fec";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24Fec' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24fec-reports")
-    {
-        if(hour24fec_reports != nullptr)
-        {
-            children["hour24fec-reports"] = hour24fec_reports;
-        }
-        else
-        {
-            hour24fec_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports>();
-            hour24fec_reports->parent = this;
-            children["hour24fec-reports"] = hour24fec_reports;
-        }
-        return children.at("hour24fec-reports");
-    }
-
-    if(child_yang_name == "hour24fec-thresholds")
-    {
-        if(hour24fec_thresholds != nullptr)
-        {
-            children["hour24fec-thresholds"] = hour24fec_thresholds;
-        }
-        else
-        {
-            hour24fec_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds>();
-            hour24fec_thresholds->parent = this;
-            children["hour24fec-thresholds"] = hour24fec_thresholds;
-        }
-        return children.at("hour24fec-thresholds");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::get_children()
-{
-    if(children.find("hour24fec-reports") == children.end())
-    {
-        if(hour24fec_reports != nullptr)
-        {
-            children["hour24fec-reports"] = hour24fec_reports;
-        }
-    }
-
-    if(children.find("hour24fec-thresholds") == children.end())
-    {
-        if(hour24fec_thresholds != nullptr)
-        {
-            children["hour24fec-thresholds"] = hour24fec_thresholds;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThresholds()
-{
-    yang_name = "hour24fec-thresholds"; yang_parent_name = "hour24fec";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::~Hour24FecThresholds()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::has_data() const
-{
-    for (std::size_t index=0; index<hour24fec_threshold.size(); index++)
-    {
-        if(hour24fec_threshold[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::has_operation() const
-{
-    for (std::size_t index=0; index<hour24fec_threshold.size(); index++)
-    {
-        if(hour24fec_threshold[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24fec-thresholds";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24FecThresholds' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24fec-threshold")
-    {
-        for(auto const & c : hour24fec_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold>();
-        c->parent = this;
-        hour24fec_threshold.push_back(std::move(c));
-        children[segment_path] = hour24fec_threshold.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::get_children()
-{
-    for (auto const & c : hour24fec_threshold)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::Hour24FecThreshold()
-    :
-    fec_threshold{YType::enumeration, "fec-threshold"},
-    fec_threshold_value{YType::str, "fec-threshold-value"}
-{
-    yang_name = "hour24fec-threshold"; yang_parent_name = "hour24fec-thresholds";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::~Hour24FecThreshold()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::has_data() const
-{
-    return fec_threshold.is_set
-	|| fec_threshold_value.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(fec_threshold.operation)
-	|| is_set(fec_threshold_value.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24fec-threshold" <<"[fec-threshold='" <<fec_threshold <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24FecThreshold' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fec_threshold.is_set || is_set(fec_threshold.operation)) leaf_name_data.push_back(fec_threshold.get_name_leafdata());
-    if (fec_threshold_value.is_set || is_set(fec_threshold_value.operation)) leaf_name_data.push_back(fec_threshold_value.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "fec-threshold")
-    {
-        fec_threshold = value;
-    }
-    if(value_path == "fec-threshold-value")
-    {
-        fec_threshold_value = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReports()
-{
-    yang_name = "hour24fec-reports"; yang_parent_name = "hour24fec";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::~Hour24FecReports()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::has_data() const
-{
-    for (std::size_t index=0; index<hour24fec_report.size(); index++)
-    {
-        if(hour24fec_report[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::has_operation() const
-{
-    for (std::size_t index=0; index<hour24fec_report.size(); index++)
-    {
-        if(hour24fec_report[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24fec-reports";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24FecReports' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "hour24fec-report")
-    {
-        for(auto const & c : hour24fec_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport>();
-        c->parent = this;
-        hour24fec_report.push_back(std::move(c));
-        children[segment_path] = hour24fec_report.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::get_children()
-{
-    for (auto const & c : hour24fec_report)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::Hour24FecReport()
-    :
-    fec_report{YType::enumeration, "fec-report"},
-    enable{YType::enumeration, "enable"}
-{
-    yang_name = "hour24fec-report"; yang_parent_name = "hour24fec-reports";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::~Hour24FecReport()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::has_data() const
-{
-    return fec_report.is_set
-	|| enable.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(fec_report.operation)
-	|| is_set(enable.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hour24fec-report" <<"[fec-report='" <<fec_report <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hour24FecReport' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fec_report.is_set || is_set(fec_report.operation)) leaf_name_data.push_back(fec_report.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "fec-report")
-    {
-        fec_report = value;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15()
-    :
-    ho_vc_minute15ho_vc(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc>())
-{
-    ho_vc_minute15ho_vc->parent = this;
-    children["ho-vc-minute15ho-vc"] = ho_vc_minute15ho_vc;
-
-    yang_name = "ho-vc-minute15"; yang_parent_name = "performance-management";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::~HoVcMinute15()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::has_data() const
-{
-    return (ho_vc_minute15ho_vc !=  nullptr && ho_vc_minute15ho_vc->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::has_operation() const
-{
-    return is_set(operation)
-	|| (ho_vc_minute15ho_vc !=  nullptr && ho_vc_minute15ho_vc->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ho-vc-minute15";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HoVcMinute15' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "ho-vc-minute15ho-vc")
-    {
-        if(ho_vc_minute15ho_vc != nullptr)
-        {
-            children["ho-vc-minute15ho-vc"] = ho_vc_minute15ho_vc;
-        }
-        else
-        {
-            ho_vc_minute15ho_vc = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc>();
-            ho_vc_minute15ho_vc->parent = this;
-            children["ho-vc-minute15ho-vc"] = ho_vc_minute15ho_vc;
-        }
-        return children.at("ho-vc-minute15ho-vc");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::get_children()
-{
-    if(children.find("ho-vc-minute15ho-vc") == children.end())
-    {
-        if(ho_vc_minute15ho_vc != nullptr)
-        {
-            children["ho-vc-minute15ho-vc"] = ho_vc_minute15ho_vc;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVc()
-    :
-    ho_vc_minute15ho_vc_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports>())
-	,ho_vc_minute15ho_vc_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds>())
-{
-    ho_vc_minute15ho_vc_reports->parent = this;
-    children["ho-vc-minute15ho-vc-reports"] = ho_vc_minute15ho_vc_reports;
-
-    ho_vc_minute15ho_vc_thresholds->parent = this;
-    children["ho-vc-minute15ho-vc-thresholds"] = ho_vc_minute15ho_vc_thresholds;
-
-    yang_name = "ho-vc-minute15ho-vc"; yang_parent_name = "ho-vc-minute15";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::~HoVcMinute15HoVc()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::has_data() const
-{
-    return (ho_vc_minute15ho_vc_reports !=  nullptr && ho_vc_minute15ho_vc_reports->has_data())
-	|| (ho_vc_minute15ho_vc_thresholds !=  nullptr && ho_vc_minute15ho_vc_thresholds->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::has_operation() const
-{
-    return is_set(operation)
-	|| (ho_vc_minute15ho_vc_reports !=  nullptr && ho_vc_minute15ho_vc_reports->has_operation())
-	|| (ho_vc_minute15ho_vc_thresholds !=  nullptr && ho_vc_minute15ho_vc_thresholds->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ho-vc-minute15ho-vc";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HoVcMinute15HoVc' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "ho-vc-minute15ho-vc-reports")
-    {
-        if(ho_vc_minute15ho_vc_reports != nullptr)
-        {
-            children["ho-vc-minute15ho-vc-reports"] = ho_vc_minute15ho_vc_reports;
-        }
-        else
-        {
-            ho_vc_minute15ho_vc_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports>();
-            ho_vc_minute15ho_vc_reports->parent = this;
-            children["ho-vc-minute15ho-vc-reports"] = ho_vc_minute15ho_vc_reports;
-        }
-        return children.at("ho-vc-minute15ho-vc-reports");
-    }
-
-    if(child_yang_name == "ho-vc-minute15ho-vc-thresholds")
-    {
-        if(ho_vc_minute15ho_vc_thresholds != nullptr)
-        {
-            children["ho-vc-minute15ho-vc-thresholds"] = ho_vc_minute15ho_vc_thresholds;
-        }
-        else
-        {
-            ho_vc_minute15ho_vc_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds>();
-            ho_vc_minute15ho_vc_thresholds->parent = this;
-            children["ho-vc-minute15ho-vc-thresholds"] = ho_vc_minute15ho_vc_thresholds;
-        }
-        return children.at("ho-vc-minute15ho-vc-thresholds");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::get_children()
-{
-    if(children.find("ho-vc-minute15ho-vc-reports") == children.end())
-    {
-        if(ho_vc_minute15ho_vc_reports != nullptr)
-        {
-            children["ho-vc-minute15ho-vc-reports"] = ho_vc_minute15ho_vc_reports;
-        }
-    }
-
-    if(children.find("ho-vc-minute15ho-vc-thresholds") == children.end())
-    {
-        if(ho_vc_minute15ho_vc_thresholds != nullptr)
-        {
-            children["ho-vc-minute15ho-vc-thresholds"] = ho_vc_minute15ho_vc_thresholds;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReports()
-{
-    yang_name = "ho-vc-minute15ho-vc-reports"; yang_parent_name = "ho-vc-minute15ho-vc";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::~HoVcMinute15HoVcReports()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::has_data() const
-{
-    for (std::size_t index=0; index<ho_vc_minute15ho_vc_report.size(); index++)
-    {
-        if(ho_vc_minute15ho_vc_report[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::has_operation() const
-{
-    for (std::size_t index=0; index<ho_vc_minute15ho_vc_report.size(); index++)
-    {
-        if(ho_vc_minute15ho_vc_report[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ho-vc-minute15ho-vc-reports";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HoVcMinute15HoVcReports' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "ho-vc-minute15ho-vc-report")
-    {
-        for(auto const & c : ho_vc_minute15ho_vc_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport>();
-        c->parent = this;
-        ho_vc_minute15ho_vc_report.push_back(std::move(c));
-        children[segment_path] = ho_vc_minute15ho_vc_report.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::get_children()
-{
-    for (auto const & c : ho_vc_minute15ho_vc_report)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::set_value(const std::string & value_path, std::string value)
-{
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::HoVcMinute15HoVcReport()
-    :
-    ho_vc_report{YType::enumeration, "ho-vc-report"},
-    enable{YType::enumeration, "enable"}
-{
-    yang_name = "ho-vc-minute15ho-vc-report"; yang_parent_name = "ho-vc-minute15ho-vc-reports";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::~HoVcMinute15HoVcReport()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::has_data() const
-{
-    return ho_vc_report.is_set
-	|| enable.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(ho_vc_report.operation)
-	|| is_set(enable.operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ho-vc-minute15ho-vc-report" <<"[ho-vc-report='" <<ho_vc_report <<"']";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HoVcMinute15HoVcReport' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ho_vc_report.is_set || is_set(ho_vc_report.operation)) leaf_name_data.push_back(ho_vc_report.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::get_children()
-{
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "ho-vc-report")
-    {
-        ho_vc_report = value;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-    }
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::HoVcMinute15HoVcThresholds()
-{
-    yang_name = "ho-vc-minute15ho-vc-thresholds"; yang_parent_name = "ho-vc-minute15ho-vc";
-}
-
-InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::~HoVcMinute15HoVcThresholds()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::has_data() const
-{
-    for (std::size_t index=0; index<ho_vc_minute15ho_vc_threshold.size(); index++)
-    {
-        if(ho_vc_minute15ho_vc_threshold[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::has_operation() const
-{
-    for (std::size_t index=0; index<ho_vc_minute15ho_vc_threshold.size(); index++)
-    {
-        if(ho_vc_minute15ho_vc_threshold[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ho-vc-minute15ho-vc-thresholds";
-
-    return path_buffer.str();
-
-}
-
-EntityPath InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HoVcMinute15HoVcThresholds' in Cisco_IOS_XR_ifmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "ho-vc-minute15ho-vc-threshold")
-    {
-        for(auto const & c : ho_vc_minute15ho_vc_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::HoVcMinute15HoVcThreshold>();
-        c->parent = this;
-        ho_vc_minute15ho_vc_threshold.push_back(std::move(c));
-        children[segment_path] = ho_vc_minute15ho_vc_threshold.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::get_children()
-{
-    for (auto const & c : ho_vc_minute15ho_vc_threshold)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::set_value(const std::string & value_path, std::string value)
 {
 }
 

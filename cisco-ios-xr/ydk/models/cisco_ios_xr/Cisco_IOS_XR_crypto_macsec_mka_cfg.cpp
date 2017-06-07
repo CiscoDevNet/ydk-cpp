@@ -47,12 +47,12 @@ std::string Macsec::get_segment_path() const
 
 }
 
-EntityPath Macsec::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath Macsec::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "policy")
     {
         for(auto const & c : policy)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> Macsec::get_child_by_name(const std::string & child_yang
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Macsec::Policy>();
         c->parent = this;
-        policy.push_back(std::move(c));
-        children[segment_path] = policy.back();
-        return children.at(segment_path);
+        policy.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : policy)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -195,7 +182,7 @@ std::string Macsec::Policy::get_segment_path() const
 
 }
 
-EntityPath Macsec::Policy::get_entity_path(Entity* ancestor) const
+const EntityPath Macsec::Policy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -229,20 +216,12 @@ EntityPath Macsec::Policy::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Macsec::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Macsec::Policy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Policy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

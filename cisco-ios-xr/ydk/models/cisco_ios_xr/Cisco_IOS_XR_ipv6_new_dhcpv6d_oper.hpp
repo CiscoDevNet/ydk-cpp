@@ -18,25 +18,22 @@ class Dhcpv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class IssuStatus; //type: Dhcpv6::IssuStatus
         class Nodes; //type: Dhcpv6::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::IssuStatus> issu_status;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes> nodes;
-
-
+        
 }; // Dhcpv6
 
 
@@ -48,12 +45,11 @@ class Dhcpv6::IssuStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf process_start_time; //type: uint64
         YLeaf issu_sync_complete_time; //type: uint64
@@ -66,8 +62,6 @@ class Dhcpv6::IssuStatus : public Entity
         YLeaf phase; //type: DhcpIssuPhaseEnum
         YLeaf version; //type: Dhcpv6IssuVersionEnum
 
-
-
 }; // Dhcpv6::IssuStatus
 
 
@@ -79,19 +73,16 @@ class Dhcpv6::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Dhcpv6::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node> > node;
-
-
+        
 }; // Dhcpv6::Nodes
 
 
@@ -103,15 +94,13 @@ class Dhcpv6::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Proxy; //type: Dhcpv6::Nodes::Node::Proxy
         class Base; //type: Dhcpv6::Nodes::Node::Base
         class Server; //type: Dhcpv6::Nodes::Node::Server
@@ -121,8 +110,7 @@ class Dhcpv6::Nodes::Node : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy> proxy;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay> relay;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server> server;
-
-
+        
 }; // Dhcpv6::Nodes::Node
 
 
@@ -134,13 +122,11 @@ class Dhcpv6::Nodes::Node::Proxy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrfs; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs
         class Profiles; //type: Dhcpv6::Nodes::Node::Proxy::Profiles
@@ -153,8 +139,7 @@ class Dhcpv6::Nodes::Node::Proxy : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles> profiles;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Statistics> statistics;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Vrfs> vrfs;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy
 
 
@@ -166,19 +151,16 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrf; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf> > vrf;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs
 
 
@@ -190,20 +172,17 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class Statistics; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics> statistics;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf
 
 
@@ -215,13 +194,11 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Solicit; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit
         class Advertise; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Advertise
@@ -258,8 +235,7 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reply> reply;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request> request;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit> solicit;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics
 
 
@@ -271,18 +247,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit
 
@@ -295,18 +268,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Advertise : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Advertise
 
@@ -319,18 +289,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request
 
@@ -343,18 +310,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reply : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reply
 
@@ -367,18 +331,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Confirm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Confirm
 
@@ -391,18 +352,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline
 
@@ -415,18 +373,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Renew : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Renew
 
@@ -439,18 +394,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Rebind : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Rebind
 
@@ -463,18 +415,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release
 
@@ -487,18 +436,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reconfig : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reconfig
 
@@ -511,18 +457,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform
 
@@ -535,18 +478,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayForward : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayForward
 
@@ -559,18 +499,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayReply : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayReply
 
@@ -583,18 +520,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery
 
@@ -607,18 +541,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryReply : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryReply
 
@@ -631,18 +562,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryDone : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryDone
 
@@ -655,18 +583,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryData : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryData
 
@@ -679,19 +604,16 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Profile; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile> > profile;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles
 
 
@@ -703,22 +625,19 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
-
         class ThrottleInfos; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos
         class Info; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info> info;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos> throttle_infos;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile
 
 
@@ -730,19 +649,16 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThrottleInfo; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo> > throttle_info;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos
 
 
@@ -754,20 +670,17 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf binding_chaddr; //type: string
         YLeaf ifname; //type: string
         YLeaf state; //type: uint32
         YLeaf time_left; //type: uint32
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
@@ -780,12 +693,11 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
         YLeaf remote_id; //type: string
@@ -793,7 +705,6 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info : public Entity
         YLeafList profile_helper_address; //type: list of  string
         YLeafList vrf_name; //type: list of  string
         YLeafList interface_name; //type: list of  string
-
         class InterfaceIdReferences; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
         class VrfReferences; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences
         class InterfaceReferences; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences
@@ -801,8 +712,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences> interface_id_references;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences> interface_references;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences> vrf_references;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info
 
 
@@ -814,19 +724,16 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6Dhcpv6DProxyIidReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference> > ipv6_dhcpv6d_proxy_iid_reference;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
 
 
@@ -838,17 +745,14 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf proxy_iid_interface_name; //type: string
         YLeaf proxy_interface_id; //type: string
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference
 
@@ -861,19 +765,16 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6Dhcpv6DProxyVrfReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference> > ipv6_dhcpv6d_proxy_vrf_reference;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences
 
 
@@ -885,16 +786,13 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dh
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf proxy_reference_vrf_name; //type: string
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference
 
@@ -907,19 +805,16 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6Dhcpv6DProxyInterfaceReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference> > ipv6_dhcpv6d_proxy_interface_reference;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences
 
 
@@ -931,16 +826,13 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf proxy_reference_interface_name; //type: string
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference
 
@@ -953,19 +845,16 @@ class Dhcpv6::Nodes::Node::Proxy::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface> > interface;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Interfaces
 
 
@@ -977,12 +866,11 @@ class Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf proxy_vrf_name; //type: string
@@ -997,8 +885,6 @@ class Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface : public Entity
         YLeaf srg_vrf_name; //type: string
         YLeaf srgp2p; //type: boolean
 
-
-
 }; // Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface
 
 
@@ -1010,19 +896,16 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6Dhcpv6DProxyStat; //type: Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat> > ipv6_dhcpv6d_proxy_stat;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Statistics
 
 
@@ -1034,20 +917,17 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class Statistics_; //type: Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_> statistics;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat
 
 
@@ -1059,18 +939,15 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_ 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_
 
@@ -1083,21 +960,18 @@ class Dhcpv6::Nodes::Node::Proxy::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Clients; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients
         class Summary; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Summary
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients> clients;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Summary> summary;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Binding
 
 
@@ -1109,19 +983,16 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Client; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client> > client;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients
 
 
@@ -1133,12 +1004,11 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf client_id; //type: string
         YLeaf duid; //type: string
@@ -1169,12 +1039,10 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client : public Entity
         YLeaf srg_vrf_name; //type: string
         YLeaf serg_state; //type: uint32
         YLeaf serg_intf_role; //type: uint32
-
         class IaIdPd; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd> ia_id_pd;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client
 
 
@@ -1186,19 +1054,16 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BagDhcpv6DIaIdPdInfo; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo> > bag_dhcpv6d_ia_id_pd_info;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd
 
 
@@ -1210,24 +1075,21 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ia_type; //type: BagDhcpv6DIaIdEnum
         YLeaf ia_id; //type: uint32
         YLeaf flags; //type: uint32
         YLeaf total_address; //type: uint16
         YLeaf state; //type: BagDhcpv6DFsmStateEnum
-
         class Addresses; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses> addresses;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
 
 
@@ -1239,19 +1101,16 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BagDhcpv6DAddrAttrb; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb> > bag_dhcpv6d_addr_attrb;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
 
 
@@ -1263,19 +1122,16 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint8
         YLeaf lease_time; //type: uint32
         YLeaf remaining_lease_time; //type: uint32
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
 
@@ -1288,22 +1144,19 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf clients; //type: uint32
-
         class Iana; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana
         class Iapd; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana> iana;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd> iapd;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Summary
 
 
@@ -1315,12 +1168,11 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initializing_clients; //type: uint32
         YLeaf dpm_waiting_clients; //type: uint32
@@ -1329,8 +1181,6 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana : public Entity
         YLeaf iedge_waiting_clients; //type: uint32
         YLeaf rib_waiting_clients; //type: uint32
         YLeaf bound_clients; //type: uint32
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana
 
@@ -1343,12 +1193,11 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initializing_clients; //type: uint32
         YLeaf dpm_waiting_clients; //type: uint32
@@ -1357,8 +1206,6 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd : public Entity
         YLeaf iedge_waiting_clients; //type: uint32
         YLeaf rib_waiting_clients; //type: uint32
         YLeaf bound_clients; //type: uint32
-
-
 
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd
 
@@ -1371,21 +1218,18 @@ class Dhcpv6::Nodes::Node::Base : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Database; //type: Dhcpv6::Nodes::Node::Base::Database
         class AddrBindings; //type: Dhcpv6::Nodes::Node::Base::AddrBindings
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Base::AddrBindings> addr_bindings;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Base::Database> database;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Base
 
 
@@ -1397,12 +1241,11 @@ class Dhcpv6::Nodes::Node::Base::Database : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf configured; //type: boolean
         YLeaf version; //type: uint32
@@ -1421,8 +1264,6 @@ class Dhcpv6::Nodes::Node::Base::Database : public Entity
         YLeaf incremental_file_record_count; //type: uint32
         YLeaf last_incremental_file_write_error_timestamp; //type: uint32
 
-
-
 }; // Dhcpv6::Nodes::Node::Base::Database
 
 
@@ -1434,19 +1275,16 @@ class Dhcpv6::Nodes::Node::Base::AddrBindings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AddrBinding; //type: Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding> > addr_binding;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Base::AddrBindings
 
 
@@ -1458,12 +1296,11 @@ class Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf addr_string; //type: string
         YLeaf mac_address; //type: string
@@ -1491,8 +1328,6 @@ class Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding : public Entity
         YLeaf rx_interface_id; //type: string
         YLeaf tx_interface_id; //type: string
 
-
-
 }; // Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding
 
 
@@ -1504,13 +1339,11 @@ class Dhcpv6::Nodes::Node::Server : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Binding; //type: Dhcpv6::Nodes::Node::Server::Binding
         class Vrfs; //type: Dhcpv6::Nodes::Node::Server::Vrfs
@@ -1525,8 +1358,7 @@ class Dhcpv6::Nodes::Node::Server : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles> profiles;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Statistics> statistics;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Vrfs> vrfs;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server
 
 
@@ -1538,21 +1370,18 @@ class Dhcpv6::Nodes::Node::Server::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Summary; //type: Dhcpv6::Nodes::Node::Server::Binding::Summary
         class Clients; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients> clients;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Summary> summary;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Binding
 
 
@@ -1564,22 +1393,19 @@ class Dhcpv6::Nodes::Node::Server::Binding::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf clients; //type: uint32
-
         class Iana; //type: Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana
         class Iapd; //type: Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana> iana;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd> iapd;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Binding::Summary
 
 
@@ -1591,12 +1417,11 @@ class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initializing_clients; //type: uint32
         YLeaf dpm_waiting_clients; //type: uint32
@@ -1605,8 +1430,6 @@ class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana : public Entity
         YLeaf iedge_waiting_clients; //type: uint32
         YLeaf rib_waiting_clients; //type: uint32
         YLeaf bound_clients; //type: uint32
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana
 
@@ -1619,12 +1442,11 @@ class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf initializing_clients; //type: uint32
         YLeaf dpm_waiting_clients; //type: uint32
@@ -1633,8 +1455,6 @@ class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd : public Entity
         YLeaf iedge_waiting_clients; //type: uint32
         YLeaf rib_waiting_clients; //type: uint32
         YLeaf bound_clients; //type: uint32
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd
 
@@ -1647,19 +1467,16 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Client; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client> > client;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients
 
 
@@ -1671,12 +1488,11 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf client_id; //type: string
         YLeaf duid; //type: string
@@ -1709,12 +1525,10 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client : public Entity
         YLeaf srg_vrf_name; //type: string
         YLeaf sesrg_state; //type: uint32
         YLeaf serg_intf_role; //type: uint32
-
         class IaIdPd; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd> ia_id_pd;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client
 
 
@@ -1726,19 +1540,16 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BagDhcpv6DIaIdPdInfo; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo> > bag_dhcpv6d_ia_id_pd_info;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd
 
 
@@ -1750,24 +1561,21 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ia_type; //type: BagDhcpv6DIaIdEnum
         YLeaf ia_id; //type: uint32
         YLeaf flags; //type: uint32
         YLeaf total_address; //type: uint16
         YLeaf state; //type: BagDhcpv6DFsmStateEnum
-
         class Addresses; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses> addresses;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
 
 
@@ -1779,19 +1587,16 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BagDhcpv6DAddrAttrb; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb> > bag_dhcpv6d_addr_attrb;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
 
 
@@ -1803,19 +1608,16 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint8
         YLeaf lease_time; //type: uint32
         YLeaf remaining_lease_time; //type: uint32
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
 
@@ -1828,19 +1630,16 @@ class Dhcpv6::Nodes::Node::Server::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrf; //type: Dhcpv6::Nodes::Node::Server::Vrfs::Vrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Vrfs::Vrf> > vrf;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Vrfs
 
 
@@ -1852,20 +1651,17 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class Statistics; //type: Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics> statistics;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf
 
 
@@ -1877,13 +1673,11 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Solicit; //type: Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit
         class Advertise; //type: Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Advertise
@@ -1920,8 +1714,7 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reply> reply;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request> request;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit> solicit;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics
 
 
@@ -1933,18 +1726,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit
 
@@ -1957,18 +1747,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Advertise : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Advertise
 
@@ -1981,18 +1768,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request
 
@@ -2005,18 +1789,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reply : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reply
 
@@ -2029,18 +1810,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Confirm : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Confirm
 
@@ -2053,18 +1831,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline
 
@@ -2077,18 +1852,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Renew : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Renew
 
@@ -2101,18 +1873,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rebind : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rebind
 
@@ -2125,18 +1894,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release
 
@@ -2149,18 +1915,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reconfig : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reconfig
 
@@ -2173,18 +1936,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform
 
@@ -2197,18 +1957,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayForward : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayForward
 
@@ -2221,18 +1978,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayReply : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayReply
 
@@ -2245,18 +1999,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery
 
@@ -2269,18 +2020,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryReply : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryReply
 
@@ -2293,18 +2041,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryDone : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryDone
 
@@ -2317,18 +2062,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryData : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryData
 
@@ -2341,19 +2083,16 @@ class Dhcpv6::Nodes::Node::Server::Profiles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Profile; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile> > profile;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Profiles
 
 
@@ -2365,22 +2104,19 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
-
         class Info; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info
         class ThrottleInfos; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info> info;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos> throttle_infos;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile
 
 
@@ -2392,12 +2128,11 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf profile_name; //type: string
         YLeaf domain_name; //type: string
@@ -2407,14 +2142,12 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info : public Entity
         YLeaf delegated_prefix_pool_name; //type: string
         YLeaf rapid_commit; //type: boolean
         YLeafList profile_dns_address; //type: list of  string
-
         class Lease; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease
         class InterfaceReferences; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences> interface_references;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease> lease;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info
 
 
@@ -2426,17 +2159,14 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf time; //type: string
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease
 
@@ -2449,19 +2179,16 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6Dhcpv6DServerInterfaceReference; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference> > ipv6_dhcpv6d_server_interface_reference;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences
 
 
@@ -2473,16 +2200,13 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf server_reference_interface_name; //type: string
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference
 
@@ -2495,19 +2219,16 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ThrottleInfo; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo> > throttle_info;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos
 
 
@@ -2519,20 +2240,17 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf binding_chaddr; //type: string
         YLeaf ifname; //type: string
         YLeaf state; //type: uint32
         YLeaf time_left; //type: uint32
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
@@ -2545,19 +2263,16 @@ class Dhcpv6::Nodes::Node::Server::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Dhcpv6::Nodes::Node::Server::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Interfaces::Interface> > interface;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Interfaces
 
 
@@ -2569,12 +2284,11 @@ class Dhcpv6::Nodes::Node::Server::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf server_vrf_name; //type: string
@@ -2589,8 +2303,6 @@ class Dhcpv6::Nodes::Node::Server::Interfaces::Interface : public Entity
         YLeaf srg_vrf_name; //type: string
         YLeaf srgp2p; //type: boolean
 
-
-
 }; // Dhcpv6::Nodes::Node::Server::Interfaces::Interface
 
 
@@ -2602,19 +2314,16 @@ class Dhcpv6::Nodes::Node::Server::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6Dhcpv6DServerStat; //type: Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat> > ipv6_dhcpv6d_server_stat;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Statistics
 
 
@@ -2626,20 +2335,17 @@ class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class Statistics_; //type: Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_> statistics;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat
 
 
@@ -2651,18 +2357,15 @@ class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_
 
@@ -2675,21 +2378,18 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MacBindOptions; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions
         class DuidBindOptions; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions> duid_bind_options;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions> mac_bind_options;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions
 
 
@@ -2701,19 +2401,16 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class MacBindOption; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption> > mac_bind_option;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions
 
 
@@ -2725,12 +2422,11 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf mac_address_xr; //type: string
@@ -2738,8 +2434,6 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption
         YLeaf dns_count; //type: uint8
         YLeaf opt17; //type: string
         YLeafList dns_address; //type: list of  string
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption
 
@@ -2752,19 +2446,16 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class DuidBindOption; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption> > duid_bind_option;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions
 
 
@@ -2776,12 +2467,11 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOpti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf duid; //type: string
         YLeaf mac_address_xr; //type: string
@@ -2789,8 +2479,6 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOpti
         YLeaf dns_count; //type: uint8
         YLeaf opt17; //type: string
         YLeafList dns_address; //type: list of  string
-
-
 
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption
 
@@ -2803,13 +2491,11 @@ class Dhcpv6::Nodes::Node::Relay : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Statistics; //type: Dhcpv6::Nodes::Node::Relay::Statistics
         class Binding; //type: Dhcpv6::Nodes::Node::Relay::Binding
@@ -2818,8 +2504,7 @@ class Dhcpv6::Nodes::Node::Relay : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Binding> binding;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Statistics> statistics;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Vrfs> vrfs;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Relay
 
 
@@ -2831,19 +2516,16 @@ class Dhcpv6::Nodes::Node::Relay::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6Dhcpv6DRelayStat; //type: Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat> > ipv6_dhcpv6d_relay_stat;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Relay::Statistics
 
 
@@ -2855,20 +2537,17 @@ class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class Statistics_; //type: Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_> statistics;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat
 
 
@@ -2880,18 +2559,15 @@ class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_ 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_
 
@@ -2904,21 +2580,18 @@ class Dhcpv6::Nodes::Node::Relay::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Summary; //type: Dhcpv6::Nodes::Node::Relay::Binding::Summary
         class Clients; //type: Dhcpv6::Nodes::Node::Relay::Binding::Clients
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Binding::Clients> clients;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Binding::Summary> summary;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Relay::Binding
 
 
@@ -2930,16 +2603,13 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf clients; //type: uint32
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Binding::Summary
 
@@ -2952,19 +2622,16 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Client; //type: Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client> > client;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Relay::Binding::Clients
 
 
@@ -2976,12 +2643,11 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf client_id; //type: string
         YLeaf duid; //type: string
@@ -2996,8 +2662,6 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client : public Entity
         YLeaf ia_id; //type: uint32
         YLeaf relay_profile_name; //type: string
 
-
-
 }; // Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client
 
 
@@ -3009,19 +2673,16 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Vrf; //type: Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf> > vrf;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs
 
 
@@ -3033,20 +2694,17 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf_name; //type: string
-
         class Statistics; //type: Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics> statistics;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf
 
 
@@ -3058,13 +2716,11 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Solicit; //type: Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit
         class Advertise; //type: Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Advertise
@@ -3101,8 +2757,7 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics : public Entity
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reply> reply;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Request> request;
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit> solicit;
-
-
+        
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics
 
 
@@ -3114,18 +2769,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit
 
@@ -3138,18 +2790,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Advertise : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Advertise
 
@@ -3162,18 +2811,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Request : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Request
 
@@ -3186,18 +2832,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reply : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reply
 
@@ -3210,18 +2853,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Confirm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Confirm
 
@@ -3234,18 +2874,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Decline : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Decline
 
@@ -3258,18 +2895,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Renew : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Renew
 
@@ -3282,18 +2916,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Rebind : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Rebind
 
@@ -3306,18 +2937,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Release : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Release
 
@@ -3330,18 +2958,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reconfig : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reconfig
 
@@ -3354,18 +2979,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Inform : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Inform
 
@@ -3378,18 +3000,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayForward : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayForward
 
@@ -3402,18 +3021,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayReply : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayReply
 
@@ -3426,18 +3042,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQuery : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQuery
 
@@ -3450,18 +3063,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryReply : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryReply
 
@@ -3474,18 +3084,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryDone : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryDone
 
@@ -3498,18 +3105,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf received_packets; //type: uint64
         YLeaf transmitted_packets; //type: uint64
         YLeaf dropped_packets; //type: uint64
-
-
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData
 

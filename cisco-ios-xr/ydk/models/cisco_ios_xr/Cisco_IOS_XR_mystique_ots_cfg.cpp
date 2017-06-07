@@ -47,12 +47,12 @@ std::string HardwareModule::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HardwareModule::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -175,7 +162,7 @@ std::string HardwareModule::Node::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::Node::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -199,15 +186,6 @@ EntityPath HardwareModule::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HardwareModule::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slot")
     {
         for(auto const & c : slot)
@@ -215,28 +193,24 @@ std::shared_ptr<Entity> HardwareModule::Node::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<HardwareModule::Node::Slot>();
         c->parent = this;
-        slot.push_back(std::move(c));
-        children[segment_path] = slot.back();
-        return children.at(segment_path);
+        slot.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slot)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -258,10 +232,8 @@ HardwareModule::Node::Slot::Slot()
 	,psm(std::make_shared<HardwareModule::Node::Slot::Psm>())
 {
     amplifier->parent = this;
-    children["amplifier"] = amplifier;
 
     psm->parent = this;
-    children["psm"] = psm;
 
     yang_name = "slot"; yang_parent_name = "node";
 }
@@ -294,7 +266,7 @@ std::string HardwareModule::Node::Slot::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::Node::Slot::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Node::Slot::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -318,64 +290,38 @@ EntityPath HardwareModule::Node::Slot::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> HardwareModule::Node::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "amplifier")
     {
-        if(amplifier != nullptr)
-        {
-            children["amplifier"] = amplifier;
-        }
-        else
+        if(amplifier == nullptr)
         {
             amplifier = std::make_shared<HardwareModule::Node::Slot::Amplifier>();
-            amplifier->parent = this;
-            children["amplifier"] = amplifier;
         }
-        return children.at("amplifier");
+        return amplifier;
     }
 
     if(child_yang_name == "psm")
     {
-        if(psm != nullptr)
-        {
-            children["psm"] = psm;
-        }
-        else
+        if(psm == nullptr)
         {
             psm = std::make_shared<HardwareModule::Node::Slot::Psm>();
-            psm->parent = this;
-            children["psm"] = psm;
         }
-        return children.at("psm");
+        return psm;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Node::Slot::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::get_children() const
 {
-    if(children.find("amplifier") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(amplifier != nullptr)
     {
-        if(amplifier != nullptr)
-        {
-            children["amplifier"] = amplifier;
-        }
+        children["amplifier"] = amplifier;
     }
 
-    if(children.find("psm") == children.end())
+    if(psm != nullptr)
     {
-        if(psm != nullptr)
-        {
-            children["psm"] = psm;
-        }
+        children["psm"] = psm;
     }
 
     return children;
@@ -426,7 +372,7 @@ std::string HardwareModule::Node::Slot::Amplifier::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::Node::Slot::Amplifier::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Node::Slot::Amplifier::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -452,20 +398,12 @@ EntityPath HardwareModule::Node::Slot::Amplifier::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> HardwareModule::Node::Slot::Amplifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Node::Slot::Amplifier::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Amplifier::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -519,7 +457,7 @@ std::string HardwareModule::Node::Slot::Psm::get_segment_path() const
 
 }
 
-EntityPath HardwareModule::Node::Slot::Psm::get_entity_path(Entity* ancestor) const
+const EntityPath HardwareModule::Node::Slot::Psm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -544,20 +482,12 @@ EntityPath HardwareModule::Node::Slot::Psm::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> HardwareModule::Node::Slot::Psm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & HardwareModule::Node::Slot::Psm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Psm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

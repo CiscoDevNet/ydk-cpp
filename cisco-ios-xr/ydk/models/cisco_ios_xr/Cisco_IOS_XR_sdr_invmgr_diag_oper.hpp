@@ -18,23 +18,20 @@ class Diag : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Racks; //type: Diag::Racks
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks> racks;
-
-
+        
 }; // Diag
 
 
@@ -46,19 +43,16 @@ class Diag::Racks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rack; //type: Diag::Racks::Rack
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack> > rack;
-
-
+        
 }; // Diag::Racks
 
 
@@ -70,15 +64,13 @@ class Diag::Racks::Rack : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rack_name; //type: string
-
         class PowerShelfs; //type: Diag::Racks::Rack::PowerShelfs
         class FanTraies; //type: Diag::Racks::Rack::FanTraies
         class Slots; //type: Diag::Racks::Rack::Slots
@@ -88,8 +80,7 @@ class Diag::Racks::Rack : public Entity
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies> fan_traies;
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs> power_shelfs;
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots> slots;
-
-
+        
 }; // Diag::Racks::Rack
 
 
@@ -101,19 +92,16 @@ class Diag::Racks::Rack::PowerShelfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PowerShelf; //type: Diag::Racks::Rack::PowerShelfs::PowerShelf
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs::PowerShelf> > power_shelf;
-
-
+        
 }; // Diag::Racks::Rack::PowerShelfs
 
 
@@ -125,20 +113,17 @@ class Diag::Racks::Rack::PowerShelfs::PowerShelf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf power_shelf_name; //type: string
-
         class PowerSupplies; //type: Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies> power_supplies;
-
-
+        
 }; // Diag::Racks::Rack::PowerShelfs::PowerShelf
 
 
@@ -150,19 +135,16 @@ class Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PowerSupply; //type: Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply> > power_supply;
-
-
+        
 }; // Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies
 
 
@@ -174,20 +156,17 @@ class Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf power_supply_name; //type: string
-
         class Information; //type: Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information> information;
-
-
+        
 }; // Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply
 
 
@@ -199,12 +178,11 @@ class Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf idprom_format_rev; //type: string
@@ -262,12 +240,10 @@ class Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::In
         YLeaf engineer_use; //type: string
         YLeaf snmpoid; //type: string
         YLeaf rma_code; //type: string
-
         class Rma; //type: Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma> rma;
-
-
+        
 }; // Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information
 
 
@@ -279,18 +255,15 @@ class Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf test_history; //type: string
         YLeaf rma_number; //type: string
         YLeaf rma_history; //type: string
-
-
 
 }; // Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma
 
@@ -303,19 +276,16 @@ class Diag::Racks::Rack::FanTraies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class FanTray; //type: Diag::Racks::Rack::FanTraies::FanTray
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray> > fan_tray;
-
-
+        
 }; // Diag::Racks::Rack::FanTraies
 
 
@@ -327,20 +297,17 @@ class Diag::Racks::Rack::FanTraies::FanTray : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fan_tray_name; //type: string
-
         class Fanses; //type: Diag::Racks::Rack::FanTraies::FanTray::Fanses
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray::Fanses> fanses;
-
-
+        
 }; // Diag::Racks::Rack::FanTraies::FanTray
 
 
@@ -352,19 +319,16 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Fans; //type: Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans> > fans;
-
-
+        
 }; // Diag::Racks::Rack::FanTraies::FanTray::Fanses
 
 
@@ -376,20 +340,17 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf fans_name; //type: string
-
         class Information; //type: Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information> information;
-
-
+        
 }; // Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans
 
 
@@ -401,12 +362,11 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf idprom_format_rev; //type: string
@@ -464,12 +424,10 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information : public 
         YLeaf engineer_use; //type: string
         YLeaf snmpoid; //type: string
         YLeaf rma_code; //type: string
-
         class Rma; //type: Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma> rma;
-
-
+        
 }; // Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information
 
 
@@ -481,18 +439,15 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf test_history; //type: string
         YLeaf rma_number; //type: string
         YLeaf rma_history; //type: string
-
-
 
 }; // Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma
 
@@ -505,19 +460,16 @@ class Diag::Racks::Rack::Slots : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Slot; //type: Diag::Racks::Rack::Slots::Slot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots::Slot> > slot;
-
-
+        
 }; // Diag::Racks::Rack::Slots
 
 
@@ -529,20 +481,17 @@ class Diag::Racks::Rack::Slots::Slot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf slot_name; //type: string
-
         class Instances; //type: Diag::Racks::Rack::Slots::Slot::Instances
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances> instances;
-
-
+        
 }; // Diag::Racks::Rack::Slots::Slot
 
 
@@ -554,19 +503,16 @@ class Diag::Racks::Rack::Slots::Slot::Instances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Instance; //type: Diag::Racks::Rack::Slots::Slot::Instances::Instance
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances::Instance> > instance;
-
-
+        
 }; // Diag::Racks::Rack::Slots::Slot::Instances
 
 
@@ -578,20 +524,17 @@ class Diag::Racks::Rack::Slots::Slot::Instances::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
         class Detail; //type: Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail> detail;
-
-
+        
 }; // Diag::Racks::Rack::Slots::Slot::Instances::Instance
 
 
@@ -603,20 +546,17 @@ class Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_operational_state; //type: string
-
         class CardInstance; //type: Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance> card_instance;
-
-
+        
 }; // Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail
 
 
@@ -628,12 +568,11 @@ class Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf idprom_format_rev; //type: string
@@ -691,12 +630,10 @@ class Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance 
         YLeaf engineer_use; //type: string
         YLeaf snmpoid; //type: string
         YLeaf rma_code; //type: string
-
         class Rma; //type: Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma> rma;
-
-
+        
 }; // Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance
 
 
@@ -708,18 +645,15 @@ class Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf test_history; //type: string
         YLeaf rma_number; //type: string
         YLeaf rma_history; //type: string
-
-
 
 }; // Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma
 
@@ -732,12 +666,11 @@ class Diag::Racks::Rack::Chassis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf description; //type: string
         YLeaf idprom_format_rev; //type: string
@@ -795,12 +728,10 @@ class Diag::Racks::Rack::Chassis : public Entity
         YLeaf engineer_use; //type: string
         YLeaf snmpoid; //type: string
         YLeaf rma_code; //type: string
-
         class Rma; //type: Diag::Racks::Rack::Chassis::Rma
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Chassis::Rma> rma;
-
-
+        
 }; // Diag::Racks::Rack::Chassis
 
 
@@ -812,18 +743,15 @@ class Diag::Racks::Rack::Chassis::Rma : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf test_history; //type: string
         YLeaf rma_number; //type: string
         YLeaf rma_history; //type: string
-
-
 
 }; // Diag::Racks::Rack::Chassis::Rma
 

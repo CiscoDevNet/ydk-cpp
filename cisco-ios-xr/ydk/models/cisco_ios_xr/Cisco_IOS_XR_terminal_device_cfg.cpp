@@ -47,12 +47,12 @@ std::string LogicalChannels::get_segment_path() const
 
 }
 
-EntityPath LogicalChannels::get_entity_path(Entity* ancestor) const
+const EntityPath LogicalChannels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath LogicalChannels::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LogicalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "channel")
     {
         for(auto const & c : channel)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> LogicalChannels::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LogicalChannels::Channel>();
         c->parent = this;
-        channel.push_back(std::move(c));
-        children[segment_path] = channel.back();
-        return children.at(segment_path);
+        channel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LogicalChannels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : channel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -150,10 +137,8 @@ LogicalChannels::Channel::Channel()
 	,otn(std::make_shared<LogicalChannels::Channel::Otn>())
 {
     logical_channel_assignments->parent = this;
-    children["logical-channel-assignments"] = logical_channel_assignments;
 
     otn->parent = this;
-    children["otn"] = otn;
 
     yang_name = "channel"; yang_parent_name = "logical-channels";
 }
@@ -202,7 +187,7 @@ std::string LogicalChannels::Channel::get_segment_path() const
 
 }
 
-EntityPath LogicalChannels::Channel::get_entity_path(Entity* ancestor) const
+const EntityPath LogicalChannels::Channel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -234,64 +219,38 @@ EntityPath LogicalChannels::Channel::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LogicalChannels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "logical-channel-assignments")
     {
-        if(logical_channel_assignments != nullptr)
-        {
-            children["logical-channel-assignments"] = logical_channel_assignments;
-        }
-        else
+        if(logical_channel_assignments == nullptr)
         {
             logical_channel_assignments = std::make_shared<LogicalChannels::Channel::LogicalChannelAssignments>();
-            logical_channel_assignments->parent = this;
-            children["logical-channel-assignments"] = logical_channel_assignments;
         }
-        return children.at("logical-channel-assignments");
+        return logical_channel_assignments;
     }
 
     if(child_yang_name == "otn")
     {
-        if(otn != nullptr)
-        {
-            children["otn"] = otn;
-        }
-        else
+        if(otn == nullptr)
         {
             otn = std::make_shared<LogicalChannels::Channel::Otn>();
-            otn->parent = this;
-            children["otn"] = otn;
         }
-        return children.at("otn");
+        return otn;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LogicalChannels::Channel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::get_children() const
 {
-    if(children.find("logical-channel-assignments") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(logical_channel_assignments != nullptr)
     {
-        if(logical_channel_assignments != nullptr)
-        {
-            children["logical-channel-assignments"] = logical_channel_assignments;
-        }
+        children["logical-channel-assignments"] = logical_channel_assignments;
     }
 
-    if(children.find("otn") == children.end())
+    if(otn != nullptr)
     {
-        if(otn != nullptr)
-        {
-            children["otn"] = otn;
-        }
+        children["otn"] = otn;
     }
 
     return children;
@@ -375,7 +334,7 @@ std::string LogicalChannels::Channel::LogicalChannelAssignments::get_segment_pat
 
 }
 
-EntityPath LogicalChannels::Channel::LogicalChannelAssignments::get_entity_path(Entity* ancestor) const
+const EntityPath LogicalChannels::Channel::LogicalChannelAssignments::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -398,15 +357,6 @@ EntityPath LogicalChannels::Channel::LogicalChannelAssignments::get_entity_path(
 
 std::shared_ptr<Entity> LogicalChannels::Channel::LogicalChannelAssignments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "logical-channel-assignment")
     {
         for(auto const & c : logical_channel_assignment)
@@ -414,28 +364,24 @@ std::shared_ptr<Entity> LogicalChannels::Channel::LogicalChannelAssignments::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment>();
         c->parent = this;
-        logical_channel_assignment.push_back(std::move(c));
-        children[segment_path] = logical_channel_assignment.back();
-        return children.at(segment_path);
+        logical_channel_assignment.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LogicalChannels::Channel::LogicalChannelAssignments::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::LogicalChannelAssignments::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : logical_channel_assignment)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -491,7 +437,7 @@ std::string LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelA
 
 }
 
-EntityPath LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_entity_path(Entity* ancestor) const
+const EntityPath LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -520,20 +466,12 @@ EntityPath LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAs
 
 std::shared_ptr<Entity> LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -602,7 +540,7 @@ std::string LogicalChannels::Channel::Otn::get_segment_path() const
 
 }
 
-EntityPath LogicalChannels::Channel::Otn::get_entity_path(Entity* ancestor) const
+const EntityPath LogicalChannels::Channel::Otn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -628,20 +566,12 @@ EntityPath LogicalChannels::Channel::Otn::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> LogicalChannels::Channel::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LogicalChannels::Channel::Otn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::Otn::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -699,12 +629,12 @@ std::string OpticalChannels::get_segment_path() const
 
 }
 
-EntityPath OpticalChannels::get_entity_path(Entity* ancestor) const
+const EntityPath OpticalChannels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -719,15 +649,6 @@ EntityPath OpticalChannels::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> OpticalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optical-channel")
     {
         for(auto const & c : optical_channel)
@@ -735,28 +656,24 @@ std::shared_ptr<Entity> OpticalChannels::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<OpticalChannels::OpticalChannel>();
         c->parent = this;
-        optical_channel.push_back(std::move(c));
-        children[segment_path] = optical_channel.back();
-        return children.at(segment_path);
+        optical_channel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticalChannels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticalChannels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optical_channel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -823,7 +740,7 @@ std::string OpticalChannels::OpticalChannel::get_segment_path() const
 
 }
 
-EntityPath OpticalChannels::OpticalChannel::get_entity_path(Entity* ancestor) const
+const EntityPath OpticalChannels::OpticalChannel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -849,20 +766,12 @@ EntityPath OpticalChannels::OpticalChannel::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> OpticalChannels::OpticalChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticalChannels::OpticalChannel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticalChannels::OpticalChannel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

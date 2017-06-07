@@ -14,7 +14,6 @@ PfilterMa::PfilterMa()
     nodes(std::make_shared<PfilterMa::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "pfilter-ma"; yang_parent_name = "Cisco-IOS-XR-ip-pfilter-oper";
 }
@@ -43,12 +42,12 @@ std::string PfilterMa::get_segment_path() const
 
 }
 
-EntityPath PfilterMa::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath PfilterMa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PfilterMa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<PfilterMa::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string PfilterMa::Nodes::get_segment_path() const
 
 }
 
-EntityPath PfilterMa::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath PfilterMa::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PfilterMa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> PfilterMa::Nodes::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PfilterMa::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ PfilterMa::Nodes::Node::Node()
     process(std::make_shared<PfilterMa::Nodes::Node::Process>())
 {
     process->parent = this;
-    children["process"] = process;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -273,7 +241,7 @@ std::string PfilterMa::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath PfilterMa::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath PfilterMa::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process")
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
-        else
+        if(process == nullptr)
         {
             process = std::make_shared<PfilterMa::Nodes::Node::Process>();
-            process->parent = this;
-            children["process"] = process;
         }
-        return children.at("process");
+        return process;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::get_children() const
 {
-    if(children.find("process") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(process != nullptr)
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
+        children["process"] = process;
     }
 
     return children;
@@ -351,10 +302,8 @@ PfilterMa::Nodes::Node::Process::Process()
 	,ipv6(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     yang_name = "process"; yang_parent_name = "node";
 }
@@ -385,7 +334,7 @@ std::string PfilterMa::Nodes::Node::Process::get_segment_path() const
 
 }
 
-EntityPath PfilterMa::Nodes::Node::Process::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::Process::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -408,64 +357,38 @@ EntityPath PfilterMa::Nodes::Node::Process::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::Process::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
     return children;
@@ -480,7 +403,6 @@ PfilterMa::Nodes::Node::Process::Ipv6::Ipv6()
     acl_info_table(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable>())
 {
     acl_info_table->parent = this;
-    children["acl-info-table"] = acl_info_table;
 
     yang_name = "ipv6"; yang_parent_name = "process";
 }
@@ -509,7 +431,7 @@ std::string PfilterMa::Nodes::Node::Process::Ipv6::get_segment_path() const
 
 }
 
-EntityPath PfilterMa::Nodes::Node::Process::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::Process::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -532,41 +454,24 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv6::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "acl-info-table")
     {
-        if(acl_info_table != nullptr)
-        {
-            children["acl-info-table"] = acl_info_table;
-        }
-        else
+        if(acl_info_table == nullptr)
         {
             acl_info_table = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable>();
-            acl_info_table->parent = this;
-            children["acl-info-table"] = acl_info_table;
         }
-        return children.at("acl-info-table");
+        return acl_info_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::Process::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::get_children() const
 {
-    if(children.find("acl-info-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(acl_info_table != nullptr)
     {
-        if(acl_info_table != nullptr)
-        {
-            children["acl-info-table"] = acl_info_table;
-        }
+        children["acl-info-table"] = acl_info_table;
     }
 
     return children;
@@ -581,7 +486,6 @@ PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::AclInfoTable()
     interface_infos(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos>())
 {
     interface_infos->parent = this;
-    children["interface-infos"] = interface_infos;
 
     yang_name = "acl-info-table"; yang_parent_name = "ipv6";
 }
@@ -610,7 +514,7 @@ std::string PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_segment_pat
 
 }
 
-EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -633,41 +537,24 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_entity_path(
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-infos")
     {
-        if(interface_infos != nullptr)
-        {
-            children["interface-infos"] = interface_infos;
-        }
-        else
+        if(interface_infos == nullptr)
         {
             interface_infos = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos>();
-            interface_infos->parent = this;
-            children["interface-infos"] = interface_infos;
         }
-        return children.at("interface-infos");
+        return interface_infos;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_children() const
 {
-    if(children.find("interface-infos") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_infos != nullptr)
     {
-        if(interface_infos != nullptr)
-        {
-            children["interface-infos"] = interface_infos;
-        }
+        children["interface-infos"] = interface_infos;
     }
 
     return children;
@@ -715,7 +602,7 @@ std::string PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos:
 
 }
 
-EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -738,15 +625,6 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-info")
     {
         for(auto const & c : interface_info)
@@ -754,28 +632,24 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::Int
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo>();
         c->parent = this;
-        interface_info.push_back(std::move(c));
-        children[segment_path] = interface_info.back();
-        return children.at(segment_path);
+        interface_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -819,7 +693,7 @@ std::string PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos:
 
 }
 
-EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -844,20 +718,12 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -878,7 +744,6 @@ PfilterMa::Nodes::Node::Process::Ipv4::Ipv4()
     acl_info_table(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable>())
 {
     acl_info_table->parent = this;
-    children["acl-info-table"] = acl_info_table;
 
     yang_name = "ipv4"; yang_parent_name = "process";
 }
@@ -907,7 +772,7 @@ std::string PfilterMa::Nodes::Node::Process::Ipv4::get_segment_path() const
 
 }
 
-EntityPath PfilterMa::Nodes::Node::Process::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::Process::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -930,41 +795,24 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv4::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "acl-info-table")
     {
-        if(acl_info_table != nullptr)
-        {
-            children["acl-info-table"] = acl_info_table;
-        }
-        else
+        if(acl_info_table == nullptr)
         {
             acl_info_table = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable>();
-            acl_info_table->parent = this;
-            children["acl-info-table"] = acl_info_table;
         }
-        return children.at("acl-info-table");
+        return acl_info_table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::Process::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::get_children() const
 {
-    if(children.find("acl-info-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(acl_info_table != nullptr)
     {
-        if(acl_info_table != nullptr)
-        {
-            children["acl-info-table"] = acl_info_table;
-        }
+        children["acl-info-table"] = acl_info_table;
     }
 
     return children;
@@ -979,7 +827,6 @@ PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::AclInfoTable()
     interface_infos(std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos>())
 {
     interface_infos->parent = this;
-    children["interface-infos"] = interface_infos;
 
     yang_name = "acl-info-table"; yang_parent_name = "ipv4";
 }
@@ -1008,7 +855,7 @@ std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_segment_pat
 
 }
 
-EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1031,41 +878,24 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_entity_path(
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-infos")
     {
-        if(interface_infos != nullptr)
-        {
-            children["interface-infos"] = interface_infos;
-        }
-        else
+        if(interface_infos == nullptr)
         {
             interface_infos = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos>();
-            interface_infos->parent = this;
-            children["interface-infos"] = interface_infos;
         }
-        return children.at("interface-infos");
+        return interface_infos;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_children() const
 {
-    if(children.find("interface-infos") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_infos != nullptr)
     {
-        if(interface_infos != nullptr)
-        {
-            children["interface-infos"] = interface_infos;
-        }
+        children["interface-infos"] = interface_infos;
     }
 
     return children;
@@ -1113,7 +943,7 @@ std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos:
 
 }
 
-EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1136,15 +966,6 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-info")
     {
         for(auto const & c : interface_info)
@@ -1152,28 +973,24 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::Int
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo>();
         c->parent = this;
-        interface_info.push_back(std::move(c));
-        children[segment_path] = interface_info.back();
-        return children.at(segment_path);
+        interface_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1217,7 +1034,7 @@ std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos:
 
 }
 
-EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_entity_path(Entity* ancestor) const
+const EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1242,20 +1059,12 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::
 
 std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -219,7 +219,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -299,15 +299,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "feature")
     {
         for(auto const & c : feature)
@@ -315,28 +306,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature>();
         c->parent = this;
-        feature.push_back(std::move(c));
-        children[segment_path] = feature.back();
-        return children.at(segment_path);
+        feature.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : feature)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -583,13 +570,10 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp:
 	,mld(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>())
 {
     dhcp->parent = this;
-    children["dhcp"] = dhcp;
 
     igmp->parent = this;
-    children["igmp"] = igmp;
 
     mld->parent = this;
-    children["mld"] = mld;
 
     yang_name = "feature"; yang_parent_name = "operational-information";
 }
@@ -624,7 +608,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -648,87 +632,52 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dhcp")
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
-        else
+        if(dhcp == nullptr)
         {
             dhcp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>();
-            dhcp->parent = this;
-            children["dhcp"] = dhcp;
         }
-        return children.at("dhcp");
+        return dhcp;
     }
 
     if(child_yang_name == "igmp")
     {
-        if(igmp != nullptr)
-        {
-            children["igmp"] = igmp;
-        }
-        else
+        if(igmp == nullptr)
         {
             igmp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>();
-            igmp->parent = this;
-            children["igmp"] = igmp;
         }
-        return children.at("igmp");
+        return igmp;
     }
 
     if(child_yang_name == "mld")
     {
-        if(mld != nullptr)
-        {
-            children["mld"] = mld;
-        }
-        else
+        if(mld == nullptr)
         {
             mld = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>();
-            mld->parent = this;
-            children["mld"] = mld;
         }
-        return children.at("mld");
+        return mld;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_children() const
 {
-    if(children.find("dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
+        children["dhcp"] = dhcp;
     }
 
-    if(children.find("igmp") == children.end())
+    if(igmp != nullptr)
     {
-        if(igmp != nullptr)
-        {
-            children["igmp"] = igmp;
-        }
+        children["igmp"] = igmp;
     }
 
-    if(children.find("mld") == children.end())
+    if(mld != nullptr)
     {
-        if(mld != nullptr)
-        {
-            children["mld"] = mld;
-        }
+        children["mld"] = mld;
     }
 
     return children;
@@ -773,7 +722,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -797,20 +746,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -853,7 +794,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -877,20 +818,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -933,7 +866,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -957,20 +890,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1028,7 +953,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1057,20 +982,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1110,7 +1027,6 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "fxs"; yang_parent_name = "segment2";
 }
@@ -1143,7 +1059,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1168,41 +1084,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -1248,7 +1147,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1271,20 +1170,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1319,16 +1210,12 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
 	,pseudo_wire_union(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion>())
 {
     backup_pseudo_wire->parent = this;
-    children["backup-pseudo-wire"] = backup_pseudo_wire;
 
     base->parent = this;
-    children["base"] = base;
 
     next_hop->parent = this;
-    children["next-hop"] = next_hop;
 
     pseudo_wire_union->parent = this;
-    children["pseudo-wire-union"] = pseudo_wire_union;
 
     yang_name = "pw"; yang_parent_name = "segment2";
 }
@@ -1399,7 +1286,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1440,110 +1327,66 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-pseudo-wire")
     {
-        if(backup_pseudo_wire != nullptr)
-        {
-            children["backup-pseudo-wire"] = backup_pseudo_wire;
-        }
-        else
+        if(backup_pseudo_wire == nullptr)
         {
             backup_pseudo_wire = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire>();
-            backup_pseudo_wire->parent = this;
-            children["backup-pseudo-wire"] = backup_pseudo_wire;
         }
-        return children.at("backup-pseudo-wire");
+        return backup_pseudo_wire;
     }
 
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "next-hop")
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
-        else
+        if(next_hop == nullptr)
         {
             next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop>();
-            next_hop->parent = this;
-            children["next-hop"] = next_hop;
         }
-        return children.at("next-hop");
+        return next_hop;
     }
 
     if(child_yang_name == "pseudo-wire-union")
     {
-        if(pseudo_wire_union != nullptr)
-        {
-            children["pseudo-wire-union"] = pseudo_wire_union;
-        }
-        else
+        if(pseudo_wire_union == nullptr)
         {
             pseudo_wire_union = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion>();
-            pseudo_wire_union->parent = this;
-            children["pseudo-wire-union"] = pseudo_wire_union;
         }
-        return children.at("pseudo-wire-union");
+        return pseudo_wire_union;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::get_children() const
 {
-    if(children.find("backup-pseudo-wire") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_pseudo_wire != nullptr)
     {
-        if(backup_pseudo_wire != nullptr)
-        {
-            children["backup-pseudo-wire"] = backup_pseudo_wire;
-        }
+        children["backup-pseudo-wire"] = backup_pseudo_wire;
     }
 
-    if(children.find("base") == children.end())
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("next-hop") == children.end())
+    if(next_hop != nullptr)
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
+        children["next-hop"] = next_hop;
     }
 
-    if(children.find("pseudo-wire-union") == children.end())
+    if(pseudo_wire_union != nullptr)
     {
-        if(pseudo_wire_union != nullptr)
-        {
-            children["pseudo-wire-union"] = pseudo_wire_union;
-        }
+        children["pseudo-wire-union"] = pseudo_wire_union;
     }
 
     return children;
@@ -1653,7 +1496,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1676,20 +1519,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1708,7 +1543,6 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "next-hop"; yang_parent_name = "pw";
 }
@@ -1747,7 +1581,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1775,41 +1609,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -1867,7 +1684,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1890,20 +1707,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1921,16 +1730,12 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
 	,mpls(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls>())
 {
     l2tp->parent = this;
-    children["l2tp"] = l2tp;
 
     l2tp_ipv6_ts->parent = this;
-    children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
 
     l2tpv2->parent = this;
-    children["l2tpv2"] = l2tpv2;
 
     mpls->parent = this;
-    children["mpls"] = mpls;
 
     yang_name = "pseudo-wire-union"; yang_parent_name = "pw";
 }
@@ -1967,7 +1772,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1991,110 +1796,66 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2tp")
     {
-        if(l2tp != nullptr)
-        {
-            children["l2tp"] = l2tp;
-        }
-        else
+        if(l2tp == nullptr)
         {
             l2tp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp>();
-            l2tp->parent = this;
-            children["l2tp"] = l2tp;
         }
-        return children.at("l2tp");
+        return l2tp;
     }
 
     if(child_yang_name == "l2tp-ipv6-ts")
     {
-        if(l2tp_ipv6_ts != nullptr)
-        {
-            children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
-        }
-        else
+        if(l2tp_ipv6_ts == nullptr)
         {
             l2tp_ipv6_ts = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts>();
-            l2tp_ipv6_ts->parent = this;
-            children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
         }
-        return children.at("l2tp-ipv6-ts");
+        return l2tp_ipv6_ts;
     }
 
     if(child_yang_name == "l2tpv2")
     {
-        if(l2tpv2 != nullptr)
-        {
-            children["l2tpv2"] = l2tpv2;
-        }
-        else
+        if(l2tpv2 == nullptr)
         {
             l2tpv2 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2>();
-            l2tpv2->parent = this;
-            children["l2tpv2"] = l2tpv2;
         }
-        return children.at("l2tpv2");
+        return l2tpv2;
     }
 
     if(child_yang_name == "mpls")
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
-        else
+        if(mpls == nullptr)
         {
             mpls = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls>();
-            mpls->parent = this;
-            children["mpls"] = mpls;
         }
-        return children.at("mpls");
+        return mpls;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_children() const
 {
-    if(children.find("l2tp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2tp != nullptr)
     {
-        if(l2tp != nullptr)
-        {
-            children["l2tp"] = l2tp;
-        }
+        children["l2tp"] = l2tp;
     }
 
-    if(children.find("l2tp-ipv6-ts") == children.end())
+    if(l2tp_ipv6_ts != nullptr)
     {
-        if(l2tp_ipv6_ts != nullptr)
-        {
-            children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
-        }
+        children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
     }
 
-    if(children.find("l2tpv2") == children.end())
+    if(l2tpv2 != nullptr)
     {
-        if(l2tpv2 != nullptr)
-        {
-            children["l2tpv2"] = l2tpv2;
-        }
+        children["l2tpv2"] = l2tpv2;
     }
 
-    if(children.find("mpls") == children.end())
+    if(mpls != nullptr)
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
+        children["mpls"] = mpls;
     }
 
     return children;
@@ -2148,7 +1909,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2175,20 +1936,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2224,10 +1977,8 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
 	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote>())
 {
     local->parent = this;
-    children["local"] = local;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     yang_name = "l2tp"; yang_parent_name = "pseudo-wire-union";
 }
@@ -2268,7 +2019,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2296,64 +2047,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
     return children;
@@ -2423,7 +2148,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2450,20 +2175,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2527,7 +2244,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2554,20 +2271,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2607,10 +2316,8 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
 	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote>())
 {
     local->parent = this;
-    children["local"] = local;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union";
 }
@@ -2659,7 +2366,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2691,64 +2398,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
     return children;
@@ -2828,7 +2509,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2853,20 +2534,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2916,7 +2589,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2941,20 +2614,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2984,10 +2649,8 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
 	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>())
 {
     local->parent = this;
-    children["local"] = local;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union";
 }
@@ -3032,7 +2695,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3062,64 +2725,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
     return children;
@@ -3206,7 +2843,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3236,20 +2873,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3325,7 +2954,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3352,20 +2981,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3405,7 +3026,6 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     atom(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom>())
 {
     atom->parent = this;
-    children["atom"] = atom;
 
     yang_name = "backup-pseudo-wire"; yang_parent_name = "pw";
 }
@@ -3454,7 +3074,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3487,41 +3107,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "atom")
     {
-        if(atom != nullptr)
-        {
-            children["atom"] = atom;
-        }
-        else
+        if(atom == nullptr)
         {
             atom = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom>();
-            atom->parent = this;
-            children["atom"] = atom;
         }
-        return children.at("atom");
+        return atom;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_children() const
 {
-    if(children.find("atom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(atom != nullptr)
     {
-        if(atom != nullptr)
-        {
-            children["atom"] = atom;
-        }
+        children["atom"] = atom;
     }
 
     return children;
@@ -3611,7 +3214,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::S
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3638,20 +3241,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Se
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3713,7 +3308,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_segment_path()
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3736,15 +3331,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_entity_path(Ent
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-mmrp-summary")
     {
         for(auto const & c : l2fib_mmrp_summary)
@@ -3752,28 +3338,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary>();
         c->parent = this;
-        l2fib_mmrp_summary.push_back(std::move(c));
-        children[segment_path] = l2fib_mmrp_summary.back();
-        return children.at(segment_path);
+        l2fib_mmrp_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_mmrp_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3875,7 +3457,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3916,15 +3498,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::g
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "message")
     {
         for(auto const & c : message)
@@ -3932,28 +3505,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibM
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message>();
         c->parent = this;
-        message.push_back(std::move(c));
-        children[segment_path] = message.back();
-        return children.at(segment_path);
+        message.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : message)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4075,7 +3644,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4102,20 +3671,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::M
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4177,7 +3738,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_segment_path() cons
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4200,15 +3761,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-pw-group")
     {
         for(auto const & c : l2fib_pw_group)
@@ -4216,28 +3768,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup>();
         c->parent = this;
-        l2fib_pw_group.push_back(std::move(c));
-        children[segment_path] = l2fib_pw_group.back();
-        return children.at(segment_path);
+        l2fib_pw_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_pw_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4290,7 +3838,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_segme
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4318,20 +3866,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_entity
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4397,7 +3937,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::g
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4420,15 +3960,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::ge
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-evpn-incl-m-cast-hardware-ingress")
     {
         for(auto const & c : l2fib_evpn_incl_m_cast_hardware_ingress)
@@ -4436,28 +3967,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardware
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress>();
         c->parent = this;
-        l2fib_evpn_incl_m_cast_hardware_ingress.push_back(std::move(c));
-        children[segment_path] = l2fib_evpn_incl_m_cast_hardware_ingress.back();
-        return children.at(segment_path);
+        l2fib_evpn_incl_m_cast_hardware_ingress.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_evpn_incl_m_cast_hardware_ingress)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4475,10 +4002,8 @@ L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnIncl
 	,mcast_replication_list(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList>())
 {
     l2fib_evpn_incl_m_cast_oles->parent = this;
-    children["l2fib-evpn-incl-m-cast-oles"] = l2fib_evpn_incl_m_cast_oles;
 
     mcast_replication_list->parent = this;
-    children["mcast-replication-list"] = mcast_replication_list;
 
     yang_name = "l2fib-evpn-incl-m-cast-hardware-ingress"; yang_parent_name = "l2fib-evpn-incl-m-cast-hardware-ingresses";
 }
@@ -4511,7 +4036,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4535,64 +4060,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-evpn-incl-m-cast-oles")
     {
-        if(l2fib_evpn_incl_m_cast_oles != nullptr)
-        {
-            children["l2fib-evpn-incl-m-cast-oles"] = l2fib_evpn_incl_m_cast_oles;
-        }
-        else
+        if(l2fib_evpn_incl_m_cast_oles == nullptr)
         {
             l2fib_evpn_incl_m_cast_oles = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles>();
-            l2fib_evpn_incl_m_cast_oles->parent = this;
-            children["l2fib-evpn-incl-m-cast-oles"] = l2fib_evpn_incl_m_cast_oles;
         }
-        return children.at("l2fib-evpn-incl-m-cast-oles");
+        return l2fib_evpn_incl_m_cast_oles;
     }
 
     if(child_yang_name == "mcast-replication-list")
     {
-        if(mcast_replication_list != nullptr)
-        {
-            children["mcast-replication-list"] = mcast_replication_list;
-        }
-        else
+        if(mcast_replication_list == nullptr)
         {
             mcast_replication_list = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList>();
-            mcast_replication_list->parent = this;
-            children["mcast-replication-list"] = mcast_replication_list;
         }
-        return children.at("mcast-replication-list");
+        return mcast_replication_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::get_children() const
 {
-    if(children.find("l2fib-evpn-incl-m-cast-oles") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2fib_evpn_incl_m_cast_oles != nullptr)
     {
-        if(l2fib_evpn_incl_m_cast_oles != nullptr)
-        {
-            children["l2fib-evpn-incl-m-cast-oles"] = l2fib_evpn_incl_m_cast_oles;
-        }
+        children["l2fib-evpn-incl-m-cast-oles"] = l2fib_evpn_incl_m_cast_oles;
     }
 
-    if(children.find("mcast-replication-list") == children.end())
+    if(mcast_replication_list != nullptr)
     {
-        if(mcast_replication_list != nullptr)
-        {
-            children["mcast-replication-list"] = mcast_replication_list;
-        }
+        children["mcast-replication-list"] = mcast_replication_list;
     }
 
     return children;
@@ -4643,7 +4142,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4669,20 +4168,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4740,7 +4231,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4763,15 +4254,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-evpn-incl-m-cast-ole")
     {
         for(auto const & c : l2fib_evpn_incl_m_cast_ole)
@@ -4779,28 +4261,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardware
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle>();
         c->parent = this;
-        l2fib_evpn_incl_m_cast_ole.push_back(std::move(c));
-        children[segment_path] = l2fib_evpn_incl_m_cast_ole.back();
-        return children.at(segment_path);
+        l2fib_evpn_incl_m_cast_ole.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_evpn_incl_m_cast_ole)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4820,10 +4298,8 @@ L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnIncl
 	,next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop>())
 {
     mcast_ole->parent = this;
-    children["mcast-ole"] = mcast_ole;
 
     next_hop->parent = this;
-    children["next-hop"] = next_hop;
 
     yang_name = "l2fib-evpn-incl-m-cast-ole"; yang_parent_name = "l2fib-evpn-incl-m-cast-oles";
 }
@@ -4860,7 +4336,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4886,64 +4362,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mcast-ole")
     {
-        if(mcast_ole != nullptr)
-        {
-            children["mcast-ole"] = mcast_ole;
-        }
-        else
+        if(mcast_ole == nullptr)
         {
             mcast_ole = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle>();
-            mcast_ole->parent = this;
-            children["mcast-ole"] = mcast_ole;
         }
-        return children.at("mcast-ole");
+        return mcast_ole;
     }
 
     if(child_yang_name == "next-hop")
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
-        else
+        if(next_hop == nullptr)
         {
             next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop>();
-            next_hop->parent = this;
-            children["next-hop"] = next_hop;
         }
-        return children.at("next-hop");
+        return next_hop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::get_children() const
 {
-    if(children.find("mcast-ole") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mcast_ole != nullptr)
     {
-        if(mcast_ole != nullptr)
-        {
-            children["mcast-ole"] = mcast_ole;
-        }
+        children["mcast-ole"] = mcast_ole;
     }
 
-    if(children.find("next-hop") == children.end())
+    if(next_hop != nullptr)
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
+        children["next-hop"] = next_hop;
     }
 
     return children;
@@ -4999,7 +4449,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5024,20 +4474,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5064,7 +4506,6 @@ L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnIncl
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "next-hop"; yang_parent_name = "l2fib-evpn-incl-m-cast-ole";
 }
@@ -5103,7 +4544,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5131,41 +4572,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -5223,7 +4647,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5246,20 +4670,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5305,7 +4721,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_segment_p
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5328,15 +4744,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_entity_pat
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-dhcp-binding-detail")
     {
         for(auto const & c : l2fib_dhcp_binding_detail)
@@ -5344,28 +4751,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail>();
         c->parent = this;
-        l2fib_dhcp_binding_detail.push_back(std::move(c));
-        children[segment_path] = l2fib_dhcp_binding_detail.back();
-        return children.at(segment_path);
+        l2fib_dhcp_binding_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_dhcp_binding_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5385,10 +4788,8 @@ L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::L
 	,port(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port>())
 {
     base->parent = this;
-    children["base"] = base;
 
     port->parent = this;
-    children["port"] = port;
 
     yang_name = "l2fib-dhcp-binding-detail"; yang_parent_name = "l2fib-dhcp-binding-details";
 }
@@ -5425,7 +4826,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBind
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5451,64 +4852,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindi
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "port")
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
-        else
+        if(port == nullptr)
         {
             port = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port>();
-            port->parent = this;
-            children["port"] = port;
         }
-        return children.at("port");
+        return port;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("port") == children.end())
+    if(port != nullptr)
     {
-        if(port != nullptr)
-        {
-            children["port"] = port;
-        }
+        children["port"] = port;
     }
 
     return children;
@@ -5558,7 +4933,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBind
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5581,20 +4956,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindi
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5610,10 +4977,8 @@ L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::P
 	,pw(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw>())
 {
     ac->parent = this;
-    children["ac"] = ac;
 
     pw->parent = this;
-    children["pw"] = pw;
 
     yang_name = "port"; yang_parent_name = "l2fib-dhcp-binding-detail";
 }
@@ -5646,7 +5011,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBind
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5670,64 +5035,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindi
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ac")
     {
-        if(ac != nullptr)
-        {
-            children["ac"] = ac;
-        }
-        else
+        if(ac == nullptr)
         {
             ac = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac>();
-            ac->parent = this;
-            children["ac"] = ac;
         }
-        return children.at("ac");
+        return ac;
     }
 
     if(child_yang_name == "pw")
     {
-        if(pw != nullptr)
-        {
-            children["pw"] = pw;
-        }
-        else
+        if(pw == nullptr)
         {
             pw = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw>();
-            pw->parent = this;
-            children["pw"] = pw;
         }
-        return children.at("pw");
+        return pw;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::get_children() const
 {
-    if(children.find("ac") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ac != nullptr)
     {
-        if(ac != nullptr)
-        {
-            children["ac"] = ac;
-        }
+        children["ac"] = ac;
     }
 
-    if(children.find("pw") == children.end())
+    if(pw != nullptr)
     {
-        if(pw != nullptr)
-        {
-            children["pw"] = pw;
-        }
+        children["pw"] = pw;
     }
 
     return children;
@@ -5772,7 +5111,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBind
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5796,20 +5135,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindi
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5858,7 +5189,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBind
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5884,20 +5215,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindi
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5955,7 +5278,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::get_segment_path() const
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5978,15 +5301,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fibx-con")
     {
         for(auto const & c : l2fibx_con)
@@ -5994,28 +5308,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon>();
         c->parent = this;
-        l2fibx_con.push_back(std::move(c));
-        children[segment_path] = l2fibx_con.back();
-        return children.at(segment_path);
+        l2fibx_con.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fibx_con)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6037,13 +5347,10 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::L2FibxCon()
 	,segment2(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2>())
 {
     base->parent = this;
-    children["base"] = base;
 
     segment1->parent = this;
-    children["segment1"] = segment1;
 
     segment2->parent = this;
-    children["segment2"] = segment2;
 
     yang_name = "l2fibx-con"; yang_parent_name = "l2fibx-cons";
 }
@@ -6084,7 +5391,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_segment_pat
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6111,87 +5418,52 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_entity_path(
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "segment1")
     {
-        if(segment1 != nullptr)
-        {
-            children["segment1"] = segment1;
-        }
-        else
+        if(segment1 == nullptr)
         {
             segment1 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1>();
-            segment1->parent = this;
-            children["segment1"] = segment1;
         }
-        return children.at("segment1");
+        return segment1;
     }
 
     if(child_yang_name == "segment2")
     {
-        if(segment2 != nullptr)
-        {
-            children["segment2"] = segment2;
-        }
-        else
+        if(segment2 == nullptr)
         {
             segment2 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2>();
-            segment2->parent = this;
-            children["segment2"] = segment2;
         }
-        return children.at("segment2");
+        return segment2;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("segment1") == children.end())
+    if(segment1 != nullptr)
     {
-        if(segment1 != nullptr)
-        {
-            children["segment1"] = segment1;
-        }
+        children["segment1"] = segment1;
     }
 
-    if(children.find("segment2") == children.end())
+    if(segment2 != nullptr)
     {
-        if(segment2 != nullptr)
-        {
-            children["segment2"] = segment2;
-        }
+        children["segment2"] = segment2;
     }
 
     return children;
@@ -6245,7 +5517,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_segme
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6268,20 +5540,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_entity
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6301,22 +5565,16 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Segment1()
 	,vni(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni>())
 {
     ac->parent = this;
-    children["ac"] = ac;
 
     evpn->parent = this;
-    children["evpn"] = evpn;
 
     monitor_session->parent = this;
-    children["monitor-session"] = monitor_session;
 
     pbb->parent = this;
-    children["pbb"] = pbb;
 
     pw->parent = this;
-    children["pw"] = pw;
 
     vni->parent = this;
-    children["vni"] = vni;
 
     yang_name = "segment1"; yang_parent_name = "l2fibx-con";
 }
@@ -6357,7 +5615,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_s
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6381,156 +5639,94 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_en
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ac")
     {
-        if(ac != nullptr)
-        {
-            children["ac"] = ac;
-        }
-        else
+        if(ac == nullptr)
         {
             ac = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac>();
-            ac->parent = this;
-            children["ac"] = ac;
         }
-        return children.at("ac");
+        return ac;
     }
 
     if(child_yang_name == "evpn")
     {
-        if(evpn != nullptr)
-        {
-            children["evpn"] = evpn;
-        }
-        else
+        if(evpn == nullptr)
         {
             evpn = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn>();
-            evpn->parent = this;
-            children["evpn"] = evpn;
         }
-        return children.at("evpn");
+        return evpn;
     }
 
     if(child_yang_name == "monitor-session")
     {
-        if(monitor_session != nullptr)
-        {
-            children["monitor-session"] = monitor_session;
-        }
-        else
+        if(monitor_session == nullptr)
         {
             monitor_session = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession>();
-            monitor_session->parent = this;
-            children["monitor-session"] = monitor_session;
         }
-        return children.at("monitor-session");
+        return monitor_session;
     }
 
     if(child_yang_name == "pbb")
     {
-        if(pbb != nullptr)
-        {
-            children["pbb"] = pbb;
-        }
-        else
+        if(pbb == nullptr)
         {
             pbb = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb>();
-            pbb->parent = this;
-            children["pbb"] = pbb;
         }
-        return children.at("pbb");
+        return pbb;
     }
 
     if(child_yang_name == "pw")
     {
-        if(pw != nullptr)
-        {
-            children["pw"] = pw;
-        }
-        else
+        if(pw == nullptr)
         {
             pw = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw>();
-            pw->parent = this;
-            children["pw"] = pw;
         }
-        return children.at("pw");
+        return pw;
     }
 
     if(child_yang_name == "vni")
     {
-        if(vni != nullptr)
-        {
-            children["vni"] = vni;
-        }
-        else
+        if(vni == nullptr)
         {
             vni = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni>();
-            vni->parent = this;
-            children["vni"] = vni;
         }
-        return children.at("vni");
+        return vni;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_children() const
 {
-    if(children.find("ac") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ac != nullptr)
     {
-        if(ac != nullptr)
-        {
-            children["ac"] = ac;
-        }
+        children["ac"] = ac;
     }
 
-    if(children.find("evpn") == children.end())
+    if(evpn != nullptr)
     {
-        if(evpn != nullptr)
-        {
-            children["evpn"] = evpn;
-        }
+        children["evpn"] = evpn;
     }
 
-    if(children.find("monitor-session") == children.end())
+    if(monitor_session != nullptr)
     {
-        if(monitor_session != nullptr)
-        {
-            children["monitor-session"] = monitor_session;
-        }
+        children["monitor-session"] = monitor_session;
     }
 
-    if(children.find("pbb") == children.end())
+    if(pbb != nullptr)
     {
-        if(pbb != nullptr)
-        {
-            children["pbb"] = pbb;
-        }
+        children["pbb"] = pbb;
     }
 
-    if(children.find("pw") == children.end())
+    if(pw != nullptr)
     {
-        if(pw != nullptr)
-        {
-            children["pw"] = pw;
-        }
+        children["pw"] = pw;
     }
 
-    if(children.find("vni") == children.end())
+    if(vni != nullptr)
     {
-        if(vni != nullptr)
-        {
-            children["vni"] = vni;
-        }
+        children["vni"] = vni;
     }
 
     return children;
@@ -6565,10 +5761,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Ac()
 	,fxc_next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop>())
 {
     base->parent = this;
-    children["base"] = base;
 
     fxc_next_hop->parent = this;
-    children["fxc-next-hop"] = fxc_next_hop;
 
     yang_name = "ac"; yang_parent_name = "segment1";
 }
@@ -6627,7 +5821,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::g
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6664,64 +5858,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::ge
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "fxc-next-hop")
     {
-        if(fxc_next_hop != nullptr)
-        {
-            children["fxc-next-hop"] = fxc_next_hop;
-        }
-        else
+        if(fxc_next_hop == nullptr)
         {
             fxc_next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop>();
-            fxc_next_hop->parent = this;
-            children["fxc-next-hop"] = fxc_next_hop;
         }
-        return children.at("fxc-next-hop");
+        return fxc_next_hop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("fxc-next-hop") == children.end())
+    if(fxc_next_hop != nullptr)
     {
-        if(fxc_next_hop != nullptr)
-        {
-            children["fxc-next-hop"] = fxc_next_hop;
-        }
+        children["fxc-next-hop"] = fxc_next_hop;
     }
 
     return children;
@@ -6815,7 +5983,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::B
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6838,20 +6006,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Ba
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6870,7 +6030,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::F
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "fxc-next-hop"; yang_parent_name = "ac";
 }
@@ -6909,7 +6068,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::F
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6937,41 +6096,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Fx
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -7029,7 +6171,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::F
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7052,20 +6194,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Fx
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7083,10 +6217,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Pbb()
 	,pbb_union(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion>())
 {
     base->parent = this;
-    children["base"] = base;
 
     pbb_union->parent = this;
-    children["pbb-union"] = pbb_union;
 
     yang_name = "pbb"; yang_parent_name = "segment1";
 }
@@ -7123,7 +6255,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7149,64 +6281,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::g
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "pbb-union")
     {
-        if(pbb_union != nullptr)
-        {
-            children["pbb-union"] = pbb_union;
-        }
-        else
+        if(pbb_union == nullptr)
         {
             pbb_union = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion>();
-            pbb_union->parent = this;
-            children["pbb-union"] = pbb_union;
         }
-        return children.at("pbb-union");
+        return pbb_union;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("pbb-union") == children.end())
+    if(pbb_union != nullptr)
     {
-        if(pbb_union != nullptr)
-        {
-            children["pbb-union"] = pbb_union;
-        }
+        children["pbb-union"] = pbb_union;
     }
 
     return children;
@@ -7256,7 +6362,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7279,20 +6385,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::B
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7308,10 +6406,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Pb
 	,edge(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge>())
 {
     core->parent = this;
-    children["core"] = core;
 
     edge->parent = this;
-    children["edge"] = edge;
 
     yang_name = "pbb-union"; yang_parent_name = "pbb";
 }
@@ -7344,7 +6440,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7368,64 +6464,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::P
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "core")
     {
-        if(core != nullptr)
-        {
-            children["core"] = core;
-        }
-        else
+        if(core == nullptr)
         {
             core = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core>();
-            core->parent = this;
-            children["core"] = core;
         }
-        return children.at("core");
+        return core;
     }
 
     if(child_yang_name == "edge")
     {
-        if(edge != nullptr)
-        {
-            children["edge"] = edge;
-        }
-        else
+        if(edge == nullptr)
         {
             edge = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge>();
-            edge->parent = this;
-            children["edge"] = edge;
         }
-        return children.at("edge");
+        return edge;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::get_children() const
 {
-    if(children.find("core") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(core != nullptr)
     {
-        if(core != nullptr)
-        {
-            children["core"] = core;
-        }
+        children["core"] = core;
     }
 
-    if(children.find("edge") == children.end())
+    if(edge != nullptr)
     {
-        if(edge != nullptr)
-        {
-            children["edge"] = edge;
-        }
+        children["edge"] = edge;
     }
 
     return children;
@@ -7473,7 +6543,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7498,20 +6568,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::P
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7558,7 +6620,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7582,20 +6644,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::P
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7623,7 +6677,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Vni()
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "vni"; yang_parent_name = "segment1";
 }
@@ -7672,7 +6725,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7705,41 +6758,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::g
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -7817,7 +6853,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7840,20 +6876,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::B
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7870,7 +6898,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Evpn()
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "evpn"; yang_parent_name = "segment1";
 }
@@ -7905,7 +6932,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn:
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7931,41 +6958,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -8015,7 +7025,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn:
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8038,20 +7048,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8069,7 +7071,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::M
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "monitor-session"; yang_parent_name = "segment1";
 }
@@ -8106,7 +7107,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Monit
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8133,41 +7134,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Monito
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -8221,7 +7205,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Monit
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8244,20 +7228,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Monito
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8292,16 +7268,12 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Pw()
 	,pseudo_wire_union(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion>())
 {
     backup_pseudo_wire->parent = this;
-    children["backup-pseudo-wire"] = backup_pseudo_wire;
 
     base->parent = this;
-    children["base"] = base;
 
     next_hop->parent = this;
-    children["next-hop"] = next_hop;
 
     pseudo_wire_union->parent = this;
-    children["pseudo-wire-union"] = pseudo_wire_union;
 
     yang_name = "pw"; yang_parent_name = "segment1";
 }
@@ -8372,7 +7344,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::g
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8413,110 +7385,66 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::ge
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-pseudo-wire")
     {
-        if(backup_pseudo_wire != nullptr)
-        {
-            children["backup-pseudo-wire"] = backup_pseudo_wire;
-        }
-        else
+        if(backup_pseudo_wire == nullptr)
         {
             backup_pseudo_wire = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire>();
-            backup_pseudo_wire->parent = this;
-            children["backup-pseudo-wire"] = backup_pseudo_wire;
         }
-        return children.at("backup-pseudo-wire");
+        return backup_pseudo_wire;
     }
 
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "next-hop")
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
-        else
+        if(next_hop == nullptr)
         {
             next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop>();
-            next_hop->parent = this;
-            children["next-hop"] = next_hop;
         }
-        return children.at("next-hop");
+        return next_hop;
     }
 
     if(child_yang_name == "pseudo-wire-union")
     {
-        if(pseudo_wire_union != nullptr)
-        {
-            children["pseudo-wire-union"] = pseudo_wire_union;
-        }
-        else
+        if(pseudo_wire_union == nullptr)
         {
             pseudo_wire_union = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion>();
-            pseudo_wire_union->parent = this;
-            children["pseudo-wire-union"] = pseudo_wire_union;
         }
-        return children.at("pseudo-wire-union");
+        return pseudo_wire_union;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::get_children() const
 {
-    if(children.find("backup-pseudo-wire") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_pseudo_wire != nullptr)
     {
-        if(backup_pseudo_wire != nullptr)
-        {
-            children["backup-pseudo-wire"] = backup_pseudo_wire;
-        }
+        children["backup-pseudo-wire"] = backup_pseudo_wire;
     }
 
-    if(children.find("base") == children.end())
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("next-hop") == children.end())
+    if(next_hop != nullptr)
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
+        children["next-hop"] = next_hop;
     }
 
-    if(children.find("pseudo-wire-union") == children.end())
+    if(pseudo_wire_union != nullptr)
     {
-        if(pseudo_wire_union != nullptr)
-        {
-            children["pseudo-wire-union"] = pseudo_wire_union;
-        }
+        children["pseudo-wire-union"] = pseudo_wire_union;
     }
 
     return children;
@@ -8626,7 +7554,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::B
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8649,20 +7577,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ba
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8681,7 +7601,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Next
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "next-hop"; yang_parent_name = "pw";
 }
@@ -8720,7 +7639,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::N
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8748,41 +7667,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ne
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -8840,7 +7742,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::N
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8863,20 +7765,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ne
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8894,16 +7788,12 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
 	,mpls(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls>())
 {
     l2tp->parent = this;
-    children["l2tp"] = l2tp;
 
     l2tp_ipv6_ts->parent = this;
-    children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
 
     l2tpv2->parent = this;
-    children["l2tpv2"] = l2tpv2;
 
     mpls->parent = this;
-    children["mpls"] = mpls;
 
     yang_name = "pseudo-wire-union"; yang_parent_name = "pw";
 }
@@ -8940,7 +7830,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8964,110 +7854,66 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2tp")
     {
-        if(l2tp != nullptr)
-        {
-            children["l2tp"] = l2tp;
-        }
-        else
+        if(l2tp == nullptr)
         {
             l2tp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp>();
-            l2tp->parent = this;
-            children["l2tp"] = l2tp;
         }
-        return children.at("l2tp");
+        return l2tp;
     }
 
     if(child_yang_name == "l2tp-ipv6-ts")
     {
-        if(l2tp_ipv6_ts != nullptr)
-        {
-            children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
-        }
-        else
+        if(l2tp_ipv6_ts == nullptr)
         {
             l2tp_ipv6_ts = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts>();
-            l2tp_ipv6_ts->parent = this;
-            children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
         }
-        return children.at("l2tp-ipv6-ts");
+        return l2tp_ipv6_ts;
     }
 
     if(child_yang_name == "l2tpv2")
     {
-        if(l2tpv2 != nullptr)
-        {
-            children["l2tpv2"] = l2tpv2;
-        }
-        else
+        if(l2tpv2 == nullptr)
         {
             l2tpv2 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2>();
-            l2tpv2->parent = this;
-            children["l2tpv2"] = l2tpv2;
         }
-        return children.at("l2tpv2");
+        return l2tpv2;
     }
 
     if(child_yang_name == "mpls")
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
-        else
+        if(mpls == nullptr)
         {
             mpls = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls>();
-            mpls->parent = this;
-            children["mpls"] = mpls;
         }
-        return children.at("mpls");
+        return mpls;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::get_children() const
 {
-    if(children.find("l2tp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2tp != nullptr)
     {
-        if(l2tp != nullptr)
-        {
-            children["l2tp"] = l2tp;
-        }
+        children["l2tp"] = l2tp;
     }
 
-    if(children.find("l2tp-ipv6-ts") == children.end())
+    if(l2tp_ipv6_ts != nullptr)
     {
-        if(l2tp_ipv6_ts != nullptr)
-        {
-            children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
-        }
+        children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
     }
 
-    if(children.find("l2tpv2") == children.end())
+    if(l2tpv2 != nullptr)
     {
-        if(l2tpv2 != nullptr)
-        {
-            children["l2tpv2"] = l2tpv2;
-        }
+        children["l2tpv2"] = l2tpv2;
     }
 
-    if(children.find("mpls") == children.end())
+    if(mpls != nullptr)
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
+        children["mpls"] = mpls;
     }
 
     return children;
@@ -9121,7 +7967,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9148,20 +7994,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9197,10 +8035,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
 	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote>())
 {
     local->parent = this;
-    children["local"] = local;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     yang_name = "l2tp"; yang_parent_name = "pseudo-wire-union";
 }
@@ -9241,7 +8077,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9269,64 +8105,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
     return children;
@@ -9396,7 +8206,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9423,20 +8233,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9500,7 +8302,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9527,20 +8329,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9580,10 +8374,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
 	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote>())
 {
     local->parent = this;
-    children["local"] = local;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union";
 }
@@ -9632,7 +8424,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9664,64 +8456,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
     return children;
@@ -9801,7 +8567,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9826,20 +8592,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9889,7 +8647,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9914,20 +8672,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9957,10 +8707,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
 	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>())
 {
     local->parent = this;
-    children["local"] = local;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union";
 }
@@ -10005,7 +8753,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10035,64 +8783,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
     return children;
@@ -10179,7 +8901,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10209,20 +8931,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10298,7 +9012,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10325,20 +9039,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10378,7 +9084,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoW
     atom(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom>())
 {
     atom->parent = this;
-    children["atom"] = atom;
 
     yang_name = "backup-pseudo-wire"; yang_parent_name = "pw";
 }
@@ -10427,7 +9132,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::B
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10460,41 +9165,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ba
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "atom")
     {
-        if(atom != nullptr)
-        {
-            children["atom"] = atom;
-        }
-        else
+        if(atom == nullptr)
         {
             atom = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom>();
-            atom->parent = this;
-            children["atom"] = atom;
         }
-        return children.at("atom");
+        return atom;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::get_children() const
 {
-    if(children.find("atom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(atom != nullptr)
     {
-        if(atom != nullptr)
-        {
-            children["atom"] = atom;
-        }
+        children["atom"] = atom;
     }
 
     return children;
@@ -10584,7 +9272,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::B
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10611,20 +9299,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Ba
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10658,16 +9338,12 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Segment2()
 	,pw(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw>())
 {
     ac->parent = this;
-    children["ac"] = ac;
 
     bp->parent = this;
-    children["bp"] = bp;
 
     fxs->parent = this;
-    children["fxs"] = fxs;
 
     pw->parent = this;
-    children["pw"] = pw;
 
     yang_name = "segment2"; yang_parent_name = "l2fibx-con";
 }
@@ -10704,7 +9380,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_s
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10728,110 +9404,66 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_en
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ac")
     {
-        if(ac != nullptr)
-        {
-            children["ac"] = ac;
-        }
-        else
+        if(ac == nullptr)
         {
             ac = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac>();
-            ac->parent = this;
-            children["ac"] = ac;
         }
-        return children.at("ac");
+        return ac;
     }
 
     if(child_yang_name == "bp")
     {
-        if(bp != nullptr)
-        {
-            children["bp"] = bp;
-        }
-        else
+        if(bp == nullptr)
         {
             bp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp>();
-            bp->parent = this;
-            children["bp"] = bp;
         }
-        return children.at("bp");
+        return bp;
     }
 
     if(child_yang_name == "fxs")
     {
-        if(fxs != nullptr)
-        {
-            children["fxs"] = fxs;
-        }
-        else
+        if(fxs == nullptr)
         {
             fxs = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs>();
-            fxs->parent = this;
-            children["fxs"] = fxs;
         }
-        return children.at("fxs");
+        return fxs;
     }
 
     if(child_yang_name == "pw")
     {
-        if(pw != nullptr)
-        {
-            children["pw"] = pw;
-        }
-        else
+        if(pw == nullptr)
         {
             pw = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw>();
-            pw->parent = this;
-            children["pw"] = pw;
         }
-        return children.at("pw");
+        return pw;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_children() const
 {
-    if(children.find("ac") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ac != nullptr)
     {
-        if(ac != nullptr)
-        {
-            children["ac"] = ac;
-        }
+        children["ac"] = ac;
     }
 
-    if(children.find("bp") == children.end())
+    if(bp != nullptr)
     {
-        if(bp != nullptr)
-        {
-            children["bp"] = bp;
-        }
+        children["bp"] = bp;
     }
 
-    if(children.find("fxs") == children.end())
+    if(fxs != nullptr)
     {
-        if(fxs != nullptr)
-        {
-            children["fxs"] = fxs;
-        }
+        children["fxs"] = fxs;
     }
 
-    if(children.find("pw") == children.end())
+    if(pw != nullptr)
     {
-        if(pw != nullptr)
-        {
-            children["pw"] = pw;
-        }
+        children["pw"] = pw;
     }
 
     return children;
@@ -10866,10 +9498,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Ac()
 	,fxc_next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop>())
 {
     base->parent = this;
-    children["base"] = base;
 
     fxc_next_hop->parent = this;
-    children["fxc-next-hop"] = fxc_next_hop;
 
     yang_name = "ac"; yang_parent_name = "segment2";
 }
@@ -10928,7 +9558,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::g
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10965,64 +9595,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::ge
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "fxc-next-hop")
     {
-        if(fxc_next_hop != nullptr)
-        {
-            children["fxc-next-hop"] = fxc_next_hop;
-        }
-        else
+        if(fxc_next_hop == nullptr)
         {
             fxc_next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop>();
-            fxc_next_hop->parent = this;
-            children["fxc-next-hop"] = fxc_next_hop;
         }
-        return children.at("fxc-next-hop");
+        return fxc_next_hop;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("fxc-next-hop") == children.end())
+    if(fxc_next_hop != nullptr)
     {
-        if(fxc_next_hop != nullptr)
-        {
-            children["fxc-next-hop"] = fxc_next_hop;
-        }
+        children["fxc-next-hop"] = fxc_next_hop;
     }
 
     return children;
@@ -11116,7 +9720,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::B
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11139,20 +9743,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Ba
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11171,7 +9767,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::F
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "fxc-next-hop"; yang_parent_name = "ac";
 }
@@ -11210,7 +9805,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::F
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11238,41 +9833,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Fx
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -11330,7 +9908,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::F
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11353,20 +9931,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Fx
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11388,13 +9958,10 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Bp()
 	,p2mp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp>())
 {
     base->parent = this;
-    children["base"] = base;
 
     oper->parent = this;
-    children["oper"] = oper;
 
     p2mp->parent = this;
-    children["p2mp"] = p2mp;
 
     yang_name = "bp"; yang_parent_name = "segment2";
 }
@@ -11439,7 +10006,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::g
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11468,87 +10035,52 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::ge
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "oper")
     {
-        if(oper != nullptr)
-        {
-            children["oper"] = oper;
-        }
-        else
+        if(oper == nullptr)
         {
             oper = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper>();
-            oper->parent = this;
-            children["oper"] = oper;
         }
-        return children.at("oper");
+        return oper;
     }
 
     if(child_yang_name == "p2mp")
     {
-        if(p2mp != nullptr)
-        {
-            children["p2mp"] = p2mp;
-        }
-        else
+        if(p2mp == nullptr)
         {
             p2mp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp>();
-            p2mp->parent = this;
-            children["p2mp"] = p2mp;
         }
-        return children.at("p2mp");
+        return p2mp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("oper") == children.end())
+    if(oper != nullptr)
     {
-        if(oper != nullptr)
-        {
-            children["oper"] = oper;
-        }
+        children["oper"] = oper;
     }
 
-    if(children.find("p2mp") == children.end())
+    if(p2mp != nullptr)
     {
-        if(p2mp != nullptr)
-        {
-            children["p2mp"] = p2mp;
-        }
+        children["p2mp"] = p2mp;
     }
 
     return children;
@@ -11610,7 +10142,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::B
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11633,20 +10165,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Ba
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11666,7 +10190,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Oper()
     operational_information(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation>())
 {
     operational_information->parent = this;
-    children["operational-information"] = operational_information;
 
     yang_name = "oper"; yang_parent_name = "bp";
 }
@@ -11707,7 +10230,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::O
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11736,41 +10259,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Op
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "operational-information")
     {
-        if(operational_information != nullptr)
-        {
-            children["operational-information"] = operational_information;
-        }
-        else
+        if(operational_information == nullptr)
         {
             operational_information = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation>();
-            operational_information->parent = this;
-            children["operational-information"] = operational_information;
         }
-        return children.at("operational-information");
+        return operational_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::get_children() const
 {
-    if(children.find("operational-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(operational_information != nullptr)
     {
-        if(operational_information != nullptr)
-        {
-            children["operational-information"] = operational_information;
-        }
+        children["operational-information"] = operational_information;
     }
 
     return children;
@@ -12013,7 +10519,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::O
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12093,15 +10599,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Op
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "feature")
     {
         for(auto const & c : feature)
@@ -12109,28 +10606,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature>();
         c->parent = this;
-        feature.push_back(std::move(c));
-        children[segment_path] = feature.back();
-        return children.at(segment_path);
+        feature.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : feature)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12377,13 +10870,10 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Operati
 	,mld(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>())
 {
     dhcp->parent = this;
-    children["dhcp"] = dhcp;
 
     igmp->parent = this;
-    children["igmp"] = igmp;
 
     mld->parent = this;
-    children["mld"] = mld;
 
     yang_name = "feature"; yang_parent_name = "operational-information";
 }
@@ -12418,7 +10908,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::O
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12442,87 +10932,52 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Op
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dhcp")
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
-        else
+        if(dhcp == nullptr)
         {
             dhcp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>();
-            dhcp->parent = this;
-            children["dhcp"] = dhcp;
         }
-        return children.at("dhcp");
+        return dhcp;
     }
 
     if(child_yang_name == "igmp")
     {
-        if(igmp != nullptr)
-        {
-            children["igmp"] = igmp;
-        }
-        else
+        if(igmp == nullptr)
         {
             igmp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>();
-            igmp->parent = this;
-            children["igmp"] = igmp;
         }
-        return children.at("igmp");
+        return igmp;
     }
 
     if(child_yang_name == "mld")
     {
-        if(mld != nullptr)
-        {
-            children["mld"] = mld;
-        }
-        else
+        if(mld == nullptr)
         {
             mld = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>();
-            mld->parent = this;
-            children["mld"] = mld;
         }
-        return children.at("mld");
+        return mld;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_children() const
 {
-    if(children.find("dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
+        children["dhcp"] = dhcp;
     }
 
-    if(children.find("igmp") == children.end())
+    if(igmp != nullptr)
     {
-        if(igmp != nullptr)
-        {
-            children["igmp"] = igmp;
-        }
+        children["igmp"] = igmp;
     }
 
-    if(children.find("mld") == children.end())
+    if(mld != nullptr)
     {
-        if(mld != nullptr)
-        {
-            children["mld"] = mld;
-        }
+        children["mld"] = mld;
     }
 
     return children;
@@ -12567,7 +11022,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::O
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12591,20 +11046,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Op
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12647,7 +11094,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::O
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12671,20 +11118,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Op
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12727,7 +11166,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::O
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12751,20 +11190,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Op
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12822,7 +11253,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12851,20 +11282,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12904,7 +11327,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Fxs()
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "fxs"; yang_parent_name = "segment2";
 }
@@ -12937,7 +11359,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12962,41 +11384,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::g
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -13042,7 +11447,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13065,20 +11470,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::B
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13113,16 +11510,12 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Pw()
 	,pseudo_wire_union(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion>())
 {
     backup_pseudo_wire->parent = this;
-    children["backup-pseudo-wire"] = backup_pseudo_wire;
 
     base->parent = this;
-    children["base"] = base;
 
     next_hop->parent = this;
-    children["next-hop"] = next_hop;
 
     pseudo_wire_union->parent = this;
-    children["pseudo-wire-union"] = pseudo_wire_union;
 
     yang_name = "pw"; yang_parent_name = "segment2";
 }
@@ -13193,7 +11586,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::g
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13234,110 +11627,66 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::ge
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-pseudo-wire")
     {
-        if(backup_pseudo_wire != nullptr)
-        {
-            children["backup-pseudo-wire"] = backup_pseudo_wire;
-        }
-        else
+        if(backup_pseudo_wire == nullptr)
         {
             backup_pseudo_wire = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire>();
-            backup_pseudo_wire->parent = this;
-            children["backup-pseudo-wire"] = backup_pseudo_wire;
         }
-        return children.at("backup-pseudo-wire");
+        return backup_pseudo_wire;
     }
 
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     if(child_yang_name == "next-hop")
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
-        else
+        if(next_hop == nullptr)
         {
             next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop>();
-            next_hop->parent = this;
-            children["next-hop"] = next_hop;
         }
-        return children.at("next-hop");
+        return next_hop;
     }
 
     if(child_yang_name == "pseudo-wire-union")
     {
-        if(pseudo_wire_union != nullptr)
-        {
-            children["pseudo-wire-union"] = pseudo_wire_union;
-        }
-        else
+        if(pseudo_wire_union == nullptr)
         {
             pseudo_wire_union = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion>();
-            pseudo_wire_union->parent = this;
-            children["pseudo-wire-union"] = pseudo_wire_union;
         }
-        return children.at("pseudo-wire-union");
+        return pseudo_wire_union;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::get_children() const
 {
-    if(children.find("backup-pseudo-wire") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_pseudo_wire != nullptr)
     {
-        if(backup_pseudo_wire != nullptr)
-        {
-            children["backup-pseudo-wire"] = backup_pseudo_wire;
-        }
+        children["backup-pseudo-wire"] = backup_pseudo_wire;
     }
 
-    if(children.find("base") == children.end())
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
-    if(children.find("next-hop") == children.end())
+    if(next_hop != nullptr)
     {
-        if(next_hop != nullptr)
-        {
-            children["next-hop"] = next_hop;
-        }
+        children["next-hop"] = next_hop;
     }
 
-    if(children.find("pseudo-wire-union") == children.end())
+    if(pseudo_wire_union != nullptr)
     {
-        if(pseudo_wire_union != nullptr)
-        {
-            children["pseudo-wire-union"] = pseudo_wire_union;
-        }
+        children["pseudo-wire-union"] = pseudo_wire_union;
     }
 
     return children;
@@ -13447,7 +11796,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::B
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13470,20 +11819,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ba
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13502,7 +11843,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Next
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "next-hop"; yang_parent_name = "pw";
 }
@@ -13541,7 +11881,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::N
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13569,41 +11909,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ne
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -13661,7 +11984,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::N
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13684,20 +12007,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ne
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13715,16 +12030,12 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
 	,mpls(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls>())
 {
     l2tp->parent = this;
-    children["l2tp"] = l2tp;
 
     l2tp_ipv6_ts->parent = this;
-    children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
 
     l2tpv2->parent = this;
-    children["l2tpv2"] = l2tpv2;
 
     mpls->parent = this;
-    children["mpls"] = mpls;
 
     yang_name = "pseudo-wire-union"; yang_parent_name = "pw";
 }
@@ -13761,7 +12072,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13785,110 +12096,66 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2tp")
     {
-        if(l2tp != nullptr)
-        {
-            children["l2tp"] = l2tp;
-        }
-        else
+        if(l2tp == nullptr)
         {
             l2tp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp>();
-            l2tp->parent = this;
-            children["l2tp"] = l2tp;
         }
-        return children.at("l2tp");
+        return l2tp;
     }
 
     if(child_yang_name == "l2tp-ipv6-ts")
     {
-        if(l2tp_ipv6_ts != nullptr)
-        {
-            children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
-        }
-        else
+        if(l2tp_ipv6_ts == nullptr)
         {
             l2tp_ipv6_ts = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts>();
-            l2tp_ipv6_ts->parent = this;
-            children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
         }
-        return children.at("l2tp-ipv6-ts");
+        return l2tp_ipv6_ts;
     }
 
     if(child_yang_name == "l2tpv2")
     {
-        if(l2tpv2 != nullptr)
-        {
-            children["l2tpv2"] = l2tpv2;
-        }
-        else
+        if(l2tpv2 == nullptr)
         {
             l2tpv2 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2>();
-            l2tpv2->parent = this;
-            children["l2tpv2"] = l2tpv2;
         }
-        return children.at("l2tpv2");
+        return l2tpv2;
     }
 
     if(child_yang_name == "mpls")
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
-        else
+        if(mpls == nullptr)
         {
             mpls = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls>();
-            mpls->parent = this;
-            children["mpls"] = mpls;
         }
-        return children.at("mpls");
+        return mpls;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::get_children() const
 {
-    if(children.find("l2tp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2tp != nullptr)
     {
-        if(l2tp != nullptr)
-        {
-            children["l2tp"] = l2tp;
-        }
+        children["l2tp"] = l2tp;
     }
 
-    if(children.find("l2tp-ipv6-ts") == children.end())
+    if(l2tp_ipv6_ts != nullptr)
     {
-        if(l2tp_ipv6_ts != nullptr)
-        {
-            children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
-        }
+        children["l2tp-ipv6-ts"] = l2tp_ipv6_ts;
     }
 
-    if(children.find("l2tpv2") == children.end())
+    if(l2tpv2 != nullptr)
     {
-        if(l2tpv2 != nullptr)
-        {
-            children["l2tpv2"] = l2tpv2;
-        }
+        children["l2tpv2"] = l2tpv2;
     }
 
-    if(children.find("mpls") == children.end())
+    if(mpls != nullptr)
     {
-        if(mpls != nullptr)
-        {
-            children["mpls"] = mpls;
-        }
+        children["mpls"] = mpls;
     }
 
     return children;
@@ -13942,7 +12209,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13969,20 +12236,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14018,10 +12277,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
 	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote>())
 {
     local->parent = this;
-    children["local"] = local;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     yang_name = "l2tp"; yang_parent_name = "pseudo-wire-union";
 }
@@ -14062,7 +12319,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14090,64 +12347,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
     return children;
@@ -14217,7 +12448,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14244,20 +12475,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14321,7 +12544,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14348,20 +12571,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14401,10 +12616,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
 	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote>())
 {
     local->parent = this;
-    children["local"] = local;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union";
 }
@@ -14453,7 +12666,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14485,64 +12698,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
     return children;
@@ -14622,7 +12809,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14647,20 +12834,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14710,7 +12889,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14735,20 +12914,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14778,10 +12949,8 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
 	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>())
 {
     local->parent = this;
-    children["local"] = local;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union";
 }
@@ -14826,7 +12995,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14856,64 +13025,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
     return children;
@@ -15000,7 +13143,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15030,20 +13173,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15119,7 +13254,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::P
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15146,20 +13281,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ps
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15199,7 +13326,6 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoW
     atom(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom>())
 {
     atom->parent = this;
-    children["atom"] = atom;
 
     yang_name = "backup-pseudo-wire"; yang_parent_name = "pw";
 }
@@ -15248,7 +13374,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::B
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15281,41 +13407,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ba
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "atom")
     {
-        if(atom != nullptr)
-        {
-            children["atom"] = atom;
-        }
-        else
+        if(atom == nullptr)
         {
             atom = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom>();
-            atom->parent = this;
-            children["atom"] = atom;
         }
-        return children.at("atom");
+        return atom;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::get_children() const
 {
-    if(children.find("atom") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(atom != nullptr)
     {
-        if(atom != nullptr)
-        {
-            children["atom"] = atom;
-        }
+        children["atom"] = atom;
     }
 
     return children;
@@ -15405,7 +13514,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::B
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15432,20 +13541,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Ba
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15507,7 +13608,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_segment_path(
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15530,15 +13631,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_entity_path(En
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-main-interface")
     {
         for(auto const & c : l2fib_main_interface)
@@ -15546,28 +13638,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface>();
         c->parent = this;
-        l2fib_main_interface.push_back(std::move(c));
-        children[segment_path] = l2fib_main_interface.back();
-        return children.at(segment_path);
+        l2fib_main_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_main_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15591,25 +13679,18 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
 	,l2fib_main_interface_instances(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances>())
 {
     l2fib_main_interface_detail_info->parent = this;
-    children["l2fib-main-interface-detail-info"] = l2fib_main_interface_detail_info;
 
     l2fib_main_interface_hardware_egress_detail_info->parent = this;
-    children["l2fib-main-interface-hardware-egress-detail-info"] = l2fib_main_interface_hardware_egress_detail_info;
 
     l2fib_main_interface_hardware_egress_info->parent = this;
-    children["l2fib-main-interface-hardware-egress-info"] = l2fib_main_interface_hardware_egress_info;
 
     l2fib_main_interface_hardware_ingress_detail_info->parent = this;
-    children["l2fib-main-interface-hardware-ingress-detail-info"] = l2fib_main_interface_hardware_ingress_detail_info;
 
     l2fib_main_interface_hardware_ingress_info->parent = this;
-    children["l2fib-main-interface-hardware-ingress-info"] = l2fib_main_interface_hardware_ingress_info;
 
     l2fib_main_interface_info->parent = this;
-    children["l2fib-main-interface-info"] = l2fib_main_interface_info;
 
     l2fib_main_interface_instances->parent = this;
-    children["l2fib-main-interface-instances"] = l2fib_main_interface_instances;
 
     yang_name = "l2fib-main-interface"; yang_parent_name = "l2fib-main-interfaces";
 }
@@ -15654,7 +13735,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15679,179 +13760,108 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-main-interface-detail-info")
     {
-        if(l2fib_main_interface_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-detail-info"] = l2fib_main_interface_detail_info;
-        }
-        else
+        if(l2fib_main_interface_detail_info == nullptr)
         {
             l2fib_main_interface_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo>();
-            l2fib_main_interface_detail_info->parent = this;
-            children["l2fib-main-interface-detail-info"] = l2fib_main_interface_detail_info;
         }
-        return children.at("l2fib-main-interface-detail-info");
+        return l2fib_main_interface_detail_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-hardware-egress-detail-info")
     {
-        if(l2fib_main_interface_hardware_egress_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-hardware-egress-detail-info"] = l2fib_main_interface_hardware_egress_detail_info;
-        }
-        else
+        if(l2fib_main_interface_hardware_egress_detail_info == nullptr)
         {
             l2fib_main_interface_hardware_egress_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo>();
-            l2fib_main_interface_hardware_egress_detail_info->parent = this;
-            children["l2fib-main-interface-hardware-egress-detail-info"] = l2fib_main_interface_hardware_egress_detail_info;
         }
-        return children.at("l2fib-main-interface-hardware-egress-detail-info");
+        return l2fib_main_interface_hardware_egress_detail_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-hardware-egress-info")
     {
-        if(l2fib_main_interface_hardware_egress_info != nullptr)
-        {
-            children["l2fib-main-interface-hardware-egress-info"] = l2fib_main_interface_hardware_egress_info;
-        }
-        else
+        if(l2fib_main_interface_hardware_egress_info == nullptr)
         {
             l2fib_main_interface_hardware_egress_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo>();
-            l2fib_main_interface_hardware_egress_info->parent = this;
-            children["l2fib-main-interface-hardware-egress-info"] = l2fib_main_interface_hardware_egress_info;
         }
-        return children.at("l2fib-main-interface-hardware-egress-info");
+        return l2fib_main_interface_hardware_egress_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-hardware-ingress-detail-info")
     {
-        if(l2fib_main_interface_hardware_ingress_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-hardware-ingress-detail-info"] = l2fib_main_interface_hardware_ingress_detail_info;
-        }
-        else
+        if(l2fib_main_interface_hardware_ingress_detail_info == nullptr)
         {
             l2fib_main_interface_hardware_ingress_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo>();
-            l2fib_main_interface_hardware_ingress_detail_info->parent = this;
-            children["l2fib-main-interface-hardware-ingress-detail-info"] = l2fib_main_interface_hardware_ingress_detail_info;
         }
-        return children.at("l2fib-main-interface-hardware-ingress-detail-info");
+        return l2fib_main_interface_hardware_ingress_detail_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-hardware-ingress-info")
     {
-        if(l2fib_main_interface_hardware_ingress_info != nullptr)
-        {
-            children["l2fib-main-interface-hardware-ingress-info"] = l2fib_main_interface_hardware_ingress_info;
-        }
-        else
+        if(l2fib_main_interface_hardware_ingress_info == nullptr)
         {
             l2fib_main_interface_hardware_ingress_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo>();
-            l2fib_main_interface_hardware_ingress_info->parent = this;
-            children["l2fib-main-interface-hardware-ingress-info"] = l2fib_main_interface_hardware_ingress_info;
         }
-        return children.at("l2fib-main-interface-hardware-ingress-info");
+        return l2fib_main_interface_hardware_ingress_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-info")
     {
-        if(l2fib_main_interface_info != nullptr)
-        {
-            children["l2fib-main-interface-info"] = l2fib_main_interface_info;
-        }
-        else
+        if(l2fib_main_interface_info == nullptr)
         {
             l2fib_main_interface_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo>();
-            l2fib_main_interface_info->parent = this;
-            children["l2fib-main-interface-info"] = l2fib_main_interface_info;
         }
-        return children.at("l2fib-main-interface-info");
+        return l2fib_main_interface_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-instances")
     {
-        if(l2fib_main_interface_instances != nullptr)
-        {
-            children["l2fib-main-interface-instances"] = l2fib_main_interface_instances;
-        }
-        else
+        if(l2fib_main_interface_instances == nullptr)
         {
             l2fib_main_interface_instances = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances>();
-            l2fib_main_interface_instances->parent = this;
-            children["l2fib-main-interface-instances"] = l2fib_main_interface_instances;
         }
-        return children.at("l2fib-main-interface-instances");
+        return l2fib_main_interface_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::get_children() const
 {
-    if(children.find("l2fib-main-interface-detail-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2fib_main_interface_detail_info != nullptr)
     {
-        if(l2fib_main_interface_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-detail-info"] = l2fib_main_interface_detail_info;
-        }
+        children["l2fib-main-interface-detail-info"] = l2fib_main_interface_detail_info;
     }
 
-    if(children.find("l2fib-main-interface-hardware-egress-detail-info") == children.end())
+    if(l2fib_main_interface_hardware_egress_detail_info != nullptr)
     {
-        if(l2fib_main_interface_hardware_egress_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-hardware-egress-detail-info"] = l2fib_main_interface_hardware_egress_detail_info;
-        }
+        children["l2fib-main-interface-hardware-egress-detail-info"] = l2fib_main_interface_hardware_egress_detail_info;
     }
 
-    if(children.find("l2fib-main-interface-hardware-egress-info") == children.end())
+    if(l2fib_main_interface_hardware_egress_info != nullptr)
     {
-        if(l2fib_main_interface_hardware_egress_info != nullptr)
-        {
-            children["l2fib-main-interface-hardware-egress-info"] = l2fib_main_interface_hardware_egress_info;
-        }
+        children["l2fib-main-interface-hardware-egress-info"] = l2fib_main_interface_hardware_egress_info;
     }
 
-    if(children.find("l2fib-main-interface-hardware-ingress-detail-info") == children.end())
+    if(l2fib_main_interface_hardware_ingress_detail_info != nullptr)
     {
-        if(l2fib_main_interface_hardware_ingress_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-hardware-ingress-detail-info"] = l2fib_main_interface_hardware_ingress_detail_info;
-        }
+        children["l2fib-main-interface-hardware-ingress-detail-info"] = l2fib_main_interface_hardware_ingress_detail_info;
     }
 
-    if(children.find("l2fib-main-interface-hardware-ingress-info") == children.end())
+    if(l2fib_main_interface_hardware_ingress_info != nullptr)
     {
-        if(l2fib_main_interface_hardware_ingress_info != nullptr)
-        {
-            children["l2fib-main-interface-hardware-ingress-info"] = l2fib_main_interface_hardware_ingress_info;
-        }
+        children["l2fib-main-interface-hardware-ingress-info"] = l2fib_main_interface_hardware_ingress_info;
     }
 
-    if(children.find("l2fib-main-interface-info") == children.end())
+    if(l2fib_main_interface_info != nullptr)
     {
-        if(l2fib_main_interface_info != nullptr)
-        {
-            children["l2fib-main-interface-info"] = l2fib_main_interface_info;
-        }
+        children["l2fib-main-interface-info"] = l2fib_main_interface_info;
     }
 
-    if(children.find("l2fib-main-interface-instances") == children.end())
+    if(l2fib_main_interface_instances != nullptr)
     {
-        if(l2fib_main_interface_instances != nullptr)
-        {
-            children["l2fib-main-interface-instances"] = l2fib_main_interface_instances;
-        }
+        children["l2fib-main-interface-instances"] = l2fib_main_interface_instances;
     }
 
     return children;
@@ -15985,7 +13995,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16024,15 +14034,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "evpn-shg-remote-info")
     {
         for(auto const & c : evpn_shg_remote_info)
@@ -16040,28 +14041,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo>();
         c->parent = this;
-        evpn_shg_remote_info.push_back(std::move(c));
-        children[segment_path] = evpn_shg_remote_info.back();
-        return children.at(segment_path);
+        evpn_shg_remote_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : evpn_shg_remote_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16120,7 +14117,6 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     remote_split_horizon_group_label(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>())
 {
     remote_split_horizon_group_label->parent = this;
-    children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
 
     yang_name = "evpn-shg-remote-info"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info";
 }
@@ -16149,7 +14145,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16172,41 +14168,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-split-horizon-group-label")
     {
-        if(remote_split_horizon_group_label != nullptr)
-        {
-            children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
-        }
-        else
+        if(remote_split_horizon_group_label == nullptr)
         {
             remote_split_horizon_group_label = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>();
-            remote_split_horizon_group_label->parent = this;
-            children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
         }
-        return children.at("remote-split-horizon-group-label");
+        return remote_split_horizon_group_label;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_children() const
 {
-    if(children.find("remote-split-horizon-group-label") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(remote_split_horizon_group_label != nullptr)
     {
-        if(remote_split_horizon_group_label != nullptr)
-        {
-            children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
-        }
+        children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
     }
 
     return children;
@@ -16250,7 +14229,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16275,20 +14254,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16377,7 +14348,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16409,20 +14380,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16492,7 +14455,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16515,15 +14478,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-main-interface-instance")
     {
         for(auto const & c : l2fib_main_interface_instance)
@@ -16531,28 +14485,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance>();
         c->parent = this;
-        l2fib_main_interface_instance.push_back(std::move(c));
-        children[segment_path] = l2fib_main_interface_instance.back();
-        return children.at(segment_path);
+        l2fib_main_interface_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_main_interface_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16576,28 +14526,20 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
 	,l2fib_main_interface_instance_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo>())
 {
     l2fib_main_interface_instance_bridge_port_details->parent = this;
-    children["l2fib-main-interface-instance-bridge-port-details"] = l2fib_main_interface_instance_bridge_port_details;
 
     l2fib_main_interface_instance_bridge_ports->parent = this;
-    children["l2fib-main-interface-instance-bridge-ports"] = l2fib_main_interface_instance_bridge_ports;
 
     l2fib_main_interface_instance_detail_info->parent = this;
-    children["l2fib-main-interface-instance-detail-info"] = l2fib_main_interface_instance_detail_info;
 
     l2fib_main_interface_instance_hardware_egress_detail_info->parent = this;
-    children["l2fib-main-interface-instance-hardware-egress-detail-info"] = l2fib_main_interface_instance_hardware_egress_detail_info;
 
     l2fib_main_interface_instance_hardware_egress_info->parent = this;
-    children["l2fib-main-interface-instance-hardware-egress-info"] = l2fib_main_interface_instance_hardware_egress_info;
 
     l2fib_main_interface_instance_hardware_ingress_detail_info->parent = this;
-    children["l2fib-main-interface-instance-hardware-ingress-detail-info"] = l2fib_main_interface_instance_hardware_ingress_detail_info;
 
     l2fib_main_interface_instance_hardware_ingress_info->parent = this;
-    children["l2fib-main-interface-instance-hardware-ingress-info"] = l2fib_main_interface_instance_hardware_ingress_info;
 
     l2fib_main_interface_instance_info->parent = this;
-    children["l2fib-main-interface-instance-info"] = l2fib_main_interface_instance_info;
 
     yang_name = "l2fib-main-interface-instance"; yang_parent_name = "l2fib-main-interface-instances";
 }
@@ -16642,7 +14584,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16666,202 +14608,122 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-main-interface-instance-bridge-port-details")
     {
-        if(l2fib_main_interface_instance_bridge_port_details != nullptr)
-        {
-            children["l2fib-main-interface-instance-bridge-port-details"] = l2fib_main_interface_instance_bridge_port_details;
-        }
-        else
+        if(l2fib_main_interface_instance_bridge_port_details == nullptr)
         {
             l2fib_main_interface_instance_bridge_port_details = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails>();
-            l2fib_main_interface_instance_bridge_port_details->parent = this;
-            children["l2fib-main-interface-instance-bridge-port-details"] = l2fib_main_interface_instance_bridge_port_details;
         }
-        return children.at("l2fib-main-interface-instance-bridge-port-details");
+        return l2fib_main_interface_instance_bridge_port_details;
     }
 
     if(child_yang_name == "l2fib-main-interface-instance-bridge-ports")
     {
-        if(l2fib_main_interface_instance_bridge_ports != nullptr)
-        {
-            children["l2fib-main-interface-instance-bridge-ports"] = l2fib_main_interface_instance_bridge_ports;
-        }
-        else
+        if(l2fib_main_interface_instance_bridge_ports == nullptr)
         {
             l2fib_main_interface_instance_bridge_ports = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts>();
-            l2fib_main_interface_instance_bridge_ports->parent = this;
-            children["l2fib-main-interface-instance-bridge-ports"] = l2fib_main_interface_instance_bridge_ports;
         }
-        return children.at("l2fib-main-interface-instance-bridge-ports");
+        return l2fib_main_interface_instance_bridge_ports;
     }
 
     if(child_yang_name == "l2fib-main-interface-instance-detail-info")
     {
-        if(l2fib_main_interface_instance_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-detail-info"] = l2fib_main_interface_instance_detail_info;
-        }
-        else
+        if(l2fib_main_interface_instance_detail_info == nullptr)
         {
             l2fib_main_interface_instance_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo>();
-            l2fib_main_interface_instance_detail_info->parent = this;
-            children["l2fib-main-interface-instance-detail-info"] = l2fib_main_interface_instance_detail_info;
         }
-        return children.at("l2fib-main-interface-instance-detail-info");
+        return l2fib_main_interface_instance_detail_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-instance-hardware-egress-detail-info")
     {
-        if(l2fib_main_interface_instance_hardware_egress_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-hardware-egress-detail-info"] = l2fib_main_interface_instance_hardware_egress_detail_info;
-        }
-        else
+        if(l2fib_main_interface_instance_hardware_egress_detail_info == nullptr)
         {
             l2fib_main_interface_instance_hardware_egress_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo>();
-            l2fib_main_interface_instance_hardware_egress_detail_info->parent = this;
-            children["l2fib-main-interface-instance-hardware-egress-detail-info"] = l2fib_main_interface_instance_hardware_egress_detail_info;
         }
-        return children.at("l2fib-main-interface-instance-hardware-egress-detail-info");
+        return l2fib_main_interface_instance_hardware_egress_detail_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-instance-hardware-egress-info")
     {
-        if(l2fib_main_interface_instance_hardware_egress_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-hardware-egress-info"] = l2fib_main_interface_instance_hardware_egress_info;
-        }
-        else
+        if(l2fib_main_interface_instance_hardware_egress_info == nullptr)
         {
             l2fib_main_interface_instance_hardware_egress_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo>();
-            l2fib_main_interface_instance_hardware_egress_info->parent = this;
-            children["l2fib-main-interface-instance-hardware-egress-info"] = l2fib_main_interface_instance_hardware_egress_info;
         }
-        return children.at("l2fib-main-interface-instance-hardware-egress-info");
+        return l2fib_main_interface_instance_hardware_egress_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-instance-hardware-ingress-detail-info")
     {
-        if(l2fib_main_interface_instance_hardware_ingress_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-hardware-ingress-detail-info"] = l2fib_main_interface_instance_hardware_ingress_detail_info;
-        }
-        else
+        if(l2fib_main_interface_instance_hardware_ingress_detail_info == nullptr)
         {
             l2fib_main_interface_instance_hardware_ingress_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo>();
-            l2fib_main_interface_instance_hardware_ingress_detail_info->parent = this;
-            children["l2fib-main-interface-instance-hardware-ingress-detail-info"] = l2fib_main_interface_instance_hardware_ingress_detail_info;
         }
-        return children.at("l2fib-main-interface-instance-hardware-ingress-detail-info");
+        return l2fib_main_interface_instance_hardware_ingress_detail_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-instance-hardware-ingress-info")
     {
-        if(l2fib_main_interface_instance_hardware_ingress_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-hardware-ingress-info"] = l2fib_main_interface_instance_hardware_ingress_info;
-        }
-        else
+        if(l2fib_main_interface_instance_hardware_ingress_info == nullptr)
         {
             l2fib_main_interface_instance_hardware_ingress_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo>();
-            l2fib_main_interface_instance_hardware_ingress_info->parent = this;
-            children["l2fib-main-interface-instance-hardware-ingress-info"] = l2fib_main_interface_instance_hardware_ingress_info;
         }
-        return children.at("l2fib-main-interface-instance-hardware-ingress-info");
+        return l2fib_main_interface_instance_hardware_ingress_info;
     }
 
     if(child_yang_name == "l2fib-main-interface-instance-info")
     {
-        if(l2fib_main_interface_instance_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-info"] = l2fib_main_interface_instance_info;
-        }
-        else
+        if(l2fib_main_interface_instance_info == nullptr)
         {
             l2fib_main_interface_instance_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo>();
-            l2fib_main_interface_instance_info->parent = this;
-            children["l2fib-main-interface-instance-info"] = l2fib_main_interface_instance_info;
         }
-        return children.at("l2fib-main-interface-instance-info");
+        return l2fib_main_interface_instance_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::get_children() const
 {
-    if(children.find("l2fib-main-interface-instance-bridge-port-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2fib_main_interface_instance_bridge_port_details != nullptr)
     {
-        if(l2fib_main_interface_instance_bridge_port_details != nullptr)
-        {
-            children["l2fib-main-interface-instance-bridge-port-details"] = l2fib_main_interface_instance_bridge_port_details;
-        }
+        children["l2fib-main-interface-instance-bridge-port-details"] = l2fib_main_interface_instance_bridge_port_details;
     }
 
-    if(children.find("l2fib-main-interface-instance-bridge-ports") == children.end())
+    if(l2fib_main_interface_instance_bridge_ports != nullptr)
     {
-        if(l2fib_main_interface_instance_bridge_ports != nullptr)
-        {
-            children["l2fib-main-interface-instance-bridge-ports"] = l2fib_main_interface_instance_bridge_ports;
-        }
+        children["l2fib-main-interface-instance-bridge-ports"] = l2fib_main_interface_instance_bridge_ports;
     }
 
-    if(children.find("l2fib-main-interface-instance-detail-info") == children.end())
+    if(l2fib_main_interface_instance_detail_info != nullptr)
     {
-        if(l2fib_main_interface_instance_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-detail-info"] = l2fib_main_interface_instance_detail_info;
-        }
+        children["l2fib-main-interface-instance-detail-info"] = l2fib_main_interface_instance_detail_info;
     }
 
-    if(children.find("l2fib-main-interface-instance-hardware-egress-detail-info") == children.end())
+    if(l2fib_main_interface_instance_hardware_egress_detail_info != nullptr)
     {
-        if(l2fib_main_interface_instance_hardware_egress_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-hardware-egress-detail-info"] = l2fib_main_interface_instance_hardware_egress_detail_info;
-        }
+        children["l2fib-main-interface-instance-hardware-egress-detail-info"] = l2fib_main_interface_instance_hardware_egress_detail_info;
     }
 
-    if(children.find("l2fib-main-interface-instance-hardware-egress-info") == children.end())
+    if(l2fib_main_interface_instance_hardware_egress_info != nullptr)
     {
-        if(l2fib_main_interface_instance_hardware_egress_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-hardware-egress-info"] = l2fib_main_interface_instance_hardware_egress_info;
-        }
+        children["l2fib-main-interface-instance-hardware-egress-info"] = l2fib_main_interface_instance_hardware_egress_info;
     }
 
-    if(children.find("l2fib-main-interface-instance-hardware-ingress-detail-info") == children.end())
+    if(l2fib_main_interface_instance_hardware_ingress_detail_info != nullptr)
     {
-        if(l2fib_main_interface_instance_hardware_ingress_detail_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-hardware-ingress-detail-info"] = l2fib_main_interface_instance_hardware_ingress_detail_info;
-        }
+        children["l2fib-main-interface-instance-hardware-ingress-detail-info"] = l2fib_main_interface_instance_hardware_ingress_detail_info;
     }
 
-    if(children.find("l2fib-main-interface-instance-hardware-ingress-info") == children.end())
+    if(l2fib_main_interface_instance_hardware_ingress_info != nullptr)
     {
-        if(l2fib_main_interface_instance_hardware_ingress_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-hardware-ingress-info"] = l2fib_main_interface_instance_hardware_ingress_info;
-        }
+        children["l2fib-main-interface-instance-hardware-ingress-info"] = l2fib_main_interface_instance_hardware_ingress_info;
     }
 
-    if(children.find("l2fib-main-interface-instance-info") == children.end())
+    if(l2fib_main_interface_instance_info != nullptr)
     {
-        if(l2fib_main_interface_instance_info != nullptr)
-        {
-            children["l2fib-main-interface-instance-info"] = l2fib_main_interface_instance_info;
-        }
+        children["l2fib-main-interface-instance-info"] = l2fib_main_interface_instance_info;
     }
 
     return children;
@@ -16924,7 +14786,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16954,20 +14816,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17041,7 +14895,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17064,15 +14918,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-main-interface-instance-bridge-port-detail")
     {
         for(auto const & c : l2fib_main_interface_instance_bridge_port_detail)
@@ -17080,28 +14925,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail>();
         c->parent = this;
-        l2fib_main_interface_instance_bridge_port_detail.push_back(std::move(c));
-        children[segment_path] = l2fib_main_interface_instance_bridge_port_detail.back();
-        return children.at(segment_path);
+        l2fib_main_interface_instance_bridge_port_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_main_interface_instance_bridge_port_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17125,7 +14966,6 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     oper(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper>())
 {
     oper->parent = this;
-    children["oper"] = oper;
 
     yang_name = "l2fib-main-interface-instance-bridge-port-detail"; yang_parent_name = "l2fib-main-interface-instance-bridge-port-details";
 }
@@ -17170,7 +15010,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17201,41 +15041,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oper")
     {
-        if(oper != nullptr)
-        {
-            children["oper"] = oper;
-        }
-        else
+        if(oper == nullptr)
         {
             oper = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper>();
-            oper->parent = this;
-            children["oper"] = oper;
         }
-        return children.at("oper");
+        return oper;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::get_children() const
 {
-    if(children.find("oper") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oper != nullptr)
     {
-        if(oper != nullptr)
-        {
-            children["oper"] = oper;
-        }
+        children["oper"] = oper;
     }
 
     return children;
@@ -17289,7 +15112,6 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     operational_information(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation>())
 {
     operational_information->parent = this;
-    children["operational-information"] = operational_information;
 
     yang_name = "oper"; yang_parent_name = "l2fib-main-interface-instance-bridge-port-detail";
 }
@@ -17330,7 +15152,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17359,41 +15181,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "operational-information")
     {
-        if(operational_information != nullptr)
-        {
-            children["operational-information"] = operational_information;
-        }
-        else
+        if(operational_information == nullptr)
         {
             operational_information = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation>();
-            operational_information->parent = this;
-            children["operational-information"] = operational_information;
         }
-        return children.at("operational-information");
+        return operational_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::get_children() const
 {
-    if(children.find("operational-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(operational_information != nullptr)
     {
-        if(operational_information != nullptr)
-        {
-            children["operational-information"] = operational_information;
-        }
+        children["operational-information"] = operational_information;
     }
 
     return children;
@@ -17636,7 +15441,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17716,15 +15521,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "feature")
     {
         for(auto const & c : feature)
@@ -17732,28 +15528,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature>();
         c->parent = this;
-        feature.push_back(std::move(c));
-        children[segment_path] = feature.back();
-        return children.at(segment_path);
+        feature.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : feature)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18000,13 +15792,10 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
 	,mld(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld>())
 {
     dhcp->parent = this;
-    children["dhcp"] = dhcp;
 
     igmp->parent = this;
-    children["igmp"] = igmp;
 
     mld->parent = this;
-    children["mld"] = mld;
 
     yang_name = "feature"; yang_parent_name = "operational-information";
 }
@@ -18041,7 +15830,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18065,87 +15854,52 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dhcp")
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
-        else
+        if(dhcp == nullptr)
         {
             dhcp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp>();
-            dhcp->parent = this;
-            children["dhcp"] = dhcp;
         }
-        return children.at("dhcp");
+        return dhcp;
     }
 
     if(child_yang_name == "igmp")
     {
-        if(igmp != nullptr)
-        {
-            children["igmp"] = igmp;
-        }
-        else
+        if(igmp == nullptr)
         {
             igmp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp>();
-            igmp->parent = this;
-            children["igmp"] = igmp;
         }
-        return children.at("igmp");
+        return igmp;
     }
 
     if(child_yang_name == "mld")
     {
-        if(mld != nullptr)
-        {
-            children["mld"] = mld;
-        }
-        else
+        if(mld == nullptr)
         {
             mld = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld>();
-            mld->parent = this;
-            children["mld"] = mld;
         }
-        return children.at("mld");
+        return mld;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::get_children() const
 {
-    if(children.find("dhcp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dhcp != nullptr)
     {
-        if(dhcp != nullptr)
-        {
-            children["dhcp"] = dhcp;
-        }
+        children["dhcp"] = dhcp;
     }
 
-    if(children.find("igmp") == children.end())
+    if(igmp != nullptr)
     {
-        if(igmp != nullptr)
-        {
-            children["igmp"] = igmp;
-        }
+        children["igmp"] = igmp;
     }
 
-    if(children.find("mld") == children.end())
+    if(mld != nullptr)
     {
-        if(mld != nullptr)
-        {
-            children["mld"] = mld;
-        }
+        children["mld"] = mld;
     }
 
     return children;
@@ -18190,7 +15944,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18214,20 +15968,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18270,7 +16016,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18294,20 +16040,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18350,7 +16088,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18374,20 +16112,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18448,7 +16178,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18478,20 +16208,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18576,7 +16298,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18606,20 +16328,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18704,7 +16418,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18734,20 +16448,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18832,7 +16538,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18862,20 +16568,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18949,7 +16647,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18972,15 +16670,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-main-interface-instance-bridge-port")
     {
         for(auto const & c : l2fib_main_interface_instance_bridge_port)
@@ -18988,28 +16677,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort>();
         c->parent = this;
-        l2fib_main_interface_instance_bridge_port.push_back(std::move(c));
-        children[segment_path] = l2fib_main_interface_instance_bridge_port.back();
-        return children.at(segment_path);
+        l2fib_main_interface_instance_bridge_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_main_interface_instance_bridge_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19068,7 +16753,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19098,20 +16783,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19196,7 +16873,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19226,20 +16903,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19348,7 +17017,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19380,20 +17049,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19541,7 +17202,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19580,15 +17241,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "evpn-shg-remote-info")
     {
         for(auto const & c : evpn_shg_remote_info)
@@ -19596,28 +17248,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo>();
         c->parent = this;
-        evpn_shg_remote_info.push_back(std::move(c));
-        children[segment_path] = evpn_shg_remote_info.back();
-        return children.at(segment_path);
+        evpn_shg_remote_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : evpn_shg_remote_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19676,7 +17324,6 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     remote_split_horizon_group_label(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>())
 {
     remote_split_horizon_group_label->parent = this;
-    children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
 
     yang_name = "evpn-shg-remote-info"; yang_parent_name = "l2fib-main-interface-detail-info";
 }
@@ -19705,7 +17352,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19728,41 +17375,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-split-horizon-group-label")
     {
-        if(remote_split_horizon_group_label != nullptr)
-        {
-            children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
-        }
-        else
+        if(remote_split_horizon_group_label == nullptr)
         {
             remote_split_horizon_group_label = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>();
-            remote_split_horizon_group_label->parent = this;
-            children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
         }
-        return children.at("remote-split-horizon-group-label");
+        return remote_split_horizon_group_label;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::get_children() const
 {
-    if(children.find("remote-split-horizon-group-label") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(remote_split_horizon_group_label != nullptr)
     {
-        if(remote_split_horizon_group_label != nullptr)
-        {
-            children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
-        }
+        children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
     }
 
     return children;
@@ -19806,7 +17436,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19831,20 +17461,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19976,7 +17598,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20015,15 +17637,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "evpn-shg-remote-info")
     {
         for(auto const & c : evpn_shg_remote_info)
@@ -20031,28 +17644,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo>();
         c->parent = this;
-        evpn_shg_remote_info.push_back(std::move(c));
-        children[segment_path] = evpn_shg_remote_info.back();
-        return children.at(segment_path);
+        evpn_shg_remote_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : evpn_shg_remote_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20111,7 +17720,6 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     remote_split_horizon_group_label(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>())
 {
     remote_split_horizon_group_label->parent = this;
-    children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
 
     yang_name = "evpn-shg-remote-info"; yang_parent_name = "l2fib-main-interface-hardware-ingress-detail-info";
 }
@@ -20140,7 +17748,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20163,41 +17771,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-split-horizon-group-label")
     {
-        if(remote_split_horizon_group_label != nullptr)
-        {
-            children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
-        }
-        else
+        if(remote_split_horizon_group_label == nullptr)
         {
             remote_split_horizon_group_label = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>();
-            remote_split_horizon_group_label->parent = this;
-            children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
         }
-        return children.at("remote-split-horizon-group-label");
+        return remote_split_horizon_group_label;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::get_children() const
 {
-    if(children.find("remote-split-horizon-group-label") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(remote_split_horizon_group_label != nullptr)
     {
-        if(remote_split_horizon_group_label != nullptr)
-        {
-            children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
-        }
+        children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
     }
 
     return children;
@@ -20241,7 +17832,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20266,20 +17857,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20368,7 +17951,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfac
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20400,20 +17983,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20483,7 +18058,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_segment_path() c
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20506,15 +18081,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_entity_path(Entit
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2fib-mstp-detail")
     {
         for(auto const & c : l2fib_mstp_detail)
@@ -20522,28 +18088,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail>();
         c->parent = this;
-        l2fib_mstp_detail.push_back(std::move(c));
-        children[segment_path] = l2fib_mstp_detail.back();
-        return children.at(segment_path);
+        l2fib_mstp_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2fib_mstp_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20567,7 +18129,6 @@ L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::L2FibMstpDetail
     base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base>())
 {
     base->parent = this;
-    children["base"] = base;
 
     yang_name = "l2fib-mstp-detail"; yang_parent_name = "l2fib-mstp-details";
 }
@@ -20621,7 +18182,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20653,41 +18214,24 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "base")
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
-        else
+        if(base == nullptr)
         {
             base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base>();
-            base->parent = this;
-            children["base"] = base;
         }
-        return children.at("base");
+        return base;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_children() const
 {
-    if(children.find("base") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
     {
-        if(base != nullptr)
-        {
-            children["base"] = base;
-        }
+        children["base"] = base;
     }
 
     return children;
@@ -20757,7 +18301,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Bas
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20780,20 +18324,12 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20807,10 +18343,8 @@ L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2FibL2Tp()
 	,l2tpv3_sessions(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions>())
 {
     l2tpv2_sessions->parent = this;
-    children["l2tpv2-sessions"] = l2tpv2_sessions;
 
     l2tpv3_sessions->parent = this;
-    children["l2tpv3-sessions"] = l2tpv3_sessions;
 
     yang_name = "l2fib-l2tp"; yang_parent_name = "node";
 }
@@ -20841,7 +18375,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_segment_path() const
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20864,64 +18398,38 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2tpv2-sessions")
     {
-        if(l2tpv2_sessions != nullptr)
-        {
-            children["l2tpv2-sessions"] = l2tpv2_sessions;
-        }
-        else
+        if(l2tpv2_sessions == nullptr)
         {
             l2tpv2_sessions = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions>();
-            l2tpv2_sessions->parent = this;
-            children["l2tpv2-sessions"] = l2tpv2_sessions;
         }
-        return children.at("l2tpv2-sessions");
+        return l2tpv2_sessions;
     }
 
     if(child_yang_name == "l2tpv3-sessions")
     {
-        if(l2tpv3_sessions != nullptr)
-        {
-            children["l2tpv3-sessions"] = l2tpv3_sessions;
-        }
-        else
+        if(l2tpv3_sessions == nullptr)
         {
             l2tpv3_sessions = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions>();
-            l2tpv3_sessions->parent = this;
-            children["l2tpv3-sessions"] = l2tpv3_sessions;
         }
-        return children.at("l2tpv3-sessions");
+        return l2tpv3_sessions;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_children() const
 {
-    if(children.find("l2tpv2-sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2tpv2_sessions != nullptr)
     {
-        if(l2tpv2_sessions != nullptr)
-        {
-            children["l2tpv2-sessions"] = l2tpv2_sessions;
-        }
+        children["l2tpv2-sessions"] = l2tpv2_sessions;
     }
 
-    if(children.find("l2tpv3-sessions") == children.end())
+    if(l2tpv3_sessions != nullptr)
     {
-        if(l2tpv3_sessions != nullptr)
-        {
-            children["l2tpv3-sessions"] = l2tpv3_sessions;
-        }
+        children["l2tpv3-sessions"] = l2tpv3_sessions;
     }
 
     return children;
@@ -20969,7 +18477,7 @@ std::string L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_segment
 
 }
 
-EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20992,15 +18500,6 @@ EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_entity_p
 
 std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2tpv3-session")
     {
         for(auto const & c : l2tpv3_session)
@@ -21008,28 +18507,24 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session>();
         c->parent = this;
-        l2tpv3_session.push_back(std::move(c));
-        children[segment_path] = l2tpv3_session.back();
-        return children.at(segment_path);
+        l2tpv3_session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : l2tpv3_session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;

@@ -47,7 +47,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -73,20 +73,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -143,7 +135,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -169,20 +161,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -239,7 +223,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -265,20 +249,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -335,7 +311,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -361,20 +337,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -431,7 +399,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -457,20 +425,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -527,7 +487,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -553,20 +513,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -623,7 +575,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -649,20 +601,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -719,7 +663,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -745,20 +689,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -815,7 +751,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -841,20 +777,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -911,7 +839,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -937,20 +865,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1007,7 +927,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1033,20 +953,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1103,7 +1015,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1129,20 +1041,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1199,7 +1103,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1225,20 +1129,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1295,7 +1191,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1321,20 +1217,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1391,7 +1279,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1417,20 +1305,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1455,7 +1335,6 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuHistory()
     otu_port_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories>())
 {
     otu_port_histories->parent = this;
-    children["otu-port-histories"] = otu_port_histories;
 
     yang_name = "otu-history"; yang_parent_name = "periodic";
 }
@@ -1484,7 +1363,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::get_segm
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1507,41 +1386,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::get_entit
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-port-histories")
     {
-        if(otu_port_histories != nullptr)
-        {
-            children["otu-port-histories"] = otu_port_histories;
-        }
-        else
+        if(otu_port_histories == nullptr)
         {
             otu_port_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories>();
-            otu_port_histories->parent = this;
-            children["otu-port-histories"] = otu_port_histories;
         }
-        return children.at("otu-port-histories");
+        return otu_port_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::get_children() const
 {
-    if(children.find("otu-port-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_port_histories != nullptr)
     {
-        if(otu_port_histories != nullptr)
-        {
-            children["otu-port-histories"] = otu_port_histories;
-        }
+        children["otu-port-histories"] = otu_port_histories;
     }
 
     return children;
@@ -1589,7 +1451,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1612,15 +1474,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-port-history")
     {
         for(auto const & c : otu_port_history)
@@ -1628,28 +1481,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory>();
         c->parent = this;
-        otu_port_history.push_back(std::move(c));
-        children[segment_path] = otu_port_history.back();
-        return children.at(segment_path);
+        otu_port_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_port_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1668,13 +1517,10 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,otu_second30_history(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History>())
 {
     otu_hour24_history->parent = this;
-    children["otu-hour24-history"] = otu_hour24_history;
 
     otu_minute15_history->parent = this;
-    children["otu-minute15-history"] = otu_minute15_history;
 
     otu_second30_history->parent = this;
-    children["otu-second30-history"] = otu_second30_history;
 
     yang_name = "otu-port-history"; yang_parent_name = "otu-port-histories";
 }
@@ -1709,7 +1555,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1733,87 +1579,52 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-hour24-history")
     {
-        if(otu_hour24_history != nullptr)
-        {
-            children["otu-hour24-history"] = otu_hour24_history;
-        }
-        else
+        if(otu_hour24_history == nullptr)
         {
             otu_hour24_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History>();
-            otu_hour24_history->parent = this;
-            children["otu-hour24-history"] = otu_hour24_history;
         }
-        return children.at("otu-hour24-history");
+        return otu_hour24_history;
     }
 
     if(child_yang_name == "otu-minute15-history")
     {
-        if(otu_minute15_history != nullptr)
-        {
-            children["otu-minute15-history"] = otu_minute15_history;
-        }
-        else
+        if(otu_minute15_history == nullptr)
         {
             otu_minute15_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History>();
-            otu_minute15_history->parent = this;
-            children["otu-minute15-history"] = otu_minute15_history;
         }
-        return children.at("otu-minute15-history");
+        return otu_minute15_history;
     }
 
     if(child_yang_name == "otu-second30-history")
     {
-        if(otu_second30_history != nullptr)
-        {
-            children["otu-second30-history"] = otu_second30_history;
-        }
-        else
+        if(otu_second30_history == nullptr)
         {
             otu_second30_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History>();
-            otu_second30_history->parent = this;
-            children["otu-second30-history"] = otu_second30_history;
         }
-        return children.at("otu-second30-history");
+        return otu_second30_history;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::get_children() const
 {
-    if(children.find("otu-hour24-history") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_hour24_history != nullptr)
     {
-        if(otu_hour24_history != nullptr)
-        {
-            children["otu-hour24-history"] = otu_hour24_history;
-        }
+        children["otu-hour24-history"] = otu_hour24_history;
     }
 
-    if(children.find("otu-minute15-history") == children.end())
+    if(otu_minute15_history != nullptr)
     {
-        if(otu_minute15_history != nullptr)
-        {
-            children["otu-minute15-history"] = otu_minute15_history;
-        }
+        children["otu-minute15-history"] = otu_minute15_history;
     }
 
-    if(children.find("otu-second30-history") == children.end())
+    if(otu_second30_history != nullptr)
     {
-        if(otu_second30_history != nullptr)
-        {
-            children["otu-second30-history"] = otu_second30_history;
-        }
+        children["otu-second30-history"] = otu_second30_history;
     }
 
     return children;
@@ -1833,10 +1644,8 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,otu_second30otn_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories>())
 {
     otu_second30fec_histories->parent = this;
-    children["otu-second30fec-histories"] = otu_second30fec_histories;
 
     otu_second30otn_histories->parent = this;
-    children["otu-second30otn-histories"] = otu_second30otn_histories;
 
     yang_name = "otu-second30-history"; yang_parent_name = "otu-port-history";
 }
@@ -1867,7 +1676,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1890,64 +1699,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30fec-histories")
     {
-        if(otu_second30fec_histories != nullptr)
-        {
-            children["otu-second30fec-histories"] = otu_second30fec_histories;
-        }
-        else
+        if(otu_second30fec_histories == nullptr)
         {
             otu_second30fec_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories>();
-            otu_second30fec_histories->parent = this;
-            children["otu-second30fec-histories"] = otu_second30fec_histories;
         }
-        return children.at("otu-second30fec-histories");
+        return otu_second30fec_histories;
     }
 
     if(child_yang_name == "otu-second30otn-histories")
     {
-        if(otu_second30otn_histories != nullptr)
-        {
-            children["otu-second30otn-histories"] = otu_second30otn_histories;
-        }
-        else
+        if(otu_second30otn_histories == nullptr)
         {
             otu_second30otn_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories>();
-            otu_second30otn_histories->parent = this;
-            children["otu-second30otn-histories"] = otu_second30otn_histories;
         }
-        return children.at("otu-second30otn-histories");
+        return otu_second30otn_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::get_children() const
 {
-    if(children.find("otu-second30fec-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_second30fec_histories != nullptr)
     {
-        if(otu_second30fec_histories != nullptr)
-        {
-            children["otu-second30fec-histories"] = otu_second30fec_histories;
-        }
+        children["otu-second30fec-histories"] = otu_second30fec_histories;
     }
 
-    if(children.find("otu-second30otn-histories") == children.end())
+    if(otu_second30otn_histories != nullptr)
     {
-        if(otu_second30otn_histories != nullptr)
-        {
-            children["otu-second30otn-histories"] = otu_second30otn_histories;
-        }
+        children["otu-second30otn-histories"] = otu_second30otn_histories;
     }
 
     return children;
@@ -1995,7 +1778,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2018,15 +1801,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30fec-history")
     {
         for(auto const & c : otu_second30fec_history)
@@ -2034,28 +1808,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory>();
         c->parent = this;
-        otu_second30fec_history.push_back(std::move(c));
-        children[segment_path] = otu_second30fec_history.back();
-        return children.at(segment_path);
+        otu_second30fec_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_second30fec_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2072,7 +1842,6 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
     otu_second30fec_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances>())
 {
     otu_second30fec_time_line_instances->parent = this;
-    children["otu-second30fec-time-line-instances"] = otu_second30fec_time_line_instances;
 
     yang_name = "otu-second30fec-history"; yang_parent_name = "otu-second30fec-histories";
 }
@@ -2103,7 +1872,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2127,41 +1896,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30fec-time-line-instances")
     {
-        if(otu_second30fec_time_line_instances != nullptr)
-        {
-            children["otu-second30fec-time-line-instances"] = otu_second30fec_time_line_instances;
-        }
-        else
+        if(otu_second30fec_time_line_instances == nullptr)
         {
             otu_second30fec_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances>();
-            otu_second30fec_time_line_instances->parent = this;
-            children["otu-second30fec-time-line-instances"] = otu_second30fec_time_line_instances;
         }
-        return children.at("otu-second30fec-time-line-instances");
+        return otu_second30fec_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::get_children() const
 {
-    if(children.find("otu-second30fec-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_second30fec_time_line_instances != nullptr)
     {
-        if(otu_second30fec_time_line_instances != nullptr)
-        {
-            children["otu-second30fec-time-line-instances"] = otu_second30fec_time_line_instances;
-        }
+        children["otu-second30fec-time-line-instances"] = otu_second30fec_time_line_instances;
     }
 
     return children;
@@ -2213,7 +1965,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2236,15 +1988,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30fec-time-line-instance")
     {
         for(auto const & c : otu_second30fec_time_line_instance)
@@ -2252,28 +1995,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance>();
         c->parent = this;
-        otu_second30fec_time_line_instance.push_back(std::move(c));
-        children[segment_path] = otu_second30fec_time_line_instance.back();
-        return children.at(segment_path);
+        otu_second30fec_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_second30fec_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2303,22 +2042,16 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,uc_words(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords>())
 {
     ec_bits->parent = this;
-    children["ec-bits"] = ec_bits;
 
     post_fec_ber->parent = this;
-    children["post-fec-ber"] = post_fec_ber;
 
     pre_fec_ber->parent = this;
-    children["pre-fec-ber"] = pre_fec_ber;
 
     q->parent = this;
-    children["q"] = q;
 
     qmargin->parent = this;
-    children["qmargin"] = qmargin;
 
     uc_words->parent = this;
-    children["uc-words"] = uc_words;
 
     yang_name = "otu-second30fec-time-line-instance"; yang_parent_name = "otu-second30fec-time-line-instances";
 }
@@ -2375,7 +2108,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2407,156 +2140,94 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ec-bits")
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
-        else
+        if(ec_bits == nullptr)
         {
             ec_bits = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits>();
-            ec_bits->parent = this;
-            children["ec-bits"] = ec_bits;
         }
-        return children.at("ec-bits");
+        return ec_bits;
     }
 
     if(child_yang_name == "post-fec-ber")
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
-        else
+        if(post_fec_ber == nullptr)
         {
             post_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer>();
-            post_fec_ber->parent = this;
-            children["post-fec-ber"] = post_fec_ber;
         }
-        return children.at("post-fec-ber");
+        return post_fec_ber;
     }
 
     if(child_yang_name == "pre-fec-ber")
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
-        else
+        if(pre_fec_ber == nullptr)
         {
             pre_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer>();
-            pre_fec_ber->parent = this;
-            children["pre-fec-ber"] = pre_fec_ber;
         }
-        return children.at("pre-fec-ber");
+        return pre_fec_ber;
     }
 
     if(child_yang_name == "q")
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
-        else
+        if(q == nullptr)
         {
             q = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q>();
-            q->parent = this;
-            children["q"] = q;
         }
-        return children.at("q");
+        return q;
     }
 
     if(child_yang_name == "qmargin")
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
-        else
+        if(qmargin == nullptr)
         {
             qmargin = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin>();
-            qmargin->parent = this;
-            children["qmargin"] = qmargin;
         }
-        return children.at("qmargin");
+        return qmargin;
     }
 
     if(child_yang_name == "uc-words")
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
-        else
+        if(uc_words == nullptr)
         {
             uc_words = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords>();
-            uc_words->parent = this;
-            children["uc-words"] = uc_words;
         }
-        return children.at("uc-words");
+        return uc_words;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::get_children() const
 {
-    if(children.find("ec-bits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ec_bits != nullptr)
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
+        children["ec-bits"] = ec_bits;
     }
 
-    if(children.find("post-fec-ber") == children.end())
+    if(post_fec_ber != nullptr)
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
+        children["post-fec-ber"] = post_fec_ber;
     }
 
-    if(children.find("pre-fec-ber") == children.end())
+    if(pre_fec_ber != nullptr)
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
+        children["pre-fec-ber"] = pre_fec_ber;
     }
 
-    if(children.find("q") == children.end())
+    if(q != nullptr)
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
+        children["q"] = q;
     }
 
-    if(children.find("qmargin") == children.end())
+    if(qmargin != nullptr)
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
+        children["qmargin"] = qmargin;
     }
 
-    if(children.find("uc-words") == children.end())
+    if(uc_words != nullptr)
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
+        children["uc-words"] = uc_words;
     }
 
     return children;
@@ -2642,7 +2313,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2669,20 +2340,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2746,7 +2409,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2773,20 +2436,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2862,7 +2517,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2893,20 +2548,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2998,7 +2645,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3029,20 +2676,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3134,7 +2773,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3165,20 +2804,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3270,7 +2901,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3301,20 +2932,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3392,7 +3015,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3415,15 +3038,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30otn-history")
     {
         for(auto const & c : otu_second30otn_history)
@@ -3431,28 +3045,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory>();
         c->parent = this;
-        otu_second30otn_history.push_back(std::move(c));
-        children[segment_path] = otu_second30otn_history.back();
-        return children.at(segment_path);
+        otu_second30otn_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_second30otn_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3469,7 +3079,6 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
     otu_second30otn_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances>())
 {
     otu_second30otn_time_line_instances->parent = this;
-    children["otu-second30otn-time-line-instances"] = otu_second30otn_time_line_instances;
 
     yang_name = "otu-second30otn-history"; yang_parent_name = "otu-second30otn-histories";
 }
@@ -3500,7 +3109,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3524,41 +3133,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30otn-time-line-instances")
     {
-        if(otu_second30otn_time_line_instances != nullptr)
-        {
-            children["otu-second30otn-time-line-instances"] = otu_second30otn_time_line_instances;
-        }
-        else
+        if(otu_second30otn_time_line_instances == nullptr)
         {
             otu_second30otn_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances>();
-            otu_second30otn_time_line_instances->parent = this;
-            children["otu-second30otn-time-line-instances"] = otu_second30otn_time_line_instances;
         }
-        return children.at("otu-second30otn-time-line-instances");
+        return otu_second30otn_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::get_children() const
 {
-    if(children.find("otu-second30otn-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_second30otn_time_line_instances != nullptr)
     {
-        if(otu_second30otn_time_line_instances != nullptr)
-        {
-            children["otu-second30otn-time-line-instances"] = otu_second30otn_time_line_instances;
-        }
+        children["otu-second30otn-time-line-instances"] = otu_second30otn_time_line_instances;
     }
 
     return children;
@@ -3610,7 +3202,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3633,15 +3225,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30otn-time-line-instance")
     {
         for(auto const & c : otu_second30otn_time_line_instance)
@@ -3649,28 +3232,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance>();
         c->parent = this;
-        otu_second30otn_time_line_instance.push_back(std::move(c));
-        children[segment_path] = otu_second30otn_time_line_instance.back();
-        return children.at(segment_path);
+        otu_second30otn_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_second30otn_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3711,55 +3290,38 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,uas_ne(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe>())
 {
     bbe_fe->parent = this;
-    children["bbe-fe"] = bbe_fe;
 
     bbe_ne->parent = this;
-    children["bbe-ne"] = bbe_ne;
 
     bber_fe->parent = this;
-    children["bber-fe"] = bber_fe;
 
     bber_ne->parent = this;
-    children["bber-ne"] = bber_ne;
 
     es_fe->parent = this;
-    children["es-fe"] = es_fe;
 
     es_ne->parent = this;
-    children["es-ne"] = es_ne;
 
     esr_fe->parent = this;
-    children["esr-fe"] = esr_fe;
 
     esr_ne->parent = this;
-    children["esr-ne"] = esr_ne;
 
     fc_fe->parent = this;
-    children["fc-fe"] = fc_fe;
 
     fc_ne->parent = this;
-    children["fc-ne"] = fc_ne;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     ses_fe->parent = this;
-    children["ses-fe"] = ses_fe;
 
     ses_ne->parent = this;
-    children["ses-ne"] = ses_ne;
 
     sesr_fe->parent = this;
-    children["sesr-fe"] = sesr_fe;
 
     sesr_ne->parent = this;
-    children["sesr-ne"] = sesr_ne;
 
     uas_fe->parent = this;
-    children["uas-fe"] = uas_fe;
 
     uas_ne->parent = this;
-    children["uas-ne"] = uas_ne;
 
     yang_name = "otu-second30otn-time-line-instance"; yang_parent_name = "otu-second30otn-time-line-instances";
 }
@@ -3838,7 +3400,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3870,409 +3432,248 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bbe-fe")
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
-        else
+        if(bbe_fe == nullptr)
         {
             bbe_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe>();
-            bbe_fe->parent = this;
-            children["bbe-fe"] = bbe_fe;
         }
-        return children.at("bbe-fe");
+        return bbe_fe;
     }
 
     if(child_yang_name == "bbe-ne")
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
-        else
+        if(bbe_ne == nullptr)
         {
             bbe_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe>();
-            bbe_ne->parent = this;
-            children["bbe-ne"] = bbe_ne;
         }
-        return children.at("bbe-ne");
+        return bbe_ne;
     }
 
     if(child_yang_name == "bber-fe")
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
-        else
+        if(bber_fe == nullptr)
         {
             bber_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe>();
-            bber_fe->parent = this;
-            children["bber-fe"] = bber_fe;
         }
-        return children.at("bber-fe");
+        return bber_fe;
     }
 
     if(child_yang_name == "bber-ne")
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
-        else
+        if(bber_ne == nullptr)
         {
             bber_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe>();
-            bber_ne->parent = this;
-            children["bber-ne"] = bber_ne;
         }
-        return children.at("bber-ne");
+        return bber_ne;
     }
 
     if(child_yang_name == "es-fe")
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
-        else
+        if(es_fe == nullptr)
         {
             es_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe>();
-            es_fe->parent = this;
-            children["es-fe"] = es_fe;
         }
-        return children.at("es-fe");
+        return es_fe;
     }
 
     if(child_yang_name == "es-ne")
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
-        else
+        if(es_ne == nullptr)
         {
             es_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe>();
-            es_ne->parent = this;
-            children["es-ne"] = es_ne;
         }
-        return children.at("es-ne");
+        return es_ne;
     }
 
     if(child_yang_name == "esr-fe")
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
-        else
+        if(esr_fe == nullptr)
         {
             esr_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe>();
-            esr_fe->parent = this;
-            children["esr-fe"] = esr_fe;
         }
-        return children.at("esr-fe");
+        return esr_fe;
     }
 
     if(child_yang_name == "esr-ne")
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
-        else
+        if(esr_ne == nullptr)
         {
             esr_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe>();
-            esr_ne->parent = this;
-            children["esr-ne"] = esr_ne;
         }
-        return children.at("esr-ne");
+        return esr_ne;
     }
 
     if(child_yang_name == "fc-fe")
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
-        else
+        if(fc_fe == nullptr)
         {
             fc_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe>();
-            fc_fe->parent = this;
-            children["fc-fe"] = fc_fe;
         }
-        return children.at("fc-fe");
+        return fc_fe;
     }
 
     if(child_yang_name == "fc-ne")
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
-        else
+        if(fc_ne == nullptr)
         {
             fc_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe>();
-            fc_ne->parent = this;
-            children["fc-ne"] = fc_ne;
         }
-        return children.at("fc-ne");
+        return fc_ne;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "ses-fe")
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
-        else
+        if(ses_fe == nullptr)
         {
             ses_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe>();
-            ses_fe->parent = this;
-            children["ses-fe"] = ses_fe;
         }
-        return children.at("ses-fe");
+        return ses_fe;
     }
 
     if(child_yang_name == "ses-ne")
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
-        else
+        if(ses_ne == nullptr)
         {
             ses_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe>();
-            ses_ne->parent = this;
-            children["ses-ne"] = ses_ne;
         }
-        return children.at("ses-ne");
+        return ses_ne;
     }
 
     if(child_yang_name == "sesr-fe")
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
-        else
+        if(sesr_fe == nullptr)
         {
             sesr_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe>();
-            sesr_fe->parent = this;
-            children["sesr-fe"] = sesr_fe;
         }
-        return children.at("sesr-fe");
+        return sesr_fe;
     }
 
     if(child_yang_name == "sesr-ne")
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
-        else
+        if(sesr_ne == nullptr)
         {
             sesr_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe>();
-            sesr_ne->parent = this;
-            children["sesr-ne"] = sesr_ne;
         }
-        return children.at("sesr-ne");
+        return sesr_ne;
     }
 
     if(child_yang_name == "uas-fe")
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
-        else
+        if(uas_fe == nullptr)
         {
             uas_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe>();
-            uas_fe->parent = this;
-            children["uas-fe"] = uas_fe;
         }
-        return children.at("uas-fe");
+        return uas_fe;
     }
 
     if(child_yang_name == "uas-ne")
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
-        else
+        if(uas_ne == nullptr)
         {
             uas_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe>();
-            uas_ne->parent = this;
-            children["uas-ne"] = uas_ne;
         }
-        return children.at("uas-ne");
+        return uas_ne;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::get_children() const
 {
-    if(children.find("bbe-fe") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bbe_fe != nullptr)
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
+        children["bbe-fe"] = bbe_fe;
     }
 
-    if(children.find("bbe-ne") == children.end())
+    if(bbe_ne != nullptr)
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
+        children["bbe-ne"] = bbe_ne;
     }
 
-    if(children.find("bber-fe") == children.end())
+    if(bber_fe != nullptr)
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
+        children["bber-fe"] = bber_fe;
     }
 
-    if(children.find("bber-ne") == children.end())
+    if(bber_ne != nullptr)
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
+        children["bber-ne"] = bber_ne;
     }
 
-    if(children.find("es-fe") == children.end())
+    if(es_fe != nullptr)
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
+        children["es-fe"] = es_fe;
     }
 
-    if(children.find("es-ne") == children.end())
+    if(es_ne != nullptr)
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
+        children["es-ne"] = es_ne;
     }
 
-    if(children.find("esr-fe") == children.end())
+    if(esr_fe != nullptr)
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
+        children["esr-fe"] = esr_fe;
     }
 
-    if(children.find("esr-ne") == children.end())
+    if(esr_ne != nullptr)
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
+        children["esr-ne"] = esr_ne;
     }
 
-    if(children.find("fc-fe") == children.end())
+    if(fc_fe != nullptr)
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
+        children["fc-fe"] = fc_fe;
     }
 
-    if(children.find("fc-ne") == children.end())
+    if(fc_ne != nullptr)
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
+        children["fc-ne"] = fc_ne;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("ses-fe") == children.end())
+    if(ses_fe != nullptr)
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
+        children["ses-fe"] = ses_fe;
     }
 
-    if(children.find("ses-ne") == children.end())
+    if(ses_ne != nullptr)
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
+        children["ses-ne"] = ses_ne;
     }
 
-    if(children.find("sesr-fe") == children.end())
+    if(sesr_fe != nullptr)
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
+        children["sesr-fe"] = sesr_fe;
     }
 
-    if(children.find("sesr-ne") == children.end())
+    if(sesr_ne != nullptr)
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
+        children["sesr-ne"] = sesr_ne;
     }
 
-    if(children.find("uas-fe") == children.end())
+    if(uas_fe != nullptr)
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
+        children["uas-fe"] = uas_fe;
     }
 
-    if(children.find("uas-ne") == children.end())
+    if(uas_ne != nullptr)
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
+        children["uas-ne"] = uas_ne;
     }
 
     return children;
@@ -4355,7 +3756,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4381,20 +3782,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4451,7 +3844,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4477,20 +3870,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4547,7 +3932,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4573,20 +3958,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4643,7 +4020,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4669,20 +4046,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4739,7 +4108,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4765,20 +4134,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4835,7 +4196,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4861,20 +4222,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4931,7 +4284,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4957,20 +4310,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5027,7 +4372,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5053,20 +4398,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5123,7 +4460,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5149,20 +4486,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5219,7 +4548,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5245,20 +4574,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5315,7 +4636,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5341,20 +4662,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5411,7 +4724,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5437,20 +4750,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5507,7 +4812,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5533,20 +4838,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5603,7 +4900,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5629,20 +4926,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5699,7 +4988,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5725,20 +5014,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5795,7 +5076,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5821,20 +5102,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5891,7 +5164,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5917,20 +5190,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5956,10 +5221,8 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,otu_minute15otn_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories>())
 {
     otu_minute15fec_histories->parent = this;
-    children["otu-minute15fec-histories"] = otu_minute15fec_histories;
 
     otu_minute15otn_histories->parent = this;
-    children["otu-minute15otn-histories"] = otu_minute15otn_histories;
 
     yang_name = "otu-minute15-history"; yang_parent_name = "otu-port-history";
 }
@@ -5990,7 +5253,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6013,64 +5276,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15fec-histories")
     {
-        if(otu_minute15fec_histories != nullptr)
-        {
-            children["otu-minute15fec-histories"] = otu_minute15fec_histories;
-        }
-        else
+        if(otu_minute15fec_histories == nullptr)
         {
             otu_minute15fec_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories>();
-            otu_minute15fec_histories->parent = this;
-            children["otu-minute15fec-histories"] = otu_minute15fec_histories;
         }
-        return children.at("otu-minute15fec-histories");
+        return otu_minute15fec_histories;
     }
 
     if(child_yang_name == "otu-minute15otn-histories")
     {
-        if(otu_minute15otn_histories != nullptr)
-        {
-            children["otu-minute15otn-histories"] = otu_minute15otn_histories;
-        }
-        else
+        if(otu_minute15otn_histories == nullptr)
         {
             otu_minute15otn_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories>();
-            otu_minute15otn_histories->parent = this;
-            children["otu-minute15otn-histories"] = otu_minute15otn_histories;
         }
-        return children.at("otu-minute15otn-histories");
+        return otu_minute15otn_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::get_children() const
 {
-    if(children.find("otu-minute15fec-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_minute15fec_histories != nullptr)
     {
-        if(otu_minute15fec_histories != nullptr)
-        {
-            children["otu-minute15fec-histories"] = otu_minute15fec_histories;
-        }
+        children["otu-minute15fec-histories"] = otu_minute15fec_histories;
     }
 
-    if(children.find("otu-minute15otn-histories") == children.end())
+    if(otu_minute15otn_histories != nullptr)
     {
-        if(otu_minute15otn_histories != nullptr)
-        {
-            children["otu-minute15otn-histories"] = otu_minute15otn_histories;
-        }
+        children["otu-minute15otn-histories"] = otu_minute15otn_histories;
     }
 
     return children;
@@ -6118,7 +5355,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6141,15 +5378,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15fec-history")
     {
         for(auto const & c : otu_minute15fec_history)
@@ -6157,28 +5385,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory>();
         c->parent = this;
-        otu_minute15fec_history.push_back(std::move(c));
-        children[segment_path] = otu_minute15fec_history.back();
-        return children.at(segment_path);
+        otu_minute15fec_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_minute15fec_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6195,7 +5419,6 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
     otu_minute15fec_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances>())
 {
     otu_minute15fec_time_line_instances->parent = this;
-    children["otu-minute15fec-time-line-instances"] = otu_minute15fec_time_line_instances;
 
     yang_name = "otu-minute15fec-history"; yang_parent_name = "otu-minute15fec-histories";
 }
@@ -6226,7 +5449,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6250,41 +5473,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15fec-time-line-instances")
     {
-        if(otu_minute15fec_time_line_instances != nullptr)
-        {
-            children["otu-minute15fec-time-line-instances"] = otu_minute15fec_time_line_instances;
-        }
-        else
+        if(otu_minute15fec_time_line_instances == nullptr)
         {
             otu_minute15fec_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances>();
-            otu_minute15fec_time_line_instances->parent = this;
-            children["otu-minute15fec-time-line-instances"] = otu_minute15fec_time_line_instances;
         }
-        return children.at("otu-minute15fec-time-line-instances");
+        return otu_minute15fec_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::get_children() const
 {
-    if(children.find("otu-minute15fec-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_minute15fec_time_line_instances != nullptr)
     {
-        if(otu_minute15fec_time_line_instances != nullptr)
-        {
-            children["otu-minute15fec-time-line-instances"] = otu_minute15fec_time_line_instances;
-        }
+        children["otu-minute15fec-time-line-instances"] = otu_minute15fec_time_line_instances;
     }
 
     return children;
@@ -6336,7 +5542,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6359,15 +5565,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15fec-time-line-instance")
     {
         for(auto const & c : otu_minute15fec_time_line_instance)
@@ -6375,28 +5572,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance>();
         c->parent = this;
-        otu_minute15fec_time_line_instance.push_back(std::move(c));
-        children[segment_path] = otu_minute15fec_time_line_instance.back();
-        return children.at(segment_path);
+        otu_minute15fec_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_minute15fec_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6426,22 +5619,16 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,uc_words(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords>())
 {
     ec_bits->parent = this;
-    children["ec-bits"] = ec_bits;
 
     post_fec_ber->parent = this;
-    children["post-fec-ber"] = post_fec_ber;
 
     pre_fec_ber->parent = this;
-    children["pre-fec-ber"] = pre_fec_ber;
 
     q->parent = this;
-    children["q"] = q;
 
     qmargin->parent = this;
-    children["qmargin"] = qmargin;
 
     uc_words->parent = this;
-    children["uc-words"] = uc_words;
 
     yang_name = "otu-minute15fec-time-line-instance"; yang_parent_name = "otu-minute15fec-time-line-instances";
 }
@@ -6498,7 +5685,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6530,156 +5717,94 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ec-bits")
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
-        else
+        if(ec_bits == nullptr)
         {
             ec_bits = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits>();
-            ec_bits->parent = this;
-            children["ec-bits"] = ec_bits;
         }
-        return children.at("ec-bits");
+        return ec_bits;
     }
 
     if(child_yang_name == "post-fec-ber")
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
-        else
+        if(post_fec_ber == nullptr)
         {
             post_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer>();
-            post_fec_ber->parent = this;
-            children["post-fec-ber"] = post_fec_ber;
         }
-        return children.at("post-fec-ber");
+        return post_fec_ber;
     }
 
     if(child_yang_name == "pre-fec-ber")
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
-        else
+        if(pre_fec_ber == nullptr)
         {
             pre_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer>();
-            pre_fec_ber->parent = this;
-            children["pre-fec-ber"] = pre_fec_ber;
         }
-        return children.at("pre-fec-ber");
+        return pre_fec_ber;
     }
 
     if(child_yang_name == "q")
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
-        else
+        if(q == nullptr)
         {
             q = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q>();
-            q->parent = this;
-            children["q"] = q;
         }
-        return children.at("q");
+        return q;
     }
 
     if(child_yang_name == "qmargin")
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
-        else
+        if(qmargin == nullptr)
         {
             qmargin = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin>();
-            qmargin->parent = this;
-            children["qmargin"] = qmargin;
         }
-        return children.at("qmargin");
+        return qmargin;
     }
 
     if(child_yang_name == "uc-words")
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
-        else
+        if(uc_words == nullptr)
         {
             uc_words = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords>();
-            uc_words->parent = this;
-            children["uc-words"] = uc_words;
         }
-        return children.at("uc-words");
+        return uc_words;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::get_children() const
 {
-    if(children.find("ec-bits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ec_bits != nullptr)
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
+        children["ec-bits"] = ec_bits;
     }
 
-    if(children.find("post-fec-ber") == children.end())
+    if(post_fec_ber != nullptr)
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
+        children["post-fec-ber"] = post_fec_ber;
     }
 
-    if(children.find("pre-fec-ber") == children.end())
+    if(pre_fec_ber != nullptr)
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
+        children["pre-fec-ber"] = pre_fec_ber;
     }
 
-    if(children.find("q") == children.end())
+    if(q != nullptr)
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
+        children["q"] = q;
     }
 
-    if(children.find("qmargin") == children.end())
+    if(qmargin != nullptr)
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
+        children["qmargin"] = qmargin;
     }
 
-    if(children.find("uc-words") == children.end())
+    if(uc_words != nullptr)
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
+        children["uc-words"] = uc_words;
     }
 
     return children;
@@ -6765,7 +5890,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6792,20 +5917,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6869,7 +5986,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6896,20 +6013,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6985,7 +6094,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7016,20 +6125,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7121,7 +6222,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7152,20 +6253,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7257,7 +6350,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7288,20 +6381,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7393,7 +6478,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7424,20 +6509,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7515,7 +6592,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7538,15 +6615,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15otn-history")
     {
         for(auto const & c : otu_minute15otn_history)
@@ -7554,28 +6622,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory>();
         c->parent = this;
-        otu_minute15otn_history.push_back(std::move(c));
-        children[segment_path] = otu_minute15otn_history.back();
-        return children.at(segment_path);
+        otu_minute15otn_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_minute15otn_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7592,7 +6656,6 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
     otu_minute15otn_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances>())
 {
     otu_minute15otn_time_line_instances->parent = this;
-    children["otu-minute15otn-time-line-instances"] = otu_minute15otn_time_line_instances;
 
     yang_name = "otu-minute15otn-history"; yang_parent_name = "otu-minute15otn-histories";
 }
@@ -7623,7 +6686,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7647,41 +6710,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15otn-time-line-instances")
     {
-        if(otu_minute15otn_time_line_instances != nullptr)
-        {
-            children["otu-minute15otn-time-line-instances"] = otu_minute15otn_time_line_instances;
-        }
-        else
+        if(otu_minute15otn_time_line_instances == nullptr)
         {
             otu_minute15otn_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances>();
-            otu_minute15otn_time_line_instances->parent = this;
-            children["otu-minute15otn-time-line-instances"] = otu_minute15otn_time_line_instances;
         }
-        return children.at("otu-minute15otn-time-line-instances");
+        return otu_minute15otn_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::get_children() const
 {
-    if(children.find("otu-minute15otn-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_minute15otn_time_line_instances != nullptr)
     {
-        if(otu_minute15otn_time_line_instances != nullptr)
-        {
-            children["otu-minute15otn-time-line-instances"] = otu_minute15otn_time_line_instances;
-        }
+        children["otu-minute15otn-time-line-instances"] = otu_minute15otn_time_line_instances;
     }
 
     return children;
@@ -7733,7 +6779,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7756,15 +6802,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15otn-time-line-instance")
     {
         for(auto const & c : otu_minute15otn_time_line_instance)
@@ -7772,28 +6809,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance>();
         c->parent = this;
-        otu_minute15otn_time_line_instance.push_back(std::move(c));
-        children[segment_path] = otu_minute15otn_time_line_instance.back();
-        return children.at(segment_path);
+        otu_minute15otn_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_minute15otn_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7834,55 +6867,38 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,uas_ne(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe>())
 {
     bbe_fe->parent = this;
-    children["bbe-fe"] = bbe_fe;
 
     bbe_ne->parent = this;
-    children["bbe-ne"] = bbe_ne;
 
     bber_fe->parent = this;
-    children["bber-fe"] = bber_fe;
 
     bber_ne->parent = this;
-    children["bber-ne"] = bber_ne;
 
     es_fe->parent = this;
-    children["es-fe"] = es_fe;
 
     es_ne->parent = this;
-    children["es-ne"] = es_ne;
 
     esr_fe->parent = this;
-    children["esr-fe"] = esr_fe;
 
     esr_ne->parent = this;
-    children["esr-ne"] = esr_ne;
 
     fc_fe->parent = this;
-    children["fc-fe"] = fc_fe;
 
     fc_ne->parent = this;
-    children["fc-ne"] = fc_ne;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     ses_fe->parent = this;
-    children["ses-fe"] = ses_fe;
 
     ses_ne->parent = this;
-    children["ses-ne"] = ses_ne;
 
     sesr_fe->parent = this;
-    children["sesr-fe"] = sesr_fe;
 
     sesr_ne->parent = this;
-    children["sesr-ne"] = sesr_ne;
 
     uas_fe->parent = this;
-    children["uas-fe"] = uas_fe;
 
     uas_ne->parent = this;
-    children["uas-ne"] = uas_ne;
 
     yang_name = "otu-minute15otn-time-line-instance"; yang_parent_name = "otu-minute15otn-time-line-instances";
 }
@@ -7961,7 +6977,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7993,409 +7009,248 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bbe-fe")
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
-        else
+        if(bbe_fe == nullptr)
         {
             bbe_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe>();
-            bbe_fe->parent = this;
-            children["bbe-fe"] = bbe_fe;
         }
-        return children.at("bbe-fe");
+        return bbe_fe;
     }
 
     if(child_yang_name == "bbe-ne")
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
-        else
+        if(bbe_ne == nullptr)
         {
             bbe_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe>();
-            bbe_ne->parent = this;
-            children["bbe-ne"] = bbe_ne;
         }
-        return children.at("bbe-ne");
+        return bbe_ne;
     }
 
     if(child_yang_name == "bber-fe")
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
-        else
+        if(bber_fe == nullptr)
         {
             bber_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe>();
-            bber_fe->parent = this;
-            children["bber-fe"] = bber_fe;
         }
-        return children.at("bber-fe");
+        return bber_fe;
     }
 
     if(child_yang_name == "bber-ne")
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
-        else
+        if(bber_ne == nullptr)
         {
             bber_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe>();
-            bber_ne->parent = this;
-            children["bber-ne"] = bber_ne;
         }
-        return children.at("bber-ne");
+        return bber_ne;
     }
 
     if(child_yang_name == "es-fe")
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
-        else
+        if(es_fe == nullptr)
         {
             es_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe>();
-            es_fe->parent = this;
-            children["es-fe"] = es_fe;
         }
-        return children.at("es-fe");
+        return es_fe;
     }
 
     if(child_yang_name == "es-ne")
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
-        else
+        if(es_ne == nullptr)
         {
             es_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe>();
-            es_ne->parent = this;
-            children["es-ne"] = es_ne;
         }
-        return children.at("es-ne");
+        return es_ne;
     }
 
     if(child_yang_name == "esr-fe")
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
-        else
+        if(esr_fe == nullptr)
         {
             esr_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe>();
-            esr_fe->parent = this;
-            children["esr-fe"] = esr_fe;
         }
-        return children.at("esr-fe");
+        return esr_fe;
     }
 
     if(child_yang_name == "esr-ne")
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
-        else
+        if(esr_ne == nullptr)
         {
             esr_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe>();
-            esr_ne->parent = this;
-            children["esr-ne"] = esr_ne;
         }
-        return children.at("esr-ne");
+        return esr_ne;
     }
 
     if(child_yang_name == "fc-fe")
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
-        else
+        if(fc_fe == nullptr)
         {
             fc_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe>();
-            fc_fe->parent = this;
-            children["fc-fe"] = fc_fe;
         }
-        return children.at("fc-fe");
+        return fc_fe;
     }
 
     if(child_yang_name == "fc-ne")
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
-        else
+        if(fc_ne == nullptr)
         {
             fc_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe>();
-            fc_ne->parent = this;
-            children["fc-ne"] = fc_ne;
         }
-        return children.at("fc-ne");
+        return fc_ne;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "ses-fe")
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
-        else
+        if(ses_fe == nullptr)
         {
             ses_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe>();
-            ses_fe->parent = this;
-            children["ses-fe"] = ses_fe;
         }
-        return children.at("ses-fe");
+        return ses_fe;
     }
 
     if(child_yang_name == "ses-ne")
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
-        else
+        if(ses_ne == nullptr)
         {
             ses_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe>();
-            ses_ne->parent = this;
-            children["ses-ne"] = ses_ne;
         }
-        return children.at("ses-ne");
+        return ses_ne;
     }
 
     if(child_yang_name == "sesr-fe")
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
-        else
+        if(sesr_fe == nullptr)
         {
             sesr_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe>();
-            sesr_fe->parent = this;
-            children["sesr-fe"] = sesr_fe;
         }
-        return children.at("sesr-fe");
+        return sesr_fe;
     }
 
     if(child_yang_name == "sesr-ne")
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
-        else
+        if(sesr_ne == nullptr)
         {
             sesr_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe>();
-            sesr_ne->parent = this;
-            children["sesr-ne"] = sesr_ne;
         }
-        return children.at("sesr-ne");
+        return sesr_ne;
     }
 
     if(child_yang_name == "uas-fe")
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
-        else
+        if(uas_fe == nullptr)
         {
             uas_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe>();
-            uas_fe->parent = this;
-            children["uas-fe"] = uas_fe;
         }
-        return children.at("uas-fe");
+        return uas_fe;
     }
 
     if(child_yang_name == "uas-ne")
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
-        else
+        if(uas_ne == nullptr)
         {
             uas_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe>();
-            uas_ne->parent = this;
-            children["uas-ne"] = uas_ne;
         }
-        return children.at("uas-ne");
+        return uas_ne;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::get_children() const
 {
-    if(children.find("bbe-fe") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bbe_fe != nullptr)
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
+        children["bbe-fe"] = bbe_fe;
     }
 
-    if(children.find("bbe-ne") == children.end())
+    if(bbe_ne != nullptr)
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
+        children["bbe-ne"] = bbe_ne;
     }
 
-    if(children.find("bber-fe") == children.end())
+    if(bber_fe != nullptr)
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
+        children["bber-fe"] = bber_fe;
     }
 
-    if(children.find("bber-ne") == children.end())
+    if(bber_ne != nullptr)
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
+        children["bber-ne"] = bber_ne;
     }
 
-    if(children.find("es-fe") == children.end())
+    if(es_fe != nullptr)
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
+        children["es-fe"] = es_fe;
     }
 
-    if(children.find("es-ne") == children.end())
+    if(es_ne != nullptr)
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
+        children["es-ne"] = es_ne;
     }
 
-    if(children.find("esr-fe") == children.end())
+    if(esr_fe != nullptr)
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
+        children["esr-fe"] = esr_fe;
     }
 
-    if(children.find("esr-ne") == children.end())
+    if(esr_ne != nullptr)
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
+        children["esr-ne"] = esr_ne;
     }
 
-    if(children.find("fc-fe") == children.end())
+    if(fc_fe != nullptr)
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
+        children["fc-fe"] = fc_fe;
     }
 
-    if(children.find("fc-ne") == children.end())
+    if(fc_ne != nullptr)
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
+        children["fc-ne"] = fc_ne;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("ses-fe") == children.end())
+    if(ses_fe != nullptr)
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
+        children["ses-fe"] = ses_fe;
     }
 
-    if(children.find("ses-ne") == children.end())
+    if(ses_ne != nullptr)
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
+        children["ses-ne"] = ses_ne;
     }
 
-    if(children.find("sesr-fe") == children.end())
+    if(sesr_fe != nullptr)
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
+        children["sesr-fe"] = sesr_fe;
     }
 
-    if(children.find("sesr-ne") == children.end())
+    if(sesr_ne != nullptr)
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
+        children["sesr-ne"] = sesr_ne;
     }
 
-    if(children.find("uas-fe") == children.end())
+    if(uas_fe != nullptr)
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
+        children["uas-fe"] = uas_fe;
     }
 
-    if(children.find("uas-ne") == children.end())
+    if(uas_ne != nullptr)
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
+        children["uas-ne"] = uas_ne;
     }
 
     return children;
@@ -8478,7 +7333,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8504,20 +7359,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8574,7 +7421,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8600,20 +7447,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8670,7 +7509,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8696,20 +7535,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8766,7 +7597,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8792,20 +7623,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8862,7 +7685,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8888,20 +7711,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8958,7 +7773,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8984,20 +7799,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9054,7 +7861,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9080,20 +7887,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9150,7 +7949,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9176,20 +7975,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9246,7 +8037,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9272,20 +8063,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9342,7 +8125,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9368,20 +8151,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9438,7 +8213,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9464,20 +8239,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9534,7 +8301,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9560,20 +8327,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9630,7 +8389,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9656,20 +8415,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9726,7 +8477,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9752,20 +8503,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9822,7 +8565,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9848,20 +8591,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9918,7 +8653,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9944,20 +8679,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10014,7 +8741,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10040,20 +8767,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10079,10 +8798,8 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,otu_hour24otn_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories>())
 {
     otu_hour24fec_histories->parent = this;
-    children["otu-hour24fec-histories"] = otu_hour24fec_histories;
 
     otu_hour24otn_histories->parent = this;
-    children["otu-hour24otn-histories"] = otu_hour24otn_histories;
 
     yang_name = "otu-hour24-history"; yang_parent_name = "otu-port-history";
 }
@@ -10113,7 +8830,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10136,64 +8853,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-hour24fec-histories")
     {
-        if(otu_hour24fec_histories != nullptr)
-        {
-            children["otu-hour24fec-histories"] = otu_hour24fec_histories;
-        }
-        else
+        if(otu_hour24fec_histories == nullptr)
         {
             otu_hour24fec_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories>();
-            otu_hour24fec_histories->parent = this;
-            children["otu-hour24fec-histories"] = otu_hour24fec_histories;
         }
-        return children.at("otu-hour24fec-histories");
+        return otu_hour24fec_histories;
     }
 
     if(child_yang_name == "otu-hour24otn-histories")
     {
-        if(otu_hour24otn_histories != nullptr)
-        {
-            children["otu-hour24otn-histories"] = otu_hour24otn_histories;
-        }
-        else
+        if(otu_hour24otn_histories == nullptr)
         {
             otu_hour24otn_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories>();
-            otu_hour24otn_histories->parent = this;
-            children["otu-hour24otn-histories"] = otu_hour24otn_histories;
         }
-        return children.at("otu-hour24otn-histories");
+        return otu_hour24otn_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::get_children() const
 {
-    if(children.find("otu-hour24fec-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_hour24fec_histories != nullptr)
     {
-        if(otu_hour24fec_histories != nullptr)
-        {
-            children["otu-hour24fec-histories"] = otu_hour24fec_histories;
-        }
+        children["otu-hour24fec-histories"] = otu_hour24fec_histories;
     }
 
-    if(children.find("otu-hour24otn-histories") == children.end())
+    if(otu_hour24otn_histories != nullptr)
     {
-        if(otu_hour24otn_histories != nullptr)
-        {
-            children["otu-hour24otn-histories"] = otu_hour24otn_histories;
-        }
+        children["otu-hour24otn-histories"] = otu_hour24otn_histories;
     }
 
     return children;
@@ -10241,7 +8932,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10264,15 +8955,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-hour24otn-history")
     {
         for(auto const & c : otu_hour24otn_history)
@@ -10280,28 +8962,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory>();
         c->parent = this;
-        otu_hour24otn_history.push_back(std::move(c));
-        children[segment_path] = otu_hour24otn_history.back();
-        return children.at(segment_path);
+        otu_hour24otn_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_hour24otn_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10318,7 +8996,6 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
     otu_hour24otn_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances>())
 {
     otu_hour24otn_time_line_instances->parent = this;
-    children["otu-hour24otn-time-line-instances"] = otu_hour24otn_time_line_instances;
 
     yang_name = "otu-hour24otn-history"; yang_parent_name = "otu-hour24otn-histories";
 }
@@ -10349,7 +9026,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10373,41 +9050,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-hour24otn-time-line-instances")
     {
-        if(otu_hour24otn_time_line_instances != nullptr)
-        {
-            children["otu-hour24otn-time-line-instances"] = otu_hour24otn_time_line_instances;
-        }
-        else
+        if(otu_hour24otn_time_line_instances == nullptr)
         {
             otu_hour24otn_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances>();
-            otu_hour24otn_time_line_instances->parent = this;
-            children["otu-hour24otn-time-line-instances"] = otu_hour24otn_time_line_instances;
         }
-        return children.at("otu-hour24otn-time-line-instances");
+        return otu_hour24otn_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::get_children() const
 {
-    if(children.find("otu-hour24otn-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_hour24otn_time_line_instances != nullptr)
     {
-        if(otu_hour24otn_time_line_instances != nullptr)
-        {
-            children["otu-hour24otn-time-line-instances"] = otu_hour24otn_time_line_instances;
-        }
+        children["otu-hour24otn-time-line-instances"] = otu_hour24otn_time_line_instances;
     }
 
     return children;
@@ -10459,7 +9119,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10482,15 +9142,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-hour24otn-time-line-instance")
     {
         for(auto const & c : otu_hour24otn_time_line_instance)
@@ -10498,28 +9149,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance>();
         c->parent = this;
-        otu_hour24otn_time_line_instance.push_back(std::move(c));
-        children[segment_path] = otu_hour24otn_time_line_instance.back();
-        return children.at(segment_path);
+        otu_hour24otn_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_hour24otn_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10560,55 +9207,38 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,uas_ne(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe>())
 {
     bbe_fe->parent = this;
-    children["bbe-fe"] = bbe_fe;
 
     bbe_ne->parent = this;
-    children["bbe-ne"] = bbe_ne;
 
     bber_fe->parent = this;
-    children["bber-fe"] = bber_fe;
 
     bber_ne->parent = this;
-    children["bber-ne"] = bber_ne;
 
     es_fe->parent = this;
-    children["es-fe"] = es_fe;
 
     es_ne->parent = this;
-    children["es-ne"] = es_ne;
 
     esr_fe->parent = this;
-    children["esr-fe"] = esr_fe;
 
     esr_ne->parent = this;
-    children["esr-ne"] = esr_ne;
 
     fc_fe->parent = this;
-    children["fc-fe"] = fc_fe;
 
     fc_ne->parent = this;
-    children["fc-ne"] = fc_ne;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     ses_fe->parent = this;
-    children["ses-fe"] = ses_fe;
 
     ses_ne->parent = this;
-    children["ses-ne"] = ses_ne;
 
     sesr_fe->parent = this;
-    children["sesr-fe"] = sesr_fe;
 
     sesr_ne->parent = this;
-    children["sesr-ne"] = sesr_ne;
 
     uas_fe->parent = this;
-    children["uas-fe"] = uas_fe;
 
     uas_ne->parent = this;
-    children["uas-ne"] = uas_ne;
 
     yang_name = "otu-hour24otn-time-line-instance"; yang_parent_name = "otu-hour24otn-time-line-instances";
 }
@@ -10687,7 +9317,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10719,409 +9349,248 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bbe-fe")
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
-        else
+        if(bbe_fe == nullptr)
         {
             bbe_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe>();
-            bbe_fe->parent = this;
-            children["bbe-fe"] = bbe_fe;
         }
-        return children.at("bbe-fe");
+        return bbe_fe;
     }
 
     if(child_yang_name == "bbe-ne")
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
-        else
+        if(bbe_ne == nullptr)
         {
             bbe_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe>();
-            bbe_ne->parent = this;
-            children["bbe-ne"] = bbe_ne;
         }
-        return children.at("bbe-ne");
+        return bbe_ne;
     }
 
     if(child_yang_name == "bber-fe")
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
-        else
+        if(bber_fe == nullptr)
         {
             bber_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe>();
-            bber_fe->parent = this;
-            children["bber-fe"] = bber_fe;
         }
-        return children.at("bber-fe");
+        return bber_fe;
     }
 
     if(child_yang_name == "bber-ne")
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
-        else
+        if(bber_ne == nullptr)
         {
             bber_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe>();
-            bber_ne->parent = this;
-            children["bber-ne"] = bber_ne;
         }
-        return children.at("bber-ne");
+        return bber_ne;
     }
 
     if(child_yang_name == "es-fe")
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
-        else
+        if(es_fe == nullptr)
         {
             es_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe>();
-            es_fe->parent = this;
-            children["es-fe"] = es_fe;
         }
-        return children.at("es-fe");
+        return es_fe;
     }
 
     if(child_yang_name == "es-ne")
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
-        else
+        if(es_ne == nullptr)
         {
             es_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe>();
-            es_ne->parent = this;
-            children["es-ne"] = es_ne;
         }
-        return children.at("es-ne");
+        return es_ne;
     }
 
     if(child_yang_name == "esr-fe")
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
-        else
+        if(esr_fe == nullptr)
         {
             esr_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe>();
-            esr_fe->parent = this;
-            children["esr-fe"] = esr_fe;
         }
-        return children.at("esr-fe");
+        return esr_fe;
     }
 
     if(child_yang_name == "esr-ne")
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
-        else
+        if(esr_ne == nullptr)
         {
             esr_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe>();
-            esr_ne->parent = this;
-            children["esr-ne"] = esr_ne;
         }
-        return children.at("esr-ne");
+        return esr_ne;
     }
 
     if(child_yang_name == "fc-fe")
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
-        else
+        if(fc_fe == nullptr)
         {
             fc_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe>();
-            fc_fe->parent = this;
-            children["fc-fe"] = fc_fe;
         }
-        return children.at("fc-fe");
+        return fc_fe;
     }
 
     if(child_yang_name == "fc-ne")
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
-        else
+        if(fc_ne == nullptr)
         {
             fc_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe>();
-            fc_ne->parent = this;
-            children["fc-ne"] = fc_ne;
         }
-        return children.at("fc-ne");
+        return fc_ne;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "ses-fe")
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
-        else
+        if(ses_fe == nullptr)
         {
             ses_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe>();
-            ses_fe->parent = this;
-            children["ses-fe"] = ses_fe;
         }
-        return children.at("ses-fe");
+        return ses_fe;
     }
 
     if(child_yang_name == "ses-ne")
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
-        else
+        if(ses_ne == nullptr)
         {
             ses_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe>();
-            ses_ne->parent = this;
-            children["ses-ne"] = ses_ne;
         }
-        return children.at("ses-ne");
+        return ses_ne;
     }
 
     if(child_yang_name == "sesr-fe")
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
-        else
+        if(sesr_fe == nullptr)
         {
             sesr_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe>();
-            sesr_fe->parent = this;
-            children["sesr-fe"] = sesr_fe;
         }
-        return children.at("sesr-fe");
+        return sesr_fe;
     }
 
     if(child_yang_name == "sesr-ne")
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
-        else
+        if(sesr_ne == nullptr)
         {
             sesr_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe>();
-            sesr_ne->parent = this;
-            children["sesr-ne"] = sesr_ne;
         }
-        return children.at("sesr-ne");
+        return sesr_ne;
     }
 
     if(child_yang_name == "uas-fe")
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
-        else
+        if(uas_fe == nullptr)
         {
             uas_fe = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe>();
-            uas_fe->parent = this;
-            children["uas-fe"] = uas_fe;
         }
-        return children.at("uas-fe");
+        return uas_fe;
     }
 
     if(child_yang_name == "uas-ne")
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
-        else
+        if(uas_ne == nullptr)
         {
             uas_ne = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe>();
-            uas_ne->parent = this;
-            children["uas-ne"] = uas_ne;
         }
-        return children.at("uas-ne");
+        return uas_ne;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::get_children() const
 {
-    if(children.find("bbe-fe") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bbe_fe != nullptr)
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
+        children["bbe-fe"] = bbe_fe;
     }
 
-    if(children.find("bbe-ne") == children.end())
+    if(bbe_ne != nullptr)
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
+        children["bbe-ne"] = bbe_ne;
     }
 
-    if(children.find("bber-fe") == children.end())
+    if(bber_fe != nullptr)
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
+        children["bber-fe"] = bber_fe;
     }
 
-    if(children.find("bber-ne") == children.end())
+    if(bber_ne != nullptr)
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
+        children["bber-ne"] = bber_ne;
     }
 
-    if(children.find("es-fe") == children.end())
+    if(es_fe != nullptr)
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
+        children["es-fe"] = es_fe;
     }
 
-    if(children.find("es-ne") == children.end())
+    if(es_ne != nullptr)
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
+        children["es-ne"] = es_ne;
     }
 
-    if(children.find("esr-fe") == children.end())
+    if(esr_fe != nullptr)
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
+        children["esr-fe"] = esr_fe;
     }
 
-    if(children.find("esr-ne") == children.end())
+    if(esr_ne != nullptr)
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
+        children["esr-ne"] = esr_ne;
     }
 
-    if(children.find("fc-fe") == children.end())
+    if(fc_fe != nullptr)
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
+        children["fc-fe"] = fc_fe;
     }
 
-    if(children.find("fc-ne") == children.end())
+    if(fc_ne != nullptr)
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
+        children["fc-ne"] = fc_ne;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("ses-fe") == children.end())
+    if(ses_fe != nullptr)
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
+        children["ses-fe"] = ses_fe;
     }
 
-    if(children.find("ses-ne") == children.end())
+    if(ses_ne != nullptr)
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
+        children["ses-ne"] = ses_ne;
     }
 
-    if(children.find("sesr-fe") == children.end())
+    if(sesr_fe != nullptr)
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
+        children["sesr-fe"] = sesr_fe;
     }
 
-    if(children.find("sesr-ne") == children.end())
+    if(sesr_ne != nullptr)
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
+        children["sesr-ne"] = sesr_ne;
     }
 
-    if(children.find("uas-fe") == children.end())
+    if(uas_fe != nullptr)
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
+        children["uas-fe"] = uas_fe;
     }
 
-    if(children.find("uas-ne") == children.end())
+    if(uas_ne != nullptr)
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
+        children["uas-ne"] = uas_ne;
     }
 
     return children;
@@ -11204,7 +9673,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11230,20 +9699,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11300,7 +9761,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11326,20 +9787,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11396,7 +9849,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11422,20 +9875,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11492,7 +9937,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11518,20 +9963,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11588,7 +10025,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11614,20 +10051,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11684,7 +10113,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11710,20 +10139,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11780,7 +10201,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11806,20 +10227,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11876,7 +10289,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11902,20 +10315,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11972,7 +10377,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11998,20 +10403,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12068,7 +10465,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12094,20 +10491,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12164,7 +10553,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12190,20 +10579,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12260,7 +10641,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12286,20 +10667,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12356,7 +10729,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12382,20 +10755,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12452,7 +10817,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12478,20 +10843,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12548,7 +10905,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12574,20 +10931,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12644,7 +10993,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12670,20 +11019,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12740,7 +11081,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12766,20 +11107,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12837,7 +11170,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12860,15 +11193,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-hour24fec-history")
     {
         for(auto const & c : otu_hour24fec_history)
@@ -12876,28 +11200,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory>();
         c->parent = this;
-        otu_hour24fec_history.push_back(std::move(c));
-        children[segment_path] = otu_hour24fec_history.back();
-        return children.at(segment_path);
+        otu_hour24fec_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_hour24fec_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12914,7 +11234,6 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
     otu_hour24fec_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances>())
 {
     otu_hour24fec_time_line_instances->parent = this;
-    children["otu-hour24fec-time-line-instances"] = otu_hour24fec_time_line_instances;
 
     yang_name = "otu-hour24fec-history"; yang_parent_name = "otu-hour24fec-histories";
 }
@@ -12945,7 +11264,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12969,41 +11288,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-hour24fec-time-line-instances")
     {
-        if(otu_hour24fec_time_line_instances != nullptr)
-        {
-            children["otu-hour24fec-time-line-instances"] = otu_hour24fec_time_line_instances;
-        }
-        else
+        if(otu_hour24fec_time_line_instances == nullptr)
         {
             otu_hour24fec_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances>();
-            otu_hour24fec_time_line_instances->parent = this;
-            children["otu-hour24fec-time-line-instances"] = otu_hour24fec_time_line_instances;
         }
-        return children.at("otu-hour24fec-time-line-instances");
+        return otu_hour24fec_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::get_children() const
 {
-    if(children.find("otu-hour24fec-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_hour24fec_time_line_instances != nullptr)
     {
-        if(otu_hour24fec_time_line_instances != nullptr)
-        {
-            children["otu-hour24fec-time-line-instances"] = otu_hour24fec_time_line_instances;
-        }
+        children["otu-hour24fec-time-line-instances"] = otu_hour24fec_time_line_instances;
     }
 
     return children;
@@ -13055,7 +11357,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13078,15 +11380,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-hour24fec-time-line-instance")
     {
         for(auto const & c : otu_hour24fec_time_line_instance)
@@ -13094,28 +11387,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance>();
         c->parent = this;
-        otu_hour24fec_time_line_instance.push_back(std::move(c));
-        children[segment_path] = otu_hour24fec_time_line_instance.back();
-        return children.at(segment_path);
+        otu_hour24fec_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_hour24fec_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13145,22 +11434,16 @@ PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::Ot
 	,uc_words(std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords>())
 {
     ec_bits->parent = this;
-    children["ec-bits"] = ec_bits;
 
     post_fec_ber->parent = this;
-    children["post-fec-ber"] = post_fec_ber;
 
     pre_fec_ber->parent = this;
-    children["pre-fec-ber"] = pre_fec_ber;
 
     q->parent = this;
-    children["q"] = q;
 
     qmargin->parent = this;
-    children["qmargin"] = qmargin;
 
     uc_words->parent = this;
-    children["uc-words"] = uc_words;
 
     yang_name = "otu-hour24fec-time-line-instance"; yang_parent_name = "otu-hour24fec-time-line-instances";
 }
@@ -13217,7 +11500,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13249,156 +11532,94 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ec-bits")
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
-        else
+        if(ec_bits == nullptr)
         {
             ec_bits = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits>();
-            ec_bits->parent = this;
-            children["ec-bits"] = ec_bits;
         }
-        return children.at("ec-bits");
+        return ec_bits;
     }
 
     if(child_yang_name == "post-fec-ber")
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
-        else
+        if(post_fec_ber == nullptr)
         {
             post_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer>();
-            post_fec_ber->parent = this;
-            children["post-fec-ber"] = post_fec_ber;
         }
-        return children.at("post-fec-ber");
+        return post_fec_ber;
     }
 
     if(child_yang_name == "pre-fec-ber")
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
-        else
+        if(pre_fec_ber == nullptr)
         {
             pre_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer>();
-            pre_fec_ber->parent = this;
-            children["pre-fec-ber"] = pre_fec_ber;
         }
-        return children.at("pre-fec-ber");
+        return pre_fec_ber;
     }
 
     if(child_yang_name == "q")
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
-        else
+        if(q == nullptr)
         {
             q = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q>();
-            q->parent = this;
-            children["q"] = q;
         }
-        return children.at("q");
+        return q;
     }
 
     if(child_yang_name == "qmargin")
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
-        else
+        if(qmargin == nullptr)
         {
             qmargin = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin>();
-            qmargin->parent = this;
-            children["qmargin"] = qmargin;
         }
-        return children.at("qmargin");
+        return qmargin;
     }
 
     if(child_yang_name == "uc-words")
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
-        else
+        if(uc_words == nullptr)
         {
             uc_words = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords>();
-            uc_words->parent = this;
-            children["uc-words"] = uc_words;
         }
-        return children.at("uc-words");
+        return uc_words;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::get_children() const
 {
-    if(children.find("ec-bits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ec_bits != nullptr)
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
+        children["ec-bits"] = ec_bits;
     }
 
-    if(children.find("post-fec-ber") == children.end())
+    if(post_fec_ber != nullptr)
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
+        children["post-fec-ber"] = post_fec_ber;
     }
 
-    if(children.find("pre-fec-ber") == children.end())
+    if(pre_fec_ber != nullptr)
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
+        children["pre-fec-ber"] = pre_fec_ber;
     }
 
-    if(children.find("q") == children.end())
+    if(q != nullptr)
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
+        children["q"] = q;
     }
 
-    if(children.find("qmargin") == children.end())
+    if(qmargin != nullptr)
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
+        children["qmargin"] = qmargin;
     }
 
-    if(children.find("uc-words") == children.end())
+    if(uc_words != nullptr)
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
+        children["uc-words"] = uc_words;
     }
 
     return children;
@@ -13484,7 +11705,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13511,20 +11732,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13588,7 +11801,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13615,20 +11828,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13704,7 +11909,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13735,20 +11940,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13840,7 +12037,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13871,20 +12068,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13976,7 +12165,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14007,20 +12196,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14112,7 +12293,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortH
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14143,20 +12324,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHi
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14201,7 +12374,6 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcHistory()
     ho_vc_port_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories>())
 {
     ho_vc_port_histories->parent = this;
-    children["ho-vc-port-histories"] = ho_vc_port_histories;
 
     yang_name = "ho-vc-history"; yang_parent_name = "periodic";
 }
@@ -14230,7 +12402,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::get_seg
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14253,41 +12425,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::get_enti
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-port-histories")
     {
-        if(ho_vc_port_histories != nullptr)
-        {
-            children["ho-vc-port-histories"] = ho_vc_port_histories;
-        }
-        else
+        if(ho_vc_port_histories == nullptr)
         {
             ho_vc_port_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories>();
-            ho_vc_port_histories->parent = this;
-            children["ho-vc-port-histories"] = ho_vc_port_histories;
         }
-        return children.at("ho-vc-port-histories");
+        return ho_vc_port_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::get_children() const
 {
-    if(children.find("ho-vc-port-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_port_histories != nullptr)
     {
-        if(ho_vc_port_histories != nullptr)
-        {
-            children["ho-vc-port-histories"] = ho_vc_port_histories;
-        }
+        children["ho-vc-port-histories"] = ho_vc_port_histories;
     }
 
     return children;
@@ -14335,7 +12490,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14358,15 +12513,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-port-history")
     {
         for(auto const & c : ho_vc_port_history)
@@ -14374,28 +12520,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHist
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory>();
         c->parent = this;
-        ho_vc_port_history.push_back(std::move(c));
-        children[segment_path] = ho_vc_port_history.back();
-        return children.at(segment_path);
+        ho_vc_port_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_port_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14413,10 +12555,8 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::
 	,ho_vc_minute15_history(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History>())
 {
     ho_vc_hour24_history->parent = this;
-    children["ho-vc-hour24-history"] = ho_vc_hour24_history;
 
     ho_vc_minute15_history->parent = this;
-    children["ho-vc-minute15-history"] = ho_vc_minute15_history;
 
     yang_name = "ho-vc-port-history"; yang_parent_name = "ho-vc-port-histories";
 }
@@ -14449,7 +12589,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14473,64 +12613,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24-history")
     {
-        if(ho_vc_hour24_history != nullptr)
-        {
-            children["ho-vc-hour24-history"] = ho_vc_hour24_history;
-        }
-        else
+        if(ho_vc_hour24_history == nullptr)
         {
             ho_vc_hour24_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History>();
-            ho_vc_hour24_history->parent = this;
-            children["ho-vc-hour24-history"] = ho_vc_hour24_history;
         }
-        return children.at("ho-vc-hour24-history");
+        return ho_vc_hour24_history;
     }
 
     if(child_yang_name == "ho-vc-minute15-history")
     {
-        if(ho_vc_minute15_history != nullptr)
-        {
-            children["ho-vc-minute15-history"] = ho_vc_minute15_history;
-        }
-        else
+        if(ho_vc_minute15_history == nullptr)
         {
             ho_vc_minute15_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History>();
-            ho_vc_minute15_history->parent = this;
-            children["ho-vc-minute15-history"] = ho_vc_minute15_history;
         }
-        return children.at("ho-vc-minute15-history");
+        return ho_vc_minute15_history;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::get_children() const
 {
-    if(children.find("ho-vc-hour24-history") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_hour24_history != nullptr)
     {
-        if(ho_vc_hour24_history != nullptr)
-        {
-            children["ho-vc-hour24-history"] = ho_vc_hour24_history;
-        }
+        children["ho-vc-hour24-history"] = ho_vc_hour24_history;
     }
 
-    if(children.find("ho-vc-minute15-history") == children.end())
+    if(ho_vc_minute15_history != nullptr)
     {
-        if(ho_vc_minute15_history != nullptr)
-        {
-            children["ho-vc-minute15-history"] = ho_vc_minute15_history;
-        }
+        children["ho-vc-minute15-history"] = ho_vc_minute15_history;
     }
 
     return children;
@@ -14549,7 +12663,6 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::
     ho_vc_minute15_path_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories>())
 {
     ho_vc_minute15_path_histories->parent = this;
-    children["ho-vc-minute15-path-histories"] = ho_vc_minute15_path_histories;
 
     yang_name = "ho-vc-minute15-history"; yang_parent_name = "ho-vc-port-history";
 }
@@ -14578,7 +12691,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14601,41 +12714,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-minute15-path-histories")
     {
-        if(ho_vc_minute15_path_histories != nullptr)
-        {
-            children["ho-vc-minute15-path-histories"] = ho_vc_minute15_path_histories;
-        }
-        else
+        if(ho_vc_minute15_path_histories == nullptr)
         {
             ho_vc_minute15_path_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories>();
-            ho_vc_minute15_path_histories->parent = this;
-            children["ho-vc-minute15-path-histories"] = ho_vc_minute15_path_histories;
         }
-        return children.at("ho-vc-minute15-path-histories");
+        return ho_vc_minute15_path_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::get_children() const
 {
-    if(children.find("ho-vc-minute15-path-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_minute15_path_histories != nullptr)
     {
-        if(ho_vc_minute15_path_histories != nullptr)
-        {
-            children["ho-vc-minute15-path-histories"] = ho_vc_minute15_path_histories;
-        }
+        children["ho-vc-minute15-path-histories"] = ho_vc_minute15_path_histories;
     }
 
     return children;
@@ -14683,7 +12779,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14706,15 +12802,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-minute15-path-history")
     {
         for(auto const & c : ho_vc_minute15_path_history)
@@ -14722,28 +12809,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHist
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory>();
         c->parent = this;
-        ho_vc_minute15_path_history.push_back(std::move(c));
-        children[segment_path] = ho_vc_minute15_path_history.back();
-        return children.at(segment_path);
+        ho_vc_minute15_path_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_minute15_path_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14760,7 +12843,6 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::
     ho_vc_minute15_path_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances>())
 {
     ho_vc_minute15_path_time_line_instances->parent = this;
-    children["ho-vc-minute15-path-time-line-instances"] = ho_vc_minute15_path_time_line_instances;
 
     yang_name = "ho-vc-minute15-path-history"; yang_parent_name = "ho-vc-minute15-path-histories";
 }
@@ -14791,7 +12873,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14815,41 +12897,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-minute15-path-time-line-instances")
     {
-        if(ho_vc_minute15_path_time_line_instances != nullptr)
-        {
-            children["ho-vc-minute15-path-time-line-instances"] = ho_vc_minute15_path_time_line_instances;
-        }
-        else
+        if(ho_vc_minute15_path_time_line_instances == nullptr)
         {
             ho_vc_minute15_path_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances>();
-            ho_vc_minute15_path_time_line_instances->parent = this;
-            children["ho-vc-minute15-path-time-line-instances"] = ho_vc_minute15_path_time_line_instances;
         }
-        return children.at("ho-vc-minute15-path-time-line-instances");
+        return ho_vc_minute15_path_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::get_children() const
 {
-    if(children.find("ho-vc-minute15-path-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_minute15_path_time_line_instances != nullptr)
     {
-        if(ho_vc_minute15_path_time_line_instances != nullptr)
-        {
-            children["ho-vc-minute15-path-time-line-instances"] = ho_vc_minute15_path_time_line_instances;
-        }
+        children["ho-vc-minute15-path-time-line-instances"] = ho_vc_minute15_path_time_line_instances;
     }
 
     return children;
@@ -14901,7 +12966,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14924,15 +12989,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-minute15-path-time-line-instance")
     {
         for(auto const & c : ho_vc_minute15_path_time_line_instance)
@@ -14940,28 +12996,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHist
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance>();
         c->parent = this;
-        ho_vc_minute15_path_time_line_instance.push_back(std::move(c));
-        children[segment_path] = ho_vc_minute15_path_time_line_instance.back();
-        return children.at(segment_path);
+        ho_vc_minute15_path_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_minute15_path_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14985,10 +13037,8 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::
 	,path(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path>())
 {
     fe_path->parent = this;
-    children["fe-path"] = fe_path;
 
     path->parent = this;
-    children["path"] = path;
 
     yang_name = "ho-vc-minute15-path-time-line-instance"; yang_parent_name = "ho-vc-minute15-path-time-line-instances";
 }
@@ -15033,7 +13083,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15063,64 +13113,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fe-path")
     {
-        if(fe_path != nullptr)
-        {
-            children["fe-path"] = fe_path;
-        }
-        else
+        if(fe_path == nullptr)
         {
             fe_path = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath>();
-            fe_path->parent = this;
-            children["fe-path"] = fe_path;
         }
-        return children.at("fe-path");
+        return fe_path;
     }
 
     if(child_yang_name == "path")
     {
-        if(path != nullptr)
-        {
-            children["path"] = path;
-        }
-        else
+        if(path == nullptr)
         {
             path = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path>();
-            path->parent = this;
-            children["path"] = path;
         }
-        return children.at("path");
+        return path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::get_children() const
 {
-    if(children.find("fe-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fe_path != nullptr)
     {
-        if(fe_path != nullptr)
-        {
-            children["fe-path"] = fe_path;
-        }
+        children["fe-path"] = fe_path;
     }
 
-    if(children.find("path") == children.end())
+    if(path != nullptr)
     {
-        if(path != nullptr)
-        {
-            children["path"] = path;
-        }
+        children["path"] = path;
     }
 
     return children;
@@ -15172,28 +13196,20 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::
 	,path_ua_ss(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs>())
 {
     path_bb_es->parent = this;
-    children["path-bb-es"] = path_bb_es;
 
     path_bbe_rs->parent = this;
-    children["path-bbe-rs"] = path_bbe_rs;
 
     path_e_bs->parent = this;
-    children["path-e-bs"] = path_e_bs;
 
     path_e_ss->parent = this;
-    children["path-e-ss"] = path_e_ss;
 
     path_es_rs->parent = this;
-    children["path-es-rs"] = path_es_rs;
 
     path_se_ss->parent = this;
-    children["path-se-ss"] = path_se_ss;
 
     path_ses_rs->parent = this;
-    children["path-ses-rs"] = path_ses_rs;
 
     path_ua_ss->parent = this;
-    children["path-ua-ss"] = path_ua_ss;
 
     yang_name = "path"; yang_parent_name = "ho-vc-minute15-path-time-line-instance";
 }
@@ -15238,7 +13254,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15262,202 +13278,122 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-bb-es")
     {
-        if(path_bb_es != nullptr)
-        {
-            children["path-bb-es"] = path_bb_es;
-        }
-        else
+        if(path_bb_es == nullptr)
         {
             path_bb_es = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs>();
-            path_bb_es->parent = this;
-            children["path-bb-es"] = path_bb_es;
         }
-        return children.at("path-bb-es");
+        return path_bb_es;
     }
 
     if(child_yang_name == "path-bbe-rs")
     {
-        if(path_bbe_rs != nullptr)
-        {
-            children["path-bbe-rs"] = path_bbe_rs;
-        }
-        else
+        if(path_bbe_rs == nullptr)
         {
             path_bbe_rs = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs>();
-            path_bbe_rs->parent = this;
-            children["path-bbe-rs"] = path_bbe_rs;
         }
-        return children.at("path-bbe-rs");
+        return path_bbe_rs;
     }
 
     if(child_yang_name == "path-e-bs")
     {
-        if(path_e_bs != nullptr)
-        {
-            children["path-e-bs"] = path_e_bs;
-        }
-        else
+        if(path_e_bs == nullptr)
         {
             path_e_bs = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs>();
-            path_e_bs->parent = this;
-            children["path-e-bs"] = path_e_bs;
         }
-        return children.at("path-e-bs");
+        return path_e_bs;
     }
 
     if(child_yang_name == "path-e-ss")
     {
-        if(path_e_ss != nullptr)
-        {
-            children["path-e-ss"] = path_e_ss;
-        }
-        else
+        if(path_e_ss == nullptr)
         {
             path_e_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs>();
-            path_e_ss->parent = this;
-            children["path-e-ss"] = path_e_ss;
         }
-        return children.at("path-e-ss");
+        return path_e_ss;
     }
 
     if(child_yang_name == "path-es-rs")
     {
-        if(path_es_rs != nullptr)
-        {
-            children["path-es-rs"] = path_es_rs;
-        }
-        else
+        if(path_es_rs == nullptr)
         {
             path_es_rs = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs>();
-            path_es_rs->parent = this;
-            children["path-es-rs"] = path_es_rs;
         }
-        return children.at("path-es-rs");
+        return path_es_rs;
     }
 
     if(child_yang_name == "path-se-ss")
     {
-        if(path_se_ss != nullptr)
-        {
-            children["path-se-ss"] = path_se_ss;
-        }
-        else
+        if(path_se_ss == nullptr)
         {
             path_se_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs>();
-            path_se_ss->parent = this;
-            children["path-se-ss"] = path_se_ss;
         }
-        return children.at("path-se-ss");
+        return path_se_ss;
     }
 
     if(child_yang_name == "path-ses-rs")
     {
-        if(path_ses_rs != nullptr)
-        {
-            children["path-ses-rs"] = path_ses_rs;
-        }
-        else
+        if(path_ses_rs == nullptr)
         {
             path_ses_rs = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs>();
-            path_ses_rs->parent = this;
-            children["path-ses-rs"] = path_ses_rs;
         }
-        return children.at("path-ses-rs");
+        return path_ses_rs;
     }
 
     if(child_yang_name == "path-ua-ss")
     {
-        if(path_ua_ss != nullptr)
-        {
-            children["path-ua-ss"] = path_ua_ss;
-        }
-        else
+        if(path_ua_ss == nullptr)
         {
             path_ua_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs>();
-            path_ua_ss->parent = this;
-            children["path-ua-ss"] = path_ua_ss;
         }
-        return children.at("path-ua-ss");
+        return path_ua_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::get_children() const
 {
-    if(children.find("path-bb-es") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_bb_es != nullptr)
     {
-        if(path_bb_es != nullptr)
-        {
-            children["path-bb-es"] = path_bb_es;
-        }
+        children["path-bb-es"] = path_bb_es;
     }
 
-    if(children.find("path-bbe-rs") == children.end())
+    if(path_bbe_rs != nullptr)
     {
-        if(path_bbe_rs != nullptr)
-        {
-            children["path-bbe-rs"] = path_bbe_rs;
-        }
+        children["path-bbe-rs"] = path_bbe_rs;
     }
 
-    if(children.find("path-e-bs") == children.end())
+    if(path_e_bs != nullptr)
     {
-        if(path_e_bs != nullptr)
-        {
-            children["path-e-bs"] = path_e_bs;
-        }
+        children["path-e-bs"] = path_e_bs;
     }
 
-    if(children.find("path-e-ss") == children.end())
+    if(path_e_ss != nullptr)
     {
-        if(path_e_ss != nullptr)
-        {
-            children["path-e-ss"] = path_e_ss;
-        }
+        children["path-e-ss"] = path_e_ss;
     }
 
-    if(children.find("path-es-rs") == children.end())
+    if(path_es_rs != nullptr)
     {
-        if(path_es_rs != nullptr)
-        {
-            children["path-es-rs"] = path_es_rs;
-        }
+        children["path-es-rs"] = path_es_rs;
     }
 
-    if(children.find("path-se-ss") == children.end())
+    if(path_se_ss != nullptr)
     {
-        if(path_se_ss != nullptr)
-        {
-            children["path-se-ss"] = path_se_ss;
-        }
+        children["path-se-ss"] = path_se_ss;
     }
 
-    if(children.find("path-ses-rs") == children.end())
+    if(path_ses_rs != nullptr)
     {
-        if(path_ses_rs != nullptr)
-        {
-            children["path-ses-rs"] = path_ses_rs;
-        }
+        children["path-ses-rs"] = path_ses_rs;
     }
 
-    if(children.find("path-ua-ss") == children.end())
+    if(path_ua_ss != nullptr)
     {
-        if(path_ua_ss != nullptr)
-        {
-            children["path-ua-ss"] = path_ua_ss;
-        }
+        children["path-ua-ss"] = path_ua_ss;
     }
 
     return children;
@@ -15508,7 +13444,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15534,20 +13470,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15604,7 +13532,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15630,20 +13558,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15700,7 +13620,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15726,20 +13646,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15796,7 +13708,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15822,20 +13734,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15892,7 +13796,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15918,20 +13822,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15988,7 +13884,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16014,20 +13910,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16084,7 +13972,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16110,20 +13998,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16180,7 +14060,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16206,20 +14086,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16279,7 +14151,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16306,20 +14178,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16348,7 +14212,6 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::
     ho_vc_hour24_path_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories>())
 {
     ho_vc_hour24_path_histories->parent = this;
-    children["ho-vc-hour24-path-histories"] = ho_vc_hour24_path_histories;
 
     yang_name = "ho-vc-hour24-history"; yang_parent_name = "ho-vc-port-history";
 }
@@ -16377,7 +14240,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16400,41 +14263,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24-path-histories")
     {
-        if(ho_vc_hour24_path_histories != nullptr)
-        {
-            children["ho-vc-hour24-path-histories"] = ho_vc_hour24_path_histories;
-        }
-        else
+        if(ho_vc_hour24_path_histories == nullptr)
         {
             ho_vc_hour24_path_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories>();
-            ho_vc_hour24_path_histories->parent = this;
-            children["ho-vc-hour24-path-histories"] = ho_vc_hour24_path_histories;
         }
-        return children.at("ho-vc-hour24-path-histories");
+        return ho_vc_hour24_path_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::get_children() const
 {
-    if(children.find("ho-vc-hour24-path-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_hour24_path_histories != nullptr)
     {
-        if(ho_vc_hour24_path_histories != nullptr)
-        {
-            children["ho-vc-hour24-path-histories"] = ho_vc_hour24_path_histories;
-        }
+        children["ho-vc-hour24-path-histories"] = ho_vc_hour24_path_histories;
     }
 
     return children;
@@ -16482,7 +14328,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16505,15 +14351,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24-path-history")
     {
         for(auto const & c : ho_vc_hour24_path_history)
@@ -16521,28 +14358,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHist
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory>();
         c->parent = this;
-        ho_vc_hour24_path_history.push_back(std::move(c));
-        children[segment_path] = ho_vc_hour24_path_history.back();
-        return children.at(segment_path);
+        ho_vc_hour24_path_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_hour24_path_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16559,7 +14392,6 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::
     ho_vc_hour24_path_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances>())
 {
     ho_vc_hour24_path_time_line_instances->parent = this;
-    children["ho-vc-hour24-path-time-line-instances"] = ho_vc_hour24_path_time_line_instances;
 
     yang_name = "ho-vc-hour24-path-history"; yang_parent_name = "ho-vc-hour24-path-histories";
 }
@@ -16590,7 +14422,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16614,41 +14446,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24-path-time-line-instances")
     {
-        if(ho_vc_hour24_path_time_line_instances != nullptr)
-        {
-            children["ho-vc-hour24-path-time-line-instances"] = ho_vc_hour24_path_time_line_instances;
-        }
-        else
+        if(ho_vc_hour24_path_time_line_instances == nullptr)
         {
             ho_vc_hour24_path_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances>();
-            ho_vc_hour24_path_time_line_instances->parent = this;
-            children["ho-vc-hour24-path-time-line-instances"] = ho_vc_hour24_path_time_line_instances;
         }
-        return children.at("ho-vc-hour24-path-time-line-instances");
+        return ho_vc_hour24_path_time_line_instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::get_children() const
 {
-    if(children.find("ho-vc-hour24-path-time-line-instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_hour24_path_time_line_instances != nullptr)
     {
-        if(ho_vc_hour24_path_time_line_instances != nullptr)
-        {
-            children["ho-vc-hour24-path-time-line-instances"] = ho_vc_hour24_path_time_line_instances;
-        }
+        children["ho-vc-hour24-path-time-line-instances"] = ho_vc_hour24_path_time_line_instances;
     }
 
     return children;
@@ -16700,7 +14515,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16723,15 +14538,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24-path-time-line-instance")
     {
         for(auto const & c : ho_vc_hour24_path_time_line_instance)
@@ -16739,28 +14545,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHist
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance>();
         c->parent = this;
-        ho_vc_hour24_path_time_line_instance.push_back(std::move(c));
-        children[segment_path] = ho_vc_hour24_path_time_line_instance.back();
-        return children.at(segment_path);
+        ho_vc_hour24_path_time_line_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_hour24_path_time_line_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16784,10 +14586,8 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::
 	,path(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path>())
 {
     fe_path->parent = this;
-    children["fe-path"] = fe_path;
 
     path->parent = this;
-    children["path"] = path;
 
     yang_name = "ho-vc-hour24-path-time-line-instance"; yang_parent_name = "ho-vc-hour24-path-time-line-instances";
 }
@@ -16832,7 +14632,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16862,64 +14662,38 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fe-path")
     {
-        if(fe_path != nullptr)
-        {
-            children["fe-path"] = fe_path;
-        }
-        else
+        if(fe_path == nullptr)
         {
             fe_path = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath>();
-            fe_path->parent = this;
-            children["fe-path"] = fe_path;
         }
-        return children.at("fe-path");
+        return fe_path;
     }
 
     if(child_yang_name == "path")
     {
-        if(path != nullptr)
-        {
-            children["path"] = path;
-        }
-        else
+        if(path == nullptr)
         {
             path = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path>();
-            path->parent = this;
-            children["path"] = path;
         }
-        return children.at("path");
+        return path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::get_children() const
 {
-    if(children.find("fe-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fe_path != nullptr)
     {
-        if(fe_path != nullptr)
-        {
-            children["fe-path"] = fe_path;
-        }
+        children["fe-path"] = fe_path;
     }
 
-    if(children.find("path") == children.end())
+    if(path != nullptr)
     {
-        if(path != nullptr)
-        {
-            children["path"] = path;
-        }
+        children["path"] = path;
     }
 
     return children;
@@ -16971,28 +14745,20 @@ PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::
 	,path_ua_ss(std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs>())
 {
     path_bb_es->parent = this;
-    children["path-bb-es"] = path_bb_es;
 
     path_bbe_rs->parent = this;
-    children["path-bbe-rs"] = path_bbe_rs;
 
     path_e_bs->parent = this;
-    children["path-e-bs"] = path_e_bs;
 
     path_e_ss->parent = this;
-    children["path-e-ss"] = path_e_ss;
 
     path_es_rs->parent = this;
-    children["path-es-rs"] = path_es_rs;
 
     path_se_ss->parent = this;
-    children["path-se-ss"] = path_se_ss;
 
     path_ses_rs->parent = this;
-    children["path-ses-rs"] = path_ses_rs;
 
     path_ua_ss->parent = this;
-    children["path-ua-ss"] = path_ua_ss;
 
     yang_name = "path"; yang_parent_name = "ho-vc-hour24-path-time-line-instance";
 }
@@ -17037,7 +14803,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17061,202 +14827,122 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-bb-es")
     {
-        if(path_bb_es != nullptr)
-        {
-            children["path-bb-es"] = path_bb_es;
-        }
-        else
+        if(path_bb_es == nullptr)
         {
             path_bb_es = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs>();
-            path_bb_es->parent = this;
-            children["path-bb-es"] = path_bb_es;
         }
-        return children.at("path-bb-es");
+        return path_bb_es;
     }
 
     if(child_yang_name == "path-bbe-rs")
     {
-        if(path_bbe_rs != nullptr)
-        {
-            children["path-bbe-rs"] = path_bbe_rs;
-        }
-        else
+        if(path_bbe_rs == nullptr)
         {
             path_bbe_rs = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs>();
-            path_bbe_rs->parent = this;
-            children["path-bbe-rs"] = path_bbe_rs;
         }
-        return children.at("path-bbe-rs");
+        return path_bbe_rs;
     }
 
     if(child_yang_name == "path-e-bs")
     {
-        if(path_e_bs != nullptr)
-        {
-            children["path-e-bs"] = path_e_bs;
-        }
-        else
+        if(path_e_bs == nullptr)
         {
             path_e_bs = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs>();
-            path_e_bs->parent = this;
-            children["path-e-bs"] = path_e_bs;
         }
-        return children.at("path-e-bs");
+        return path_e_bs;
     }
 
     if(child_yang_name == "path-e-ss")
     {
-        if(path_e_ss != nullptr)
-        {
-            children["path-e-ss"] = path_e_ss;
-        }
-        else
+        if(path_e_ss == nullptr)
         {
             path_e_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs>();
-            path_e_ss->parent = this;
-            children["path-e-ss"] = path_e_ss;
         }
-        return children.at("path-e-ss");
+        return path_e_ss;
     }
 
     if(child_yang_name == "path-es-rs")
     {
-        if(path_es_rs != nullptr)
-        {
-            children["path-es-rs"] = path_es_rs;
-        }
-        else
+        if(path_es_rs == nullptr)
         {
             path_es_rs = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs>();
-            path_es_rs->parent = this;
-            children["path-es-rs"] = path_es_rs;
         }
-        return children.at("path-es-rs");
+        return path_es_rs;
     }
 
     if(child_yang_name == "path-se-ss")
     {
-        if(path_se_ss != nullptr)
-        {
-            children["path-se-ss"] = path_se_ss;
-        }
-        else
+        if(path_se_ss == nullptr)
         {
             path_se_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs>();
-            path_se_ss->parent = this;
-            children["path-se-ss"] = path_se_ss;
         }
-        return children.at("path-se-ss");
+        return path_se_ss;
     }
 
     if(child_yang_name == "path-ses-rs")
     {
-        if(path_ses_rs != nullptr)
-        {
-            children["path-ses-rs"] = path_ses_rs;
-        }
-        else
+        if(path_ses_rs == nullptr)
         {
             path_ses_rs = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs>();
-            path_ses_rs->parent = this;
-            children["path-ses-rs"] = path_ses_rs;
         }
-        return children.at("path-ses-rs");
+        return path_ses_rs;
     }
 
     if(child_yang_name == "path-ua-ss")
     {
-        if(path_ua_ss != nullptr)
-        {
-            children["path-ua-ss"] = path_ua_ss;
-        }
-        else
+        if(path_ua_ss == nullptr)
         {
             path_ua_ss = std::make_shared<PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs>();
-            path_ua_ss->parent = this;
-            children["path-ua-ss"] = path_ua_ss;
         }
-        return children.at("path-ua-ss");
+        return path_ua_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::get_children() const
 {
-    if(children.find("path-bb-es") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_bb_es != nullptr)
     {
-        if(path_bb_es != nullptr)
-        {
-            children["path-bb-es"] = path_bb_es;
-        }
+        children["path-bb-es"] = path_bb_es;
     }
 
-    if(children.find("path-bbe-rs") == children.end())
+    if(path_bbe_rs != nullptr)
     {
-        if(path_bbe_rs != nullptr)
-        {
-            children["path-bbe-rs"] = path_bbe_rs;
-        }
+        children["path-bbe-rs"] = path_bbe_rs;
     }
 
-    if(children.find("path-e-bs") == children.end())
+    if(path_e_bs != nullptr)
     {
-        if(path_e_bs != nullptr)
-        {
-            children["path-e-bs"] = path_e_bs;
-        }
+        children["path-e-bs"] = path_e_bs;
     }
 
-    if(children.find("path-e-ss") == children.end())
+    if(path_e_ss != nullptr)
     {
-        if(path_e_ss != nullptr)
-        {
-            children["path-e-ss"] = path_e_ss;
-        }
+        children["path-e-ss"] = path_e_ss;
     }
 
-    if(children.find("path-es-rs") == children.end())
+    if(path_es_rs != nullptr)
     {
-        if(path_es_rs != nullptr)
-        {
-            children["path-es-rs"] = path_es_rs;
-        }
+        children["path-es-rs"] = path_es_rs;
     }
 
-    if(children.find("path-se-ss") == children.end())
+    if(path_se_ss != nullptr)
     {
-        if(path_se_ss != nullptr)
-        {
-            children["path-se-ss"] = path_se_ss;
-        }
+        children["path-se-ss"] = path_se_ss;
     }
 
-    if(children.find("path-ses-rs") == children.end())
+    if(path_ses_rs != nullptr)
     {
-        if(path_ses_rs != nullptr)
-        {
-            children["path-ses-rs"] = path_ses_rs;
-        }
+        children["path-ses-rs"] = path_ses_rs;
     }
 
-    if(children.find("path-ua-ss") == children.end())
+    if(path_ua_ss != nullptr)
     {
-        if(path_ua_ss != nullptr)
-        {
-            children["path-ua-ss"] = path_ua_ss;
-        }
+        children["path-ua-ss"] = path_ua_ss;
     }
 
     return children;
@@ -17307,7 +14993,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17333,20 +15019,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17403,7 +15081,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17429,20 +15107,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17499,7 +15169,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17525,20 +15195,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17595,7 +15257,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17621,20 +15283,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17691,7 +15345,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17717,20 +15371,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17787,7 +15433,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17813,20 +15459,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17883,7 +15521,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17909,20 +15547,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17979,7 +15609,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18005,20 +15635,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18078,7 +15700,7 @@ std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPor
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18105,20 +15727,12 @@ EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPort
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18147,7 +15761,6 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsHistory()
     optics_port_histories(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories>())
 {
     optics_port_histories->parent = this;
-    children["optics-port-histories"] = optics_port_histories;
 
     yang_name = "optics-history"; yang_parent_name = "periodic";
 }
@@ -18176,7 +15789,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::get_s
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18199,41 +15812,24 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::get_en
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-port-histories")
     {
-        if(optics_port_histories != nullptr)
-        {
-            children["optics-port-histories"] = optics_port_histories;
-        }
-        else
+        if(optics_port_histories == nullptr)
         {
             optics_port_histories = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories>();
-            optics_port_histories->parent = this;
-            children["optics-port-histories"] = optics_port_histories;
         }
-        return children.at("optics-port-histories");
+        return optics_port_histories;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::get_children() const
 {
-    if(children.find("optics-port-histories") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_port_histories != nullptr)
     {
-        if(optics_port_histories != nullptr)
-        {
-            children["optics-port-histories"] = optics_port_histories;
-        }
+        children["optics-port-histories"] = optics_port_histories;
     }
 
     return children;
@@ -18281,7 +15877,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18304,15 +15900,6 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-port-history")
     {
         for(auto const & c : optics_port_history)
@@ -18320,28 +15907,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory>();
         c->parent = this;
-        optics_port_history.push_back(std::move(c));
-        children[segment_path] = optics_port_history.back();
-        return children.at(segment_path);
+        optics_port_history.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_port_history)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18360,13 +15943,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,optics_second30_history(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History>())
 {
     optics_hour24_history->parent = this;
-    children["optics-hour24-history"] = optics_hour24_history;
 
     optics_minute15_history->parent = this;
-    children["optics-minute15-history"] = optics_minute15_history;
 
     optics_second30_history->parent = this;
-    children["optics-second30-history"] = optics_second30_history;
 
     yang_name = "optics-port-history"; yang_parent_name = "optics-port-histories";
 }
@@ -18401,7 +15981,7 @@ std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optic
 
 }
 
-EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18425,87 +16005,52 @@ EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::Optics
 
 std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-hour24-history")
     {
-        if(optics_hour24_history != nullptr)
-        {
-            children["optics-hour24-history"] = optics_hour24_history;
-        }
-        else
+        if(optics_hour24_history == nullptr)
         {
             optics_hour24_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History>();
-            optics_hour24_history->parent = this;
-            children["optics-hour24-history"] = optics_hour24_history;
         }
-        return children.at("optics-hour24-history");
+        return optics_hour24_history;
     }
 
     if(child_yang_name == "optics-minute15-history")
     {
-        if(optics_minute15_history != nullptr)
-        {
-            children["optics-minute15-history"] = optics_minute15_history;
-        }
-        else
+        if(optics_minute15_history == nullptr)
         {
             optics_minute15_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History>();
-            optics_minute15_history->parent = this;
-            children["optics-minute15-history"] = optics_minute15_history;
         }
-        return children.at("optics-minute15-history");
+        return optics_minute15_history;
     }
 
     if(child_yang_name == "optics-second30-history")
     {
-        if(optics_second30_history != nullptr)
-        {
-            children["optics-second30-history"] = optics_second30_history;
-        }
-        else
+        if(optics_second30_history == nullptr)
         {
             optics_second30_history = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History>();
-            optics_second30_history->parent = this;
-            children["optics-second30-history"] = optics_second30_history;
         }
-        return children.at("optics-second30-history");
+        return optics_second30_history;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::get_children() const
 {
-    if(children.find("optics-hour24-history") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_hour24_history != nullptr)
     {
-        if(optics_hour24_history != nullptr)
-        {
-            children["optics-hour24-history"] = optics_hour24_history;
-        }
+        children["optics-hour24-history"] = optics_hour24_history;
     }
 
-    if(children.find("optics-minute15-history") == children.end())
+    if(optics_minute15_history != nullptr)
     {
-        if(optics_minute15_history != nullptr)
-        {
-            children["optics-minute15-history"] = optics_minute15_history;
-        }
+        children["optics-minute15-history"] = optics_minute15_history;
     }
 
-    if(children.find("optics-second30-history") == children.end())
+    if(optics_second30_history != nullptr)
     {
-        if(optics_second30_history != nullptr)
-        {
-            children["optics-second30-history"] = optics_second30_history;
-        }
+        children["optics-second30-history"] = optics_second30_history;
     }
 
     return children;

@@ -24,37 +24,26 @@ Aaa::Aaa()
 	,users(std::make_shared<Aaa::Users>())
 {
     all_tasks->parent = this;
-    children["all-tasks"] = all_tasks;
 
     authen_method->parent = this;
-    children["authen-method"] = authen_method;
 
     current_usergroup->parent = this;
-    children["current-usergroup"] = current_usergroup;
 
     currentuser_detail->parent = this;
-    children["currentuser-detail"] = currentuser_detail;
 
     diameter->parent = this;
-    children["diameter"] = diameter;
 
     radius->parent = this;
-    children["radius"] = radius;
 
     tacacs->parent = this;
-    children["tacacs"] = tacacs;
 
     task_map->parent = this;
-    children["task-map"] = task_map;
 
     taskgroups->parent = this;
-    children["taskgroups"] = taskgroups;
 
     usergroups->parent = this;
-    children["usergroups"] = usergroups;
 
     users->parent = this;
-    children["users"] = users;
 
     yang_name = "aaa"; yang_parent_name = "Cisco-IOS-XR-aaa-locald-oper";
 }
@@ -103,12 +92,12 @@ std::string Aaa::get_segment_path() const
 
 }
 
-EntityPath Aaa::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -123,271 +112,164 @@ EntityPath Aaa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "all-tasks")
     {
-        if(all_tasks != nullptr)
-        {
-            children["all-tasks"] = all_tasks;
-        }
-        else
+        if(all_tasks == nullptr)
         {
             all_tasks = std::make_shared<Aaa::AllTasks>();
-            all_tasks->parent = this;
-            children["all-tasks"] = all_tasks;
         }
-        return children.at("all-tasks");
+        return all_tasks;
     }
 
     if(child_yang_name == "authen-method")
     {
-        if(authen_method != nullptr)
-        {
-            children["authen-method"] = authen_method;
-        }
-        else
+        if(authen_method == nullptr)
         {
             authen_method = std::make_shared<Aaa::AuthenMethod>();
-            authen_method->parent = this;
-            children["authen-method"] = authen_method;
         }
-        return children.at("authen-method");
+        return authen_method;
     }
 
     if(child_yang_name == "current-usergroup")
     {
-        if(current_usergroup != nullptr)
-        {
-            children["current-usergroup"] = current_usergroup;
-        }
-        else
+        if(current_usergroup == nullptr)
         {
             current_usergroup = std::make_shared<Aaa::CurrentUsergroup>();
-            current_usergroup->parent = this;
-            children["current-usergroup"] = current_usergroup;
         }
-        return children.at("current-usergroup");
+        return current_usergroup;
     }
 
     if(child_yang_name == "currentuser-detail")
     {
-        if(currentuser_detail != nullptr)
-        {
-            children["currentuser-detail"] = currentuser_detail;
-        }
-        else
+        if(currentuser_detail == nullptr)
         {
             currentuser_detail = std::make_shared<Aaa::CurrentuserDetail>();
-            currentuser_detail->parent = this;
-            children["currentuser-detail"] = currentuser_detail;
         }
-        return children.at("currentuser-detail");
+        return currentuser_detail;
     }
 
     if(child_yang_name == "diameter")
     {
-        if(diameter != nullptr)
-        {
-            children["diameter"] = diameter;
-        }
-        else
+        if(diameter == nullptr)
         {
             diameter = std::make_shared<Aaa::Diameter>();
-            diameter->parent = this;
-            children["diameter"] = diameter;
         }
-        return children.at("diameter");
+        return diameter;
     }
 
     if(child_yang_name == "radius")
     {
-        if(radius != nullptr)
-        {
-            children["radius"] = radius;
-        }
-        else
+        if(radius == nullptr)
         {
             radius = std::make_shared<Aaa::Radius>();
-            radius->parent = this;
-            children["radius"] = radius;
         }
-        return children.at("radius");
+        return radius;
     }
 
     if(child_yang_name == "tacacs")
     {
-        if(tacacs != nullptr)
-        {
-            children["tacacs"] = tacacs;
-        }
-        else
+        if(tacacs == nullptr)
         {
             tacacs = std::make_shared<Aaa::Tacacs>();
-            tacacs->parent = this;
-            children["tacacs"] = tacacs;
         }
-        return children.at("tacacs");
+        return tacacs;
     }
 
     if(child_yang_name == "task-map")
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
-        else
+        if(task_map == nullptr)
         {
             task_map = std::make_shared<Aaa::TaskMap>();
-            task_map->parent = this;
-            children["task-map"] = task_map;
         }
-        return children.at("task-map");
+        return task_map;
     }
 
     if(child_yang_name == "taskgroups")
     {
-        if(taskgroups != nullptr)
-        {
-            children["taskgroups"] = taskgroups;
-        }
-        else
+        if(taskgroups == nullptr)
         {
             taskgroups = std::make_shared<Aaa::Taskgroups>();
-            taskgroups->parent = this;
-            children["taskgroups"] = taskgroups;
         }
-        return children.at("taskgroups");
+        return taskgroups;
     }
 
     if(child_yang_name == "usergroups")
     {
-        if(usergroups != nullptr)
-        {
-            children["usergroups"] = usergroups;
-        }
-        else
+        if(usergroups == nullptr)
         {
             usergroups = std::make_shared<Aaa::Usergroups>();
-            usergroups->parent = this;
-            children["usergroups"] = usergroups;
         }
-        return children.at("usergroups");
+        return usergroups;
     }
 
     if(child_yang_name == "users")
     {
-        if(users != nullptr)
-        {
-            children["users"] = users;
-        }
-        else
+        if(users == nullptr)
         {
             users = std::make_shared<Aaa::Users>();
-            users->parent = this;
-            children["users"] = users;
         }
-        return children.at("users");
+        return users;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
 {
-    if(children.find("all-tasks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(all_tasks != nullptr)
     {
-        if(all_tasks != nullptr)
-        {
-            children["all-tasks"] = all_tasks;
-        }
+        children["all-tasks"] = all_tasks;
     }
 
-    if(children.find("authen-method") == children.end())
+    if(authen_method != nullptr)
     {
-        if(authen_method != nullptr)
-        {
-            children["authen-method"] = authen_method;
-        }
+        children["authen-method"] = authen_method;
     }
 
-    if(children.find("current-usergroup") == children.end())
+    if(current_usergroup != nullptr)
     {
-        if(current_usergroup != nullptr)
-        {
-            children["current-usergroup"] = current_usergroup;
-        }
+        children["current-usergroup"] = current_usergroup;
     }
 
-    if(children.find("currentuser-detail") == children.end())
+    if(currentuser_detail != nullptr)
     {
-        if(currentuser_detail != nullptr)
-        {
-            children["currentuser-detail"] = currentuser_detail;
-        }
+        children["currentuser-detail"] = currentuser_detail;
     }
 
-    if(children.find("diameter") == children.end())
+    if(diameter != nullptr)
     {
-        if(diameter != nullptr)
-        {
-            children["diameter"] = diameter;
-        }
+        children["diameter"] = diameter;
     }
 
-    if(children.find("radius") == children.end())
+    if(radius != nullptr)
     {
-        if(radius != nullptr)
-        {
-            children["radius"] = radius;
-        }
+        children["radius"] = radius;
     }
 
-    if(children.find("tacacs") == children.end())
+    if(tacacs != nullptr)
     {
-        if(tacacs != nullptr)
-        {
-            children["tacacs"] = tacacs;
-        }
+        children["tacacs"] = tacacs;
     }
 
-    if(children.find("task-map") == children.end())
+    if(task_map != nullptr)
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
+        children["task-map"] = task_map;
     }
 
-    if(children.find("taskgroups") == children.end())
+    if(taskgroups != nullptr)
     {
-        if(taskgroups != nullptr)
-        {
-            children["taskgroups"] = taskgroups;
-        }
+        children["taskgroups"] = taskgroups;
     }
 
-    if(children.find("usergroups") == children.end())
+    if(usergroups != nullptr)
     {
-        if(usergroups != nullptr)
-        {
-            children["usergroups"] = usergroups;
-        }
+        children["usergroups"] = usergroups;
     }
 
-    if(children.find("users") == children.end())
+    if(users != nullptr)
     {
-        if(users != nullptr)
-        {
-            children["users"] = users;
-        }
+        children["users"] = users;
     }
 
     return children;
@@ -458,7 +340,7 @@ std::string Aaa::AllTasks::get_segment_path() const
 
 }
 
-EntityPath Aaa::AllTasks::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::AllTasks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -483,20 +365,12 @@ EntityPath Aaa::AllTasks::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::AllTasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::AllTasks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::AllTasks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -566,7 +440,7 @@ std::string Aaa::CurrentuserDetail::get_segment_path() const
 
 }
 
-EntityPath Aaa::CurrentuserDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::CurrentuserDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -595,20 +469,12 @@ EntityPath Aaa::CurrentuserDetail::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::CurrentuserDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::CurrentuserDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::CurrentuserDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -690,7 +556,7 @@ std::string Aaa::TaskMap::get_segment_path() const
 
 }
 
-EntityPath Aaa::TaskMap::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::TaskMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -719,20 +585,12 @@ EntityPath Aaa::TaskMap::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::TaskMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::TaskMap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -794,7 +652,7 @@ std::string Aaa::Taskgroups::get_segment_path() const
 
 }
 
-EntityPath Aaa::Taskgroups::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Taskgroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -817,15 +675,6 @@ EntityPath Aaa::Taskgroups::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Taskgroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "taskgroup")
     {
         for(auto const & c : taskgroup)
@@ -833,28 +682,24 @@ std::shared_ptr<Entity> Aaa::Taskgroups::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Taskgroups::Taskgroup>();
         c->parent = this;
-        taskgroup.push_back(std::move(c));
-        children[segment_path] = taskgroup.back();
-        return children.at(segment_path);
+        taskgroup.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Taskgroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : taskgroup)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -873,10 +718,8 @@ Aaa::Taskgroups::Taskgroup::Taskgroup()
 	,task_map(std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap>())
 {
     included_task_ids->parent = this;
-    children["included-task-ids"] = included_task_ids;
 
     task_map->parent = this;
-    children["task-map"] = task_map;
 
     yang_name = "taskgroup"; yang_parent_name = "taskgroups";
 }
@@ -911,7 +754,7 @@ std::string Aaa::Taskgroups::Taskgroup::get_segment_path() const
 
 }
 
-EntityPath Aaa::Taskgroups::Taskgroup::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Taskgroups::Taskgroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -936,64 +779,38 @@ EntityPath Aaa::Taskgroups::Taskgroup::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "included-task-ids")
     {
-        if(included_task_ids != nullptr)
-        {
-            children["included-task-ids"] = included_task_ids;
-        }
-        else
+        if(included_task_ids == nullptr)
         {
             included_task_ids = std::make_shared<Aaa::Taskgroups::Taskgroup::IncludedTaskIds>();
-            included_task_ids->parent = this;
-            children["included-task-ids"] = included_task_ids;
         }
-        return children.at("included-task-ids");
+        return included_task_ids;
     }
 
     if(child_yang_name == "task-map")
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
-        else
+        if(task_map == nullptr)
         {
             task_map = std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap>();
-            task_map->parent = this;
-            children["task-map"] = task_map;
         }
-        return children.at("task-map");
+        return task_map;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Taskgroups::Taskgroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::get_children() const
 {
-    if(children.find("included-task-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(included_task_ids != nullptr)
     {
-        if(included_task_ids != nullptr)
-        {
-            children["included-task-ids"] = included_task_ids;
-        }
+        children["included-task-ids"] = included_task_ids;
     }
 
-    if(children.find("task-map") == children.end())
+    if(task_map != nullptr)
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
+        children["task-map"] = task_map;
     }
 
     return children;
@@ -1049,7 +866,7 @@ std::string Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_segment_path() cons
 
 }
 
-EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1072,15 +889,6 @@ EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tasks")
     {
         for(auto const & c : tasks)
@@ -1088,28 +896,24 @@ std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks>();
         c->parent = this;
-        tasks.push_back(std::move(c));
-        children[segment_path] = tasks.back();
-        return children.at(segment_path);
+        tasks.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tasks)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1162,7 +966,7 @@ std::string Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_segment_path
 
 }
 
-EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1190,20 +994,12 @@ EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_entity_path(E
 
 std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1269,7 +1065,7 @@ std::string Aaa::Taskgroups::Taskgroup::TaskMap::get_segment_path() const
 
 }
 
-EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1292,15 +1088,6 @@ EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tasks")
     {
         for(auto const & c : tasks)
@@ -1308,28 +1095,24 @@ std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap::Tasks>();
         c->parent = this;
-        tasks.push_back(std::move(c));
-        children[segment_path] = tasks.back();
-        return children.at(segment_path);
+        tasks.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Taskgroups::Taskgroup::TaskMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::TaskMap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tasks)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1382,7 +1165,7 @@ std::string Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_segment_path() const
 
 }
 
-EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1410,20 +1193,12 @@ EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1489,7 +1264,7 @@ std::string Aaa::Users::get_segment_path() const
 
 }
 
-EntityPath Aaa::Users::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Users::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1512,15 +1287,6 @@ EntityPath Aaa::Users::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Users::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "user")
     {
         for(auto const & c : user)
@@ -1528,28 +1294,24 @@ std::shared_ptr<Entity> Aaa::Users::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Users::User>();
         c->parent = this;
-        user.push_back(std::move(c));
-        children[segment_path] = user.back();
-        return children.at(segment_path);
+        user.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Users::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : user)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1570,7 +1332,6 @@ Aaa::Users::User::User()
     task_map(std::make_shared<Aaa::Users::User::TaskMap>())
 {
     task_map->parent = this;
-    children["task-map"] = task_map;
 
     yang_name = "user"; yang_parent_name = "users";
 }
@@ -1618,7 +1379,7 @@ std::string Aaa::Users::User::get_segment_path() const
 
 }
 
-EntityPath Aaa::Users::User::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Users::User::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1647,41 +1408,24 @@ EntityPath Aaa::Users::User::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Users::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "task-map")
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
-        else
+        if(task_map == nullptr)
         {
             task_map = std::make_shared<Aaa::Users::User::TaskMap>();
-            task_map->parent = this;
-            children["task-map"] = task_map;
         }
-        return children.at("task-map");
+        return task_map;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Users::User::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::get_children() const
 {
-    if(children.find("task-map") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(task_map != nullptr)
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
+        children["task-map"] = task_map;
     }
 
     return children;
@@ -1749,7 +1493,7 @@ std::string Aaa::Users::User::TaskMap::get_segment_path() const
 
 }
 
-EntityPath Aaa::Users::User::TaskMap::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Users::User::TaskMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1772,15 +1516,6 @@ EntityPath Aaa::Users::User::TaskMap::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Users::User::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tasks")
     {
         for(auto const & c : tasks)
@@ -1788,28 +1523,24 @@ std::shared_ptr<Entity> Aaa::Users::User::TaskMap::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Users::User::TaskMap::Tasks>();
         c->parent = this;
-        tasks.push_back(std::move(c));
-        children[segment_path] = tasks.back();
-        return children.at(segment_path);
+        tasks.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Users::User::TaskMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::TaskMap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tasks)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1862,7 +1593,7 @@ std::string Aaa::Users::User::TaskMap::Tasks::get_segment_path() const
 
 }
 
-EntityPath Aaa::Users::User::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Users::User::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1890,20 +1621,12 @@ EntityPath Aaa::Users::User::TaskMap::Tasks::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Aaa::Users::User::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Users::User::TaskMap::Tasks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::TaskMap::Tasks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1969,7 +1692,7 @@ std::string Aaa::Usergroups::get_segment_path() const
 
 }
 
-EntityPath Aaa::Usergroups::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usergroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1992,15 +1715,6 @@ EntityPath Aaa::Usergroups::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Usergroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "usergroup")
     {
         for(auto const & c : usergroup)
@@ -2008,28 +1722,24 @@ std::shared_ptr<Entity> Aaa::Usergroups::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup>();
         c->parent = this;
-        usergroup.push_back(std::move(c));
-        children[segment_path] = usergroup.back();
-        return children.at(segment_path);
+        usergroup.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usergroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : usergroup)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2047,7 +1757,6 @@ Aaa::Usergroups::Usergroup::Usergroup()
     task_map(std::make_shared<Aaa::Usergroups::Usergroup::TaskMap>())
 {
     task_map->parent = this;
-    children["task-map"] = task_map;
 
     yang_name = "usergroup"; yang_parent_name = "usergroups";
 }
@@ -2090,7 +1799,7 @@ std::string Aaa::Usergroups::Usergroup::get_segment_path() const
 
 }
 
-EntityPath Aaa::Usergroups::Usergroup::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usergroups::Usergroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2115,28 +1824,13 @@ EntityPath Aaa::Usergroups::Usergroup::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "task-map")
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
-        else
+        if(task_map == nullptr)
         {
             task_map = std::make_shared<Aaa::Usergroups::Usergroup::TaskMap>();
-            task_map->parent = this;
-            children["task-map"] = task_map;
         }
-        return children.at("task-map");
+        return task_map;
     }
 
     if(child_yang_name == "taskgroup")
@@ -2146,36 +1840,29 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup>();
         c->parent = this;
-        taskgroup.push_back(std::move(c));
-        children[segment_path] = taskgroup.back();
-        return children.at(segment_path);
+        taskgroup.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usergroups::Usergroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::get_children() const
 {
-    if(children.find("task-map") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(task_map != nullptr)
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
+        children["task-map"] = task_map;
     }
 
     for (auto const & c : taskgroup)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2231,7 +1918,7 @@ std::string Aaa::Usergroups::Usergroup::TaskMap::get_segment_path() const
 
 }
 
-EntityPath Aaa::Usergroups::Usergroup::TaskMap::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usergroups::Usergroup::TaskMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2254,15 +1941,6 @@ EntityPath Aaa::Usergroups::Usergroup::TaskMap::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tasks")
     {
         for(auto const & c : tasks)
@@ -2270,28 +1948,24 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup::TaskMap::Tasks>();
         c->parent = this;
-        tasks.push_back(std::move(c));
-        children[segment_path] = tasks.back();
-        return children.at(segment_path);
+        tasks.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usergroups::Usergroup::TaskMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::TaskMap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tasks)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2344,7 +2018,7 @@ std::string Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_segment_path() const
 
 }
 
-EntityPath Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2372,20 +2046,12 @@ EntityPath Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2421,10 +2087,8 @@ Aaa::Usergroups::Usergroup::Taskgroup::Taskgroup()
 	,task_map(std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap>())
 {
     included_task_ids->parent = this;
-    children["included-task-ids"] = included_task_ids;
 
     task_map->parent = this;
-    children["task-map"] = task_map;
 
     yang_name = "taskgroup"; yang_parent_name = "usergroup";
 }
@@ -2457,7 +2121,7 @@ std::string Aaa::Usergroups::Usergroup::Taskgroup::get_segment_path() const
 
 }
 
-EntityPath Aaa::Usergroups::Usergroup::Taskgroup::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2481,64 +2145,38 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "included-task-ids")
     {
-        if(included_task_ids != nullptr)
-        {
-            children["included-task-ids"] = included_task_ids;
-        }
-        else
+        if(included_task_ids == nullptr)
         {
             included_task_ids = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds>();
-            included_task_ids->parent = this;
-            children["included-task-ids"] = included_task_ids;
         }
-        return children.at("included-task-ids");
+        return included_task_ids;
     }
 
     if(child_yang_name == "task-map")
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
-        else
+        if(task_map == nullptr)
         {
             task_map = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap>();
-            task_map->parent = this;
-            children["task-map"] = task_map;
         }
-        return children.at("task-map");
+        return task_map;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usergroups::Usergroup::Taskgroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::get_children() const
 {
-    if(children.find("included-task-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(included_task_ids != nullptr)
     {
-        if(included_task_ids != nullptr)
-        {
-            children["included-task-ids"] = included_task_ids;
-        }
+        children["included-task-ids"] = included_task_ids;
     }
 
-    if(children.find("task-map") == children.end())
+    if(task_map != nullptr)
     {
-        if(task_map != nullptr)
-        {
-            children["task-map"] = task_map;
-        }
+        children["task-map"] = task_map;
     }
 
     return children;
@@ -2590,7 +2228,7 @@ std::string Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_segment_
 
 }
 
-EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2613,15 +2251,6 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_entity_pa
 
 std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tasks")
     {
         for(auto const & c : tasks)
@@ -2629,28 +2258,24 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks>();
         c->parent = this;
-        tasks.push_back(std::move(c));
-        children[segment_path] = tasks.back();
-        return children.at(segment_path);
+        tasks.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tasks)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2703,7 +2328,7 @@ std::string Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_s
 
 }
 
-EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2731,20 +2356,12 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_en
 
 std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2810,7 +2427,7 @@ std::string Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_segment_path() c
 
 }
 
-EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2833,15 +2450,6 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_entity_path(Entit
 
 std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tasks")
     {
         for(auto const & c : tasks)
@@ -2849,28 +2457,24 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks>();
         c->parent = this;
-        tasks.push_back(std::move(c));
-        children[segment_path] = tasks.back();
-        return children.at(segment_path);
+        tasks.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tasks)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2923,7 +2527,7 @@ std::string Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_segment_p
 
 }
 
-EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2951,20 +2555,12 @@ EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_entity_pat
 
 std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3050,7 +2646,7 @@ std::string Aaa::AuthenMethod::get_segment_path() const
 
 }
 
-EntityPath Aaa::AuthenMethod::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::AuthenMethod::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3079,20 +2675,12 @@ EntityPath Aaa::AuthenMethod::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::AuthenMethod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::AuthenMethod::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::AuthenMethod::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3174,7 +2762,7 @@ std::string Aaa::CurrentUsergroup::get_segment_path() const
 
 }
 
-EntityPath Aaa::CurrentUsergroup::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::CurrentUsergroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3203,20 +2791,12 @@ EntityPath Aaa::CurrentUsergroup::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::CurrentUsergroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::CurrentUsergroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::CurrentUsergroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3240,1313 +2820,6 @@ void Aaa::CurrentUsergroup::set_value(const std::string & value_path, std::strin
     }
 }
 
-Aaa::Tacacs::Tacacs()
-    :
-    requests(std::make_shared<Aaa::Tacacs::Requests>())
-	,server_groups(std::make_shared<Aaa::Tacacs::ServerGroups>())
-	,servers(std::make_shared<Aaa::Tacacs::Servers>())
-{
-    requests->parent = this;
-    children["requests"] = requests;
-
-    server_groups->parent = this;
-    children["server-groups"] = server_groups;
-
-    servers->parent = this;
-    children["servers"] = servers;
-
-    yang_name = "tacacs"; yang_parent_name = "aaa";
-}
-
-Aaa::Tacacs::~Tacacs()
-{
-}
-
-bool Aaa::Tacacs::has_data() const
-{
-    return (requests !=  nullptr && requests->has_data())
-	|| (server_groups !=  nullptr && server_groups->has_data())
-	|| (servers !=  nullptr && servers->has_data());
-}
-
-bool Aaa::Tacacs::has_operation() const
-{
-    return is_set(operation)
-	|| (requests !=  nullptr && requests->has_operation())
-	|| (server_groups !=  nullptr && server_groups->has_operation())
-	|| (servers !=  nullptr && servers->has_operation());
-}
-
-std::string Aaa::Tacacs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-tacacs-oper:tacacs";
-
-    return path_buffer.str();
-
-}
-
-EntityPath Aaa::Tacacs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Tacacs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "requests")
-    {
-        if(requests != nullptr)
-        {
-            children["requests"] = requests;
-        }
-        else
-        {
-            requests = std::make_shared<Aaa::Tacacs::Requests>();
-            requests->parent = this;
-            children["requests"] = requests;
-        }
-        return children.at("requests");
-    }
-
-    if(child_yang_name == "server-groups")
-    {
-        if(server_groups != nullptr)
-        {
-            children["server-groups"] = server_groups;
-        }
-        else
-        {
-            server_groups = std::make_shared<Aaa::Tacacs::ServerGroups>();
-            server_groups->parent = this;
-            children["server-groups"] = server_groups;
-        }
-        return children.at("server-groups");
-    }
-
-    if(child_yang_name == "servers")
-    {
-        if(servers != nullptr)
-        {
-            children["servers"] = servers;
-        }
-        else
-        {
-            servers = std::make_shared<Aaa::Tacacs::Servers>();
-            servers->parent = this;
-            children["servers"] = servers;
-        }
-        return children.at("servers");
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Tacacs::get_children()
-{
-    if(children.find("requests") == children.end())
-    {
-        if(requests != nullptr)
-        {
-            children["requests"] = requests;
-        }
-    }
-
-    if(children.find("server-groups") == children.end())
-    {
-        if(server_groups != nullptr)
-        {
-            children["server-groups"] = server_groups;
-        }
-    }
-
-    if(children.find("servers") == children.end())
-    {
-        if(servers != nullptr)
-        {
-            children["servers"] = servers;
-        }
-    }
-
-    return children;
-}
-
-void Aaa::Tacacs::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Aaa::Tacacs::Requests::Requests()
-{
-    yang_name = "requests"; yang_parent_name = "tacacs";
-}
-
-Aaa::Tacacs::Requests::~Requests()
-{
-}
-
-bool Aaa::Tacacs::Requests::has_data() const
-{
-    for (std::size_t index=0; index<request.size(); index++)
-    {
-        if(request[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Tacacs::Requests::has_operation() const
-{
-    for (std::size_t index=0; index<request.size(); index++)
-    {
-        if(request[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Aaa::Tacacs::Requests::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "requests";
-
-    return path_buffer.str();
-
-}
-
-EntityPath Aaa::Tacacs::Requests::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Tacacs::Requests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "request")
-    {
-        for(auto const & c : request)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<Aaa::Tacacs::Requests::Request>();
-        c->parent = this;
-        request.push_back(std::move(c));
-        children[segment_path] = request.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Tacacs::Requests::get_children()
-{
-    for (auto const & c : request)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void Aaa::Tacacs::Requests::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Aaa::Tacacs::Requests::Request::Request()
-{
-    yang_name = "request"; yang_parent_name = "requests";
-}
-
-Aaa::Tacacs::Requests::Request::~Request()
-{
-}
-
-bool Aaa::Tacacs::Requests::Request::has_data() const
-{
-    for (std::size_t index=0; index<tacacs_requestbag.size(); index++)
-    {
-        if(tacacs_requestbag[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Tacacs::Requests::Request::has_operation() const
-{
-    for (std::size_t index=0; index<tacacs_requestbag.size(); index++)
-    {
-        if(tacacs_requestbag[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Aaa::Tacacs::Requests::Request::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "request";
-
-    return path_buffer.str();
-
-}
-
-EntityPath Aaa::Tacacs::Requests::Request::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Tacacs::Requests::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "tacacs-requestbag")
-    {
-        for(auto const & c : tacacs_requestbag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<Aaa::Tacacs::Requests::Request::TacacsRequestbag>();
-        c->parent = this;
-        tacacs_requestbag.push_back(std::move(c));
-        children[segment_path] = tacacs_requestbag.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Tacacs::Requests::Request::get_children()
-{
-    for (auto const & c : tacacs_requestbag)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void Aaa::Tacacs::Requests::Request::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Aaa::Tacacs::Requests::Request::TacacsRequestbag::TacacsRequestbag()
-    :
-    bytes_in{YType::uint32, "bytes-in"},
-    bytes_out{YType::uint32, "bytes-out"},
-    in_pak_size{YType::uint32, "in-pak-size"},
-    out_pak_size{YType::uint32, "out-pak-size"},
-    pak_type{YType::str, "pak-type"},
-    session_id{YType::int32, "session-id"},
-    sock{YType::int32, "sock"},
-    time_remaining{YType::uint32, "time-remaining"}
-{
-    yang_name = "tacacs-requestbag"; yang_parent_name = "request";
-}
-
-Aaa::Tacacs::Requests::Request::TacacsRequestbag::~TacacsRequestbag()
-{
-}
-
-bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_data() const
-{
-    return bytes_in.is_set
-	|| bytes_out.is_set
-	|| in_pak_size.is_set
-	|| out_pak_size.is_set
-	|| pak_type.is_set
-	|| session_id.is_set
-	|| sock.is_set
-	|| time_remaining.is_set;
-}
-
-bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(bytes_in.operation)
-	|| is_set(bytes_out.operation)
-	|| is_set(in_pak_size.operation)
-	|| is_set(out_pak_size.operation)
-	|| is_set(pak_type.operation)
-	|| is_set(session_id.operation)
-	|| is_set(sock.operation)
-	|| is_set(time_remaining.operation);
-}
-
-std::string Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tacacs-requestbag";
-
-    return path_buffer.str();
-
-}
-
-EntityPath Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/request/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes_in.is_set || is_set(bytes_in.operation)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
-    if (bytes_out.is_set || is_set(bytes_out.operation)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
-    if (in_pak_size.is_set || is_set(in_pak_size.operation)) leaf_name_data.push_back(in_pak_size.get_name_leafdata());
-    if (out_pak_size.is_set || is_set(out_pak_size.operation)) leaf_name_data.push_back(out_pak_size.get_name_leafdata());
-    if (pak_type.is_set || is_set(pak_type.operation)) leaf_name_data.push_back(pak_type.get_name_leafdata());
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (sock.is_set || is_set(sock.operation)) leaf_name_data.push_back(sock.get_name_leafdata());
-    if (time_remaining.is_set || is_set(time_remaining.operation)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_children()
-{
-    return children;
-}
-
-void Aaa::Tacacs::Requests::Request::TacacsRequestbag::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "bytes-in")
-    {
-        bytes_in = value;
-    }
-    if(value_path == "bytes-out")
-    {
-        bytes_out = value;
-    }
-    if(value_path == "in-pak-size")
-    {
-        in_pak_size = value;
-    }
-    if(value_path == "out-pak-size")
-    {
-        out_pak_size = value;
-    }
-    if(value_path == "pak-type")
-    {
-        pak_type = value;
-    }
-    if(value_path == "session-id")
-    {
-        session_id = value;
-    }
-    if(value_path == "sock")
-    {
-        sock = value;
-    }
-    if(value_path == "time-remaining")
-    {
-        time_remaining = value;
-    }
-}
-
-Aaa::Tacacs::Servers::Servers()
-{
-    yang_name = "servers"; yang_parent_name = "tacacs";
-}
-
-Aaa::Tacacs::Servers::~Servers()
-{
-}
-
-bool Aaa::Tacacs::Servers::has_data() const
-{
-    for (std::size_t index=0; index<server.size(); index++)
-    {
-        if(server[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Tacacs::Servers::has_operation() const
-{
-    for (std::size_t index=0; index<server.size(); index++)
-    {
-        if(server[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Aaa::Tacacs::Servers::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "servers";
-
-    return path_buffer.str();
-
-}
-
-EntityPath Aaa::Tacacs::Servers::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Tacacs::Servers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "server")
-    {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<Aaa::Tacacs::Servers::Server>();
-        c->parent = this;
-        server.push_back(std::move(c));
-        children[segment_path] = server.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Tacacs::Servers::get_children()
-{
-    for (auto const & c : server)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void Aaa::Tacacs::Servers::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Aaa::Tacacs::Servers::Server::Server()
-    :
-    aborts{YType::uint32, "aborts"},
-    addr{YType::str, "addr"},
-    addr_buf{YType::str, "addr-buf"},
-    bytes_in{YType::uint32, "bytes-in"},
-    bytes_out{YType::uint32, "bytes-out"},
-    closes{YType::uint32, "closes"},
-    conn_up{YType::boolean, "conn-up"},
-    errors{YType::uint32, "errors"},
-    family{YType::str, "family"},
-    is_private{YType::boolean, "is-private"},
-    opens{YType::uint32, "opens"},
-    paks_in{YType::uint32, "paks-in"},
-    paks_out{YType::uint32, "paks-out"},
-    port{YType::uint32, "port"},
-    replies_expected{YType::uint32, "replies-expected"},
-    single_connect{YType::boolean, "single-connect"},
-    timeout{YType::uint32, "timeout"},
-    up{YType::boolean, "up"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "server"; yang_parent_name = "servers";
-}
-
-Aaa::Tacacs::Servers::Server::~Server()
-{
-}
-
-bool Aaa::Tacacs::Servers::Server::has_data() const
-{
-    return aborts.is_set
-	|| addr.is_set
-	|| addr_buf.is_set
-	|| bytes_in.is_set
-	|| bytes_out.is_set
-	|| closes.is_set
-	|| conn_up.is_set
-	|| errors.is_set
-	|| family.is_set
-	|| is_private.is_set
-	|| opens.is_set
-	|| paks_in.is_set
-	|| paks_out.is_set
-	|| port.is_set
-	|| replies_expected.is_set
-	|| single_connect.is_set
-	|| timeout.is_set
-	|| up.is_set
-	|| vrf_name.is_set;
-}
-
-bool Aaa::Tacacs::Servers::Server::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(aborts.operation)
-	|| is_set(addr.operation)
-	|| is_set(addr_buf.operation)
-	|| is_set(bytes_in.operation)
-	|| is_set(bytes_out.operation)
-	|| is_set(closes.operation)
-	|| is_set(conn_up.operation)
-	|| is_set(errors.operation)
-	|| is_set(family.operation)
-	|| is_set(is_private.operation)
-	|| is_set(opens.operation)
-	|| is_set(paks_in.operation)
-	|| is_set(paks_out.operation)
-	|| is_set(port.operation)
-	|| is_set(replies_expected.operation)
-	|| is_set(single_connect.operation)
-	|| is_set(timeout.operation)
-	|| is_set(up.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string Aaa::Tacacs::Servers::Server::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server";
-
-    return path_buffer.str();
-
-}
-
-EntityPath Aaa::Tacacs::Servers::Server::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/servers/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (aborts.is_set || is_set(aborts.operation)) leaf_name_data.push_back(aborts.get_name_leafdata());
-    if (addr.is_set || is_set(addr.operation)) leaf_name_data.push_back(addr.get_name_leafdata());
-    if (addr_buf.is_set || is_set(addr_buf.operation)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
-    if (bytes_in.is_set || is_set(bytes_in.operation)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
-    if (bytes_out.is_set || is_set(bytes_out.operation)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
-    if (closes.is_set || is_set(closes.operation)) leaf_name_data.push_back(closes.get_name_leafdata());
-    if (conn_up.is_set || is_set(conn_up.operation)) leaf_name_data.push_back(conn_up.get_name_leafdata());
-    if (errors.is_set || is_set(errors.operation)) leaf_name_data.push_back(errors.get_name_leafdata());
-    if (family.is_set || is_set(family.operation)) leaf_name_data.push_back(family.get_name_leafdata());
-    if (is_private.is_set || is_set(is_private.operation)) leaf_name_data.push_back(is_private.get_name_leafdata());
-    if (opens.is_set || is_set(opens.operation)) leaf_name_data.push_back(opens.get_name_leafdata());
-    if (paks_in.is_set || is_set(paks_in.operation)) leaf_name_data.push_back(paks_in.get_name_leafdata());
-    if (paks_out.is_set || is_set(paks_out.operation)) leaf_name_data.push_back(paks_out.get_name_leafdata());
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (replies_expected.is_set || is_set(replies_expected.operation)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
-    if (single_connect.is_set || is_set(single_connect.operation)) leaf_name_data.push_back(single_connect.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Tacacs::Servers::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Tacacs::Servers::Server::get_children()
-{
-    return children;
-}
-
-void Aaa::Tacacs::Servers::Server::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "aborts")
-    {
-        aborts = value;
-    }
-    if(value_path == "addr")
-    {
-        addr = value;
-    }
-    if(value_path == "addr-buf")
-    {
-        addr_buf = value;
-    }
-    if(value_path == "bytes-in")
-    {
-        bytes_in = value;
-    }
-    if(value_path == "bytes-out")
-    {
-        bytes_out = value;
-    }
-    if(value_path == "closes")
-    {
-        closes = value;
-    }
-    if(value_path == "conn-up")
-    {
-        conn_up = value;
-    }
-    if(value_path == "errors")
-    {
-        errors = value;
-    }
-    if(value_path == "family")
-    {
-        family = value;
-    }
-    if(value_path == "is-private")
-    {
-        is_private = value;
-    }
-    if(value_path == "opens")
-    {
-        opens = value;
-    }
-    if(value_path == "paks-in")
-    {
-        paks_in = value;
-    }
-    if(value_path == "paks-out")
-    {
-        paks_out = value;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected = value;
-    }
-    if(value_path == "single-connect")
-    {
-        single_connect = value;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-    }
-    if(value_path == "up")
-    {
-        up = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroups()
-{
-    yang_name = "server-groups"; yang_parent_name = "tacacs";
-}
-
-Aaa::Tacacs::ServerGroups::~ServerGroups()
-{
-}
-
-bool Aaa::Tacacs::ServerGroups::has_data() const
-{
-    for (std::size_t index=0; index<server_group.size(); index++)
-    {
-        if(server_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Tacacs::ServerGroups::has_operation() const
-{
-    for (std::size_t index=0; index<server_group.size(); index++)
-    {
-        if(server_group[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Aaa::Tacacs::ServerGroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server-groups";
-
-    return path_buffer.str();
-
-}
-
-EntityPath Aaa::Tacacs::ServerGroups::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "server-group")
-    {
-        for(auto const & c : server_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup>();
-        c->parent = this;
-        server_group.push_back(std::move(c));
-        children[segment_path] = server_group.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Tacacs::ServerGroups::get_children()
-{
-    for (auto const & c : server_group)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void Aaa::Tacacs::ServerGroups::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroup::ServerGroup()
-    :
-    group_name{YType::str, "group-name"},
-    sg_map_num{YType::uint32, "sg-map-num"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "server-group"; yang_parent_name = "server-groups";
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroup::~ServerGroup()
-{
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::has_data() const
-{
-    for (std::size_t index=0; index<server.size(); index++)
-    {
-        if(server[index]->has_data())
-            return true;
-    }
-    return group_name.is_set
-	|| sg_map_num.is_set
-	|| vrf_name.is_set;
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::has_operation() const
-{
-    for (std::size_t index=0; index<server.size(); index++)
-    {
-        if(server[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(group_name.operation)
-	|| is_set(sg_map_num.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string Aaa::Tacacs::ServerGroups::ServerGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server-group";
-
-    return path_buffer.str();
-
-}
-
-EntityPath Aaa::Tacacs::ServerGroups::ServerGroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (sg_map_num.is_set || is_set(sg_map_num.operation)) leaf_name_data.push_back(sg_map_num.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "server")
-    {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                children[segment_path] = c;
-                return children.at(segment_path);
-            }
-        }
-        auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup::Server>();
-        c->parent = this;
-        server.push_back(std::move(c));
-        children[segment_path] = server.back();
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Tacacs::ServerGroups::ServerGroup::get_children()
-{
-    for (auto const & c : server)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
-    }
-
-    return children;
-}
-
-void Aaa::Tacacs::ServerGroups::ServerGroup::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "group-name")
-    {
-        group_name = value;
-    }
-    if(value_path == "sg-map-num")
-    {
-        sg_map_num = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroup::Server::Server()
-    :
-    aborts{YType::uint32, "aborts"},
-    addr{YType::str, "addr"},
-    addr_buf{YType::str, "addr-buf"},
-    bytes_in{YType::uint32, "bytes-in"},
-    bytes_out{YType::uint32, "bytes-out"},
-    closes{YType::uint32, "closes"},
-    conn_up{YType::boolean, "conn-up"},
-    errors{YType::uint32, "errors"},
-    family{YType::str, "family"},
-    is_private{YType::boolean, "is-private"},
-    opens{YType::uint32, "opens"},
-    paks_in{YType::uint32, "paks-in"},
-    paks_out{YType::uint32, "paks-out"},
-    port{YType::uint32, "port"},
-    replies_expected{YType::uint32, "replies-expected"},
-    single_connect{YType::boolean, "single-connect"},
-    timeout{YType::uint32, "timeout"},
-    up{YType::boolean, "up"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "server"; yang_parent_name = "server-group";
-}
-
-Aaa::Tacacs::ServerGroups::ServerGroup::Server::~Server()
-{
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_data() const
-{
-    return aborts.is_set
-	|| addr.is_set
-	|| addr_buf.is_set
-	|| bytes_in.is_set
-	|| bytes_out.is_set
-	|| closes.is_set
-	|| conn_up.is_set
-	|| errors.is_set
-	|| family.is_set
-	|| is_private.is_set
-	|| opens.is_set
-	|| paks_in.is_set
-	|| paks_out.is_set
-	|| port.is_set
-	|| replies_expected.is_set
-	|| single_connect.is_set
-	|| timeout.is_set
-	|| up.is_set
-	|| vrf_name.is_set;
-}
-
-bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(aborts.operation)
-	|| is_set(addr.operation)
-	|| is_set(addr_buf.operation)
-	|| is_set(bytes_in.operation)
-	|| is_set(bytes_out.operation)
-	|| is_set(closes.operation)
-	|| is_set(conn_up.operation)
-	|| is_set(errors.operation)
-	|| is_set(family.operation)
-	|| is_set(is_private.operation)
-	|| is_set(opens.operation)
-	|| is_set(paks_in.operation)
-	|| is_set(paks_out.operation)
-	|| is_set(port.operation)
-	|| is_set(replies_expected.operation)
-	|| is_set(single_connect.operation)
-	|| is_set(timeout.operation)
-	|| is_set(up.operation)
-	|| is_set(vrf_name.operation);
-}
-
-std::string Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server";
-
-    return path_buffer.str();
-
-}
-
-EntityPath Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/server-group/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (aborts.is_set || is_set(aborts.operation)) leaf_name_data.push_back(aborts.get_name_leafdata());
-    if (addr.is_set || is_set(addr.operation)) leaf_name_data.push_back(addr.get_name_leafdata());
-    if (addr_buf.is_set || is_set(addr_buf.operation)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
-    if (bytes_in.is_set || is_set(bytes_in.operation)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
-    if (bytes_out.is_set || is_set(bytes_out.operation)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
-    if (closes.is_set || is_set(closes.operation)) leaf_name_data.push_back(closes.get_name_leafdata());
-    if (conn_up.is_set || is_set(conn_up.operation)) leaf_name_data.push_back(conn_up.get_name_leafdata());
-    if (errors.is_set || is_set(errors.operation)) leaf_name_data.push_back(errors.get_name_leafdata());
-    if (family.is_set || is_set(family.operation)) leaf_name_data.push_back(family.get_name_leafdata());
-    if (is_private.is_set || is_set(is_private.operation)) leaf_name_data.push_back(is_private.get_name_leafdata());
-    if (opens.is_set || is_set(opens.operation)) leaf_name_data.push_back(opens.get_name_leafdata());
-    if (paks_in.is_set || is_set(paks_in.operation)) leaf_name_data.push_back(paks_in.get_name_leafdata());
-    if (paks_out.is_set || is_set(paks_out.operation)) leaf_name_data.push_back(paks_out.get_name_leafdata());
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (replies_expected.is_set || is_set(replies_expected.operation)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
-    if (single_connect.is_set || is_set(single_connect.operation)) leaf_name_data.push_back(single_connect.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_children()
-{
-    return children;
-}
-
-void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "aborts")
-    {
-        aborts = value;
-    }
-    if(value_path == "addr")
-    {
-        addr = value;
-    }
-    if(value_path == "addr-buf")
-    {
-        addr_buf = value;
-    }
-    if(value_path == "bytes-in")
-    {
-        bytes_in = value;
-    }
-    if(value_path == "bytes-out")
-    {
-        bytes_out = value;
-    }
-    if(value_path == "closes")
-    {
-        closes = value;
-    }
-    if(value_path == "conn-up")
-    {
-        conn_up = value;
-    }
-    if(value_path == "errors")
-    {
-        errors = value;
-    }
-    if(value_path == "family")
-    {
-        family = value;
-    }
-    if(value_path == "is-private")
-    {
-        is_private = value;
-    }
-    if(value_path == "opens")
-    {
-        opens = value;
-    }
-    if(value_path == "paks-in")
-    {
-        paks_in = value;
-    }
-    if(value_path == "paks-out")
-    {
-        paks_out = value;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected = value;
-    }
-    if(value_path == "single-connect")
-    {
-        single_connect = value;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-    }
-    if(value_path == "up")
-    {
-        up = value;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-    }
-}
-
 Aaa::Diameter::Diameter()
     :
     gx(std::make_shared<Aaa::Diameter::Gx>())
@@ -4561,34 +2834,24 @@ Aaa::Diameter::Diameter()
 	,peers(std::make_shared<Aaa::Diameter::Peers>())
 {
     gx->parent = this;
-    children["gx"] = gx;
 
     gx_session_ids->parent = this;
-    children["gx-session-ids"] = gx_session_ids;
 
     gx_statistics->parent = this;
-    children["gx-statistics"] = gx_statistics;
 
     gy->parent = this;
-    children["gy"] = gy;
 
     gy_session_ids->parent = this;
-    children["gy-session-ids"] = gy_session_ids;
 
     gy_statistics->parent = this;
-    children["gy-statistics"] = gy_statistics;
 
     nas->parent = this;
-    children["nas"] = nas;
 
     nas_session->parent = this;
-    children["nas-session"] = nas_session;
 
     nas_summary->parent = this;
-    children["nas-summary"] = nas_summary;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "diameter"; yang_parent_name = "aaa";
 }
@@ -4635,7 +2898,7 @@ std::string Aaa::Diameter::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4658,248 +2921,150 @@ EntityPath Aaa::Diameter::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "gx")
     {
-        if(gx != nullptr)
-        {
-            children["gx"] = gx;
-        }
-        else
+        if(gx == nullptr)
         {
             gx = std::make_shared<Aaa::Diameter::Gx>();
-            gx->parent = this;
-            children["gx"] = gx;
         }
-        return children.at("gx");
+        return gx;
     }
 
     if(child_yang_name == "gx-session-ids")
     {
-        if(gx_session_ids != nullptr)
-        {
-            children["gx-session-ids"] = gx_session_ids;
-        }
-        else
+        if(gx_session_ids == nullptr)
         {
             gx_session_ids = std::make_shared<Aaa::Diameter::GxSessionIds>();
-            gx_session_ids->parent = this;
-            children["gx-session-ids"] = gx_session_ids;
         }
-        return children.at("gx-session-ids");
+        return gx_session_ids;
     }
 
     if(child_yang_name == "gx-statistics")
     {
-        if(gx_statistics != nullptr)
-        {
-            children["gx-statistics"] = gx_statistics;
-        }
-        else
+        if(gx_statistics == nullptr)
         {
             gx_statistics = std::make_shared<Aaa::Diameter::GxStatistics>();
-            gx_statistics->parent = this;
-            children["gx-statistics"] = gx_statistics;
         }
-        return children.at("gx-statistics");
+        return gx_statistics;
     }
 
     if(child_yang_name == "gy")
     {
-        if(gy != nullptr)
-        {
-            children["gy"] = gy;
-        }
-        else
+        if(gy == nullptr)
         {
             gy = std::make_shared<Aaa::Diameter::Gy>();
-            gy->parent = this;
-            children["gy"] = gy;
         }
-        return children.at("gy");
+        return gy;
     }
 
     if(child_yang_name == "gy-session-ids")
     {
-        if(gy_session_ids != nullptr)
-        {
-            children["gy-session-ids"] = gy_session_ids;
-        }
-        else
+        if(gy_session_ids == nullptr)
         {
             gy_session_ids = std::make_shared<Aaa::Diameter::GySessionIds>();
-            gy_session_ids->parent = this;
-            children["gy-session-ids"] = gy_session_ids;
         }
-        return children.at("gy-session-ids");
+        return gy_session_ids;
     }
 
     if(child_yang_name == "gy-statistics")
     {
-        if(gy_statistics != nullptr)
-        {
-            children["gy-statistics"] = gy_statistics;
-        }
-        else
+        if(gy_statistics == nullptr)
         {
             gy_statistics = std::make_shared<Aaa::Diameter::GyStatistics>();
-            gy_statistics->parent = this;
-            children["gy-statistics"] = gy_statistics;
         }
-        return children.at("gy-statistics");
+        return gy_statistics;
     }
 
     if(child_yang_name == "nas")
     {
-        if(nas != nullptr)
-        {
-            children["nas"] = nas;
-        }
-        else
+        if(nas == nullptr)
         {
             nas = std::make_shared<Aaa::Diameter::Nas>();
-            nas->parent = this;
-            children["nas"] = nas;
         }
-        return children.at("nas");
+        return nas;
     }
 
     if(child_yang_name == "nas-session")
     {
-        if(nas_session != nullptr)
-        {
-            children["nas-session"] = nas_session;
-        }
-        else
+        if(nas_session == nullptr)
         {
             nas_session = std::make_shared<Aaa::Diameter::NasSession>();
-            nas_session->parent = this;
-            children["nas-session"] = nas_session;
         }
-        return children.at("nas-session");
+        return nas_session;
     }
 
     if(child_yang_name == "nas-summary")
     {
-        if(nas_summary != nullptr)
-        {
-            children["nas-summary"] = nas_summary;
-        }
-        else
+        if(nas_summary == nullptr)
         {
             nas_summary = std::make_shared<Aaa::Diameter::NasSummary>();
-            nas_summary->parent = this;
-            children["nas-summary"] = nas_summary;
         }
-        return children.at("nas-summary");
+        return nas_summary;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<Aaa::Diameter::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::get_children() const
 {
-    if(children.find("gx") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(gx != nullptr)
     {
-        if(gx != nullptr)
-        {
-            children["gx"] = gx;
-        }
+        children["gx"] = gx;
     }
 
-    if(children.find("gx-session-ids") == children.end())
+    if(gx_session_ids != nullptr)
     {
-        if(gx_session_ids != nullptr)
-        {
-            children["gx-session-ids"] = gx_session_ids;
-        }
+        children["gx-session-ids"] = gx_session_ids;
     }
 
-    if(children.find("gx-statistics") == children.end())
+    if(gx_statistics != nullptr)
     {
-        if(gx_statistics != nullptr)
-        {
-            children["gx-statistics"] = gx_statistics;
-        }
+        children["gx-statistics"] = gx_statistics;
     }
 
-    if(children.find("gy") == children.end())
+    if(gy != nullptr)
     {
-        if(gy != nullptr)
-        {
-            children["gy"] = gy;
-        }
+        children["gy"] = gy;
     }
 
-    if(children.find("gy-session-ids") == children.end())
+    if(gy_session_ids != nullptr)
     {
-        if(gy_session_ids != nullptr)
-        {
-            children["gy-session-ids"] = gy_session_ids;
-        }
+        children["gy-session-ids"] = gy_session_ids;
     }
 
-    if(children.find("gy-statistics") == children.end())
+    if(gy_statistics != nullptr)
     {
-        if(gy_statistics != nullptr)
-        {
-            children["gy-statistics"] = gy_statistics;
-        }
+        children["gy-statistics"] = gy_statistics;
     }
 
-    if(children.find("nas") == children.end())
+    if(nas != nullptr)
     {
-        if(nas != nullptr)
-        {
-            children["nas"] = nas;
-        }
+        children["nas"] = nas;
     }
 
-    if(children.find("nas-session") == children.end())
+    if(nas_session != nullptr)
     {
-        if(nas_session != nullptr)
-        {
-            children["nas-session"] = nas_session;
-        }
+        children["nas-session"] = nas_session;
     }
 
-    if(children.find("nas-summary") == children.end())
+    if(nas_summary != nullptr)
     {
-        if(nas_summary != nullptr)
-        {
-            children["nas-summary"] = nas_summary;
-        }
+        children["nas-summary"] = nas_summary;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -4946,7 +3111,7 @@ std::string Aaa::Diameter::Gy::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::Gy::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::Gy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4972,20 +3137,12 @@ EntityPath Aaa::Diameter::Gy::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::Gy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::Gy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Gy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5129,7 +3286,7 @@ std::string Aaa::Diameter::GxStatistics::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::GxStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::GxStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5184,20 +3341,12 @@ EntityPath Aaa::Diameter::GxStatistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::GxStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::GxStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5370,7 +3519,7 @@ std::string Aaa::Diameter::Gx::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::Gx::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::Gx::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5396,20 +3545,12 @@ EntityPath Aaa::Diameter::Gx::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::Gx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::Gx::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Gx::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5494,7 +3635,7 @@ std::string Aaa::Diameter::Peers::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5526,15 +3667,6 @@ EntityPath Aaa::Diameter::Peers::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -5542,28 +3674,24 @@ std::shared_ptr<Entity> Aaa::Diameter::Peers::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Diameter::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5823,7 +3951,7 @@ std::string Aaa::Diameter::Peers::Peer::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5908,20 +4036,12 @@ EntityPath Aaa::Diameter::Peers::Peer::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6218,7 +4338,7 @@ std::string Aaa::Diameter::Nas::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::Nas::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::Nas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6242,15 +4362,6 @@ EntityPath Aaa::Diameter::Nas::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::Nas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "list-of-nas")
     {
         for(auto const & c : list_of_nas)
@@ -6258,28 +4369,24 @@ std::shared_ptr<Entity> Aaa::Diameter::Nas::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Diameter::Nas::ListOfNas>();
         c->parent = this;
-        list_of_nas.push_back(std::move(c));
-        children[segment_path] = list_of_nas.back();
-        return children.at(segment_path);
+        list_of_nas.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::Nas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Nas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : list_of_nas)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6354,7 +4461,7 @@ std::string Aaa::Diameter::Nas::ListOfNas::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::Nas::ListOfNas::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::Nas::ListOfNas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6388,20 +4495,12 @@ EntityPath Aaa::Diameter::Nas::ListOfNas::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Aaa::Diameter::Nas::ListOfNas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::Nas::ListOfNas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Nas::ListOfNas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6625,7 +4724,7 @@ std::string Aaa::Diameter::NasSummary::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::NasSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::NasSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6696,20 +4795,12 @@ EntityPath Aaa::Diameter::NasSummary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::NasSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::NasSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6947,7 +5038,7 @@ std::string Aaa::Diameter::GySessionIds::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::GySessionIds::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::GySessionIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6970,15 +5061,6 @@ EntityPath Aaa::Diameter::GySessionIds::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "gy-session-id")
     {
         for(auto const & c : gy_session_id)
@@ -6986,28 +5068,24 @@ std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Diameter::GySessionIds::GySessionId>();
         c->parent = this;
-        gy_session_id.push_back(std::move(c));
-        children[segment_path] = gy_session_id.back();
-        return children.at(segment_path);
+        gy_session_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::GySessionIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GySessionIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : gy_session_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7069,7 +5147,7 @@ std::string Aaa::Diameter::GySessionIds::GySessionId::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::GySessionIds::GySessionId::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::GySessionIds::GySessionId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7100,20 +5178,12 @@ EntityPath Aaa::Diameter::GySessionIds::GySessionId::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::GySessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::GySessionIds::GySessionId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GySessionIds::GySessionId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7274,7 +5344,7 @@ std::string Aaa::Diameter::GyStatistics::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::GyStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::GyStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7328,20 +5398,12 @@ EntityPath Aaa::Diameter::GyStatistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::GyStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::GyStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GyStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7511,7 +5573,7 @@ std::string Aaa::Diameter::GxSessionIds::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::GxSessionIds::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::GxSessionIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7534,15 +5596,6 @@ EntityPath Aaa::Diameter::GxSessionIds::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "gx-session-id")
     {
         for(auto const & c : gx_session_id)
@@ -7550,28 +5603,24 @@ std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Diameter::GxSessionIds::GxSessionId>();
         c->parent = this;
-        gx_session_id.push_back(std::move(c));
-        children[segment_path] = gx_session_id.back();
-        return children.at(segment_path);
+        gx_session_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::GxSessionIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxSessionIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : gx_session_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7630,7 +5679,7 @@ std::string Aaa::Diameter::GxSessionIds::GxSessionId::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::GxSessionIds::GxSessionId::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::GxSessionIds::GxSessionId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7660,20 +5709,12 @@ EntityPath Aaa::Diameter::GxSessionIds::GxSessionId::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::GxSessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::GxSessionIds::GxSessionId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxSessionIds::GxSessionId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7750,7 +5791,7 @@ std::string Aaa::Diameter::NasSession::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::NasSession::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::NasSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7774,15 +5815,6 @@ EntityPath Aaa::Diameter::NasSession::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Diameter::NasSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "list-of-nas")
     {
         for(auto const & c : list_of_nas)
@@ -7790,28 +5822,24 @@ std::shared_ptr<Entity> Aaa::Diameter::NasSession::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Diameter::NasSession::ListOfNas>();
         c->parent = this;
-        list_of_nas.push_back(std::move(c));
-        children[segment_path] = list_of_nas.back();
-        return children.at(segment_path);
+        list_of_nas.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::NasSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : list_of_nas)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7886,7 +5914,7 @@ std::string Aaa::Diameter::NasSession::ListOfNas::get_segment_path() const
 
 }
 
-EntityPath Aaa::Diameter::NasSession::ListOfNas::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Diameter::NasSession::ListOfNas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7920,20 +5948,12 @@ EntityPath Aaa::Diameter::NasSession::ListOfNas::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Aaa::Diameter::NasSession::ListOfNas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Diameter::NasSession::ListOfNas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSession::ListOfNas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7992,13 +6012,10 @@ Aaa::Radius::Radius()
 	,servers(std::make_shared<Aaa::Radius::Servers>())
 {
     global->parent = this;
-    children["global"] = global;
 
     radius_source_interface->parent = this;
-    children["radius-source-interface"] = radius_source_interface;
 
     servers->parent = this;
-    children["servers"] = servers;
 
     yang_name = "radius"; yang_parent_name = "aaa";
 }
@@ -8031,7 +6048,7 @@ std::string Aaa::Radius::get_segment_path() const
 
 }
 
-EntityPath Aaa::Radius::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Radius::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8054,87 +6071,52 @@ EntityPath Aaa::Radius::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<Aaa::Radius::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     if(child_yang_name == "radius-source-interface")
     {
-        if(radius_source_interface != nullptr)
-        {
-            children["radius-source-interface"] = radius_source_interface;
-        }
-        else
+        if(radius_source_interface == nullptr)
         {
             radius_source_interface = std::make_shared<Aaa::Radius::RadiusSourceInterface>();
-            radius_source_interface->parent = this;
-            children["radius-source-interface"] = radius_source_interface;
         }
-        return children.at("radius-source-interface");
+        return radius_source_interface;
     }
 
     if(child_yang_name == "servers")
     {
-        if(servers != nullptr)
-        {
-            children["servers"] = servers;
-        }
-        else
+        if(servers == nullptr)
         {
             servers = std::make_shared<Aaa::Radius::Servers>();
-            servers->parent = this;
-            children["servers"] = servers;
         }
-        return children.at("servers");
+        return servers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Radius::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::get_children() const
 {
-    if(children.find("global") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
-    if(children.find("radius-source-interface") == children.end())
+    if(radius_source_interface != nullptr)
     {
-        if(radius_source_interface != nullptr)
-        {
-            children["radius-source-interface"] = radius_source_interface;
-        }
+        children["radius-source-interface"] = radius_source_interface;
     }
 
-    if(children.find("servers") == children.end())
+    if(servers != nullptr)
     {
-        if(servers != nullptr)
-        {
-            children["servers"] = servers;
-        }
+        children["servers"] = servers;
     }
 
     return children;
@@ -8182,7 +6164,7 @@ std::string Aaa::Radius::Servers::get_segment_path() const
 
 }
 
-EntityPath Aaa::Radius::Servers::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Radius::Servers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8205,15 +6187,6 @@ EntityPath Aaa::Radius::Servers::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Radius::Servers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "server")
     {
         for(auto const & c : server)
@@ -8221,28 +6194,24 @@ std::shared_ptr<Entity> Aaa::Radius::Servers::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Radius::Servers::Server>();
         c->parent = this;
-        server.push_back(std::move(c));
-        children[segment_path] = server.back();
-        return children.at(segment_path);
+        server.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Radius::Servers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Servers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : server)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8544,7 +6513,7 @@ std::string Aaa::Radius::Servers::Server::get_segment_path() const
 
 }
 
-EntityPath Aaa::Radius::Servers::Server::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Radius::Servers::Server::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8655,20 +6624,12 @@ EntityPath Aaa::Radius::Servers::Server::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Radius::Servers::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Radius::Servers::Server::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Servers::Server::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9066,7 +7027,7 @@ std::string Aaa::Radius::RadiusSourceInterface::get_segment_path() const
 
 }
 
-EntityPath Aaa::Radius::RadiusSourceInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Radius::RadiusSourceInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9089,15 +7050,6 @@ EntityPath Aaa::Radius::RadiusSourceInterface::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "list-of-source-interface")
     {
         for(auto const & c : list_of_source_interface)
@@ -9105,28 +7057,24 @@ std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface>();
         c->parent = this;
-        list_of_source_interface.push_back(std::move(c));
-        children[segment_path] = list_of_source_interface.back();
-        return children.at(segment_path);
+        list_of_source_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Radius::RadiusSourceInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : list_of_source_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9176,7 +7124,7 @@ std::string Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_segme
 
 }
 
-EntityPath Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9203,20 +7151,12 @@ EntityPath Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_entity
 
 std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9280,7 +7220,7 @@ std::string Aaa::Radius::Global::get_segment_path() const
 
 }
 
-EntityPath Aaa::Radius::Global::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Radius::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9307,20 +7247,12 @@ EntityPath Aaa::Radius::Global::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Radius::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Radius::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Global::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9341,6 +7273,1186 @@ void Aaa::Radius::Global::set_value(const std::string & value_path, std::string 
     if(value_path == "unknown-authentication-response")
     {
         unknown_authentication_response = value;
+    }
+}
+
+Aaa::Tacacs::Tacacs()
+    :
+    requests(std::make_shared<Aaa::Tacacs::Requests>())
+	,server_groups(std::make_shared<Aaa::Tacacs::ServerGroups>())
+	,servers(std::make_shared<Aaa::Tacacs::Servers>())
+{
+    requests->parent = this;
+
+    server_groups->parent = this;
+
+    servers->parent = this;
+
+    yang_name = "tacacs"; yang_parent_name = "aaa";
+}
+
+Aaa::Tacacs::~Tacacs()
+{
+}
+
+bool Aaa::Tacacs::has_data() const
+{
+    return (requests !=  nullptr && requests->has_data())
+	|| (server_groups !=  nullptr && server_groups->has_data())
+	|| (servers !=  nullptr && servers->has_data());
+}
+
+bool Aaa::Tacacs::has_operation() const
+{
+    return is_set(operation)
+	|| (requests !=  nullptr && requests->has_operation())
+	|| (server_groups !=  nullptr && server_groups->has_operation())
+	|| (servers !=  nullptr && servers->has_operation());
+}
+
+std::string Aaa::Tacacs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-tacacs-oper:tacacs";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Aaa::Tacacs::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "requests")
+    {
+        if(requests == nullptr)
+        {
+            requests = std::make_shared<Aaa::Tacacs::Requests>();
+        }
+        return requests;
+    }
+
+    if(child_yang_name == "server-groups")
+    {
+        if(server_groups == nullptr)
+        {
+            server_groups = std::make_shared<Aaa::Tacacs::ServerGroups>();
+        }
+        return server_groups;
+    }
+
+    if(child_yang_name == "servers")
+    {
+        if(servers == nullptr)
+        {
+            servers = std::make_shared<Aaa::Tacacs::Servers>();
+        }
+        return servers;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(requests != nullptr)
+    {
+        children["requests"] = requests;
+    }
+
+    if(server_groups != nullptr)
+    {
+        children["server-groups"] = server_groups;
+    }
+
+    if(servers != nullptr)
+    {
+        children["servers"] = servers;
+    }
+
+    return children;
+}
+
+void Aaa::Tacacs::set_value(const std::string & value_path, std::string value)
+{
+}
+
+Aaa::Tacacs::Requests::Requests()
+{
+    yang_name = "requests"; yang_parent_name = "tacacs";
+}
+
+Aaa::Tacacs::Requests::~Requests()
+{
+}
+
+bool Aaa::Tacacs::Requests::has_data() const
+{
+    for (std::size_t index=0; index<request.size(); index++)
+    {
+        if(request[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Tacacs::Requests::has_operation() const
+{
+    for (std::size_t index=0; index<request.size(); index++)
+    {
+        if(request[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string Aaa::Tacacs::Requests::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "requests";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Aaa::Tacacs::Requests::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::Requests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "request")
+    {
+        for(auto const & c : request)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Tacacs::Requests::Request>();
+        c->parent = this;
+        request.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Requests::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : request)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Tacacs::Requests::set_value(const std::string & value_path, std::string value)
+{
+}
+
+Aaa::Tacacs::Requests::Request::Request()
+{
+    yang_name = "request"; yang_parent_name = "requests";
+}
+
+Aaa::Tacacs::Requests::Request::~Request()
+{
+}
+
+bool Aaa::Tacacs::Requests::Request::has_data() const
+{
+    for (std::size_t index=0; index<tacacs_requestbag.size(); index++)
+    {
+        if(tacacs_requestbag[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Tacacs::Requests::Request::has_operation() const
+{
+    for (std::size_t index=0; index<tacacs_requestbag.size(); index++)
+    {
+        if(tacacs_requestbag[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string Aaa::Tacacs::Requests::Request::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "request";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Aaa::Tacacs::Requests::Request::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::Requests::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tacacs-requestbag")
+    {
+        for(auto const & c : tacacs_requestbag)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Tacacs::Requests::Request::TacacsRequestbag>();
+        c->parent = this;
+        tacacs_requestbag.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Requests::Request::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : tacacs_requestbag)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Tacacs::Requests::Request::set_value(const std::string & value_path, std::string value)
+{
+}
+
+Aaa::Tacacs::Requests::Request::TacacsRequestbag::TacacsRequestbag()
+    :
+    bytes_in{YType::uint32, "bytes-in"},
+    bytes_out{YType::uint32, "bytes-out"},
+    in_pak_size{YType::uint32, "in-pak-size"},
+    out_pak_size{YType::uint32, "out-pak-size"},
+    pak_type{YType::str, "pak-type"},
+    session_id{YType::int32, "session-id"},
+    sock{YType::int32, "sock"},
+    time_remaining{YType::uint32, "time-remaining"}
+{
+    yang_name = "tacacs-requestbag"; yang_parent_name = "request";
+}
+
+Aaa::Tacacs::Requests::Request::TacacsRequestbag::~TacacsRequestbag()
+{
+}
+
+bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_data() const
+{
+    return bytes_in.is_set
+	|| bytes_out.is_set
+	|| in_pak_size.is_set
+	|| out_pak_size.is_set
+	|| pak_type.is_set
+	|| session_id.is_set
+	|| sock.is_set
+	|| time_remaining.is_set;
+}
+
+bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(bytes_in.operation)
+	|| is_set(bytes_out.operation)
+	|| is_set(in_pak_size.operation)
+	|| is_set(out_pak_size.operation)
+	|| is_set(pak_type.operation)
+	|| is_set(session_id.operation)
+	|| is_set(sock.operation)
+	|| is_set(time_remaining.operation);
+}
+
+std::string Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tacacs-requestbag";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/request/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes_in.is_set || is_set(bytes_in.operation)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
+    if (bytes_out.is_set || is_set(bytes_out.operation)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
+    if (in_pak_size.is_set || is_set(in_pak_size.operation)) leaf_name_data.push_back(in_pak_size.get_name_leafdata());
+    if (out_pak_size.is_set || is_set(out_pak_size.operation)) leaf_name_data.push_back(out_pak_size.get_name_leafdata());
+    if (pak_type.is_set || is_set(pak_type.operation)) leaf_name_data.push_back(pak_type.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (sock.is_set || is_set(sock.operation)) leaf_name_data.push_back(sock.get_name_leafdata());
+    if (time_remaining.is_set || is_set(time_remaining.operation)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Tacacs::Requests::Request::TacacsRequestbag::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "bytes-in")
+    {
+        bytes_in = value;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out = value;
+    }
+    if(value_path == "in-pak-size")
+    {
+        in_pak_size = value;
+    }
+    if(value_path == "out-pak-size")
+    {
+        out_pak_size = value;
+    }
+    if(value_path == "pak-type")
+    {
+        pak_type = value;
+    }
+    if(value_path == "session-id")
+    {
+        session_id = value;
+    }
+    if(value_path == "sock")
+    {
+        sock = value;
+    }
+    if(value_path == "time-remaining")
+    {
+        time_remaining = value;
+    }
+}
+
+Aaa::Tacacs::Servers::Servers()
+{
+    yang_name = "servers"; yang_parent_name = "tacacs";
+}
+
+Aaa::Tacacs::Servers::~Servers()
+{
+}
+
+bool Aaa::Tacacs::Servers::has_data() const
+{
+    for (std::size_t index=0; index<server.size(); index++)
+    {
+        if(server[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Tacacs::Servers::has_operation() const
+{
+    for (std::size_t index=0; index<server.size(); index++)
+    {
+        if(server[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string Aaa::Tacacs::Servers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "servers";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Aaa::Tacacs::Servers::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::Servers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        for(auto const & c : server)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Tacacs::Servers::Server>();
+        c->parent = this;
+        server.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Servers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : server)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Tacacs::Servers::set_value(const std::string & value_path, std::string value)
+{
+}
+
+Aaa::Tacacs::Servers::Server::Server()
+    :
+    aborts{YType::uint32, "aborts"},
+    addr{YType::str, "addr"},
+    addr_buf{YType::str, "addr-buf"},
+    bytes_in{YType::uint32, "bytes-in"},
+    bytes_out{YType::uint32, "bytes-out"},
+    closes{YType::uint32, "closes"},
+    conn_up{YType::boolean, "conn-up"},
+    errors{YType::uint32, "errors"},
+    family{YType::str, "family"},
+    is_private{YType::boolean, "is-private"},
+    opens{YType::uint32, "opens"},
+    paks_in{YType::uint32, "paks-in"},
+    paks_out{YType::uint32, "paks-out"},
+    port{YType::uint32, "port"},
+    replies_expected{YType::uint32, "replies-expected"},
+    single_connect{YType::boolean, "single-connect"},
+    timeout{YType::uint32, "timeout"},
+    up{YType::boolean, "up"},
+    vrf_name{YType::str, "vrf-name"}
+{
+    yang_name = "server"; yang_parent_name = "servers";
+}
+
+Aaa::Tacacs::Servers::Server::~Server()
+{
+}
+
+bool Aaa::Tacacs::Servers::Server::has_data() const
+{
+    return aborts.is_set
+	|| addr.is_set
+	|| addr_buf.is_set
+	|| bytes_in.is_set
+	|| bytes_out.is_set
+	|| closes.is_set
+	|| conn_up.is_set
+	|| errors.is_set
+	|| family.is_set
+	|| is_private.is_set
+	|| opens.is_set
+	|| paks_in.is_set
+	|| paks_out.is_set
+	|| port.is_set
+	|| replies_expected.is_set
+	|| single_connect.is_set
+	|| timeout.is_set
+	|| up.is_set
+	|| vrf_name.is_set;
+}
+
+bool Aaa::Tacacs::Servers::Server::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(aborts.operation)
+	|| is_set(addr.operation)
+	|| is_set(addr_buf.operation)
+	|| is_set(bytes_in.operation)
+	|| is_set(bytes_out.operation)
+	|| is_set(closes.operation)
+	|| is_set(conn_up.operation)
+	|| is_set(errors.operation)
+	|| is_set(family.operation)
+	|| is_set(is_private.operation)
+	|| is_set(opens.operation)
+	|| is_set(paks_in.operation)
+	|| is_set(paks_out.operation)
+	|| is_set(port.operation)
+	|| is_set(replies_expected.operation)
+	|| is_set(single_connect.operation)
+	|| is_set(timeout.operation)
+	|| is_set(up.operation)
+	|| is_set(vrf_name.operation);
+}
+
+std::string Aaa::Tacacs::Servers::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Aaa::Tacacs::Servers::Server::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/servers/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aborts.is_set || is_set(aborts.operation)) leaf_name_data.push_back(aborts.get_name_leafdata());
+    if (addr.is_set || is_set(addr.operation)) leaf_name_data.push_back(addr.get_name_leafdata());
+    if (addr_buf.is_set || is_set(addr_buf.operation)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
+    if (bytes_in.is_set || is_set(bytes_in.operation)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
+    if (bytes_out.is_set || is_set(bytes_out.operation)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
+    if (closes.is_set || is_set(closes.operation)) leaf_name_data.push_back(closes.get_name_leafdata());
+    if (conn_up.is_set || is_set(conn_up.operation)) leaf_name_data.push_back(conn_up.get_name_leafdata());
+    if (errors.is_set || is_set(errors.operation)) leaf_name_data.push_back(errors.get_name_leafdata());
+    if (family.is_set || is_set(family.operation)) leaf_name_data.push_back(family.get_name_leafdata());
+    if (is_private.is_set || is_set(is_private.operation)) leaf_name_data.push_back(is_private.get_name_leafdata());
+    if (opens.is_set || is_set(opens.operation)) leaf_name_data.push_back(opens.get_name_leafdata());
+    if (paks_in.is_set || is_set(paks_in.operation)) leaf_name_data.push_back(paks_in.get_name_leafdata());
+    if (paks_out.is_set || is_set(paks_out.operation)) leaf_name_data.push_back(paks_out.get_name_leafdata());
+    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (replies_expected.is_set || is_set(replies_expected.operation)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
+    if (single_connect.is_set || is_set(single_connect.operation)) leaf_name_data.push_back(single_connect.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::Servers::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Servers::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Tacacs::Servers::Server::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "aborts")
+    {
+        aborts = value;
+    }
+    if(value_path == "addr")
+    {
+        addr = value;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf = value;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in = value;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out = value;
+    }
+    if(value_path == "closes")
+    {
+        closes = value;
+    }
+    if(value_path == "conn-up")
+    {
+        conn_up = value;
+    }
+    if(value_path == "errors")
+    {
+        errors = value;
+    }
+    if(value_path == "family")
+    {
+        family = value;
+    }
+    if(value_path == "is-private")
+    {
+        is_private = value;
+    }
+    if(value_path == "opens")
+    {
+        opens = value;
+    }
+    if(value_path == "paks-in")
+    {
+        paks_in = value;
+    }
+    if(value_path == "paks-out")
+    {
+        paks_out = value;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected = value;
+    }
+    if(value_path == "single-connect")
+    {
+        single_connect = value;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+    }
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroups()
+{
+    yang_name = "server-groups"; yang_parent_name = "tacacs";
+}
+
+Aaa::Tacacs::ServerGroups::~ServerGroups()
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::has_data() const
+{
+    for (std::size_t index=0; index<server_group.size(); index++)
+    {
+        if(server_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Tacacs::ServerGroups::has_operation() const
+{
+    for (std::size_t index=0; index<server_group.size(); index++)
+    {
+        if(server_group[index]->has_operation())
+            return true;
+    }
+    return is_set(operation);
+}
+
+std::string Aaa::Tacacs::ServerGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-groups";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Aaa::Tacacs::ServerGroups::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server-group")
+    {
+        for(auto const & c : server_group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup>();
+        c->parent = this;
+        server_group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : server_group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Tacacs::ServerGroups::set_value(const std::string & value_path, std::string value)
+{
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::ServerGroup()
+    :
+    group_name{YType::str, "group-name"},
+    sg_map_num{YType::uint32, "sg-map-num"},
+    vrf_name{YType::str, "vrf-name"}
+{
+    yang_name = "server-group"; yang_parent_name = "server-groups";
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::~ServerGroup()
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::has_data() const
+{
+    for (std::size_t index=0; index<server.size(); index++)
+    {
+        if(server[index]->has_data())
+            return true;
+    }
+    return group_name.is_set
+	|| sg_map_num.is_set
+	|| vrf_name.is_set;
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::has_operation() const
+{
+    for (std::size_t index=0; index<server.size(); index++)
+    {
+        if(server[index]->has_operation())
+            return true;
+    }
+    return is_set(operation)
+	|| is_set(group_name.operation)
+	|| is_set(sg_map_num.operation)
+	|| is_set(vrf_name.operation);
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-group";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Aaa::Tacacs::ServerGroups::ServerGroup::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (sg_map_num.is_set || is_set(sg_map_num.operation)) leaf_name_data.push_back(sg_map_num.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        for(auto const & c : server)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup::Server>();
+        c->parent = this;
+        server.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : server)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "group-name")
+    {
+        group_name = value;
+    }
+    if(value_path == "sg-map-num")
+    {
+        sg_map_num = value;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+    }
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::Server::Server()
+    :
+    aborts{YType::uint32, "aborts"},
+    addr{YType::str, "addr"},
+    addr_buf{YType::str, "addr-buf"},
+    bytes_in{YType::uint32, "bytes-in"},
+    bytes_out{YType::uint32, "bytes-out"},
+    closes{YType::uint32, "closes"},
+    conn_up{YType::boolean, "conn-up"},
+    errors{YType::uint32, "errors"},
+    family{YType::str, "family"},
+    is_private{YType::boolean, "is-private"},
+    opens{YType::uint32, "opens"},
+    paks_in{YType::uint32, "paks-in"},
+    paks_out{YType::uint32, "paks-out"},
+    port{YType::uint32, "port"},
+    replies_expected{YType::uint32, "replies-expected"},
+    single_connect{YType::boolean, "single-connect"},
+    timeout{YType::uint32, "timeout"},
+    up{YType::boolean, "up"},
+    vrf_name{YType::str, "vrf-name"}
+{
+    yang_name = "server"; yang_parent_name = "server-group";
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::Server::~Server()
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_data() const
+{
+    return aborts.is_set
+	|| addr.is_set
+	|| addr_buf.is_set
+	|| bytes_in.is_set
+	|| bytes_out.is_set
+	|| closes.is_set
+	|| conn_up.is_set
+	|| errors.is_set
+	|| family.is_set
+	|| is_private.is_set
+	|| opens.is_set
+	|| paks_in.is_set
+	|| paks_out.is_set
+	|| port.is_set
+	|| replies_expected.is_set
+	|| single_connect.is_set
+	|| timeout.is_set
+	|| up.is_set
+	|| vrf_name.is_set;
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(aborts.operation)
+	|| is_set(addr.operation)
+	|| is_set(addr_buf.operation)
+	|| is_set(bytes_in.operation)
+	|| is_set(bytes_out.operation)
+	|| is_set(closes.operation)
+	|| is_set(conn_up.operation)
+	|| is_set(errors.operation)
+	|| is_set(family.operation)
+	|| is_set(is_private.operation)
+	|| is_set(opens.operation)
+	|| is_set(paks_in.operation)
+	|| is_set(paks_out.operation)
+	|| is_set(port.operation)
+	|| is_set(replies_expected.operation)
+	|| is_set(single_connect.operation)
+	|| is_set(timeout.operation)
+	|| is_set(up.operation)
+	|| is_set(vrf_name.operation);
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/server-group/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aborts.is_set || is_set(aborts.operation)) leaf_name_data.push_back(aborts.get_name_leafdata());
+    if (addr.is_set || is_set(addr.operation)) leaf_name_data.push_back(addr.get_name_leafdata());
+    if (addr_buf.is_set || is_set(addr_buf.operation)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
+    if (bytes_in.is_set || is_set(bytes_in.operation)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
+    if (bytes_out.is_set || is_set(bytes_out.operation)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
+    if (closes.is_set || is_set(closes.operation)) leaf_name_data.push_back(closes.get_name_leafdata());
+    if (conn_up.is_set || is_set(conn_up.operation)) leaf_name_data.push_back(conn_up.get_name_leafdata());
+    if (errors.is_set || is_set(errors.operation)) leaf_name_data.push_back(errors.get_name_leafdata());
+    if (family.is_set || is_set(family.operation)) leaf_name_data.push_back(family.get_name_leafdata());
+    if (is_private.is_set || is_set(is_private.operation)) leaf_name_data.push_back(is_private.get_name_leafdata());
+    if (opens.is_set || is_set(opens.operation)) leaf_name_data.push_back(opens.get_name_leafdata());
+    if (paks_in.is_set || is_set(paks_in.operation)) leaf_name_data.push_back(paks_in.get_name_leafdata());
+    if (paks_out.is_set || is_set(paks_out.operation)) leaf_name_data.push_back(paks_out.get_name_leafdata());
+    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (replies_expected.is_set || is_set(replies_expected.operation)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
+    if (single_connect.is_set || is_set(single_connect.operation)) leaf_name_data.push_back(single_connect.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "aborts")
+    {
+        aborts = value;
+    }
+    if(value_path == "addr")
+    {
+        addr = value;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf = value;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in = value;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out = value;
+    }
+    if(value_path == "closes")
+    {
+        closes = value;
+    }
+    if(value_path == "conn-up")
+    {
+        conn_up = value;
+    }
+    if(value_path == "errors")
+    {
+        errors = value;
+    }
+    if(value_path == "family")
+    {
+        family = value;
+    }
+    if(value_path == "is-private")
+    {
+        is_private = value;
+    }
+    if(value_path == "opens")
+    {
+        opens = value;
+    }
+    if(value_path == "paks-in")
+    {
+        paks_in = value;
+    }
+    if(value_path == "paks-out")
+    {
+        paks_out = value;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected = value;
+    }
+    if(value_path == "single-connect")
+    {
+        single_connect = value;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
     }
 }
 

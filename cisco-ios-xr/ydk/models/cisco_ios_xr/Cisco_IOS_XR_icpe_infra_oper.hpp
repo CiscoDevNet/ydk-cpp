@@ -19,17 +19,15 @@ class NvSatellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class ReloadOpStatuses; //type: NvSatellite::ReloadOpStatuses
         class InstallStatuses; //type: NvSatellite::InstallStatuses
@@ -64,8 +62,7 @@ class NvSatellite : public Entity
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls> sdacp_controls;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S> sdacp_discovery2s;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpRedundancies> sdacp_redundancies;
-
-
+        
 }; // NvSatellite
 
 
@@ -77,19 +74,16 @@ class NvSatellite::ReloadOpStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ReloadOpStatus; //type: NvSatellite::ReloadOpStatuses::ReloadOpStatus
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::ReloadOpStatuses::ReloadOpStatus> > reload_op_status;
-
-
+        
 }; // NvSatellite::ReloadOpStatuses
 
 
@@ -101,12 +95,11 @@ class NvSatellite::ReloadOpStatuses::ReloadOpStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operation_id; //type: uint32
         YLeaf operation_id_xr; //type: uint32
@@ -115,8 +108,6 @@ class NvSatellite::ReloadOpStatuses::ReloadOpStatus : public Entity
         YLeafList sats_reloading; //type: list of  uint16
         YLeafList sats_reloaded; //type: list of  uint16
         YLeafList sats_reload_failed; //type: list of  uint16
-
-
 
 }; // NvSatellite::ReloadOpStatuses::ReloadOpStatus
 
@@ -129,19 +120,16 @@ class NvSatellite::InstallStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InstallStatus; //type: NvSatellite::InstallStatuses::InstallStatus
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallStatuses::InstallStatus> > install_status;
-
-
+        
 }; // NvSatellite::InstallStatuses
 
 
@@ -153,12 +141,11 @@ class NvSatellite::InstallStatuses::InstallStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_range; //type: string
         YLeaf satellite_range_xr; //type: string
@@ -182,8 +169,6 @@ class NvSatellite::InstallStatuses::InstallStatus : public Entity
         YLeafList sats_no_operation; //type: list of  uint16
         YLeafList sats_completed; //type: list of  uint16
 
-
-
 }; // NvSatellite::InstallStatuses::InstallStatus
 
 
@@ -195,19 +180,16 @@ class NvSatellite::SdacpRedundancies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SdacpRedundancy; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpRedundancies::SdacpRedundancy> > sdacp_redundancy;
-
-
+        
 }; // NvSatellite::SdacpRedundancies
 
 
@@ -219,12 +201,11 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf iccp_group; //type: uint32
         YLeaf iccp_group_xr; //type: uint32
@@ -236,14 +217,12 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy : public Entity
         YLeaf primacy; //type: IcpeOpmControllerEnum
         YLeaf system_mac; //type: string
         YLeaf isolated; //type: boolean
-
         class ProtocolStateTimestamp; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp
         class Channel; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel> > channel;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp> protocol_state_timestamp;
-
-
+        
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy
 
 
@@ -255,17 +234,14 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp
 
@@ -278,12 +254,11 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf channel_id; //type: uint32
         YLeaf chan_state; //type: IcpeOpmChanFsmStateEnum
@@ -292,14 +267,12 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel : public Entity
         YLeaf normal_messages_sent; //type: uint64
         YLeaf control_messages_received; //type: uint64
         YLeaf normal_messages_received; //type: uint64
-
         class ChannelStateTimestamp; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp
         class ResyncStateTimestamp; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp
 
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp> channel_state_timestamp;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp> resync_state_timestamp;
-
-
+        
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel
 
 
@@ -311,17 +284,14 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTime
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp
 
@@ -334,17 +304,14 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimes
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp
 
@@ -357,19 +324,16 @@ class NvSatellite::InstallShows : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InstallShow; //type: NvSatellite::InstallShows::InstallShow
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallShows::InstallShow> > install_show;
-
-
+        
 }; // NvSatellite::InstallShows
 
 
@@ -381,12 +345,11 @@ class NvSatellite::InstallShows::InstallShow : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operation_id; //type: uint32
         YLeaf operation_id_xr; //type: uint32
@@ -415,12 +378,10 @@ class NvSatellite::InstallShows::InstallShow : public Entity
         YLeafList sats_no_operation; //type: list of  uint16
         YLeafList sats_completed; //type: list of  uint16
         YLeafList name_string; //type: list of  string
-
         class Satellite; //type: NvSatellite::InstallShows::InstallShow::Satellite
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallShows::InstallShow::Satellite> > satellite;
-
-
+        
 }; // NvSatellite::InstallShows::InstallShow
 
 
@@ -432,12 +393,11 @@ class NvSatellite::InstallShows::InstallShow::Satellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: uint16
         YLeaf state; //type: IcpeInstallSatStateEnum
@@ -446,8 +406,6 @@ class NvSatellite::InstallShows::InstallShow::Satellite : public Entity
         YLeaf start_time; //type: uint32
         YLeaf end_time; //type: uint32
         YLeaf info; //type: string
-
-
 
 }; // NvSatellite::InstallShows::InstallShow::Satellite
 
@@ -460,19 +418,16 @@ class NvSatellite::SatelliteStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SatelliteStatus; //type: NvSatellite::SatelliteStatuses::SatelliteStatus
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus> > satellite_status;
-
-
+        
 }; // NvSatellite::SatelliteStatuses
 
 
@@ -484,12 +439,11 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: uint32
         YLeaf satellite_id_xr; //type: uint32
@@ -528,7 +482,6 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus : public Entity
         YLeaf sdacp_session_failure_reason; //type: IcpeGcoOperControlReasonEnum
         YLeaf install_state; //type: IcpeOperInstallStateEnum
         YLeafList remote_version; //type: list of  string
-
         class CandidateFabricPorts; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
         class OpticalStatus; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus
         class RedundancyOutOfSyncTimestamp; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp
@@ -538,8 +491,7 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink> > configured_link;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus> optical_status;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp> redundancy_out_of_sync_timestamp;
-
-
+        
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus
 
 
@@ -551,24 +503,21 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf channel_up; //type: boolean
         YLeaf out_of_sync; //type: boolean
         YLeaf error_string; //type: string
-
         class ConfiguredPort; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort
         class CurrentPort; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort> > configured_port;
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort> > current_port;
-
-
+        
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
 
 
@@ -580,20 +529,17 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::Con
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_type; //type: IcpeOperFabricPortEnum
         YLeaf slot; //type: uint16
         YLeaf subslot; //type: uint16
         YLeaf port; //type: uint16
         YLeaf valid; //type: boolean
-
-
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort
 
@@ -606,12 +552,11 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::Cur
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_type; //type: IcpeOperFabricPortEnum
         YLeaf slot; //type: uint16
@@ -619,8 +564,6 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::Cur
         YLeaf port; //type: uint16
         YLeaf permanent; //type: boolean
         YLeaf requested; //type: boolean
-
-
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort
 
@@ -633,20 +576,17 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf chassis_sync_state; //type: IcpeOpticalSyncStateEnum
-
         class Application; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application> > application;
-
-
+        
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus
 
 
@@ -658,17 +598,14 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Applicatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf sync_state; //type: IcpeOpticalSyncStateEnum
-
-
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application
 
@@ -681,17 +618,14 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimest
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp
 
@@ -704,12 +638,11 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_handle; //type: string
         YLeaf ip_address; //type: string
@@ -723,14 +656,12 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink : public E
         YLeaf required_min_links_satisfied; //type: boolean
         YLeaf conflict_reason; //type: IcpeOperConflictEnum
         YLeaf conflict_context; //type: string
-
         class PortRange; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange
         class DiscoveredLink; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink> > discovered_link;
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange> > port_range;
-
-
+        
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink
 
 
@@ -742,12 +673,11 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf slot; //type: uint32
         YLeaf subslot; //type: uint32
@@ -756,8 +686,6 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange
         YLeaf port_type; //type: IcpeOperPortEnum
         YLeaf conflict_reason; //type: IcpeOperConflictEnum
         YLeaf conflict_context; //type: string
-
-
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange
 
@@ -770,19 +698,16 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::Discovere
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_handle; //type: string
         YLeaf state; //type: IcpeOperDiscdLinkStateEnum
         YLeaf conflict_reason; //type: IcpeOperConflictEnum
         YLeaf conflict_context; //type: string
-
-
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink
 
@@ -795,19 +720,16 @@ class NvSatellite::SatellitePriorities : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SatellitePriority; //type: NvSatellite::SatellitePriorities::SatellitePriority
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatellitePriorities::SatellitePriority> > satellite_priority;
-
-
+        
 }; // NvSatellite::SatellitePriorities
 
 
@@ -819,12 +741,11 @@ class NvSatellite::SatellitePriorities::SatellitePriority : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: uint32
         YLeaf satellite_id_xr; //type: uint32
@@ -834,8 +755,6 @@ class NvSatellite::SatellitePriorities::SatellitePriority : public Entity
         YLeaf host_priority; //type: uint64
         YLeaf partner_priority; //type: uint64
         YLeaf multichassis_redundancy; //type: IcpeOperMultichassisRedundancyEnum
-
-
 
 }; // NvSatellite::SatellitePriorities::SatellitePriority
 
@@ -848,19 +767,16 @@ class NvSatellite::SatelliteVersions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SatelliteVersion; //type: NvSatellite::SatelliteVersions::SatelliteVersion
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteVersions::SatelliteVersion> > satellite_version;
-
-
+        
 }; // NvSatellite::SatelliteVersions
 
 
@@ -872,19 +788,17 @@ class NvSatellite::SatelliteVersions::SatelliteVersion : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: uint32
         YLeaf satellite_id_xr; //type: uint32
         YLeaf version_check_state; //type: IcpeOperVerCheckStateEnum
         YLeaf remote_version_present; //type: boolean
         YLeafList remote_version; //type: list of  string
-
         class ActiveVersion; //type: NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion
         class TransferredVersion; //type: NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion
         class CommittedVersion; //type: NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion
@@ -892,8 +806,7 @@ class NvSatellite::SatelliteVersions::SatelliteVersion : public Entity
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion> active_version;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion> committed_version;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion> transferred_version;
-
-
+        
 }; // NvSatellite::SatelliteVersions::SatelliteVersion
 
 
@@ -905,18 +818,15 @@ class NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version_check_state; //type: IcpeOperVerCheckStateEnum
         YLeaf remote_version_present; //type: boolean
         YLeafList remote_version; //type: list of  string
-
-
 
 }; // NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion
 
@@ -929,18 +839,15 @@ class NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version_check_state; //type: IcpeOperVerCheckStateEnum
         YLeaf remote_version_present; //type: boolean
         YLeafList remote_version; //type: list of  string
-
-
 
 }; // NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion
 
@@ -953,18 +860,15 @@ class NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf version_check_state; //type: IcpeOperVerCheckStateEnum
         YLeaf remote_version_present; //type: boolean
         YLeafList remote_version; //type: list of  string
-
-
 
 }; // NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion
 
@@ -977,19 +881,16 @@ class NvSatellite::SatelliteTopologies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SatelliteTopology; //type: NvSatellite::SatelliteTopologies::SatelliteTopology
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology> > satellite_topology;
-
-
+        
 }; // NvSatellite::SatelliteTopologies
 
 
@@ -1001,12 +902,11 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
@@ -1014,14 +914,12 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology : public Entity
         YLeaf redundancy_iccp_group; //type: uint32
         YLeaf is_physical; //type: boolean
         YLeaf ring_whole; //type: boolean
-
         class DiscoveredLink; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink
         class Satellite; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink> > discovered_link;
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite> > satellite;
-
-
+        
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology
 
 
@@ -1033,18 +931,15 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_handle; //type: string
         YLeaf discovery_running; //type: boolean
-
-
 
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink
 
@@ -1057,12 +952,11 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf configured; //type: boolean
@@ -1075,12 +969,10 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite : public En
         YLeaf display_name; //type: string
         YLeaf conflict_reason; //type: IcpeOperConflictEnum
         YLeaf conflict_context; //type: string
-
         class FabricLink; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink> > fabric_link;
-
-
+        
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite
 
 
@@ -1092,12 +984,11 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf icl_id; //type: uint32
         YLeaf interface_name; //type: string
@@ -1105,12 +996,10 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
         YLeaf redundant; //type: boolean
         YLeaf active; //type: boolean
         YLeaf obsolete; //type: boolean
-
         class RemoteDevice; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice> > remote_device;
-
-
+        
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
 
@@ -1122,12 +1011,11 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac_address; //type: string
         YLeaf source; //type: IcpeOperTopoRemoteSourceEnum
@@ -1136,8 +1024,6 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
         YLeaf icl_id; //type: uint32
         YLeaf interface_handle; //type: string
         YLeaf interface_name; //type: string
-
-
 
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice
 
@@ -1150,19 +1036,16 @@ class NvSatellite::InstallProgresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InstallProgress; //type: NvSatellite::InstallProgresses::InstallProgress
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallProgresses::InstallProgress> > install_progress;
-
-
+        
 }; // NvSatellite::InstallProgresses
 
 
@@ -1174,18 +1057,15 @@ class NvSatellite::InstallProgresses::InstallProgress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf progress_percentage; //type: uint32
         YLeaf progress_percentage_xr; //type: uint16
         YLeaf satellite_count; //type: uint32
-
-
 
 }; // NvSatellite::InstallProgresses::InstallProgress
 
@@ -1198,19 +1078,16 @@ class NvSatellite::ReloadStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ReloadStatus; //type: NvSatellite::ReloadStatuses::ReloadStatus
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::ReloadStatuses::ReloadStatus> > reload_status;
-
-
+        
 }; // NvSatellite::ReloadStatuses
 
 
@@ -1222,12 +1099,11 @@ class NvSatellite::ReloadStatuses::ReloadStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_range; //type: string
         YLeaf satellite_range_xr; //type: string
@@ -1235,8 +1111,6 @@ class NvSatellite::ReloadStatuses::ReloadStatus : public Entity
         YLeafList sats_reloading; //type: list of  uint16
         YLeafList sats_reloaded; //type: list of  uint16
         YLeafList sats_reload_failed; //type: list of  uint16
-
-
 
 }; // NvSatellite::ReloadStatuses::ReloadStatus
 
@@ -1249,19 +1123,16 @@ class NvSatellite::Install : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SatelliteSoftwareVersions; //type: NvSatellite::Install::SatelliteSoftwareVersions
 
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions> satellite_software_versions;
-
-
+        
 }; // NvSatellite::Install
 
 
@@ -1273,19 +1144,16 @@ class NvSatellite::Install::SatelliteSoftwareVersions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SatelliteSoftwareVersion; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion> > satellite_software_version;
-
-
+        
 }; // NvSatellite::Install::SatelliteSoftwareVersions
 
 
@@ -1297,22 +1165,19 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: uint32
         YLeaf satellite_id_xr; //type: uint32
         YLeaf package_support; //type: IcpeInstallPkgSuppEnum
-
         class InstallPackageInfo; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo
 
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo> install_package_info;
-
-
+        
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion
 
 
@@ -1324,13 +1189,11 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ActivePackages; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages
         class InactivePackages; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages
@@ -1339,8 +1202,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages> active_packages;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages> committed_packages;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages> inactive_packages;
-
-
+        
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo
 
 
@@ -1352,19 +1214,16 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Package; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package> > package;
-
-
+        
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages
 
 
@@ -1376,18 +1235,15 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf version; //type: string
         YLeaf is_base_image; //type: boolean
-
-
 
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package
 
@@ -1400,19 +1256,16 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Package; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package> > package;
-
-
+        
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages
 
 
@@ -1424,18 +1277,15 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf version; //type: string
         YLeaf is_base_image; //type: boolean
-
-
 
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package
 
@@ -1448,19 +1298,16 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Package; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package> > package;
-
-
+        
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages
 
 
@@ -1472,18 +1319,15 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf version; //type: string
         YLeaf is_base_image; //type: boolean
-
-
 
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package
 
@@ -1496,19 +1340,16 @@ class NvSatellite::InstallOpStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InstallOpStatus; //type: NvSatellite::InstallOpStatuses::InstallOpStatus
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallOpStatuses::InstallOpStatus> > install_op_status;
-
-
+        
 }; // NvSatellite::InstallOpStatuses
 
 
@@ -1520,12 +1361,11 @@ class NvSatellite::InstallOpStatuses::InstallOpStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operation_id; //type: uint32
         YLeaf operation_id_xr; //type: uint32
@@ -1549,8 +1389,6 @@ class NvSatellite::InstallOpStatuses::InstallOpStatus : public Entity
         YLeafList sats_no_operation; //type: list of  uint16
         YLeafList sats_completed; //type: list of  uint16
 
-
-
 }; // NvSatellite::InstallOpStatuses::InstallOpStatus
 
 
@@ -1562,19 +1400,16 @@ class NvSatellite::SatelliteProperties : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IdRanges; //type: NvSatellite::SatelliteProperties::IdRanges
 
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteProperties::IdRanges> id_ranges;
-
-
+        
 }; // NvSatellite::SatelliteProperties
 
 
@@ -1586,19 +1421,16 @@ class NvSatellite::SatelliteProperties::IdRanges : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IdRange; //type: NvSatellite::SatelliteProperties::IdRanges::IdRange
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteProperties::IdRanges::IdRange> > id_range;
-
-
+        
 }; // NvSatellite::SatelliteProperties::IdRanges
 
 
@@ -1610,18 +1442,15 @@ class NvSatellite::SatelliteProperties::IdRanges::IdRange : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sat_id_range; //type: string
         YLeaf min; //type: uint32
         YLeaf max; //type: uint32
-
-
 
 }; // NvSatellite::SatelliteProperties::IdRanges::IdRange
 
@@ -1634,19 +1463,16 @@ class NvSatellite::SdacpDiscovery2S : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SdacpDiscovery2; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S::SdacpDiscovery2> > sdacp_discovery2;
-
-
+        
 }; // NvSatellite::SdacpDiscovery2S
 
 
@@ -1658,23 +1484,20 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
-
         class Interface; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface
         class Satellite; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface> > interface;
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite> > satellite;
-
-
+        
 }; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2
 
 
@@ -1686,17 +1509,14 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_status; //type: DpmProtoStateEnum
-
-
 
 }; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface
 
@@ -1709,24 +1529,21 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: uint32
         YLeaf satellite_status; //type: DpmProtoStateEnum
         YLeaf conflict_reason; //type: uint32
         YLeaf satellite_ip_address; //type: string
         YLeaf host_ip_address; //type: string
-
         class Interface; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface> > interface;
-
-
+        
 }; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite
 
 
@@ -1738,12 +1555,11 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_handle; //type: string
         YLeaf satellite_status; //type: DpmProtoStateEnum
@@ -1754,8 +1570,6 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface : pub
         YLeaf satellite_chassis_mac; //type: string
         YLeaf satellite_serial_id; //type: string
         YLeaf satellite_module_vendor; //type: string
-
-
 
 }; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface
 
@@ -1768,19 +1582,16 @@ class NvSatellite::IcpeDpms : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IcpeDpm; //type: NvSatellite::IcpeDpms::IcpeDpm
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::IcpeDpms::IcpeDpm> > icpe_dpm;
-
-
+        
 }; // NvSatellite::IcpeDpms
 
 
@@ -1792,12 +1603,11 @@ class NvSatellite::IcpeDpms::IcpeDpm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discovery_interface; //type: string
         YLeaf discovery_interface_xr; //type: string
@@ -1814,14 +1624,12 @@ class NvSatellite::IcpeDpms::IcpeDpm : public Entity
         YLeaf host_ack_packets_received; //type: uint64
         YLeaf host_ack_packets_sent; //type: uint64
         YLeaf secs_since_pkts_cleaned; //type: uint64
-
         class Satellite; //type: NvSatellite::IcpeDpms::IcpeDpm::Satellite
         class RemoteHost; //type: NvSatellite::IcpeDpms::IcpeDpm::RemoteHost
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::IcpeDpms::IcpeDpm::RemoteHost> > remote_host;
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::IcpeDpms::IcpeDpm::Satellite> > satellite;
-
-
+        
 }; // NvSatellite::IcpeDpms::IcpeDpm
 
 
@@ -1833,12 +1641,11 @@ class NvSatellite::IcpeDpms::IcpeDpm::Satellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: uint32
         YLeaf satellite_interface_id; //type: uint32
@@ -1874,8 +1681,6 @@ class NvSatellite::IcpeDpms::IcpeDpm::Satellite : public Entity
         YLeaf reject_packets_sent; //type: uint64
         YLeaf secs_since_pkts_cleaned; //type: uint64
 
-
-
 }; // NvSatellite::IcpeDpms::IcpeDpm::Satellite
 
 
@@ -1887,12 +1692,11 @@ class NvSatellite::IcpeDpms::IcpeDpm::RemoteHost : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_chassis_mac; //type: string
         YLeaf host_interface_mac; //type: string
@@ -1902,8 +1706,6 @@ class NvSatellite::IcpeDpms::IcpeDpm::RemoteHost : public Entity
         YLeaf host_ack_packets_received; //type: uint64
         YLeaf host_ack_packets_sent; //type: uint64
         YLeaf secs_since_pkts_cleaned; //type: uint64
-
-
 
 }; // NvSatellite::IcpeDpms::IcpeDpm::RemoteHost
 
@@ -1916,19 +1718,16 @@ class NvSatellite::SdacpControls : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SdacpControl; //type: NvSatellite::SdacpControls::SdacpControl
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl> > sdacp_control;
-
-
+        
 }; // NvSatellite::SdacpControls
 
 
@@ -1940,12 +1739,11 @@ class NvSatellite::SdacpControls::SdacpControl : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: uint32
         YLeaf satellite_id_xr; //type: uint32
@@ -1954,7 +1752,6 @@ class NvSatellite::SdacpControls::SdacpControl : public Entity
         YLeaf vrf_name; //type: string
         YLeaf control_protocol_state; //type: IcpeCpmControlFsmStateEnum
         YLeaf transport_error; //type: uint32
-
         class ProtocolStateTimestamp; //type: NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp
         class TransportErrorTimestamp; //type: NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp
         class Channel; //type: NvSatellite::SdacpControls::SdacpControl::Channel
@@ -1962,8 +1759,7 @@ class NvSatellite::SdacpControls::SdacpControl : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::Channel> > channel;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp> protocol_state_timestamp;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp> transport_error_timestamp;
-
-
+        
 }; // NvSatellite::SdacpControls::SdacpControl
 
 
@@ -1975,17 +1771,14 @@ class NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp
 
@@ -1998,17 +1791,14 @@ class NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp
 
@@ -2021,12 +1811,11 @@ class NvSatellite::SdacpControls::SdacpControl::Channel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf channel_id; //type: uint16
         YLeaf resync_state; //type: IcpeCpmChannelResyncStateEnum
@@ -2039,7 +1828,6 @@ class NvSatellite::SdacpControls::SdacpControl::Channel : public Entity
         YLeaf normal_messages_dropped; //type: uint64
         YLeaf secs_since_last_cleared; //type: uint64
         YLeaf version; //type: uint16
-
         class Capabilities; //type: NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities
         class ResyncStateTimestamp; //type: NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp
         class ChannelStateTimestamp; //type: NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp
@@ -2047,8 +1835,7 @@ class NvSatellite::SdacpControls::SdacpControl::Channel : public Entity
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities> capabilities;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp> channel_state_timestamp;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp> resync_state_timestamp;
-
-
+        
 }; // NvSatellite::SdacpControls::SdacpControl::Channel
 
 
@@ -2060,19 +1847,16 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TlVs; //type: NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs> > tl_vs;
-
-
+        
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities
 
 
@@ -2084,18 +1868,15 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: uint32
         YLeaf debug; //type: string
         YLeafList value_; //type: list of  uint8
-
-
 
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs
 
@@ -2108,17 +1889,14 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp
 
@@ -2131,17 +1909,14 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf seconds; //type: uint32
         YLeaf nanoseconds; //type: uint32
-
-
 
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp
 

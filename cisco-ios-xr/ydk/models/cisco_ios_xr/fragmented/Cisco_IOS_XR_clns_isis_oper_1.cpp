@@ -50,7 +50,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Added::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Added::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -77,20 +77,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Added::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Added::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Added::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -154,7 +146,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Deleted::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Deleted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -181,20 +173,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Deleted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Deleted::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Deleted::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -258,7 +242,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Modified::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Modified::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -285,20 +269,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Modified::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Modified::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Modified::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -362,7 +338,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Touched::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Touched::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -389,20 +365,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Touched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Touched::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::ItemCounts::Touched::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -436,22 +404,16 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,unreachable(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Unreachable>())
 {
     added->parent = this;
-    children["added"] = added;
 
     deleted->parent = this;
-    children["deleted"] = deleted;
 
     modified->parent = this;
-    children["modified"] = modified;
 
     reachable->parent = this;
-    children["reachable"] = reachable;
 
     touched->parent = this;
-    children["touched"] = touched;
 
     unreachable->parent = this;
-    children["unreachable"] = unreachable;
 
     yang_name = "route-counts"; yang_parent_name = "route-update-statistics";
 }
@@ -490,7 +452,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -513,156 +475,94 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "added")
     {
-        if(added != nullptr)
-        {
-            children["added"] = added;
-        }
-        else
+        if(added == nullptr)
         {
             added = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Added>();
-            added->parent = this;
-            children["added"] = added;
         }
-        return children.at("added");
+        return added;
     }
 
     if(child_yang_name == "deleted")
     {
-        if(deleted != nullptr)
-        {
-            children["deleted"] = deleted;
-        }
-        else
+        if(deleted == nullptr)
         {
             deleted = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Deleted>();
-            deleted->parent = this;
-            children["deleted"] = deleted;
         }
-        return children.at("deleted");
+        return deleted;
     }
 
     if(child_yang_name == "modified")
     {
-        if(modified != nullptr)
-        {
-            children["modified"] = modified;
-        }
-        else
+        if(modified == nullptr)
         {
             modified = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Modified>();
-            modified->parent = this;
-            children["modified"] = modified;
         }
-        return children.at("modified");
+        return modified;
     }
 
     if(child_yang_name == "reachable")
     {
-        if(reachable != nullptr)
-        {
-            children["reachable"] = reachable;
-        }
-        else
+        if(reachable == nullptr)
         {
             reachable = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Reachable>();
-            reachable->parent = this;
-            children["reachable"] = reachable;
         }
-        return children.at("reachable");
+        return reachable;
     }
 
     if(child_yang_name == "touched")
     {
-        if(touched != nullptr)
-        {
-            children["touched"] = touched;
-        }
-        else
+        if(touched == nullptr)
         {
             touched = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Touched>();
-            touched->parent = this;
-            children["touched"] = touched;
         }
-        return children.at("touched");
+        return touched;
     }
 
     if(child_yang_name == "unreachable")
     {
-        if(unreachable != nullptr)
-        {
-            children["unreachable"] = unreachable;
-        }
-        else
+        if(unreachable == nullptr)
         {
             unreachable = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Unreachable>();
-            unreachable->parent = this;
-            children["unreachable"] = unreachable;
         }
-        return children.at("unreachable");
+        return unreachable;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::get_children() const
 {
-    if(children.find("added") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(added != nullptr)
     {
-        if(added != nullptr)
-        {
-            children["added"] = added;
-        }
+        children["added"] = added;
     }
 
-    if(children.find("deleted") == children.end())
+    if(deleted != nullptr)
     {
-        if(deleted != nullptr)
-        {
-            children["deleted"] = deleted;
-        }
+        children["deleted"] = deleted;
     }
 
-    if(children.find("modified") == children.end())
+    if(modified != nullptr)
     {
-        if(modified != nullptr)
-        {
-            children["modified"] = modified;
-        }
+        children["modified"] = modified;
     }
 
-    if(children.find("reachable") == children.end())
+    if(reachable != nullptr)
     {
-        if(reachable != nullptr)
-        {
-            children["reachable"] = reachable;
-        }
+        children["reachable"] = reachable;
     }
 
-    if(children.find("touched") == children.end())
+    if(touched != nullptr)
     {
-        if(touched != nullptr)
-        {
-            children["touched"] = touched;
-        }
+        children["touched"] = touched;
     }
 
-    if(children.find("unreachable") == children.end())
+    if(unreachable != nullptr)
     {
-        if(unreachable != nullptr)
-        {
-            children["unreachable"] = unreachable;
-        }
+        children["unreachable"] = unreachable;
     }
 
     return children;
@@ -712,7 +612,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Unreachable::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Unreachable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -739,20 +639,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Unreachable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Unreachable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -816,7 +708,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Reachable::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Reachable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -843,20 +735,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Reachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Reachable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Reachable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -920,7 +804,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Added::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Added::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -947,20 +831,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Added::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Added::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Added::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1024,7 +900,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Deleted::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Deleted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1051,20 +927,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Deleted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Deleted::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Deleted::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1128,7 +996,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Modified::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Modified::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1155,20 +1023,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Modified::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Modified::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Modified::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1232,7 +1092,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Touched::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Touched::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1259,20 +1119,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Touched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Touched::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RouteCounts::Touched::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1336,7 +1188,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RibBatchCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RibBatchCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1363,20 +1215,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RibBatchCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RibBatchCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::SpfLog::LogEntry::RouteUpdateStatistics::RibBatchCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1438,7 +1282,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1461,15 +1305,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "te-tunnel")
     {
         for(auto const & c : te_tunnel)
@@ -1477,28 +1312,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::TeTunnel>();
         c->parent = this;
-        te_tunnel.push_back(std::move(c));
-        children[segment_path] = te_tunnel.back();
-        return children.at(segment_path);
+        te_tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : te_tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1584,7 +1415,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::TeTunnel::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::TeTunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1623,20 +1454,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::TeTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::TeTunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TeTunnels::TeTunnel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1746,7 +1569,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1769,15 +1592,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-link-topology")
     {
         for(auto const & c : ipv4_link_topology)
@@ -1785,28 +1599,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology>();
         c->parent = this;
-        ipv4_link_topology.push_back(std::move(c));
-        children[segment_path] = ipv4_link_topology.back();
-        return children.at(segment_path);
+        ipv4_link_topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_link_topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1828,10 +1638,8 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,reachability_status(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus>())
 {
     advertised_prefix_item_counts->parent = this;
-    children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
 
     reachability_status->parent = this;
-    children["reachability-status"] = reachability_status;
 
     yang_name = "ipv4-link-topology"; yang_parent_name = "ipv4-link-topologies";
 }
@@ -1872,7 +1680,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1900,64 +1708,38 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "advertised-prefix-item-counts")
     {
-        if(advertised_prefix_item_counts != nullptr)
-        {
-            children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
-        }
-        else
+        if(advertised_prefix_item_counts == nullptr)
         {
             advertised_prefix_item_counts = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::AdvertisedPrefixItemCounts>();
-            advertised_prefix_item_counts->parent = this;
-            children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
         }
-        return children.at("advertised-prefix-item-counts");
+        return advertised_prefix_item_counts;
     }
 
     if(child_yang_name == "reachability-status")
     {
-        if(reachability_status != nullptr)
-        {
-            children["reachability-status"] = reachability_status;
-        }
-        else
+        if(reachability_status == nullptr)
         {
             reachability_status = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus>();
-            reachability_status->parent = this;
-            children["reachability-status"] = reachability_status;
         }
-        return children.at("reachability-status");
+        return reachability_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::get_children() const
 {
-    if(children.find("advertised-prefix-item-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(advertised_prefix_item_counts != nullptr)
     {
-        if(advertised_prefix_item_counts != nullptr)
-        {
-            children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
-        }
+        children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
     }
 
-    if(children.find("reachability-status") == children.end())
+    if(reachability_status != nullptr)
     {
-        if(reachability_status != nullptr)
-        {
-            children["reachability-status"] = reachability_status;
-        }
+        children["reachability-status"] = reachability_status;
     }
 
     return children;
@@ -1994,7 +1776,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     reachable_details(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails>())
 {
     reachable_details->parent = this;
-    children["reachable-details"] = reachable_details;
 
     yang_name = "reachability-status"; yang_parent_name = "ipv4-link-topology";
 }
@@ -2025,7 +1806,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2049,41 +1830,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reachable-details")
     {
-        if(reachable_details != nullptr)
-        {
-            children["reachable-details"] = reachable_details;
-        }
-        else
+        if(reachable_details == nullptr)
         {
             reachable_details = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails>();
-            reachable_details->parent = this;
-            children["reachable-details"] = reachable_details;
         }
-        return children.at("reachable-details");
+        return reachable_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::get_children() const
 {
-    if(children.find("reachable-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(reachable_details != nullptr)
     {
-        if(reachable_details != nullptr)
-        {
-            children["reachable-details"] = reachable_details;
-        }
+        children["reachable-details"] = reachable_details;
     }
 
     return children;
@@ -2171,7 +1935,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2196,15 +1960,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "children")
     {
         for(auto const & c : children_)
@@ -2212,15 +1967,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Children_>();
         c->parent = this;
-        children_.push_back(std::move(c));
-        children[segment_path] = children_.back();
-        return children.at(segment_path);
+        children_.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-path")
@@ -2230,15 +1983,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath>();
         c->parent = this;
-        multicast_path.push_back(std::move(c));
-        children[segment_path] = multicast_path.back();
-        return children.at(segment_path);
+        multicast_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "parent")
@@ -2248,15 +1999,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Parent_>();
         c->parent = this;
-        parent_.push_back(std::move(c));
-        children[segment_path] = parent_.back();
-        return children.at(segment_path);
+        parent_.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "paths")
@@ -2266,52 +2015,39 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths>();
         c->parent = this;
-        paths.push_back(std::move(c));
-        children[segment_path] = paths.back();
-        return children.at(segment_path);
+        paths.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : children_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : parent_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : paths)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2343,7 +2079,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "paths"; yang_parent_name = "reachable-details";
 }
@@ -2398,7 +2133,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2429,28 +2164,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -2460,36 +2180,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2653,7 +2366,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2702,15 +2415,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -2718,28 +2422,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2895,7 +2595,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2924,20 +2624,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3015,7 +2707,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3044,20 +2736,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3103,7 +2787,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "multicast-path"; yang_parent_name = "reachable-details";
 }
@@ -3158,7 +2841,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3189,28 +2872,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -3220,36 +2888,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3413,7 +3074,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3462,15 +3123,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -3478,28 +3130,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3655,7 +3303,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3684,20 +3332,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3775,7 +3415,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3804,20 +3444,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3883,7 +3515,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3908,20 +3540,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3971,7 +3595,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3996,20 +3620,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4065,7 +3681,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::AdvertisedPrefixItemCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::AdvertisedPrefixItemCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4092,20 +3708,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::AdvertisedPrefixItemCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::AdvertisedPrefixItemCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::AdvertisedPrefixItemCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4135,10 +3743,8 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,router_node_count(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::RouterNodeCount>())
 {
     pseudonode_node_count->parent = this;
-    children["pseudonode-node-count"] = pseudonode_node_count;
 
     router_node_count->parent = this;
-    children["router-node-count"] = router_node_count;
 
     yang_name = "topology-summary"; yang_parent_name = "topology-level";
 }
@@ -4169,7 +3775,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4192,64 +3798,38 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pseudonode-node-count")
     {
-        if(pseudonode_node_count != nullptr)
-        {
-            children["pseudonode-node-count"] = pseudonode_node_count;
-        }
-        else
+        if(pseudonode_node_count == nullptr)
         {
             pseudonode_node_count = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::PseudonodeNodeCount>();
-            pseudonode_node_count->parent = this;
-            children["pseudonode-node-count"] = pseudonode_node_count;
         }
-        return children.at("pseudonode-node-count");
+        return pseudonode_node_count;
     }
 
     if(child_yang_name == "router-node-count")
     {
-        if(router_node_count != nullptr)
-        {
-            children["router-node-count"] = router_node_count;
-        }
-        else
+        if(router_node_count == nullptr)
         {
             router_node_count = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::RouterNodeCount>();
-            router_node_count->parent = this;
-            children["router-node-count"] = router_node_count;
         }
-        return children.at("router-node-count");
+        return router_node_count;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::get_children() const
 {
-    if(children.find("pseudonode-node-count") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pseudonode_node_count != nullptr)
     {
-        if(pseudonode_node_count != nullptr)
-        {
-            children["pseudonode-node-count"] = pseudonode_node_count;
-        }
+        children["pseudonode-node-count"] = pseudonode_node_count;
     }
 
-    if(children.find("router-node-count") == children.end())
+    if(router_node_count != nullptr)
     {
-        if(router_node_count != nullptr)
-        {
-            children["router-node-count"] = router_node_count;
-        }
+        children["router-node-count"] = router_node_count;
     }
 
     return children;
@@ -4296,7 +3876,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::RouterNodeCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::RouterNodeCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4322,20 +3902,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::RouterNodeCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::RouterNodeCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::RouterNodeCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4392,7 +3964,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::PseudonodeNodeCount::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::PseudonodeNodeCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4418,20 +3990,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::PseudonodeNodeCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::PseudonodeNodeCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::TopologySummary::PseudonodeNodeCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4489,7 +4053,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4512,15 +4076,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv6-link-topology")
     {
         for(auto const & c : ipv6_link_topology)
@@ -4528,28 +4083,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology>();
         c->parent = this;
-        ipv6_link_topology.push_back(std::move(c));
-        children[segment_path] = ipv6_link_topology.back();
-        return children.at(segment_path);
+        ipv6_link_topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv6_link_topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4571,10 +4122,8 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
 	,reachability_status(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus>())
 {
     advertised_prefix_item_counts->parent = this;
-    children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
 
     reachability_status->parent = this;
-    children["reachability-status"] = reachability_status;
 
     yang_name = "ipv6-link-topology"; yang_parent_name = "ipv6-link-topologies";
 }
@@ -4615,7 +4164,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4643,64 +4192,38 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "advertised-prefix-item-counts")
     {
-        if(advertised_prefix_item_counts != nullptr)
-        {
-            children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
-        }
-        else
+        if(advertised_prefix_item_counts == nullptr)
         {
             advertised_prefix_item_counts = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::AdvertisedPrefixItemCounts>();
-            advertised_prefix_item_counts->parent = this;
-            children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
         }
-        return children.at("advertised-prefix-item-counts");
+        return advertised_prefix_item_counts;
     }
 
     if(child_yang_name == "reachability-status")
     {
-        if(reachability_status != nullptr)
-        {
-            children["reachability-status"] = reachability_status;
-        }
-        else
+        if(reachability_status == nullptr)
         {
             reachability_status = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus>();
-            reachability_status->parent = this;
-            children["reachability-status"] = reachability_status;
         }
-        return children.at("reachability-status");
+        return reachability_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::get_children() const
 {
-    if(children.find("advertised-prefix-item-counts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(advertised_prefix_item_counts != nullptr)
     {
-        if(advertised_prefix_item_counts != nullptr)
-        {
-            children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
-        }
+        children["advertised-prefix-item-counts"] = advertised_prefix_item_counts;
     }
 
-    if(children.find("reachability-status") == children.end())
+    if(reachability_status != nullptr)
     {
-        if(reachability_status != nullptr)
-        {
-            children["reachability-status"] = reachability_status;
-        }
+        children["reachability-status"] = reachability_status;
     }
 
     return children;
@@ -4737,7 +4260,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     reachable_details(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails>())
 {
     reachable_details->parent = this;
-    children["reachable-details"] = reachable_details;
 
     yang_name = "reachability-status"; yang_parent_name = "ipv6-link-topology";
 }
@@ -4768,7 +4290,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4792,41 +4314,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reachable-details")
     {
-        if(reachable_details != nullptr)
-        {
-            children["reachable-details"] = reachable_details;
-        }
-        else
+        if(reachable_details == nullptr)
         {
             reachable_details = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails>();
-            reachable_details->parent = this;
-            children["reachable-details"] = reachable_details;
         }
-        return children.at("reachable-details");
+        return reachable_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::get_children() const
 {
-    if(children.find("reachable-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(reachable_details != nullptr)
     {
-        if(reachable_details != nullptr)
-        {
-            children["reachable-details"] = reachable_details;
-        }
+        children["reachable-details"] = reachable_details;
     }
 
     return children;
@@ -4914,7 +4419,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4939,15 +4444,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "children")
     {
         for(auto const & c : children_)
@@ -4955,15 +4451,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Children_>();
         c->parent = this;
-        children_.push_back(std::move(c));
-        children[segment_path] = children_.back();
-        return children.at(segment_path);
+        children_.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-path")
@@ -4973,15 +4467,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath>();
         c->parent = this;
-        multicast_path.push_back(std::move(c));
-        children[segment_path] = multicast_path.back();
-        return children.at(segment_path);
+        multicast_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "parent")
@@ -4991,15 +4483,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Parent_>();
         c->parent = this;
-        parent_.push_back(std::move(c));
-        children[segment_path] = parent_.back();
-        return children.at(segment_path);
+        parent_.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "paths")
@@ -5009,52 +4499,39 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths>();
         c->parent = this;
-        paths.push_back(std::move(c));
-        children[segment_path] = paths.back();
-        return children.at(segment_path);
+        paths.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : children_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : parent_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : paths)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5086,7 +4563,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "paths"; yang_parent_name = "reachable-details";
 }
@@ -5141,7 +4617,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5172,28 +4648,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -5203,36 +4664,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5396,7 +4850,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5445,15 +4899,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -5461,28 +4906,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5638,7 +5079,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5667,20 +5108,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5758,7 +5191,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5787,20 +5220,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5846,7 +5271,6 @@ Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "multicast-path"; yang_parent_name = "reachable-details";
 }
@@ -5901,7 +5325,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5932,28 +5356,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -5963,36 +5372,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6156,7 +5558,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6205,15 +5607,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -6221,28 +5614,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Topolog
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6398,7 +5787,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6427,20 +5816,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6518,7 +5899,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6547,20 +5928,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6626,7 +5999,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6651,20 +6024,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Parent_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6714,7 +6079,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6739,20 +6104,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Children_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6808,7 +6165,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Top
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::AdvertisedPrefixItemCounts::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::AdvertisedPrefixItemCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6835,20 +6192,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::TopologyLevels::Topo
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::AdvertisedPrefixItemCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::AdvertisedPrefixItemCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::AdvertisedPrefixItemCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6910,7 +6259,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::get_seg
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6933,15 +6282,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::get_enti
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv6-route")
     {
         for(auto const & c : ipv6_route)
@@ -6949,28 +6289,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route>();
         c->parent = this;
-        ipv6_route.push_back(std::move(c));
-        children[segment_path] = ipv6_route.back();
-        return children.at(segment_path);
+        ipv6_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv6_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6990,13 +6326,10 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Ipv6Rout
 	,redistributed_status(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus>())
 {
     connected_status->parent = this;
-    children["connected-status"] = connected_status;
 
     native_status->parent = this;
-    children["native-status"] = native_status;
 
     redistributed_status->parent = this;
-    children["redistributed-status"] = redistributed_status;
 
     yang_name = "ipv6-route"; yang_parent_name = "ipv6-routes";
 }
@@ -7043,7 +6376,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7068,43 +6401,22 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "connected-status")
     {
-        if(connected_status != nullptr)
-        {
-            children["connected-status"] = connected_status;
-        }
-        else
+        if(connected_status == nullptr)
         {
             connected_status = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus>();
-            connected_status->parent = this;
-            children["connected-status"] = connected_status;
         }
-        return children.at("connected-status");
+        return connected_status;
     }
 
     if(child_yang_name == "native-status")
     {
-        if(native_status != nullptr)
-        {
-            children["native-status"] = native_status;
-        }
-        else
+        if(native_status == nullptr)
         {
             native_status = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus>();
-            native_status->parent = this;
-            children["native-status"] = native_status;
         }
-        return children.at("native-status");
+        return native_status;
     }
 
     if(child_yang_name == "per-level-advertising-detail")
@@ -7114,67 +6426,48 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail>();
         c->parent = this;
-        per_level_advertising_detail.push_back(std::move(c));
-        children[segment_path] = per_level_advertising_detail.back();
-        return children.at(segment_path);
+        per_level_advertising_detail.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "redistributed-status")
     {
-        if(redistributed_status != nullptr)
-        {
-            children["redistributed-status"] = redistributed_status;
-        }
-        else
+        if(redistributed_status == nullptr)
         {
             redistributed_status = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus>();
-            redistributed_status->parent = this;
-            children["redistributed-status"] = redistributed_status;
         }
-        return children.at("redistributed-status");
+        return redistributed_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::get_children() const
 {
-    if(children.find("connected-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(connected_status != nullptr)
     {
-        if(connected_status != nullptr)
-        {
-            children["connected-status"] = connected_status;
-        }
+        children["connected-status"] = connected_status;
     }
 
-    if(children.find("native-status") == children.end())
+    if(native_status != nullptr)
     {
-        if(native_status != nullptr)
-        {
-            children["native-status"] = native_status;
-        }
+        children["native-status"] = native_status;
     }
 
     for (auto const & c : per_level_advertising_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("redistributed-status") == children.end())
+    if(redistributed_status != nullptr)
     {
-        if(redistributed_status != nullptr)
-        {
-            children["redistributed-status"] = redistributed_status;
-        }
+        children["redistributed-status"] = redistributed_status;
     }
 
     return children;
@@ -7199,7 +6492,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Connecte
     connected_details(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::ConnectedDetails>())
 {
     connected_details->parent = this;
-    children["connected-details"] = connected_details;
 
     yang_name = "connected-status"; yang_parent_name = "ipv6-route";
 }
@@ -7230,7 +6522,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7254,41 +6546,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "connected-details")
     {
-        if(connected_details != nullptr)
-        {
-            children["connected-details"] = connected_details;
-        }
-        else
+        if(connected_details == nullptr)
         {
             connected_details = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::ConnectedDetails>();
-            connected_details->parent = this;
-            children["connected-details"] = connected_details;
         }
-        return children.at("connected-details");
+        return connected_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::get_children() const
 {
-    if(children.find("connected-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(connected_details != nullptr)
     {
-        if(connected_details != nullptr)
-        {
-            children["connected-details"] = connected_details;
-        }
+        children["connected-details"] = connected_details;
     }
 
     return children;
@@ -7343,7 +6618,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::ConnectedDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::ConnectedDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7368,20 +6643,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::ConnectedDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::ConnectedDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::ConnectedStatus::ConnectedDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7400,7 +6667,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Redistri
     redistribution_details(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails>())
 {
     redistribution_details->parent = this;
-    children["redistribution-details"] = redistribution_details;
 
     yang_name = "redistributed-status"; yang_parent_name = "ipv6-route";
 }
@@ -7431,7 +6697,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7455,41 +6721,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "redistribution-details")
     {
-        if(redistribution_details != nullptr)
-        {
-            children["redistribution-details"] = redistribution_details;
-        }
-        else
+        if(redistribution_details == nullptr)
         {
             redistribution_details = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails>();
-            redistribution_details->parent = this;
-            children["redistribution-details"] = redistribution_details;
         }
-        return children.at("redistribution-details");
+        return redistribution_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::get_children() const
 {
-    if(children.find("redistribution-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(redistribution_details != nullptr)
     {
-        if(redistribution_details != nullptr)
-        {
-            children["redistribution-details"] = redistribution_details;
-        }
+        children["redistribution-details"] = redistribution_details;
     }
 
     return children;
@@ -7541,7 +6790,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7564,15 +6813,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "isis-sh-route-redist-detail")
     {
         for(auto const & c : isis_sh_route_redist_detail)
@@ -7580,28 +6820,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail>();
         c->parent = this;
-        isis_sh_route_redist_detail.push_back(std::move(c));
-        children[segment_path] = isis_sh_route_redist_detail.back();
-        return children.at(segment_path);
+        isis_sh_route_redist_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : isis_sh_route_redist_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7618,7 +6854,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Redistri
     owner(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner>())
 {
     owner->parent = this;
-    children["owner"] = owner;
 
     yang_name = "isis-sh-route-redist-detail"; yang_parent_name = "redistribution-details";
 }
@@ -7649,7 +6884,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7673,41 +6908,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "owner")
     {
-        if(owner != nullptr)
-        {
-            children["owner"] = owner;
-        }
-        else
+        if(owner == nullptr)
         {
             owner = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner>();
-            owner->parent = this;
-            children["owner"] = owner;
         }
-        return children.at("owner");
+        return owner;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_children() const
 {
-    if(children.find("owner") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(owner != nullptr)
     {
-        if(owner != nullptr)
-        {
-            children["owner"] = owner;
-        }
+        children["owner"] = owner;
     }
 
     return children;
@@ -7770,7 +6988,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7800,20 +7018,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7856,7 +7066,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     native_details(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails>())
 {
     native_details->parent = this;
-    children["native-details"] = native_details;
 
     yang_name = "native-status"; yang_parent_name = "ipv6-route";
 }
@@ -7887,7 +7096,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7911,41 +7120,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "native-details")
     {
-        if(native_details != nullptr)
-        {
-            children["native-details"] = native_details;
-        }
-        else
+        if(native_details == nullptr)
         {
             native_details = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails>();
-            native_details->parent = this;
-            children["native-details"] = native_details;
         }
-        return children.at("native-details");
+        return native_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::get_children() const
 {
-    if(children.find("native-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(native_details != nullptr)
     {
-        if(native_details != nullptr)
-        {
-            children["native-details"] = native_details;
-        }
+        children["native-details"] = native_details;
     }
 
     return children;
@@ -7966,7 +7158,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     primary(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary>())
 {
     primary->parent = this;
-    children["primary"] = primary;
 
     yang_name = "native-details"; yang_parent_name = "native-status";
 }
@@ -8007,7 +7198,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8031,15 +7222,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup")
     {
         for(auto const & c : backup)
@@ -8047,51 +7229,38 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup>();
         c->parent = this;
-        backup.push_back(std::move(c));
-        children[segment_path] = backup.back();
-        return children.at(segment_path);
+        backup.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "primary")
     {
-        if(primary != nullptr)
-        {
-            children["primary"] = primary;
-        }
-        else
+        if(primary == nullptr)
         {
             primary = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary>();
-            primary->parent = this;
-            children["primary"] = primary;
         }
-        return children.at("primary");
+        return primary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("primary") == children.end())
+    if(primary != nullptr)
     {
-        if(primary != nullptr)
-        {
-            children["primary"] = primary;
-        }
+        children["primary"] = primary;
     }
 
     return children;
@@ -8218,7 +7387,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8246,15 +7415,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "explicit-path")
     {
         for(auto const & c : explicit_path)
@@ -8262,15 +7422,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath>();
         c->parent = this;
-        explicit_path.push_back(std::move(c));
-        children[segment_path] = explicit_path.back();
-        return children.at(segment_path);
+        explicit_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-path")
@@ -8280,15 +7438,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath>();
         c->parent = this;
-        multicast_path.push_back(std::move(c));
-        children[segment_path] = multicast_path.back();
-        return children.at(segment_path);
+        multicast_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-source")
@@ -8298,15 +7454,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource>();
         c->parent = this;
-        multicast_source.push_back(std::move(c));
-        children[segment_path] = multicast_source.back();
-        return children.at(segment_path);
+        multicast_source.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "paths")
@@ -8316,15 +7470,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths>();
         c->parent = this;
-        paths.push_back(std::move(c));
-        children[segment_path] = paths.back();
-        return children.at(segment_path);
+        paths.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "source")
@@ -8334,15 +7486,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source>();
         c->parent = this;
-        source.push_back(std::move(c));
-        children[segment_path] = source.back();
-        return children.at(segment_path);
+        source.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "srte-path")
@@ -8352,15 +7502,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath>();
         c->parent = this;
-        srte_path.push_back(std::move(c));
-        children[segment_path] = srte_path.back();
-        return children.at(segment_path);
+        srte_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ucmp-next-hop")
@@ -8370,76 +7518,54 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop>();
         c->parent = this;
-        ucmp_next_hop.push_back(std::move(c));
-        children[segment_path] = ucmp_next_hop.back();
-        return children.at(segment_path);
+        ucmp_next_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : explicit_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : paths)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : srte_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : ucmp_next_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8483,7 +7609,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "paths"; yang_parent_name = "primary";
 }
@@ -8538,7 +7663,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8569,28 +7694,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -8600,36 +7710,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8793,7 +7896,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8842,15 +7945,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -8858,28 +7952,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9035,7 +8125,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9064,20 +8154,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9155,7 +8237,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9184,20 +8266,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9243,7 +8317,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "ucmp-next-hop"; yang_parent_name = "primary";
 }
@@ -9288,7 +8361,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9319,41 +8392,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     return children;
@@ -9517,7 +8573,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9566,15 +8622,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -9582,28 +8629,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9759,7 +8802,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9788,20 +8831,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9847,7 +8882,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "multicast-path"; yang_parent_name = "primary";
 }
@@ -9902,7 +8936,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9933,28 +8967,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -9964,36 +8983,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10157,7 +9169,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10206,15 +9218,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -10222,28 +9225,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10399,7 +9398,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10428,20 +9427,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10519,7 +9510,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10548,20 +9539,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10607,7 +9590,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "srte-path"; yang_parent_name = "primary";
 }
@@ -10662,7 +9644,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10693,28 +9675,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -10724,36 +9691,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10917,7 +9877,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10966,15 +9926,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -10982,28 +9933,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11159,7 +10106,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11188,20 +10135,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11279,7 +10218,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11308,20 +10247,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11367,7 +10298,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "explicit-path"; yang_parent_name = "primary";
 }
@@ -11422,7 +10352,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11453,28 +10383,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -11484,36 +10399,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11677,7 +10585,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11726,15 +10634,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -11742,28 +10641,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11919,7 +10814,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11948,20 +10843,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12039,7 +10926,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12068,20 +10955,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12169,7 +11048,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12196,15 +11075,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodal-sid")
     {
         for(auto const & c : nodal_sid)
@@ -12212,28 +11082,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::NodalSid>();
         c->parent = this;
-        nodal_sid.push_back(std::move(c));
-        children[segment_path] = nodal_sid.back();
-        return children.at(segment_path);
+        nodal_sid.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nodal_sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12307,7 +11173,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12338,20 +11204,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12447,7 +11305,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12474,15 +11332,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodal-sid")
     {
         for(auto const & c : nodal_sid)
@@ -12490,28 +11339,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid>();
         c->parent = this;
-        nodal_sid.push_back(std::move(c));
-        children[segment_path] = nodal_sid.back();
-        return children.at(segment_path);
+        nodal_sid.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nodal_sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12585,7 +11430,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12616,20 +11461,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12782,7 +11619,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12810,15 +11647,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "explicit-path")
     {
         for(auto const & c : explicit_path)
@@ -12826,15 +11654,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath>();
         c->parent = this;
-        explicit_path.push_back(std::move(c));
-        children[segment_path] = explicit_path.back();
-        return children.at(segment_path);
+        explicit_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-path")
@@ -12844,15 +11670,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath>();
         c->parent = this;
-        multicast_path.push_back(std::move(c));
-        children[segment_path] = multicast_path.back();
-        return children.at(segment_path);
+        multicast_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-source")
@@ -12862,15 +11686,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource>();
         c->parent = this;
-        multicast_source.push_back(std::move(c));
-        children[segment_path] = multicast_source.back();
-        return children.at(segment_path);
+        multicast_source.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "paths")
@@ -12880,15 +11702,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths>();
         c->parent = this;
-        paths.push_back(std::move(c));
-        children[segment_path] = paths.back();
-        return children.at(segment_path);
+        paths.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "source")
@@ -12898,15 +11718,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source>();
         c->parent = this;
-        source.push_back(std::move(c));
-        children[segment_path] = source.back();
-        return children.at(segment_path);
+        source.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "srte-path")
@@ -12916,15 +11734,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath>();
         c->parent = this;
-        srte_path.push_back(std::move(c));
-        children[segment_path] = srte_path.back();
-        return children.at(segment_path);
+        srte_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ucmp-next-hop")
@@ -12934,76 +11750,54 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop>();
         c->parent = this;
-        ucmp_next_hop.push_back(std::move(c));
-        children[segment_path] = ucmp_next_hop.back();
-        return children.at(segment_path);
+        ucmp_next_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : explicit_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : paths)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : srte_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : ucmp_next_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13047,7 +11841,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "paths"; yang_parent_name = "backup";
 }
@@ -13102,7 +11895,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13133,28 +11926,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -13164,36 +11942,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13357,7 +12128,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13406,15 +12177,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -13422,28 +12184,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13599,7 +12357,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13628,20 +12386,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13719,7 +12469,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13748,20 +12498,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13807,7 +12549,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "ucmp-next-hop"; yang_parent_name = "backup";
 }
@@ -13852,7 +12593,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13883,41 +12624,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     return children;
@@ -14081,7 +12805,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14130,15 +12854,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -14146,28 +12861,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14323,7 +13034,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14352,20 +13063,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14411,7 +13114,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "multicast-path"; yang_parent_name = "backup";
 }
@@ -14466,7 +13168,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14497,28 +13199,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -14528,36 +13215,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14721,7 +13401,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14770,15 +13450,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -14786,28 +13457,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14963,7 +13630,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14992,20 +13659,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15083,7 +13742,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15112,20 +13771,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15171,7 +13822,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "srte-path"; yang_parent_name = "backup";
 }
@@ -15226,7 +13876,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15257,28 +13907,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -15288,36 +13923,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15481,7 +14109,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15530,15 +14158,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -15546,28 +14165,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15723,7 +14338,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15752,20 +14367,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15843,7 +14450,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15872,20 +14479,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15931,7 +14530,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeSt
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "explicit-path"; yang_parent_name = "backup";
 }
@@ -15986,7 +14584,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16017,28 +14615,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -16048,36 +14631,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16241,7 +14817,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16290,15 +14866,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -16306,28 +14873,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16483,7 +15046,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16512,20 +15075,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16603,7 +15158,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16632,20 +15187,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16733,7 +15280,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16760,15 +15307,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodal-sid")
     {
         for(auto const & c : nodal_sid)
@@ -16776,28 +15314,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::NodalSid>();
         c->parent = this;
-        nodal_sid.push_back(std::move(c));
-        children[segment_path] = nodal_sid.back();
-        return children.at(segment_path);
+        nodal_sid.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nodal_sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16871,7 +15405,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::NodalSid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::NodalSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16902,20 +15436,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::NodalSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::NodalSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Source::NodalSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17011,7 +15537,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17038,15 +15564,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodal-sid")
     {
         for(auto const & c : nodal_sid)
@@ -17054,28 +15571,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid>();
         c->parent = this;
-        nodal_sid.push_back(std::move(c));
-        children[segment_path] = nodal_sid.back();
-        return children.at(segment_path);
+        nodal_sid.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nodal_sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17149,7 +15662,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17180,20 +15693,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastSource::NodalSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17247,7 +15752,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevel
     summarization_status(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus>())
 {
     summarization_status->parent = this;
-    children["summarization-status"] = summarization_status;
 
     yang_name = "per-level-advertising-detail"; yang_parent_name = "ipv6-route";
 }
@@ -17311,7 +15815,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17343,15 +15847,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodal-sid")
     {
         for(auto const & c : nodal_sid)
@@ -17359,51 +15854,38 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Rou
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::NodalSid>();
         c->parent = this;
-        nodal_sid.push_back(std::move(c));
-        children[segment_path] = nodal_sid.back();
-        return children.at(segment_path);
+        nodal_sid.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "summarization-status")
     {
-        if(summarization_status != nullptr)
-        {
-            children["summarization-status"] = summarization_status;
-        }
-        else
+        if(summarization_status == nullptr)
         {
             summarization_status = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus>();
-            summarization_status->parent = this;
-            children["summarization-status"] = summarization_status;
         }
-        return children.at("summarization-status");
+        return summarization_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nodal_sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("summarization-status") == children.end())
+    if(summarization_status != nullptr)
     {
-        if(summarization_status != nullptr)
-        {
-            children["summarization-status"] = summarization_status;
-        }
+        children["summarization-status"] = summarization_status;
     }
 
     return children;
@@ -17452,7 +15934,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevel
     summary_prefix(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix>())
 {
     summary_prefix->parent = this;
-    children["summary-prefix"] = summary_prefix;
 
     yang_name = "summarization-status"; yang_parent_name = "per-level-advertising-detail";
 }
@@ -17483,7 +15964,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17507,41 +15988,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary-prefix")
     {
-        if(summary_prefix != nullptr)
-        {
-            children["summary-prefix"] = summary_prefix;
-        }
-        else
+        if(summary_prefix == nullptr)
         {
             summary_prefix = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix>();
-            summary_prefix->parent = this;
-            children["summary-prefix"] = summary_prefix;
         }
-        return children.at("summary-prefix");
+        return summary_prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::get_children() const
 {
-    if(children.find("summary-prefix") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(summary_prefix != nullptr)
     {
-        if(summary_prefix != nullptr)
-        {
-            children["summary-prefix"] = summary_prefix;
-        }
+        children["summary-prefix"] = summary_prefix;
     }
 
     return children;
@@ -17589,7 +16053,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17614,20 +16078,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::SummarizationStatus::SummaryPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17695,7 +16151,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::NodalSid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::NodalSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17726,20 +16182,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rout
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::NodalSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::NodalSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::PerLevelAdvertisingDetail::NodalSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17817,7 +16265,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::get
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17840,15 +16288,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::get_
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv6frr-backup")
     {
         for(auto const & c : ipv6frr_backup)
@@ -17856,28 +16295,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup>();
         c->parent = this;
-        ipv6frr_backup.push_back(std::move(c));
-        children[segment_path] = ipv6frr_backup.back();
-        return children.at(segment_path);
+        ipv6frr_backup.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv6frr_backup)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17897,13 +16332,10 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
 	,redistributed_status(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus>())
 {
     connected_status->parent = this;
-    children["connected-status"] = connected_status;
 
     native_status->parent = this;
-    children["native-status"] = native_status;
 
     redistributed_status->parent = this;
-    children["redistributed-status"] = redistributed_status;
 
     yang_name = "ipv6frr-backup"; yang_parent_name = "ipv6frr-backups";
 }
@@ -17950,7 +16382,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17975,43 +16407,22 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "connected-status")
     {
-        if(connected_status != nullptr)
-        {
-            children["connected-status"] = connected_status;
-        }
-        else
+        if(connected_status == nullptr)
         {
             connected_status = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus>();
-            connected_status->parent = this;
-            children["connected-status"] = connected_status;
         }
-        return children.at("connected-status");
+        return connected_status;
     }
 
     if(child_yang_name == "native-status")
     {
-        if(native_status != nullptr)
-        {
-            children["native-status"] = native_status;
-        }
-        else
+        if(native_status == nullptr)
         {
             native_status = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus>();
-            native_status->parent = this;
-            children["native-status"] = native_status;
         }
-        return children.at("native-status");
+        return native_status;
     }
 
     if(child_yang_name == "per-level-advertising-detail")
@@ -18021,67 +16432,48 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::PerLevelAdvertisingDetail>();
         c->parent = this;
-        per_level_advertising_detail.push_back(std::move(c));
-        children[segment_path] = per_level_advertising_detail.back();
-        return children.at(segment_path);
+        per_level_advertising_detail.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "redistributed-status")
     {
-        if(redistributed_status != nullptr)
-        {
-            children["redistributed-status"] = redistributed_status;
-        }
-        else
+        if(redistributed_status == nullptr)
         {
             redistributed_status = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus>();
-            redistributed_status->parent = this;
-            children["redistributed-status"] = redistributed_status;
         }
-        return children.at("redistributed-status");
+        return redistributed_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::get_children() const
 {
-    if(children.find("connected-status") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(connected_status != nullptr)
     {
-        if(connected_status != nullptr)
-        {
-            children["connected-status"] = connected_status;
-        }
+        children["connected-status"] = connected_status;
     }
 
-    if(children.find("native-status") == children.end())
+    if(native_status != nullptr)
     {
-        if(native_status != nullptr)
-        {
-            children["native-status"] = native_status;
-        }
+        children["native-status"] = native_status;
     }
 
     for (auto const & c : per_level_advertising_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("redistributed-status") == children.end())
+    if(redistributed_status != nullptr)
     {
-        if(redistributed_status != nullptr)
-        {
-            children["redistributed-status"] = redistributed_status;
-        }
+        children["redistributed-status"] = redistributed_status;
     }
 
     return children;
@@ -18106,7 +16498,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     connected_details(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::ConnectedDetails>())
 {
     connected_details->parent = this;
-    children["connected-details"] = connected_details;
 
     yang_name = "connected-status"; yang_parent_name = "ipv6frr-backup";
 }
@@ -18137,7 +16528,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18161,41 +16552,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "connected-details")
     {
-        if(connected_details != nullptr)
-        {
-            children["connected-details"] = connected_details;
-        }
-        else
+        if(connected_details == nullptr)
         {
             connected_details = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::ConnectedDetails>();
-            connected_details->parent = this;
-            children["connected-details"] = connected_details;
         }
-        return children.at("connected-details");
+        return connected_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::get_children() const
 {
-    if(children.find("connected-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(connected_details != nullptr)
     {
-        if(connected_details != nullptr)
-        {
-            children["connected-details"] = connected_details;
-        }
+        children["connected-details"] = connected_details;
     }
 
     return children;
@@ -18250,7 +16624,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::ConnectedDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::ConnectedDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18275,20 +16649,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::ConnectedDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::ConnectedDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::ConnectedStatus::ConnectedDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18307,7 +16673,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     redistribution_details(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails>())
 {
     redistribution_details->parent = this;
-    children["redistribution-details"] = redistribution_details;
 
     yang_name = "redistributed-status"; yang_parent_name = "ipv6frr-backup";
 }
@@ -18338,7 +16703,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18362,41 +16727,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "redistribution-details")
     {
-        if(redistribution_details != nullptr)
-        {
-            children["redistribution-details"] = redistribution_details;
-        }
-        else
+        if(redistribution_details == nullptr)
         {
             redistribution_details = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails>();
-            redistribution_details->parent = this;
-            children["redistribution-details"] = redistribution_details;
         }
-        return children.at("redistribution-details");
+        return redistribution_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::get_children() const
 {
-    if(children.find("redistribution-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(redistribution_details != nullptr)
     {
-        if(redistribution_details != nullptr)
-        {
-            children["redistribution-details"] = redistribution_details;
-        }
+        children["redistribution-details"] = redistribution_details;
     }
 
     return children;
@@ -18448,7 +16796,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18471,15 +16819,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "isis-sh-route-redist-detail")
     {
         for(auto const & c : isis_sh_route_redist_detail)
@@ -18487,28 +16826,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail>();
         c->parent = this;
-        isis_sh_route_redist_detail.push_back(std::move(c));
-        children[segment_path] = isis_sh_route_redist_detail.back();
-        return children.at(segment_path);
+        isis_sh_route_redist_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : isis_sh_route_redist_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18525,7 +16860,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     owner(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner>())
 {
     owner->parent = this;
-    children["owner"] = owner;
 
     yang_name = "isis-sh-route-redist-detail"; yang_parent_name = "redistribution-details";
 }
@@ -18556,7 +16890,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18580,41 +16914,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "owner")
     {
-        if(owner != nullptr)
-        {
-            children["owner"] = owner;
-        }
-        else
+        if(owner == nullptr)
         {
             owner = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner>();
-            owner->parent = this;
-            children["owner"] = owner;
         }
-        return children.at("owner");
+        return owner;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::get_children() const
 {
-    if(children.find("owner") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(owner != nullptr)
     {
-        if(owner != nullptr)
-        {
-            children["owner"] = owner;
-        }
+        children["owner"] = owner;
     }
 
     return children;
@@ -18677,7 +16994,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18707,20 +17024,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::RedistributedStatus::RedistributionDetails::IsisShRouteRedistDetail::Owner::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18763,7 +17072,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     native_details(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails>())
 {
     native_details->parent = this;
-    children["native-details"] = native_details;
 
     yang_name = "native-status"; yang_parent_name = "ipv6frr-backup";
 }
@@ -18794,7 +17102,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18818,41 +17126,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "native-details")
     {
-        if(native_details != nullptr)
-        {
-            children["native-details"] = native_details;
-        }
-        else
+        if(native_details == nullptr)
         {
             native_details = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails>();
-            native_details->parent = this;
-            children["native-details"] = native_details;
         }
-        return children.at("native-details");
+        return native_details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::get_children() const
 {
-    if(children.find("native-details") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(native_details != nullptr)
     {
-        if(native_details != nullptr)
-        {
-            children["native-details"] = native_details;
-        }
+        children["native-details"] = native_details;
     }
 
     return children;
@@ -18873,7 +17164,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     primary(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary>())
 {
     primary->parent = this;
-    children["primary"] = primary;
 
     yang_name = "native-details"; yang_parent_name = "native-status";
 }
@@ -18914,7 +17204,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18938,15 +17228,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup")
     {
         for(auto const & c : backup)
@@ -18954,51 +17235,38 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup>();
         c->parent = this;
-        backup.push_back(std::move(c));
-        children[segment_path] = backup.back();
-        return children.at(segment_path);
+        backup.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "primary")
     {
-        if(primary != nullptr)
-        {
-            children["primary"] = primary;
-        }
-        else
+        if(primary == nullptr)
         {
             primary = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary>();
-            primary->parent = this;
-            children["primary"] = primary;
         }
-        return children.at("primary");
+        return primary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("primary") == children.end())
+    if(primary != nullptr)
     {
-        if(primary != nullptr)
-        {
-            children["primary"] = primary;
-        }
+        children["primary"] = primary;
     }
 
     return children;
@@ -19125,7 +17393,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19153,15 +17421,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "explicit-path")
     {
         for(auto const & c : explicit_path)
@@ -19169,15 +17428,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath>();
         c->parent = this;
-        explicit_path.push_back(std::move(c));
-        children[segment_path] = explicit_path.back();
-        return children.at(segment_path);
+        explicit_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-path")
@@ -19187,15 +17444,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath>();
         c->parent = this;
-        multicast_path.push_back(std::move(c));
-        children[segment_path] = multicast_path.back();
-        return children.at(segment_path);
+        multicast_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-source")
@@ -19205,15 +17460,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource>();
         c->parent = this;
-        multicast_source.push_back(std::move(c));
-        children[segment_path] = multicast_source.back();
-        return children.at(segment_path);
+        multicast_source.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "paths")
@@ -19223,15 +17476,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths>();
         c->parent = this;
-        paths.push_back(std::move(c));
-        children[segment_path] = paths.back();
-        return children.at(segment_path);
+        paths.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "source")
@@ -19241,15 +17492,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source>();
         c->parent = this;
-        source.push_back(std::move(c));
-        children[segment_path] = source.back();
-        return children.at(segment_path);
+        source.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "srte-path")
@@ -19259,15 +17508,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath>();
         c->parent = this;
-        srte_path.push_back(std::move(c));
-        children[segment_path] = srte_path.back();
-        return children.at(segment_path);
+        srte_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ucmp-next-hop")
@@ -19277,76 +17524,54 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop>();
         c->parent = this;
-        ucmp_next_hop.push_back(std::move(c));
-        children[segment_path] = ucmp_next_hop.back();
-        return children.at(segment_path);
+        ucmp_next_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : explicit_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : paths)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : srte_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : ucmp_next_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19390,7 +17615,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "paths"; yang_parent_name = "primary";
 }
@@ -19445,7 +17669,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19476,28 +17700,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -19507,36 +17716,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19700,7 +17902,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19749,15 +17951,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -19765,28 +17958,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19942,7 +18131,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19971,20 +18160,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20062,7 +18243,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20091,20 +18272,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20150,7 +18323,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "ucmp-next-hop"; yang_parent_name = "primary";
 }
@@ -20195,7 +18367,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20226,41 +18398,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     return children;
@@ -20424,7 +18579,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20473,15 +18628,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -20489,28 +18635,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20666,7 +18808,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20695,20 +18837,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20754,7 +18888,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "multicast-path"; yang_parent_name = "primary";
 }
@@ -20809,7 +18942,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20840,28 +18973,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -20871,36 +18989,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21064,7 +19175,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21113,15 +19224,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -21129,28 +19231,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21306,7 +19404,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21335,20 +19433,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21426,7 +19516,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21455,20 +19545,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21514,7 +19596,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "srte-path"; yang_parent_name = "primary";
 }
@@ -21569,7 +19650,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21600,28 +19681,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -21631,36 +19697,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21824,7 +19883,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21873,15 +19932,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -21889,28 +19939,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22066,7 +20112,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22095,20 +20141,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22186,7 +20224,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22215,20 +20253,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22274,7 +20304,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "explicit-path"; yang_parent_name = "primary";
 }
@@ -22329,7 +20358,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22360,28 +20389,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -22391,36 +20405,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22584,7 +20591,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22633,15 +20640,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -22649,28 +20647,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22826,7 +20820,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22855,20 +20849,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22946,7 +20932,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22975,20 +20961,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -23076,7 +21054,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23103,15 +21081,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodal-sid")
     {
         for(auto const & c : nodal_sid)
@@ -23119,28 +21088,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid>();
         c->parent = this;
-        nodal_sid.push_back(std::move(c));
-        children[segment_path] = nodal_sid.back();
-        return children.at(segment_path);
+        nodal_sid.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nodal_sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23214,7 +21179,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23245,20 +21210,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::Source::NodalSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -23354,7 +21311,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23381,15 +21338,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodal-sid")
     {
         for(auto const & c : nodal_sid)
@@ -23397,28 +21345,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid>();
         c->parent = this;
-        nodal_sid.push_back(std::move(c));
-        children[segment_path] = nodal_sid.back();
-        return children.at(segment_path);
+        nodal_sid.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nodal_sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23492,7 +21436,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23523,20 +21467,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Primary::MulticastSource::NodalSid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -23689,7 +21625,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -23717,15 +21653,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "explicit-path")
     {
         for(auto const & c : explicit_path)
@@ -23733,15 +21660,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath>();
         c->parent = this;
-        explicit_path.push_back(std::move(c));
-        children[segment_path] = explicit_path.back();
-        return children.at(segment_path);
+        explicit_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-path")
@@ -23751,15 +21676,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastPath>();
         c->parent = this;
-        multicast_path.push_back(std::move(c));
-        children[segment_path] = multicast_path.back();
-        return children.at(segment_path);
+        multicast_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "multicast-source")
@@ -23769,15 +21692,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::MulticastSource>();
         c->parent = this;
-        multicast_source.push_back(std::move(c));
-        children[segment_path] = multicast_source.back();
-        return children.at(segment_path);
+        multicast_source.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "paths")
@@ -23787,15 +21708,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths>();
         c->parent = this;
-        paths.push_back(std::move(c));
-        children[segment_path] = paths.back();
-        return children.at(segment_path);
+        paths.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "source")
@@ -23805,15 +21724,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Source>();
         c->parent = this;
-        source.push_back(std::move(c));
-        children[segment_path] = source.back();
-        return children.at(segment_path);
+        source.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "srte-path")
@@ -23823,15 +21740,13 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::SrtePath>();
         c->parent = this;
-        srte_path.push_back(std::move(c));
-        children[segment_path] = srte_path.back();
-        return children.at(segment_path);
+        srte_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ucmp-next-hop")
@@ -23841,76 +21756,54 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop>();
         c->parent = this;
-        ucmp_next_hop.push_back(std::move(c));
-        children[segment_path] = ucmp_next_hop.back();
-        return children.at(segment_path);
+        ucmp_next_hop.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : explicit_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : multicast_source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : paths)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : source)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : srte_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : ucmp_next_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -23954,7 +21847,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "paths"; yang_parent_name = "backup";
 }
@@ -24009,7 +21901,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24040,28 +21932,13 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     if(child_yang_name == "uloop-explicit")
@@ -24071,36 +21948,29 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit>();
         c->parent = this;
-        uloop_explicit.push_back(std::move(c));
-        children[segment_path] = uloop_explicit.back();
-        return children.at(segment_path);
+        uloop_explicit.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     for (auto const & c : uloop_explicit)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -24264,7 +22134,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24313,15 +22183,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -24329,28 +22190,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -24506,7 +22363,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24535,20 +22392,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24626,7 +22475,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24655,20 +22504,12 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -24714,7 +22555,6 @@ Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::
     frr_backup(std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup>())
 {
     frr_backup->parent = this;
-    children["frr-backup"] = frr_backup;
 
     yang_name = "ucmp-next-hop"; yang_parent_name = "backup";
 }
@@ -24759,7 +22599,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -24790,41 +22630,24 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-backup")
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
-        else
+        if(frr_backup == nullptr)
         {
             frr_backup = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup>();
-            frr_backup->parent = this;
-            children["frr-backup"] = frr_backup;
         }
-        return children.at("frr-backup");
+        return frr_backup;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::get_children() const
 {
-    if(children.find("frr-backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_backup != nullptr)
     {
-        if(frr_backup != nullptr)
-        {
-            children["frr-backup"] = frr_backup;
-        }
+        children["frr-backup"] = frr_backup;
     }
 
     return children;
@@ -24988,7 +22811,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv
 
 }
 
-EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_entity_path(Entity* ancestor) const
+const EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -25037,15 +22860,6 @@ EntityPath Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6
 
 std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-repair")
     {
         for(auto const & c : backup_repair)
@@ -25053,28 +22867,24 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Topologies::Topology::Ipv6Frr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair>();
         c->parent = this;
-        backup_repair.push_back(std::move(c));
-        children[segment_path] = backup_repair.back();
-        return children.at(segment_path);
+        backup_repair.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Topologies::Topology::Ipv6FrrBackups::Ipv6FrrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_repair)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;

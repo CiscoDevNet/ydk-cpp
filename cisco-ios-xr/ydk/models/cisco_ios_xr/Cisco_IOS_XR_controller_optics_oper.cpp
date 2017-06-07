@@ -14,7 +14,6 @@ OpticsOper::OpticsOper()
     optics_ports(std::make_shared<OpticsOper::OpticsPorts>())
 {
     optics_ports->parent = this;
-    children["optics-ports"] = optics_ports;
 
     yang_name = "optics-oper"; yang_parent_name = "Cisco-IOS-XR-controller-optics-oper";
 }
@@ -43,12 +42,12 @@ std::string OpticsOper::get_segment_path() const
 
 }
 
-EntityPath OpticsOper::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath OpticsOper::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> OpticsOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-ports")
     {
-        if(optics_ports != nullptr)
-        {
-            children["optics-ports"] = optics_ports;
-        }
-        else
+        if(optics_ports == nullptr)
         {
             optics_ports = std::make_shared<OpticsOper::OpticsPorts>();
-            optics_ports->parent = this;
-            children["optics-ports"] = optics_ports;
         }
-        return children.at("optics-ports");
+        return optics_ports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::get_children() const
 {
-    if(children.find("optics-ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_ports != nullptr)
     {
-        if(optics_ports != nullptr)
-        {
-            children["optics-ports"] = optics_ports;
-        }
+        children["optics-ports"] = optics_ports;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string OpticsOper::OpticsPorts::get_segment_path() const
 
 }
 
-EntityPath OpticsOper::OpticsPorts::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath OpticsOper::OpticsPorts::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-port")
     {
         for(auto const & c : optics_port)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort>();
         c->parent = this;
-        optics_port.push_back(std::move(c));
-        children[segment_path] = optics_port.back();
-        return children.at(segment_path);
+        optics_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -245,16 +214,12 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsPort()
 	,optics_lanes(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes>())
 {
     optics_db_info->parent = this;
-    children["optics-db-info"] = optics_db_info;
 
     optics_dwdm_carrrier_channel_map->parent = this;
-    children["optics-dwdm-carrrier-channel-map"] = optics_dwdm_carrrier_channel_map;
 
     optics_info->parent = this;
-    children["optics-info"] = optics_info;
 
     optics_lanes->parent = this;
-    children["optics-lanes"] = optics_lanes;
 
     yang_name = "optics-port"; yang_parent_name = "optics-ports";
 }
@@ -291,7 +256,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::get_segment_path() const
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -315,110 +280,66 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-db-info")
     {
-        if(optics_db_info != nullptr)
-        {
-            children["optics-db-info"] = optics_db_info;
-        }
-        else
+        if(optics_db_info == nullptr)
         {
             optics_db_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo>();
-            optics_db_info->parent = this;
-            children["optics-db-info"] = optics_db_info;
         }
-        return children.at("optics-db-info");
+        return optics_db_info;
     }
 
     if(child_yang_name == "optics-dwdm-carrrier-channel-map")
     {
-        if(optics_dwdm_carrrier_channel_map != nullptr)
-        {
-            children["optics-dwdm-carrrier-channel-map"] = optics_dwdm_carrrier_channel_map;
-        }
-        else
+        if(optics_dwdm_carrrier_channel_map == nullptr)
         {
             optics_dwdm_carrrier_channel_map = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap>();
-            optics_dwdm_carrrier_channel_map->parent = this;
-            children["optics-dwdm-carrrier-channel-map"] = optics_dwdm_carrrier_channel_map;
         }
-        return children.at("optics-dwdm-carrrier-channel-map");
+        return optics_dwdm_carrrier_channel_map;
     }
 
     if(child_yang_name == "optics-info")
     {
-        if(optics_info != nullptr)
-        {
-            children["optics-info"] = optics_info;
-        }
-        else
+        if(optics_info == nullptr)
         {
             optics_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo>();
-            optics_info->parent = this;
-            children["optics-info"] = optics_info;
         }
-        return children.at("optics-info");
+        return optics_info;
     }
 
     if(child_yang_name == "optics-lanes")
     {
-        if(optics_lanes != nullptr)
-        {
-            children["optics-lanes"] = optics_lanes;
-        }
-        else
+        if(optics_lanes == nullptr)
         {
             optics_lanes = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes>();
-            optics_lanes->parent = this;
-            children["optics-lanes"] = optics_lanes;
         }
-        return children.at("optics-lanes");
+        return optics_lanes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::get_children() const
 {
-    if(children.find("optics-db-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(optics_db_info != nullptr)
     {
-        if(optics_db_info != nullptr)
-        {
-            children["optics-db-info"] = optics_db_info;
-        }
+        children["optics-db-info"] = optics_db_info;
     }
 
-    if(children.find("optics-dwdm-carrrier-channel-map") == children.end())
+    if(optics_dwdm_carrrier_channel_map != nullptr)
     {
-        if(optics_dwdm_carrrier_channel_map != nullptr)
-        {
-            children["optics-dwdm-carrrier-channel-map"] = optics_dwdm_carrrier_channel_map;
-        }
+        children["optics-dwdm-carrrier-channel-map"] = optics_dwdm_carrrier_channel_map;
     }
 
-    if(children.find("optics-info") == children.end())
+    if(optics_info != nullptr)
     {
-        if(optics_info != nullptr)
-        {
-            children["optics-info"] = optics_info;
-        }
+        children["optics-info"] = optics_info;
     }
 
-    if(children.find("optics-lanes") == children.end())
+    if(optics_lanes != nullptr)
     {
-        if(optics_lanes != nullptr)
-        {
-            children["optics-lanes"] = optics_lanes;
-        }
+        children["optics-lanes"] = optics_lanes;
     }
 
     return children;
@@ -479,7 +400,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::g
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -505,15 +426,6 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::ge
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dwdm-carrier-map-info")
     {
         for(auto const & c : dwdm_carrier_map_info)
@@ -521,28 +433,24 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierC
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo>();
         c->parent = this;
-        dwdm_carrier_map_info.push_back(std::move(c));
-        children[segment_path] = dwdm_carrier_map_info.back();
-        return children.at(segment_path);
+        dwdm_carrier_map_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : dwdm_carrier_map_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -604,7 +512,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::D
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -631,20 +539,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::Dw
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -763,22 +663,16 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
 	,transceiver_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo>())
 {
     ext_param_threshold_val->parent = this;
-    children["ext-param-threshold-val"] = ext_param_threshold_val;
 
     ext_param_val->parent = this;
-    children["ext-param-val"] = ext_param_val;
 
     network_srlg_info->parent = this;
-    children["network-srlg-info"] = network_srlg_info;
 
     optics_alarm_info->parent = this;
-    children["optics-alarm-info"] = optics_alarm_info;
 
     ots_alarm_info->parent = this;
-    children["ots-alarm-info"] = ots_alarm_info;
 
     transceiver_info->parent = this;
-    children["transceiver-info"] = transceiver_info;
 
     yang_name = "optics-info"; yang_parent_name = "optics-port";
 }
@@ -995,7 +889,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_segment_path() 
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1102,43 +996,22 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_path(Enti
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ext-param-threshold-val")
     {
-        if(ext_param_threshold_val != nullptr)
-        {
-            children["ext-param-threshold-val"] = ext_param_threshold_val;
-        }
-        else
+        if(ext_param_threshold_val == nullptr)
         {
             ext_param_threshold_val = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal>();
-            ext_param_threshold_val->parent = this;
-            children["ext-param-threshold-val"] = ext_param_threshold_val;
         }
-        return children.at("ext-param-threshold-val");
+        return ext_param_threshold_val;
     }
 
     if(child_yang_name == "ext-param-val")
     {
-        if(ext_param_val != nullptr)
-        {
-            children["ext-param-val"] = ext_param_val;
-        }
-        else
+        if(ext_param_val == nullptr)
         {
             ext_param_val = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal>();
-            ext_param_val->parent = this;
-            children["ext-param-val"] = ext_param_val;
         }
-        return children.at("ext-param-val");
+        return ext_param_val;
     }
 
     if(child_yang_name == "lane-data")
@@ -1148,136 +1021,90 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData>();
         c->parent = this;
-        lane_data.push_back(std::move(c));
-        children[segment_path] = lane_data.back();
-        return children.at(segment_path);
+        lane_data.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "network-srlg-info")
     {
-        if(network_srlg_info != nullptr)
-        {
-            children["network-srlg-info"] = network_srlg_info;
-        }
-        else
+        if(network_srlg_info == nullptr)
         {
             network_srlg_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo>();
-            network_srlg_info->parent = this;
-            children["network-srlg-info"] = network_srlg_info;
         }
-        return children.at("network-srlg-info");
+        return network_srlg_info;
     }
 
     if(child_yang_name == "optics-alarm-info")
     {
-        if(optics_alarm_info != nullptr)
-        {
-            children["optics-alarm-info"] = optics_alarm_info;
-        }
-        else
+        if(optics_alarm_info == nullptr)
         {
             optics_alarm_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo>();
-            optics_alarm_info->parent = this;
-            children["optics-alarm-info"] = optics_alarm_info;
         }
-        return children.at("optics-alarm-info");
+        return optics_alarm_info;
     }
 
     if(child_yang_name == "ots-alarm-info")
     {
-        if(ots_alarm_info != nullptr)
-        {
-            children["ots-alarm-info"] = ots_alarm_info;
-        }
-        else
+        if(ots_alarm_info == nullptr)
         {
             ots_alarm_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo>();
-            ots_alarm_info->parent = this;
-            children["ots-alarm-info"] = ots_alarm_info;
         }
-        return children.at("ots-alarm-info");
+        return ots_alarm_info;
     }
 
     if(child_yang_name == "transceiver-info")
     {
-        if(transceiver_info != nullptr)
-        {
-            children["transceiver-info"] = transceiver_info;
-        }
-        else
+        if(transceiver_info == nullptr)
         {
             transceiver_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo>();
-            transceiver_info->parent = this;
-            children["transceiver-info"] = transceiver_info;
         }
-        return children.at("transceiver-info");
+        return transceiver_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_children() const
 {
-    if(children.find("ext-param-threshold-val") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ext_param_threshold_val != nullptr)
     {
-        if(ext_param_threshold_val != nullptr)
-        {
-            children["ext-param-threshold-val"] = ext_param_threshold_val;
-        }
+        children["ext-param-threshold-val"] = ext_param_threshold_val;
     }
 
-    if(children.find("ext-param-val") == children.end())
+    if(ext_param_val != nullptr)
     {
-        if(ext_param_val != nullptr)
-        {
-            children["ext-param-val"] = ext_param_val;
-        }
+        children["ext-param-val"] = ext_param_val;
     }
 
     for (auto const & c : lane_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("network-srlg-info") == children.end())
+    if(network_srlg_info != nullptr)
     {
-        if(network_srlg_info != nullptr)
-        {
-            children["network-srlg-info"] = network_srlg_info;
-        }
+        children["network-srlg-info"] = network_srlg_info;
     }
 
-    if(children.find("optics-alarm-info") == children.end())
+    if(optics_alarm_info != nullptr)
     {
-        if(optics_alarm_info != nullptr)
-        {
-            children["optics-alarm-info"] = optics_alarm_info;
-        }
+        children["optics-alarm-info"] = optics_alarm_info;
     }
 
-    if(children.find("ots-alarm-info") == children.end())
+    if(ots_alarm_info != nullptr)
     {
-        if(ots_alarm_info != nullptr)
-        {
-            children["ots-alarm-info"] = ots_alarm_info;
-        }
+        children["ots-alarm-info"] = ots_alarm_info;
     }
 
-    if(children.find("transceiver-info") == children.end())
+    if(transceiver_info != nullptr)
     {
-        if(transceiver_info != nullptr)
-        {
-            children["transceiver-info"] = transceiver_info;
-        }
+        children["transceiver-info"] = transceiver_info;
     }
 
     return children;
@@ -1661,7 +1488,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::ge
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1684,15 +1511,6 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network-srlg-array")
     {
         for(auto const & c : network_srlg_array)
@@ -1700,28 +1518,24 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::Network
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray>();
         c->parent = this;
-        network_srlg_array.push_back(std::move(c));
-        children[segment_path] = network_srlg_array.back();
-        return children.at(segment_path);
+        network_srlg_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : network_srlg_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1774,7 +1588,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::Ne
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1800,20 +1614,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::Net
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1876,133 +1682,90 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::OpticsAlarmInf
 	,wvlool(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool>())
 {
     amp_gain_deg_high->parent = this;
-    children["amp-gain-deg-high"] = amp_gain_deg_high;
 
     amp_gain_deg_low->parent = this;
-    children["amp-gain-deg-low"] = amp_gain_deg_low;
 
     hidgd->parent = this;
-    children["hidgd"] = hidgd;
 
     high_lbc->parent = this;
-    children["high-lbc"] = high_lbc;
 
     high_rx1_power->parent = this;
-    children["high-rx1-power"] = high_rx1_power;
 
     high_rx2_power->parent = this;
-    children["high-rx2-power"] = high_rx2_power;
 
     high_rx3_power->parent = this;
-    children["high-rx3-power"] = high_rx3_power;
 
     high_rx4_power->parent = this;
-    children["high-rx4-power"] = high_rx4_power;
 
     high_rx_power->parent = this;
-    children["high-rx-power"] = high_rx_power;
 
     high_tx1_power->parent = this;
-    children["high-tx1-power"] = high_tx1_power;
 
     high_tx1lbc->parent = this;
-    children["high-tx1lbc"] = high_tx1lbc;
 
     high_tx2_power->parent = this;
-    children["high-tx2-power"] = high_tx2_power;
 
     high_tx2lbc->parent = this;
-    children["high-tx2lbc"] = high_tx2lbc;
 
     high_tx3_power->parent = this;
-    children["high-tx3-power"] = high_tx3_power;
 
     high_tx3lbc->parent = this;
-    children["high-tx3lbc"] = high_tx3lbc;
 
     high_tx4_power->parent = this;
-    children["high-tx4-power"] = high_tx4_power;
 
     high_tx4lbc->parent = this;
-    children["high-tx4lbc"] = high_tx4lbc;
 
     high_tx_power->parent = this;
-    children["high-tx-power"] = high_tx_power;
 
     imp_removal->parent = this;
-    children["imp-removal"] = imp_removal;
 
     low_rx1_power->parent = this;
-    children["low-rx1-power"] = low_rx1_power;
 
     low_rx2_power->parent = this;
-    children["low-rx2-power"] = low_rx2_power;
 
     low_rx3_power->parent = this;
-    children["low-rx3-power"] = low_rx3_power;
 
     low_rx4_power->parent = this;
-    children["low-rx4-power"] = low_rx4_power;
 
     low_rx_power->parent = this;
-    children["low-rx-power"] = low_rx_power;
 
     low_tx1_power->parent = this;
-    children["low-tx1-power"] = low_tx1_power;
 
     low_tx1lbc->parent = this;
-    children["low-tx1lbc"] = low_tx1lbc;
 
     low_tx2_power->parent = this;
-    children["low-tx2-power"] = low_tx2_power;
 
     low_tx2lbc->parent = this;
-    children["low-tx2lbc"] = low_tx2lbc;
 
     low_tx3_power->parent = this;
-    children["low-tx3-power"] = low_tx3_power;
 
     low_tx3lbc->parent = this;
-    children["low-tx3lbc"] = low_tx3lbc;
 
     low_tx4_power->parent = this;
-    children["low-tx4-power"] = low_tx4_power;
 
     low_tx4lbc->parent = this;
-    children["low-tx4lbc"] = low_tx4lbc;
 
     low_tx_power->parent = this;
-    children["low-tx-power"] = low_tx_power;
 
     mea->parent = this;
-    children["mea"] = mea;
 
     oorcd->parent = this;
-    children["oorcd"] = oorcd;
 
     osnr->parent = this;
-    children["osnr"] = osnr;
 
     rx_loc->parent = this;
-    children["rx-loc"] = rx_loc;
 
     rx_lol->parent = this;
-    children["rx-lol"] = rx_lol;
 
     rx_los->parent = this;
-    children["rx-los"] = rx_los;
 
     tx_fault->parent = this;
-    children["tx-fault"] = tx_fault;
 
     tx_lol->parent = this;
-    children["tx-lol"] = tx_lol;
 
     tx_los->parent = this;
-    children["tx-los"] = tx_los;
 
     wvlool->parent = this;
-    children["wvlool"] = wvlool;
 
     yang_name = "optics-alarm-info"; yang_parent_name = "optics-info";
 }
@@ -2115,7 +1878,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ge
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2138,1007 +1901,612 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "amp-gain-deg-high")
     {
-        if(amp_gain_deg_high != nullptr)
-        {
-            children["amp-gain-deg-high"] = amp_gain_deg_high;
-        }
-        else
+        if(amp_gain_deg_high == nullptr)
         {
             amp_gain_deg_high = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh>();
-            amp_gain_deg_high->parent = this;
-            children["amp-gain-deg-high"] = amp_gain_deg_high;
         }
-        return children.at("amp-gain-deg-high");
+        return amp_gain_deg_high;
     }
 
     if(child_yang_name == "amp-gain-deg-low")
     {
-        if(amp_gain_deg_low != nullptr)
-        {
-            children["amp-gain-deg-low"] = amp_gain_deg_low;
-        }
-        else
+        if(amp_gain_deg_low == nullptr)
         {
             amp_gain_deg_low = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow>();
-            amp_gain_deg_low->parent = this;
-            children["amp-gain-deg-low"] = amp_gain_deg_low;
         }
-        return children.at("amp-gain-deg-low");
+        return amp_gain_deg_low;
     }
 
     if(child_yang_name == "hidgd")
     {
-        if(hidgd != nullptr)
-        {
-            children["hidgd"] = hidgd;
-        }
-        else
+        if(hidgd == nullptr)
         {
             hidgd = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd>();
-            hidgd->parent = this;
-            children["hidgd"] = hidgd;
         }
-        return children.at("hidgd");
+        return hidgd;
     }
 
     if(child_yang_name == "high-lbc")
     {
-        if(high_lbc != nullptr)
-        {
-            children["high-lbc"] = high_lbc;
-        }
-        else
+        if(high_lbc == nullptr)
         {
             high_lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc>();
-            high_lbc->parent = this;
-            children["high-lbc"] = high_lbc;
         }
-        return children.at("high-lbc");
+        return high_lbc;
     }
 
     if(child_yang_name == "high-rx1-power")
     {
-        if(high_rx1_power != nullptr)
-        {
-            children["high-rx1-power"] = high_rx1_power;
-        }
-        else
+        if(high_rx1_power == nullptr)
         {
             high_rx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power>();
-            high_rx1_power->parent = this;
-            children["high-rx1-power"] = high_rx1_power;
         }
-        return children.at("high-rx1-power");
+        return high_rx1_power;
     }
 
     if(child_yang_name == "high-rx2-power")
     {
-        if(high_rx2_power != nullptr)
-        {
-            children["high-rx2-power"] = high_rx2_power;
-        }
-        else
+        if(high_rx2_power == nullptr)
         {
             high_rx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power>();
-            high_rx2_power->parent = this;
-            children["high-rx2-power"] = high_rx2_power;
         }
-        return children.at("high-rx2-power");
+        return high_rx2_power;
     }
 
     if(child_yang_name == "high-rx3-power")
     {
-        if(high_rx3_power != nullptr)
-        {
-            children["high-rx3-power"] = high_rx3_power;
-        }
-        else
+        if(high_rx3_power == nullptr)
         {
             high_rx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power>();
-            high_rx3_power->parent = this;
-            children["high-rx3-power"] = high_rx3_power;
         }
-        return children.at("high-rx3-power");
+        return high_rx3_power;
     }
 
     if(child_yang_name == "high-rx4-power")
     {
-        if(high_rx4_power != nullptr)
-        {
-            children["high-rx4-power"] = high_rx4_power;
-        }
-        else
+        if(high_rx4_power == nullptr)
         {
             high_rx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power>();
-            high_rx4_power->parent = this;
-            children["high-rx4-power"] = high_rx4_power;
         }
-        return children.at("high-rx4-power");
+        return high_rx4_power;
     }
 
     if(child_yang_name == "high-rx-power")
     {
-        if(high_rx_power != nullptr)
-        {
-            children["high-rx-power"] = high_rx_power;
-        }
-        else
+        if(high_rx_power == nullptr)
         {
             high_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower>();
-            high_rx_power->parent = this;
-            children["high-rx-power"] = high_rx_power;
         }
-        return children.at("high-rx-power");
+        return high_rx_power;
     }
 
     if(child_yang_name == "high-tx1-power")
     {
-        if(high_tx1_power != nullptr)
-        {
-            children["high-tx1-power"] = high_tx1_power;
-        }
-        else
+        if(high_tx1_power == nullptr)
         {
             high_tx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power>();
-            high_tx1_power->parent = this;
-            children["high-tx1-power"] = high_tx1_power;
         }
-        return children.at("high-tx1-power");
+        return high_tx1_power;
     }
 
     if(child_yang_name == "high-tx1lbc")
     {
-        if(high_tx1lbc != nullptr)
-        {
-            children["high-tx1lbc"] = high_tx1lbc;
-        }
-        else
+        if(high_tx1lbc == nullptr)
         {
             high_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc>();
-            high_tx1lbc->parent = this;
-            children["high-tx1lbc"] = high_tx1lbc;
         }
-        return children.at("high-tx1lbc");
+        return high_tx1lbc;
     }
 
     if(child_yang_name == "high-tx2-power")
     {
-        if(high_tx2_power != nullptr)
-        {
-            children["high-tx2-power"] = high_tx2_power;
-        }
-        else
+        if(high_tx2_power == nullptr)
         {
             high_tx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power>();
-            high_tx2_power->parent = this;
-            children["high-tx2-power"] = high_tx2_power;
         }
-        return children.at("high-tx2-power");
+        return high_tx2_power;
     }
 
     if(child_yang_name == "high-tx2lbc")
     {
-        if(high_tx2lbc != nullptr)
-        {
-            children["high-tx2lbc"] = high_tx2lbc;
-        }
-        else
+        if(high_tx2lbc == nullptr)
         {
             high_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc>();
-            high_tx2lbc->parent = this;
-            children["high-tx2lbc"] = high_tx2lbc;
         }
-        return children.at("high-tx2lbc");
+        return high_tx2lbc;
     }
 
     if(child_yang_name == "high-tx3-power")
     {
-        if(high_tx3_power != nullptr)
-        {
-            children["high-tx3-power"] = high_tx3_power;
-        }
-        else
+        if(high_tx3_power == nullptr)
         {
             high_tx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power>();
-            high_tx3_power->parent = this;
-            children["high-tx3-power"] = high_tx3_power;
         }
-        return children.at("high-tx3-power");
+        return high_tx3_power;
     }
 
     if(child_yang_name == "high-tx3lbc")
     {
-        if(high_tx3lbc != nullptr)
-        {
-            children["high-tx3lbc"] = high_tx3lbc;
-        }
-        else
+        if(high_tx3lbc == nullptr)
         {
             high_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc>();
-            high_tx3lbc->parent = this;
-            children["high-tx3lbc"] = high_tx3lbc;
         }
-        return children.at("high-tx3lbc");
+        return high_tx3lbc;
     }
 
     if(child_yang_name == "high-tx4-power")
     {
-        if(high_tx4_power != nullptr)
-        {
-            children["high-tx4-power"] = high_tx4_power;
-        }
-        else
+        if(high_tx4_power == nullptr)
         {
             high_tx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power>();
-            high_tx4_power->parent = this;
-            children["high-tx4-power"] = high_tx4_power;
         }
-        return children.at("high-tx4-power");
+        return high_tx4_power;
     }
 
     if(child_yang_name == "high-tx4lbc")
     {
-        if(high_tx4lbc != nullptr)
-        {
-            children["high-tx4lbc"] = high_tx4lbc;
-        }
-        else
+        if(high_tx4lbc == nullptr)
         {
             high_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc>();
-            high_tx4lbc->parent = this;
-            children["high-tx4lbc"] = high_tx4lbc;
         }
-        return children.at("high-tx4lbc");
+        return high_tx4lbc;
     }
 
     if(child_yang_name == "high-tx-power")
     {
-        if(high_tx_power != nullptr)
-        {
-            children["high-tx-power"] = high_tx_power;
-        }
-        else
+        if(high_tx_power == nullptr)
         {
             high_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower>();
-            high_tx_power->parent = this;
-            children["high-tx-power"] = high_tx_power;
         }
-        return children.at("high-tx-power");
+        return high_tx_power;
     }
 
     if(child_yang_name == "imp-removal")
     {
-        if(imp_removal != nullptr)
-        {
-            children["imp-removal"] = imp_removal;
-        }
-        else
+        if(imp_removal == nullptr)
         {
             imp_removal = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval>();
-            imp_removal->parent = this;
-            children["imp-removal"] = imp_removal;
         }
-        return children.at("imp-removal");
+        return imp_removal;
     }
 
     if(child_yang_name == "low-rx1-power")
     {
-        if(low_rx1_power != nullptr)
-        {
-            children["low-rx1-power"] = low_rx1_power;
-        }
-        else
+        if(low_rx1_power == nullptr)
         {
             low_rx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power>();
-            low_rx1_power->parent = this;
-            children["low-rx1-power"] = low_rx1_power;
         }
-        return children.at("low-rx1-power");
+        return low_rx1_power;
     }
 
     if(child_yang_name == "low-rx2-power")
     {
-        if(low_rx2_power != nullptr)
-        {
-            children["low-rx2-power"] = low_rx2_power;
-        }
-        else
+        if(low_rx2_power == nullptr)
         {
             low_rx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power>();
-            low_rx2_power->parent = this;
-            children["low-rx2-power"] = low_rx2_power;
         }
-        return children.at("low-rx2-power");
+        return low_rx2_power;
     }
 
     if(child_yang_name == "low-rx3-power")
     {
-        if(low_rx3_power != nullptr)
-        {
-            children["low-rx3-power"] = low_rx3_power;
-        }
-        else
+        if(low_rx3_power == nullptr)
         {
             low_rx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power>();
-            low_rx3_power->parent = this;
-            children["low-rx3-power"] = low_rx3_power;
         }
-        return children.at("low-rx3-power");
+        return low_rx3_power;
     }
 
     if(child_yang_name == "low-rx4-power")
     {
-        if(low_rx4_power != nullptr)
-        {
-            children["low-rx4-power"] = low_rx4_power;
-        }
-        else
+        if(low_rx4_power == nullptr)
         {
             low_rx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power>();
-            low_rx4_power->parent = this;
-            children["low-rx4-power"] = low_rx4_power;
         }
-        return children.at("low-rx4-power");
+        return low_rx4_power;
     }
 
     if(child_yang_name == "low-rx-power")
     {
-        if(low_rx_power != nullptr)
-        {
-            children["low-rx-power"] = low_rx_power;
-        }
-        else
+        if(low_rx_power == nullptr)
         {
             low_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower>();
-            low_rx_power->parent = this;
-            children["low-rx-power"] = low_rx_power;
         }
-        return children.at("low-rx-power");
+        return low_rx_power;
     }
 
     if(child_yang_name == "low-tx1-power")
     {
-        if(low_tx1_power != nullptr)
-        {
-            children["low-tx1-power"] = low_tx1_power;
-        }
-        else
+        if(low_tx1_power == nullptr)
         {
             low_tx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power>();
-            low_tx1_power->parent = this;
-            children["low-tx1-power"] = low_tx1_power;
         }
-        return children.at("low-tx1-power");
+        return low_tx1_power;
     }
 
     if(child_yang_name == "low-tx1lbc")
     {
-        if(low_tx1lbc != nullptr)
-        {
-            children["low-tx1lbc"] = low_tx1lbc;
-        }
-        else
+        if(low_tx1lbc == nullptr)
         {
             low_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc>();
-            low_tx1lbc->parent = this;
-            children["low-tx1lbc"] = low_tx1lbc;
         }
-        return children.at("low-tx1lbc");
+        return low_tx1lbc;
     }
 
     if(child_yang_name == "low-tx2-power")
     {
-        if(low_tx2_power != nullptr)
-        {
-            children["low-tx2-power"] = low_tx2_power;
-        }
-        else
+        if(low_tx2_power == nullptr)
         {
             low_tx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power>();
-            low_tx2_power->parent = this;
-            children["low-tx2-power"] = low_tx2_power;
         }
-        return children.at("low-tx2-power");
+        return low_tx2_power;
     }
 
     if(child_yang_name == "low-tx2lbc")
     {
-        if(low_tx2lbc != nullptr)
-        {
-            children["low-tx2lbc"] = low_tx2lbc;
-        }
-        else
+        if(low_tx2lbc == nullptr)
         {
             low_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc>();
-            low_tx2lbc->parent = this;
-            children["low-tx2lbc"] = low_tx2lbc;
         }
-        return children.at("low-tx2lbc");
+        return low_tx2lbc;
     }
 
     if(child_yang_name == "low-tx3-power")
     {
-        if(low_tx3_power != nullptr)
-        {
-            children["low-tx3-power"] = low_tx3_power;
-        }
-        else
+        if(low_tx3_power == nullptr)
         {
             low_tx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power>();
-            low_tx3_power->parent = this;
-            children["low-tx3-power"] = low_tx3_power;
         }
-        return children.at("low-tx3-power");
+        return low_tx3_power;
     }
 
     if(child_yang_name == "low-tx3lbc")
     {
-        if(low_tx3lbc != nullptr)
-        {
-            children["low-tx3lbc"] = low_tx3lbc;
-        }
-        else
+        if(low_tx3lbc == nullptr)
         {
             low_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc>();
-            low_tx3lbc->parent = this;
-            children["low-tx3lbc"] = low_tx3lbc;
         }
-        return children.at("low-tx3lbc");
+        return low_tx3lbc;
     }
 
     if(child_yang_name == "low-tx4-power")
     {
-        if(low_tx4_power != nullptr)
-        {
-            children["low-tx4-power"] = low_tx4_power;
-        }
-        else
+        if(low_tx4_power == nullptr)
         {
             low_tx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power>();
-            low_tx4_power->parent = this;
-            children["low-tx4-power"] = low_tx4_power;
         }
-        return children.at("low-tx4-power");
+        return low_tx4_power;
     }
 
     if(child_yang_name == "low-tx4lbc")
     {
-        if(low_tx4lbc != nullptr)
-        {
-            children["low-tx4lbc"] = low_tx4lbc;
-        }
-        else
+        if(low_tx4lbc == nullptr)
         {
             low_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc>();
-            low_tx4lbc->parent = this;
-            children["low-tx4lbc"] = low_tx4lbc;
         }
-        return children.at("low-tx4lbc");
+        return low_tx4lbc;
     }
 
     if(child_yang_name == "low-tx-power")
     {
-        if(low_tx_power != nullptr)
-        {
-            children["low-tx-power"] = low_tx_power;
-        }
-        else
+        if(low_tx_power == nullptr)
         {
             low_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower>();
-            low_tx_power->parent = this;
-            children["low-tx-power"] = low_tx_power;
         }
-        return children.at("low-tx-power");
+        return low_tx_power;
     }
 
     if(child_yang_name == "mea")
     {
-        if(mea != nullptr)
-        {
-            children["mea"] = mea;
-        }
-        else
+        if(mea == nullptr)
         {
             mea = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea>();
-            mea->parent = this;
-            children["mea"] = mea;
         }
-        return children.at("mea");
+        return mea;
     }
 
     if(child_yang_name == "oorcd")
     {
-        if(oorcd != nullptr)
-        {
-            children["oorcd"] = oorcd;
-        }
-        else
+        if(oorcd == nullptr)
         {
             oorcd = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd>();
-            oorcd->parent = this;
-            children["oorcd"] = oorcd;
         }
-        return children.at("oorcd");
+        return oorcd;
     }
 
     if(child_yang_name == "osnr")
     {
-        if(osnr != nullptr)
-        {
-            children["osnr"] = osnr;
-        }
-        else
+        if(osnr == nullptr)
         {
             osnr = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr>();
-            osnr->parent = this;
-            children["osnr"] = osnr;
         }
-        return children.at("osnr");
+        return osnr;
     }
 
     if(child_yang_name == "rx-loc")
     {
-        if(rx_loc != nullptr)
-        {
-            children["rx-loc"] = rx_loc;
-        }
-        else
+        if(rx_loc == nullptr)
         {
             rx_loc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc>();
-            rx_loc->parent = this;
-            children["rx-loc"] = rx_loc;
         }
-        return children.at("rx-loc");
+        return rx_loc;
     }
 
     if(child_yang_name == "rx-lol")
     {
-        if(rx_lol != nullptr)
-        {
-            children["rx-lol"] = rx_lol;
-        }
-        else
+        if(rx_lol == nullptr)
         {
             rx_lol = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol>();
-            rx_lol->parent = this;
-            children["rx-lol"] = rx_lol;
         }
-        return children.at("rx-lol");
+        return rx_lol;
     }
 
     if(child_yang_name == "rx-los")
     {
-        if(rx_los != nullptr)
-        {
-            children["rx-los"] = rx_los;
-        }
-        else
+        if(rx_los == nullptr)
         {
             rx_los = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos>();
-            rx_los->parent = this;
-            children["rx-los"] = rx_los;
         }
-        return children.at("rx-los");
+        return rx_los;
     }
 
     if(child_yang_name == "tx-fault")
     {
-        if(tx_fault != nullptr)
-        {
-            children["tx-fault"] = tx_fault;
-        }
-        else
+        if(tx_fault == nullptr)
         {
             tx_fault = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault>();
-            tx_fault->parent = this;
-            children["tx-fault"] = tx_fault;
         }
-        return children.at("tx-fault");
+        return tx_fault;
     }
 
     if(child_yang_name == "tx-lol")
     {
-        if(tx_lol != nullptr)
-        {
-            children["tx-lol"] = tx_lol;
-        }
-        else
+        if(tx_lol == nullptr)
         {
             tx_lol = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol>();
-            tx_lol->parent = this;
-            children["tx-lol"] = tx_lol;
         }
-        return children.at("tx-lol");
+        return tx_lol;
     }
 
     if(child_yang_name == "tx-los")
     {
-        if(tx_los != nullptr)
-        {
-            children["tx-los"] = tx_los;
-        }
-        else
+        if(tx_los == nullptr)
         {
             tx_los = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos>();
-            tx_los->parent = this;
-            children["tx-los"] = tx_los;
         }
-        return children.at("tx-los");
+        return tx_los;
     }
 
     if(child_yang_name == "wvlool")
     {
-        if(wvlool != nullptr)
-        {
-            children["wvlool"] = wvlool;
-        }
-        else
+        if(wvlool == nullptr)
         {
             wvlool = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool>();
-            wvlool->parent = this;
-            children["wvlool"] = wvlool;
         }
-        return children.at("wvlool");
+        return wvlool;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_children() const
 {
-    if(children.find("amp-gain-deg-high") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(amp_gain_deg_high != nullptr)
     {
-        if(amp_gain_deg_high != nullptr)
-        {
-            children["amp-gain-deg-high"] = amp_gain_deg_high;
-        }
+        children["amp-gain-deg-high"] = amp_gain_deg_high;
     }
 
-    if(children.find("amp-gain-deg-low") == children.end())
+    if(amp_gain_deg_low != nullptr)
     {
-        if(amp_gain_deg_low != nullptr)
-        {
-            children["amp-gain-deg-low"] = amp_gain_deg_low;
-        }
+        children["amp-gain-deg-low"] = amp_gain_deg_low;
     }
 
-    if(children.find("hidgd") == children.end())
+    if(hidgd != nullptr)
     {
-        if(hidgd != nullptr)
-        {
-            children["hidgd"] = hidgd;
-        }
+        children["hidgd"] = hidgd;
     }
 
-    if(children.find("high-lbc") == children.end())
+    if(high_lbc != nullptr)
     {
-        if(high_lbc != nullptr)
-        {
-            children["high-lbc"] = high_lbc;
-        }
+        children["high-lbc"] = high_lbc;
     }
 
-    if(children.find("high-rx1-power") == children.end())
+    if(high_rx1_power != nullptr)
     {
-        if(high_rx1_power != nullptr)
-        {
-            children["high-rx1-power"] = high_rx1_power;
-        }
+        children["high-rx1-power"] = high_rx1_power;
     }
 
-    if(children.find("high-rx2-power") == children.end())
+    if(high_rx2_power != nullptr)
     {
-        if(high_rx2_power != nullptr)
-        {
-            children["high-rx2-power"] = high_rx2_power;
-        }
+        children["high-rx2-power"] = high_rx2_power;
     }
 
-    if(children.find("high-rx3-power") == children.end())
+    if(high_rx3_power != nullptr)
     {
-        if(high_rx3_power != nullptr)
-        {
-            children["high-rx3-power"] = high_rx3_power;
-        }
+        children["high-rx3-power"] = high_rx3_power;
     }
 
-    if(children.find("high-rx4-power") == children.end())
+    if(high_rx4_power != nullptr)
     {
-        if(high_rx4_power != nullptr)
-        {
-            children["high-rx4-power"] = high_rx4_power;
-        }
+        children["high-rx4-power"] = high_rx4_power;
     }
 
-    if(children.find("high-rx-power") == children.end())
+    if(high_rx_power != nullptr)
     {
-        if(high_rx_power != nullptr)
-        {
-            children["high-rx-power"] = high_rx_power;
-        }
+        children["high-rx-power"] = high_rx_power;
     }
 
-    if(children.find("high-tx1-power") == children.end())
+    if(high_tx1_power != nullptr)
     {
-        if(high_tx1_power != nullptr)
-        {
-            children["high-tx1-power"] = high_tx1_power;
-        }
+        children["high-tx1-power"] = high_tx1_power;
     }
 
-    if(children.find("high-tx1lbc") == children.end())
+    if(high_tx1lbc != nullptr)
     {
-        if(high_tx1lbc != nullptr)
-        {
-            children["high-tx1lbc"] = high_tx1lbc;
-        }
+        children["high-tx1lbc"] = high_tx1lbc;
     }
 
-    if(children.find("high-tx2-power") == children.end())
+    if(high_tx2_power != nullptr)
     {
-        if(high_tx2_power != nullptr)
-        {
-            children["high-tx2-power"] = high_tx2_power;
-        }
+        children["high-tx2-power"] = high_tx2_power;
     }
 
-    if(children.find("high-tx2lbc") == children.end())
+    if(high_tx2lbc != nullptr)
     {
-        if(high_tx2lbc != nullptr)
-        {
-            children["high-tx2lbc"] = high_tx2lbc;
-        }
+        children["high-tx2lbc"] = high_tx2lbc;
     }
 
-    if(children.find("high-tx3-power") == children.end())
+    if(high_tx3_power != nullptr)
     {
-        if(high_tx3_power != nullptr)
-        {
-            children["high-tx3-power"] = high_tx3_power;
-        }
+        children["high-tx3-power"] = high_tx3_power;
     }
 
-    if(children.find("high-tx3lbc") == children.end())
+    if(high_tx3lbc != nullptr)
     {
-        if(high_tx3lbc != nullptr)
-        {
-            children["high-tx3lbc"] = high_tx3lbc;
-        }
+        children["high-tx3lbc"] = high_tx3lbc;
     }
 
-    if(children.find("high-tx4-power") == children.end())
+    if(high_tx4_power != nullptr)
     {
-        if(high_tx4_power != nullptr)
-        {
-            children["high-tx4-power"] = high_tx4_power;
-        }
+        children["high-tx4-power"] = high_tx4_power;
     }
 
-    if(children.find("high-tx4lbc") == children.end())
+    if(high_tx4lbc != nullptr)
     {
-        if(high_tx4lbc != nullptr)
-        {
-            children["high-tx4lbc"] = high_tx4lbc;
-        }
+        children["high-tx4lbc"] = high_tx4lbc;
     }
 
-    if(children.find("high-tx-power") == children.end())
+    if(high_tx_power != nullptr)
     {
-        if(high_tx_power != nullptr)
-        {
-            children["high-tx-power"] = high_tx_power;
-        }
+        children["high-tx-power"] = high_tx_power;
     }
 
-    if(children.find("imp-removal") == children.end())
+    if(imp_removal != nullptr)
     {
-        if(imp_removal != nullptr)
-        {
-            children["imp-removal"] = imp_removal;
-        }
+        children["imp-removal"] = imp_removal;
     }
 
-    if(children.find("low-rx1-power") == children.end())
+    if(low_rx1_power != nullptr)
     {
-        if(low_rx1_power != nullptr)
-        {
-            children["low-rx1-power"] = low_rx1_power;
-        }
+        children["low-rx1-power"] = low_rx1_power;
     }
 
-    if(children.find("low-rx2-power") == children.end())
+    if(low_rx2_power != nullptr)
     {
-        if(low_rx2_power != nullptr)
-        {
-            children["low-rx2-power"] = low_rx2_power;
-        }
+        children["low-rx2-power"] = low_rx2_power;
     }
 
-    if(children.find("low-rx3-power") == children.end())
+    if(low_rx3_power != nullptr)
     {
-        if(low_rx3_power != nullptr)
-        {
-            children["low-rx3-power"] = low_rx3_power;
-        }
+        children["low-rx3-power"] = low_rx3_power;
     }
 
-    if(children.find("low-rx4-power") == children.end())
+    if(low_rx4_power != nullptr)
     {
-        if(low_rx4_power != nullptr)
-        {
-            children["low-rx4-power"] = low_rx4_power;
-        }
+        children["low-rx4-power"] = low_rx4_power;
     }
 
-    if(children.find("low-rx-power") == children.end())
+    if(low_rx_power != nullptr)
     {
-        if(low_rx_power != nullptr)
-        {
-            children["low-rx-power"] = low_rx_power;
-        }
+        children["low-rx-power"] = low_rx_power;
     }
 
-    if(children.find("low-tx1-power") == children.end())
+    if(low_tx1_power != nullptr)
     {
-        if(low_tx1_power != nullptr)
-        {
-            children["low-tx1-power"] = low_tx1_power;
-        }
+        children["low-tx1-power"] = low_tx1_power;
     }
 
-    if(children.find("low-tx1lbc") == children.end())
+    if(low_tx1lbc != nullptr)
     {
-        if(low_tx1lbc != nullptr)
-        {
-            children["low-tx1lbc"] = low_tx1lbc;
-        }
+        children["low-tx1lbc"] = low_tx1lbc;
     }
 
-    if(children.find("low-tx2-power") == children.end())
+    if(low_tx2_power != nullptr)
     {
-        if(low_tx2_power != nullptr)
-        {
-            children["low-tx2-power"] = low_tx2_power;
-        }
+        children["low-tx2-power"] = low_tx2_power;
     }
 
-    if(children.find("low-tx2lbc") == children.end())
+    if(low_tx2lbc != nullptr)
     {
-        if(low_tx2lbc != nullptr)
-        {
-            children["low-tx2lbc"] = low_tx2lbc;
-        }
+        children["low-tx2lbc"] = low_tx2lbc;
     }
 
-    if(children.find("low-tx3-power") == children.end())
+    if(low_tx3_power != nullptr)
     {
-        if(low_tx3_power != nullptr)
-        {
-            children["low-tx3-power"] = low_tx3_power;
-        }
+        children["low-tx3-power"] = low_tx3_power;
     }
 
-    if(children.find("low-tx3lbc") == children.end())
+    if(low_tx3lbc != nullptr)
     {
-        if(low_tx3lbc != nullptr)
-        {
-            children["low-tx3lbc"] = low_tx3lbc;
-        }
+        children["low-tx3lbc"] = low_tx3lbc;
     }
 
-    if(children.find("low-tx4-power") == children.end())
+    if(low_tx4_power != nullptr)
     {
-        if(low_tx4_power != nullptr)
-        {
-            children["low-tx4-power"] = low_tx4_power;
-        }
+        children["low-tx4-power"] = low_tx4_power;
     }
 
-    if(children.find("low-tx4lbc") == children.end())
+    if(low_tx4lbc != nullptr)
     {
-        if(low_tx4lbc != nullptr)
-        {
-            children["low-tx4lbc"] = low_tx4lbc;
-        }
+        children["low-tx4lbc"] = low_tx4lbc;
     }
 
-    if(children.find("low-tx-power") == children.end())
+    if(low_tx_power != nullptr)
     {
-        if(low_tx_power != nullptr)
-        {
-            children["low-tx-power"] = low_tx_power;
-        }
+        children["low-tx-power"] = low_tx_power;
     }
 
-    if(children.find("mea") == children.end())
+    if(mea != nullptr)
     {
-        if(mea != nullptr)
-        {
-            children["mea"] = mea;
-        }
+        children["mea"] = mea;
     }
 
-    if(children.find("oorcd") == children.end())
+    if(oorcd != nullptr)
     {
-        if(oorcd != nullptr)
-        {
-            children["oorcd"] = oorcd;
-        }
+        children["oorcd"] = oorcd;
     }
 
-    if(children.find("osnr") == children.end())
+    if(osnr != nullptr)
     {
-        if(osnr != nullptr)
-        {
-            children["osnr"] = osnr;
-        }
+        children["osnr"] = osnr;
     }
 
-    if(children.find("rx-loc") == children.end())
+    if(rx_loc != nullptr)
     {
-        if(rx_loc != nullptr)
-        {
-            children["rx-loc"] = rx_loc;
-        }
+        children["rx-loc"] = rx_loc;
     }
 
-    if(children.find("rx-lol") == children.end())
+    if(rx_lol != nullptr)
     {
-        if(rx_lol != nullptr)
-        {
-            children["rx-lol"] = rx_lol;
-        }
+        children["rx-lol"] = rx_lol;
     }
 
-    if(children.find("rx-los") == children.end())
+    if(rx_los != nullptr)
     {
-        if(rx_los != nullptr)
-        {
-            children["rx-los"] = rx_los;
-        }
+        children["rx-los"] = rx_los;
     }
 
-    if(children.find("tx-fault") == children.end())
+    if(tx_fault != nullptr)
     {
-        if(tx_fault != nullptr)
-        {
-            children["tx-fault"] = tx_fault;
-        }
+        children["tx-fault"] = tx_fault;
     }
 
-    if(children.find("tx-lol") == children.end())
+    if(tx_lol != nullptr)
     {
-        if(tx_lol != nullptr)
-        {
-            children["tx-lol"] = tx_lol;
-        }
+        children["tx-lol"] = tx_lol;
     }
 
-    if(children.find("tx-los") == children.end())
+    if(tx_los != nullptr)
     {
-        if(tx_los != nullptr)
-        {
-            children["tx-los"] = tx_los;
-        }
+        children["tx-los"] = tx_los;
     }
 
-    if(children.find("wvlool") == children.end())
+    if(wvlool != nullptr)
     {
-        if(wvlool != nullptr)
-        {
-            children["wvlool"] = wvlool;
-        }
+        children["wvlool"] = wvlool;
     }
 
     return children;
@@ -3182,7 +2550,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3207,20 +2575,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3270,7 +2630,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3295,20 +2655,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3358,7 +2710,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3383,20 +2735,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3446,7 +2790,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3471,20 +2815,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3534,7 +2870,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3559,20 +2895,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3622,7 +2950,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3647,20 +2975,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3710,7 +3030,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3735,20 +3055,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3798,7 +3110,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3823,20 +3135,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3886,7 +3190,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3911,20 +3215,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3974,7 +3270,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3999,20 +3295,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4062,7 +3350,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4087,20 +3375,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4150,7 +3430,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4175,20 +3455,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4238,7 +3510,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4263,20 +3535,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4326,7 +3590,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4351,20 +3615,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4414,7 +3670,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4439,20 +3695,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4502,7 +3750,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4527,20 +3775,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4590,7 +3830,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4615,20 +3855,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4678,7 +3910,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4703,20 +3935,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4766,7 +3990,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4791,20 +4015,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4854,7 +4070,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4879,20 +4095,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4942,7 +4150,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4967,20 +4175,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5030,7 +4230,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5055,20 +4255,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5118,7 +4310,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5143,20 +4335,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5206,7 +4390,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5231,20 +4415,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5294,7 +4470,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5319,20 +4495,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5382,7 +4550,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5407,20 +4575,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5470,7 +4630,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5495,20 +4655,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5558,7 +4710,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5583,20 +4735,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5646,7 +4790,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Lo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5671,20 +4815,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5734,7 +4870,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Rx
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5759,20 +4895,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxL
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5822,7 +4950,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Tx
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5847,20 +4975,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxL
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5910,7 +5030,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Rx
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5935,20 +5055,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxL
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5998,7 +5110,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Tx
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6023,20 +5135,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxL
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6086,7 +5190,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Tx
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6111,20 +5215,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxF
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6174,7 +5270,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hi
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6199,20 +5295,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hid
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6262,7 +5350,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oo
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6287,20 +5375,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oor
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6350,7 +5430,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Os
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6375,20 +5455,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osn
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6438,7 +5510,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wv
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6463,20 +5535,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvl
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6526,7 +5590,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Me
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6551,20 +5615,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6614,7 +5670,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Im
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6639,20 +5695,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Imp
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6702,7 +5750,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Rx
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6727,20 +5775,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxL
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6790,7 +5830,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Am
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6815,20 +5855,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Amp
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6878,7 +5910,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Am
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6903,20 +5935,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Amp
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6947,37 +5971,26 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::OtsAlarmInfo()
 	,switch_to_protect(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect>())
 {
     amp_gain_deg_high->parent = this;
-    children["amp-gain-deg-high"] = amp_gain_deg_high;
 
     amp_gain_deg_low->parent = this;
-    children["amp-gain-deg-low"] = amp_gain_deg_low;
 
     auto_ampli_ctrl_config_mismatch->parent = this;
-    children["auto-ampli-ctrl-config-mismatch"] = auto_ampli_ctrl_config_mismatch;
 
     auto_ampli_ctrl_disabled->parent = this;
-    children["auto-ampli-ctrl-disabled"] = auto_ampli_ctrl_disabled;
 
     auto_laser_shut->parent = this;
-    children["auto-laser-shut"] = auto_laser_shut;
 
     auto_power_red->parent = this;
-    children["auto-power-red"] = auto_power_red;
 
     low_rx_power->parent = this;
-    children["low-rx-power"] = low_rx_power;
 
     low_tx_power->parent = this;
-    children["low-tx-power"] = low_tx_power;
 
     rx_loc->parent = this;
-    children["rx-loc"] = rx_loc;
 
     rx_los_p->parent = this;
-    children["rx-los-p"] = rx_los_p;
 
     switch_to_protect->parent = this;
-    children["switch-to-protect"] = switch_to_protect;
 
     yang_name = "ots-alarm-info"; yang_parent_name = "optics-info";
 }
@@ -7026,7 +6039,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_s
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7049,271 +6062,164 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_en
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "amp-gain-deg-high")
     {
-        if(amp_gain_deg_high != nullptr)
-        {
-            children["amp-gain-deg-high"] = amp_gain_deg_high;
-        }
-        else
+        if(amp_gain_deg_high == nullptr)
         {
             amp_gain_deg_high = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh>();
-            amp_gain_deg_high->parent = this;
-            children["amp-gain-deg-high"] = amp_gain_deg_high;
         }
-        return children.at("amp-gain-deg-high");
+        return amp_gain_deg_high;
     }
 
     if(child_yang_name == "amp-gain-deg-low")
     {
-        if(amp_gain_deg_low != nullptr)
-        {
-            children["amp-gain-deg-low"] = amp_gain_deg_low;
-        }
-        else
+        if(amp_gain_deg_low == nullptr)
         {
             amp_gain_deg_low = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow>();
-            amp_gain_deg_low->parent = this;
-            children["amp-gain-deg-low"] = amp_gain_deg_low;
         }
-        return children.at("amp-gain-deg-low");
+        return amp_gain_deg_low;
     }
 
     if(child_yang_name == "auto-ampli-ctrl-config-mismatch")
     {
-        if(auto_ampli_ctrl_config_mismatch != nullptr)
-        {
-            children["auto-ampli-ctrl-config-mismatch"] = auto_ampli_ctrl_config_mismatch;
-        }
-        else
+        if(auto_ampli_ctrl_config_mismatch == nullptr)
         {
             auto_ampli_ctrl_config_mismatch = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch>();
-            auto_ampli_ctrl_config_mismatch->parent = this;
-            children["auto-ampli-ctrl-config-mismatch"] = auto_ampli_ctrl_config_mismatch;
         }
-        return children.at("auto-ampli-ctrl-config-mismatch");
+        return auto_ampli_ctrl_config_mismatch;
     }
 
     if(child_yang_name == "auto-ampli-ctrl-disabled")
     {
-        if(auto_ampli_ctrl_disabled != nullptr)
-        {
-            children["auto-ampli-ctrl-disabled"] = auto_ampli_ctrl_disabled;
-        }
-        else
+        if(auto_ampli_ctrl_disabled == nullptr)
         {
             auto_ampli_ctrl_disabled = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled>();
-            auto_ampli_ctrl_disabled->parent = this;
-            children["auto-ampli-ctrl-disabled"] = auto_ampli_ctrl_disabled;
         }
-        return children.at("auto-ampli-ctrl-disabled");
+        return auto_ampli_ctrl_disabled;
     }
 
     if(child_yang_name == "auto-laser-shut")
     {
-        if(auto_laser_shut != nullptr)
-        {
-            children["auto-laser-shut"] = auto_laser_shut;
-        }
-        else
+        if(auto_laser_shut == nullptr)
         {
             auto_laser_shut = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut>();
-            auto_laser_shut->parent = this;
-            children["auto-laser-shut"] = auto_laser_shut;
         }
-        return children.at("auto-laser-shut");
+        return auto_laser_shut;
     }
 
     if(child_yang_name == "auto-power-red")
     {
-        if(auto_power_red != nullptr)
-        {
-            children["auto-power-red"] = auto_power_red;
-        }
-        else
+        if(auto_power_red == nullptr)
         {
             auto_power_red = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed>();
-            auto_power_red->parent = this;
-            children["auto-power-red"] = auto_power_red;
         }
-        return children.at("auto-power-red");
+        return auto_power_red;
     }
 
     if(child_yang_name == "low-rx-power")
     {
-        if(low_rx_power != nullptr)
-        {
-            children["low-rx-power"] = low_rx_power;
-        }
-        else
+        if(low_rx_power == nullptr)
         {
             low_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower>();
-            low_rx_power->parent = this;
-            children["low-rx-power"] = low_rx_power;
         }
-        return children.at("low-rx-power");
+        return low_rx_power;
     }
 
     if(child_yang_name == "low-tx-power")
     {
-        if(low_tx_power != nullptr)
-        {
-            children["low-tx-power"] = low_tx_power;
-        }
-        else
+        if(low_tx_power == nullptr)
         {
             low_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower>();
-            low_tx_power->parent = this;
-            children["low-tx-power"] = low_tx_power;
         }
-        return children.at("low-tx-power");
+        return low_tx_power;
     }
 
     if(child_yang_name == "rx-loc")
     {
-        if(rx_loc != nullptr)
-        {
-            children["rx-loc"] = rx_loc;
-        }
-        else
+        if(rx_loc == nullptr)
         {
             rx_loc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc>();
-            rx_loc->parent = this;
-            children["rx-loc"] = rx_loc;
         }
-        return children.at("rx-loc");
+        return rx_loc;
     }
 
     if(child_yang_name == "rx-los-p")
     {
-        if(rx_los_p != nullptr)
-        {
-            children["rx-los-p"] = rx_los_p;
-        }
-        else
+        if(rx_los_p == nullptr)
         {
             rx_los_p = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP>();
-            rx_los_p->parent = this;
-            children["rx-los-p"] = rx_los_p;
         }
-        return children.at("rx-los-p");
+        return rx_los_p;
     }
 
     if(child_yang_name == "switch-to-protect")
     {
-        if(switch_to_protect != nullptr)
-        {
-            children["switch-to-protect"] = switch_to_protect;
-        }
-        else
+        if(switch_to_protect == nullptr)
         {
             switch_to_protect = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect>();
-            switch_to_protect->parent = this;
-            children["switch-to-protect"] = switch_to_protect;
         }
-        return children.at("switch-to-protect");
+        return switch_to_protect;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_children() const
 {
-    if(children.find("amp-gain-deg-high") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(amp_gain_deg_high != nullptr)
     {
-        if(amp_gain_deg_high != nullptr)
-        {
-            children["amp-gain-deg-high"] = amp_gain_deg_high;
-        }
+        children["amp-gain-deg-high"] = amp_gain_deg_high;
     }
 
-    if(children.find("amp-gain-deg-low") == children.end())
+    if(amp_gain_deg_low != nullptr)
     {
-        if(amp_gain_deg_low != nullptr)
-        {
-            children["amp-gain-deg-low"] = amp_gain_deg_low;
-        }
+        children["amp-gain-deg-low"] = amp_gain_deg_low;
     }
 
-    if(children.find("auto-ampli-ctrl-config-mismatch") == children.end())
+    if(auto_ampli_ctrl_config_mismatch != nullptr)
     {
-        if(auto_ampli_ctrl_config_mismatch != nullptr)
-        {
-            children["auto-ampli-ctrl-config-mismatch"] = auto_ampli_ctrl_config_mismatch;
-        }
+        children["auto-ampli-ctrl-config-mismatch"] = auto_ampli_ctrl_config_mismatch;
     }
 
-    if(children.find("auto-ampli-ctrl-disabled") == children.end())
+    if(auto_ampli_ctrl_disabled != nullptr)
     {
-        if(auto_ampli_ctrl_disabled != nullptr)
-        {
-            children["auto-ampli-ctrl-disabled"] = auto_ampli_ctrl_disabled;
-        }
+        children["auto-ampli-ctrl-disabled"] = auto_ampli_ctrl_disabled;
     }
 
-    if(children.find("auto-laser-shut") == children.end())
+    if(auto_laser_shut != nullptr)
     {
-        if(auto_laser_shut != nullptr)
-        {
-            children["auto-laser-shut"] = auto_laser_shut;
-        }
+        children["auto-laser-shut"] = auto_laser_shut;
     }
 
-    if(children.find("auto-power-red") == children.end())
+    if(auto_power_red != nullptr)
     {
-        if(auto_power_red != nullptr)
-        {
-            children["auto-power-red"] = auto_power_red;
-        }
+        children["auto-power-red"] = auto_power_red;
     }
 
-    if(children.find("low-rx-power") == children.end())
+    if(low_rx_power != nullptr)
     {
-        if(low_rx_power != nullptr)
-        {
-            children["low-rx-power"] = low_rx_power;
-        }
+        children["low-rx-power"] = low_rx_power;
     }
 
-    if(children.find("low-tx-power") == children.end())
+    if(low_tx_power != nullptr)
     {
-        if(low_tx_power != nullptr)
-        {
-            children["low-tx-power"] = low_tx_power;
-        }
+        children["low-tx-power"] = low_tx_power;
     }
 
-    if(children.find("rx-loc") == children.end())
+    if(rx_loc != nullptr)
     {
-        if(rx_loc != nullptr)
-        {
-            children["rx-loc"] = rx_loc;
-        }
+        children["rx-loc"] = rx_loc;
     }
 
-    if(children.find("rx-los-p") == children.end())
+    if(rx_los_p != nullptr)
     {
-        if(rx_los_p != nullptr)
-        {
-            children["rx-los-p"] = rx_los_p;
-        }
+        children["rx-los-p"] = rx_los_p;
     }
 
-    if(children.find("switch-to-protect") == children.end())
+    if(switch_to_protect != nullptr)
     {
-        if(switch_to_protect != nullptr)
-        {
-            children["switch-to-protect"] = switch_to_protect;
-        }
+        children["switch-to-protect"] = switch_to_protect;
     }
 
     return children;
@@ -7357,7 +6263,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTx
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7382,20 +6288,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxP
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7445,7 +6343,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRx
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7470,20 +6368,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxP
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7533,7 +6423,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLos
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7558,20 +6448,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7621,7 +6503,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7646,20 +6528,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc:
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7709,7 +6583,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGa
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7734,20 +6608,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGai
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7797,7 +6663,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGa
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7822,20 +6688,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGai
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7885,7 +6743,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoL
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7910,20 +6768,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLa
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7973,7 +6823,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoP
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7998,20 +6848,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPo
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8061,7 +6903,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoA
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8086,20 +6928,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAm
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8149,7 +6983,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoA
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8174,20 +7008,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAm
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8237,7 +7063,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::Switc
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8262,20 +7088,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::Switch
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8349,7 +7167,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::ge
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8382,20 +7200,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8537,7 +7347,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_se
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8582,20 +7392,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_ent
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8911,7 +7713,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVa
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8998,20 +7800,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9289,7 +8083,6 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneData()
     lane_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo>())
 {
     lane_alarm_info->parent = this;
-    children["lane-alarm-info"] = lane_alarm_info;
 
     yang_name = "lane-data"; yang_parent_name = "optics-info";
 }
@@ -9334,7 +8127,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_segme
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9365,41 +8158,24 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_entity
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lane-alarm-info")
     {
-        if(lane_alarm_info != nullptr)
-        {
-            children["lane-alarm-info"] = lane_alarm_info;
-        }
-        else
+        if(lane_alarm_info == nullptr)
         {
             lane_alarm_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo>();
-            lane_alarm_info->parent = this;
-            children["lane-alarm-info"] = lane_alarm_info;
         }
-        return children.at("lane-alarm-info");
+        return lane_alarm_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_children() const
 {
-    if(children.find("lane-alarm-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lane_alarm_info != nullptr)
     {
-        if(lane_alarm_info != nullptr)
-        {
-            children["lane-alarm-info"] = lane_alarm_info;
-        }
+        children["lane-alarm-info"] = lane_alarm_info;
     }
 
     return children;
@@ -9450,19 +8226,14 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LaneAl
 	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower>())
 {
     high_lbc->parent = this;
-    children["high-lbc"] = high_lbc;
 
     high_rx_power->parent = this;
-    children["high-rx-power"] = high_rx_power;
 
     high_tx_power->parent = this;
-    children["high-tx-power"] = high_tx_power;
 
     low_rx_power->parent = this;
-    children["low-rx-power"] = low_rx_power;
 
     low_tx_power->parent = this;
-    children["low-tx-power"] = low_tx_power;
 
     yang_name = "lane-alarm-info"; yang_parent_name = "lane-data";
 }
@@ -9499,7 +8270,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarm
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9522,133 +8293,80 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "high-lbc")
     {
-        if(high_lbc != nullptr)
-        {
-            children["high-lbc"] = high_lbc;
-        }
-        else
+        if(high_lbc == nullptr)
         {
             high_lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc>();
-            high_lbc->parent = this;
-            children["high-lbc"] = high_lbc;
         }
-        return children.at("high-lbc");
+        return high_lbc;
     }
 
     if(child_yang_name == "high-rx-power")
     {
-        if(high_rx_power != nullptr)
-        {
-            children["high-rx-power"] = high_rx_power;
-        }
-        else
+        if(high_rx_power == nullptr)
         {
             high_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower>();
-            high_rx_power->parent = this;
-            children["high-rx-power"] = high_rx_power;
         }
-        return children.at("high-rx-power");
+        return high_rx_power;
     }
 
     if(child_yang_name == "high-tx-power")
     {
-        if(high_tx_power != nullptr)
-        {
-            children["high-tx-power"] = high_tx_power;
-        }
-        else
+        if(high_tx_power == nullptr)
         {
             high_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower>();
-            high_tx_power->parent = this;
-            children["high-tx-power"] = high_tx_power;
         }
-        return children.at("high-tx-power");
+        return high_tx_power;
     }
 
     if(child_yang_name == "low-rx-power")
     {
-        if(low_rx_power != nullptr)
-        {
-            children["low-rx-power"] = low_rx_power;
-        }
-        else
+        if(low_rx_power == nullptr)
         {
             low_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower>();
-            low_rx_power->parent = this;
-            children["low-rx-power"] = low_rx_power;
         }
-        return children.at("low-rx-power");
+        return low_rx_power;
     }
 
     if(child_yang_name == "low-tx-power")
     {
-        if(low_tx_power != nullptr)
-        {
-            children["low-tx-power"] = low_tx_power;
-        }
-        else
+        if(low_tx_power == nullptr)
         {
             low_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower>();
-            low_tx_power->parent = this;
-            children["low-tx-power"] = low_tx_power;
         }
-        return children.at("low-tx-power");
+        return low_tx_power;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_children() const
 {
-    if(children.find("high-lbc") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(high_lbc != nullptr)
     {
-        if(high_lbc != nullptr)
-        {
-            children["high-lbc"] = high_lbc;
-        }
+        children["high-lbc"] = high_lbc;
     }
 
-    if(children.find("high-rx-power") == children.end())
+    if(high_rx_power != nullptr)
     {
-        if(high_rx_power != nullptr)
-        {
-            children["high-rx-power"] = high_rx_power;
-        }
+        children["high-rx-power"] = high_rx_power;
     }
 
-    if(children.find("high-tx-power") == children.end())
+    if(high_tx_power != nullptr)
     {
-        if(high_tx_power != nullptr)
-        {
-            children["high-tx-power"] = high_tx_power;
-        }
+        children["high-tx-power"] = high_tx_power;
     }
 
-    if(children.find("low-rx-power") == children.end())
+    if(low_rx_power != nullptr)
     {
-        if(low_rx_power != nullptr)
-        {
-            children["low-rx-power"] = low_rx_power;
-        }
+        children["low-rx-power"] = low_rx_power;
     }
 
-    if(children.find("low-tx-power") == children.end())
+    if(low_tx_power != nullptr)
     {
-        if(low_tx_power != nullptr)
-        {
-            children["low-tx-power"] = low_tx_power;
-        }
+        children["low-tx-power"] = low_tx_power;
     }
 
     return children;
@@ -9692,7 +8410,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarm
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9717,20 +8435,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9780,7 +8490,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarm
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9805,20 +8515,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9868,7 +8570,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarm
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9893,20 +8595,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9956,7 +8650,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarm
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9981,20 +8675,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10044,7 +8730,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarm
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10069,20 +8755,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10136,7 +8814,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_segment_path()
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10159,15 +8837,6 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_entity_path(Ent
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "optics-lane")
     {
         for(auto const & c : optics_lane)
@@ -10175,28 +8844,24 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane>();
         c->parent = this;
-        optics_lane.push_back(std::move(c));
-        children[segment_path] = optics_lane.back();
-        return children.at(segment_path);
+        optics_lane.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : optics_lane)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10221,7 +8886,6 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::OpticsLane()
     lane_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo>())
 {
     lane_alarm_info->parent = this;
-    children["lane-alarm-info"] = lane_alarm_info;
 
     yang_name = "optics-lane"; yang_parent_name = "optics-lanes";
 }
@@ -10268,7 +8932,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_se
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10300,41 +8964,24 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_ent
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lane-alarm-info")
     {
-        if(lane_alarm_info != nullptr)
-        {
-            children["lane-alarm-info"] = lane_alarm_info;
-        }
-        else
+        if(lane_alarm_info == nullptr)
         {
             lane_alarm_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo>();
-            lane_alarm_info->parent = this;
-            children["lane-alarm-info"] = lane_alarm_info;
         }
-        return children.at("lane-alarm-info");
+        return lane_alarm_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_children() const
 {
-    if(children.find("lane-alarm-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lane_alarm_info != nullptr)
     {
-        if(lane_alarm_info != nullptr)
-        {
-            children["lane-alarm-info"] = lane_alarm_info;
-        }
+        children["lane-alarm-info"] = lane_alarm_info;
     }
 
     return children;
@@ -10389,19 +9036,14 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Lan
 	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower>())
 {
     high_lbc->parent = this;
-    children["high-lbc"] = high_lbc;
 
     high_rx_power->parent = this;
-    children["high-rx-power"] = high_rx_power;
 
     high_tx_power->parent = this;
-    children["high-tx-power"] = high_tx_power;
 
     low_rx_power->parent = this;
-    children["low-rx-power"] = low_rx_power;
 
     low_tx_power->parent = this;
-    children["low-tx-power"] = low_tx_power;
 
     yang_name = "lane-alarm-info"; yang_parent_name = "optics-lane";
 }
@@ -10438,7 +9080,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAl
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10461,133 +9103,80 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAla
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "high-lbc")
     {
-        if(high_lbc != nullptr)
-        {
-            children["high-lbc"] = high_lbc;
-        }
-        else
+        if(high_lbc == nullptr)
         {
             high_lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc>();
-            high_lbc->parent = this;
-            children["high-lbc"] = high_lbc;
         }
-        return children.at("high-lbc");
+        return high_lbc;
     }
 
     if(child_yang_name == "high-rx-power")
     {
-        if(high_rx_power != nullptr)
-        {
-            children["high-rx-power"] = high_rx_power;
-        }
-        else
+        if(high_rx_power == nullptr)
         {
             high_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower>();
-            high_rx_power->parent = this;
-            children["high-rx-power"] = high_rx_power;
         }
-        return children.at("high-rx-power");
+        return high_rx_power;
     }
 
     if(child_yang_name == "high-tx-power")
     {
-        if(high_tx_power != nullptr)
-        {
-            children["high-tx-power"] = high_tx_power;
-        }
-        else
+        if(high_tx_power == nullptr)
         {
             high_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower>();
-            high_tx_power->parent = this;
-            children["high-tx-power"] = high_tx_power;
         }
-        return children.at("high-tx-power");
+        return high_tx_power;
     }
 
     if(child_yang_name == "low-rx-power")
     {
-        if(low_rx_power != nullptr)
-        {
-            children["low-rx-power"] = low_rx_power;
-        }
-        else
+        if(low_rx_power == nullptr)
         {
             low_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower>();
-            low_rx_power->parent = this;
-            children["low-rx-power"] = low_rx_power;
         }
-        return children.at("low-rx-power");
+        return low_rx_power;
     }
 
     if(child_yang_name == "low-tx-power")
     {
-        if(low_tx_power != nullptr)
-        {
-            children["low-tx-power"] = low_tx_power;
-        }
-        else
+        if(low_tx_power == nullptr)
         {
             low_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower>();
-            low_tx_power->parent = this;
-            children["low-tx-power"] = low_tx_power;
         }
-        return children.at("low-tx-power");
+        return low_tx_power;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_children() const
 {
-    if(children.find("high-lbc") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(high_lbc != nullptr)
     {
-        if(high_lbc != nullptr)
-        {
-            children["high-lbc"] = high_lbc;
-        }
+        children["high-lbc"] = high_lbc;
     }
 
-    if(children.find("high-rx-power") == children.end())
+    if(high_rx_power != nullptr)
     {
-        if(high_rx_power != nullptr)
-        {
-            children["high-rx-power"] = high_rx_power;
-        }
+        children["high-rx-power"] = high_rx_power;
     }
 
-    if(children.find("high-tx-power") == children.end())
+    if(high_tx_power != nullptr)
     {
-        if(high_tx_power != nullptr)
-        {
-            children["high-tx-power"] = high_tx_power;
-        }
+        children["high-tx-power"] = high_tx_power;
     }
 
-    if(children.find("low-rx-power") == children.end())
+    if(low_rx_power != nullptr)
     {
-        if(low_rx_power != nullptr)
-        {
-            children["low-rx-power"] = low_rx_power;
-        }
+        children["low-rx-power"] = low_rx_power;
     }
 
-    if(children.find("low-tx-power") == children.end())
+    if(low_tx_power != nullptr)
     {
-        if(low_tx_power != nullptr)
-        {
-            children["low-tx-power"] = low_tx_power;
-        }
+        children["low-tx-power"] = low_tx_power;
     }
 
     return children;
@@ -10631,7 +9220,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAl
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10656,20 +9245,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAla
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10719,7 +9300,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAl
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10744,20 +9325,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAla
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10807,7 +9380,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAl
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10832,20 +9405,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAla
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10895,7 +9460,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAl
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10920,20 +9485,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAla
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10983,7 +9540,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAl
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11008,20 +9565,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAla
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11045,7 +9594,6 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::OpticsDbInfo()
     network_srlg_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo>())
 {
     network_srlg_info->parent = this;
-    children["network-srlg-info"] = network_srlg_info;
 
     yang_name = "optics-db-info"; yang_parent_name = "optics-port";
 }
@@ -11078,7 +9626,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_segment_path(
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11103,41 +9651,24 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_entity_path(En
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network-srlg-info")
     {
-        if(network_srlg_info != nullptr)
-        {
-            children["network-srlg-info"] = network_srlg_info;
-        }
-        else
+        if(network_srlg_info == nullptr)
         {
             network_srlg_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo>();
-            network_srlg_info->parent = this;
-            children["network-srlg-info"] = network_srlg_info;
         }
-        return children.at("network-srlg-info");
+        return network_srlg_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_children() const
 {
-    if(children.find("network-srlg-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(network_srlg_info != nullptr)
     {
-        if(network_srlg_info != nullptr)
-        {
-            children["network-srlg-info"] = network_srlg_info;
-        }
+        children["network-srlg-info"] = network_srlg_info;
     }
 
     return children;
@@ -11193,7 +9724,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11216,15 +9747,6 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::g
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network-srlg-array")
     {
         for(auto const & c : network_srlg_array)
@@ -11232,28 +9754,24 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::Netwo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray>();
         c->parent = this;
-        network_srlg_array.push_back(std::move(c));
-        children[segment_path] = network_srlg_array.back();
-        return children.at(segment_path);
+        network_srlg_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : network_srlg_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11306,7 +9824,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::
 
 }
 
-EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_entity_path(Entity* ancestor) const
+const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11332,20 +9850,12 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::N
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

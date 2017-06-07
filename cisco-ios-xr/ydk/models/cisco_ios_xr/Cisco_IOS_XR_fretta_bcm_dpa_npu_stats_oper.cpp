@@ -14,7 +14,6 @@ Dpa::Dpa()
     stats(std::make_shared<Dpa::Stats>())
 {
     stats->parent = this;
-    children["stats"] = stats;
 
     yang_name = "dpa"; yang_parent_name = "Cisco-IOS-XR-fretta-bcm-dpa-npu-stats-oper";
 }
@@ -43,12 +42,12 @@ std::string Dpa::get_segment_path() const
 
 }
 
-EntityPath Dpa::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Dpa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dpa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "stats")
     {
-        if(stats != nullptr)
-        {
-            children["stats"] = stats;
-        }
-        else
+        if(stats == nullptr)
         {
             stats = std::make_shared<Dpa::Stats>();
-            stats->parent = this;
-            children["stats"] = stats;
         }
-        return children.at("stats");
+        return stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::get_children() const
 {
-    if(children.find("stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(stats != nullptr)
     {
-        if(stats != nullptr)
-        {
-            children["stats"] = stats;
-        }
+        children["stats"] = stats;
     }
 
     return children;
@@ -132,7 +114,6 @@ Dpa::Stats::Stats()
     nodes(std::make_shared<Dpa::Stats::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "stats"; yang_parent_name = "dpa";
 }
@@ -161,7 +142,7 @@ std::string Dpa::Stats::get_segment_path() const
 
 }
 
-EntityPath Dpa::Stats::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -184,41 +165,24 @@ EntityPath Dpa::Stats::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dpa::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Dpa::Stats::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -266,7 +230,7 @@ std::string Dpa::Stats::Nodes::get_segment_path() const
 
 }
 
-EntityPath Dpa::Stats::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -289,15 +253,6 @@ EntityPath Dpa::Stats::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -305,28 +260,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -348,22 +299,16 @@ Dpa::Stats::Nodes::Node::Node()
 	,voq_base_numbers(std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers>())
 {
     clear_voq_data_for_npu_numbers->parent = this;
-    children["clear-voq-data-for-npu-numbers"] = clear_voq_data_for_npu_numbers;
 
     npu_number_for_trap_data_clears->parent = this;
-    children["npu-number-for-trap-data-clears"] = npu_number_for_trap_data_clears;
 
     npu_number_for_trap_datas->parent = this;
-    children["npu-number-for-trap-datas"] = npu_number_for_trap_datas;
 
     npu_number_for_voq_datas->parent = this;
-    children["npu-number-for-voq-datas"] = npu_number_for_voq_datas;
 
     voq_base_number_stats_clears->parent = this;
-    children["voq-base-number-stats-clears"] = voq_base_number_stats_clears;
 
     voq_base_numbers->parent = this;
-    children["voq-base-numbers"] = voq_base_numbers;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -404,7 +349,7 @@ std::string Dpa::Stats::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -428,156 +373,94 @@ EntityPath Dpa::Stats::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clear-voq-data-for-npu-numbers")
     {
-        if(clear_voq_data_for_npu_numbers != nullptr)
-        {
-            children["clear-voq-data-for-npu-numbers"] = clear_voq_data_for_npu_numbers;
-        }
-        else
+        if(clear_voq_data_for_npu_numbers == nullptr)
         {
             clear_voq_data_for_npu_numbers = std::make_shared<Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers>();
-            clear_voq_data_for_npu_numbers->parent = this;
-            children["clear-voq-data-for-npu-numbers"] = clear_voq_data_for_npu_numbers;
         }
-        return children.at("clear-voq-data-for-npu-numbers");
+        return clear_voq_data_for_npu_numbers;
     }
 
     if(child_yang_name == "npu-number-for-trap-data-clears")
     {
-        if(npu_number_for_trap_data_clears != nullptr)
-        {
-            children["npu-number-for-trap-data-clears"] = npu_number_for_trap_data_clears;
-        }
-        else
+        if(npu_number_for_trap_data_clears == nullptr)
         {
             npu_number_for_trap_data_clears = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears>();
-            npu_number_for_trap_data_clears->parent = this;
-            children["npu-number-for-trap-data-clears"] = npu_number_for_trap_data_clears;
         }
-        return children.at("npu-number-for-trap-data-clears");
+        return npu_number_for_trap_data_clears;
     }
 
     if(child_yang_name == "npu-number-for-trap-datas")
     {
-        if(npu_number_for_trap_datas != nullptr)
-        {
-            children["npu-number-for-trap-datas"] = npu_number_for_trap_datas;
-        }
-        else
+        if(npu_number_for_trap_datas == nullptr)
         {
             npu_number_for_trap_datas = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas>();
-            npu_number_for_trap_datas->parent = this;
-            children["npu-number-for-trap-datas"] = npu_number_for_trap_datas;
         }
-        return children.at("npu-number-for-trap-datas");
+        return npu_number_for_trap_datas;
     }
 
     if(child_yang_name == "npu-number-for-voq-datas")
     {
-        if(npu_number_for_voq_datas != nullptr)
-        {
-            children["npu-number-for-voq-datas"] = npu_number_for_voq_datas;
-        }
-        else
+        if(npu_number_for_voq_datas == nullptr)
         {
             npu_number_for_voq_datas = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas>();
-            npu_number_for_voq_datas->parent = this;
-            children["npu-number-for-voq-datas"] = npu_number_for_voq_datas;
         }
-        return children.at("npu-number-for-voq-datas");
+        return npu_number_for_voq_datas;
     }
 
     if(child_yang_name == "voq-base-number-stats-clears")
     {
-        if(voq_base_number_stats_clears != nullptr)
-        {
-            children["voq-base-number-stats-clears"] = voq_base_number_stats_clears;
-        }
-        else
+        if(voq_base_number_stats_clears == nullptr)
         {
             voq_base_number_stats_clears = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears>();
-            voq_base_number_stats_clears->parent = this;
-            children["voq-base-number-stats-clears"] = voq_base_number_stats_clears;
         }
-        return children.at("voq-base-number-stats-clears");
+        return voq_base_number_stats_clears;
     }
 
     if(child_yang_name == "voq-base-numbers")
     {
-        if(voq_base_numbers != nullptr)
-        {
-            children["voq-base-numbers"] = voq_base_numbers;
-        }
-        else
+        if(voq_base_numbers == nullptr)
         {
             voq_base_numbers = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers>();
-            voq_base_numbers->parent = this;
-            children["voq-base-numbers"] = voq_base_numbers;
         }
-        return children.at("voq-base-numbers");
+        return voq_base_numbers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::get_children() const
 {
-    if(children.find("clear-voq-data-for-npu-numbers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clear_voq_data_for_npu_numbers != nullptr)
     {
-        if(clear_voq_data_for_npu_numbers != nullptr)
-        {
-            children["clear-voq-data-for-npu-numbers"] = clear_voq_data_for_npu_numbers;
-        }
+        children["clear-voq-data-for-npu-numbers"] = clear_voq_data_for_npu_numbers;
     }
 
-    if(children.find("npu-number-for-trap-data-clears") == children.end())
+    if(npu_number_for_trap_data_clears != nullptr)
     {
-        if(npu_number_for_trap_data_clears != nullptr)
-        {
-            children["npu-number-for-trap-data-clears"] = npu_number_for_trap_data_clears;
-        }
+        children["npu-number-for-trap-data-clears"] = npu_number_for_trap_data_clears;
     }
 
-    if(children.find("npu-number-for-trap-datas") == children.end())
+    if(npu_number_for_trap_datas != nullptr)
     {
-        if(npu_number_for_trap_datas != nullptr)
-        {
-            children["npu-number-for-trap-datas"] = npu_number_for_trap_datas;
-        }
+        children["npu-number-for-trap-datas"] = npu_number_for_trap_datas;
     }
 
-    if(children.find("npu-number-for-voq-datas") == children.end())
+    if(npu_number_for_voq_datas != nullptr)
     {
-        if(npu_number_for_voq_datas != nullptr)
-        {
-            children["npu-number-for-voq-datas"] = npu_number_for_voq_datas;
-        }
+        children["npu-number-for-voq-datas"] = npu_number_for_voq_datas;
     }
 
-    if(children.find("voq-base-number-stats-clears") == children.end())
+    if(voq_base_number_stats_clears != nullptr)
     {
-        if(voq_base_number_stats_clears != nullptr)
-        {
-            children["voq-base-number-stats-clears"] = voq_base_number_stats_clears;
-        }
+        children["voq-base-number-stats-clears"] = voq_base_number_stats_clears;
     }
 
-    if(children.find("voq-base-numbers") == children.end())
+    if(voq_base_numbers != nullptr)
     {
-        if(voq_base_numbers != nullptr)
-        {
-            children["voq-base-numbers"] = voq_base_numbers;
-        }
+        children["voq-base-numbers"] = voq_base_numbers;
     }
 
     return children;
@@ -629,7 +512,7 @@ std::string Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_segment_path(
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -652,15 +535,6 @@ EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_entity_path(En
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "voq-base-number-stats-clear")
     {
         for(auto const & c : voq_base_number_stats_clear)
@@ -668,28 +542,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear>();
         c->parent = this;
-        voq_base_number_stats_clear.push_back(std::move(c));
-        children[segment_path] = voq_base_number_stats_clear.back();
-        return children.at(segment_path);
+        voq_base_number_stats_clear.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_base_number_stats_clear)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -740,7 +610,7 @@ std::string Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStat
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -764,15 +634,6 @@ EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStats
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "voq-base-stats-clear-data")
     {
         for(auto const & c : voq_base_stats_clear_data)
@@ -780,28 +641,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData>();
         c->parent = this;
-        voq_base_stats_clear_data.push_back(std::move(c));
-        children[segment_path] = voq_base_stats_clear_data.back();
-        return children.at(segment_path);
+        voq_base_stats_clear_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_base_stats_clear_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -849,7 +706,7 @@ std::string Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStat
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -874,20 +731,12 @@ EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStats
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -941,7 +790,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_segment_path() c
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -964,15 +813,6 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_entity_path(Entit
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "npu-number-for-trap-data")
     {
         for(auto const & c : npu_number_for_trap_data)
@@ -980,28 +820,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData>();
         c->parent = this;
-        npu_number_for_trap_data.push_back(std::move(c));
-        children[segment_path] = npu_number_for_trap_data.back();
-        return children.at(segment_path);
+        npu_number_for_trap_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : npu_number_for_trap_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1052,7 +888,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1076,15 +912,6 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData:
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "trap-specific-stats-data")
     {
         for(auto const & c : trap_specific_stats_data)
@@ -1092,28 +919,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumbe
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData>();
         c->parent = this;
-        trap_specific_stats_data.push_back(std::move(c));
-        children[segment_path] = trap_specific_stats_data.back();
-        return children.at(segment_path);
+        trap_specific_stats_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : trap_specific_stats_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1203,7 +1026,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1242,20 +1065,12 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData:
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1365,7 +1180,7 @@ std::string Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_segment_path() const
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1388,15 +1203,6 @@ EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "voq-base-number")
     {
         for(auto const & c : voq_base_number)
@@ -1404,28 +1210,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber>();
         c->parent = this;
-        voq_base_number.push_back(std::move(c));
-        children[segment_path] = voq_base_number.back();
-        return children.at(segment_path);
+        voq_base_number.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_base_number)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1476,7 +1278,7 @@ std::string Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_segment_
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1500,15 +1302,6 @@ EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_entity_pa
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "voq-base-stats-data")
     {
         for(auto const & c : voq_base_stats_data)
@@ -1516,28 +1309,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData>();
         c->parent = this;
-        voq_base_stats_data.push_back(std::move(c));
-        children[segment_path] = voq_base_stats_data.back();
-        return children.at(segment_path);
+        voq_base_stats_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_base_stats_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1631,7 +1420,7 @@ std::string Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStats
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1668,15 +1457,6 @@ EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsD
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "voq-stat")
     {
         for(auto const & c : voq_stat)
@@ -1684,28 +1464,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat>();
         c->parent = this;
-        voq_stat.push_back(std::move(c));
-        children[segment_path] = voq_stat.back();
-        return children.at(segment_path);
+        voq_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1811,7 +1587,7 @@ std::string Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStats
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1838,20 +1614,12 @@ EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsD
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1913,7 +1681,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_segment_path() co
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1936,15 +1704,6 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_entity_path(Entity
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "npu-number-for-voq-data")
     {
         for(auto const & c : npu_number_for_voq_data)
@@ -1952,28 +1711,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData>();
         c->parent = this;
-        npu_number_for_voq_data.push_back(std::move(c));
-        children[segment_path] = npu_number_for_voq_data.back();
-        return children.at(segment_path);
+        npu_number_for_voq_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : npu_number_for_voq_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2024,7 +1779,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2048,15 +1803,6 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::g
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "voq-specific-stats-data")
     {
         for(auto const & c : voq_specific_stats_data)
@@ -2064,28 +1810,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumber
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData>();
         c->parent = this;
-        voq_specific_stats_data.push_back(std::move(c));
-        children[segment_path] = voq_specific_stats_data.back();
-        return children.at(segment_path);
+        voq_specific_stats_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_specific_stats_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2179,7 +1921,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2216,15 +1958,6 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::V
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "voq-stat")
     {
         for(auto const & c : voq_stat)
@@ -2232,28 +1965,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumber
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat>();
         c->parent = this;
-        voq_stat.push_back(std::move(c));
-        children[segment_path] = voq_stat.back();
-        return children.at(segment_path);
+        voq_stat.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_stat)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2359,7 +2088,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2386,20 +2115,12 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::V
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2461,7 +2182,7 @@ std::string Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_segment_path
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2484,15 +2205,6 @@ EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_entity_path(E
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clear-voq-data-for-npu-number")
     {
         for(auto const & c : clear_voq_data_for_npu_number)
@@ -2500,28 +2212,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber>();
         c->parent = this;
-        clear_voq_data_for_npu_number.push_back(std::move(c));
-        children[segment_path] = clear_voq_data_for_npu_number.back();
-        return children.at(segment_path);
+        clear_voq_data_for_npu_number.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : clear_voq_data_for_npu_number)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2572,7 +2280,7 @@ std::string Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForN
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2596,15 +2304,6 @@ EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNp
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "voq-specific-stats-data-clear")
     {
         for(auto const & c : voq_specific_stats_data_clear)
@@ -2612,28 +2311,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::Clea
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear>();
         c->parent = this;
-        voq_specific_stats_data_clear.push_back(std::move(c));
-        children[segment_path] = voq_specific_stats_data_clear.back();
-        return children.at(segment_path);
+        voq_specific_stats_data_clear.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_specific_stats_data_clear)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2681,7 +2376,7 @@ std::string Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForN
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2706,20 +2401,12 @@ EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNp
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2773,7 +2460,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_segment_pat
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2796,15 +2483,6 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_entity_path(
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "npu-number-for-trap-data-clear")
     {
         for(auto const & c : npu_number_for_trap_data_clear)
@@ -2812,28 +2490,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear>();
         c->parent = this;
-        npu_number_for_trap_data_clear.push_back(std::move(c));
-        children[segment_path] = npu_number_for_trap_data_clear.back();
-        return children.at(segment_path);
+        npu_number_for_trap_data_clear.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : npu_number_for_trap_data_clear)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2884,7 +2558,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTra
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2908,15 +2582,6 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrap
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "trap-specific-stats-data")
     {
         for(auto const & c : trap_specific_stats_data)
@@ -2924,28 +2589,24 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::Npu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData>();
         c->parent = this;
-        trap_specific_stats_data.push_back(std::move(c));
-        children[segment_path] = trap_specific_stats_data.back();
-        return children.at(segment_path);
+        trap_specific_stats_data.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : trap_specific_stats_data)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2993,7 +2654,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTra
 
 }
 
-EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3018,20 +2679,12 @@ EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrap
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -15,10 +15,8 @@ AlarmLogger::AlarmLogger()
 	,buffer_status(std::make_shared<AlarmLogger::BufferStatus>())
 {
     alarms->parent = this;
-    children["alarms"] = alarms;
 
     buffer_status->parent = this;
-    children["buffer-status"] = buffer_status;
 
     yang_name = "alarm-logger"; yang_parent_name = "Cisco-IOS-XR-infra-alarm-logger-oper";
 }
@@ -49,12 +47,12 @@ std::string AlarmLogger::get_segment_path() const
 
 }
 
-EntityPath AlarmLogger::get_entity_path(Entity* ancestor) const
+const EntityPath AlarmLogger::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath AlarmLogger::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AlarmLogger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "alarms")
     {
-        if(alarms != nullptr)
-        {
-            children["alarms"] = alarms;
-        }
-        else
+        if(alarms == nullptr)
         {
             alarms = std::make_shared<AlarmLogger::Alarms>();
-            alarms->parent = this;
-            children["alarms"] = alarms;
         }
-        return children.at("alarms");
+        return alarms;
     }
 
     if(child_yang_name == "buffer-status")
     {
-        if(buffer_status != nullptr)
-        {
-            children["buffer-status"] = buffer_status;
-        }
-        else
+        if(buffer_status == nullptr)
         {
             buffer_status = std::make_shared<AlarmLogger::BufferStatus>();
-            buffer_status->parent = this;
-            children["buffer-status"] = buffer_status;
         }
-        return children.at("buffer-status");
+        return buffer_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AlarmLogger::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::get_children() const
 {
-    if(children.find("alarms") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(alarms != nullptr)
     {
-        if(alarms != nullptr)
-        {
-            children["alarms"] = alarms;
-        }
+        children["alarms"] = alarms;
     }
 
-    if(children.find("buffer-status") == children.end())
+    if(buffer_status != nullptr)
     {
-        if(buffer_status != nullptr)
-        {
-            children["buffer-status"] = buffer_status;
-        }
+        children["buffer-status"] = buffer_status;
     }
 
     return children;
@@ -199,7 +171,7 @@ std::string AlarmLogger::BufferStatus::get_segment_path() const
 
 }
 
-EntityPath AlarmLogger::BufferStatus::get_entity_path(Entity* ancestor) const
+const EntityPath AlarmLogger::BufferStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -227,20 +199,12 @@ EntityPath AlarmLogger::BufferStatus::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AlarmLogger::BufferStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AlarmLogger::BufferStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::BufferStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -306,7 +270,7 @@ std::string AlarmLogger::Alarms::get_segment_path() const
 
 }
 
-EntityPath AlarmLogger::Alarms::get_entity_path(Entity* ancestor) const
+const EntityPath AlarmLogger::Alarms::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -329,15 +293,6 @@ EntityPath AlarmLogger::Alarms::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AlarmLogger::Alarms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "alarm")
     {
         for(auto const & c : alarm)
@@ -345,28 +300,24 @@ std::shared_ptr<Entity> AlarmLogger::Alarms::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<AlarmLogger::Alarms::Alarm>();
         c->parent = this;
-        alarm.push_back(std::move(c));
-        children[segment_path] = alarm.back();
-        return children.at(segment_path);
+        alarm.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AlarmLogger::Alarms::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::Alarms::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : alarm)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -437,7 +388,7 @@ std::string AlarmLogger::Alarms::Alarm::get_segment_path() const
 
 }
 
-EntityPath AlarmLogger::Alarms::Alarm::get_entity_path(Entity* ancestor) const
+const EntityPath AlarmLogger::Alarms::Alarm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -471,20 +422,12 @@ EntityPath AlarmLogger::Alarms::Alarm::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> AlarmLogger::Alarms::Alarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & AlarmLogger::Alarms::Alarm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::Alarms::Alarm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

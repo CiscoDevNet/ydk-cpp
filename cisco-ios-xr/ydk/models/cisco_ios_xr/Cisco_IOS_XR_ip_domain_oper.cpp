@@ -23,7 +23,6 @@ IpDomain::IpDomain()
     vrfs(std::make_shared<IpDomain::Vrfs>())
 {
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "ip-domain"; yang_parent_name = "Cisco-IOS-XR-ip-domain-oper";
 }
@@ -52,12 +51,12 @@ std::string IpDomain::get_segment_path() const
 
 }
 
-EntityPath IpDomain::get_entity_path(Entity* ancestor) const
+const EntityPath IpDomain::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -72,41 +71,24 @@ EntityPath IpDomain::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<IpDomain::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpDomain::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpDomain::get_children() const
 {
-    if(children.find("vrfs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -174,7 +156,7 @@ std::string IpDomain::Vrfs::get_segment_path() const
 
 }
 
-EntityPath IpDomain::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath IpDomain::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -197,15 +179,6 @@ EntityPath IpDomain::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpDomain::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -213,28 +186,24 @@ std::shared_ptr<Entity> IpDomain::Vrfs::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IpDomain::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpDomain::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -252,10 +221,8 @@ IpDomain::Vrfs::Vrf::Vrf()
 	,server(std::make_shared<IpDomain::Vrfs::Vrf::Server>())
 {
     hosts->parent = this;
-    children["hosts"] = hosts;
 
     server->parent = this;
-    children["server"] = server;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -288,7 +255,7 @@ std::string IpDomain::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath IpDomain::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath IpDomain::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -312,64 +279,38 @@ EntityPath IpDomain::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hosts")
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
-        else
+        if(hosts == nullptr)
         {
             hosts = std::make_shared<IpDomain::Vrfs::Vrf::Hosts>();
-            hosts->parent = this;
-            children["hosts"] = hosts;
         }
-        return children.at("hosts");
+        return hosts;
     }
 
     if(child_yang_name == "server")
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
-        else
+        if(server == nullptr)
         {
             server = std::make_shared<IpDomain::Vrfs::Vrf::Server>();
-            server->parent = this;
-            children["server"] = server;
         }
-        return children.at("server");
+        return server;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpDomain::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::get_children() const
 {
-    if(children.find("hosts") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(hosts != nullptr)
     {
-        if(hosts != nullptr)
-        {
-            children["hosts"] = hosts;
-        }
+        children["hosts"] = hosts;
     }
 
-    if(children.find("server") == children.end())
+    if(server != nullptr)
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
+        children["server"] = server;
     }
 
     return children;
@@ -439,7 +380,7 @@ std::string IpDomain::Vrfs::Vrf::Server::get_segment_path() const
 
 }
 
-EntityPath IpDomain::Vrfs::Vrf::Server::get_entity_path(Entity* ancestor) const
+const EntityPath IpDomain::Vrfs::Vrf::Server::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -466,15 +407,6 @@ EntityPath IpDomain::Vrfs::Vrf::Server::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "server-address")
     {
         for(auto const & c : server_address)
@@ -482,28 +414,24 @@ std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Server::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IpDomain::Vrfs::Vrf::Server::ServerAddress>();
         c->parent = this;
-        server_address.push_back(std::move(c));
-        children[segment_path] = server_address.back();
-        return children.at(segment_path);
+        server_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpDomain::Vrfs::Vrf::Server::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Server::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : server_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -562,7 +490,7 @@ std::string IpDomain::Vrfs::Vrf::Server::ServerAddress::get_segment_path() const
 
 }
 
-EntityPath IpDomain::Vrfs::Vrf::Server::ServerAddress::get_entity_path(Entity* ancestor) const
+const EntityPath IpDomain::Vrfs::Vrf::Server::ServerAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -588,20 +516,12 @@ EntityPath IpDomain::Vrfs::Vrf::Server::ServerAddress::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Server::ServerAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpDomain::Vrfs::Vrf::Server::ServerAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Server::ServerAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -659,7 +579,7 @@ std::string IpDomain::Vrfs::Vrf::Hosts::get_segment_path() const
 
 }
 
-EntityPath IpDomain::Vrfs::Vrf::Hosts::get_entity_path(Entity* ancestor) const
+const EntityPath IpDomain::Vrfs::Vrf::Hosts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -682,15 +602,6 @@ EntityPath IpDomain::Vrfs::Vrf::Hosts::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "host")
     {
         for(auto const & c : host)
@@ -698,28 +609,24 @@ std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Hosts::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IpDomain::Vrfs::Vrf::Hosts::Host>();
         c->parent = this;
-        host.push_back(std::move(c));
-        children[segment_path] = host.back();
-        return children.at(segment_path);
+        host.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpDomain::Vrfs::Vrf::Hosts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Hosts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : host)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -738,7 +645,6 @@ IpDomain::Vrfs::Vrf::Hosts::Host::Host()
     host_alias_list(std::make_shared<IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList>())
 {
     host_alias_list->parent = this;
-    children["host-alias-list"] = host_alias_list;
 
     yang_name = "host"; yang_parent_name = "hosts";
 }
@@ -783,7 +689,7 @@ std::string IpDomain::Vrfs::Vrf::Hosts::Host::get_segment_path() const
 
 }
 
-EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::get_entity_path(Entity* ancestor) const
+const EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -809,15 +715,6 @@ EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "host-address")
     {
         for(auto const & c : host_address)
@@ -825,51 +722,38 @@ std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Hosts::Host::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress>();
         c->parent = this;
-        host_address.push_back(std::move(c));
-        children[segment_path] = host_address.back();
-        return children.at(segment_path);
+        host_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "host-alias-list")
     {
-        if(host_alias_list != nullptr)
-        {
-            children["host-alias-list"] = host_alias_list;
-        }
-        else
+        if(host_alias_list == nullptr)
         {
             host_alias_list = std::make_shared<IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList>();
-            host_alias_list->parent = this;
-            children["host-alias-list"] = host_alias_list;
         }
-        return children.at("host-alias-list");
+        return host_alias_list;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpDomain::Vrfs::Vrf::Hosts::Host::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Hosts::Host::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : host_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("host-alias-list") == children.end())
+    if(host_alias_list != nullptr)
     {
-        if(host_alias_list != nullptr)
-        {
-            children["host-alias-list"] = host_alias_list;
-        }
+        children["host-alias-list"] = host_alias_list;
     }
 
     return children;
@@ -932,7 +816,7 @@ std::string IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::get_segment_path() 
 
 }
 
-EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::get_entity_path(Entity* ancestor) const
+const EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -957,20 +841,12 @@ EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::get_entity_path(Enti
 
 std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1019,7 +895,7 @@ std::string IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress::get_segment_path() co
 
 }
 
-EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress::get_entity_path(Entity* ancestor) const
+const EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1045,20 +921,12 @@ EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress::get_entity_path(Entity
 
 std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

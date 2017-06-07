@@ -16,13 +16,10 @@ Rip::Rip()
 	,vrfs(std::make_shared<Rip::Vrfs>())
 {
     default_vrf->parent = this;
-    children["default-vrf"] = default_vrf;
 
     protocol->parent = this;
-    children["protocol"] = protocol;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "rip"; yang_parent_name = "Cisco-IOS-XR-ip-rip-oper";
 }
@@ -55,12 +52,12 @@ std::string Rip::get_segment_path() const
 
 }
 
-EntityPath Rip::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -75,87 +72,52 @@ EntityPath Rip::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-vrf")
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
-        else
+        if(default_vrf == nullptr)
         {
             default_vrf = std::make_shared<Rip::DefaultVrf>();
-            default_vrf->parent = this;
-            children["default-vrf"] = default_vrf;
         }
-        return children.at("default-vrf");
+        return default_vrf;
     }
 
     if(child_yang_name == "protocol")
     {
-        if(protocol != nullptr)
-        {
-            children["protocol"] = protocol;
-        }
-        else
+        if(protocol == nullptr)
         {
             protocol = std::make_shared<Rip::Protocol>();
-            protocol->parent = this;
-            children["protocol"] = protocol;
         }
-        return children.at("protocol");
+        return protocol;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Rip::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::get_children() const
 {
-    if(children.find("default-vrf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_vrf != nullptr)
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
+        children["default-vrf"] = default_vrf;
     }
 
-    if(children.find("protocol") == children.end())
+    if(protocol != nullptr)
     {
-        if(protocol != nullptr)
-        {
-            children["protocol"] = protocol;
-        }
+        children["protocol"] = protocol;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -223,7 +185,7 @@ std::string Rip::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -246,15 +208,6 @@ EntityPath Rip::Vrfs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -262,28 +215,24 @@ std::shared_ptr<Entity> Rip::Vrfs::get_child_by_name(const std::string & child_y
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -304,19 +253,14 @@ Rip::Vrfs::Vrf::Vrf()
 	,statistics(std::make_shared<Rip::Vrfs::Vrf::Statistics>())
 {
     configuration->parent = this;
-    children["configuration"] = configuration;
 
     global->parent = this;
-    children["global"] = global;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     routes->parent = this;
-    children["routes"] = routes;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -355,7 +299,7 @@ std::string Rip::Vrfs::Vrf::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -379,133 +323,80 @@ EntityPath Rip::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "configuration")
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
-        else
+        if(configuration == nullptr)
         {
             configuration = std::make_shared<Rip::Vrfs::Vrf::Configuration>();
-            configuration->parent = this;
-            children["configuration"] = configuration;
         }
-        return children.at("configuration");
+        return configuration;
     }
 
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<Rip::Vrfs::Vrf::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Rip::Vrfs::Vrf::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<Rip::Vrfs::Vrf::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Rip::Vrfs::Vrf::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::get_children() const
 {
-    if(children.find("configuration") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(configuration != nullptr)
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
+        children["configuration"] = configuration;
     }
 
-    if(children.find("global") == children.end())
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("routes") == children.end())
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -557,7 +448,7 @@ std::string Rip::Vrfs::Vrf::Routes::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -580,15 +471,6 @@ EntityPath Rip::Vrfs::Vrf::Routes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -596,28 +478,24 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -707,7 +585,7 @@ std::string Rip::Vrfs::Vrf::Routes::Route::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -744,15 +622,6 @@ EntityPath Rip::Vrfs::Vrf::Routes::Route::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "paths")
     {
         for(auto const & c : paths)
@@ -760,28 +629,24 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::Route::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Routes::Route::Paths>();
         c->parent = this;
-        paths.push_back(std::move(c));
-        children[segment_path] = paths.back();
-        return children.at(segment_path);
+        paths.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Routes::Route::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : paths)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -896,7 +761,7 @@ std::string Rip::Vrfs::Vrf::Routes::Route::Paths::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Routes::Route::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Routes::Route::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -926,20 +791,12 @@ EntityPath Rip::Vrfs::Vrf::Routes::Route::Paths::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::Route::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Routes::Route::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Routes::Route::Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1060,7 +917,7 @@ std::string Rip::Vrfs::Vrf::Configuration::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Configuration::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Configuration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1102,20 +959,12 @@ EntityPath Rip::Vrfs::Vrf::Configuration::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Configuration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Configuration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1266,7 +1115,7 @@ std::string Rip::Vrfs::Vrf::Statistics::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1302,20 +1151,12 @@ EntityPath Rip::Vrfs::Vrf::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1413,7 +1254,7 @@ std::string Rip::Vrfs::Vrf::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1436,15 +1277,6 @@ EntityPath Rip::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -1452,28 +1284,24 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1621,7 +1449,7 @@ std::string Rip::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1674,15 +1502,6 @@ EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rip-peer")
     {
         for(auto const & c : rip_peer)
@@ -1690,15 +1509,13 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer>();
         c->parent = this;
-        rip_peer.push_back(std::move(c));
-        children[segment_path] = rip_peer.back();
-        return children.at(segment_path);
+        rip_peer.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rip-summary")
@@ -1708,36 +1525,29 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary>();
         c->parent = this;
-        rip_summary.push_back(std::move(c));
-        children[segment_path] = rip_summary.back();
-        return children.at(segment_path);
+        rip_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rip_peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : rip_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1907,7 +1717,7 @@ std::string Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_segment_path(
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1934,20 +1744,12 @@ EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_entity_path(En
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2014,7 +1816,7 @@ std::string Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_segment_path() c
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2042,20 +1844,12 @@ EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_entity_path(Entit
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2088,7 +1882,6 @@ Rip::Vrfs::Vrf::Global::Global()
     vrf_summary(std::make_shared<Rip::Vrfs::Vrf::Global::VrfSummary>())
 {
     vrf_summary->parent = this;
-    children["vrf-summary"] = vrf_summary;
 
     yang_name = "global"; yang_parent_name = "vrf";
 }
@@ -2127,7 +1920,7 @@ std::string Rip::Vrfs::Vrf::Global::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Global::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2150,15 +1943,6 @@ EntityPath Rip::Vrfs::Vrf::Global::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-summary")
     {
         for(auto const & c : interface_summary)
@@ -2166,51 +1950,38 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Global::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Global::InterfaceSummary>();
         c->parent = this;
-        interface_summary.push_back(std::move(c));
-        children[segment_path] = interface_summary.back();
-        return children.at(segment_path);
+        interface_summary.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-summary")
     {
-        if(vrf_summary != nullptr)
-        {
-            children["vrf-summary"] = vrf_summary;
-        }
-        else
+        if(vrf_summary == nullptr)
         {
             vrf_summary = std::make_shared<Rip::Vrfs::Vrf::Global::VrfSummary>();
-            vrf_summary->parent = this;
-            children["vrf-summary"] = vrf_summary;
         }
-        return children.at("vrf-summary");
+        return vrf_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Global::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("vrf-summary") == children.end())
+    if(vrf_summary != nullptr)
     {
-        if(vrf_summary != nullptr)
-        {
-            children["vrf-summary"] = vrf_summary;
-        }
+        children["vrf-summary"] = vrf_summary;
     }
 
     return children;
@@ -2284,7 +2055,7 @@ std::string Rip::Vrfs::Vrf::Global::VrfSummary::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Global::VrfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Global::VrfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2319,20 +2090,12 @@ EntityPath Rip::Vrfs::Vrf::Global::VrfSummary::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Global::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Global::VrfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Global::VrfSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2443,7 +2206,7 @@ std::string Rip::Vrfs::Vrf::Global::InterfaceSummary::get_segment_path() const
 
 }
 
-EntityPath Rip::Vrfs::Vrf::Global::InterfaceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Vrfs::Vrf::Global::InterfaceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2475,20 +2238,12 @@ EntityPath Rip::Vrfs::Vrf::Global::InterfaceSummary::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Rip::Vrfs::Vrf::Global::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Vrfs::Vrf::Global::InterfaceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Global::InterfaceSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2538,10 +2293,8 @@ Rip::Protocol::Protocol()
 	,process(std::make_shared<Rip::Protocol::Process>())
 {
     default_vrf->parent = this;
-    children["default-vrf"] = default_vrf;
 
     process->parent = this;
-    children["process"] = process;
 
     yang_name = "protocol"; yang_parent_name = "rip";
 }
@@ -2572,7 +2325,7 @@ std::string Rip::Protocol::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2595,64 +2348,38 @@ EntityPath Rip::Protocol::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-vrf")
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
-        else
+        if(default_vrf == nullptr)
         {
             default_vrf = std::make_shared<Rip::Protocol::DefaultVrf>();
-            default_vrf->parent = this;
-            children["default-vrf"] = default_vrf;
         }
-        return children.at("default-vrf");
+        return default_vrf;
     }
 
     if(child_yang_name == "process")
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
-        else
+        if(process == nullptr)
         {
             process = std::make_shared<Rip::Protocol::Process>();
-            process->parent = this;
-            children["process"] = process;
         }
-        return children.at("process");
+        return process;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::get_children() const
 {
-    if(children.find("default-vrf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_vrf != nullptr)
     {
-        if(default_vrf != nullptr)
-        {
-            children["default-vrf"] = default_vrf;
-        }
+        children["default-vrf"] = default_vrf;
     }
 
-    if(children.find("process") == children.end())
+    if(process != nullptr)
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
+        children["process"] = process;
     }
 
     return children;
@@ -2718,7 +2445,7 @@ std::string Rip::Protocol::Process::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::Process::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::Process::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2747,15 +2474,6 @@ EntityPath Rip::Protocol::Process::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::Protocol::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf-summary")
     {
         for(auto const & c : vrf_summary)
@@ -2763,28 +2481,24 @@ std::shared_ptr<Entity> Rip::Protocol::Process::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Protocol::Process::VrfSummary>();
         c->parent = this;
-        vrf_summary.push_back(std::move(c));
-        children[segment_path] = vrf_summary.back();
-        return children.at(segment_path);
+        vrf_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::Process::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::Process::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2882,7 +2596,7 @@ std::string Rip::Protocol::Process::VrfSummary::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::Process::VrfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::Process::VrfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2917,20 +2631,12 @@ EntityPath Rip::Protocol::Process::VrfSummary::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Rip::Protocol::Process::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::Process::VrfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::Process::VrfSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2995,19 +2701,14 @@ Rip::Protocol::DefaultVrf::DefaultVrf()
 	,statistics(std::make_shared<Rip::Protocol::DefaultVrf::Statistics>())
 {
     configuration->parent = this;
-    children["configuration"] = configuration;
 
     global->parent = this;
-    children["global"] = global;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     routes->parent = this;
-    children["routes"] = routes;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "default-vrf"; yang_parent_name = "protocol";
 }
@@ -3044,7 +2745,7 @@ std::string Rip::Protocol::DefaultVrf::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3067,133 +2768,80 @@ EntityPath Rip::Protocol::DefaultVrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "configuration")
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
-        else
+        if(configuration == nullptr)
         {
             configuration = std::make_shared<Rip::Protocol::DefaultVrf::Configuration>();
-            configuration->parent = this;
-            children["configuration"] = configuration;
         }
-        return children.at("configuration");
+        return configuration;
     }
 
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<Rip::Protocol::DefaultVrf::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<Rip::Protocol::DefaultVrf::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Rip::Protocol::DefaultVrf::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::get_children() const
 {
-    if(children.find("configuration") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(configuration != nullptr)
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
+        children["configuration"] = configuration;
     }
 
-    if(children.find("global") == children.end())
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("routes") == children.end())
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -3241,7 +2889,7 @@ std::string Rip::Protocol::DefaultVrf::Routes::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3264,15 +2912,6 @@ EntityPath Rip::Protocol::DefaultVrf::Routes::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -3280,28 +2919,24 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3391,7 +3026,7 @@ std::string Rip::Protocol::DefaultVrf::Routes::Route::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3428,15 +3063,6 @@ EntityPath Rip::Protocol::DefaultVrf::Routes::Route::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "paths")
     {
         for(auto const & c : paths)
@@ -3444,28 +3070,24 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::Route::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Routes::Route::Paths>();
         c->parent = this;
-        paths.push_back(std::move(c));
-        children[segment_path] = paths.back();
-        return children.at(segment_path);
+        paths.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Routes::Route::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : paths)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3580,7 +3202,7 @@ std::string Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_segment_path() 
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3610,20 +3232,12 @@ EntityPath Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_entity_path(Enti
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3744,7 +3358,7 @@ std::string Rip::Protocol::DefaultVrf::Configuration::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Configuration::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Configuration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3786,20 +3400,12 @@ EntityPath Rip::Protocol::DefaultVrf::Configuration::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Configuration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Configuration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3950,7 +3556,7 @@ std::string Rip::Protocol::DefaultVrf::Statistics::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3986,20 +3592,12 @@ EntityPath Rip::Protocol::DefaultVrf::Statistics::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4097,7 +3695,7 @@ std::string Rip::Protocol::DefaultVrf::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4120,15 +3718,6 @@ EntityPath Rip::Protocol::DefaultVrf::Interfaces::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -4136,28 +3725,24 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4305,7 +3890,7 @@ std::string Rip::Protocol::DefaultVrf::Interfaces::Interface::get_segment_path()
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4358,15 +3943,6 @@ EntityPath Rip::Protocol::DefaultVrf::Interfaces::Interface::get_entity_path(Ent
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rip-peer")
     {
         for(auto const & c : rip_peer)
@@ -4374,15 +3950,13 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer>();
         c->parent = this;
-        rip_peer.push_back(std::move(c));
-        children[segment_path] = rip_peer.back();
-        return children.at(segment_path);
+        rip_peer.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rip-summary")
@@ -4392,36 +3966,29 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary>();
         c->parent = this;
-        rip_summary.push_back(std::move(c));
-        children[segment_path] = rip_summary.back();
-        return children.at(segment_path);
+        rip_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rip_peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : rip_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4591,7 +4158,7 @@ std::string Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_se
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4618,20 +4185,12 @@ EntityPath Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_ent
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4698,7 +4257,7 @@ std::string Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_segme
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4726,20 +4285,12 @@ EntityPath Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_entity
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4772,7 +4323,6 @@ Rip::Protocol::DefaultVrf::Global::Global()
     vrf_summary(std::make_shared<Rip::Protocol::DefaultVrf::Global::VrfSummary>())
 {
     vrf_summary->parent = this;
-    children["vrf-summary"] = vrf_summary;
 
     yang_name = "global"; yang_parent_name = "default-vrf";
 }
@@ -4811,7 +4361,7 @@ std::string Rip::Protocol::DefaultVrf::Global::get_segment_path() const
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Global::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4834,15 +4384,6 @@ EntityPath Rip::Protocol::DefaultVrf::Global::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-summary")
     {
         for(auto const & c : interface_summary)
@@ -4850,51 +4391,38 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Global::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::Protocol::DefaultVrf::Global::InterfaceSummary>();
         c->parent = this;
-        interface_summary.push_back(std::move(c));
-        children[segment_path] = interface_summary.back();
-        return children.at(segment_path);
+        interface_summary.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-summary")
     {
-        if(vrf_summary != nullptr)
-        {
-            children["vrf-summary"] = vrf_summary;
-        }
-        else
+        if(vrf_summary == nullptr)
         {
             vrf_summary = std::make_shared<Rip::Protocol::DefaultVrf::Global::VrfSummary>();
-            vrf_summary->parent = this;
-            children["vrf-summary"] = vrf_summary;
         }
-        return children.at("vrf-summary");
+        return vrf_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Global::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("vrf-summary") == children.end())
+    if(vrf_summary != nullptr)
     {
-        if(vrf_summary != nullptr)
-        {
-            children["vrf-summary"] = vrf_summary;
-        }
+        children["vrf-summary"] = vrf_summary;
     }
 
     return children;
@@ -4968,7 +4496,7 @@ std::string Rip::Protocol::DefaultVrf::Global::VrfSummary::get_segment_path() co
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Global::VrfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Global::VrfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5003,20 +4531,12 @@ EntityPath Rip::Protocol::DefaultVrf::Global::VrfSummary::get_entity_path(Entity
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Global::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Global::VrfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Global::VrfSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5127,7 +4647,7 @@ std::string Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_segment_pat
 
 }
 
-EntityPath Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5159,20 +4679,12 @@ EntityPath Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_entity_path(
 
 std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5225,19 +4737,14 @@ Rip::DefaultVrf::DefaultVrf()
 	,statistics(std::make_shared<Rip::DefaultVrf::Statistics>())
 {
     configuration->parent = this;
-    children["configuration"] = configuration;
 
     global->parent = this;
-    children["global"] = global;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     routes->parent = this;
-    children["routes"] = routes;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "default-vrf"; yang_parent_name = "rip";
 }
@@ -5274,7 +4781,7 @@ std::string Rip::DefaultVrf::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5297,133 +4804,80 @@ EntityPath Rip::DefaultVrf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "configuration")
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
-        else
+        if(configuration == nullptr)
         {
             configuration = std::make_shared<Rip::DefaultVrf::Configuration>();
-            configuration->parent = this;
-            children["configuration"] = configuration;
         }
-        return children.at("configuration");
+        return configuration;
     }
 
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<Rip::DefaultVrf::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Rip::DefaultVrf::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "routes")
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
-        else
+        if(routes == nullptr)
         {
             routes = std::make_shared<Rip::DefaultVrf::Routes>();
-            routes->parent = this;
-            children["routes"] = routes;
         }
-        return children.at("routes");
+        return routes;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Rip::DefaultVrf::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::get_children() const
 {
-    if(children.find("configuration") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(configuration != nullptr)
     {
-        if(configuration != nullptr)
-        {
-            children["configuration"] = configuration;
-        }
+        children["configuration"] = configuration;
     }
 
-    if(children.find("global") == children.end())
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("routes") == children.end())
+    if(routes != nullptr)
     {
-        if(routes != nullptr)
-        {
-            children["routes"] = routes;
-        }
+        children["routes"] = routes;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -5471,7 +4925,7 @@ std::string Rip::DefaultVrf::Routes::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Routes::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Routes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5494,15 +4948,6 @@ EntityPath Rip::DefaultVrf::Routes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route")
     {
         for(auto const & c : route)
@@ -5510,28 +4955,24 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Routes::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::DefaultVrf::Routes::Route>();
         c->parent = this;
-        route.push_back(std::move(c));
-        children[segment_path] = route.back();
-        return children.at(segment_path);
+        route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Routes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Routes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5621,7 +5062,7 @@ std::string Rip::DefaultVrf::Routes::Route::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Routes::Route::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Routes::Route::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5658,15 +5099,6 @@ EntityPath Rip::DefaultVrf::Routes::Route::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "paths")
     {
         for(auto const & c : paths)
@@ -5674,28 +5106,24 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Routes::Route::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::DefaultVrf::Routes::Route::Paths>();
         c->parent = this;
-        paths.push_back(std::move(c));
-        children[segment_path] = paths.back();
-        return children.at(segment_path);
+        paths.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Routes::Route::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Routes::Route::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : paths)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5810,7 +5238,7 @@ std::string Rip::DefaultVrf::Routes::Route::Paths::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Routes::Route::Paths::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Routes::Route::Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5840,20 +5268,12 @@ EntityPath Rip::DefaultVrf::Routes::Route::Paths::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Routes::Route::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Routes::Route::Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Routes::Route::Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5974,7 +5394,7 @@ std::string Rip::DefaultVrf::Configuration::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Configuration::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Configuration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6016,20 +5436,12 @@ EntityPath Rip::DefaultVrf::Configuration::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Configuration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Configuration::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6180,7 +5592,7 @@ std::string Rip::DefaultVrf::Statistics::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6216,20 +5628,12 @@ EntityPath Rip::DefaultVrf::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6327,7 +5731,7 @@ std::string Rip::DefaultVrf::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6350,15 +5754,6 @@ EntityPath Rip::DefaultVrf::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -6366,28 +5761,24 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6535,7 +5926,7 @@ std::string Rip::DefaultVrf::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6588,15 +5979,6 @@ EntityPath Rip::DefaultVrf::Interfaces::Interface::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rip-peer")
     {
         for(auto const & c : rip_peer)
@@ -6604,15 +5986,13 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface::RipPeer>();
         c->parent = this;
-        rip_peer.push_back(std::move(c));
-        children[segment_path] = rip_peer.back();
-        return children.at(segment_path);
+        rip_peer.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "rip-summary")
@@ -6622,36 +6002,29 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface::RipSummary>();
         c->parent = this;
-        rip_summary.push_back(std::move(c));
-        children[segment_path] = rip_summary.back();
-        return children.at(segment_path);
+        rip_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rip_peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : rip_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6821,7 +6194,7 @@ std::string Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_segment_path
 
 }
 
-EntityPath Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6848,20 +6221,12 @@ EntityPath Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_entity_path(E
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6928,7 +6293,7 @@ std::string Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_segment_path() 
 
 }
 
-EntityPath Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6956,20 +6321,12 @@ EntityPath Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_entity_path(Enti
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7002,7 +6359,6 @@ Rip::DefaultVrf::Global::Global()
     vrf_summary(std::make_shared<Rip::DefaultVrf::Global::VrfSummary>())
 {
     vrf_summary->parent = this;
-    children["vrf-summary"] = vrf_summary;
 
     yang_name = "global"; yang_parent_name = "default-vrf";
 }
@@ -7041,7 +6397,7 @@ std::string Rip::DefaultVrf::Global::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Global::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7064,15 +6420,6 @@ EntityPath Rip::DefaultVrf::Global::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-summary")
     {
         for(auto const & c : interface_summary)
@@ -7080,51 +6427,38 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Global::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rip::DefaultVrf::Global::InterfaceSummary>();
         c->parent = this;
-        interface_summary.push_back(std::move(c));
-        children[segment_path] = interface_summary.back();
-        return children.at(segment_path);
+        interface_summary.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vrf-summary")
     {
-        if(vrf_summary != nullptr)
-        {
-            children["vrf-summary"] = vrf_summary;
-        }
-        else
+        if(vrf_summary == nullptr)
         {
             vrf_summary = std::make_shared<Rip::DefaultVrf::Global::VrfSummary>();
-            vrf_summary->parent = this;
-            children["vrf-summary"] = vrf_summary;
         }
-        return children.at("vrf-summary");
+        return vrf_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Global::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("vrf-summary") == children.end())
+    if(vrf_summary != nullptr)
     {
-        if(vrf_summary != nullptr)
-        {
-            children["vrf-summary"] = vrf_summary;
-        }
+        children["vrf-summary"] = vrf_summary;
     }
 
     return children;
@@ -7198,7 +6532,7 @@ std::string Rip::DefaultVrf::Global::VrfSummary::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Global::VrfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Global::VrfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7233,20 +6567,12 @@ EntityPath Rip::DefaultVrf::Global::VrfSummary::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Global::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Global::VrfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Global::VrfSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7357,7 +6683,7 @@ std::string Rip::DefaultVrf::Global::InterfaceSummary::get_segment_path() const
 
 }
 
-EntityPath Rip::DefaultVrf::Global::InterfaceSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rip::DefaultVrf::Global::InterfaceSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7389,20 +6715,12 @@ EntityPath Rip::DefaultVrf::Global::InterfaceSummary::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Rip::DefaultVrf::Global::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rip::DefaultVrf::Global::InterfaceSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Global::InterfaceSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

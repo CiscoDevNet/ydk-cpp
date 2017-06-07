@@ -15,10 +15,8 @@ MobileIp::MobileIp()
 	,lmas(std::make_shared<MobileIp::Lmas>())
 {
     domains->parent = this;
-    children["domains"] = domains;
 
     lmas->parent = this;
-    children["lmas"] = lmas;
 
     yang_name = "mobile-ip"; yang_parent_name = "Cisco-IOS-XR-ip-mobileip-cfg";
 }
@@ -49,12 +47,12 @@ std::string MobileIp::get_segment_path() const
 
 }
 
-EntityPath MobileIp::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath MobileIp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "domains")
     {
-        if(domains != nullptr)
-        {
-            children["domains"] = domains;
-        }
-        else
+        if(domains == nullptr)
         {
             domains = std::make_shared<MobileIp::Domains>();
-            domains->parent = this;
-            children["domains"] = domains;
         }
-        return children.at("domains");
+        return domains;
     }
 
     if(child_yang_name == "lmas")
     {
-        if(lmas != nullptr)
-        {
-            children["lmas"] = lmas;
-        }
-        else
+        if(lmas == nullptr)
         {
             lmas = std::make_shared<MobileIp::Lmas>();
-            lmas->parent = this;
-            children["lmas"] = lmas;
         }
-        return children.at("lmas");
+        return lmas;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::get_children() const
 {
-    if(children.find("domains") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(domains != nullptr)
     {
-        if(domains != nullptr)
-        {
-            children["domains"] = domains;
-        }
+        children["domains"] = domains;
     }
 
-    if(children.find("lmas") == children.end())
+    if(lmas != nullptr)
     {
-        if(lmas != nullptr)
-        {
-            children["lmas"] = lmas;
-        }
+        children["lmas"] = lmas;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string MobileIp::Domains::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Domains::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Domains::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath MobileIp::Domains::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::Domains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "domain")
     {
         for(auto const & c : domain)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> MobileIp::Domains::get_child_by_name(const std::string &
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Domains::Domain>();
         c->parent = this;
-        domain.push_back(std::move(c));
-        children[segment_path] = domain.back();
-        return children.at(segment_path);
+        domain.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Domains::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : domain)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -275,16 +234,12 @@ MobileIp::Domains::Domain::Domain()
 	,nais(std::make_shared<MobileIp::Domains::Domain::Nais>())
 {
     authenticate_option->parent = this;
-    children["authenticate-option"] = authenticate_option;
 
     lmas->parent = this;
-    children["lmas"] = lmas;
 
     mags->parent = this;
-    children["mags"] = mags;
 
     nais->parent = this;
-    children["nais"] = nais;
 
     yang_name = "domain"; yang_parent_name = "domains";
 }
@@ -323,7 +278,7 @@ std::string MobileIp::Domains::Domain::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Domains::Domain::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Domains::Domain::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -348,110 +303,66 @@ EntityPath MobileIp::Domains::Domain::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::Domains::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authenticate-option")
     {
-        if(authenticate_option != nullptr)
-        {
-            children["authenticate-option"] = authenticate_option;
-        }
-        else
+        if(authenticate_option == nullptr)
         {
             authenticate_option = std::make_shared<MobileIp::Domains::Domain::AuthenticateOption>();
-            authenticate_option->parent = this;
-            children["authenticate-option"] = authenticate_option;
         }
-        return children.at("authenticate-option");
+        return authenticate_option;
     }
 
     if(child_yang_name == "lmas")
     {
-        if(lmas != nullptr)
-        {
-            children["lmas"] = lmas;
-        }
-        else
+        if(lmas == nullptr)
         {
             lmas = std::make_shared<MobileIp::Domains::Domain::Lmas>();
-            lmas->parent = this;
-            children["lmas"] = lmas;
         }
-        return children.at("lmas");
+        return lmas;
     }
 
     if(child_yang_name == "mags")
     {
-        if(mags != nullptr)
-        {
-            children["mags"] = mags;
-        }
-        else
+        if(mags == nullptr)
         {
             mags = std::make_shared<MobileIp::Domains::Domain::Mags>();
-            mags->parent = this;
-            children["mags"] = mags;
         }
-        return children.at("mags");
+        return mags;
     }
 
     if(child_yang_name == "nais")
     {
-        if(nais != nullptr)
-        {
-            children["nais"] = nais;
-        }
-        else
+        if(nais == nullptr)
         {
             nais = std::make_shared<MobileIp::Domains::Domain::Nais>();
-            nais->parent = this;
-            children["nais"] = nais;
         }
-        return children.at("nais");
+        return nais;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Domains::Domain::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::get_children() const
 {
-    if(children.find("authenticate-option") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authenticate_option != nullptr)
     {
-        if(authenticate_option != nullptr)
-        {
-            children["authenticate-option"] = authenticate_option;
-        }
+        children["authenticate-option"] = authenticate_option;
     }
 
-    if(children.find("lmas") == children.end())
+    if(lmas != nullptr)
     {
-        if(lmas != nullptr)
-        {
-            children["lmas"] = lmas;
-        }
+        children["lmas"] = lmas;
     }
 
-    if(children.find("mags") == children.end())
+    if(mags != nullptr)
     {
-        if(mags != nullptr)
-        {
-            children["mags"] = mags;
-        }
+        children["mags"] = mags;
     }
 
-    if(children.find("nais") == children.end())
+    if(nais != nullptr)
     {
-        if(nais != nullptr)
-        {
-            children["nais"] = nais;
-        }
+        children["nais"] = nais;
     }
 
     return children;
@@ -507,7 +418,7 @@ std::string MobileIp::Domains::Domain::Mags::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Domains::Domain::Mags::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Domains::Domain::Mags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -530,15 +441,6 @@ EntityPath MobileIp::Domains::Domain::Mags::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MobileIp::Domains::Domain::Mags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mag")
     {
         for(auto const & c : mag)
@@ -546,28 +448,24 @@ std::shared_ptr<Entity> MobileIp::Domains::Domain::Mags::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Domains::Domain::Mags::Mag>();
         c->parent = this;
-        mag.push_back(std::move(c));
-        children[segment_path] = mag.back();
-        return children.at(segment_path);
+        mag.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Domains::Domain::Mags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Mags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mag)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -608,7 +506,7 @@ std::string MobileIp::Domains::Domain::Mags::Mag::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Domains::Domain::Mags::Mag::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Domains::Domain::Mags::Mag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -632,20 +530,12 @@ EntityPath MobileIp::Domains::Domain::Mags::Mag::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> MobileIp::Domains::Domain::Mags::Mag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Domains::Domain::Mags::Mag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Mags::Mag::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -695,7 +585,7 @@ std::string MobileIp::Domains::Domain::Nais::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Domains::Domain::Nais::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Domains::Domain::Nais::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -718,15 +608,6 @@ EntityPath MobileIp::Domains::Domain::Nais::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MobileIp::Domains::Domain::Nais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nai")
     {
         for(auto const & c : nai)
@@ -734,28 +615,24 @@ std::shared_ptr<Entity> MobileIp::Domains::Domain::Nais::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Domains::Domain::Nais::Nai>();
         c->parent = this;
-        nai.push_back(std::move(c));
-        children[segment_path] = nai.back();
-        return children.at(segment_path);
+        nai.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Domains::Domain::Nais::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Nais::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : nai)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -811,7 +688,7 @@ std::string MobileIp::Domains::Domain::Nais::Nai::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Domains::Domain::Nais::Nai::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Domains::Domain::Nais::Nai::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -840,20 +717,12 @@ EntityPath MobileIp::Domains::Domain::Nais::Nai::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> MobileIp::Domains::Domain::Nais::Nai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Domains::Domain::Nais::Nai::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Nais::Nai::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -919,7 +788,7 @@ std::string MobileIp::Domains::Domain::AuthenticateOption::get_segment_path() co
 
 }
 
-EntityPath MobileIp::Domains::Domain::AuthenticateOption::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Domains::Domain::AuthenticateOption::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -944,20 +813,12 @@ EntityPath MobileIp::Domains::Domain::AuthenticateOption::get_entity_path(Entity
 
 std::shared_ptr<Entity> MobileIp::Domains::Domain::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Domains::Domain::AuthenticateOption::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::AuthenticateOption::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1011,7 +872,7 @@ std::string MobileIp::Domains::Domain::Lmas::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Domains::Domain::Lmas::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Domains::Domain::Lmas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1034,15 +895,6 @@ EntityPath MobileIp::Domains::Domain::Lmas::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lma")
     {
         for(auto const & c : lma)
@@ -1050,28 +902,24 @@ std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Domains::Domain::Lmas::Lma>();
         c->parent = this;
-        lma.push_back(std::move(c));
-        children[segment_path] = lma.back();
-        return children.at(segment_path);
+        lma.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Domains::Domain::Lmas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Lmas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lma)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1112,7 +960,7 @@ std::string MobileIp::Domains::Domain::Lmas::Lma::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Domains::Domain::Lmas::Lma::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Domains::Domain::Lmas::Lma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1136,20 +984,12 @@ EntityPath MobileIp::Domains::Domain::Lmas::Lma::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Domains::Domain::Lmas::Lma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Lmas::Lma::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1199,7 +1039,7 @@ std::string MobileIp::Lmas::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1222,15 +1062,6 @@ EntityPath MobileIp::Lmas::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::Lmas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lma")
     {
         for(auto const & c : lma)
@@ -1238,28 +1069,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma>();
         c->parent = this;
-        lma.push_back(std::move(c));
-        children[segment_path] = lma.back();
-        return children.at(segment_path);
+        lma.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lma)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1271,8 +1098,8 @@ void MobileIp::Lmas::set_value(const std::string & value_path, std::string value
 
 MobileIp::Lmas::Lma::Lma()
     :
-    domain_name{YType::str, "domain-name"},
     lma_name{YType::str, "lma-name"},
+    domain_name{YType::str, "domain-name"},
     ani{YType::empty, "ani"},
     default_profile{YType::str, "default-profile"},
     dynamic{YType::empty, "dynamic"},
@@ -1302,52 +1129,36 @@ MobileIp::Lmas::Lma::Lma()
 	,tunnel_attributes(std::make_shared<MobileIp::Lmas::Lma::TunnelAttributes>())
 {
     aaa->parent = this;
-    children["aaa"] = aaa;
 
     binding_attributes->parent = this;
-    children["binding-attributes"] = binding_attributes;
 
     binding_revocation_attributes->parent = this;
-    children["binding-revocation-attributes"] = binding_revocation_attributes;
 
     dscp->parent = this;
-    children["dscp"] = dscp;
 
     heart_beat_attributes->parent = this;
-    children["heart-beat-attributes"] = heart_beat_attributes;
 
     hnp->parent = this;
-    children["hnp"] = hnp;
 
     lmaipv4_addresses->parent = this;
-    children["lmaipv4-addresses"] = lmaipv4_addresses;
 
     lmaipv6_addresses->parent = this;
-    children["lmaipv6-addresses"] = lmaipv6_addresses;
 
     mags->parent = this;
-    children["mags"] = mags;
 
     networks->parent = this;
-    children["networks"] = networks;
 
     rat_attributes->parent = this;
-    children["rat-attributes"] = rat_attributes;
 
     redistribute->parent = this;
-    children["redistribute"] = redistribute;
 
     replay_protection->parent = this;
-    children["replay-protection"] = replay_protection;
 
     roles->parent = this;
-    children["roles"] = roles;
 
     services->parent = this;
-    children["services"] = services;
 
     tunnel_attributes->parent = this;
-    children["tunnel-attributes"] = tunnel_attributes;
 
     yang_name = "lma"; yang_parent_name = "lmas";
 }
@@ -1358,8 +1169,8 @@ MobileIp::Lmas::Lma::~Lma()
 
 bool MobileIp::Lmas::Lma::has_data() const
 {
-    return domain_name.is_set
-	|| lma_name.is_set
+    return lma_name.is_set
+	|| domain_name.is_set
 	|| ani.is_set
 	|| default_profile.is_set
 	|| dynamic.is_set
@@ -1391,8 +1202,8 @@ bool MobileIp::Lmas::Lma::has_data() const
 bool MobileIp::Lmas::Lma::has_operation() const
 {
     return is_set(operation)
-	|| is_set(domain_name.operation)
 	|| is_set(lma_name.operation)
+	|| is_set(domain_name.operation)
 	|| is_set(ani.operation)
 	|| is_set(default_profile.operation)
 	|| is_set(dynamic.operation)
@@ -1424,13 +1235,13 @@ bool MobileIp::Lmas::Lma::has_operation() const
 std::string MobileIp::Lmas::Lma::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lma" <<"[domain-name='" <<domain_name <<"']" <<"[lma-name='" <<lma_name <<"']";
+    path_buffer << "lma" <<"[lma-name='" <<lma_name <<"']" <<"[domain-name='" <<domain_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MobileIp::Lmas::Lma::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1444,8 +1255,8 @@ EntityPath MobileIp::Lmas::Lma::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
     if (lma_name.is_set || is_set(lma_name.operation)) leaf_name_data.push_back(lma_name.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
     if (ani.is_set || is_set(ani.operation)) leaf_name_data.push_back(ani.get_name_leafdata());
     if (default_profile.is_set || is_set(default_profile.operation)) leaf_name_data.push_back(default_profile.get_name_leafdata());
     if (dynamic.is_set || is_set(dynamic.operation)) leaf_name_data.push_back(dynamic.get_name_leafdata());
@@ -1465,386 +1276,234 @@ EntityPath MobileIp::Lmas::Lma::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aaa")
     {
-        if(aaa != nullptr)
-        {
-            children["aaa"] = aaa;
-        }
-        else
+        if(aaa == nullptr)
         {
             aaa = std::make_shared<MobileIp::Lmas::Lma::Aaa>();
-            aaa->parent = this;
-            children["aaa"] = aaa;
         }
-        return children.at("aaa");
+        return aaa;
     }
 
     if(child_yang_name == "binding-attributes")
     {
-        if(binding_attributes != nullptr)
-        {
-            children["binding-attributes"] = binding_attributes;
-        }
-        else
+        if(binding_attributes == nullptr)
         {
             binding_attributes = std::make_shared<MobileIp::Lmas::Lma::BindingAttributes>();
-            binding_attributes->parent = this;
-            children["binding-attributes"] = binding_attributes;
         }
-        return children.at("binding-attributes");
+        return binding_attributes;
     }
 
     if(child_yang_name == "binding-revocation-attributes")
     {
-        if(binding_revocation_attributes != nullptr)
-        {
-            children["binding-revocation-attributes"] = binding_revocation_attributes;
-        }
-        else
+        if(binding_revocation_attributes == nullptr)
         {
             binding_revocation_attributes = std::make_shared<MobileIp::Lmas::Lma::BindingRevocationAttributes>();
-            binding_revocation_attributes->parent = this;
-            children["binding-revocation-attributes"] = binding_revocation_attributes;
         }
-        return children.at("binding-revocation-attributes");
+        return binding_revocation_attributes;
     }
 
     if(child_yang_name == "dscp")
     {
-        if(dscp != nullptr)
-        {
-            children["dscp"] = dscp;
-        }
-        else
+        if(dscp == nullptr)
         {
             dscp = std::make_shared<MobileIp::Lmas::Lma::Dscp>();
-            dscp->parent = this;
-            children["dscp"] = dscp;
         }
-        return children.at("dscp");
+        return dscp;
     }
 
     if(child_yang_name == "heart-beat-attributes")
     {
-        if(heart_beat_attributes != nullptr)
-        {
-            children["heart-beat-attributes"] = heart_beat_attributes;
-        }
-        else
+        if(heart_beat_attributes == nullptr)
         {
             heart_beat_attributes = std::make_shared<MobileIp::Lmas::Lma::HeartBeatAttributes>();
-            heart_beat_attributes->parent = this;
-            children["heart-beat-attributes"] = heart_beat_attributes;
         }
-        return children.at("heart-beat-attributes");
+        return heart_beat_attributes;
     }
 
     if(child_yang_name == "hnp")
     {
-        if(hnp != nullptr)
-        {
-            children["hnp"] = hnp;
-        }
-        else
+        if(hnp == nullptr)
         {
             hnp = std::make_shared<MobileIp::Lmas::Lma::Hnp>();
-            hnp->parent = this;
-            children["hnp"] = hnp;
         }
-        return children.at("hnp");
+        return hnp;
     }
 
     if(child_yang_name == "lmaipv4-addresses")
     {
-        if(lmaipv4_addresses != nullptr)
-        {
-            children["lmaipv4-addresses"] = lmaipv4_addresses;
-        }
-        else
+        if(lmaipv4_addresses == nullptr)
         {
             lmaipv4_addresses = std::make_shared<MobileIp::Lmas::Lma::Lmaipv4Addresses>();
-            lmaipv4_addresses->parent = this;
-            children["lmaipv4-addresses"] = lmaipv4_addresses;
         }
-        return children.at("lmaipv4-addresses");
+        return lmaipv4_addresses;
     }
 
     if(child_yang_name == "lmaipv6-addresses")
     {
-        if(lmaipv6_addresses != nullptr)
-        {
-            children["lmaipv6-addresses"] = lmaipv6_addresses;
-        }
-        else
+        if(lmaipv6_addresses == nullptr)
         {
             lmaipv6_addresses = std::make_shared<MobileIp::Lmas::Lma::Lmaipv6Addresses>();
-            lmaipv6_addresses->parent = this;
-            children["lmaipv6-addresses"] = lmaipv6_addresses;
         }
-        return children.at("lmaipv6-addresses");
+        return lmaipv6_addresses;
     }
 
     if(child_yang_name == "mags")
     {
-        if(mags != nullptr)
-        {
-            children["mags"] = mags;
-        }
-        else
+        if(mags == nullptr)
         {
             mags = std::make_shared<MobileIp::Lmas::Lma::Mags>();
-            mags->parent = this;
-            children["mags"] = mags;
         }
-        return children.at("mags");
+        return mags;
     }
 
     if(child_yang_name == "networks")
     {
-        if(networks != nullptr)
-        {
-            children["networks"] = networks;
-        }
-        else
+        if(networks == nullptr)
         {
             networks = std::make_shared<MobileIp::Lmas::Lma::Networks>();
-            networks->parent = this;
-            children["networks"] = networks;
         }
-        return children.at("networks");
+        return networks;
     }
 
     if(child_yang_name == "rat-attributes")
     {
-        if(rat_attributes != nullptr)
-        {
-            children["rat-attributes"] = rat_attributes;
-        }
-        else
+        if(rat_attributes == nullptr)
         {
             rat_attributes = std::make_shared<MobileIp::Lmas::Lma::RatAttributes>();
-            rat_attributes->parent = this;
-            children["rat-attributes"] = rat_attributes;
         }
-        return children.at("rat-attributes");
+        return rat_attributes;
     }
 
     if(child_yang_name == "redistribute")
     {
-        if(redistribute != nullptr)
-        {
-            children["redistribute"] = redistribute;
-        }
-        else
+        if(redistribute == nullptr)
         {
             redistribute = std::make_shared<MobileIp::Lmas::Lma::Redistribute>();
-            redistribute->parent = this;
-            children["redistribute"] = redistribute;
         }
-        return children.at("redistribute");
+        return redistribute;
     }
 
     if(child_yang_name == "replay-protection")
     {
-        if(replay_protection != nullptr)
-        {
-            children["replay-protection"] = replay_protection;
-        }
-        else
+        if(replay_protection == nullptr)
         {
             replay_protection = std::make_shared<MobileIp::Lmas::Lma::ReplayProtection>();
-            replay_protection->parent = this;
-            children["replay-protection"] = replay_protection;
         }
-        return children.at("replay-protection");
+        return replay_protection;
     }
 
     if(child_yang_name == "roles")
     {
-        if(roles != nullptr)
-        {
-            children["roles"] = roles;
-        }
-        else
+        if(roles == nullptr)
         {
             roles = std::make_shared<MobileIp::Lmas::Lma::Roles>();
-            roles->parent = this;
-            children["roles"] = roles;
         }
-        return children.at("roles");
+        return roles;
     }
 
     if(child_yang_name == "services")
     {
-        if(services != nullptr)
-        {
-            children["services"] = services;
-        }
-        else
+        if(services == nullptr)
         {
             services = std::make_shared<MobileIp::Lmas::Lma::Services>();
-            services->parent = this;
-            children["services"] = services;
         }
-        return children.at("services");
+        return services;
     }
 
     if(child_yang_name == "tunnel-attributes")
     {
-        if(tunnel_attributes != nullptr)
-        {
-            children["tunnel-attributes"] = tunnel_attributes;
-        }
-        else
+        if(tunnel_attributes == nullptr)
         {
             tunnel_attributes = std::make_shared<MobileIp::Lmas::Lma::TunnelAttributes>();
-            tunnel_attributes->parent = this;
-            children["tunnel-attributes"] = tunnel_attributes;
         }
-        return children.at("tunnel-attributes");
+        return tunnel_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::get_children() const
 {
-    if(children.find("aaa") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aaa != nullptr)
     {
-        if(aaa != nullptr)
-        {
-            children["aaa"] = aaa;
-        }
+        children["aaa"] = aaa;
     }
 
-    if(children.find("binding-attributes") == children.end())
+    if(binding_attributes != nullptr)
     {
-        if(binding_attributes != nullptr)
-        {
-            children["binding-attributes"] = binding_attributes;
-        }
+        children["binding-attributes"] = binding_attributes;
     }
 
-    if(children.find("binding-revocation-attributes") == children.end())
+    if(binding_revocation_attributes != nullptr)
     {
-        if(binding_revocation_attributes != nullptr)
-        {
-            children["binding-revocation-attributes"] = binding_revocation_attributes;
-        }
+        children["binding-revocation-attributes"] = binding_revocation_attributes;
     }
 
-    if(children.find("dscp") == children.end())
+    if(dscp != nullptr)
     {
-        if(dscp != nullptr)
-        {
-            children["dscp"] = dscp;
-        }
+        children["dscp"] = dscp;
     }
 
-    if(children.find("heart-beat-attributes") == children.end())
+    if(heart_beat_attributes != nullptr)
     {
-        if(heart_beat_attributes != nullptr)
-        {
-            children["heart-beat-attributes"] = heart_beat_attributes;
-        }
+        children["heart-beat-attributes"] = heart_beat_attributes;
     }
 
-    if(children.find("hnp") == children.end())
+    if(hnp != nullptr)
     {
-        if(hnp != nullptr)
-        {
-            children["hnp"] = hnp;
-        }
+        children["hnp"] = hnp;
     }
 
-    if(children.find("lmaipv4-addresses") == children.end())
+    if(lmaipv4_addresses != nullptr)
     {
-        if(lmaipv4_addresses != nullptr)
-        {
-            children["lmaipv4-addresses"] = lmaipv4_addresses;
-        }
+        children["lmaipv4-addresses"] = lmaipv4_addresses;
     }
 
-    if(children.find("lmaipv6-addresses") == children.end())
+    if(lmaipv6_addresses != nullptr)
     {
-        if(lmaipv6_addresses != nullptr)
-        {
-            children["lmaipv6-addresses"] = lmaipv6_addresses;
-        }
+        children["lmaipv6-addresses"] = lmaipv6_addresses;
     }
 
-    if(children.find("mags") == children.end())
+    if(mags != nullptr)
     {
-        if(mags != nullptr)
-        {
-            children["mags"] = mags;
-        }
+        children["mags"] = mags;
     }
 
-    if(children.find("networks") == children.end())
+    if(networks != nullptr)
     {
-        if(networks != nullptr)
-        {
-            children["networks"] = networks;
-        }
+        children["networks"] = networks;
     }
 
-    if(children.find("rat-attributes") == children.end())
+    if(rat_attributes != nullptr)
     {
-        if(rat_attributes != nullptr)
-        {
-            children["rat-attributes"] = rat_attributes;
-        }
+        children["rat-attributes"] = rat_attributes;
     }
 
-    if(children.find("redistribute") == children.end())
+    if(redistribute != nullptr)
     {
-        if(redistribute != nullptr)
-        {
-            children["redistribute"] = redistribute;
-        }
+        children["redistribute"] = redistribute;
     }
 
-    if(children.find("replay-protection") == children.end())
+    if(replay_protection != nullptr)
     {
-        if(replay_protection != nullptr)
-        {
-            children["replay-protection"] = replay_protection;
-        }
+        children["replay-protection"] = replay_protection;
     }
 
-    if(children.find("roles") == children.end())
+    if(roles != nullptr)
     {
-        if(roles != nullptr)
-        {
-            children["roles"] = roles;
-        }
+        children["roles"] = roles;
     }
 
-    if(children.find("services") == children.end())
+    if(services != nullptr)
     {
-        if(services != nullptr)
-        {
-            children["services"] = services;
-        }
+        children["services"] = services;
     }
 
-    if(children.find("tunnel-attributes") == children.end())
+    if(tunnel_attributes != nullptr)
     {
-        if(tunnel_attributes != nullptr)
-        {
-            children["tunnel-attributes"] = tunnel_attributes;
-        }
+        children["tunnel-attributes"] = tunnel_attributes;
     }
 
     return children;
@@ -1852,13 +1511,13 @@ std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::get_childr
 
 void MobileIp::Lmas::Lma::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "domain-name")
-    {
-        domain_name = value;
-    }
     if(value_path == "lma-name")
     {
         lma_name = value;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name = value;
     }
     if(value_path == "ani")
     {
@@ -1909,7 +1568,6 @@ MobileIp::Lmas::Lma::BindingRevocationAttributes::BindingRevocationAttributes()
     delay(std::make_shared<MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay>())
 {
     delay->parent = this;
-    children["delay"] = delay;
 
     yang_name = "binding-revocation-attributes"; yang_parent_name = "lma";
 }
@@ -1940,7 +1598,7 @@ std::string MobileIp::Lmas::Lma::BindingRevocationAttributes::get_segment_path()
 
 }
 
-EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1964,41 +1622,24 @@ EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::get_entity_path(Ent
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "delay")
     {
-        if(delay != nullptr)
-        {
-            children["delay"] = delay;
-        }
-        else
+        if(delay == nullptr)
         {
             delay = std::make_shared<MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay>();
-            delay->parent = this;
-            children["delay"] = delay;
         }
-        return children.at("delay");
+        return delay;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::BindingRevocationAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_children() const
 {
-    if(children.find("delay") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(delay != nullptr)
     {
-        if(delay != nullptr)
-        {
-            children["delay"] = delay;
-        }
+        children["delay"] = delay;
     }
 
     return children;
@@ -2046,7 +1687,7 @@ std::string MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_segment
 
 }
 
-EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2071,20 +1712,12 @@ EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_entity_p
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2134,7 +1767,7 @@ std::string MobileIp::Lmas::Lma::RatAttributes::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::RatAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::RatAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2159,20 +1792,12 @@ EntityPath MobileIp::Lmas::Lma::RatAttributes::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::RatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::RatAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::RatAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2225,7 +1850,7 @@ std::string MobileIp::Lmas::Lma::HeartBeatAttributes::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::HeartBeatAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::HeartBeatAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2251,20 +1876,12 @@ EntityPath MobileIp::Lmas::Lma::HeartBeatAttributes::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::HeartBeatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::HeartBeatAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::HeartBeatAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2322,7 +1939,7 @@ std::string MobileIp::Lmas::Lma::Lmaipv6Addresses::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2345,15 +1962,6 @@ EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lmaipv6-address")
     {
         for(auto const & c : lmaipv6_address)
@@ -2361,28 +1969,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address>();
         c->parent = this;
-        lmaipv6_address.push_back(std::move(c));
-        children[segment_path] = lmaipv6_address.back();
-        return children.at(segment_path);
+        lmaipv6_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Lmaipv6Addresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lmaipv6_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2423,7 +2027,7 @@ std::string MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_segment_p
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2447,20 +2051,12 @@ EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_entity_pat
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2503,7 +2099,7 @@ std::string MobileIp::Lmas::Lma::Hnp::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Hnp::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Hnp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2527,20 +2123,12 @@ EntityPath MobileIp::Lmas::Lma::Hnp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Hnp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Hnp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Hnp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2586,7 +2174,7 @@ std::string MobileIp::Lmas::Lma::Redistribute::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Redistribute::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Redistribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2611,20 +2199,12 @@ EntityPath MobileIp::Lmas::Lma::Redistribute::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Redistribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Redistribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2674,7 +2254,7 @@ std::string MobileIp::Lmas::Lma::Dscp::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Dscp::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Dscp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2699,20 +2279,12 @@ EntityPath MobileIp::Lmas::Lma::Dscp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Dscp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Dscp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2766,7 +2338,7 @@ std::string MobileIp::Lmas::Lma::Lmaipv4Addresses::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2789,15 +2361,6 @@ EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lmaipv4-address")
     {
         for(auto const & c : lmaipv4_address)
@@ -2805,28 +2368,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address>();
         c->parent = this;
-        lmaipv4_address.push_back(std::move(c));
-        children[segment_path] = lmaipv4_address.back();
-        return children.at(segment_path);
+        lmaipv4_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Lmaipv4Addresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lmaipv4_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2867,7 +2426,7 @@ std::string MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_segment_p
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2891,20 +2450,12 @@ EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_entity_pat
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2954,7 +2505,7 @@ std::string MobileIp::Lmas::Lma::Roles::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Roles::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Roles::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2977,15 +2528,6 @@ EntityPath MobileIp::Lmas::Lma::Roles::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "role")
     {
         for(auto const & c : role)
@@ -2993,28 +2535,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Roles::Role>();
         c->parent = this;
-        role.push_back(std::move(c));
-        children[segment_path] = role.back();
-        return children.at(segment_path);
+        role.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Roles::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Roles::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : role)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3055,7 +2593,7 @@ std::string MobileIp::Lmas::Lma::Roles::Role::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Roles::Role::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Roles::Role::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3079,20 +2617,12 @@ EntityPath MobileIp::Lmas::Lma::Roles::Role::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::Role::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Roles::Role::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Roles::Role::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3147,7 +2677,7 @@ std::string MobileIp::Lmas::Lma::BindingAttributes::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::BindingAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::BindingAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3175,20 +2705,12 @@ EntityPath MobileIp::Lmas::Lma::BindingAttributes::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::BindingAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3250,7 +2772,7 @@ std::string MobileIp::Lmas::Lma::Aaa::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Aaa::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Aaa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3275,20 +2797,12 @@ EntityPath MobileIp::Lmas::Lma::Aaa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Aaa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Aaa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3342,7 +2856,7 @@ std::string MobileIp::Lmas::Lma::Mags::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Mags::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Mags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3365,15 +2879,6 @@ EntityPath MobileIp::Lmas::Lma::Mags::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mag")
     {
         for(auto const & c : mag)
@@ -3381,28 +2886,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Mags::Mag>();
         c->parent = this;
-        mag.push_back(std::move(c));
-        children[segment_path] = mag.back();
-        return children.at(segment_path);
+        mag.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Mags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Mags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mag)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3414,8 +2915,8 @@ void MobileIp::Lmas::Lma::Mags::set_value(const std::string & value_path, std::s
 
 MobileIp::Lmas::Lma::Mags::Mag::Mag()
     :
-    domain_name{YType::str, "domain-name"},
     mag_name{YType::str, "mag-name"},
+    domain_name{YType::str, "domain-name"},
     encap_option{YType::enumeration, "encap-option"},
     ipv4_address{YType::str, "ipv4-address"},
     ipv6_address{YType::str, "ipv6-address"},
@@ -3425,10 +2926,8 @@ MobileIp::Lmas::Lma::Mags::Mag::Mag()
 	,dscp(std::make_shared<MobileIp::Lmas::Lma::Mags::Mag::Dscp>())
 {
     authenticate_option->parent = this;
-    children["authenticate-option"] = authenticate_option;
 
     dscp->parent = this;
-    children["dscp"] = dscp;
 
     yang_name = "mag"; yang_parent_name = "mags";
 }
@@ -3439,8 +2938,8 @@ MobileIp::Lmas::Lma::Mags::Mag::~Mag()
 
 bool MobileIp::Lmas::Lma::Mags::Mag::has_data() const
 {
-    return domain_name.is_set
-	|| mag_name.is_set
+    return mag_name.is_set
+	|| domain_name.is_set
 	|| encap_option.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -3452,8 +2951,8 @@ bool MobileIp::Lmas::Lma::Mags::Mag::has_data() const
 bool MobileIp::Lmas::Lma::Mags::Mag::has_operation() const
 {
     return is_set(operation)
-	|| is_set(domain_name.operation)
 	|| is_set(mag_name.operation)
+	|| is_set(domain_name.operation)
 	|| is_set(encap_option.operation)
 	|| is_set(ipv4_address.operation)
 	|| is_set(ipv6_address.operation)
@@ -3465,13 +2964,13 @@ bool MobileIp::Lmas::Lma::Mags::Mag::has_operation() const
 std::string MobileIp::Lmas::Lma::Mags::Mag::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mag" <<"[domain-name='" <<domain_name <<"']" <<"[mag-name='" <<mag_name <<"']";
+    path_buffer << "mag" <<"[mag-name='" <<mag_name <<"']" <<"[domain-name='" <<domain_name <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Mags::Mag::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Mags::Mag::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3485,8 +2984,8 @@ EntityPath MobileIp::Lmas::Lma::Mags::Mag::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
     if (mag_name.is_set || is_set(mag_name.operation)) leaf_name_data.push_back(mag_name.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
     if (encap_option.is_set || is_set(encap_option.operation)) leaf_name_data.push_back(encap_option.get_name_leafdata());
     if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
     if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
@@ -3500,64 +2999,38 @@ EntityPath MobileIp::Lmas::Lma::Mags::Mag::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::Mag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authenticate-option")
     {
-        if(authenticate_option != nullptr)
-        {
-            children["authenticate-option"] = authenticate_option;
-        }
-        else
+        if(authenticate_option == nullptr)
         {
             authenticate_option = std::make_shared<MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption>();
-            authenticate_option->parent = this;
-            children["authenticate-option"] = authenticate_option;
         }
-        return children.at("authenticate-option");
+        return authenticate_option;
     }
 
     if(child_yang_name == "dscp")
     {
-        if(dscp != nullptr)
-        {
-            children["dscp"] = dscp;
-        }
-        else
+        if(dscp == nullptr)
         {
             dscp = std::make_shared<MobileIp::Lmas::Lma::Mags::Mag::Dscp>();
-            dscp->parent = this;
-            children["dscp"] = dscp;
         }
-        return children.at("dscp");
+        return dscp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Mags::Mag::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Mags::Mag::get_children() const
 {
-    if(children.find("authenticate-option") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authenticate_option != nullptr)
     {
-        if(authenticate_option != nullptr)
-        {
-            children["authenticate-option"] = authenticate_option;
-        }
+        children["authenticate-option"] = authenticate_option;
     }
 
-    if(children.find("dscp") == children.end())
+    if(dscp != nullptr)
     {
-        if(dscp != nullptr)
-        {
-            children["dscp"] = dscp;
-        }
+        children["dscp"] = dscp;
     }
 
     return children;
@@ -3565,13 +3038,13 @@ std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Mags::Mag:
 
 void MobileIp::Lmas::Lma::Mags::Mag::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "domain-name")
-    {
-        domain_name = value;
-    }
     if(value_path == "mag-name")
     {
         mag_name = value;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name = value;
     }
     if(value_path == "encap-option")
     {
@@ -3625,7 +3098,7 @@ std::string MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_segment_path
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3650,20 +3123,12 @@ EntityPath MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_entity_path(E
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3713,7 +3178,7 @@ std::string MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3738,20 +3203,12 @@ EntityPath MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3801,7 +3258,7 @@ std::string MobileIp::Lmas::Lma::TunnelAttributes::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::TunnelAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::TunnelAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3826,20 +3283,12 @@ EntityPath MobileIp::Lmas::Lma::TunnelAttributes::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::TunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::TunnelAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::TunnelAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3893,7 +3342,7 @@ std::string MobileIp::Lmas::Lma::Services::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3916,15 +3365,6 @@ EntityPath MobileIp::Lmas::Lma::Services::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service")
     {
         for(auto const & c : service)
@@ -3932,28 +3372,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service>();
         c->parent = this;
-        service.push_back(std::move(c));
-        children[segment_path] = service.back();
-        return children.at(segment_path);
+        service.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3977,7 +3413,6 @@ MobileIp::Lmas::Lma::Services::Service::Service()
     customers(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers>())
 {
     customers->parent = this;
-    children["customers"] = customers;
 
     yang_name = "service"; yang_parent_name = "services";
 }
@@ -4022,7 +3457,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4053,41 +3488,24 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "customers")
     {
-        if(customers != nullptr)
-        {
-            children["customers"] = customers;
-        }
-        else
+        if(customers == nullptr)
         {
             customers = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers>();
-            customers->parent = this;
-            children["customers"] = customers;
         }
-        return children.at("customers");
+        return customers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::get_children() const
 {
-    if(children.find("customers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(customers != nullptr)
     {
-        if(customers != nullptr)
-        {
-            children["customers"] = customers;
-        }
+        children["customers"] = customers;
     }
 
     return children;
@@ -4167,7 +3585,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::get_segment_path(
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4190,15 +3608,6 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::get_entity_path(En
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "customer")
     {
         for(auto const & c : customer)
@@ -4206,28 +3615,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer>();
         c->parent = this;
-        customer.push_back(std::move(c));
-        children[segment_path] = customer.back();
-        return children.at(segment_path);
+        customer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : customer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4258,22 +3663,16 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Customer()
 	,transports(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports>())
 {
     authenticate_option->parent = this;
-    children["authenticate-option"] = authenticate_option;
 
     binding_attributes->parent = this;
-    children["binding-attributes"] = binding_attributes;
 
     gre_key->parent = this;
-    children["gre-key"] = gre_key;
 
     heart_beat_attributes->parent = this;
-    children["heart-beat-attributes"] = heart_beat_attributes;
 
     network_attributes->parent = this;
-    children["network-attributes"] = network_attributes;
 
     transports->parent = this;
-    children["transports"] = transports;
 
     yang_name = "customer"; yang_parent_name = "customers";
 }
@@ -4332,7 +3731,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_seg
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4365,156 +3764,94 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_enti
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authenticate-option")
     {
-        if(authenticate_option != nullptr)
-        {
-            children["authenticate-option"] = authenticate_option;
-        }
-        else
+        if(authenticate_option == nullptr)
         {
             authenticate_option = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption>();
-            authenticate_option->parent = this;
-            children["authenticate-option"] = authenticate_option;
         }
-        return children.at("authenticate-option");
+        return authenticate_option;
     }
 
     if(child_yang_name == "binding-attributes")
     {
-        if(binding_attributes != nullptr)
-        {
-            children["binding-attributes"] = binding_attributes;
-        }
-        else
+        if(binding_attributes == nullptr)
         {
             binding_attributes = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes>();
-            binding_attributes->parent = this;
-            children["binding-attributes"] = binding_attributes;
         }
-        return children.at("binding-attributes");
+        return binding_attributes;
     }
 
     if(child_yang_name == "gre-key")
     {
-        if(gre_key != nullptr)
-        {
-            children["gre-key"] = gre_key;
-        }
-        else
+        if(gre_key == nullptr)
         {
             gre_key = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey>();
-            gre_key->parent = this;
-            children["gre-key"] = gre_key;
         }
-        return children.at("gre-key");
+        return gre_key;
     }
 
     if(child_yang_name == "heart-beat-attributes")
     {
-        if(heart_beat_attributes != nullptr)
-        {
-            children["heart-beat-attributes"] = heart_beat_attributes;
-        }
-        else
+        if(heart_beat_attributes == nullptr)
         {
             heart_beat_attributes = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes>();
-            heart_beat_attributes->parent = this;
-            children["heart-beat-attributes"] = heart_beat_attributes;
         }
-        return children.at("heart-beat-attributes");
+        return heart_beat_attributes;
     }
 
     if(child_yang_name == "network-attributes")
     {
-        if(network_attributes != nullptr)
-        {
-            children["network-attributes"] = network_attributes;
-        }
-        else
+        if(network_attributes == nullptr)
         {
             network_attributes = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes>();
-            network_attributes->parent = this;
-            children["network-attributes"] = network_attributes;
         }
-        return children.at("network-attributes");
+        return network_attributes;
     }
 
     if(child_yang_name == "transports")
     {
-        if(transports != nullptr)
-        {
-            children["transports"] = transports;
-        }
-        else
+        if(transports == nullptr)
         {
             transports = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports>();
-            transports->parent = this;
-            children["transports"] = transports;
         }
-        return children.at("transports");
+        return transports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_children() const
 {
-    if(children.find("authenticate-option") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authenticate_option != nullptr)
     {
-        if(authenticate_option != nullptr)
-        {
-            children["authenticate-option"] = authenticate_option;
-        }
+        children["authenticate-option"] = authenticate_option;
     }
 
-    if(children.find("binding-attributes") == children.end())
+    if(binding_attributes != nullptr)
     {
-        if(binding_attributes != nullptr)
-        {
-            children["binding-attributes"] = binding_attributes;
-        }
+        children["binding-attributes"] = binding_attributes;
     }
 
-    if(children.find("gre-key") == children.end())
+    if(gre_key != nullptr)
     {
-        if(gre_key != nullptr)
-        {
-            children["gre-key"] = gre_key;
-        }
+        children["gre-key"] = gre_key;
     }
 
-    if(children.find("heart-beat-attributes") == children.end())
+    if(heart_beat_attributes != nullptr)
     {
-        if(heart_beat_attributes != nullptr)
-        {
-            children["heart-beat-attributes"] = heart_beat_attributes;
-        }
+        children["heart-beat-attributes"] = heart_beat_attributes;
     }
 
-    if(children.find("network-attributes") == children.end())
+    if(network_attributes != nullptr)
     {
-        if(network_attributes != nullptr)
-        {
-            children["network-attributes"] = network_attributes;
-        }
+        children["network-attributes"] = network_attributes;
     }
 
-    if(children.find("transports") == children.end())
+    if(transports != nullptr)
     {
-        if(transports != nullptr)
-        {
-            children["transports"] = transports;
-        }
+        children["transports"] = transports;
     }
 
     return children;
@@ -4598,7 +3935,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Authent
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4623,20 +3960,12 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Authenti
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4689,7 +4018,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBe
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4715,20 +4044,12 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBea
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4786,7 +4107,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transpo
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4809,15 +4130,6 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transpor
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "transport")
     {
         for(auto const & c : transport)
@@ -4825,28 +4137,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport>();
         c->parent = this;
-        transport.push_back(std::move(c));
-        children[segment_path] = transport.back();
-        return children.at(segment_path);
+        transport.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : transport)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4893,7 +4201,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transpo
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4919,20 +4227,12 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transpor
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4959,7 +4259,6 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
     authorizes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes>())
 {
     authorizes->parent = this;
-    children["authorizes"] = authorizes;
 
     yang_name = "network-attributes"; yang_parent_name = "customer";
 }
@@ -4990,7 +4289,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5014,41 +4313,24 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authorizes")
     {
-        if(authorizes != nullptr)
-        {
-            children["authorizes"] = authorizes;
-        }
-        else
+        if(authorizes == nullptr)
         {
             authorizes = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes>();
-            authorizes->parent = this;
-            children["authorizes"] = authorizes;
         }
-        return children.at("authorizes");
+        return authorizes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_children() const
 {
-    if(children.find("authorizes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authorizes != nullptr)
     {
-        if(authorizes != nullptr)
-        {
-            children["authorizes"] = authorizes;
-        }
+        children["authorizes"] = authorizes;
     }
 
     return children;
@@ -5100,7 +4382,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5123,15 +4405,6 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authorize")
     {
         for(auto const & c : authorize)
@@ -5139,28 +4412,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize>();
         c->parent = this;
-        authorize.push_back(std::move(c));
-        children[segment_path] = authorize.back();
-        return children.at(segment_path);
+        authorize.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : authorize)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5177,7 +4446,6 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
     pool_attributes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes>())
 {
     pool_attributes->parent = this;
-    children["pool-attributes"] = pool_attributes;
 
     yang_name = "authorize"; yang_parent_name = "authorizes";
 }
@@ -5208,7 +4476,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5232,41 +4500,24 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pool-attributes")
     {
-        if(pool_attributes != nullptr)
-        {
-            children["pool-attributes"] = pool_attributes;
-        }
-        else
+        if(pool_attributes == nullptr)
         {
             pool_attributes = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes>();
-            pool_attributes->parent = this;
-            children["pool-attributes"] = pool_attributes;
         }
-        return children.at("pool-attributes");
+        return pool_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_children() const
 {
-    if(children.find("pool-attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pool_attributes != nullptr)
     {
-        if(pool_attributes != nullptr)
-        {
-            children["pool-attributes"] = pool_attributes;
-        }
+        children["pool-attributes"] = pool_attributes;
     }
 
     return children;
@@ -5286,10 +4537,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 	,mobile_node(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode>())
 {
     mobile_network->parent = this;
-    children["mobile-network"] = mobile_network;
 
     mobile_node->parent = this;
-    children["mobile-node"] = mobile_node;
 
     yang_name = "pool-attributes"; yang_parent_name = "authorize";
 }
@@ -5320,7 +4569,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5343,64 +4592,38 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mobile-network")
     {
-        if(mobile_network != nullptr)
-        {
-            children["mobile-network"] = mobile_network;
-        }
-        else
+        if(mobile_network == nullptr)
         {
             mobile_network = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork>();
-            mobile_network->parent = this;
-            children["mobile-network"] = mobile_network;
         }
-        return children.at("mobile-network");
+        return mobile_network;
     }
 
     if(child_yang_name == "mobile-node")
     {
-        if(mobile_node != nullptr)
-        {
-            children["mobile-node"] = mobile_node;
-        }
-        else
+        if(mobile_node == nullptr)
         {
             mobile_node = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode>();
-            mobile_node->parent = this;
-            children["mobile-node"] = mobile_node;
         }
-        return children.at("mobile-node");
+        return mobile_node;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_children() const
 {
-    if(children.find("mobile-network") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mobile_network != nullptr)
     {
-        if(mobile_network != nullptr)
-        {
-            children["mobile-network"] = mobile_network;
-        }
+        children["mobile-network"] = mobile_network;
     }
 
-    if(children.find("mobile-node") == children.end())
+    if(mobile_node != nullptr)
     {
-        if(mobile_node != nullptr)
-        {
-            children["mobile-node"] = mobile_node;
-        }
+        children["mobile-node"] = mobile_node;
     }
 
     return children;
@@ -5416,10 +4639,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 	,ipv6_pool(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool>())
 {
     ipv4_pool->parent = this;
-    children["ipv4-pool"] = ipv4_pool;
 
     ipv6_pool->parent = this;
-    children["ipv6-pool"] = ipv6_pool;
 
     yang_name = "mobile-node"; yang_parent_name = "pool-attributes";
 }
@@ -5450,7 +4671,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5473,64 +4694,38 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-pool")
     {
-        if(ipv4_pool != nullptr)
-        {
-            children["ipv4-pool"] = ipv4_pool;
-        }
-        else
+        if(ipv4_pool == nullptr)
         {
             ipv4_pool = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool>();
-            ipv4_pool->parent = this;
-            children["ipv4-pool"] = ipv4_pool;
         }
-        return children.at("ipv4-pool");
+        return ipv4_pool;
     }
 
     if(child_yang_name == "ipv6-pool")
     {
-        if(ipv6_pool != nullptr)
-        {
-            children["ipv6-pool"] = ipv6_pool;
-        }
-        else
+        if(ipv6_pool == nullptr)
         {
             ipv6_pool = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool>();
-            ipv6_pool->parent = this;
-            children["ipv6-pool"] = ipv6_pool;
         }
-        return children.at("ipv6-pool");
+        return ipv6_pool;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_children() const
 {
-    if(children.find("ipv4-pool") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_pool != nullptr)
     {
-        if(ipv4_pool != nullptr)
-        {
-            children["ipv4-pool"] = ipv4_pool;
-        }
+        children["ipv4-pool"] = ipv4_pool;
     }
 
-    if(children.find("ipv6-pool") == children.end())
+    if(ipv6_pool != nullptr)
     {
-        if(ipv6_pool != nullptr)
-        {
-            children["ipv6-pool"] = ipv6_pool;
-        }
+        children["ipv6-pool"] = ipv6_pool;
     }
 
     return children;
@@ -5574,7 +4769,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5599,20 +4794,12 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5662,7 +4849,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5687,20 +4874,12 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5722,10 +4901,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 	,mripv6_pools(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools>())
 {
     mripv4_pools->parent = this;
-    children["mripv4-pools"] = mripv4_pools;
 
     mripv6_pools->parent = this;
-    children["mripv6-pools"] = mripv6_pools;
 
     yang_name = "mobile-network"; yang_parent_name = "pool-attributes";
 }
@@ -5756,7 +4933,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5779,64 +4956,38 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mripv4-pools")
     {
-        if(mripv4_pools != nullptr)
-        {
-            children["mripv4-pools"] = mripv4_pools;
-        }
-        else
+        if(mripv4_pools == nullptr)
         {
             mripv4_pools = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools>();
-            mripv4_pools->parent = this;
-            children["mripv4-pools"] = mripv4_pools;
         }
-        return children.at("mripv4-pools");
+        return mripv4_pools;
     }
 
     if(child_yang_name == "mripv6-pools")
     {
-        if(mripv6_pools != nullptr)
-        {
-            children["mripv6-pools"] = mripv6_pools;
-        }
-        else
+        if(mripv6_pools == nullptr)
         {
             mripv6_pools = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools>();
-            mripv6_pools->parent = this;
-            children["mripv6-pools"] = mripv6_pools;
         }
-        return children.at("mripv6-pools");
+        return mripv6_pools;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_children() const
 {
-    if(children.find("mripv4-pools") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mripv4_pools != nullptr)
     {
-        if(mripv4_pools != nullptr)
-        {
-            children["mripv4-pools"] = mripv4_pools;
-        }
+        children["mripv4-pools"] = mripv4_pools;
     }
 
-    if(children.find("mripv6-pools") == children.end())
+    if(mripv6_pools != nullptr)
     {
-        if(mripv6_pools != nullptr)
-        {
-            children["mripv6-pools"] = mripv6_pools;
-        }
+        children["mripv6-pools"] = mripv6_pools;
     }
 
     return children;
@@ -5884,7 +5035,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5907,15 +5058,6 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mripv4-pool")
     {
         for(auto const & c : mripv4_pool)
@@ -5923,28 +5065,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
         c->parent = this;
-        mripv4_pool.push_back(std::move(c));
-        children[segment_path] = mripv4_pool.back();
-        return children.at(segment_path);
+        mripv4_pool.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mripv4_pool)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5991,7 +5129,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6017,20 +5155,12 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6088,7 +5218,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6111,15 +5241,6 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mripv6-pool")
     {
         for(auto const & c : mripv6_pool)
@@ -6127,28 +5248,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
         c->parent = this;
-        mripv6_pool.push_back(std::move(c));
-        children[segment_path] = mripv6_pool.back();
-        return children.at(segment_path);
+        mripv6_pool.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mripv6_pool)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6195,7 +5312,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Network
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6221,20 +5338,12 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6288,7 +5397,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey:
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6313,20 +5422,12 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6373,7 +5474,7 @@ std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Binding
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6397,20 +5498,12 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingA
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6456,7 +5549,7 @@ std::string MobileIp::Lmas::Lma::ReplayProtection::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::ReplayProtection::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::ReplayProtection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6481,20 +5574,12 @@ EntityPath MobileIp::Lmas::Lma::ReplayProtection::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::ReplayProtection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::ReplayProtection::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6548,7 +5633,7 @@ std::string MobileIp::Lmas::Lma::Networks::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6571,15 +5656,6 @@ EntityPath MobileIp::Lmas::Lma::Networks::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "network")
     {
         for(auto const & c : network)
@@ -6587,28 +5663,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network>();
         c->parent = this;
-        network.push_back(std::move(c));
-        children[segment_path] = network.back();
-        return children.at(segment_path);
+        network.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : network)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6625,7 +5697,6 @@ MobileIp::Lmas::Lma::Networks::Network::Network()
     pool_attributes(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes>())
 {
     pool_attributes->parent = this;
-    children["pool-attributes"] = pool_attributes;
 
     yang_name = "network"; yang_parent_name = "networks";
 }
@@ -6656,7 +5727,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::get_segment_path() const
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6680,41 +5751,24 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pool-attributes")
     {
-        if(pool_attributes != nullptr)
-        {
-            children["pool-attributes"] = pool_attributes;
-        }
-        else
+        if(pool_attributes == nullptr)
         {
             pool_attributes = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes>();
-            pool_attributes->parent = this;
-            children["pool-attributes"] = pool_attributes;
         }
-        return children.at("pool-attributes");
+        return pool_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::get_children() const
 {
-    if(children.find("pool-attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(pool_attributes != nullptr)
     {
-        if(pool_attributes != nullptr)
-        {
-            children["pool-attributes"] = pool_attributes;
-        }
+        children["pool-attributes"] = pool_attributes;
     }
 
     return children;
@@ -6734,10 +5788,8 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::PoolAttributes()
 	,mobile_node(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode>())
 {
     mobile_network->parent = this;
-    children["mobile-network"] = mobile_network;
 
     mobile_node->parent = this;
-    children["mobile-node"] = mobile_node;
 
     yang_name = "pool-attributes"; yang_parent_name = "network";
 }
@@ -6768,7 +5820,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_segment_
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6791,64 +5843,38 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_entity_pa
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mobile-network")
     {
-        if(mobile_network != nullptr)
-        {
-            children["mobile-network"] = mobile_network;
-        }
-        else
+        if(mobile_network == nullptr)
         {
             mobile_network = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork>();
-            mobile_network->parent = this;
-            children["mobile-network"] = mobile_network;
         }
-        return children.at("mobile-network");
+        return mobile_network;
     }
 
     if(child_yang_name == "mobile-node")
     {
-        if(mobile_node != nullptr)
-        {
-            children["mobile-node"] = mobile_node;
-        }
-        else
+        if(mobile_node == nullptr)
         {
             mobile_node = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode>();
-            mobile_node->parent = this;
-            children["mobile-node"] = mobile_node;
         }
-        return children.at("mobile-node");
+        return mobile_node;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_children() const
 {
-    if(children.find("mobile-network") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mobile_network != nullptr)
     {
-        if(mobile_network != nullptr)
-        {
-            children["mobile-network"] = mobile_network;
-        }
+        children["mobile-network"] = mobile_network;
     }
 
-    if(children.find("mobile-node") == children.end())
+    if(mobile_node != nullptr)
     {
-        if(mobile_node != nullptr)
-        {
-            children["mobile-node"] = mobile_node;
-        }
+        children["mobile-node"] = mobile_node;
     }
 
     return children;
@@ -6864,10 +5890,8 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::MobileNode()
 	,ipv6_pool(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool>())
 {
     ipv4_pool->parent = this;
-    children["ipv4-pool"] = ipv4_pool;
 
     ipv6_pool->parent = this;
-    children["ipv6-pool"] = ipv6_pool;
 
     yang_name = "mobile-node"; yang_parent_name = "pool-attributes";
 }
@@ -6898,7 +5922,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6921,64 +5945,38 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::g
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-pool")
     {
-        if(ipv4_pool != nullptr)
-        {
-            children["ipv4-pool"] = ipv4_pool;
-        }
-        else
+        if(ipv4_pool == nullptr)
         {
             ipv4_pool = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool>();
-            ipv4_pool->parent = this;
-            children["ipv4-pool"] = ipv4_pool;
         }
-        return children.at("ipv4-pool");
+        return ipv4_pool;
     }
 
     if(child_yang_name == "ipv6-pool")
     {
-        if(ipv6_pool != nullptr)
-        {
-            children["ipv6-pool"] = ipv6_pool;
-        }
-        else
+        if(ipv6_pool == nullptr)
         {
             ipv6_pool = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool>();
-            ipv6_pool->parent = this;
-            children["ipv6-pool"] = ipv6_pool;
         }
-        return children.at("ipv6-pool");
+        return ipv6_pool;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_children() const
 {
-    if(children.find("ipv4-pool") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_pool != nullptr)
     {
-        if(ipv4_pool != nullptr)
-        {
-            children["ipv4-pool"] = ipv4_pool;
-        }
+        children["ipv4-pool"] = ipv4_pool;
     }
 
-    if(children.find("ipv6-pool") == children.end())
+    if(ipv6_pool != nullptr)
     {
-        if(ipv6_pool != nullptr)
-        {
-            children["ipv6-pool"] = ipv6_pool;
-        }
+        children["ipv6-pool"] = ipv6_pool;
     }
 
     return children;
@@ -7022,7 +6020,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7047,20 +6045,12 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::I
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7110,7 +6100,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7135,20 +6125,12 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::I
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7170,10 +6152,8 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::MobileNet
 	,mripv6_pools(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools>())
 {
     mripv4_pools->parent = this;
-    children["mripv4-pools"] = mripv4_pools;
 
     mripv6_pools->parent = this;
-    children["mripv6-pools"] = mripv6_pools;
 
     yang_name = "mobile-network"; yang_parent_name = "pool-attributes";
 }
@@ -7204,7 +6184,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwor
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7227,64 +6207,38 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mripv4-pools")
     {
-        if(mripv4_pools != nullptr)
-        {
-            children["mripv4-pools"] = mripv4_pools;
-        }
-        else
+        if(mripv4_pools == nullptr)
         {
             mripv4_pools = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools>();
-            mripv4_pools->parent = this;
-            children["mripv4-pools"] = mripv4_pools;
         }
-        return children.at("mripv4-pools");
+        return mripv4_pools;
     }
 
     if(child_yang_name == "mripv6-pools")
     {
-        if(mripv6_pools != nullptr)
-        {
-            children["mripv6-pools"] = mripv6_pools;
-        }
-        else
+        if(mripv6_pools == nullptr)
         {
             mripv6_pools = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools>();
-            mripv6_pools->parent = this;
-            children["mripv6-pools"] = mripv6_pools;
         }
-        return children.at("mripv6-pools");
+        return mripv6_pools;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_children() const
 {
-    if(children.find("mripv4-pools") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mripv4_pools != nullptr)
     {
-        if(mripv4_pools != nullptr)
-        {
-            children["mripv4-pools"] = mripv4_pools;
-        }
+        children["mripv4-pools"] = mripv4_pools;
     }
 
-    if(children.find("mripv6-pools") == children.end())
+    if(mripv6_pools != nullptr)
     {
-        if(mripv6_pools != nullptr)
-        {
-            children["mripv6-pools"] = mripv6_pools;
-        }
+        children["mripv6-pools"] = mripv6_pools;
     }
 
     return children;
@@ -7332,7 +6286,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwor
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7355,15 +6309,6 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mripv6-pool")
     {
         for(auto const & c : mripv6_pool)
@@ -7371,28 +6316,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
         c->parent = this;
-        mripv6_pool.push_back(std::move(c));
-        children[segment_path] = mripv6_pool.back();
-        return children.at(segment_path);
+        mripv6_pool.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mripv6_pool)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7439,7 +6380,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwor
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7465,20 +6406,12 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7536,7 +6469,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwor
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7559,15 +6492,6 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mripv4-pool")
     {
         for(auto const & c : mripv4_pool)
@@ -7575,28 +6499,24 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
         c->parent = this;
-        mripv4_pool.push_back(std::move(c));
-        children[segment_path] = mripv4_pool.back();
-        return children.at(segment_path);
+        mripv4_pool.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mripv4_pool)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7643,7 +6563,7 @@ std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwor
 
 }
 
-EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_entity_path(Entity* ancestor) const
+const EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7669,20 +6589,12 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
 
 std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

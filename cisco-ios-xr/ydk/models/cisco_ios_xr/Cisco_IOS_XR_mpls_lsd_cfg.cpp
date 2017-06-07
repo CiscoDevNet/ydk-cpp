@@ -20,13 +20,10 @@ MplsLsd::MplsLsd()
 	,label_databases(std::make_shared<MplsLsd::LabelDatabases>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv6->parent = this;
-    children["ipv6"] = ipv6;
 
     label_databases->parent = this;
-    children["label-databases"] = label_databases;
 
     yang_name = "mpls-lsd"; yang_parent_name = "Cisco-IOS-XR-mpls-lsd-cfg";
 }
@@ -65,12 +62,12 @@ std::string MplsLsd::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -88,87 +85,52 @@ EntityPath MplsLsd::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<MplsLsd::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv6")
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
-        else
+        if(ipv6 == nullptr)
         {
             ipv6 = std::make_shared<MplsLsd::Ipv6>();
-            ipv6->parent = this;
-            children["ipv6"] = ipv6;
         }
-        return children.at("ipv6");
+        return ipv6;
     }
 
     if(child_yang_name == "label-databases")
     {
-        if(label_databases != nullptr)
-        {
-            children["label-databases"] = label_databases;
-        }
-        else
+        if(label_databases == nullptr)
         {
             label_databases = std::make_shared<MplsLsd::LabelDatabases>();
-            label_databases->parent = this;
-            children["label-databases"] = label_databases;
         }
-        return children.at("label-databases");
+        return label_databases;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv6") == children.end())
+    if(ipv6 != nullptr)
     {
-        if(ipv6 != nullptr)
-        {
-            children["ipv6"] = ipv6;
-        }
+        children["ipv6"] = ipv6;
     }
 
-    if(children.find("label-databases") == children.end())
+    if(label_databases != nullptr)
     {
-        if(label_databases != nullptr)
-        {
-            children["label-databases"] = label_databases;
-        }
+        children["label-databases"] = label_databases;
     }
 
     return children;
@@ -241,7 +203,7 @@ std::string MplsLsd::Ipv6::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::Ipv6::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Ipv6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -265,20 +227,12 @@ EntityPath MplsLsd::Ipv6::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Ipv6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -321,7 +275,7 @@ std::string MplsLsd::Ipv4::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -345,20 +299,12 @@ EntityPath MplsLsd::Ipv4::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -408,7 +354,7 @@ std::string MplsLsd::LabelDatabases::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::LabelDatabases::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::LabelDatabases::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -431,15 +377,6 @@ EntityPath MplsLsd::LabelDatabases::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLsd::LabelDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-database")
     {
         for(auto const & c : label_database)
@@ -447,28 +384,24 @@ std::shared_ptr<Entity> MplsLsd::LabelDatabases::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLsd::LabelDatabases::LabelDatabase>();
         c->parent = this;
-        label_database.push_back(std::move(c));
-        children[segment_path] = label_database.back();
-        return children.at(segment_path);
+        label_database.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::LabelDatabases::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : label_database)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -485,7 +418,6 @@ MplsLsd::LabelDatabases::LabelDatabase::LabelDatabase()
     label_range(std::make_shared<MplsLsd::LabelDatabases::LabelDatabase::LabelRange>())
 {
     label_range->parent = this;
-    children["label-range"] = label_range;
 
     yang_name = "label-database"; yang_parent_name = "label-databases";
 }
@@ -516,7 +448,7 @@ std::string MplsLsd::LabelDatabases::LabelDatabase::get_segment_path() const
 
 }
 
-EntityPath MplsLsd::LabelDatabases::LabelDatabase::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::LabelDatabases::LabelDatabase::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -540,41 +472,24 @@ EntityPath MplsLsd::LabelDatabases::LabelDatabase::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> MplsLsd::LabelDatabases::LabelDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "label-range")
     {
-        if(label_range != nullptr)
-        {
-            children["label-range"] = label_range;
-        }
-        else
+        if(label_range == nullptr)
         {
             label_range = std::make_shared<MplsLsd::LabelDatabases::LabelDatabase::LabelRange>();
-            label_range->parent = this;
-            children["label-range"] = label_range;
         }
-        return children.at("label-range");
+        return label_range;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::LabelDatabases::LabelDatabase::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::LabelDatabase::get_children() const
 {
-    if(children.find("label-range") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(label_range != nullptr)
     {
-        if(label_range != nullptr)
-        {
-            children["label-range"] = label_range;
-        }
+        children["label-range"] = label_range;
     }
 
     return children;
@@ -628,7 +543,7 @@ std::string MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_segment_path
 
 }
 
-EntityPath MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -655,20 +570,12 @@ EntityPath MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_entity_path(E
 
 std::shared_ptr<Entity> MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

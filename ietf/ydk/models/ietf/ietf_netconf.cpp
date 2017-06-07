@@ -11,16 +11,12 @@ namespace ietf_netconf {
 
 GetConfigRpc::GetConfigRpc()
     :
-    with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
-    	,
-    output(std::make_shared<GetConfigRpc::Output>())
-	,source(std::make_shared<GetConfigRpc::Source>())
+    input(std::make_shared<GetConfigRpc::Input>())
+	,output(std::make_shared<GetConfigRpc::Output>())
 {
-    output->parent = this;
-    children["output"] = output;
+    input->parent = this;
 
-    source->parent = this;
-    children["source"] = source;
+    output->parent = this;
 
     yang_name = "get-config"; yang_parent_name = "ietf-netconf";
 }
@@ -31,17 +27,15 @@ GetConfigRpc::~GetConfigRpc()
 
 bool GetConfigRpc::has_data() const
 {
-    return with_defaults.is_set
-	|| (output !=  nullptr && output->has_data())
-	|| (source !=  nullptr && source->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool GetConfigRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(with_defaults.operation)
-	|| (output !=  nullptr && output->has_operation())
-	|| (source !=  nullptr && source->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string GetConfigRpc::get_segment_path() const
@@ -53,18 +47,17 @@ std::string GetConfigRpc::get_segment_path() const
 
 }
 
-EntityPath GetConfigRpc::get_entity_path(Entity* ancestor) const
+const EntityPath GetConfigRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (with_defaults.is_set || is_set(with_defaults.operation)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -74,64 +67,38 @@ EntityPath GetConfigRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> GetConfigRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<GetConfigRpc::Input>();
+        }
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<GetConfigRpc::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
-    }
-
-    if(child_yang_name == "source")
-    {
-        if(source != nullptr)
-        {
-            children["source"] = source;
-        }
-        else
-        {
-            source = std::make_shared<GetConfigRpc::Source>();
-            source->parent = this;
-            children["source"] = source;
-        }
-        return children.at("source");
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & GetConfigRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::get_children() const
 {
-    if(children.find("output") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["input"] = input;
     }
 
-    if(children.find("source") == children.end())
+    if(output != nullptr)
     {
-        if(source != nullptr)
-        {
-            children["source"] = source;
-        }
+        children["output"] = output;
     }
 
     return children;
@@ -139,10 +106,6 @@ std::map<std::string, std::shared_ptr<Entity>> & GetConfigRpc::get_children()
 
 void GetConfigRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "with-defaults")
-    {
-        with_defaults = value;
-    }
 }
 
 std::shared_ptr<Entity> GetConfigRpc::clone_ptr() const
@@ -165,35 +128,47 @@ augment_capabilities_function GetConfigRpc::get_augment_capabilities_function() 
     return ietf_augment_lookup_tables;
 }
 
-GetConfigRpc::Output::Output()
+GetConfigRpc::Input::Input()
+    :
+    filter{YType::str, "filter"},
+    with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
+    	,
+    source(std::make_shared<GetConfigRpc::Input::Source>())
 {
-    yang_name = "output"; yang_parent_name = "get-config";
+    source->parent = this;
+
+    yang_name = "input"; yang_parent_name = "get-config";
 }
 
-GetConfigRpc::Output::~Output()
+GetConfigRpc::Input::~Input()
 {
 }
 
-bool GetConfigRpc::Output::has_data() const
+bool GetConfigRpc::Input::has_data() const
 {
-    return false;
+    return filter.is_set
+	|| with_defaults.is_set
+	|| (source !=  nullptr && source->has_data());
 }
 
-bool GetConfigRpc::Output::has_operation() const
+bool GetConfigRpc::Input::has_operation() const
 {
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(filter.operation)
+	|| is_set(with_defaults.operation)
+	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string GetConfigRpc::Output::get_segment_path() const
+std::string GetConfigRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "output";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath GetConfigRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath GetConfigRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -207,6 +182,8 @@ EntityPath GetConfigRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (filter.is_set || is_set(filter.operation)) leaf_name_data.push_back(filter.get_name_leafdata());
+    if (with_defaults.is_set || is_set(with_defaults.operation)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -214,50 +191,64 @@ EntityPath GetConfigRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetConfigRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GetConfigRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "source")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(source == nullptr)
+        {
+            source = std::make_shared<GetConfigRpc::Input::Source>();
+        }
+        return source;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & GetConfigRpc::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(source != nullptr)
+    {
+        children["source"] = source;
+    }
+
     return children;
 }
 
-void GetConfigRpc::Output::set_value(const std::string & value_path, std::string value)
+void GetConfigRpc::Input::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "filter")
+    {
+        filter = value;
+    }
+    if(value_path == "with-defaults")
+    {
+        with_defaults = value;
+    }
 }
 
-GetConfigRpc::Source::Source()
+GetConfigRpc::Input::Source::Source()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"},
     startup{YType::empty, "startup"}
 {
-    yang_name = "source"; yang_parent_name = "get-config";
+    yang_name = "source"; yang_parent_name = "input";
 }
 
-GetConfigRpc::Source::~Source()
+GetConfigRpc::Input::Source::~Source()
 {
 }
 
-bool GetConfigRpc::Source::has_data() const
+bool GetConfigRpc::Input::Source::has_data() const
 {
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set;
 }
 
-bool GetConfigRpc::Source::has_operation() const
+bool GetConfigRpc::Input::Source::has_operation() const
 {
     return is_set(operation)
 	|| is_set(candidate.operation)
@@ -265,7 +256,7 @@ bool GetConfigRpc::Source::has_operation() const
 	|| is_set(startup.operation);
 }
 
-std::string GetConfigRpc::Source::get_segment_path() const
+std::string GetConfigRpc::Input::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
@@ -274,12 +265,12 @@ std::string GetConfigRpc::Source::get_segment_path() const
 
 }
 
-EntityPath GetConfigRpc::Source::get_entity_path(Entity* ancestor) const
+const EntityPath GetConfigRpc::Input::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "ietf-netconf:get-config/" << get_segment_path();
+        path_buffer << "ietf-netconf:get-config/input/" << get_segment_path();
     }
     else
     {
@@ -298,26 +289,18 @@ EntityPath GetConfigRpc::Source::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetConfigRpc::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GetConfigRpc::Input::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & GetConfigRpc::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::Input::Source::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void GetConfigRpc::Source::set_value(const std::string & value_path, std::string value)
+void GetConfigRpc::Input::Source::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "candidate")
     {
@@ -333,17 +316,83 @@ void GetConfigRpc::Source::set_value(const std::string & value_path, std::string
     }
 }
 
+GetConfigRpc::Output::Output()
+    :
+    data{YType::str, "data"}
+{
+    yang_name = "output"; yang_parent_name = "get-config";
+}
+
+GetConfigRpc::Output::~Output()
+{
+}
+
+bool GetConfigRpc::Output::has_data() const
+{
+    return data.is_set;
+}
+
+bool GetConfigRpc::Output::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(data.operation);
+}
+
+std::string GetConfigRpc::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath GetConfigRpc::Output::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:get-config/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> GetConfigRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void GetConfigRpc::Output::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "data")
+    {
+        data = value;
+    }
+}
+
 EditConfigRpc::EditConfigRpc()
     :
-    default_operation{YType::enumeration, "default-operation"},
-    error_option{YType::enumeration, "error-option"},
-    test_option{YType::enumeration, "test-option"},
-    url{YType::str, "url"}
-    	,
-    target(std::make_shared<EditConfigRpc::Target>())
+    input(std::make_shared<EditConfigRpc::Input>())
 {
-    target->parent = this;
-    children["target"] = target;
+    input->parent = this;
 
     yang_name = "edit-config"; yang_parent_name = "ietf-netconf";
 }
@@ -354,21 +403,13 @@ EditConfigRpc::~EditConfigRpc()
 
 bool EditConfigRpc::has_data() const
 {
-    return default_operation.is_set
-	|| error_option.is_set
-	|| test_option.is_set
-	|| url.is_set
-	|| (target !=  nullptr && target->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool EditConfigRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(default_operation.operation)
-	|| is_set(error_option.operation)
-	|| is_set(test_option.operation)
-	|| is_set(url.operation)
-	|| (target !=  nullptr && target->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string EditConfigRpc::get_segment_path() const
@@ -380,21 +421,17 @@ std::string EditConfigRpc::get_segment_path() const
 
 }
 
-EntityPath EditConfigRpc::get_entity_path(Entity* ancestor) const
+const EntityPath EditConfigRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_operation.is_set || is_set(default_operation.operation)) leaf_name_data.push_back(default_operation.get_name_leafdata());
-    if (error_option.is_set || is_set(error_option.operation)) leaf_name_data.push_back(error_option.get_name_leafdata());
-    if (test_option.is_set || is_set(test_option.operation)) leaf_name_data.push_back(test_option.get_name_leafdata());
-    if (url.is_set || is_set(url.operation)) leaf_name_data.push_back(url.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -404,41 +441,24 @@ EntityPath EditConfigRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> EditConfigRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "target")
-    {
-        if(target != nullptr)
+        if(input == nullptr)
         {
-            children["target"] = target;
+            input = std::make_shared<EditConfigRpc::Input>();
         }
-        else
-        {
-            target = std::make_shared<EditConfigRpc::Target>();
-            target->parent = this;
-            children["target"] = target;
-        }
-        return children.at("target");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EditConfigRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EditConfigRpc::get_children() const
 {
-    if(children.find("target") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(target != nullptr)
-        {
-            children["target"] = target;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -446,22 +466,6 @@ std::map<std::string, std::shared_ptr<Entity>> & EditConfigRpc::get_children()
 
 void EditConfigRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "default-operation")
-    {
-        default_operation = value;
-    }
-    if(value_path == "error-option")
-    {
-        error_option = value;
-    }
-    if(value_path == "test-option")
-    {
-        test_option = value;
-    }
-    if(value_path == "url")
-    {
-        url = value;
-    }
 }
 
 std::shared_ptr<Entity> EditConfigRpc::clone_ptr() const
@@ -484,32 +488,156 @@ augment_capabilities_function EditConfigRpc::get_augment_capabilities_function()
     return ietf_augment_lookup_tables;
 }
 
-EditConfigRpc::Target::Target()
+EditConfigRpc::Input::Input()
+    :
+    config{YType::str, "config"},
+    default_operation{YType::enumeration, "default-operation"},
+    error_option{YType::enumeration, "error-option"},
+    test_option{YType::enumeration, "test-option"},
+    url{YType::str, "url"}
+    	,
+    target(std::make_shared<EditConfigRpc::Input::Target>())
+{
+    target->parent = this;
+
+    yang_name = "input"; yang_parent_name = "edit-config";
+}
+
+EditConfigRpc::Input::~Input()
+{
+}
+
+bool EditConfigRpc::Input::has_data() const
+{
+    return config.is_set
+	|| default_operation.is_set
+	|| error_option.is_set
+	|| test_option.is_set
+	|| url.is_set
+	|| (target !=  nullptr && target->has_data());
+}
+
+bool EditConfigRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(config.operation)
+	|| is_set(default_operation.operation)
+	|| is_set(error_option.operation)
+	|| is_set(test_option.operation)
+	|| is_set(url.operation)
+	|| (target !=  nullptr && target->has_operation());
+}
+
+std::string EditConfigRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath EditConfigRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:edit-config/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (config.is_set || is_set(config.operation)) leaf_name_data.push_back(config.get_name_leafdata());
+    if (default_operation.is_set || is_set(default_operation.operation)) leaf_name_data.push_back(default_operation.get_name_leafdata());
+    if (error_option.is_set || is_set(error_option.operation)) leaf_name_data.push_back(error_option.get_name_leafdata());
+    if (test_option.is_set || is_set(test_option.operation)) leaf_name_data.push_back(test_option.get_name_leafdata());
+    if (url.is_set || is_set(url.operation)) leaf_name_data.push_back(url.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> EditConfigRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "target")
+    {
+        if(target == nullptr)
+        {
+            target = std::make_shared<EditConfigRpc::Input::Target>();
+        }
+        return target;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EditConfigRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(target != nullptr)
+    {
+        children["target"] = target;
+    }
+
+    return children;
+}
+
+void EditConfigRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "config")
+    {
+        config = value;
+    }
+    if(value_path == "default-operation")
+    {
+        default_operation = value;
+    }
+    if(value_path == "error-option")
+    {
+        error_option = value;
+    }
+    if(value_path == "test-option")
+    {
+        test_option = value;
+    }
+    if(value_path == "url")
+    {
+        url = value;
+    }
+}
+
+EditConfigRpc::Input::Target::Target()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"}
 {
-    yang_name = "target"; yang_parent_name = "edit-config";
+    yang_name = "target"; yang_parent_name = "input";
 }
 
-EditConfigRpc::Target::~Target()
+EditConfigRpc::Input::Target::~Target()
 {
 }
 
-bool EditConfigRpc::Target::has_data() const
+bool EditConfigRpc::Input::Target::has_data() const
 {
     return candidate.is_set
 	|| running.is_set;
 }
 
-bool EditConfigRpc::Target::has_operation() const
+bool EditConfigRpc::Input::Target::has_operation() const
 {
     return is_set(operation)
 	|| is_set(candidate.operation)
 	|| is_set(running.operation);
 }
 
-std::string EditConfigRpc::Target::get_segment_path() const
+std::string EditConfigRpc::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -518,12 +646,12 @@ std::string EditConfigRpc::Target::get_segment_path() const
 
 }
 
-EntityPath EditConfigRpc::Target::get_entity_path(Entity* ancestor) const
+const EntityPath EditConfigRpc::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "ietf-netconf:edit-config/" << get_segment_path();
+        path_buffer << "ietf-netconf:edit-config/input/" << get_segment_path();
     }
     else
     {
@@ -541,26 +669,18 @@ EntityPath EditConfigRpc::Target::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> EditConfigRpc::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EditConfigRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & EditConfigRpc::Target::get_children()
+std::map<std::string, std::shared_ptr<Entity>> EditConfigRpc::Input::Target::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EditConfigRpc::Target::set_value(const std::string & value_path, std::string value)
+void EditConfigRpc::Input::Target::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "candidate")
     {
@@ -574,16 +694,9 @@ void EditConfigRpc::Target::set_value(const std::string & value_path, std::strin
 
 CopyConfigRpc::CopyConfigRpc()
     :
-    with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
-    	,
-    source(std::make_shared<CopyConfigRpc::Source>())
-	,target(std::make_shared<CopyConfigRpc::Target>())
+    input(std::make_shared<CopyConfigRpc::Input>())
 {
-    source->parent = this;
-    children["source"] = source;
-
-    target->parent = this;
-    children["target"] = target;
+    input->parent = this;
 
     yang_name = "copy-config"; yang_parent_name = "ietf-netconf";
 }
@@ -594,17 +707,13 @@ CopyConfigRpc::~CopyConfigRpc()
 
 bool CopyConfigRpc::has_data() const
 {
-    return with_defaults.is_set
-	|| (source !=  nullptr && source->has_data())
-	|| (target !=  nullptr && target->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool CopyConfigRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(with_defaults.operation)
-	|| (source !=  nullptr && source->has_operation())
-	|| (target !=  nullptr && target->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string CopyConfigRpc::get_segment_path() const
@@ -616,18 +725,17 @@ std::string CopyConfigRpc::get_segment_path() const
 
 }
 
-EntityPath CopyConfigRpc::get_entity_path(Entity* ancestor) const
+const EntityPath CopyConfigRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (with_defaults.is_set || is_set(with_defaults.operation)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -637,64 +745,24 @@ EntityPath CopyConfigRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CopyConfigRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "source")
-    {
-        if(source != nullptr)
+        if(input == nullptr)
         {
-            children["source"] = source;
+            input = std::make_shared<CopyConfigRpc::Input>();
         }
-        else
-        {
-            source = std::make_shared<CopyConfigRpc::Source>();
-            source->parent = this;
-            children["source"] = source;
-        }
-        return children.at("source");
-    }
-
-    if(child_yang_name == "target")
-    {
-        if(target != nullptr)
-        {
-            children["target"] = target;
-        }
-        else
-        {
-            target = std::make_shared<CopyConfigRpc::Target>();
-            target->parent = this;
-            children["target"] = target;
-        }
-        return children.at("target");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CopyConfigRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::get_children() const
 {
-    if(children.find("source") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(source != nullptr)
-        {
-            children["source"] = source;
-        }
-    }
-
-    if(children.find("target") == children.end())
-    {
-        if(target != nullptr)
-        {
-            children["target"] = target;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -702,10 +770,6 @@ std::map<std::string, std::shared_ptr<Entity>> & CopyConfigRpc::get_children()
 
 void CopyConfigRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "with-defaults")
-    {
-        with_defaults = value;
-    }
 }
 
 std::shared_ptr<Entity> CopyConfigRpc::clone_ptr() const
@@ -728,21 +792,132 @@ augment_capabilities_function CopyConfigRpc::get_augment_capabilities_function()
     return ietf_augment_lookup_tables;
 }
 
-CopyConfigRpc::Target::Target()
+CopyConfigRpc::Input::Input()
+    :
+    with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
+    	,
+    source(std::make_shared<CopyConfigRpc::Input::Source>())
+	,target(std::make_shared<CopyConfigRpc::Input::Target>())
+{
+    source->parent = this;
+
+    target->parent = this;
+
+    yang_name = "input"; yang_parent_name = "copy-config";
+}
+
+CopyConfigRpc::Input::~Input()
+{
+}
+
+bool CopyConfigRpc::Input::has_data() const
+{
+    return with_defaults.is_set
+	|| (source !=  nullptr && source->has_data())
+	|| (target !=  nullptr && target->has_data());
+}
+
+bool CopyConfigRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(with_defaults.operation)
+	|| (source !=  nullptr && source->has_operation())
+	|| (target !=  nullptr && target->has_operation());
+}
+
+std::string CopyConfigRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath CopyConfigRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:copy-config/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (with_defaults.is_set || is_set(with_defaults.operation)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> CopyConfigRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "source")
+    {
+        if(source == nullptr)
+        {
+            source = std::make_shared<CopyConfigRpc::Input::Source>();
+        }
+        return source;
+    }
+
+    if(child_yang_name == "target")
+    {
+        if(target == nullptr)
+        {
+            target = std::make_shared<CopyConfigRpc::Input::Target>();
+        }
+        return target;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(source != nullptr)
+    {
+        children["source"] = source;
+    }
+
+    if(target != nullptr)
+    {
+        children["target"] = target;
+    }
+
+    return children;
+}
+
+void CopyConfigRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "with-defaults")
+    {
+        with_defaults = value;
+    }
+}
+
+CopyConfigRpc::Input::Target::Target()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"},
     startup{YType::empty, "startup"},
     url{YType::str, "url"}
 {
-    yang_name = "target"; yang_parent_name = "copy-config";
+    yang_name = "target"; yang_parent_name = "input";
 }
 
-CopyConfigRpc::Target::~Target()
+CopyConfigRpc::Input::Target::~Target()
 {
 }
 
-bool CopyConfigRpc::Target::has_data() const
+bool CopyConfigRpc::Input::Target::has_data() const
 {
     return candidate.is_set
 	|| running.is_set
@@ -750,7 +925,7 @@ bool CopyConfigRpc::Target::has_data() const
 	|| url.is_set;
 }
 
-bool CopyConfigRpc::Target::has_operation() const
+bool CopyConfigRpc::Input::Target::has_operation() const
 {
     return is_set(operation)
 	|| is_set(candidate.operation)
@@ -759,7 +934,7 @@ bool CopyConfigRpc::Target::has_operation() const
 	|| is_set(url.operation);
 }
 
-std::string CopyConfigRpc::Target::get_segment_path() const
+std::string CopyConfigRpc::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -768,12 +943,12 @@ std::string CopyConfigRpc::Target::get_segment_path() const
 
 }
 
-EntityPath CopyConfigRpc::Target::get_entity_path(Entity* ancestor) const
+const EntityPath CopyConfigRpc::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "ietf-netconf:copy-config/" << get_segment_path();
+        path_buffer << "ietf-netconf:copy-config/input/" << get_segment_path();
     }
     else
     {
@@ -793,26 +968,18 @@ EntityPath CopyConfigRpc::Target::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CopyConfigRpc::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CopyConfigRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CopyConfigRpc::Target::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::Input::Target::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CopyConfigRpc::Target::set_value(const std::string & value_path, std::string value)
+void CopyConfigRpc::Input::Target::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "candidate")
     {
@@ -832,38 +999,41 @@ void CopyConfigRpc::Target::set_value(const std::string & value_path, std::strin
     }
 }
 
-CopyConfigRpc::Source::Source()
+CopyConfigRpc::Input::Source::Source()
     :
     candidate{YType::empty, "candidate"},
+    config{YType::str, "config"},
     running{YType::empty, "running"},
     startup{YType::empty, "startup"},
     url{YType::str, "url"}
 {
-    yang_name = "source"; yang_parent_name = "copy-config";
+    yang_name = "source"; yang_parent_name = "input";
 }
 
-CopyConfigRpc::Source::~Source()
+CopyConfigRpc::Input::Source::~Source()
 {
 }
 
-bool CopyConfigRpc::Source::has_data() const
+bool CopyConfigRpc::Input::Source::has_data() const
 {
     return candidate.is_set
+	|| config.is_set
 	|| running.is_set
 	|| startup.is_set
 	|| url.is_set;
 }
 
-bool CopyConfigRpc::Source::has_operation() const
+bool CopyConfigRpc::Input::Source::has_operation() const
 {
     return is_set(operation)
 	|| is_set(candidate.operation)
+	|| is_set(config.operation)
 	|| is_set(running.operation)
 	|| is_set(startup.operation)
 	|| is_set(url.operation);
 }
 
-std::string CopyConfigRpc::Source::get_segment_path() const
+std::string CopyConfigRpc::Input::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
@@ -872,12 +1042,12 @@ std::string CopyConfigRpc::Source::get_segment_path() const
 
 }
 
-EntityPath CopyConfigRpc::Source::get_entity_path(Entity* ancestor) const
+const EntityPath CopyConfigRpc::Input::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "ietf-netconf:copy-config/" << get_segment_path();
+        path_buffer << "ietf-netconf:copy-config/input/" << get_segment_path();
     }
     else
     {
@@ -887,6 +1057,7 @@ EntityPath CopyConfigRpc::Source::get_entity_path(Entity* ancestor) const
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (candidate.is_set || is_set(candidate.operation)) leaf_name_data.push_back(candidate.get_name_leafdata());
+    if (config.is_set || is_set(config.operation)) leaf_name_data.push_back(config.get_name_leafdata());
     if (running.is_set || is_set(running.operation)) leaf_name_data.push_back(running.get_name_leafdata());
     if (startup.is_set || is_set(startup.operation)) leaf_name_data.push_back(startup.get_name_leafdata());
     if (url.is_set || is_set(url.operation)) leaf_name_data.push_back(url.get_name_leafdata());
@@ -897,30 +1068,26 @@ EntityPath CopyConfigRpc::Source::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CopyConfigRpc::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CopyConfigRpc::Input::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CopyConfigRpc::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::Input::Source::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CopyConfigRpc::Source::set_value(const std::string & value_path, std::string value)
+void CopyConfigRpc::Input::Source::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "candidate")
     {
         candidate = value;
+    }
+    if(value_path == "config")
+    {
+        config = value;
     }
     if(value_path == "running")
     {
@@ -938,10 +1105,9 @@ void CopyConfigRpc::Source::set_value(const std::string & value_path, std::strin
 
 DeleteConfigRpc::DeleteConfigRpc()
     :
-    target(std::make_shared<DeleteConfigRpc::Target>())
+    input(std::make_shared<DeleteConfigRpc::Input>())
 {
-    target->parent = this;
-    children["target"] = target;
+    input->parent = this;
 
     yang_name = "delete-config"; yang_parent_name = "ietf-netconf";
 }
@@ -952,13 +1118,13 @@ DeleteConfigRpc::~DeleteConfigRpc()
 
 bool DeleteConfigRpc::has_data() const
 {
-    return (target !=  nullptr && target->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool DeleteConfigRpc::has_operation() const
 {
     return is_set(operation)
-	|| (target !=  nullptr && target->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string DeleteConfigRpc::get_segment_path() const
@@ -970,12 +1136,12 @@ std::string DeleteConfigRpc::get_segment_path() const
 
 }
 
-EntityPath DeleteConfigRpc::get_entity_path(Entity* ancestor) const
+const EntityPath DeleteConfigRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -990,41 +1156,24 @@ EntityPath DeleteConfigRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> DeleteConfigRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "target")
-    {
-        if(target != nullptr)
+        if(input == nullptr)
         {
-            children["target"] = target;
+            input = std::make_shared<DeleteConfigRpc::Input>();
         }
-        else
-        {
-            target = std::make_shared<DeleteConfigRpc::Target>();
-            target->parent = this;
-            children["target"] = target;
-        }
-        return children.at("target");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DeleteConfigRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DeleteConfigRpc::get_children() const
 {
-    if(children.find("target") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(target != nullptr)
-        {
-            children["target"] = target;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -1054,32 +1203,115 @@ augment_capabilities_function DeleteConfigRpc::get_augment_capabilities_function
     return ietf_augment_lookup_tables;
 }
 
-DeleteConfigRpc::Target::Target()
+DeleteConfigRpc::Input::Input()
+    :
+    target(std::make_shared<DeleteConfigRpc::Input::Target>())
+{
+    target->parent = this;
+
+    yang_name = "input"; yang_parent_name = "delete-config";
+}
+
+DeleteConfigRpc::Input::~Input()
+{
+}
+
+bool DeleteConfigRpc::Input::has_data() const
+{
+    return (target !=  nullptr && target->has_data());
+}
+
+bool DeleteConfigRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| (target !=  nullptr && target->has_operation());
+}
+
+std::string DeleteConfigRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath DeleteConfigRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:delete-config/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> DeleteConfigRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "target")
+    {
+        if(target == nullptr)
+        {
+            target = std::make_shared<DeleteConfigRpc::Input::Target>();
+        }
+        return target;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> DeleteConfigRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(target != nullptr)
+    {
+        children["target"] = target;
+    }
+
+    return children;
+}
+
+void DeleteConfigRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+}
+
+DeleteConfigRpc::Input::Target::Target()
     :
     startup{YType::empty, "startup"},
     url{YType::str, "url"}
 {
-    yang_name = "target"; yang_parent_name = "delete-config";
+    yang_name = "target"; yang_parent_name = "input";
 }
 
-DeleteConfigRpc::Target::~Target()
+DeleteConfigRpc::Input::Target::~Target()
 {
 }
 
-bool DeleteConfigRpc::Target::has_data() const
+bool DeleteConfigRpc::Input::Target::has_data() const
 {
     return startup.is_set
 	|| url.is_set;
 }
 
-bool DeleteConfigRpc::Target::has_operation() const
+bool DeleteConfigRpc::Input::Target::has_operation() const
 {
     return is_set(operation)
 	|| is_set(startup.operation)
 	|| is_set(url.operation);
 }
 
-std::string DeleteConfigRpc::Target::get_segment_path() const
+std::string DeleteConfigRpc::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -1088,12 +1320,12 @@ std::string DeleteConfigRpc::Target::get_segment_path() const
 
 }
 
-EntityPath DeleteConfigRpc::Target::get_entity_path(Entity* ancestor) const
+const EntityPath DeleteConfigRpc::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "ietf-netconf:delete-config/" << get_segment_path();
+        path_buffer << "ietf-netconf:delete-config/input/" << get_segment_path();
     }
     else
     {
@@ -1111,26 +1343,18 @@ EntityPath DeleteConfigRpc::Target::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> DeleteConfigRpc::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DeleteConfigRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DeleteConfigRpc::Target::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DeleteConfigRpc::Input::Target::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void DeleteConfigRpc::Target::set_value(const std::string & value_path, std::string value)
+void DeleteConfigRpc::Input::Target::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "startup")
     {
@@ -1144,10 +1368,9 @@ void DeleteConfigRpc::Target::set_value(const std::string & value_path, std::str
 
 LockRpc::LockRpc()
     :
-    target(std::make_shared<LockRpc::Target>())
+    input(std::make_shared<LockRpc::Input>())
 {
-    target->parent = this;
-    children["target"] = target;
+    input->parent = this;
 
     yang_name = "lock"; yang_parent_name = "ietf-netconf";
 }
@@ -1158,13 +1381,13 @@ LockRpc::~LockRpc()
 
 bool LockRpc::has_data() const
 {
-    return (target !=  nullptr && target->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool LockRpc::has_operation() const
 {
     return is_set(operation)
-	|| (target !=  nullptr && target->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string LockRpc::get_segment_path() const
@@ -1176,12 +1399,12 @@ std::string LockRpc::get_segment_path() const
 
 }
 
-EntityPath LockRpc::get_entity_path(Entity* ancestor) const
+const EntityPath LockRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1196,41 +1419,24 @@ EntityPath LockRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> LockRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "target")
-    {
-        if(target != nullptr)
+        if(input == nullptr)
         {
-            children["target"] = target;
+            input = std::make_shared<LockRpc::Input>();
         }
-        else
-        {
-            target = std::make_shared<LockRpc::Target>();
-            target->parent = this;
-            children["target"] = target;
-        }
-        return children.at("target");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LockRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LockRpc::get_children() const
 {
-    if(children.find("target") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(target != nullptr)
-        {
-            children["target"] = target;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -1260,27 +1466,110 @@ augment_capabilities_function LockRpc::get_augment_capabilities_function() const
     return ietf_augment_lookup_tables;
 }
 
-LockRpc::Target::Target()
+LockRpc::Input::Input()
+    :
+    target(std::make_shared<LockRpc::Input::Target>())
+{
+    target->parent = this;
+
+    yang_name = "input"; yang_parent_name = "lock";
+}
+
+LockRpc::Input::~Input()
+{
+}
+
+bool LockRpc::Input::has_data() const
+{
+    return (target !=  nullptr && target->has_data());
+}
+
+bool LockRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| (target !=  nullptr && target->has_operation());
+}
+
+std::string LockRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath LockRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:lock/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> LockRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "target")
+    {
+        if(target == nullptr)
+        {
+            target = std::make_shared<LockRpc::Input::Target>();
+        }
+        return target;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> LockRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(target != nullptr)
+    {
+        children["target"] = target;
+    }
+
+    return children;
+}
+
+void LockRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+}
+
+LockRpc::Input::Target::Target()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"},
     startup{YType::empty, "startup"}
 {
-    yang_name = "target"; yang_parent_name = "lock";
+    yang_name = "target"; yang_parent_name = "input";
 }
 
-LockRpc::Target::~Target()
+LockRpc::Input::Target::~Target()
 {
 }
 
-bool LockRpc::Target::has_data() const
+bool LockRpc::Input::Target::has_data() const
 {
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set;
 }
 
-bool LockRpc::Target::has_operation() const
+bool LockRpc::Input::Target::has_operation() const
 {
     return is_set(operation)
 	|| is_set(candidate.operation)
@@ -1288,7 +1577,7 @@ bool LockRpc::Target::has_operation() const
 	|| is_set(startup.operation);
 }
 
-std::string LockRpc::Target::get_segment_path() const
+std::string LockRpc::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -1297,12 +1586,12 @@ std::string LockRpc::Target::get_segment_path() const
 
 }
 
-EntityPath LockRpc::Target::get_entity_path(Entity* ancestor) const
+const EntityPath LockRpc::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "ietf-netconf:lock/" << get_segment_path();
+        path_buffer << "ietf-netconf:lock/input/" << get_segment_path();
     }
     else
     {
@@ -1321,26 +1610,18 @@ EntityPath LockRpc::Target::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> LockRpc::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LockRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & LockRpc::Target::get_children()
+std::map<std::string, std::shared_ptr<Entity>> LockRpc::Input::Target::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void LockRpc::Target::set_value(const std::string & value_path, std::string value)
+void LockRpc::Input::Target::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "candidate")
     {
@@ -1358,10 +1639,9 @@ void LockRpc::Target::set_value(const std::string & value_path, std::string valu
 
 UnlockRpc::UnlockRpc()
     :
-    target(std::make_shared<UnlockRpc::Target>())
+    input(std::make_shared<UnlockRpc::Input>())
 {
-    target->parent = this;
-    children["target"] = target;
+    input->parent = this;
 
     yang_name = "unlock"; yang_parent_name = "ietf-netconf";
 }
@@ -1372,13 +1652,13 @@ UnlockRpc::~UnlockRpc()
 
 bool UnlockRpc::has_data() const
 {
-    return (target !=  nullptr && target->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool UnlockRpc::has_operation() const
 {
     return is_set(operation)
-	|| (target !=  nullptr && target->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string UnlockRpc::get_segment_path() const
@@ -1390,12 +1670,12 @@ std::string UnlockRpc::get_segment_path() const
 
 }
 
-EntityPath UnlockRpc::get_entity_path(Entity* ancestor) const
+const EntityPath UnlockRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1410,41 +1690,24 @@ EntityPath UnlockRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> UnlockRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "target")
-    {
-        if(target != nullptr)
+        if(input == nullptr)
         {
-            children["target"] = target;
+            input = std::make_shared<UnlockRpc::Input>();
         }
-        else
-        {
-            target = std::make_shared<UnlockRpc::Target>();
-            target->parent = this;
-            children["target"] = target;
-        }
-        return children.at("target");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UnlockRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UnlockRpc::get_children() const
 {
-    if(children.find("target") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(target != nullptr)
-        {
-            children["target"] = target;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -1474,27 +1737,110 @@ augment_capabilities_function UnlockRpc::get_augment_capabilities_function() con
     return ietf_augment_lookup_tables;
 }
 
-UnlockRpc::Target::Target()
+UnlockRpc::Input::Input()
+    :
+    target(std::make_shared<UnlockRpc::Input::Target>())
+{
+    target->parent = this;
+
+    yang_name = "input"; yang_parent_name = "unlock";
+}
+
+UnlockRpc::Input::~Input()
+{
+}
+
+bool UnlockRpc::Input::has_data() const
+{
+    return (target !=  nullptr && target->has_data());
+}
+
+bool UnlockRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| (target !=  nullptr && target->has_operation());
+}
+
+std::string UnlockRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath UnlockRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:unlock/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> UnlockRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "target")
+    {
+        if(target == nullptr)
+        {
+            target = std::make_shared<UnlockRpc::Input::Target>();
+        }
+        return target;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> UnlockRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(target != nullptr)
+    {
+        children["target"] = target;
+    }
+
+    return children;
+}
+
+void UnlockRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+}
+
+UnlockRpc::Input::Target::Target()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"},
     startup{YType::empty, "startup"}
 {
-    yang_name = "target"; yang_parent_name = "unlock";
+    yang_name = "target"; yang_parent_name = "input";
 }
 
-UnlockRpc::Target::~Target()
+UnlockRpc::Input::Target::~Target()
 {
 }
 
-bool UnlockRpc::Target::has_data() const
+bool UnlockRpc::Input::Target::has_data() const
 {
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set;
 }
 
-bool UnlockRpc::Target::has_operation() const
+bool UnlockRpc::Input::Target::has_operation() const
 {
     return is_set(operation)
 	|| is_set(candidate.operation)
@@ -1502,7 +1848,7 @@ bool UnlockRpc::Target::has_operation() const
 	|| is_set(startup.operation);
 }
 
-std::string UnlockRpc::Target::get_segment_path() const
+std::string UnlockRpc::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -1511,12 +1857,12 @@ std::string UnlockRpc::Target::get_segment_path() const
 
 }
 
-EntityPath UnlockRpc::Target::get_entity_path(Entity* ancestor) const
+const EntityPath UnlockRpc::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "ietf-netconf:unlock/" << get_segment_path();
+        path_buffer << "ietf-netconf:unlock/input/" << get_segment_path();
     }
     else
     {
@@ -1535,26 +1881,18 @@ EntityPath UnlockRpc::Target::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> UnlockRpc::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> UnlockRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & UnlockRpc::Target::get_children()
+std::map<std::string, std::shared_ptr<Entity>> UnlockRpc::Input::Target::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void UnlockRpc::Target::set_value(const std::string & value_path, std::string value)
+void UnlockRpc::Input::Target::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "candidate")
     {
@@ -1572,12 +1910,12 @@ void UnlockRpc::Target::set_value(const std::string & value_path, std::string va
 
 GetRpc::GetRpc()
     :
-    with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
-    	,
-    output(std::make_shared<GetRpc::Output>())
+    input(std::make_shared<GetRpc::Input>())
+	,output(std::make_shared<GetRpc::Output>())
 {
+    input->parent = this;
+
     output->parent = this;
-    children["output"] = output;
 
     yang_name = "get"; yang_parent_name = "ietf-netconf";
 }
@@ -1588,14 +1926,14 @@ GetRpc::~GetRpc()
 
 bool GetRpc::has_data() const
 {
-    return with_defaults.is_set
+    return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
 
 bool GetRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(with_defaults.operation)
+	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
 
@@ -1608,18 +1946,17 @@ std::string GetRpc::get_segment_path() const
 
 }
 
-EntityPath GetRpc::get_entity_path(Entity* ancestor) const
+const EntityPath GetRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (with_defaults.is_set || is_set(with_defaults.operation)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1629,41 +1966,38 @@ EntityPath GetRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> GetRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<GetRpc::Input>();
+        }
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<GetRpc::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & GetRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> GetRpc::get_children() const
 {
-    if(children.find("output") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
     }
 
     return children;
@@ -1671,10 +2005,6 @@ std::map<std::string, std::shared_ptr<Entity>> & GetRpc::get_children()
 
 void GetRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "with-defaults")
-    {
-        with_defaults = value;
-    }
 }
 
 std::shared_ptr<Entity> GetRpc::clone_ptr() const
@@ -1697,35 +2027,41 @@ augment_capabilities_function GetRpc::get_augment_capabilities_function() const
     return ietf_augment_lookup_tables;
 }
 
-GetRpc::Output::Output()
+GetRpc::Input::Input()
+    :
+    filter{YType::str, "filter"},
+    with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
 {
-    yang_name = "output"; yang_parent_name = "get";
+    yang_name = "input"; yang_parent_name = "get";
 }
 
-GetRpc::Output::~Output()
+GetRpc::Input::~Input()
 {
 }
 
-bool GetRpc::Output::has_data() const
+bool GetRpc::Input::has_data() const
 {
-    return false;
+    return filter.is_set
+	|| with_defaults.is_set;
 }
 
-bool GetRpc::Output::has_operation() const
+bool GetRpc::Input::has_operation() const
 {
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(filter.operation)
+	|| is_set(with_defaults.operation);
 }
 
-std::string GetRpc::Output::get_segment_path() const
+std::string GetRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "output";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath GetRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath GetRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1739,6 +2075,84 @@ EntityPath GetRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (filter.is_set || is_set(filter.operation)) leaf_name_data.push_back(filter.get_name_leafdata());
+    if (with_defaults.is_set || is_set(with_defaults.operation)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> GetRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void GetRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "filter")
+    {
+        filter = value;
+    }
+    if(value_path == "with-defaults")
+    {
+        with_defaults = value;
+    }
+}
+
+GetRpc::Output::Output()
+    :
+    data{YType::str, "data"}
+{
+    yang_name = "output"; yang_parent_name = "get";
+}
+
+GetRpc::Output::~Output()
+{
+}
+
+bool GetRpc::Output::has_data() const
+{
+    return data.is_set;
+}
+
+bool GetRpc::Output::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(data.operation);
+}
+
+std::string GetRpc::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath GetRpc::Output::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:get/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1748,25 +2162,21 @@ EntityPath GetRpc::Output::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> GetRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & GetRpc::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> GetRpc::Output::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void GetRpc::Output::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "data")
+    {
+        data = value;
+    }
 }
 
 CloseSessionRpc::CloseSessionRpc()
@@ -1797,12 +2207,12 @@ std::string CloseSessionRpc::get_segment_path() const
 
 }
 
-EntityPath CloseSessionRpc::get_entity_path(Entity* ancestor) const
+const EntityPath CloseSessionRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -1817,20 +2227,12 @@ EntityPath CloseSessionRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CloseSessionRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CloseSessionRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CloseSessionRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1860,8 +2262,10 @@ augment_capabilities_function CloseSessionRpc::get_augment_capabilities_function
 
 KillSessionRpc::KillSessionRpc()
     :
-    session_id{YType::uint32, "session-id"}
+    input(std::make_shared<KillSessionRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "kill-session"; yang_parent_name = "ietf-netconf";
 }
 
@@ -1871,13 +2275,13 @@ KillSessionRpc::~KillSessionRpc()
 
 bool KillSessionRpc::has_data() const
 {
-    return session_id.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool KillSessionRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(session_id.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string KillSessionRpc::get_segment_path() const
@@ -1889,18 +2293,17 @@ std::string KillSessionRpc::get_segment_path() const
 
 }
 
-EntityPath KillSessionRpc::get_entity_path(Entity* ancestor) const
+const EntityPath KillSessionRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1910,29 +2313,31 @@ EntityPath KillSessionRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> KillSessionRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<KillSessionRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & KillSessionRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> KillSessionRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void KillSessionRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "session-id")
-    {
-        session_id = value;
-    }
 }
 
 std::shared_ptr<Entity> KillSessionRpc::clone_ptr() const
@@ -1955,13 +2360,84 @@ augment_capabilities_function KillSessionRpc::get_augment_capabilities_function(
     return ietf_augment_lookup_tables;
 }
 
+KillSessionRpc::Input::Input()
+    :
+    session_id{YType::uint32, "session-id"}
+{
+    yang_name = "input"; yang_parent_name = "kill-session";
+}
+
+KillSessionRpc::Input::~Input()
+{
+}
+
+bool KillSessionRpc::Input::has_data() const
+{
+    return session_id.is_set;
+}
+
+bool KillSessionRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(session_id.operation);
+}
+
+std::string KillSessionRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath KillSessionRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:kill-session/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> KillSessionRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> KillSessionRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void KillSessionRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "session-id")
+    {
+        session_id = value;
+    }
+}
+
 CommitRpc::CommitRpc()
     :
-    confirm_timeout{YType::uint32, "confirm-timeout"},
-    confirmed{YType::empty, "confirmed"},
-    persist{YType::str, "persist"},
-    persist_id{YType::str, "persist-id"}
+    input(std::make_shared<CommitRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "commit"; yang_parent_name = "ietf-netconf";
 }
 
@@ -1971,19 +2447,13 @@ CommitRpc::~CommitRpc()
 
 bool CommitRpc::has_data() const
 {
-    return confirm_timeout.is_set
-	|| confirmed.is_set
-	|| persist.is_set
-	|| persist_id.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool CommitRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(confirm_timeout.operation)
-	|| is_set(confirmed.operation)
-	|| is_set(persist.operation)
-	|| is_set(persist_id.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string CommitRpc::get_segment_path() const
@@ -1995,21 +2465,17 @@ std::string CommitRpc::get_segment_path() const
 
 }
 
-EntityPath CommitRpc::get_entity_path(Entity* ancestor) const
+const EntityPath CommitRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (confirm_timeout.is_set || is_set(confirm_timeout.operation)) leaf_name_data.push_back(confirm_timeout.get_name_leafdata());
-    if (confirmed.is_set || is_set(confirmed.operation)) leaf_name_data.push_back(confirmed.get_name_leafdata());
-    if (persist.is_set || is_set(persist.operation)) leaf_name_data.push_back(persist.get_name_leafdata());
-    if (persist_id.is_set || is_set(persist_id.operation)) leaf_name_data.push_back(persist_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2019,41 +2485,31 @@ EntityPath CommitRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CommitRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<CommitRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CommitRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CommitRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void CommitRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "confirm-timeout")
-    {
-        confirm_timeout = value;
-    }
-    if(value_path == "confirmed")
-    {
-        confirmed = value;
-    }
-    if(value_path == "persist")
-    {
-        persist = value;
-    }
-    if(value_path == "persist-id")
-    {
-        persist_id = value;
-    }
 }
 
 std::shared_ptr<Entity> CommitRpc::clone_ptr() const
@@ -2074,6 +2530,102 @@ std::string CommitRpc::get_bundle_name() const
 augment_capabilities_function CommitRpc::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
+}
+
+CommitRpc::Input::Input()
+    :
+    confirm_timeout{YType::uint32, "confirm-timeout"},
+    confirmed{YType::empty, "confirmed"},
+    persist{YType::str, "persist"},
+    persist_id{YType::str, "persist-id"}
+{
+    yang_name = "input"; yang_parent_name = "commit";
+}
+
+CommitRpc::Input::~Input()
+{
+}
+
+bool CommitRpc::Input::has_data() const
+{
+    return confirm_timeout.is_set
+	|| confirmed.is_set
+	|| persist.is_set
+	|| persist_id.is_set;
+}
+
+bool CommitRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(confirm_timeout.operation)
+	|| is_set(confirmed.operation)
+	|| is_set(persist.operation)
+	|| is_set(persist_id.operation);
+}
+
+std::string CommitRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath CommitRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:commit/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (confirm_timeout.is_set || is_set(confirm_timeout.operation)) leaf_name_data.push_back(confirm_timeout.get_name_leafdata());
+    if (confirmed.is_set || is_set(confirmed.operation)) leaf_name_data.push_back(confirmed.get_name_leafdata());
+    if (persist.is_set || is_set(persist.operation)) leaf_name_data.push_back(persist.get_name_leafdata());
+    if (persist_id.is_set || is_set(persist_id.operation)) leaf_name_data.push_back(persist_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> CommitRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CommitRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CommitRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "confirm-timeout")
+    {
+        confirm_timeout = value;
+    }
+    if(value_path == "confirmed")
+    {
+        confirmed = value;
+    }
+    if(value_path == "persist")
+    {
+        persist = value;
+    }
+    if(value_path == "persist-id")
+    {
+        persist_id = value;
+    }
 }
 
 DiscardChangesRpc::DiscardChangesRpc()
@@ -2104,12 +2656,12 @@ std::string DiscardChangesRpc::get_segment_path() const
 
 }
 
-EntityPath DiscardChangesRpc::get_entity_path(Entity* ancestor) const
+const EntityPath DiscardChangesRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -2124,20 +2676,12 @@ EntityPath DiscardChangesRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> DiscardChangesRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & DiscardChangesRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> DiscardChangesRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2167,8 +2711,10 @@ augment_capabilities_function DiscardChangesRpc::get_augment_capabilities_functi
 
 CancelCommitRpc::CancelCommitRpc()
     :
-    persist_id{YType::str, "persist-id"}
+    input(std::make_shared<CancelCommitRpc::Input>())
 {
+    input->parent = this;
+
     yang_name = "cancel-commit"; yang_parent_name = "ietf-netconf";
 }
 
@@ -2178,13 +2724,13 @@ CancelCommitRpc::~CancelCommitRpc()
 
 bool CancelCommitRpc::has_data() const
 {
-    return persist_id.is_set;
+    return (input !=  nullptr && input->has_data());
 }
 
 bool CancelCommitRpc::has_operation() const
 {
     return is_set(operation)
-	|| is_set(persist_id.operation);
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string CancelCommitRpc::get_segment_path() const
@@ -2196,18 +2742,17 @@ std::string CancelCommitRpc::get_segment_path() const
 
 }
 
-EntityPath CancelCommitRpc::get_entity_path(Entity* ancestor) const
+const EntityPath CancelCommitRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (persist_id.is_set || is_set(persist_id.operation)) leaf_name_data.push_back(persist_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2217,29 +2762,31 @@ EntityPath CancelCommitRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CancelCommitRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
+        if(input == nullptr)
+        {
+            input = std::make_shared<CancelCommitRpc::Input>();
+        }
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & CancelCommitRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> CancelCommitRpc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
     return children;
 }
 
 void CancelCommitRpc::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "persist-id")
-    {
-        persist_id = value;
-    }
 }
 
 std::shared_ptr<Entity> CancelCommitRpc::clone_ptr() const
@@ -2262,12 +2809,83 @@ augment_capabilities_function CancelCommitRpc::get_augment_capabilities_function
     return ietf_augment_lookup_tables;
 }
 
+CancelCommitRpc::Input::Input()
+    :
+    persist_id{YType::str, "persist-id"}
+{
+    yang_name = "input"; yang_parent_name = "cancel-commit";
+}
+
+CancelCommitRpc::Input::~Input()
+{
+}
+
+bool CancelCommitRpc::Input::has_data() const
+{
+    return persist_id.is_set;
+}
+
+bool CancelCommitRpc::Input::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(persist_id.operation);
+}
+
+std::string CancelCommitRpc::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath CancelCommitRpc::Input::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:cancel-commit/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (persist_id.is_set || is_set(persist_id.operation)) leaf_name_data.push_back(persist_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> CancelCommitRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CancelCommitRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CancelCommitRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "persist-id")
+    {
+        persist_id = value;
+    }
+}
+
 ValidateRpc::ValidateRpc()
     :
-    source(std::make_shared<ValidateRpc::Source>())
+    input(std::make_shared<ValidateRpc::Input>())
 {
-    source->parent = this;
-    children["source"] = source;
+    input->parent = this;
 
     yang_name = "validate"; yang_parent_name = "ietf-netconf";
 }
@@ -2278,13 +2896,13 @@ ValidateRpc::~ValidateRpc()
 
 bool ValidateRpc::has_data() const
 {
-    return (source !=  nullptr && source->has_data());
+    return (input !=  nullptr && input->has_data());
 }
 
 bool ValidateRpc::has_operation() const
 {
     return is_set(operation)
-	|| (source !=  nullptr && source->has_operation());
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string ValidateRpc::get_segment_path() const
@@ -2296,12 +2914,12 @@ std::string ValidateRpc::get_segment_path() const
 
 }
 
-EntityPath ValidateRpc::get_entity_path(Entity* ancestor) const
+const EntityPath ValidateRpc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -2316,41 +2934,24 @@ EntityPath ValidateRpc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ValidateRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
+    if(child_yang_name == "input")
     {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    if(child_yang_name == "source")
-    {
-        if(source != nullptr)
+        if(input == nullptr)
         {
-            children["source"] = source;
+            input = std::make_shared<ValidateRpc::Input>();
         }
-        else
-        {
-            source = std::make_shared<ValidateRpc::Source>();
-            source->parent = this;
-            children["source"] = source;
-        }
-        return children.at("source");
+        return input;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ValidateRpc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ValidateRpc::get_children() const
 {
-    if(children.find("source") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(source != nullptr)
-        {
-            children["source"] = source;
-        }
+        children["input"] = input;
     }
 
     return children;
@@ -2380,47 +2981,40 @@ augment_capabilities_function ValidateRpc::get_augment_capabilities_function() c
     return ietf_augment_lookup_tables;
 }
 
-ValidateRpc::Source::Source()
+ValidateRpc::Input::Input()
     :
-    candidate{YType::empty, "candidate"},
-    running{YType::empty, "running"},
-    startup{YType::empty, "startup"},
-    url{YType::str, "url"}
+    source(std::make_shared<ValidateRpc::Input::Source>())
 {
-    yang_name = "source"; yang_parent_name = "validate";
+    source->parent = this;
+
+    yang_name = "input"; yang_parent_name = "validate";
 }
 
-ValidateRpc::Source::~Source()
+ValidateRpc::Input::~Input()
 {
 }
 
-bool ValidateRpc::Source::has_data() const
+bool ValidateRpc::Input::has_data() const
 {
-    return candidate.is_set
-	|| running.is_set
-	|| startup.is_set
-	|| url.is_set;
+    return (source !=  nullptr && source->has_data());
 }
 
-bool ValidateRpc::Source::has_operation() const
+bool ValidateRpc::Input::has_operation() const
 {
     return is_set(operation)
-	|| is_set(candidate.operation)
-	|| is_set(running.operation)
-	|| is_set(startup.operation)
-	|| is_set(url.operation);
+	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string ValidateRpc::Source::get_segment_path() const
+std::string ValidateRpc::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "source";
+    path_buffer << "input";
 
     return path_buffer.str();
 
 }
 
-EntityPath ValidateRpc::Source::get_entity_path(Entity* ancestor) const
+const EntityPath ValidateRpc::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2434,7 +3028,101 @@ EntityPath ValidateRpc::Source::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> ValidateRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "source")
+    {
+        if(source == nullptr)
+        {
+            source = std::make_shared<ValidateRpc::Input::Source>();
+        }
+        return source;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ValidateRpc::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(source != nullptr)
+    {
+        children["source"] = source;
+    }
+
+    return children;
+}
+
+void ValidateRpc::Input::set_value(const std::string & value_path, std::string value)
+{
+}
+
+ValidateRpc::Input::Source::Source()
+    :
+    candidate{YType::empty, "candidate"},
+    config{YType::str, "config"},
+    running{YType::empty, "running"},
+    startup{YType::empty, "startup"},
+    url{YType::str, "url"}
+{
+    yang_name = "source"; yang_parent_name = "input";
+}
+
+ValidateRpc::Input::Source::~Source()
+{
+}
+
+bool ValidateRpc::Input::Source::has_data() const
+{
+    return candidate.is_set
+	|| config.is_set
+	|| running.is_set
+	|| startup.is_set
+	|| url.is_set;
+}
+
+bool ValidateRpc::Input::Source::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(candidate.operation)
+	|| is_set(config.operation)
+	|| is_set(running.operation)
+	|| is_set(startup.operation)
+	|| is_set(url.operation);
+}
+
+std::string ValidateRpc::Input::Source::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath ValidateRpc::Input::Source::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "ietf-netconf:validate/input/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
     if (candidate.is_set || is_set(candidate.operation)) leaf_name_data.push_back(candidate.get_name_leafdata());
+    if (config.is_set || is_set(config.operation)) leaf_name_data.push_back(config.get_name_leafdata());
     if (running.is_set || is_set(running.operation)) leaf_name_data.push_back(running.get_name_leafdata());
     if (startup.is_set || is_set(startup.operation)) leaf_name_data.push_back(startup.get_name_leafdata());
     if (url.is_set || is_set(url.operation)) leaf_name_data.push_back(url.get_name_leafdata());
@@ -2445,30 +3133,26 @@ EntityPath ValidateRpc::Source::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ValidateRpc::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ValidateRpc::Input::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ValidateRpc::Source::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ValidateRpc::Input::Source::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ValidateRpc::Source::set_value(const std::string & value_path, std::string value)
+void ValidateRpc::Input::Source::set_value(const std::string & value_path, std::string value)
 {
     if(value_path == "candidate")
     {
         candidate = value;
+    }
+    if(value_path == "config")
+    {
+        config = value;
     }
     if(value_path == "running")
     {
@@ -2514,17 +3198,17 @@ const Enum::YLeaf EditOperationTypeEnum::create {2, "create"};
 const Enum::YLeaf EditOperationTypeEnum::delete_ {3, "delete"};
 const Enum::YLeaf EditOperationTypeEnum::remove {4, "remove"};
 
-const Enum::YLeaf EditConfigRpc::DefaultOperationEnum::merge {0, "merge"};
-const Enum::YLeaf EditConfigRpc::DefaultOperationEnum::replace {1, "replace"};
-const Enum::YLeaf EditConfigRpc::DefaultOperationEnum::none {2, "none"};
+const Enum::YLeaf EditConfigRpc::Input::DefaultOperationEnum::merge {0, "merge"};
+const Enum::YLeaf EditConfigRpc::Input::DefaultOperationEnum::replace {1, "replace"};
+const Enum::YLeaf EditConfigRpc::Input::DefaultOperationEnum::none {2, "none"};
 
-const Enum::YLeaf EditConfigRpc::TestOptionEnum::test_then_set {0, "test-then-set"};
-const Enum::YLeaf EditConfigRpc::TestOptionEnum::set {1, "set"};
-const Enum::YLeaf EditConfigRpc::TestOptionEnum::test_only {2, "test-only"};
+const Enum::YLeaf EditConfigRpc::Input::TestOptionEnum::test_then_set {0, "test-then-set"};
+const Enum::YLeaf EditConfigRpc::Input::TestOptionEnum::set {1, "set"};
+const Enum::YLeaf EditConfigRpc::Input::TestOptionEnum::test_only {2, "test-only"};
 
-const Enum::YLeaf EditConfigRpc::ErrorOptionEnum::stop_on_error {0, "stop-on-error"};
-const Enum::YLeaf EditConfigRpc::ErrorOptionEnum::continue_on_error {1, "continue-on-error"};
-const Enum::YLeaf EditConfigRpc::ErrorOptionEnum::rollback_on_error {2, "rollback-on-error"};
+const Enum::YLeaf EditConfigRpc::Input::ErrorOptionEnum::stop_on_error {0, "stop-on-error"};
+const Enum::YLeaf EditConfigRpc::Input::ErrorOptionEnum::continue_on_error {1, "continue-on-error"};
+const Enum::YLeaf EditConfigRpc::Input::ErrorOptionEnum::rollback_on_error {2, "rollback-on-error"};
 
 
 }

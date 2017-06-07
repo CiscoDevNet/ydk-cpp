@@ -18,23 +18,20 @@ class NvSatelliteGlobal : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class ChassisMac; //type: NvSatelliteGlobal::ChassisMac
 
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_cfg::NvSatelliteGlobal::ChassisMac> chassis_mac;
-
-
+        
 }; // NvSatelliteGlobal
 
 
@@ -46,18 +43,15 @@ class NvSatelliteGlobal::ChassisMac : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf mac1; //type: uint32
         YLeaf mac2; //type: uint32
         YLeaf mac3; //type: uint32
-
-
 
 }; // NvSatelliteGlobal::ChassisMac
 
@@ -69,23 +63,20 @@ class NvSatellites : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class NvSatellite; //type: NvSatellites::NvSatellite
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite> > nv_satellite;
-
-
+        
 }; // NvSatellites
 
 
@@ -97,12 +88,11 @@ class NvSatellites::NvSatellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf satellite_id; //type: uint32
         YLeaf vrf; //type: string
@@ -116,7 +106,6 @@ class NvSatellites::NvSatellite : public Entity
         YLeaf serial_number; //type: string
         YLeaf secret; //type: string
         YLeaf ip_address; //type: string
-
         class UpgradeOnConnect; //type: NvSatellites::NvSatellite::UpgradeOnConnect
         class CandidateFabricPorts; //type: NvSatellites::NvSatellite::CandidateFabricPorts
         class ConnectionInfo; //type: NvSatellites::NvSatellite::ConnectionInfo
@@ -126,8 +115,7 @@ class NvSatellites::NvSatellite : public Entity
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::ConnectionInfo> connection_info;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::Redundancy> redundancy;
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::UpgradeOnConnect> upgrade_on_connect;
-
-
+        
 }; // NvSatellites::NvSatellite
 
 
@@ -139,17 +127,14 @@ class NvSatellites::NvSatellite::UpgradeOnConnect : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf connect_type; //type: uint32
         YLeaf reference; //type: string
-
-
 
 }; // NvSatellites::NvSatellite::UpgradeOnConnect
 
@@ -162,19 +147,16 @@ class NvSatellites::NvSatellite::CandidateFabricPorts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CandidateFabricPort; //type: NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort> > candidate_fabric_port;
-
-
+        
 }; // NvSatellites::NvSatellite::CandidateFabricPorts
 
 
@@ -186,19 +168,16 @@ class NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf port_type; //type: string
         YLeaf slot; //type: uint32
         YLeaf sub_slot; //type: uint32
         YLeaf port_range; //type: string
-
-
 
 }; // NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort
 
@@ -211,17 +190,14 @@ class NvSatellites::NvSatellite::ConnectionInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf username; //type: string
         YLeaf password; //type: string
-
-
 
 }; // NvSatellites::NvSatellite::ConnectionInfo
 
@@ -234,16 +210,13 @@ class NvSatellites::NvSatellite::Redundancy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_priority; //type: uint32
-
-
 
 }; // NvSatellites::NvSatellite::Redundancy
 

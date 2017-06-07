@@ -14,7 +14,6 @@ Statistics::Statistics()
     period(std::make_shared<Statistics::Period>())
 {
     period->parent = this;
-    children["period"] = period;
 
     yang_name = "statistics"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-cfg";
 }
@@ -43,12 +42,12 @@ std::string Statistics::get_segment_path() const
 
 }
 
-EntityPath Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "period")
     {
-        if(period != nullptr)
-        {
-            children["period"] = period;
-        }
-        else
+        if(period == nullptr)
         {
             period = std::make_shared<Statistics::Period>();
-            period->parent = this;
-            children["period"] = period;
         }
-        return children.at("period");
+        return period;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Statistics::get_children() const
 {
-    if(children.find("period") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(period != nullptr)
     {
-        if(period != nullptr)
-        {
-            children["period"] = period;
-        }
+        children["period"] = period;
     }
 
     return children;
@@ -132,7 +114,6 @@ Statistics::Period::Period()
     service_accounting(std::make_shared<Statistics::Period::ServiceAccounting>())
 {
     service_accounting->parent = this;
-    children["service-accounting"] = service_accounting;
 
     yang_name = "period"; yang_parent_name = "statistics";
 }
@@ -161,7 +142,7 @@ std::string Statistics::Period::get_segment_path() const
 
 }
 
-EntityPath Statistics::Period::get_entity_path(Entity* ancestor) const
+const EntityPath Statistics::Period::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -184,41 +165,24 @@ EntityPath Statistics::Period::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Statistics::Period::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-accounting")
     {
-        if(service_accounting != nullptr)
-        {
-            children["service-accounting"] = service_accounting;
-        }
-        else
+        if(service_accounting == nullptr)
         {
             service_accounting = std::make_shared<Statistics::Period::ServiceAccounting>();
-            service_accounting->parent = this;
-            children["service-accounting"] = service_accounting;
         }
-        return children.at("service-accounting");
+        return service_accounting;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Statistics::Period::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Statistics::Period::get_children() const
 {
-    if(children.find("service-accounting") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_accounting != nullptr)
     {
-        if(service_accounting != nullptr)
-        {
-            children["service-accounting"] = service_accounting;
-        }
+        children["service-accounting"] = service_accounting;
     }
 
     return children;
@@ -262,7 +226,7 @@ std::string Statistics::Period::ServiceAccounting::get_segment_path() const
 
 }
 
-EntityPath Statistics::Period::ServiceAccounting::get_entity_path(Entity* ancestor) const
+const EntityPath Statistics::Period::ServiceAccounting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -287,20 +251,12 @@ EntityPath Statistics::Period::ServiceAccounting::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Statistics::Period::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Statistics::Period::ServiceAccounting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Statistics::Period::ServiceAccounting::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

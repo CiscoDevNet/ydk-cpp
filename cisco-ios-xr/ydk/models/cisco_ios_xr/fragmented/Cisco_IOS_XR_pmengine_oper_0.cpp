@@ -26,34 +26,24 @@ PerformanceManagement::PerformanceManagement()
 	,sts(std::make_shared<PerformanceManagement::Sts>())
 {
     dwdm->parent = this;
-    children["dwdm"] = dwdm;
 
     ethernet->parent = this;
-    children["ethernet"] = ethernet;
 
     ho_vc->parent = this;
-    children["ho-vc"] = ho_vc;
 
     oc->parent = this;
-    children["oc"] = oc;
 
     odu->parent = this;
-    children["odu"] = odu;
 
     optics->parent = this;
-    children["optics"] = optics;
 
     otu->parent = this;
-    children["otu"] = otu;
 
     sonet->parent = this;
-    children["sonet"] = sonet;
 
     stm->parent = this;
-    children["stm"] = stm;
 
     sts->parent = this;
-    children["sts"] = sts;
 
     yang_name = "performance-management"; yang_parent_name = "Cisco-IOS-XR-pmengine-oper";
 }
@@ -100,12 +90,12 @@ std::string PerformanceManagement::get_segment_path() const
 
 }
 
-EntityPath PerformanceManagement::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -120,248 +110,150 @@ EntityPath PerformanceManagement::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerformanceManagement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dwdm")
     {
-        if(dwdm != nullptr)
-        {
-            children["dwdm"] = dwdm;
-        }
-        else
+        if(dwdm == nullptr)
         {
             dwdm = std::make_shared<PerformanceManagement::Dwdm>();
-            dwdm->parent = this;
-            children["dwdm"] = dwdm;
         }
-        return children.at("dwdm");
+        return dwdm;
     }
 
     if(child_yang_name == "ethernet")
     {
-        if(ethernet != nullptr)
-        {
-            children["ethernet"] = ethernet;
-        }
-        else
+        if(ethernet == nullptr)
         {
             ethernet = std::make_shared<PerformanceManagement::Ethernet>();
-            ethernet->parent = this;
-            children["ethernet"] = ethernet;
         }
-        return children.at("ethernet");
+        return ethernet;
     }
 
     if(child_yang_name == "ho-vc")
     {
-        if(ho_vc != nullptr)
-        {
-            children["ho-vc"] = ho_vc;
-        }
-        else
+        if(ho_vc == nullptr)
         {
             ho_vc = std::make_shared<PerformanceManagement::HoVc>();
-            ho_vc->parent = this;
-            children["ho-vc"] = ho_vc;
         }
-        return children.at("ho-vc");
+        return ho_vc;
     }
 
     if(child_yang_name == "oc")
     {
-        if(oc != nullptr)
-        {
-            children["oc"] = oc;
-        }
-        else
+        if(oc == nullptr)
         {
             oc = std::make_shared<PerformanceManagement::Oc>();
-            oc->parent = this;
-            children["oc"] = oc;
         }
-        return children.at("oc");
+        return oc;
     }
 
     if(child_yang_name == "odu")
     {
-        if(odu != nullptr)
-        {
-            children["odu"] = odu;
-        }
-        else
+        if(odu == nullptr)
         {
             odu = std::make_shared<PerformanceManagement::Odu>();
-            odu->parent = this;
-            children["odu"] = odu;
         }
-        return children.at("odu");
+        return odu;
     }
 
     if(child_yang_name == "optics")
     {
-        if(optics != nullptr)
-        {
-            children["optics"] = optics;
-        }
-        else
+        if(optics == nullptr)
         {
             optics = std::make_shared<PerformanceManagement::Optics>();
-            optics->parent = this;
-            children["optics"] = optics;
         }
-        return children.at("optics");
+        return optics;
     }
 
     if(child_yang_name == "otu")
     {
-        if(otu != nullptr)
-        {
-            children["otu"] = otu;
-        }
-        else
+        if(otu == nullptr)
         {
             otu = std::make_shared<PerformanceManagement::Otu>();
-            otu->parent = this;
-            children["otu"] = otu;
         }
-        return children.at("otu");
+        return otu;
     }
 
     if(child_yang_name == "sonet")
     {
-        if(sonet != nullptr)
-        {
-            children["sonet"] = sonet;
-        }
-        else
+        if(sonet == nullptr)
         {
             sonet = std::make_shared<PerformanceManagement::Sonet>();
-            sonet->parent = this;
-            children["sonet"] = sonet;
         }
-        return children.at("sonet");
+        return sonet;
     }
 
     if(child_yang_name == "stm")
     {
-        if(stm != nullptr)
-        {
-            children["stm"] = stm;
-        }
-        else
+        if(stm == nullptr)
         {
             stm = std::make_shared<PerformanceManagement::Stm>();
-            stm->parent = this;
-            children["stm"] = stm;
         }
-        return children.at("stm");
+        return stm;
     }
 
     if(child_yang_name == "sts")
     {
-        if(sts != nullptr)
-        {
-            children["sts"] = sts;
-        }
-        else
+        if(sts == nullptr)
         {
             sts = std::make_shared<PerformanceManagement::Sts>();
-            sts->parent = this;
-            children["sts"] = sts;
         }
-        return children.at("sts");
+        return sts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::get_children() const
 {
-    if(children.find("dwdm") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(dwdm != nullptr)
     {
-        if(dwdm != nullptr)
-        {
-            children["dwdm"] = dwdm;
-        }
+        children["dwdm"] = dwdm;
     }
 
-    if(children.find("ethernet") == children.end())
+    if(ethernet != nullptr)
     {
-        if(ethernet != nullptr)
-        {
-            children["ethernet"] = ethernet;
-        }
+        children["ethernet"] = ethernet;
     }
 
-    if(children.find("ho-vc") == children.end())
+    if(ho_vc != nullptr)
     {
-        if(ho_vc != nullptr)
-        {
-            children["ho-vc"] = ho_vc;
-        }
+        children["ho-vc"] = ho_vc;
     }
 
-    if(children.find("oc") == children.end())
+    if(oc != nullptr)
     {
-        if(oc != nullptr)
-        {
-            children["oc"] = oc;
-        }
+        children["oc"] = oc;
     }
 
-    if(children.find("odu") == children.end())
+    if(odu != nullptr)
     {
-        if(odu != nullptr)
-        {
-            children["odu"] = odu;
-        }
+        children["odu"] = odu;
     }
 
-    if(children.find("optics") == children.end())
+    if(optics != nullptr)
     {
-        if(optics != nullptr)
-        {
-            children["optics"] = optics;
-        }
+        children["optics"] = optics;
     }
 
-    if(children.find("otu") == children.end())
+    if(otu != nullptr)
     {
-        if(otu != nullptr)
-        {
-            children["otu"] = otu;
-        }
+        children["otu"] = otu;
     }
 
-    if(children.find("sonet") == children.end())
+    if(sonet != nullptr)
     {
-        if(sonet != nullptr)
-        {
-            children["sonet"] = sonet;
-        }
+        children["sonet"] = sonet;
     }
 
-    if(children.find("stm") == children.end())
+    if(stm != nullptr)
     {
-        if(stm != nullptr)
-        {
-            children["stm"] = stm;
-        }
+        children["stm"] = stm;
     }
 
-    if(children.find("sts") == children.end())
+    if(sts != nullptr)
     {
-        if(sts != nullptr)
-        {
-            children["sts"] = sts;
-        }
+        children["sts"] = sts;
     }
 
     return children;
@@ -396,7 +288,6 @@ PerformanceManagement::HoVc::HoVc()
     ho_vc_ports(std::make_shared<PerformanceManagement::HoVc::HoVcPorts>())
 {
     ho_vc_ports->parent = this;
-    children["ho-vc-ports"] = ho_vc_ports;
 
     yang_name = "ho-vc"; yang_parent_name = "performance-management";
 }
@@ -425,7 +316,7 @@ std::string PerformanceManagement::HoVc::get_segment_path() const
 
 }
 
-EntityPath PerformanceManagement::HoVc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -448,41 +339,24 @@ EntityPath PerformanceManagement::HoVc::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-ports")
     {
-        if(ho_vc_ports != nullptr)
-        {
-            children["ho-vc-ports"] = ho_vc_ports;
-        }
-        else
+        if(ho_vc_ports == nullptr)
         {
             ho_vc_ports = std::make_shared<PerformanceManagement::HoVc::HoVcPorts>();
-            ho_vc_ports->parent = this;
-            children["ho-vc-ports"] = ho_vc_ports;
         }
-        return children.at("ho-vc-ports");
+        return ho_vc_ports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::get_children() const
 {
-    if(children.find("ho-vc-ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_ports != nullptr)
     {
-        if(ho_vc_ports != nullptr)
-        {
-            children["ho-vc-ports"] = ho_vc_ports;
-        }
+        children["ho-vc-ports"] = ho_vc_ports;
     }
 
     return children;
@@ -530,7 +404,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::get_segment_path() const
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -553,15 +427,6 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-port")
     {
         for(auto const & c : ho_vc_port)
@@ -569,28 +434,24 @@ std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort>();
         c->parent = this;
-        ho_vc_port.push_back(std::move(c));
-        children[segment_path] = ho_vc_port.back();
-        return children.at(segment_path);
+        ho_vc_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -607,7 +468,6 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcPort()
     ho_vc_current(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent>())
 {
     ho_vc_current->parent = this;
-    children["ho-vc-current"] = ho_vc_current;
 
     yang_name = "ho-vc-port"; yang_parent_name = "ho-vc-ports";
 }
@@ -638,7 +498,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::get_segment_path()
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -662,41 +522,24 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::get_entity_path(Ent
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-current")
     {
-        if(ho_vc_current != nullptr)
-        {
-            children["ho-vc-current"] = ho_vc_current;
-        }
-        else
+        if(ho_vc_current == nullptr)
         {
             ho_vc_current = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent>();
-            ho_vc_current->parent = this;
-            children["ho-vc-current"] = ho_vc_current;
         }
-        return children.at("ho-vc-current");
+        return ho_vc_current;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::get_children() const
 {
-    if(children.find("ho-vc-current") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_current != nullptr)
     {
-        if(ho_vc_current != nullptr)
-        {
-            children["ho-vc-current"] = ho_vc_current;
-        }
+        children["ho-vc-current"] = ho_vc_current;
     }
 
     return children;
@@ -716,10 +559,8 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcCurrent()
 	,ho_vc_minute15(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15>())
 {
     ho_vc_hour24->parent = this;
-    children["ho-vc-hour24"] = ho_vc_hour24;
 
     ho_vc_minute15->parent = this;
-    children["ho-vc-minute15"] = ho_vc_minute15;
 
     yang_name = "ho-vc-current"; yang_parent_name = "ho-vc-port";
 }
@@ -750,7 +591,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::get_s
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -773,64 +614,38 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::get_en
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24")
     {
-        if(ho_vc_hour24 != nullptr)
-        {
-            children["ho-vc-hour24"] = ho_vc_hour24;
-        }
-        else
+        if(ho_vc_hour24 == nullptr)
         {
             ho_vc_hour24 = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24>();
-            ho_vc_hour24->parent = this;
-            children["ho-vc-hour24"] = ho_vc_hour24;
         }
-        return children.at("ho-vc-hour24");
+        return ho_vc_hour24;
     }
 
     if(child_yang_name == "ho-vc-minute15")
     {
-        if(ho_vc_minute15 != nullptr)
-        {
-            children["ho-vc-minute15"] = ho_vc_minute15;
-        }
-        else
+        if(ho_vc_minute15 == nullptr)
         {
             ho_vc_minute15 = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15>();
-            ho_vc_minute15->parent = this;
-            children["ho-vc-minute15"] = ho_vc_minute15;
         }
-        return children.at("ho-vc-minute15");
+        return ho_vc_minute15;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::get_children() const
 {
-    if(children.find("ho-vc-hour24") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_hour24 != nullptr)
     {
-        if(ho_vc_hour24 != nullptr)
-        {
-            children["ho-vc-hour24"] = ho_vc_hour24;
-        }
+        children["ho-vc-hour24"] = ho_vc_hour24;
     }
 
-    if(children.find("ho-vc-minute15") == children.end())
+    if(ho_vc_minute15 != nullptr)
     {
-        if(ho_vc_minute15 != nullptr)
-        {
-            children["ho-vc-minute15"] = ho_vc_minute15;
-        }
+        children["ho-vc-minute15"] = ho_vc_minute15;
     }
 
     return children;
@@ -845,7 +660,6 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     ho_vc_hour24_paths(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths>())
 {
     ho_vc_hour24_paths->parent = this;
-    children["ho-vc-hour24-paths"] = ho_vc_hour24_paths;
 
     yang_name = "ho-vc-hour24"; yang_parent_name = "ho-vc-current";
 }
@@ -874,7 +688,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -897,41 +711,24 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24-paths")
     {
-        if(ho_vc_hour24_paths != nullptr)
-        {
-            children["ho-vc-hour24-paths"] = ho_vc_hour24_paths;
-        }
-        else
+        if(ho_vc_hour24_paths == nullptr)
         {
             ho_vc_hour24_paths = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths>();
-            ho_vc_hour24_paths->parent = this;
-            children["ho-vc-hour24-paths"] = ho_vc_hour24_paths;
         }
-        return children.at("ho-vc-hour24-paths");
+        return ho_vc_hour24_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::get_children() const
 {
-    if(children.find("ho-vc-hour24-paths") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_hour24_paths != nullptr)
     {
-        if(ho_vc_hour24_paths != nullptr)
-        {
-            children["ho-vc-hour24-paths"] = ho_vc_hour24_paths;
-        }
+        children["ho-vc-hour24-paths"] = ho_vc_hour24_paths;
     }
 
     return children;
@@ -979,7 +776,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1002,15 +799,6 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-hour24-path")
     {
         for(auto const & c : ho_vc_hour24_path)
@@ -1018,28 +806,24 @@ std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path>();
         c->parent = this;
-        ho_vc_hour24_path.push_back(std::move(c));
-        children[segment_path] = ho_vc_hour24_path.back();
-        return children.at(segment_path);
+        ho_vc_hour24_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_hour24_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1063,10 +847,8 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 	,path(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path>())
 {
     fe_path->parent = this;
-    children["fe-path"] = fe_path;
 
     path->parent = this;
-    children["path"] = path;
 
     yang_name = "ho-vc-hour24-path"; yang_parent_name = "ho-vc-hour24-paths";
 }
@@ -1111,7 +893,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1141,64 +923,38 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fe-path")
     {
-        if(fe_path != nullptr)
-        {
-            children["fe-path"] = fe_path;
-        }
-        else
+        if(fe_path == nullptr)
         {
             fe_path = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath>();
-            fe_path->parent = this;
-            children["fe-path"] = fe_path;
         }
-        return children.at("fe-path");
+        return fe_path;
     }
 
     if(child_yang_name == "path")
     {
-        if(path != nullptr)
-        {
-            children["path"] = path;
-        }
-        else
+        if(path == nullptr)
         {
             path = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path>();
-            path->parent = this;
-            children["path"] = path;
         }
-        return children.at("path");
+        return path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::get_children() const
 {
-    if(children.find("fe-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fe_path != nullptr)
     {
-        if(fe_path != nullptr)
-        {
-            children["fe-path"] = fe_path;
-        }
+        children["fe-path"] = fe_path;
     }
 
-    if(children.find("path") == children.end())
+    if(path != nullptr)
     {
-        if(path != nullptr)
-        {
-            children["path"] = path;
-        }
+        children["path"] = path;
     }
 
     return children;
@@ -1250,28 +1006,20 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 	,path_ua_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs>())
 {
     path_bb_es->parent = this;
-    children["path-bb-es"] = path_bb_es;
 
     path_bbe_rs->parent = this;
-    children["path-bbe-rs"] = path_bbe_rs;
 
     path_e_bs->parent = this;
-    children["path-e-bs"] = path_e_bs;
 
     path_e_ss->parent = this;
-    children["path-e-ss"] = path_e_ss;
 
     path_es_rs->parent = this;
-    children["path-es-rs"] = path_es_rs;
 
     path_se_ss->parent = this;
-    children["path-se-ss"] = path_se_ss;
 
     path_ses_rs->parent = this;
-    children["path-ses-rs"] = path_ses_rs;
 
     path_ua_ss->parent = this;
-    children["path-ua-ss"] = path_ua_ss;
 
     yang_name = "path"; yang_parent_name = "ho-vc-hour24-path";
 }
@@ -1316,7 +1064,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1340,202 +1088,122 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-bb-es")
     {
-        if(path_bb_es != nullptr)
-        {
-            children["path-bb-es"] = path_bb_es;
-        }
-        else
+        if(path_bb_es == nullptr)
         {
             path_bb_es = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs>();
-            path_bb_es->parent = this;
-            children["path-bb-es"] = path_bb_es;
         }
-        return children.at("path-bb-es");
+        return path_bb_es;
     }
 
     if(child_yang_name == "path-bbe-rs")
     {
-        if(path_bbe_rs != nullptr)
-        {
-            children["path-bbe-rs"] = path_bbe_rs;
-        }
-        else
+        if(path_bbe_rs == nullptr)
         {
             path_bbe_rs = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs>();
-            path_bbe_rs->parent = this;
-            children["path-bbe-rs"] = path_bbe_rs;
         }
-        return children.at("path-bbe-rs");
+        return path_bbe_rs;
     }
 
     if(child_yang_name == "path-e-bs")
     {
-        if(path_e_bs != nullptr)
-        {
-            children["path-e-bs"] = path_e_bs;
-        }
-        else
+        if(path_e_bs == nullptr)
         {
             path_e_bs = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs>();
-            path_e_bs->parent = this;
-            children["path-e-bs"] = path_e_bs;
         }
-        return children.at("path-e-bs");
+        return path_e_bs;
     }
 
     if(child_yang_name == "path-e-ss")
     {
-        if(path_e_ss != nullptr)
-        {
-            children["path-e-ss"] = path_e_ss;
-        }
-        else
+        if(path_e_ss == nullptr)
         {
             path_e_ss = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs>();
-            path_e_ss->parent = this;
-            children["path-e-ss"] = path_e_ss;
         }
-        return children.at("path-e-ss");
+        return path_e_ss;
     }
 
     if(child_yang_name == "path-es-rs")
     {
-        if(path_es_rs != nullptr)
-        {
-            children["path-es-rs"] = path_es_rs;
-        }
-        else
+        if(path_es_rs == nullptr)
         {
             path_es_rs = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs>();
-            path_es_rs->parent = this;
-            children["path-es-rs"] = path_es_rs;
         }
-        return children.at("path-es-rs");
+        return path_es_rs;
     }
 
     if(child_yang_name == "path-se-ss")
     {
-        if(path_se_ss != nullptr)
-        {
-            children["path-se-ss"] = path_se_ss;
-        }
-        else
+        if(path_se_ss == nullptr)
         {
             path_se_ss = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs>();
-            path_se_ss->parent = this;
-            children["path-se-ss"] = path_se_ss;
         }
-        return children.at("path-se-ss");
+        return path_se_ss;
     }
 
     if(child_yang_name == "path-ses-rs")
     {
-        if(path_ses_rs != nullptr)
-        {
-            children["path-ses-rs"] = path_ses_rs;
-        }
-        else
+        if(path_ses_rs == nullptr)
         {
             path_ses_rs = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs>();
-            path_ses_rs->parent = this;
-            children["path-ses-rs"] = path_ses_rs;
         }
-        return children.at("path-ses-rs");
+        return path_ses_rs;
     }
 
     if(child_yang_name == "path-ua-ss")
     {
-        if(path_ua_ss != nullptr)
-        {
-            children["path-ua-ss"] = path_ua_ss;
-        }
-        else
+        if(path_ua_ss == nullptr)
         {
             path_ua_ss = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs>();
-            path_ua_ss->parent = this;
-            children["path-ua-ss"] = path_ua_ss;
         }
-        return children.at("path-ua-ss");
+        return path_ua_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::get_children() const
 {
-    if(children.find("path-bb-es") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_bb_es != nullptr)
     {
-        if(path_bb_es != nullptr)
-        {
-            children["path-bb-es"] = path_bb_es;
-        }
+        children["path-bb-es"] = path_bb_es;
     }
 
-    if(children.find("path-bbe-rs") == children.end())
+    if(path_bbe_rs != nullptr)
     {
-        if(path_bbe_rs != nullptr)
-        {
-            children["path-bbe-rs"] = path_bbe_rs;
-        }
+        children["path-bbe-rs"] = path_bbe_rs;
     }
 
-    if(children.find("path-e-bs") == children.end())
+    if(path_e_bs != nullptr)
     {
-        if(path_e_bs != nullptr)
-        {
-            children["path-e-bs"] = path_e_bs;
-        }
+        children["path-e-bs"] = path_e_bs;
     }
 
-    if(children.find("path-e-ss") == children.end())
+    if(path_e_ss != nullptr)
     {
-        if(path_e_ss != nullptr)
-        {
-            children["path-e-ss"] = path_e_ss;
-        }
+        children["path-e-ss"] = path_e_ss;
     }
 
-    if(children.find("path-es-rs") == children.end())
+    if(path_es_rs != nullptr)
     {
-        if(path_es_rs != nullptr)
-        {
-            children["path-es-rs"] = path_es_rs;
-        }
+        children["path-es-rs"] = path_es_rs;
     }
 
-    if(children.find("path-se-ss") == children.end())
+    if(path_se_ss != nullptr)
     {
-        if(path_se_ss != nullptr)
-        {
-            children["path-se-ss"] = path_se_ss;
-        }
+        children["path-se-ss"] = path_se_ss;
     }
 
-    if(children.find("path-ses-rs") == children.end())
+    if(path_ses_rs != nullptr)
     {
-        if(path_ses_rs != nullptr)
-        {
-            children["path-ses-rs"] = path_ses_rs;
-        }
+        children["path-ses-rs"] = path_ses_rs;
     }
 
-    if(children.find("path-ua-ss") == children.end())
+    if(path_ua_ss != nullptr)
     {
-        if(path_ua_ss != nullptr)
-        {
-            children["path-ua-ss"] = path_ua_ss;
-        }
+        children["path-ua-ss"] = path_ua_ss;
     }
 
     return children;
@@ -1586,7 +1254,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1612,20 +1280,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1682,7 +1342,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1708,20 +1368,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1778,7 +1430,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1804,20 +1456,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1874,7 +1518,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1900,20 +1544,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1970,7 +1606,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1996,20 +1632,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2066,7 +1694,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2092,20 +1720,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2162,7 +1782,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2188,20 +1808,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2258,7 +1870,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2284,20 +1896,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2357,7 +1961,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcH
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2384,20 +1988,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHo
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2426,7 +2022,6 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     ho_vc_minute15_paths(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths>())
 {
     ho_vc_minute15_paths->parent = this;
-    children["ho-vc-minute15-paths"] = ho_vc_minute15_paths;
 
     yang_name = "ho-vc-minute15"; yang_parent_name = "ho-vc-current";
 }
@@ -2455,7 +2050,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2478,41 +2073,24 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-minute15-paths")
     {
-        if(ho_vc_minute15_paths != nullptr)
-        {
-            children["ho-vc-minute15-paths"] = ho_vc_minute15_paths;
-        }
-        else
+        if(ho_vc_minute15_paths == nullptr)
         {
             ho_vc_minute15_paths = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths>();
-            ho_vc_minute15_paths->parent = this;
-            children["ho-vc-minute15-paths"] = ho_vc_minute15_paths;
         }
-        return children.at("ho-vc-minute15-paths");
+        return ho_vc_minute15_paths;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::get_children() const
 {
-    if(children.find("ho-vc-minute15-paths") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ho_vc_minute15_paths != nullptr)
     {
-        if(ho_vc_minute15_paths != nullptr)
-        {
-            children["ho-vc-minute15-paths"] = ho_vc_minute15_paths;
-        }
+        children["ho-vc-minute15-paths"] = ho_vc_minute15_paths;
     }
 
     return children;
@@ -2560,7 +2138,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2583,15 +2161,6 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ho-vc-minute15-path")
     {
         for(auto const & c : ho_vc_minute15_path)
@@ -2599,28 +2168,24 @@ std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path>();
         c->parent = this;
-        ho_vc_minute15_path.push_back(std::move(c));
-        children[segment_path] = ho_vc_minute15_path.back();
-        return children.at(segment_path);
+        ho_vc_minute15_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ho_vc_minute15_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2644,10 +2209,8 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 	,path(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path>())
 {
     fe_path->parent = this;
-    children["fe-path"] = fe_path;
 
     path->parent = this;
-    children["path"] = path;
 
     yang_name = "ho-vc-minute15-path"; yang_parent_name = "ho-vc-minute15-paths";
 }
@@ -2692,7 +2255,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2722,64 +2285,38 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fe-path")
     {
-        if(fe_path != nullptr)
-        {
-            children["fe-path"] = fe_path;
-        }
-        else
+        if(fe_path == nullptr)
         {
             fe_path = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath>();
-            fe_path->parent = this;
-            children["fe-path"] = fe_path;
         }
-        return children.at("fe-path");
+        return fe_path;
     }
 
     if(child_yang_name == "path")
     {
-        if(path != nullptr)
-        {
-            children["path"] = path;
-        }
-        else
+        if(path == nullptr)
         {
             path = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path>();
-            path->parent = this;
-            children["path"] = path;
         }
-        return children.at("path");
+        return path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::get_children() const
 {
-    if(children.find("fe-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fe_path != nullptr)
     {
-        if(fe_path != nullptr)
-        {
-            children["fe-path"] = fe_path;
-        }
+        children["fe-path"] = fe_path;
     }
 
-    if(children.find("path") == children.end())
+    if(path != nullptr)
     {
-        if(path != nullptr)
-        {
-            children["path"] = path;
-        }
+        children["path"] = path;
     }
 
     return children;
@@ -2831,28 +2368,20 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 	,path_ua_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs>())
 {
     path_bb_es->parent = this;
-    children["path-bb-es"] = path_bb_es;
 
     path_bbe_rs->parent = this;
-    children["path-bbe-rs"] = path_bbe_rs;
 
     path_e_bs->parent = this;
-    children["path-e-bs"] = path_e_bs;
 
     path_e_ss->parent = this;
-    children["path-e-ss"] = path_e_ss;
 
     path_es_rs->parent = this;
-    children["path-es-rs"] = path_es_rs;
 
     path_se_ss->parent = this;
-    children["path-se-ss"] = path_se_ss;
 
     path_ses_rs->parent = this;
-    children["path-ses-rs"] = path_ses_rs;
 
     path_ua_ss->parent = this;
-    children["path-ua-ss"] = path_ua_ss;
 
     yang_name = "path"; yang_parent_name = "ho-vc-minute15-path";
 }
@@ -2897,7 +2426,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2921,202 +2450,122 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-bb-es")
     {
-        if(path_bb_es != nullptr)
-        {
-            children["path-bb-es"] = path_bb_es;
-        }
-        else
+        if(path_bb_es == nullptr)
         {
             path_bb_es = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs>();
-            path_bb_es->parent = this;
-            children["path-bb-es"] = path_bb_es;
         }
-        return children.at("path-bb-es");
+        return path_bb_es;
     }
 
     if(child_yang_name == "path-bbe-rs")
     {
-        if(path_bbe_rs != nullptr)
-        {
-            children["path-bbe-rs"] = path_bbe_rs;
-        }
-        else
+        if(path_bbe_rs == nullptr)
         {
             path_bbe_rs = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs>();
-            path_bbe_rs->parent = this;
-            children["path-bbe-rs"] = path_bbe_rs;
         }
-        return children.at("path-bbe-rs");
+        return path_bbe_rs;
     }
 
     if(child_yang_name == "path-e-bs")
     {
-        if(path_e_bs != nullptr)
-        {
-            children["path-e-bs"] = path_e_bs;
-        }
-        else
+        if(path_e_bs == nullptr)
         {
             path_e_bs = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs>();
-            path_e_bs->parent = this;
-            children["path-e-bs"] = path_e_bs;
         }
-        return children.at("path-e-bs");
+        return path_e_bs;
     }
 
     if(child_yang_name == "path-e-ss")
     {
-        if(path_e_ss != nullptr)
-        {
-            children["path-e-ss"] = path_e_ss;
-        }
-        else
+        if(path_e_ss == nullptr)
         {
             path_e_ss = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs>();
-            path_e_ss->parent = this;
-            children["path-e-ss"] = path_e_ss;
         }
-        return children.at("path-e-ss");
+        return path_e_ss;
     }
 
     if(child_yang_name == "path-es-rs")
     {
-        if(path_es_rs != nullptr)
-        {
-            children["path-es-rs"] = path_es_rs;
-        }
-        else
+        if(path_es_rs == nullptr)
         {
             path_es_rs = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs>();
-            path_es_rs->parent = this;
-            children["path-es-rs"] = path_es_rs;
         }
-        return children.at("path-es-rs");
+        return path_es_rs;
     }
 
     if(child_yang_name == "path-se-ss")
     {
-        if(path_se_ss != nullptr)
-        {
-            children["path-se-ss"] = path_se_ss;
-        }
-        else
+        if(path_se_ss == nullptr)
         {
             path_se_ss = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs>();
-            path_se_ss->parent = this;
-            children["path-se-ss"] = path_se_ss;
         }
-        return children.at("path-se-ss");
+        return path_se_ss;
     }
 
     if(child_yang_name == "path-ses-rs")
     {
-        if(path_ses_rs != nullptr)
-        {
-            children["path-ses-rs"] = path_ses_rs;
-        }
-        else
+        if(path_ses_rs == nullptr)
         {
             path_ses_rs = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs>();
-            path_ses_rs->parent = this;
-            children["path-ses-rs"] = path_ses_rs;
         }
-        return children.at("path-ses-rs");
+        return path_ses_rs;
     }
 
     if(child_yang_name == "path-ua-ss")
     {
-        if(path_ua_ss != nullptr)
-        {
-            children["path-ua-ss"] = path_ua_ss;
-        }
-        else
+        if(path_ua_ss == nullptr)
         {
             path_ua_ss = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs>();
-            path_ua_ss->parent = this;
-            children["path-ua-ss"] = path_ua_ss;
         }
-        return children.at("path-ua-ss");
+        return path_ua_ss;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::get_children() const
 {
-    if(children.find("path-bb-es") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_bb_es != nullptr)
     {
-        if(path_bb_es != nullptr)
-        {
-            children["path-bb-es"] = path_bb_es;
-        }
+        children["path-bb-es"] = path_bb_es;
     }
 
-    if(children.find("path-bbe-rs") == children.end())
+    if(path_bbe_rs != nullptr)
     {
-        if(path_bbe_rs != nullptr)
-        {
-            children["path-bbe-rs"] = path_bbe_rs;
-        }
+        children["path-bbe-rs"] = path_bbe_rs;
     }
 
-    if(children.find("path-e-bs") == children.end())
+    if(path_e_bs != nullptr)
     {
-        if(path_e_bs != nullptr)
-        {
-            children["path-e-bs"] = path_e_bs;
-        }
+        children["path-e-bs"] = path_e_bs;
     }
 
-    if(children.find("path-e-ss") == children.end())
+    if(path_e_ss != nullptr)
     {
-        if(path_e_ss != nullptr)
-        {
-            children["path-e-ss"] = path_e_ss;
-        }
+        children["path-e-ss"] = path_e_ss;
     }
 
-    if(children.find("path-es-rs") == children.end())
+    if(path_es_rs != nullptr)
     {
-        if(path_es_rs != nullptr)
-        {
-            children["path-es-rs"] = path_es_rs;
-        }
+        children["path-es-rs"] = path_es_rs;
     }
 
-    if(children.find("path-se-ss") == children.end())
+    if(path_se_ss != nullptr)
     {
-        if(path_se_ss != nullptr)
-        {
-            children["path-se-ss"] = path_se_ss;
-        }
+        children["path-se-ss"] = path_se_ss;
     }
 
-    if(children.find("path-ses-rs") == children.end())
+    if(path_ses_rs != nullptr)
     {
-        if(path_ses_rs != nullptr)
-        {
-            children["path-ses-rs"] = path_ses_rs;
-        }
+        children["path-ses-rs"] = path_ses_rs;
     }
 
-    if(children.find("path-ua-ss") == children.end())
+    if(path_ua_ss != nullptr)
     {
-        if(path_ua_ss != nullptr)
-        {
-            children["path-ua-ss"] = path_ua_ss;
-        }
+        children["path-ua-ss"] = path_ua_ss;
     }
 
     return children;
@@ -3167,7 +2616,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3193,20 +2642,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3263,7 +2704,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3289,20 +2730,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3359,7 +2792,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3385,20 +2818,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3455,7 +2880,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3481,20 +2906,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3551,7 +2968,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3577,20 +2994,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3647,7 +3056,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3673,20 +3082,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3743,7 +3144,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3769,20 +3170,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3839,7 +3232,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3865,20 +3258,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3938,7 +3323,7 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcM
 
 }
 
-EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3965,20 +3350,12 @@ EntityPath PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMi
 
 std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4007,7 +3384,6 @@ PerformanceManagement::Odu::Odu()
     odu_ports(std::make_shared<PerformanceManagement::Odu::OduPorts>())
 {
     odu_ports->parent = this;
-    children["odu-ports"] = odu_ports;
 
     yang_name = "odu"; yang_parent_name = "performance-management";
 }
@@ -4036,7 +3412,7 @@ std::string PerformanceManagement::Odu::get_segment_path() const
 
 }
 
-EntityPath PerformanceManagement::Odu::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4059,41 +3435,24 @@ EntityPath PerformanceManagement::Odu::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-ports")
     {
-        if(odu_ports != nullptr)
-        {
-            children["odu-ports"] = odu_ports;
-        }
-        else
+        if(odu_ports == nullptr)
         {
             odu_ports = std::make_shared<PerformanceManagement::Odu::OduPorts>();
-            odu_ports->parent = this;
-            children["odu-ports"] = odu_ports;
         }
-        return children.at("odu-ports");
+        return odu_ports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::get_children() const
 {
-    if(children.find("odu-ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(odu_ports != nullptr)
     {
-        if(odu_ports != nullptr)
-        {
-            children["odu-ports"] = odu_ports;
-        }
+        children["odu-ports"] = odu_ports;
     }
 
     return children;
@@ -4141,7 +3500,7 @@ std::string PerformanceManagement::Odu::OduPorts::get_segment_path() const
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4164,15 +3523,6 @@ EntityPath PerformanceManagement::Odu::OduPorts::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-port")
     {
         for(auto const & c : odu_port)
@@ -4180,28 +3530,24 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort>();
         c->parent = this;
-        odu_port.push_back(std::move(c));
-        children[segment_path] = odu_port.back();
-        return children.at(segment_path);
+        odu_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : odu_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4218,7 +3564,6 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduPort()
     odu_current(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent>())
 {
     odu_current->parent = this;
-    children["odu-current"] = odu_current;
 
     yang_name = "odu-port"; yang_parent_name = "odu-ports";
 }
@@ -4249,7 +3594,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::get_segment_path() co
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4273,41 +3618,24 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::get_entity_path(Entity
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-current")
     {
-        if(odu_current != nullptr)
-        {
-            children["odu-current"] = odu_current;
-        }
-        else
+        if(odu_current == nullptr)
         {
             odu_current = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent>();
-            odu_current->parent = this;
-            children["odu-current"] = odu_current;
         }
-        return children.at("odu-current");
+        return odu_current;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::get_children() const
 {
-    if(children.find("odu-current") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(odu_current != nullptr)
     {
-        if(odu_current != nullptr)
-        {
-            children["odu-current"] = odu_current;
-        }
+        children["odu-current"] = odu_current;
     }
 
     return children;
@@ -4327,10 +3655,8 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduCurrent()
 	,odu_minute15(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15>())
 {
     odu_hour24->parent = this;
-    children["odu-hour24"] = odu_hour24;
 
     odu_minute15->parent = this;
-    children["odu-minute15"] = odu_minute15;
 
     yang_name = "odu-current"; yang_parent_name = "odu-port";
 }
@@ -4361,7 +3687,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::get_segme
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4384,64 +3710,38 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::get_entity
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-hour24")
     {
-        if(odu_hour24 != nullptr)
-        {
-            children["odu-hour24"] = odu_hour24;
-        }
-        else
+        if(odu_hour24 == nullptr)
         {
             odu_hour24 = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24>();
-            odu_hour24->parent = this;
-            children["odu-hour24"] = odu_hour24;
         }
-        return children.at("odu-hour24");
+        return odu_hour24;
     }
 
     if(child_yang_name == "odu-minute15")
     {
-        if(odu_minute15 != nullptr)
-        {
-            children["odu-minute15"] = odu_minute15;
-        }
-        else
+        if(odu_minute15 == nullptr)
         {
             odu_minute15 = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15>();
-            odu_minute15->parent = this;
-            children["odu-minute15"] = odu_minute15;
         }
-        return children.at("odu-minute15");
+        return odu_minute15;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::get_children() const
 {
-    if(children.find("odu-hour24") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(odu_hour24 != nullptr)
     {
-        if(odu_hour24 != nullptr)
-        {
-            children["odu-hour24"] = odu_hour24;
-        }
+        children["odu-hour24"] = odu_hour24;
     }
 
-    if(children.find("odu-minute15") == children.end())
+    if(odu_minute15 != nullptr)
     {
-        if(odu_minute15 != nullptr)
-        {
-            children["odu-minute15"] = odu_minute15;
-        }
+        children["odu-minute15"] = odu_minute15;
     }
 
     return children;
@@ -4458,13 +3758,10 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinut
 	,odu_minute15prbses(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses>())
 {
     odu_minute15gfps->parent = this;
-    children["odu-minute15gfps"] = odu_minute15gfps;
 
     odu_minute15otns->parent = this;
-    children["odu-minute15otns"] = odu_minute15otns;
 
     odu_minute15prbses->parent = this;
-    children["odu-minute15prbses"] = odu_minute15prbses;
 
     yang_name = "odu-minute15"; yang_parent_name = "odu-current";
 }
@@ -4497,7 +3794,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4520,87 +3817,52 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-minute15gfps")
     {
-        if(odu_minute15gfps != nullptr)
-        {
-            children["odu-minute15gfps"] = odu_minute15gfps;
-        }
-        else
+        if(odu_minute15gfps == nullptr)
         {
             odu_minute15gfps = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps>();
-            odu_minute15gfps->parent = this;
-            children["odu-minute15gfps"] = odu_minute15gfps;
         }
-        return children.at("odu-minute15gfps");
+        return odu_minute15gfps;
     }
 
     if(child_yang_name == "odu-minute15otns")
     {
-        if(odu_minute15otns != nullptr)
-        {
-            children["odu-minute15otns"] = odu_minute15otns;
-        }
-        else
+        if(odu_minute15otns == nullptr)
         {
             odu_minute15otns = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns>();
-            odu_minute15otns->parent = this;
-            children["odu-minute15otns"] = odu_minute15otns;
         }
-        return children.at("odu-minute15otns");
+        return odu_minute15otns;
     }
 
     if(child_yang_name == "odu-minute15prbses")
     {
-        if(odu_minute15prbses != nullptr)
-        {
-            children["odu-minute15prbses"] = odu_minute15prbses;
-        }
-        else
+        if(odu_minute15prbses == nullptr)
         {
             odu_minute15prbses = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses>();
-            odu_minute15prbses->parent = this;
-            children["odu-minute15prbses"] = odu_minute15prbses;
         }
-        return children.at("odu-minute15prbses");
+        return odu_minute15prbses;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::get_children() const
 {
-    if(children.find("odu-minute15gfps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(odu_minute15gfps != nullptr)
     {
-        if(odu_minute15gfps != nullptr)
-        {
-            children["odu-minute15gfps"] = odu_minute15gfps;
-        }
+        children["odu-minute15gfps"] = odu_minute15gfps;
     }
 
-    if(children.find("odu-minute15otns") == children.end())
+    if(odu_minute15otns != nullptr)
     {
-        if(odu_minute15otns != nullptr)
-        {
-            children["odu-minute15otns"] = odu_minute15otns;
-        }
+        children["odu-minute15otns"] = odu_minute15otns;
     }
 
-    if(children.find("odu-minute15prbses") == children.end())
+    if(odu_minute15prbses != nullptr)
     {
-        if(odu_minute15prbses != nullptr)
-        {
-            children["odu-minute15prbses"] = odu_minute15prbses;
-        }
+        children["odu-minute15prbses"] = odu_minute15prbses;
     }
 
     return children;
@@ -4648,7 +3910,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4671,15 +3933,6 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-minute15gfp")
     {
         for(auto const & c : odu_minute15gfp)
@@ -4687,28 +3940,24 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp>();
         c->parent = this;
-        odu_minute15gfp.push_back(std::move(c));
-        children[segment_path] = odu_minute15gfp.back();
-        return children.at(segment_path);
+        odu_minute15gfp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : odu_minute15gfp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4737,19 +3986,14 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinut
 	,rx_lfd(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd>())
 {
     rx_bit_err->parent = this;
-    children["rx-bit-err"] = rx_bit_err;
 
     rx_crc->parent = this;
-    children["rx-crc"] = rx_crc;
 
     rx_csf->parent = this;
-    children["rx-csf"] = rx_csf;
 
     rx_inv_typ->parent = this;
-    children["rx-inv-typ"] = rx_inv_typ;
 
     rx_lfd->parent = this;
-    children["rx-lfd"] = rx_lfd;
 
     yang_name = "odu-minute15gfp"; yang_parent_name = "odu-minute15gfps";
 }
@@ -4804,7 +4048,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4836,133 +4080,80 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rx-bit-err")
     {
-        if(rx_bit_err != nullptr)
-        {
-            children["rx-bit-err"] = rx_bit_err;
-        }
-        else
+        if(rx_bit_err == nullptr)
         {
             rx_bit_err = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr>();
-            rx_bit_err->parent = this;
-            children["rx-bit-err"] = rx_bit_err;
         }
-        return children.at("rx-bit-err");
+        return rx_bit_err;
     }
 
     if(child_yang_name == "rx-crc")
     {
-        if(rx_crc != nullptr)
-        {
-            children["rx-crc"] = rx_crc;
-        }
-        else
+        if(rx_crc == nullptr)
         {
             rx_crc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc>();
-            rx_crc->parent = this;
-            children["rx-crc"] = rx_crc;
         }
-        return children.at("rx-crc");
+        return rx_crc;
     }
 
     if(child_yang_name == "rx-csf")
     {
-        if(rx_csf != nullptr)
-        {
-            children["rx-csf"] = rx_csf;
-        }
-        else
+        if(rx_csf == nullptr)
         {
             rx_csf = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf>();
-            rx_csf->parent = this;
-            children["rx-csf"] = rx_csf;
         }
-        return children.at("rx-csf");
+        return rx_csf;
     }
 
     if(child_yang_name == "rx-inv-typ")
     {
-        if(rx_inv_typ != nullptr)
-        {
-            children["rx-inv-typ"] = rx_inv_typ;
-        }
-        else
+        if(rx_inv_typ == nullptr)
         {
             rx_inv_typ = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp>();
-            rx_inv_typ->parent = this;
-            children["rx-inv-typ"] = rx_inv_typ;
         }
-        return children.at("rx-inv-typ");
+        return rx_inv_typ;
     }
 
     if(child_yang_name == "rx-lfd")
     {
-        if(rx_lfd != nullptr)
-        {
-            children["rx-lfd"] = rx_lfd;
-        }
-        else
+        if(rx_lfd == nullptr)
         {
             rx_lfd = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd>();
-            rx_lfd->parent = this;
-            children["rx-lfd"] = rx_lfd;
         }
-        return children.at("rx-lfd");
+        return rx_lfd;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::get_children() const
 {
-    if(children.find("rx-bit-err") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rx_bit_err != nullptr)
     {
-        if(rx_bit_err != nullptr)
-        {
-            children["rx-bit-err"] = rx_bit_err;
-        }
+        children["rx-bit-err"] = rx_bit_err;
     }
 
-    if(children.find("rx-crc") == children.end())
+    if(rx_crc != nullptr)
     {
-        if(rx_crc != nullptr)
-        {
-            children["rx-crc"] = rx_crc;
-        }
+        children["rx-crc"] = rx_crc;
     }
 
-    if(children.find("rx-csf") == children.end())
+    if(rx_csf != nullptr)
     {
-        if(rx_csf != nullptr)
-        {
-            children["rx-csf"] = rx_csf;
-        }
+        children["rx-csf"] = rx_csf;
     }
 
-    if(children.find("rx-inv-typ") == children.end())
+    if(rx_inv_typ != nullptr)
     {
-        if(rx_inv_typ != nullptr)
-        {
-            children["rx-inv-typ"] = rx_inv_typ;
-        }
+        children["rx-inv-typ"] = rx_inv_typ;
     }
 
-    if(children.find("rx-lfd") == children.end())
+    if(rx_lfd != nullptr)
     {
-        if(rx_lfd != nullptr)
-        {
-            children["rx-lfd"] = rx_lfd;
-        }
+        children["rx-lfd"] = rx_lfd;
     }
 
     return children;
@@ -5045,7 +4236,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5071,20 +4262,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5141,7 +4324,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5167,20 +4350,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5237,7 +4412,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5263,20 +4438,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5333,7 +4500,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5359,20 +4526,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5429,7 +4588,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5455,20 +4614,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5526,7 +4677,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5549,15 +4700,6 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-minute15prbs")
     {
         for(auto const & c : odu_minute15prbs)
@@ -5565,28 +4707,24 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs>();
         c->parent = this;
-        odu_minute15prbs.push_back(std::move(c));
-        children[segment_path] = odu_minute15prbs.back();
-        return children.at(segment_path);
+        odu_minute15prbs.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : odu_minute15prbs)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5615,7 +4753,6 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinut
     rcv_patt(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt>())
 {
     rcv_patt->parent = this;
-    children["rcv-patt"] = rcv_patt;
 
     yang_name = "odu-minute15prbs"; yang_parent_name = "odu-minute15prbses";
 }
@@ -5670,7 +4807,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5706,41 +4843,24 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rcv-patt")
     {
-        if(rcv_patt != nullptr)
-        {
-            children["rcv-patt"] = rcv_patt;
-        }
-        else
+        if(rcv_patt == nullptr)
         {
             rcv_patt = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt>();
-            rcv_patt->parent = this;
-            children["rcv-patt"] = rcv_patt;
         }
-        return children.at("rcv-patt");
+        return rcv_patt;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::get_children() const
 {
-    if(children.find("rcv-patt") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rcv_patt != nullptr)
     {
-        if(rcv_patt != nullptr)
-        {
-            children["rcv-patt"] = rcv_patt;
-        }
+        children["rcv-patt"] = rcv_patt;
     }
 
     return children;
@@ -5836,7 +4956,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5861,20 +4981,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5928,7 +5040,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5951,15 +5063,6 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-minute15otn")
     {
         for(auto const & c : odu_minute15otn)
@@ -5967,28 +5070,24 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn>();
         c->parent = this;
-        odu_minute15otn.push_back(std::move(c));
-        children[segment_path] = odu_minute15otn.back();
-        return children.at(segment_path);
+        odu_minute15otn.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : odu_minute15otn)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6029,55 +5128,38 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinut
 	,uas_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe>())
 {
     bbe_fe->parent = this;
-    children["bbe-fe"] = bbe_fe;
 
     bbe_ne->parent = this;
-    children["bbe-ne"] = bbe_ne;
 
     bber_fe->parent = this;
-    children["bber-fe"] = bber_fe;
 
     bber_ne->parent = this;
-    children["bber-ne"] = bber_ne;
 
     es_fe->parent = this;
-    children["es-fe"] = es_fe;
 
     es_ne->parent = this;
-    children["es-ne"] = es_ne;
 
     esr_fe->parent = this;
-    children["esr-fe"] = esr_fe;
 
     esr_ne->parent = this;
-    children["esr-ne"] = esr_ne;
 
     fc_fe->parent = this;
-    children["fc-fe"] = fc_fe;
 
     fc_ne->parent = this;
-    children["fc-ne"] = fc_ne;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     ses_fe->parent = this;
-    children["ses-fe"] = ses_fe;
 
     ses_ne->parent = this;
-    children["ses-ne"] = ses_ne;
 
     sesr_fe->parent = this;
-    children["sesr-fe"] = sesr_fe;
 
     sesr_ne->parent = this;
-    children["sesr-ne"] = sesr_ne;
 
     uas_fe->parent = this;
-    children["uas-fe"] = uas_fe;
 
     uas_ne->parent = this;
-    children["uas-ne"] = uas_ne;
 
     yang_name = "odu-minute15otn"; yang_parent_name = "odu-minute15otns";
 }
@@ -6156,7 +5238,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6188,409 +5270,248 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bbe-fe")
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
-        else
+        if(bbe_fe == nullptr)
         {
             bbe_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe>();
-            bbe_fe->parent = this;
-            children["bbe-fe"] = bbe_fe;
         }
-        return children.at("bbe-fe");
+        return bbe_fe;
     }
 
     if(child_yang_name == "bbe-ne")
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
-        else
+        if(bbe_ne == nullptr)
         {
             bbe_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe>();
-            bbe_ne->parent = this;
-            children["bbe-ne"] = bbe_ne;
         }
-        return children.at("bbe-ne");
+        return bbe_ne;
     }
 
     if(child_yang_name == "bber-fe")
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
-        else
+        if(bber_fe == nullptr)
         {
             bber_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe>();
-            bber_fe->parent = this;
-            children["bber-fe"] = bber_fe;
         }
-        return children.at("bber-fe");
+        return bber_fe;
     }
 
     if(child_yang_name == "bber-ne")
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
-        else
+        if(bber_ne == nullptr)
         {
             bber_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe>();
-            bber_ne->parent = this;
-            children["bber-ne"] = bber_ne;
         }
-        return children.at("bber-ne");
+        return bber_ne;
     }
 
     if(child_yang_name == "es-fe")
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
-        else
+        if(es_fe == nullptr)
         {
             es_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe>();
-            es_fe->parent = this;
-            children["es-fe"] = es_fe;
         }
-        return children.at("es-fe");
+        return es_fe;
     }
 
     if(child_yang_name == "es-ne")
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
-        else
+        if(es_ne == nullptr)
         {
             es_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe>();
-            es_ne->parent = this;
-            children["es-ne"] = es_ne;
         }
-        return children.at("es-ne");
+        return es_ne;
     }
 
     if(child_yang_name == "esr-fe")
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
-        else
+        if(esr_fe == nullptr)
         {
             esr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe>();
-            esr_fe->parent = this;
-            children["esr-fe"] = esr_fe;
         }
-        return children.at("esr-fe");
+        return esr_fe;
     }
 
     if(child_yang_name == "esr-ne")
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
-        else
+        if(esr_ne == nullptr)
         {
             esr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe>();
-            esr_ne->parent = this;
-            children["esr-ne"] = esr_ne;
         }
-        return children.at("esr-ne");
+        return esr_ne;
     }
 
     if(child_yang_name == "fc-fe")
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
-        else
+        if(fc_fe == nullptr)
         {
             fc_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe>();
-            fc_fe->parent = this;
-            children["fc-fe"] = fc_fe;
         }
-        return children.at("fc-fe");
+        return fc_fe;
     }
 
     if(child_yang_name == "fc-ne")
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
-        else
+        if(fc_ne == nullptr)
         {
             fc_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe>();
-            fc_ne->parent = this;
-            children["fc-ne"] = fc_ne;
         }
-        return children.at("fc-ne");
+        return fc_ne;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "ses-fe")
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
-        else
+        if(ses_fe == nullptr)
         {
             ses_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe>();
-            ses_fe->parent = this;
-            children["ses-fe"] = ses_fe;
         }
-        return children.at("ses-fe");
+        return ses_fe;
     }
 
     if(child_yang_name == "ses-ne")
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
-        else
+        if(ses_ne == nullptr)
         {
             ses_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe>();
-            ses_ne->parent = this;
-            children["ses-ne"] = ses_ne;
         }
-        return children.at("ses-ne");
+        return ses_ne;
     }
 
     if(child_yang_name == "sesr-fe")
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
-        else
+        if(sesr_fe == nullptr)
         {
             sesr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe>();
-            sesr_fe->parent = this;
-            children["sesr-fe"] = sesr_fe;
         }
-        return children.at("sesr-fe");
+        return sesr_fe;
     }
 
     if(child_yang_name == "sesr-ne")
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
-        else
+        if(sesr_ne == nullptr)
         {
             sesr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe>();
-            sesr_ne->parent = this;
-            children["sesr-ne"] = sesr_ne;
         }
-        return children.at("sesr-ne");
+        return sesr_ne;
     }
 
     if(child_yang_name == "uas-fe")
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
-        else
+        if(uas_fe == nullptr)
         {
             uas_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe>();
-            uas_fe->parent = this;
-            children["uas-fe"] = uas_fe;
         }
-        return children.at("uas-fe");
+        return uas_fe;
     }
 
     if(child_yang_name == "uas-ne")
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
-        else
+        if(uas_ne == nullptr)
         {
             uas_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe>();
-            uas_ne->parent = this;
-            children["uas-ne"] = uas_ne;
         }
-        return children.at("uas-ne");
+        return uas_ne;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::get_children() const
 {
-    if(children.find("bbe-fe") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bbe_fe != nullptr)
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
+        children["bbe-fe"] = bbe_fe;
     }
 
-    if(children.find("bbe-ne") == children.end())
+    if(bbe_ne != nullptr)
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
+        children["bbe-ne"] = bbe_ne;
     }
 
-    if(children.find("bber-fe") == children.end())
+    if(bber_fe != nullptr)
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
+        children["bber-fe"] = bber_fe;
     }
 
-    if(children.find("bber-ne") == children.end())
+    if(bber_ne != nullptr)
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
+        children["bber-ne"] = bber_ne;
     }
 
-    if(children.find("es-fe") == children.end())
+    if(es_fe != nullptr)
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
+        children["es-fe"] = es_fe;
     }
 
-    if(children.find("es-ne") == children.end())
+    if(es_ne != nullptr)
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
+        children["es-ne"] = es_ne;
     }
 
-    if(children.find("esr-fe") == children.end())
+    if(esr_fe != nullptr)
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
+        children["esr-fe"] = esr_fe;
     }
 
-    if(children.find("esr-ne") == children.end())
+    if(esr_ne != nullptr)
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
+        children["esr-ne"] = esr_ne;
     }
 
-    if(children.find("fc-fe") == children.end())
+    if(fc_fe != nullptr)
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
+        children["fc-fe"] = fc_fe;
     }
 
-    if(children.find("fc-ne") == children.end())
+    if(fc_ne != nullptr)
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
+        children["fc-ne"] = fc_ne;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("ses-fe") == children.end())
+    if(ses_fe != nullptr)
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
+        children["ses-fe"] = ses_fe;
     }
 
-    if(children.find("ses-ne") == children.end())
+    if(ses_ne != nullptr)
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
+        children["ses-ne"] = ses_ne;
     }
 
-    if(children.find("sesr-fe") == children.end())
+    if(sesr_fe != nullptr)
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
+        children["sesr-fe"] = sesr_fe;
     }
 
-    if(children.find("sesr-ne") == children.end())
+    if(sesr_ne != nullptr)
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
+        children["sesr-ne"] = sesr_ne;
     }
 
-    if(children.find("uas-fe") == children.end())
+    if(uas_fe != nullptr)
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
+        children["uas-fe"] = uas_fe;
     }
 
-    if(children.find("uas-ne") == children.end())
+    if(uas_ne != nullptr)
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
+        children["uas-ne"] = uas_ne;
     }
 
     return children;
@@ -6673,7 +5594,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6699,20 +5620,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6769,7 +5682,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6795,20 +5708,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6865,7 +5770,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6891,20 +5796,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6961,7 +5858,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6987,20 +5884,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7057,7 +5946,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7083,20 +5972,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7153,7 +6034,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7179,20 +6060,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7249,7 +6122,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7275,20 +6148,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7345,7 +6210,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7371,20 +6236,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7441,7 +6298,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7467,20 +6324,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7537,7 +6386,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7563,20 +6412,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7633,7 +6474,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7659,20 +6500,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7729,7 +6562,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7755,20 +6588,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7825,7 +6650,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7851,20 +6676,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7921,7 +6738,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7947,20 +6764,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8017,7 +6826,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8043,20 +6852,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8113,7 +6914,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8139,20 +6940,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8209,7 +7002,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8235,20 +7028,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8275,13 +7060,10 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24(
 	,odu_hour24prbses(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses>())
 {
     odu_hour24gfps->parent = this;
-    children["odu-hour24gfps"] = odu_hour24gfps;
 
     odu_hour24otns->parent = this;
-    children["odu-hour24otns"] = odu_hour24otns;
 
     odu_hour24prbses->parent = this;
-    children["odu-hour24prbses"] = odu_hour24prbses;
 
     yang_name = "odu-hour24"; yang_parent_name = "odu-current";
 }
@@ -8314,7 +7096,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8337,87 +7119,52 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-hour24gfps")
     {
-        if(odu_hour24gfps != nullptr)
-        {
-            children["odu-hour24gfps"] = odu_hour24gfps;
-        }
-        else
+        if(odu_hour24gfps == nullptr)
         {
             odu_hour24gfps = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps>();
-            odu_hour24gfps->parent = this;
-            children["odu-hour24gfps"] = odu_hour24gfps;
         }
-        return children.at("odu-hour24gfps");
+        return odu_hour24gfps;
     }
 
     if(child_yang_name == "odu-hour24otns")
     {
-        if(odu_hour24otns != nullptr)
-        {
-            children["odu-hour24otns"] = odu_hour24otns;
-        }
-        else
+        if(odu_hour24otns == nullptr)
         {
             odu_hour24otns = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns>();
-            odu_hour24otns->parent = this;
-            children["odu-hour24otns"] = odu_hour24otns;
         }
-        return children.at("odu-hour24otns");
+        return odu_hour24otns;
     }
 
     if(child_yang_name == "odu-hour24prbses")
     {
-        if(odu_hour24prbses != nullptr)
-        {
-            children["odu-hour24prbses"] = odu_hour24prbses;
-        }
-        else
+        if(odu_hour24prbses == nullptr)
         {
             odu_hour24prbses = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses>();
-            odu_hour24prbses->parent = this;
-            children["odu-hour24prbses"] = odu_hour24prbses;
         }
-        return children.at("odu-hour24prbses");
+        return odu_hour24prbses;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::get_children() const
 {
-    if(children.find("odu-hour24gfps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(odu_hour24gfps != nullptr)
     {
-        if(odu_hour24gfps != nullptr)
-        {
-            children["odu-hour24gfps"] = odu_hour24gfps;
-        }
+        children["odu-hour24gfps"] = odu_hour24gfps;
     }
 
-    if(children.find("odu-hour24otns") == children.end())
+    if(odu_hour24otns != nullptr)
     {
-        if(odu_hour24otns != nullptr)
-        {
-            children["odu-hour24otns"] = odu_hour24otns;
-        }
+        children["odu-hour24otns"] = odu_hour24otns;
     }
 
-    if(children.find("odu-hour24prbses") == children.end())
+    if(odu_hour24prbses != nullptr)
     {
-        if(odu_hour24prbses != nullptr)
-        {
-            children["odu-hour24prbses"] = odu_hour24prbses;
-        }
+        children["odu-hour24prbses"] = odu_hour24prbses;
     }
 
     return children;
@@ -8465,7 +7212,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8488,15 +7235,6 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-hour24prbs")
     {
         for(auto const & c : odu_hour24prbs)
@@ -8504,28 +7242,24 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs>();
         c->parent = this;
-        odu_hour24prbs.push_back(std::move(c));
-        children[segment_path] = odu_hour24prbs.back();
-        return children.at(segment_path);
+        odu_hour24prbs.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : odu_hour24prbs)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8554,7 +7288,6 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24P
     rcv_patt(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt>())
 {
     rcv_patt->parent = this;
-    children["rcv-patt"] = rcv_patt;
 
     yang_name = "odu-hour24prbs"; yang_parent_name = "odu-hour24prbses";
 }
@@ -8609,7 +7342,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8645,41 +7378,24 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rcv-patt")
     {
-        if(rcv_patt != nullptr)
-        {
-            children["rcv-patt"] = rcv_patt;
-        }
-        else
+        if(rcv_patt == nullptr)
         {
             rcv_patt = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt>();
-            rcv_patt->parent = this;
-            children["rcv-patt"] = rcv_patt;
         }
-        return children.at("rcv-patt");
+        return rcv_patt;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::get_children() const
 {
-    if(children.find("rcv-patt") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rcv_patt != nullptr)
     {
-        if(rcv_patt != nullptr)
-        {
-            children["rcv-patt"] = rcv_patt;
-        }
+        children["rcv-patt"] = rcv_patt;
     }
 
     return children;
@@ -8775,7 +7491,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8800,20 +7516,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8867,7 +7575,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8890,15 +7598,6 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-hour24gfp")
     {
         for(auto const & c : odu_hour24gfp)
@@ -8906,28 +7605,24 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp>();
         c->parent = this;
-        odu_hour24gfp.push_back(std::move(c));
-        children[segment_path] = odu_hour24gfp.back();
-        return children.at(segment_path);
+        odu_hour24gfp.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : odu_hour24gfp)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8956,19 +7651,14 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24G
 	,rx_lfd(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd>())
 {
     rx_bit_err->parent = this;
-    children["rx-bit-err"] = rx_bit_err;
 
     rx_crc->parent = this;
-    children["rx-crc"] = rx_crc;
 
     rx_csf->parent = this;
-    children["rx-csf"] = rx_csf;
 
     rx_inv_typ->parent = this;
-    children["rx-inv-typ"] = rx_inv_typ;
 
     rx_lfd->parent = this;
-    children["rx-lfd"] = rx_lfd;
 
     yang_name = "odu-hour24gfp"; yang_parent_name = "odu-hour24gfps";
 }
@@ -9023,7 +7713,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9055,133 +7745,80 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rx-bit-err")
     {
-        if(rx_bit_err != nullptr)
-        {
-            children["rx-bit-err"] = rx_bit_err;
-        }
-        else
+        if(rx_bit_err == nullptr)
         {
             rx_bit_err = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr>();
-            rx_bit_err->parent = this;
-            children["rx-bit-err"] = rx_bit_err;
         }
-        return children.at("rx-bit-err");
+        return rx_bit_err;
     }
 
     if(child_yang_name == "rx-crc")
     {
-        if(rx_crc != nullptr)
-        {
-            children["rx-crc"] = rx_crc;
-        }
-        else
+        if(rx_crc == nullptr)
         {
             rx_crc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc>();
-            rx_crc->parent = this;
-            children["rx-crc"] = rx_crc;
         }
-        return children.at("rx-crc");
+        return rx_crc;
     }
 
     if(child_yang_name == "rx-csf")
     {
-        if(rx_csf != nullptr)
-        {
-            children["rx-csf"] = rx_csf;
-        }
-        else
+        if(rx_csf == nullptr)
         {
             rx_csf = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf>();
-            rx_csf->parent = this;
-            children["rx-csf"] = rx_csf;
         }
-        return children.at("rx-csf");
+        return rx_csf;
     }
 
     if(child_yang_name == "rx-inv-typ")
     {
-        if(rx_inv_typ != nullptr)
-        {
-            children["rx-inv-typ"] = rx_inv_typ;
-        }
-        else
+        if(rx_inv_typ == nullptr)
         {
             rx_inv_typ = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp>();
-            rx_inv_typ->parent = this;
-            children["rx-inv-typ"] = rx_inv_typ;
         }
-        return children.at("rx-inv-typ");
+        return rx_inv_typ;
     }
 
     if(child_yang_name == "rx-lfd")
     {
-        if(rx_lfd != nullptr)
-        {
-            children["rx-lfd"] = rx_lfd;
-        }
-        else
+        if(rx_lfd == nullptr)
         {
             rx_lfd = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd>();
-            rx_lfd->parent = this;
-            children["rx-lfd"] = rx_lfd;
         }
-        return children.at("rx-lfd");
+        return rx_lfd;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::get_children() const
 {
-    if(children.find("rx-bit-err") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rx_bit_err != nullptr)
     {
-        if(rx_bit_err != nullptr)
-        {
-            children["rx-bit-err"] = rx_bit_err;
-        }
+        children["rx-bit-err"] = rx_bit_err;
     }
 
-    if(children.find("rx-crc") == children.end())
+    if(rx_crc != nullptr)
     {
-        if(rx_crc != nullptr)
-        {
-            children["rx-crc"] = rx_crc;
-        }
+        children["rx-crc"] = rx_crc;
     }
 
-    if(children.find("rx-csf") == children.end())
+    if(rx_csf != nullptr)
     {
-        if(rx_csf != nullptr)
-        {
-            children["rx-csf"] = rx_csf;
-        }
+        children["rx-csf"] = rx_csf;
     }
 
-    if(children.find("rx-inv-typ") == children.end())
+    if(rx_inv_typ != nullptr)
     {
-        if(rx_inv_typ != nullptr)
-        {
-            children["rx-inv-typ"] = rx_inv_typ;
-        }
+        children["rx-inv-typ"] = rx_inv_typ;
     }
 
-    if(children.find("rx-lfd") == children.end())
+    if(rx_lfd != nullptr)
     {
-        if(rx_lfd != nullptr)
-        {
-            children["rx-lfd"] = rx_lfd;
-        }
+        children["rx-lfd"] = rx_lfd;
     }
 
     return children;
@@ -9264,7 +7901,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9290,20 +7927,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9360,7 +7989,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9386,20 +8015,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9456,7 +8077,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9482,20 +8103,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9552,7 +8165,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9578,20 +8191,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9648,7 +8253,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9674,20 +8279,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9745,7 +8342,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9768,15 +8365,6 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-hour24otn")
     {
         for(auto const & c : odu_hour24otn)
@@ -9784,28 +8372,24 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn>();
         c->parent = this;
-        odu_hour24otn.push_back(std::move(c));
-        children[segment_path] = odu_hour24otn.back();
-        return children.at(segment_path);
+        odu_hour24otn.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : odu_hour24otn)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9846,55 +8430,38 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24O
 	,uas_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe>())
 {
     bbe_fe->parent = this;
-    children["bbe-fe"] = bbe_fe;
 
     bbe_ne->parent = this;
-    children["bbe-ne"] = bbe_ne;
 
     bber_fe->parent = this;
-    children["bber-fe"] = bber_fe;
 
     bber_ne->parent = this;
-    children["bber-ne"] = bber_ne;
 
     es_fe->parent = this;
-    children["es-fe"] = es_fe;
 
     es_ne->parent = this;
-    children["es-ne"] = es_ne;
 
     esr_fe->parent = this;
-    children["esr-fe"] = esr_fe;
 
     esr_ne->parent = this;
-    children["esr-ne"] = esr_ne;
 
     fc_fe->parent = this;
-    children["fc-fe"] = fc_fe;
 
     fc_ne->parent = this;
-    children["fc-ne"] = fc_ne;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     ses_fe->parent = this;
-    children["ses-fe"] = ses_fe;
 
     ses_ne->parent = this;
-    children["ses-ne"] = ses_ne;
 
     sesr_fe->parent = this;
-    children["sesr-fe"] = sesr_fe;
 
     sesr_ne->parent = this;
-    children["sesr-ne"] = sesr_ne;
 
     uas_fe->parent = this;
-    children["uas-fe"] = uas_fe;
 
     uas_ne->parent = this;
-    children["uas-ne"] = uas_ne;
 
     yang_name = "odu-hour24otn"; yang_parent_name = "odu-hour24otns";
 }
@@ -9973,7 +8540,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10005,409 +8572,248 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bbe-fe")
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
-        else
+        if(bbe_fe == nullptr)
         {
             bbe_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe>();
-            bbe_fe->parent = this;
-            children["bbe-fe"] = bbe_fe;
         }
-        return children.at("bbe-fe");
+        return bbe_fe;
     }
 
     if(child_yang_name == "bbe-ne")
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
-        else
+        if(bbe_ne == nullptr)
         {
             bbe_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe>();
-            bbe_ne->parent = this;
-            children["bbe-ne"] = bbe_ne;
         }
-        return children.at("bbe-ne");
+        return bbe_ne;
     }
 
     if(child_yang_name == "bber-fe")
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
-        else
+        if(bber_fe == nullptr)
         {
             bber_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe>();
-            bber_fe->parent = this;
-            children["bber-fe"] = bber_fe;
         }
-        return children.at("bber-fe");
+        return bber_fe;
     }
 
     if(child_yang_name == "bber-ne")
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
-        else
+        if(bber_ne == nullptr)
         {
             bber_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe>();
-            bber_ne->parent = this;
-            children["bber-ne"] = bber_ne;
         }
-        return children.at("bber-ne");
+        return bber_ne;
     }
 
     if(child_yang_name == "es-fe")
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
-        else
+        if(es_fe == nullptr)
         {
             es_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe>();
-            es_fe->parent = this;
-            children["es-fe"] = es_fe;
         }
-        return children.at("es-fe");
+        return es_fe;
     }
 
     if(child_yang_name == "es-ne")
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
-        else
+        if(es_ne == nullptr)
         {
             es_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe>();
-            es_ne->parent = this;
-            children["es-ne"] = es_ne;
         }
-        return children.at("es-ne");
+        return es_ne;
     }
 
     if(child_yang_name == "esr-fe")
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
-        else
+        if(esr_fe == nullptr)
         {
             esr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe>();
-            esr_fe->parent = this;
-            children["esr-fe"] = esr_fe;
         }
-        return children.at("esr-fe");
+        return esr_fe;
     }
 
     if(child_yang_name == "esr-ne")
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
-        else
+        if(esr_ne == nullptr)
         {
             esr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe>();
-            esr_ne->parent = this;
-            children["esr-ne"] = esr_ne;
         }
-        return children.at("esr-ne");
+        return esr_ne;
     }
 
     if(child_yang_name == "fc-fe")
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
-        else
+        if(fc_fe == nullptr)
         {
             fc_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe>();
-            fc_fe->parent = this;
-            children["fc-fe"] = fc_fe;
         }
-        return children.at("fc-fe");
+        return fc_fe;
     }
 
     if(child_yang_name == "fc-ne")
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
-        else
+        if(fc_ne == nullptr)
         {
             fc_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe>();
-            fc_ne->parent = this;
-            children["fc-ne"] = fc_ne;
         }
-        return children.at("fc-ne");
+        return fc_ne;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "ses-fe")
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
-        else
+        if(ses_fe == nullptr)
         {
             ses_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe>();
-            ses_fe->parent = this;
-            children["ses-fe"] = ses_fe;
         }
-        return children.at("ses-fe");
+        return ses_fe;
     }
 
     if(child_yang_name == "ses-ne")
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
-        else
+        if(ses_ne == nullptr)
         {
             ses_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe>();
-            ses_ne->parent = this;
-            children["ses-ne"] = ses_ne;
         }
-        return children.at("ses-ne");
+        return ses_ne;
     }
 
     if(child_yang_name == "sesr-fe")
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
-        else
+        if(sesr_fe == nullptr)
         {
             sesr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe>();
-            sesr_fe->parent = this;
-            children["sesr-fe"] = sesr_fe;
         }
-        return children.at("sesr-fe");
+        return sesr_fe;
     }
 
     if(child_yang_name == "sesr-ne")
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
-        else
+        if(sesr_ne == nullptr)
         {
             sesr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe>();
-            sesr_ne->parent = this;
-            children["sesr-ne"] = sesr_ne;
         }
-        return children.at("sesr-ne");
+        return sesr_ne;
     }
 
     if(child_yang_name == "uas-fe")
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
-        else
+        if(uas_fe == nullptr)
         {
             uas_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe>();
-            uas_fe->parent = this;
-            children["uas-fe"] = uas_fe;
         }
-        return children.at("uas-fe");
+        return uas_fe;
     }
 
     if(child_yang_name == "uas-ne")
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
-        else
+        if(uas_ne == nullptr)
         {
             uas_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe>();
-            uas_ne->parent = this;
-            children["uas-ne"] = uas_ne;
         }
-        return children.at("uas-ne");
+        return uas_ne;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::get_children() const
 {
-    if(children.find("bbe-fe") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bbe_fe != nullptr)
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
+        children["bbe-fe"] = bbe_fe;
     }
 
-    if(children.find("bbe-ne") == children.end())
+    if(bbe_ne != nullptr)
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
+        children["bbe-ne"] = bbe_ne;
     }
 
-    if(children.find("bber-fe") == children.end())
+    if(bber_fe != nullptr)
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
+        children["bber-fe"] = bber_fe;
     }
 
-    if(children.find("bber-ne") == children.end())
+    if(bber_ne != nullptr)
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
+        children["bber-ne"] = bber_ne;
     }
 
-    if(children.find("es-fe") == children.end())
+    if(es_fe != nullptr)
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
+        children["es-fe"] = es_fe;
     }
 
-    if(children.find("es-ne") == children.end())
+    if(es_ne != nullptr)
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
+        children["es-ne"] = es_ne;
     }
 
-    if(children.find("esr-fe") == children.end())
+    if(esr_fe != nullptr)
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
+        children["esr-fe"] = esr_fe;
     }
 
-    if(children.find("esr-ne") == children.end())
+    if(esr_ne != nullptr)
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
+        children["esr-ne"] = esr_ne;
     }
 
-    if(children.find("fc-fe") == children.end())
+    if(fc_fe != nullptr)
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
+        children["fc-fe"] = fc_fe;
     }
 
-    if(children.find("fc-ne") == children.end())
+    if(fc_ne != nullptr)
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
+        children["fc-ne"] = fc_ne;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("ses-fe") == children.end())
+    if(ses_fe != nullptr)
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
+        children["ses-fe"] = ses_fe;
     }
 
-    if(children.find("ses-ne") == children.end())
+    if(ses_ne != nullptr)
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
+        children["ses-ne"] = ses_ne;
     }
 
-    if(children.find("sesr-fe") == children.end())
+    if(sesr_fe != nullptr)
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
+        children["sesr-fe"] = sesr_fe;
     }
 
-    if(children.find("sesr-ne") == children.end())
+    if(sesr_ne != nullptr)
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
+        children["sesr-ne"] = sesr_ne;
     }
 
-    if(children.find("uas-fe") == children.end())
+    if(uas_fe != nullptr)
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
+        children["uas-fe"] = uas_fe;
     }
 
-    if(children.find("uas-ne") == children.end())
+    if(uas_ne != nullptr)
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
+        children["uas-ne"] = uas_ne;
     }
 
     return children;
@@ -10490,7 +8896,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10516,20 +8922,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10586,7 +8984,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10612,20 +9010,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10682,7 +9072,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10708,20 +9098,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10778,7 +9160,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10804,20 +9186,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10874,7 +9248,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10900,20 +9274,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10970,7 +9336,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10996,20 +9362,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11066,7 +9424,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11092,20 +9450,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11162,7 +9512,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11188,20 +9538,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11258,7 +9600,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11284,20 +9626,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11354,7 +9688,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11380,20 +9714,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11450,7 +9776,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11476,20 +9802,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11546,7 +9864,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11572,20 +9890,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11642,7 +9952,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11668,20 +9978,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11738,7 +10040,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11764,20 +10066,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11834,7 +10128,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11860,20 +10154,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11930,7 +10216,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11956,20 +10242,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12026,7 +10304,7 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24
 
 }
 
-EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12052,20 +10330,12 @@ EntityPath PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24:
 
 std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12090,7 +10360,6 @@ PerformanceManagement::Otu::Otu()
     otu_ports(std::make_shared<PerformanceManagement::Otu::OtuPorts>())
 {
     otu_ports->parent = this;
-    children["otu-ports"] = otu_ports;
 
     yang_name = "otu"; yang_parent_name = "performance-management";
 }
@@ -12119,7 +10388,7 @@ std::string PerformanceManagement::Otu::get_segment_path() const
 
 }
 
-EntityPath PerformanceManagement::Otu::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12142,41 +10411,24 @@ EntityPath PerformanceManagement::Otu::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-ports")
     {
-        if(otu_ports != nullptr)
-        {
-            children["otu-ports"] = otu_ports;
-        }
-        else
+        if(otu_ports == nullptr)
         {
             otu_ports = std::make_shared<PerformanceManagement::Otu::OtuPorts>();
-            otu_ports->parent = this;
-            children["otu-ports"] = otu_ports;
         }
-        return children.at("otu-ports");
+        return otu_ports;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::get_children() const
 {
-    if(children.find("otu-ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_ports != nullptr)
     {
-        if(otu_ports != nullptr)
-        {
-            children["otu-ports"] = otu_ports;
-        }
+        children["otu-ports"] = otu_ports;
     }
 
     return children;
@@ -12224,7 +10476,7 @@ std::string PerformanceManagement::Otu::OtuPorts::get_segment_path() const
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12247,15 +10499,6 @@ EntityPath PerformanceManagement::Otu::OtuPorts::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-port")
     {
         for(auto const & c : otu_port)
@@ -12263,28 +10506,24 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort>();
         c->parent = this;
-        otu_port.push_back(std::move(c));
-        children[segment_path] = otu_port.back();
-        return children.at(segment_path);
+        otu_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12301,7 +10540,6 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuPort()
     otu_current(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent>())
 {
     otu_current->parent = this;
-    children["otu-current"] = otu_current;
 
     yang_name = "otu-port"; yang_parent_name = "otu-ports";
 }
@@ -12332,7 +10570,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::get_segment_path() co
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12356,41 +10594,24 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::get_entity_path(Entity
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-current")
     {
-        if(otu_current != nullptr)
-        {
-            children["otu-current"] = otu_current;
-        }
-        else
+        if(otu_current == nullptr)
         {
             otu_current = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent>();
-            otu_current->parent = this;
-            children["otu-current"] = otu_current;
         }
-        return children.at("otu-current");
+        return otu_current;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::get_children() const
 {
-    if(children.find("otu-current") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_current != nullptr)
     {
-        if(otu_current != nullptr)
-        {
-            children["otu-current"] = otu_current;
-        }
+        children["otu-current"] = otu_current;
     }
 
     return children;
@@ -12411,13 +10632,10 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuCurrent()
 	,otu_second30(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30>())
 {
     otu_hour24->parent = this;
-    children["otu-hour24"] = otu_hour24;
 
     otu_minute15->parent = this;
-    children["otu-minute15"] = otu_minute15;
 
     otu_second30->parent = this;
-    children["otu-second30"] = otu_second30;
 
     yang_name = "otu-current"; yang_parent_name = "otu-port";
 }
@@ -12450,7 +10668,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::get_segme
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12473,87 +10691,52 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::get_entity
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-hour24")
     {
-        if(otu_hour24 != nullptr)
-        {
-            children["otu-hour24"] = otu_hour24;
-        }
-        else
+        if(otu_hour24 == nullptr)
         {
             otu_hour24 = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24>();
-            otu_hour24->parent = this;
-            children["otu-hour24"] = otu_hour24;
         }
-        return children.at("otu-hour24");
+        return otu_hour24;
     }
 
     if(child_yang_name == "otu-minute15")
     {
-        if(otu_minute15 != nullptr)
-        {
-            children["otu-minute15"] = otu_minute15;
-        }
-        else
+        if(otu_minute15 == nullptr)
         {
             otu_minute15 = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15>();
-            otu_minute15->parent = this;
-            children["otu-minute15"] = otu_minute15;
         }
-        return children.at("otu-minute15");
+        return otu_minute15;
     }
 
     if(child_yang_name == "otu-second30")
     {
-        if(otu_second30 != nullptr)
-        {
-            children["otu-second30"] = otu_second30;
-        }
-        else
+        if(otu_second30 == nullptr)
         {
             otu_second30 = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30>();
-            otu_second30->parent = this;
-            children["otu-second30"] = otu_second30;
         }
-        return children.at("otu-second30");
+        return otu_second30;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::get_children() const
 {
-    if(children.find("otu-hour24") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_hour24 != nullptr)
     {
-        if(otu_hour24 != nullptr)
-        {
-            children["otu-hour24"] = otu_hour24;
-        }
+        children["otu-hour24"] = otu_hour24;
     }
 
-    if(children.find("otu-minute15") == children.end())
+    if(otu_minute15 != nullptr)
     {
-        if(otu_minute15 != nullptr)
-        {
-            children["otu-minute15"] = otu_minute15;
-        }
+        children["otu-minute15"] = otu_minute15;
     }
 
-    if(children.find("otu-second30") == children.end())
+    if(otu_second30 != nullptr)
     {
-        if(otu_second30 != nullptr)
-        {
-            children["otu-second30"] = otu_second30;
-        }
+        children["otu-second30"] = otu_second30;
     }
 
     return children;
@@ -12569,10 +10752,8 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
 	,otu_minute15otns(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns>())
 {
     otu_minute15fecs->parent = this;
-    children["otu-minute15fecs"] = otu_minute15fecs;
 
     otu_minute15otns->parent = this;
-    children["otu-minute15otns"] = otu_minute15otns;
 
     yang_name = "otu-minute15"; yang_parent_name = "otu-current";
 }
@@ -12603,7 +10784,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12626,64 +10807,38 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15fecs")
     {
-        if(otu_minute15fecs != nullptr)
-        {
-            children["otu-minute15fecs"] = otu_minute15fecs;
-        }
-        else
+        if(otu_minute15fecs == nullptr)
         {
             otu_minute15fecs = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs>();
-            otu_minute15fecs->parent = this;
-            children["otu-minute15fecs"] = otu_minute15fecs;
         }
-        return children.at("otu-minute15fecs");
+        return otu_minute15fecs;
     }
 
     if(child_yang_name == "otu-minute15otns")
     {
-        if(otu_minute15otns != nullptr)
-        {
-            children["otu-minute15otns"] = otu_minute15otns;
-        }
-        else
+        if(otu_minute15otns == nullptr)
         {
             otu_minute15otns = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns>();
-            otu_minute15otns->parent = this;
-            children["otu-minute15otns"] = otu_minute15otns;
         }
-        return children.at("otu-minute15otns");
+        return otu_minute15otns;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::get_children() const
 {
-    if(children.find("otu-minute15fecs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_minute15fecs != nullptr)
     {
-        if(otu_minute15fecs != nullptr)
-        {
-            children["otu-minute15fecs"] = otu_minute15fecs;
-        }
+        children["otu-minute15fecs"] = otu_minute15fecs;
     }
 
-    if(children.find("otu-minute15otns") == children.end())
+    if(otu_minute15otns != nullptr)
     {
-        if(otu_minute15otns != nullptr)
-        {
-            children["otu-minute15otns"] = otu_minute15otns;
-        }
+        children["otu-minute15otns"] = otu_minute15otns;
     }
 
     return children;
@@ -12731,7 +10886,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12754,15 +10909,6 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15fec")
     {
         for(auto const & c : otu_minute15fec)
@@ -12770,28 +10916,24 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec>();
         c->parent = this;
-        otu_minute15fec.push_back(std::move(c));
-        children[segment_path] = otu_minute15fec.back();
-        return children.at(segment_path);
+        otu_minute15fec.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_minute15fec)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12821,22 +10963,16 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
 	,uc_words(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords>())
 {
     ec_bits->parent = this;
-    children["ec-bits"] = ec_bits;
 
     post_fec_ber->parent = this;
-    children["post-fec-ber"] = post_fec_ber;
 
     pre_fec_ber->parent = this;
-    children["pre-fec-ber"] = pre_fec_ber;
 
     q->parent = this;
-    children["q"] = q;
 
     qmargin->parent = this;
-    children["qmargin"] = qmargin;
 
     uc_words->parent = this;
-    children["uc-words"] = uc_words;
 
     yang_name = "otu-minute15fec"; yang_parent_name = "otu-minute15fecs";
 }
@@ -12893,7 +11029,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12925,156 +11061,94 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ec-bits")
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
-        else
+        if(ec_bits == nullptr)
         {
             ec_bits = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits>();
-            ec_bits->parent = this;
-            children["ec-bits"] = ec_bits;
         }
-        return children.at("ec-bits");
+        return ec_bits;
     }
 
     if(child_yang_name == "post-fec-ber")
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
-        else
+        if(post_fec_ber == nullptr)
         {
             post_fec_ber = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer>();
-            post_fec_ber->parent = this;
-            children["post-fec-ber"] = post_fec_ber;
         }
-        return children.at("post-fec-ber");
+        return post_fec_ber;
     }
 
     if(child_yang_name == "pre-fec-ber")
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
-        else
+        if(pre_fec_ber == nullptr)
         {
             pre_fec_ber = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer>();
-            pre_fec_ber->parent = this;
-            children["pre-fec-ber"] = pre_fec_ber;
         }
-        return children.at("pre-fec-ber");
+        return pre_fec_ber;
     }
 
     if(child_yang_name == "q")
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
-        else
+        if(q == nullptr)
         {
             q = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q>();
-            q->parent = this;
-            children["q"] = q;
         }
-        return children.at("q");
+        return q;
     }
 
     if(child_yang_name == "qmargin")
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
-        else
+        if(qmargin == nullptr)
         {
             qmargin = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin>();
-            qmargin->parent = this;
-            children["qmargin"] = qmargin;
         }
-        return children.at("qmargin");
+        return qmargin;
     }
 
     if(child_yang_name == "uc-words")
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
-        else
+        if(uc_words == nullptr)
         {
             uc_words = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords>();
-            uc_words->parent = this;
-            children["uc-words"] = uc_words;
         }
-        return children.at("uc-words");
+        return uc_words;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::get_children() const
 {
-    if(children.find("ec-bits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ec_bits != nullptr)
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
+        children["ec-bits"] = ec_bits;
     }
 
-    if(children.find("post-fec-ber") == children.end())
+    if(post_fec_ber != nullptr)
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
+        children["post-fec-ber"] = post_fec_ber;
     }
 
-    if(children.find("pre-fec-ber") == children.end())
+    if(pre_fec_ber != nullptr)
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
+        children["pre-fec-ber"] = pre_fec_ber;
     }
 
-    if(children.find("q") == children.end())
+    if(q != nullptr)
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
+        children["q"] = q;
     }
 
-    if(children.find("qmargin") == children.end())
+    if(qmargin != nullptr)
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
+        children["qmargin"] = qmargin;
     }
 
-    if(children.find("uc-words") == children.end())
+    if(uc_words != nullptr)
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
+        children["uc-words"] = uc_words;
     }
 
     return children;
@@ -13160,7 +11234,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13187,20 +11261,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13264,7 +11330,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13291,20 +11357,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13380,7 +11438,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13411,20 +11469,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13516,7 +11566,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13547,20 +11597,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13652,7 +11694,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13683,20 +11725,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13788,7 +11822,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13819,20 +11853,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13910,7 +11936,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13933,15 +11959,6 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-minute15otn")
     {
         for(auto const & c : otu_minute15otn)
@@ -13949,28 +11966,24 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn>();
         c->parent = this;
-        otu_minute15otn.push_back(std::move(c));
-        children[segment_path] = otu_minute15otn.back();
-        return children.at(segment_path);
+        otu_minute15otn.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_minute15otn)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14011,55 +12024,38 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
 	,uas_ne(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasNe>())
 {
     bbe_fe->parent = this;
-    children["bbe-fe"] = bbe_fe;
 
     bbe_ne->parent = this;
-    children["bbe-ne"] = bbe_ne;
 
     bber_fe->parent = this;
-    children["bber-fe"] = bber_fe;
 
     bber_ne->parent = this;
-    children["bber-ne"] = bber_ne;
 
     es_fe->parent = this;
-    children["es-fe"] = es_fe;
 
     es_ne->parent = this;
-    children["es-ne"] = es_ne;
 
     esr_fe->parent = this;
-    children["esr-fe"] = esr_fe;
 
     esr_ne->parent = this;
-    children["esr-ne"] = esr_ne;
 
     fc_fe->parent = this;
-    children["fc-fe"] = fc_fe;
 
     fc_ne->parent = this;
-    children["fc-ne"] = fc_ne;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     ses_fe->parent = this;
-    children["ses-fe"] = ses_fe;
 
     ses_ne->parent = this;
-    children["ses-ne"] = ses_ne;
 
     sesr_fe->parent = this;
-    children["sesr-fe"] = sesr_fe;
 
     sesr_ne->parent = this;
-    children["sesr-ne"] = sesr_ne;
 
     uas_fe->parent = this;
-    children["uas-fe"] = uas_fe;
 
     uas_ne->parent = this;
-    children["uas-ne"] = uas_ne;
 
     yang_name = "otu-minute15otn"; yang_parent_name = "otu-minute15otns";
 }
@@ -14138,7 +12134,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14170,409 +12166,248 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bbe-fe")
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
-        else
+        if(bbe_fe == nullptr)
         {
             bbe_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeFe>();
-            bbe_fe->parent = this;
-            children["bbe-fe"] = bbe_fe;
         }
-        return children.at("bbe-fe");
+        return bbe_fe;
     }
 
     if(child_yang_name == "bbe-ne")
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
-        else
+        if(bbe_ne == nullptr)
         {
             bbe_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeNe>();
-            bbe_ne->parent = this;
-            children["bbe-ne"] = bbe_ne;
         }
-        return children.at("bbe-ne");
+        return bbe_ne;
     }
 
     if(child_yang_name == "bber-fe")
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
-        else
+        if(bber_fe == nullptr)
         {
             bber_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberFe>();
-            bber_fe->parent = this;
-            children["bber-fe"] = bber_fe;
         }
-        return children.at("bber-fe");
+        return bber_fe;
     }
 
     if(child_yang_name == "bber-ne")
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
-        else
+        if(bber_ne == nullptr)
         {
             bber_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberNe>();
-            bber_ne->parent = this;
-            children["bber-ne"] = bber_ne;
         }
-        return children.at("bber-ne");
+        return bber_ne;
     }
 
     if(child_yang_name == "es-fe")
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
-        else
+        if(es_fe == nullptr)
         {
             es_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsFe>();
-            es_fe->parent = this;
-            children["es-fe"] = es_fe;
         }
-        return children.at("es-fe");
+        return es_fe;
     }
 
     if(child_yang_name == "es-ne")
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
-        else
+        if(es_ne == nullptr)
         {
             es_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsNe>();
-            es_ne->parent = this;
-            children["es-ne"] = es_ne;
         }
-        return children.at("es-ne");
+        return es_ne;
     }
 
     if(child_yang_name == "esr-fe")
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
-        else
+        if(esr_fe == nullptr)
         {
             esr_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrFe>();
-            esr_fe->parent = this;
-            children["esr-fe"] = esr_fe;
         }
-        return children.at("esr-fe");
+        return esr_fe;
     }
 
     if(child_yang_name == "esr-ne")
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
-        else
+        if(esr_ne == nullptr)
         {
             esr_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrNe>();
-            esr_ne->parent = this;
-            children["esr-ne"] = esr_ne;
         }
-        return children.at("esr-ne");
+        return esr_ne;
     }
 
     if(child_yang_name == "fc-fe")
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
-        else
+        if(fc_fe == nullptr)
         {
             fc_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcFe>();
-            fc_fe->parent = this;
-            children["fc-fe"] = fc_fe;
         }
-        return children.at("fc-fe");
+        return fc_fe;
     }
 
     if(child_yang_name == "fc-ne")
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
-        else
+        if(fc_ne == nullptr)
         {
             fc_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcNe>();
-            fc_ne->parent = this;
-            children["fc-ne"] = fc_ne;
         }
-        return children.at("fc-ne");
+        return fc_ne;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "ses-fe")
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
-        else
+        if(ses_fe == nullptr)
         {
             ses_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesFe>();
-            ses_fe->parent = this;
-            children["ses-fe"] = ses_fe;
         }
-        return children.at("ses-fe");
+        return ses_fe;
     }
 
     if(child_yang_name == "ses-ne")
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
-        else
+        if(ses_ne == nullptr)
         {
             ses_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesNe>();
-            ses_ne->parent = this;
-            children["ses-ne"] = ses_ne;
         }
-        return children.at("ses-ne");
+        return ses_ne;
     }
 
     if(child_yang_name == "sesr-fe")
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
-        else
+        if(sesr_fe == nullptr)
         {
             sesr_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrFe>();
-            sesr_fe->parent = this;
-            children["sesr-fe"] = sesr_fe;
         }
-        return children.at("sesr-fe");
+        return sesr_fe;
     }
 
     if(child_yang_name == "sesr-ne")
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
-        else
+        if(sesr_ne == nullptr)
         {
             sesr_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrNe>();
-            sesr_ne->parent = this;
-            children["sesr-ne"] = sesr_ne;
         }
-        return children.at("sesr-ne");
+        return sesr_ne;
     }
 
     if(child_yang_name == "uas-fe")
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
-        else
+        if(uas_fe == nullptr)
         {
             uas_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasFe>();
-            uas_fe->parent = this;
-            children["uas-fe"] = uas_fe;
         }
-        return children.at("uas-fe");
+        return uas_fe;
     }
 
     if(child_yang_name == "uas-ne")
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
-        else
+        if(uas_ne == nullptr)
         {
             uas_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasNe>();
-            uas_ne->parent = this;
-            children["uas-ne"] = uas_ne;
         }
-        return children.at("uas-ne");
+        return uas_ne;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::get_children() const
 {
-    if(children.find("bbe-fe") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bbe_fe != nullptr)
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
+        children["bbe-fe"] = bbe_fe;
     }
 
-    if(children.find("bbe-ne") == children.end())
+    if(bbe_ne != nullptr)
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
+        children["bbe-ne"] = bbe_ne;
     }
 
-    if(children.find("bber-fe") == children.end())
+    if(bber_fe != nullptr)
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
+        children["bber-fe"] = bber_fe;
     }
 
-    if(children.find("bber-ne") == children.end())
+    if(bber_ne != nullptr)
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
+        children["bber-ne"] = bber_ne;
     }
 
-    if(children.find("es-fe") == children.end())
+    if(es_fe != nullptr)
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
+        children["es-fe"] = es_fe;
     }
 
-    if(children.find("es-ne") == children.end())
+    if(es_ne != nullptr)
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
+        children["es-ne"] = es_ne;
     }
 
-    if(children.find("esr-fe") == children.end())
+    if(esr_fe != nullptr)
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
+        children["esr-fe"] = esr_fe;
     }
 
-    if(children.find("esr-ne") == children.end())
+    if(esr_ne != nullptr)
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
+        children["esr-ne"] = esr_ne;
     }
 
-    if(children.find("fc-fe") == children.end())
+    if(fc_fe != nullptr)
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
+        children["fc-fe"] = fc_fe;
     }
 
-    if(children.find("fc-ne") == children.end())
+    if(fc_ne != nullptr)
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
+        children["fc-ne"] = fc_ne;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("ses-fe") == children.end())
+    if(ses_fe != nullptr)
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
+        children["ses-fe"] = ses_fe;
     }
 
-    if(children.find("ses-ne") == children.end())
+    if(ses_ne != nullptr)
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
+        children["ses-ne"] = ses_ne;
     }
 
-    if(children.find("sesr-fe") == children.end())
+    if(sesr_fe != nullptr)
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
+        children["sesr-fe"] = sesr_fe;
     }
 
-    if(children.find("sesr-ne") == children.end())
+    if(sesr_ne != nullptr)
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
+        children["sesr-ne"] = sesr_ne;
     }
 
-    if(children.find("uas-fe") == children.end())
+    if(uas_fe != nullptr)
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
+        children["uas-fe"] = uas_fe;
     }
 
-    if(children.find("uas-ne") == children.end())
+    if(uas_ne != nullptr)
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
+        children["uas-ne"] = uas_ne;
     }
 
     return children;
@@ -14655,7 +12490,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14681,20 +12516,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14751,7 +12578,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14777,20 +12604,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14847,7 +12666,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14873,20 +12692,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14943,7 +12754,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14969,20 +12780,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15039,7 +12842,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15065,20 +12868,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15135,7 +12930,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15161,20 +12956,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15231,7 +13018,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15257,20 +13044,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15327,7 +13106,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15353,20 +13132,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15423,7 +13194,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15449,20 +13220,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15519,7 +13282,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15545,20 +13308,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15615,7 +13370,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15641,20 +13396,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::EsrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15711,7 +13458,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15737,20 +13484,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15807,7 +13546,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15833,20 +13572,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::SesrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15903,7 +13634,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15929,20 +13660,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::UasFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15999,7 +13722,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16025,20 +13748,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BbeFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16095,7 +13810,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16121,20 +13836,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::BberFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16191,7 +13898,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16217,20 +13924,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute1
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns::OtuMinute15Otn::FcFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16256,10 +13955,8 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecon
 	,otu_second30otns(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns>())
 {
     otu_second30fecs->parent = this;
-    children["otu-second30fecs"] = otu_second30fecs;
 
     otu_second30otns->parent = this;
-    children["otu-second30otns"] = otu_second30otns;
 
     yang_name = "otu-second30"; yang_parent_name = "otu-current";
 }
@@ -16290,7 +13987,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16313,64 +14010,38 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30fecs")
     {
-        if(otu_second30fecs != nullptr)
-        {
-            children["otu-second30fecs"] = otu_second30fecs;
-        }
-        else
+        if(otu_second30fecs == nullptr)
         {
             otu_second30fecs = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs>();
-            otu_second30fecs->parent = this;
-            children["otu-second30fecs"] = otu_second30fecs;
         }
-        return children.at("otu-second30fecs");
+        return otu_second30fecs;
     }
 
     if(child_yang_name == "otu-second30otns")
     {
-        if(otu_second30otns != nullptr)
-        {
-            children["otu-second30otns"] = otu_second30otns;
-        }
-        else
+        if(otu_second30otns == nullptr)
         {
             otu_second30otns = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns>();
-            otu_second30otns->parent = this;
-            children["otu-second30otns"] = otu_second30otns;
         }
-        return children.at("otu-second30otns");
+        return otu_second30otns;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::get_children() const
 {
-    if(children.find("otu-second30fecs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otu_second30fecs != nullptr)
     {
-        if(otu_second30fecs != nullptr)
-        {
-            children["otu-second30fecs"] = otu_second30fecs;
-        }
+        children["otu-second30fecs"] = otu_second30fecs;
     }
 
-    if(children.find("otu-second30otns") == children.end())
+    if(otu_second30otns != nullptr)
     {
-        if(otu_second30otns != nullptr)
-        {
-            children["otu-second30otns"] = otu_second30otns;
-        }
+        children["otu-second30otns"] = otu_second30otns;
     }
 
     return children;
@@ -16418,7 +14089,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16441,15 +14112,6 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30fec")
     {
         for(auto const & c : otu_second30fec)
@@ -16457,28 +14119,24 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec>();
         c->parent = this;
-        otu_second30fec.push_back(std::move(c));
-        children[segment_path] = otu_second30fec.back();
-        return children.at(segment_path);
+        otu_second30fec.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_second30fec)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16508,22 +14166,16 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecon
 	,uc_words(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords>())
 {
     ec_bits->parent = this;
-    children["ec-bits"] = ec_bits;
 
     post_fec_ber->parent = this;
-    children["post-fec-ber"] = post_fec_ber;
 
     pre_fec_ber->parent = this;
-    children["pre-fec-ber"] = pre_fec_ber;
 
     q->parent = this;
-    children["q"] = q;
 
     qmargin->parent = this;
-    children["qmargin"] = qmargin;
 
     uc_words->parent = this;
-    children["uc-words"] = uc_words;
 
     yang_name = "otu-second30fec"; yang_parent_name = "otu-second30fecs";
 }
@@ -16580,7 +14232,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16612,156 +14264,94 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ec-bits")
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
-        else
+        if(ec_bits == nullptr)
         {
             ec_bits = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::EcBits>();
-            ec_bits->parent = this;
-            children["ec-bits"] = ec_bits;
         }
-        return children.at("ec-bits");
+        return ec_bits;
     }
 
     if(child_yang_name == "post-fec-ber")
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
-        else
+        if(post_fec_ber == nullptr)
         {
             post_fec_ber = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PostFecBer>();
-            post_fec_ber->parent = this;
-            children["post-fec-ber"] = post_fec_ber;
         }
-        return children.at("post-fec-ber");
+        return post_fec_ber;
     }
 
     if(child_yang_name == "pre-fec-ber")
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
-        else
+        if(pre_fec_ber == nullptr)
         {
             pre_fec_ber = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PreFecBer>();
-            pre_fec_ber->parent = this;
-            children["pre-fec-ber"] = pre_fec_ber;
         }
-        return children.at("pre-fec-ber");
+        return pre_fec_ber;
     }
 
     if(child_yang_name == "q")
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
-        else
+        if(q == nullptr)
         {
             q = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Q>();
-            q->parent = this;
-            children["q"] = q;
         }
-        return children.at("q");
+        return q;
     }
 
     if(child_yang_name == "qmargin")
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
-        else
+        if(qmargin == nullptr)
         {
             qmargin = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Qmargin>();
-            qmargin->parent = this;
-            children["qmargin"] = qmargin;
         }
-        return children.at("qmargin");
+        return qmargin;
     }
 
     if(child_yang_name == "uc-words")
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
-        else
+        if(uc_words == nullptr)
         {
             uc_words = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords>();
-            uc_words->parent = this;
-            children["uc-words"] = uc_words;
         }
-        return children.at("uc-words");
+        return uc_words;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::get_children() const
 {
-    if(children.find("ec-bits") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ec_bits != nullptr)
     {
-        if(ec_bits != nullptr)
-        {
-            children["ec-bits"] = ec_bits;
-        }
+        children["ec-bits"] = ec_bits;
     }
 
-    if(children.find("post-fec-ber") == children.end())
+    if(post_fec_ber != nullptr)
     {
-        if(post_fec_ber != nullptr)
-        {
-            children["post-fec-ber"] = post_fec_ber;
-        }
+        children["post-fec-ber"] = post_fec_ber;
     }
 
-    if(children.find("pre-fec-ber") == children.end())
+    if(pre_fec_ber != nullptr)
     {
-        if(pre_fec_ber != nullptr)
-        {
-            children["pre-fec-ber"] = pre_fec_ber;
-        }
+        children["pre-fec-ber"] = pre_fec_ber;
     }
 
-    if(children.find("q") == children.end())
+    if(q != nullptr)
     {
-        if(q != nullptr)
-        {
-            children["q"] = q;
-        }
+        children["q"] = q;
     }
 
-    if(children.find("qmargin") == children.end())
+    if(qmargin != nullptr)
     {
-        if(qmargin != nullptr)
-        {
-            children["qmargin"] = qmargin;
-        }
+        children["qmargin"] = qmargin;
     }
 
-    if(children.find("uc-words") == children.end())
+    if(uc_words != nullptr)
     {
-        if(uc_words != nullptr)
-        {
-            children["uc-words"] = uc_words;
-        }
+        children["uc-words"] = uc_words;
     }
 
     return children;
@@ -16847,7 +14437,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::EcBits::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::EcBits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16874,20 +14464,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::EcBits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::EcBits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16951,7 +14533,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16978,20 +14560,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::UcWords::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17067,7 +14641,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PreFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PreFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17098,20 +14672,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PreFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PreFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17203,7 +14769,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PostFecBer::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PostFecBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17234,20 +14800,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PostFecBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::PostFecBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17339,7 +14897,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Q::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Q::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17370,20 +14928,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Q::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Q::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17475,7 +15025,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Qmargin::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Qmargin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17506,20 +15056,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Qmargin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Fecs::OtuSecond30Fec::Qmargin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17597,7 +15139,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17620,15 +15162,6 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "otu-second30otn")
     {
         for(auto const & c : otu_second30otn)
@@ -17636,28 +15169,24 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn>();
         c->parent = this;
-        otu_second30otn.push_back(std::move(c));
-        children[segment_path] = otu_second30otn.back();
-        return children.at(segment_path);
+        otu_second30otn.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : otu_second30otn)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17698,55 +15227,38 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecon
 	,uas_ne(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasNe>())
 {
     bbe_fe->parent = this;
-    children["bbe-fe"] = bbe_fe;
 
     bbe_ne->parent = this;
-    children["bbe-ne"] = bbe_ne;
 
     bber_fe->parent = this;
-    children["bber-fe"] = bber_fe;
 
     bber_ne->parent = this;
-    children["bber-ne"] = bber_ne;
 
     es_fe->parent = this;
-    children["es-fe"] = es_fe;
 
     es_ne->parent = this;
-    children["es-ne"] = es_ne;
 
     esr_fe->parent = this;
-    children["esr-fe"] = esr_fe;
 
     esr_ne->parent = this;
-    children["esr-ne"] = esr_ne;
 
     fc_fe->parent = this;
-    children["fc-fe"] = fc_fe;
 
     fc_ne->parent = this;
-    children["fc-ne"] = fc_ne;
 
     lbc->parent = this;
-    children["lbc"] = lbc;
 
     ses_fe->parent = this;
-    children["ses-fe"] = ses_fe;
 
     ses_ne->parent = this;
-    children["ses-ne"] = ses_ne;
 
     sesr_fe->parent = this;
-    children["sesr-fe"] = sesr_fe;
 
     sesr_ne->parent = this;
-    children["sesr-ne"] = sesr_ne;
 
     uas_fe->parent = this;
-    children["uas-fe"] = uas_fe;
 
     uas_ne->parent = this;
-    children["uas-ne"] = uas_ne;
 
     yang_name = "otu-second30otn"; yang_parent_name = "otu-second30otns";
 }
@@ -17825,7 +15337,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17857,409 +15369,248 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bbe-fe")
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
-        else
+        if(bbe_fe == nullptr)
         {
             bbe_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BbeFe>();
-            bbe_fe->parent = this;
-            children["bbe-fe"] = bbe_fe;
         }
-        return children.at("bbe-fe");
+        return bbe_fe;
     }
 
     if(child_yang_name == "bbe-ne")
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
-        else
+        if(bbe_ne == nullptr)
         {
             bbe_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BbeNe>();
-            bbe_ne->parent = this;
-            children["bbe-ne"] = bbe_ne;
         }
-        return children.at("bbe-ne");
+        return bbe_ne;
     }
 
     if(child_yang_name == "bber-fe")
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
-        else
+        if(bber_fe == nullptr)
         {
             bber_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BberFe>();
-            bber_fe->parent = this;
-            children["bber-fe"] = bber_fe;
         }
-        return children.at("bber-fe");
+        return bber_fe;
     }
 
     if(child_yang_name == "bber-ne")
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
-        else
+        if(bber_ne == nullptr)
         {
             bber_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BberNe>();
-            bber_ne->parent = this;
-            children["bber-ne"] = bber_ne;
         }
-        return children.at("bber-ne");
+        return bber_ne;
     }
 
     if(child_yang_name == "es-fe")
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
-        else
+        if(es_fe == nullptr)
         {
             es_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsFe>();
-            es_fe->parent = this;
-            children["es-fe"] = es_fe;
         }
-        return children.at("es-fe");
+        return es_fe;
     }
 
     if(child_yang_name == "es-ne")
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
-        else
+        if(es_ne == nullptr)
         {
             es_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsNe>();
-            es_ne->parent = this;
-            children["es-ne"] = es_ne;
         }
-        return children.at("es-ne");
+        return es_ne;
     }
 
     if(child_yang_name == "esr-fe")
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
-        else
+        if(esr_fe == nullptr)
         {
             esr_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrFe>();
-            esr_fe->parent = this;
-            children["esr-fe"] = esr_fe;
         }
-        return children.at("esr-fe");
+        return esr_fe;
     }
 
     if(child_yang_name == "esr-ne")
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
-        else
+        if(esr_ne == nullptr)
         {
             esr_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrNe>();
-            esr_ne->parent = this;
-            children["esr-ne"] = esr_ne;
         }
-        return children.at("esr-ne");
+        return esr_ne;
     }
 
     if(child_yang_name == "fc-fe")
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
-        else
+        if(fc_fe == nullptr)
         {
             fc_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::FcFe>();
-            fc_fe->parent = this;
-            children["fc-fe"] = fc_fe;
         }
-        return children.at("fc-fe");
+        return fc_fe;
     }
 
     if(child_yang_name == "fc-ne")
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
-        else
+        if(fc_ne == nullptr)
         {
             fc_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::FcNe>();
-            fc_ne->parent = this;
-            children["fc-ne"] = fc_ne;
         }
-        return children.at("fc-ne");
+        return fc_ne;
     }
 
     if(child_yang_name == "lbc")
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
-        else
+        if(lbc == nullptr)
         {
             lbc = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::Lbc>();
-            lbc->parent = this;
-            children["lbc"] = lbc;
         }
-        return children.at("lbc");
+        return lbc;
     }
 
     if(child_yang_name == "ses-fe")
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
-        else
+        if(ses_fe == nullptr)
         {
             ses_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesFe>();
-            ses_fe->parent = this;
-            children["ses-fe"] = ses_fe;
         }
-        return children.at("ses-fe");
+        return ses_fe;
     }
 
     if(child_yang_name == "ses-ne")
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
-        else
+        if(ses_ne == nullptr)
         {
             ses_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesNe>();
-            ses_ne->parent = this;
-            children["ses-ne"] = ses_ne;
         }
-        return children.at("ses-ne");
+        return ses_ne;
     }
 
     if(child_yang_name == "sesr-fe")
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
-        else
+        if(sesr_fe == nullptr)
         {
             sesr_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesrFe>();
-            sesr_fe->parent = this;
-            children["sesr-fe"] = sesr_fe;
         }
-        return children.at("sesr-fe");
+        return sesr_fe;
     }
 
     if(child_yang_name == "sesr-ne")
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
-        else
+        if(sesr_ne == nullptr)
         {
             sesr_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesrNe>();
-            sesr_ne->parent = this;
-            children["sesr-ne"] = sesr_ne;
         }
-        return children.at("sesr-ne");
+        return sesr_ne;
     }
 
     if(child_yang_name == "uas-fe")
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
-        else
+        if(uas_fe == nullptr)
         {
             uas_fe = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasFe>();
-            uas_fe->parent = this;
-            children["uas-fe"] = uas_fe;
         }
-        return children.at("uas-fe");
+        return uas_fe;
     }
 
     if(child_yang_name == "uas-ne")
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
-        else
+        if(uas_ne == nullptr)
         {
             uas_ne = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasNe>();
-            uas_ne->parent = this;
-            children["uas-ne"] = uas_ne;
         }
-        return children.at("uas-ne");
+        return uas_ne;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::get_children() const
 {
-    if(children.find("bbe-fe") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bbe_fe != nullptr)
     {
-        if(bbe_fe != nullptr)
-        {
-            children["bbe-fe"] = bbe_fe;
-        }
+        children["bbe-fe"] = bbe_fe;
     }
 
-    if(children.find("bbe-ne") == children.end())
+    if(bbe_ne != nullptr)
     {
-        if(bbe_ne != nullptr)
-        {
-            children["bbe-ne"] = bbe_ne;
-        }
+        children["bbe-ne"] = bbe_ne;
     }
 
-    if(children.find("bber-fe") == children.end())
+    if(bber_fe != nullptr)
     {
-        if(bber_fe != nullptr)
-        {
-            children["bber-fe"] = bber_fe;
-        }
+        children["bber-fe"] = bber_fe;
     }
 
-    if(children.find("bber-ne") == children.end())
+    if(bber_ne != nullptr)
     {
-        if(bber_ne != nullptr)
-        {
-            children["bber-ne"] = bber_ne;
-        }
+        children["bber-ne"] = bber_ne;
     }
 
-    if(children.find("es-fe") == children.end())
+    if(es_fe != nullptr)
     {
-        if(es_fe != nullptr)
-        {
-            children["es-fe"] = es_fe;
-        }
+        children["es-fe"] = es_fe;
     }
 
-    if(children.find("es-ne") == children.end())
+    if(es_ne != nullptr)
     {
-        if(es_ne != nullptr)
-        {
-            children["es-ne"] = es_ne;
-        }
+        children["es-ne"] = es_ne;
     }
 
-    if(children.find("esr-fe") == children.end())
+    if(esr_fe != nullptr)
     {
-        if(esr_fe != nullptr)
-        {
-            children["esr-fe"] = esr_fe;
-        }
+        children["esr-fe"] = esr_fe;
     }
 
-    if(children.find("esr-ne") == children.end())
+    if(esr_ne != nullptr)
     {
-        if(esr_ne != nullptr)
-        {
-            children["esr-ne"] = esr_ne;
-        }
+        children["esr-ne"] = esr_ne;
     }
 
-    if(children.find("fc-fe") == children.end())
+    if(fc_fe != nullptr)
     {
-        if(fc_fe != nullptr)
-        {
-            children["fc-fe"] = fc_fe;
-        }
+        children["fc-fe"] = fc_fe;
     }
 
-    if(children.find("fc-ne") == children.end())
+    if(fc_ne != nullptr)
     {
-        if(fc_ne != nullptr)
-        {
-            children["fc-ne"] = fc_ne;
-        }
+        children["fc-ne"] = fc_ne;
     }
 
-    if(children.find("lbc") == children.end())
+    if(lbc != nullptr)
     {
-        if(lbc != nullptr)
-        {
-            children["lbc"] = lbc;
-        }
+        children["lbc"] = lbc;
     }
 
-    if(children.find("ses-fe") == children.end())
+    if(ses_fe != nullptr)
     {
-        if(ses_fe != nullptr)
-        {
-            children["ses-fe"] = ses_fe;
-        }
+        children["ses-fe"] = ses_fe;
     }
 
-    if(children.find("ses-ne") == children.end())
+    if(ses_ne != nullptr)
     {
-        if(ses_ne != nullptr)
-        {
-            children["ses-ne"] = ses_ne;
-        }
+        children["ses-ne"] = ses_ne;
     }
 
-    if(children.find("sesr-fe") == children.end())
+    if(sesr_fe != nullptr)
     {
-        if(sesr_fe != nullptr)
-        {
-            children["sesr-fe"] = sesr_fe;
-        }
+        children["sesr-fe"] = sesr_fe;
     }
 
-    if(children.find("sesr-ne") == children.end())
+    if(sesr_ne != nullptr)
     {
-        if(sesr_ne != nullptr)
-        {
-            children["sesr-ne"] = sesr_ne;
-        }
+        children["sesr-ne"] = sesr_ne;
     }
 
-    if(children.find("uas-fe") == children.end())
+    if(uas_fe != nullptr)
     {
-        if(uas_fe != nullptr)
-        {
-            children["uas-fe"] = uas_fe;
-        }
+        children["uas-fe"] = uas_fe;
     }
 
-    if(children.find("uas-ne") == children.end())
+    if(uas_ne != nullptr)
     {
-        if(uas_ne != nullptr)
-        {
-            children["uas-ne"] = uas_ne;
-        }
+        children["uas-ne"] = uas_ne;
     }
 
     return children;
@@ -18342,7 +15693,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::Lbc::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::Lbc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18368,20 +15719,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::Lbc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::Lbc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18438,7 +15781,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18464,20 +15807,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18534,7 +15869,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18560,20 +15895,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18630,7 +15957,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18656,20 +15983,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18726,7 +16045,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesrNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesrNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18752,20 +16071,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesrNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesrNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18822,7 +16133,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18848,20 +16159,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::UasNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18918,7 +16221,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BbeNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BbeNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18944,20 +16247,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BbeNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BbeNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19014,7 +16309,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BberNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BberNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19040,20 +16335,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BberNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::BberNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19110,7 +16397,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::FcNe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::FcNe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19136,20 +16423,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::FcNe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::FcNe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19206,7 +16485,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19232,20 +16511,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19302,7 +16573,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19328,20 +16599,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::EsrFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19398,7 +16661,7 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond
 
 }
 
-EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesFe::get_entity_path(Entity* ancestor) const
+const EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesFe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19424,20 +16687,12 @@ EntityPath PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond3
 
 std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesFe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30Otns::OtuSecond30Otn::SesFe::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

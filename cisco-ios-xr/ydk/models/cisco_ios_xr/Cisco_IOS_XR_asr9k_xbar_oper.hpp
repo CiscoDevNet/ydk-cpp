@@ -18,23 +18,20 @@ class CrossBarStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: CrossBarStats::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes> nodes;
-
-
+        
 }; // CrossBarStats
 
 
@@ -46,19 +43,16 @@ class CrossBarStats::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: CrossBarStats::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node> > node;
-
-
+        
 }; // CrossBarStats::Nodes
 
 
@@ -70,20 +64,17 @@ class CrossBarStats::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class CrossBarTable; //type: CrossBarStats::Nodes::Node::CrossBarTable
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable> cross_bar_table;
-
-
+        
 }; // CrossBarStats::Nodes::Node
 
 
@@ -95,21 +86,18 @@ class CrossBarStats::Nodes::Node::CrossBarTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PktStats; //type: CrossBarStats::Nodes::Node::CrossBarTable::PktStats
         class Sm15Stats; //type: CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::PktStats> pkt_stats;
         std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats> sm15_stats;
-
-
+        
 }; // CrossBarStats::Nodes::Node::CrossBarTable
 
 
@@ -121,19 +109,16 @@ class CrossBarStats::Nodes::Node::CrossBarTable::PktStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PktStat; //type: CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat> > pkt_stat;
-
-
+        
 }; // CrossBarStats::Nodes::Node::CrossBarTable::PktStats
 
 
@@ -145,12 +130,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf asic_id; //type: string
         YLeaf port; //type: string
@@ -200,8 +184,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat : public Enti
         YLeaf fpoedb_correctable_ecc_error_count_low; //type: uint64
         YLeaf fpoedb_uncorrectable_ecc_error_count_low; //type: uint64
 
-
-
 }; // CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat
 
 
@@ -213,19 +195,16 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Sm15Stat; //type: CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat> > sm15_stat;
-
-
+        
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats
 
 
@@ -237,17 +216,15 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf asic_id; //type: string
         YLeaf port; //type: string
         YLeaf internal_err_cnt; //type: uint64
-
         class Ua0Stats; //type: CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats
         class Ua1Stats; //type: CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats
         class Ua2Stats; //type: CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats
@@ -275,8 +252,7 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat : public En
         std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats> ua0_stats;
         std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats> ua1_stats;
         std::shared_ptr<Cisco_IOS_XR_asr9k_xbar_oper::CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats> ua2_stats;
-
-
+        
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat
 
 
@@ -288,12 +264,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dest_drop_pkt_cnt; //type: uint64
         YLeaf src_dest_pkt_cnt; //type: uint64
@@ -303,8 +278,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats :
         YLeaf rx_drop_pkt_cnt; //type: uint64
         YLeaf rx_fabric_to_cnt; //type: uint64
         YLeaf ack_wait_cnt; //type: uint64
-
-
 
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats
 
@@ -317,12 +290,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dest_drop_pkt_cnt; //type: uint64
         YLeaf src_dest_pkt_cnt; //type: uint64
@@ -332,8 +304,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats :
         YLeaf rx_drop_pkt_cnt; //type: uint64
         YLeaf rx_fabric_to_cnt; //type: uint64
         YLeaf ack_wait_cnt; //type: uint64
-
-
 
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats
 
@@ -346,12 +316,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dest_drop_pkt_cnt; //type: uint64
         YLeaf src_dest_pkt_cnt; //type: uint64
@@ -361,8 +330,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats :
         YLeaf rx_drop_pkt_cnt; //type: uint64
         YLeaf rx_fabric_to_cnt; //type: uint64
         YLeaf ack_wait_cnt; //type: uint64
-
-
 
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats
 
@@ -375,12 +342,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dest_drop_pkt_cnt; //type: uint64
         YLeaf src_dest_pkt_cnt; //type: uint64
@@ -391,8 +357,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats : 
         YLeaf rx_re_transmit_cnt; //type: uint64
         YLeaf rx_fabric_to_cnt; //type: uint64
         YLeaf rx_hol_to_cnt; //type: uint64
-
-
 
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats
 
@@ -405,12 +369,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dest_drop_pkt_cnt; //type: uint64
         YLeaf src_dest_pkt_cnt; //type: uint64
@@ -418,8 +381,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats : 
         YLeaf rcv_pkt_cnt; //type: uint64
         YLeaf tx_pkt_cnt; //type: uint64
         YLeaf rx_drop_pkt_cnt; //type: uint64
-
-
 
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats
 
@@ -432,19 +393,16 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_rate1_cnt; //type: uint64
         YLeaf total_rate2_cnt; //type: uint64
         YLeaf total_rate3_cnt; //type: uint64
         YLeaf total_calc_rate; //type: uint64
-
-
 
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats
 
@@ -457,20 +415,17 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf total_rate1_cnt; //type: uint64
         YLeaf total_rate2_cnt; //type: uint64
         YLeaf total_rate3_cnt; //type: uint64
         YLeaf total_calc_rate; //type: uint64
         YLeaf mc2uc_preempt_cnt; //type: uint64
-
-
 
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats
 
@@ -483,12 +438,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pkt_rcv_cnt; //type: uint64
         YLeaf pkt_seq_err_cnt; //type: uint64
@@ -527,8 +481,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats 
         YLeaf calc_rate; //type: uint64
         YLeaf crc_stomp_pkt_cnt; //type: uint64
 
-
-
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats
 
 
@@ -540,12 +492,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pkt_rcv_cnt; //type: uint64
         YLeaf pkt_seq_err_cnt; //type: uint64
@@ -581,8 +532,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats 
         YLeaf calc_rate; //type: uint64
         YLeaf crc_stomp_pkt_cnt; //type: uint64
 
-
-
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats
 
 
@@ -594,12 +543,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in0_ecc_serr_cnt; //type: uint64
         YLeaf in0_ecc_derr_cnt; //type: uint64
@@ -632,8 +580,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats 
         YLeaf rate_cnt; //type: uint64
         YLeaf calc_rate; //type: uint64
 
-
-
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats
 
 
@@ -645,12 +591,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_pkt_uc0_cnt; //type: uint64
         YLeaf in_pkt_uc1_cnt; //type: uint64
@@ -684,8 +629,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats 
         YLeaf rate_cnt; //type: uint64
         YLeaf calc_rate; //type: uint64
 
-
-
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats
 
 
@@ -697,12 +640,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_pkt_mc_cnt; //type: uint64
         YLeaf in_full_line_mc_cnt; //type: uint64
@@ -722,8 +664,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats 
         YLeaf rate_cnt; //type: uint64
         YLeaf calc_rate; //type: uint64
 
-
-
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats
 
 
@@ -735,12 +675,11 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf in_pkt_cnt; //type: uint64
         YLeaf out_path0_pkt_cnt; //type: uint64
@@ -758,8 +697,6 @@ class CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats 
         YLeaf fc_cc_0_1_trans_cnt; //type: uint64
         YLeaf rate_cnt; //type: uint64
         YLeaf calc_rate; //type: uint64
-
-
 
 }; // CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats
 

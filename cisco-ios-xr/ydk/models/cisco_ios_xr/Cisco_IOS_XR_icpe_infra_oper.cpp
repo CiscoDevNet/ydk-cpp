@@ -29,52 +29,36 @@ NvSatellite::NvSatellite()
 	,sdacp_redundancies(std::make_shared<NvSatellite::SdacpRedundancies>())
 {
     icpe_dpms->parent = this;
-    children["icpe-dpms"] = icpe_dpms;
 
     install->parent = this;
-    children["install"] = install;
 
     install_op_statuses->parent = this;
-    children["install-op-statuses"] = install_op_statuses;
 
     install_progresses->parent = this;
-    children["install-progresses"] = install_progresses;
 
     install_shows->parent = this;
-    children["install-shows"] = install_shows;
 
     install_statuses->parent = this;
-    children["install-statuses"] = install_statuses;
 
     reload_op_statuses->parent = this;
-    children["reload-op-statuses"] = reload_op_statuses;
 
     reload_statuses->parent = this;
-    children["reload-statuses"] = reload_statuses;
 
     satellite_priorities->parent = this;
-    children["satellite-priorities"] = satellite_priorities;
 
     satellite_properties->parent = this;
-    children["satellite-properties"] = satellite_properties;
 
     satellite_statuses->parent = this;
-    children["satellite-statuses"] = satellite_statuses;
 
     satellite_topologies->parent = this;
-    children["satellite-topologies"] = satellite_topologies;
 
     satellite_versions->parent = this;
-    children["satellite-versions"] = satellite_versions;
 
     sdacp_controls->parent = this;
-    children["sdacp-controls"] = sdacp_controls;
 
     sdacp_discovery2s->parent = this;
-    children["sdacp-discovery2s"] = sdacp_discovery2s;
 
     sdacp_redundancies->parent = this;
-    children["sdacp-redundancies"] = sdacp_redundancies;
 
     yang_name = "nv-satellite"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-oper";
 }
@@ -133,12 +117,12 @@ std::string NvSatellite::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -153,386 +137,234 @@ EntityPath NvSatellite::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "icpe-dpms")
     {
-        if(icpe_dpms != nullptr)
-        {
-            children["icpe-dpms"] = icpe_dpms;
-        }
-        else
+        if(icpe_dpms == nullptr)
         {
             icpe_dpms = std::make_shared<NvSatellite::IcpeDpms>();
-            icpe_dpms->parent = this;
-            children["icpe-dpms"] = icpe_dpms;
         }
-        return children.at("icpe-dpms");
+        return icpe_dpms;
     }
 
     if(child_yang_name == "install")
     {
-        if(install != nullptr)
-        {
-            children["install"] = install;
-        }
-        else
+        if(install == nullptr)
         {
             install = std::make_shared<NvSatellite::Install>();
-            install->parent = this;
-            children["install"] = install;
         }
-        return children.at("install");
+        return install;
     }
 
     if(child_yang_name == "install-op-statuses")
     {
-        if(install_op_statuses != nullptr)
-        {
-            children["install-op-statuses"] = install_op_statuses;
-        }
-        else
+        if(install_op_statuses == nullptr)
         {
             install_op_statuses = std::make_shared<NvSatellite::InstallOpStatuses>();
-            install_op_statuses->parent = this;
-            children["install-op-statuses"] = install_op_statuses;
         }
-        return children.at("install-op-statuses");
+        return install_op_statuses;
     }
 
     if(child_yang_name == "install-progresses")
     {
-        if(install_progresses != nullptr)
-        {
-            children["install-progresses"] = install_progresses;
-        }
-        else
+        if(install_progresses == nullptr)
         {
             install_progresses = std::make_shared<NvSatellite::InstallProgresses>();
-            install_progresses->parent = this;
-            children["install-progresses"] = install_progresses;
         }
-        return children.at("install-progresses");
+        return install_progresses;
     }
 
     if(child_yang_name == "install-shows")
     {
-        if(install_shows != nullptr)
-        {
-            children["install-shows"] = install_shows;
-        }
-        else
+        if(install_shows == nullptr)
         {
             install_shows = std::make_shared<NvSatellite::InstallShows>();
-            install_shows->parent = this;
-            children["install-shows"] = install_shows;
         }
-        return children.at("install-shows");
+        return install_shows;
     }
 
     if(child_yang_name == "install-statuses")
     {
-        if(install_statuses != nullptr)
-        {
-            children["install-statuses"] = install_statuses;
-        }
-        else
+        if(install_statuses == nullptr)
         {
             install_statuses = std::make_shared<NvSatellite::InstallStatuses>();
-            install_statuses->parent = this;
-            children["install-statuses"] = install_statuses;
         }
-        return children.at("install-statuses");
+        return install_statuses;
     }
 
     if(child_yang_name == "reload-op-statuses")
     {
-        if(reload_op_statuses != nullptr)
-        {
-            children["reload-op-statuses"] = reload_op_statuses;
-        }
-        else
+        if(reload_op_statuses == nullptr)
         {
             reload_op_statuses = std::make_shared<NvSatellite::ReloadOpStatuses>();
-            reload_op_statuses->parent = this;
-            children["reload-op-statuses"] = reload_op_statuses;
         }
-        return children.at("reload-op-statuses");
+        return reload_op_statuses;
     }
 
     if(child_yang_name == "reload-statuses")
     {
-        if(reload_statuses != nullptr)
-        {
-            children["reload-statuses"] = reload_statuses;
-        }
-        else
+        if(reload_statuses == nullptr)
         {
             reload_statuses = std::make_shared<NvSatellite::ReloadStatuses>();
-            reload_statuses->parent = this;
-            children["reload-statuses"] = reload_statuses;
         }
-        return children.at("reload-statuses");
+        return reload_statuses;
     }
 
     if(child_yang_name == "satellite-priorities")
     {
-        if(satellite_priorities != nullptr)
-        {
-            children["satellite-priorities"] = satellite_priorities;
-        }
-        else
+        if(satellite_priorities == nullptr)
         {
             satellite_priorities = std::make_shared<NvSatellite::SatellitePriorities>();
-            satellite_priorities->parent = this;
-            children["satellite-priorities"] = satellite_priorities;
         }
-        return children.at("satellite-priorities");
+        return satellite_priorities;
     }
 
     if(child_yang_name == "satellite-properties")
     {
-        if(satellite_properties != nullptr)
-        {
-            children["satellite-properties"] = satellite_properties;
-        }
-        else
+        if(satellite_properties == nullptr)
         {
             satellite_properties = std::make_shared<NvSatellite::SatelliteProperties>();
-            satellite_properties->parent = this;
-            children["satellite-properties"] = satellite_properties;
         }
-        return children.at("satellite-properties");
+        return satellite_properties;
     }
 
     if(child_yang_name == "satellite-statuses")
     {
-        if(satellite_statuses != nullptr)
-        {
-            children["satellite-statuses"] = satellite_statuses;
-        }
-        else
+        if(satellite_statuses == nullptr)
         {
             satellite_statuses = std::make_shared<NvSatellite::SatelliteStatuses>();
-            satellite_statuses->parent = this;
-            children["satellite-statuses"] = satellite_statuses;
         }
-        return children.at("satellite-statuses");
+        return satellite_statuses;
     }
 
     if(child_yang_name == "satellite-topologies")
     {
-        if(satellite_topologies != nullptr)
-        {
-            children["satellite-topologies"] = satellite_topologies;
-        }
-        else
+        if(satellite_topologies == nullptr)
         {
             satellite_topologies = std::make_shared<NvSatellite::SatelliteTopologies>();
-            satellite_topologies->parent = this;
-            children["satellite-topologies"] = satellite_topologies;
         }
-        return children.at("satellite-topologies");
+        return satellite_topologies;
     }
 
     if(child_yang_name == "satellite-versions")
     {
-        if(satellite_versions != nullptr)
-        {
-            children["satellite-versions"] = satellite_versions;
-        }
-        else
+        if(satellite_versions == nullptr)
         {
             satellite_versions = std::make_shared<NvSatellite::SatelliteVersions>();
-            satellite_versions->parent = this;
-            children["satellite-versions"] = satellite_versions;
         }
-        return children.at("satellite-versions");
+        return satellite_versions;
     }
 
     if(child_yang_name == "sdacp-controls")
     {
-        if(sdacp_controls != nullptr)
-        {
-            children["sdacp-controls"] = sdacp_controls;
-        }
-        else
+        if(sdacp_controls == nullptr)
         {
             sdacp_controls = std::make_shared<NvSatellite::SdacpControls>();
-            sdacp_controls->parent = this;
-            children["sdacp-controls"] = sdacp_controls;
         }
-        return children.at("sdacp-controls");
+        return sdacp_controls;
     }
 
     if(child_yang_name == "sdacp-discovery2s")
     {
-        if(sdacp_discovery2s != nullptr)
-        {
-            children["sdacp-discovery2s"] = sdacp_discovery2s;
-        }
-        else
+        if(sdacp_discovery2s == nullptr)
         {
             sdacp_discovery2s = std::make_shared<NvSatellite::SdacpDiscovery2S>();
-            sdacp_discovery2s->parent = this;
-            children["sdacp-discovery2s"] = sdacp_discovery2s;
         }
-        return children.at("sdacp-discovery2s");
+        return sdacp_discovery2s;
     }
 
     if(child_yang_name == "sdacp-redundancies")
     {
-        if(sdacp_redundancies != nullptr)
-        {
-            children["sdacp-redundancies"] = sdacp_redundancies;
-        }
-        else
+        if(sdacp_redundancies == nullptr)
         {
             sdacp_redundancies = std::make_shared<NvSatellite::SdacpRedundancies>();
-            sdacp_redundancies->parent = this;
-            children["sdacp-redundancies"] = sdacp_redundancies;
         }
-        return children.at("sdacp-redundancies");
+        return sdacp_redundancies;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::get_children() const
 {
-    if(children.find("icpe-dpms") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(icpe_dpms != nullptr)
     {
-        if(icpe_dpms != nullptr)
-        {
-            children["icpe-dpms"] = icpe_dpms;
-        }
+        children["icpe-dpms"] = icpe_dpms;
     }
 
-    if(children.find("install") == children.end())
+    if(install != nullptr)
     {
-        if(install != nullptr)
-        {
-            children["install"] = install;
-        }
+        children["install"] = install;
     }
 
-    if(children.find("install-op-statuses") == children.end())
+    if(install_op_statuses != nullptr)
     {
-        if(install_op_statuses != nullptr)
-        {
-            children["install-op-statuses"] = install_op_statuses;
-        }
+        children["install-op-statuses"] = install_op_statuses;
     }
 
-    if(children.find("install-progresses") == children.end())
+    if(install_progresses != nullptr)
     {
-        if(install_progresses != nullptr)
-        {
-            children["install-progresses"] = install_progresses;
-        }
+        children["install-progresses"] = install_progresses;
     }
 
-    if(children.find("install-shows") == children.end())
+    if(install_shows != nullptr)
     {
-        if(install_shows != nullptr)
-        {
-            children["install-shows"] = install_shows;
-        }
+        children["install-shows"] = install_shows;
     }
 
-    if(children.find("install-statuses") == children.end())
+    if(install_statuses != nullptr)
     {
-        if(install_statuses != nullptr)
-        {
-            children["install-statuses"] = install_statuses;
-        }
+        children["install-statuses"] = install_statuses;
     }
 
-    if(children.find("reload-op-statuses") == children.end())
+    if(reload_op_statuses != nullptr)
     {
-        if(reload_op_statuses != nullptr)
-        {
-            children["reload-op-statuses"] = reload_op_statuses;
-        }
+        children["reload-op-statuses"] = reload_op_statuses;
     }
 
-    if(children.find("reload-statuses") == children.end())
+    if(reload_statuses != nullptr)
     {
-        if(reload_statuses != nullptr)
-        {
-            children["reload-statuses"] = reload_statuses;
-        }
+        children["reload-statuses"] = reload_statuses;
     }
 
-    if(children.find("satellite-priorities") == children.end())
+    if(satellite_priorities != nullptr)
     {
-        if(satellite_priorities != nullptr)
-        {
-            children["satellite-priorities"] = satellite_priorities;
-        }
+        children["satellite-priorities"] = satellite_priorities;
     }
 
-    if(children.find("satellite-properties") == children.end())
+    if(satellite_properties != nullptr)
     {
-        if(satellite_properties != nullptr)
-        {
-            children["satellite-properties"] = satellite_properties;
-        }
+        children["satellite-properties"] = satellite_properties;
     }
 
-    if(children.find("satellite-statuses") == children.end())
+    if(satellite_statuses != nullptr)
     {
-        if(satellite_statuses != nullptr)
-        {
-            children["satellite-statuses"] = satellite_statuses;
-        }
+        children["satellite-statuses"] = satellite_statuses;
     }
 
-    if(children.find("satellite-topologies") == children.end())
+    if(satellite_topologies != nullptr)
     {
-        if(satellite_topologies != nullptr)
-        {
-            children["satellite-topologies"] = satellite_topologies;
-        }
+        children["satellite-topologies"] = satellite_topologies;
     }
 
-    if(children.find("satellite-versions") == children.end())
+    if(satellite_versions != nullptr)
     {
-        if(satellite_versions != nullptr)
-        {
-            children["satellite-versions"] = satellite_versions;
-        }
+        children["satellite-versions"] = satellite_versions;
     }
 
-    if(children.find("sdacp-controls") == children.end())
+    if(sdacp_controls != nullptr)
     {
-        if(sdacp_controls != nullptr)
-        {
-            children["sdacp-controls"] = sdacp_controls;
-        }
+        children["sdacp-controls"] = sdacp_controls;
     }
 
-    if(children.find("sdacp-discovery2s") == children.end())
+    if(sdacp_discovery2s != nullptr)
     {
-        if(sdacp_discovery2s != nullptr)
-        {
-            children["sdacp-discovery2s"] = sdacp_discovery2s;
-        }
+        children["sdacp-discovery2s"] = sdacp_discovery2s;
     }
 
-    if(children.find("sdacp-redundancies") == children.end())
+    if(sdacp_redundancies != nullptr)
     {
-        if(sdacp_redundancies != nullptr)
-        {
-            children["sdacp-redundancies"] = sdacp_redundancies;
-        }
+        children["sdacp-redundancies"] = sdacp_redundancies;
     }
 
     return children;
@@ -600,7 +432,7 @@ std::string NvSatellite::ReloadOpStatuses::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::ReloadOpStatuses::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::ReloadOpStatuses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -623,15 +455,6 @@ EntityPath NvSatellite::ReloadOpStatuses::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> NvSatellite::ReloadOpStatuses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reload-op-status")
     {
         for(auto const & c : reload_op_status)
@@ -639,28 +462,24 @@ std::shared_ptr<Entity> NvSatellite::ReloadOpStatuses::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::ReloadOpStatuses::ReloadOpStatus>();
         c->parent = this;
-        reload_op_status.push_back(std::move(c));
-        children[segment_path] = reload_op_status.back();
-        return children.at(segment_path);
+        reload_op_status.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::ReloadOpStatuses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadOpStatuses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : reload_op_status)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -755,7 +574,7 @@ std::string NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_segment_path() co
 
 }
 
-EntityPath NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -789,20 +608,12 @@ EntityPath NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_entity_path(Entity
 
 std::shared_ptr<Entity> NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -876,7 +687,7 @@ std::string NvSatellite::InstallStatuses::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::InstallStatuses::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::InstallStatuses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -899,15 +710,6 @@ EntityPath NvSatellite::InstallStatuses::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NvSatellite::InstallStatuses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "install-status")
     {
         for(auto const & c : install_status)
@@ -915,28 +717,24 @@ std::shared_ptr<Entity> NvSatellite::InstallStatuses::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::InstallStatuses::InstallStatus>();
         c->parent = this;
-        install_status.push_back(std::move(c));
-        children[segment_path] = install_status.back();
-        return children.at(segment_path);
+        install_status.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::InstallStatuses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallStatuses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : install_status)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1199,7 +997,7 @@ std::string NvSatellite::InstallStatuses::InstallStatus::get_segment_path() cons
 
 }
 
-EntityPath NvSatellite::InstallStatuses::InstallStatus::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::InstallStatuses::InstallStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1261,20 +1059,12 @@ EntityPath NvSatellite::InstallStatuses::InstallStatus::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> NvSatellite::InstallStatuses::InstallStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::InstallStatuses::InstallStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallStatuses::InstallStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1404,7 +1194,7 @@ std::string NvSatellite::SdacpRedundancies::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SdacpRedundancies::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpRedundancies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1427,15 +1217,6 @@ EntityPath NvSatellite::SdacpRedundancies::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sdacp-redundancy")
     {
         for(auto const & c : sdacp_redundancy)
@@ -1443,28 +1224,24 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy>();
         c->parent = this;
-        sdacp_redundancy.push_back(std::move(c));
-        children[segment_path] = sdacp_redundancy.back();
-        return children.at(segment_path);
+        sdacp_redundancy.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpRedundancies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sdacp_redundancy)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1490,7 +1267,6 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::SdacpRedundancy()
     protocol_state_timestamp(std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp>())
 {
     protocol_state_timestamp->parent = this;
-    children["protocol-state-timestamp"] = protocol_state_timestamp;
 
     yang_name = "sdacp-redundancy"; yang_parent_name = "sdacp-redundancies";
 }
@@ -1549,7 +1325,7 @@ std::string NvSatellite::SdacpRedundancies::SdacpRedundancy::get_segment_path() 
 
 }
 
-EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1582,15 +1358,6 @@ EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::get_entity_path(Enti
 
 std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "channel")
     {
         for(auto const & c : channel)
@@ -1598,51 +1365,38 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel>();
         c->parent = this;
-        channel.push_back(std::move(c));
-        children[segment_path] = channel.back();
-        return children.at(segment_path);
+        channel.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "protocol-state-timestamp")
     {
-        if(protocol_state_timestamp != nullptr)
-        {
-            children["protocol-state-timestamp"] = protocol_state_timestamp;
-        }
-        else
+        if(protocol_state_timestamp == nullptr)
         {
             protocol_state_timestamp = std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp>();
-            protocol_state_timestamp->parent = this;
-            children["protocol-state-timestamp"] = protocol_state_timestamp;
         }
-        return children.at("protocol-state-timestamp");
+        return protocol_state_timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpRedundancies::SdacpRedundancy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : channel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("protocol-state-timestamp") == children.end())
+    if(protocol_state_timestamp != nullptr)
     {
-        if(protocol_state_timestamp != nullptr)
-        {
-            children["protocol-state-timestamp"] = protocol_state_timestamp;
-        }
+        children["protocol-state-timestamp"] = protocol_state_timestamp;
     }
 
     return children;
@@ -1726,7 +1480,7 @@ std::string NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimest
 
 }
 
-EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1751,20 +1505,12 @@ EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimesta
 
 std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1794,10 +1540,8 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::Channel()
 	,resync_state_timestamp(std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp>())
 {
     channel_state_timestamp->parent = this;
-    children["channel-state-timestamp"] = channel_state_timestamp;
 
     resync_state_timestamp->parent = this;
-    children["resync-state-timestamp"] = resync_state_timestamp;
 
     yang_name = "channel"; yang_parent_name = "sdacp-redundancy";
 }
@@ -1842,7 +1586,7 @@ std::string NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_segmen
 
 }
 
-EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1872,64 +1616,38 @@ EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_entity_
 
 std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "channel-state-timestamp")
     {
-        if(channel_state_timestamp != nullptr)
-        {
-            children["channel-state-timestamp"] = channel_state_timestamp;
-        }
-        else
+        if(channel_state_timestamp == nullptr)
         {
             channel_state_timestamp = std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp>();
-            channel_state_timestamp->parent = this;
-            children["channel-state-timestamp"] = channel_state_timestamp;
         }
-        return children.at("channel-state-timestamp");
+        return channel_state_timestamp;
     }
 
     if(child_yang_name == "resync-state-timestamp")
     {
-        if(resync_state_timestamp != nullptr)
-        {
-            children["resync-state-timestamp"] = resync_state_timestamp;
-        }
-        else
+        if(resync_state_timestamp == nullptr)
         {
             resync_state_timestamp = std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp>();
-            resync_state_timestamp->parent = this;
-            children["resync-state-timestamp"] = resync_state_timestamp;
         }
-        return children.at("resync-state-timestamp");
+        return resync_state_timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_children() const
 {
-    if(children.find("channel-state-timestamp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(channel_state_timestamp != nullptr)
     {
-        if(channel_state_timestamp != nullptr)
-        {
-            children["channel-state-timestamp"] = channel_state_timestamp;
-        }
+        children["channel-state-timestamp"] = channel_state_timestamp;
     }
 
-    if(children.find("resync-state-timestamp") == children.end())
+    if(resync_state_timestamp != nullptr)
     {
-        if(resync_state_timestamp != nullptr)
-        {
-            children["resync-state-timestamp"] = resync_state_timestamp;
-        }
+        children["resync-state-timestamp"] = resync_state_timestamp;
     }
 
     return children;
@@ -2001,7 +1719,7 @@ std::string NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelSta
 
 }
 
-EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2026,20 +1744,12 @@ EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStat
 
 std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2089,7 +1799,7 @@ std::string NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStat
 
 }
 
-EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2114,20 +1824,12 @@ EntityPath NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncState
 
 std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2181,7 +1883,7 @@ std::string NvSatellite::InstallShows::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::InstallShows::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::InstallShows::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2204,15 +1906,6 @@ EntityPath NvSatellite::InstallShows::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NvSatellite::InstallShows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "install-show")
     {
         for(auto const & c : install_show)
@@ -2220,28 +1913,24 @@ std::shared_ptr<Entity> NvSatellite::InstallShows::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::InstallShows::InstallShow>();
         c->parent = this;
-        install_show.push_back(std::move(c));
-        children[segment_path] = install_show.back();
-        return children.at(segment_path);
+        install_show.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::InstallShows::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallShows::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : install_show)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2541,7 +2230,7 @@ std::string NvSatellite::InstallShows::InstallShow::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::InstallShows::InstallShow::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::InstallShows::InstallShow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2610,15 +2299,6 @@ EntityPath NvSatellite::InstallShows::InstallShow::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> NvSatellite::InstallShows::InstallShow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "satellite")
     {
         for(auto const & c : satellite)
@@ -2626,28 +2306,24 @@ std::shared_ptr<Entity> NvSatellite::InstallShows::InstallShow::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::InstallShows::InstallShow::Satellite>();
         c->parent = this;
-        satellite.push_back(std::move(c));
-        children[segment_path] = satellite.back();
-        return children.at(segment_path);
+        satellite.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::InstallShows::InstallShow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallShows::InstallShow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : satellite)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2814,7 +2490,7 @@ std::string NvSatellite::InstallShows::InstallShow::Satellite::get_segment_path(
 
 }
 
-EntityPath NvSatellite::InstallShows::InstallShow::Satellite::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::InstallShows::InstallShow::Satellite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2844,20 +2520,12 @@ EntityPath NvSatellite::InstallShows::InstallShow::Satellite::get_entity_path(En
 
 std::shared_ptr<Entity> NvSatellite::InstallShows::InstallShow::Satellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::InstallShows::InstallShow::Satellite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallShows::InstallShow::Satellite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2931,7 +2599,7 @@ std::string NvSatellite::SatelliteStatuses::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2954,15 +2622,6 @@ EntityPath NvSatellite::SatelliteStatuses::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "satellite-status")
     {
         for(auto const & c : satellite_status)
@@ -2970,28 +2629,24 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus>();
         c->parent = this;
-        satellite_status.push_back(std::move(c));
-        children[segment_path] = satellite_status.back();
-        return children.at(segment_path);
+        satellite_status.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : satellite_status)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3046,13 +2701,10 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::SatelliteStatus()
 	,redundancy_out_of_sync_timestamp(std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp>())
 {
     candidate_fabric_ports->parent = this;
-    children["candidate-fabric-ports"] = candidate_fabric_ports;
 
     optical_status->parent = this;
-    children["optical-status"] = optical_status;
 
     redundancy_out_of_sync_timestamp->parent = this;
-    children["redundancy-out-of-sync-timestamp"] = redundancy_out_of_sync_timestamp;
 
     yang_name = "satellite-status"; yang_parent_name = "satellite-statuses";
 }
@@ -3178,7 +2830,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::get_segment_path() 
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3239,28 +2891,13 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::get_entity_path(Enti
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "candidate-fabric-ports")
     {
-        if(candidate_fabric_ports != nullptr)
-        {
-            children["candidate-fabric-ports"] = candidate_fabric_ports;
-        }
-        else
+        if(candidate_fabric_ports == nullptr)
         {
             candidate_fabric_ports = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts>();
-            candidate_fabric_ports->parent = this;
-            children["candidate-fabric-ports"] = candidate_fabric_ports;
         }
-        return children.at("candidate-fabric-ports");
+        return candidate_fabric_ports;
     }
 
     if(child_yang_name == "configured-link")
@@ -3270,82 +2907,57 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink>();
         c->parent = this;
-        configured_link.push_back(std::move(c));
-        children[segment_path] = configured_link.back();
-        return children.at(segment_path);
+        configured_link.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "optical-status")
     {
-        if(optical_status != nullptr)
-        {
-            children["optical-status"] = optical_status;
-        }
-        else
+        if(optical_status == nullptr)
         {
             optical_status = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus>();
-            optical_status->parent = this;
-            children["optical-status"] = optical_status;
         }
-        return children.at("optical-status");
+        return optical_status;
     }
 
     if(child_yang_name == "redundancy-out-of-sync-timestamp")
     {
-        if(redundancy_out_of_sync_timestamp != nullptr)
-        {
-            children["redundancy-out-of-sync-timestamp"] = redundancy_out_of_sync_timestamp;
-        }
-        else
+        if(redundancy_out_of_sync_timestamp == nullptr)
         {
             redundancy_out_of_sync_timestamp = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp>();
-            redundancy_out_of_sync_timestamp->parent = this;
-            children["redundancy-out-of-sync-timestamp"] = redundancy_out_of_sync_timestamp;
         }
-        return children.at("redundancy-out-of-sync-timestamp");
+        return redundancy_out_of_sync_timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::get_children() const
 {
-    if(children.find("candidate-fabric-ports") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(candidate_fabric_ports != nullptr)
     {
-        if(candidate_fabric_ports != nullptr)
-        {
-            children["candidate-fabric-ports"] = candidate_fabric_ports;
-        }
+        children["candidate-fabric-ports"] = candidate_fabric_ports;
     }
 
     for (auto const & c : configured_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("optical-status") == children.end())
+    if(optical_status != nullptr)
     {
-        if(optical_status != nullptr)
-        {
-            children["optical-status"] = optical_status;
-        }
+        children["optical-status"] = optical_status;
     }
 
-    if(children.find("redundancy-out-of-sync-timestamp") == children.end())
+    if(redundancy_out_of_sync_timestamp != nullptr)
     {
-        if(redundancy_out_of_sync_timestamp != nullptr)
-        {
-            children["redundancy-out-of-sync-timestamp"] = redundancy_out_of_sync_timestamp;
-        }
+        children["redundancy-out-of-sync-timestamp"] = redundancy_out_of_sync_timestamp;
     }
 
     return children;
@@ -3560,7 +3172,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPort
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3586,15 +3198,6 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "configured-port")
     {
         for(auto const & c : configured_port)
@@ -3602,15 +3205,13 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Candida
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort>();
         c->parent = this;
-        configured_port.push_back(std::move(c));
-        children[segment_path] = configured_port.back();
-        return children.at(segment_path);
+        configured_port.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "current-port")
@@ -3620,36 +3221,29 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Candida
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort>();
         c->parent = this;
-        current_port.push_back(std::move(c));
-        children[segment_path] = current_port.back();
-        return children.at(segment_path);
+        current_port.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : configured_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : current_port)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3714,7 +3308,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPort
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3742,20 +3336,12 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3829,7 +3415,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPort
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3858,20 +3444,12 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3944,7 +3522,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::get_
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3968,15 +3546,6 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::get_e
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "application")
     {
         for(auto const & c : application)
@@ -3984,28 +3553,24 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Optical
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application>();
         c->parent = this;
-        application.push_back(std::move(c));
-        children[segment_path] = application.back();
-        return children.at(segment_path);
+        application.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : application)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4053,7 +3618,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Appl
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4078,20 +3643,12 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Appli
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4141,7 +3698,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSync
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4166,20 +3723,12 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncT
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4279,7 +3828,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::get
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4314,15 +3863,6 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::get_
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "discovered-link")
     {
         for(auto const & c : discovered_link)
@@ -4330,15 +3870,13 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Configu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink>();
         c->parent = this;
-        discovered_link.push_back(std::move(c));
-        children[segment_path] = discovered_link.back();
-        return children.at(segment_path);
+        discovered_link.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "port-range")
@@ -4348,36 +3886,29 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Configu
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange>();
         c->parent = this;
-        port_range.push_back(std::move(c));
-        children[segment_path] = port_range.back();
-        return children.at(segment_path);
+        port_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : discovered_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : port_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4484,7 +4015,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::Por
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4514,20 +4045,12 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::Port
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4603,7 +4126,7 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::Dis
 
 }
 
-EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4630,20 +4153,12 @@ EntityPath NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::Disc
 
 std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4705,7 +4220,7 @@ std::string NvSatellite::SatellitePriorities::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SatellitePriorities::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatellitePriorities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4728,15 +4243,6 @@ EntityPath NvSatellite::SatellitePriorities::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> NvSatellite::SatellitePriorities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "satellite-priority")
     {
         for(auto const & c : satellite_priority)
@@ -4744,28 +4250,24 @@ std::shared_ptr<Entity> NvSatellite::SatellitePriorities::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatellitePriorities::SatellitePriority>();
         c->parent = this;
-        satellite_priority.push_back(std::move(c));
-        children[segment_path] = satellite_priority.back();
-        return children.at(segment_path);
+        satellite_priority.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatellitePriorities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatellitePriorities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : satellite_priority)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4827,7 +4329,7 @@ std::string NvSatellite::SatellitePriorities::SatellitePriority::get_segment_pat
 
 }
 
-EntityPath NvSatellite::SatellitePriorities::SatellitePriority::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatellitePriorities::SatellitePriority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4858,20 +4360,12 @@ EntityPath NvSatellite::SatellitePriorities::SatellitePriority::get_entity_path(
 
 std::shared_ptr<Entity> NvSatellite::SatellitePriorities::SatellitePriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatellitePriorities::SatellitePriority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatellitePriorities::SatellitePriority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4949,7 +4443,7 @@ std::string NvSatellite::SatelliteVersions::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SatelliteVersions::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteVersions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4972,15 +4466,6 @@ EntityPath NvSatellite::SatelliteVersions::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> NvSatellite::SatelliteVersions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "satellite-version")
     {
         for(auto const & c : satellite_version)
@@ -4988,28 +4473,24 @@ std::shared_ptr<Entity> NvSatellite::SatelliteVersions::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion>();
         c->parent = this;
-        satellite_version.push_back(std::move(c));
-        children[segment_path] = satellite_version.back();
-        return children.at(segment_path);
+        satellite_version.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteVersions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : satellite_version)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5032,13 +4513,10 @@ NvSatellite::SatelliteVersions::SatelliteVersion::SatelliteVersion()
 	,transferred_version(std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion>())
 {
     active_version->parent = this;
-    children["active-version"] = active_version;
 
     committed_version->parent = this;
-    children["committed-version"] = committed_version;
 
     transferred_version->parent = this;
-    children["transferred-version"] = transferred_version;
 
     yang_name = "satellite-version"; yang_parent_name = "satellite-versions";
 }
@@ -5090,7 +4568,7 @@ std::string NvSatellite::SatelliteVersions::SatelliteVersion::get_segment_path()
 
 }
 
-EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5119,87 +4597,52 @@ EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::get_entity_path(Ent
 
 std::shared_ptr<Entity> NvSatellite::SatelliteVersions::SatelliteVersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active-version")
     {
-        if(active_version != nullptr)
-        {
-            children["active-version"] = active_version;
-        }
-        else
+        if(active_version == nullptr)
         {
             active_version = std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion>();
-            active_version->parent = this;
-            children["active-version"] = active_version;
         }
-        return children.at("active-version");
+        return active_version;
     }
 
     if(child_yang_name == "committed-version")
     {
-        if(committed_version != nullptr)
-        {
-            children["committed-version"] = committed_version;
-        }
-        else
+        if(committed_version == nullptr)
         {
             committed_version = std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion>();
-            committed_version->parent = this;
-            children["committed-version"] = committed_version;
         }
-        return children.at("committed-version");
+        return committed_version;
     }
 
     if(child_yang_name == "transferred-version")
     {
-        if(transferred_version != nullptr)
-        {
-            children["transferred-version"] = transferred_version;
-        }
-        else
+        if(transferred_version == nullptr)
         {
             transferred_version = std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion>();
-            transferred_version->parent = this;
-            children["transferred-version"] = transferred_version;
         }
-        return children.at("transferred-version");
+        return transferred_version;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteVersions::SatelliteVersion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::SatelliteVersion::get_children() const
 {
-    if(children.find("active-version") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(active_version != nullptr)
     {
-        if(active_version != nullptr)
-        {
-            children["active-version"] = active_version;
-        }
+        children["active-version"] = active_version;
     }
 
-    if(children.find("committed-version") == children.end())
+    if(committed_version != nullptr)
     {
-        if(committed_version != nullptr)
-        {
-            children["committed-version"] = committed_version;
-        }
+        children["committed-version"] = committed_version;
     }
 
-    if(children.find("transferred-version") == children.end())
+    if(transferred_version != nullptr)
     {
-        if(transferred_version != nullptr)
-        {
-            children["transferred-version"] = transferred_version;
-        }
+        children["transferred-version"] = transferred_version;
     }
 
     return children;
@@ -5275,7 +4718,7 @@ std::string NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::get
 
 }
 
-EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5302,20 +4745,12 @@ EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::get_
 
 std::shared_ptr<Entity> NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5381,7 +4816,7 @@ std::string NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion
 
 }
 
-EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5408,20 +4843,12 @@ EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion:
 
 std::shared_ptr<Entity> NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5487,7 +4914,7 @@ std::string NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::
 
 }
 
-EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5514,20 +4941,12 @@ EntityPath NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::g
 
 std::shared_ptr<Entity> NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5585,7 +5004,7 @@ std::string NvSatellite::SatelliteTopologies::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SatelliteTopologies::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteTopologies::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5608,15 +5027,6 @@ EntityPath NvSatellite::SatelliteTopologies::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "satellite-topology")
     {
         for(auto const & c : satellite_topology)
@@ -5624,28 +5034,24 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology>();
         c->parent = this;
-        satellite_topology.push_back(std::move(c));
-        children[segment_path] = satellite_topology.back();
-        return children.at(segment_path);
+        satellite_topology.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteTopologies::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : satellite_topology)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5721,7 +5127,7 @@ std::string NvSatellite::SatelliteTopologies::SatelliteTopology::get_segment_pat
 
 }
 
-EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5750,15 +5156,6 @@ EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::get_entity_path(
 
 std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "discovered-link")
     {
         for(auto const & c : discovered_link)
@@ -5766,15 +5163,13 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink>();
         c->parent = this;
-        discovered_link.push_back(std::move(c));
-        children[segment_path] = discovered_link.back();
-        return children.at(segment_path);
+        discovered_link.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "satellite")
@@ -5784,36 +5179,29 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite>();
         c->parent = this;
-        satellite.push_back(std::move(c));
-        children[segment_path] = satellite.back();
-        return children.at(segment_path);
+        satellite.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteTopologies::SatelliteTopology::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : discovered_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : satellite)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5884,7 +5272,7 @@ std::string NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink:
 
 }
 
-EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5910,20 +5298,12 @@ EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::
 
 std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6014,7 +5394,7 @@ std::string NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::get_
 
 }
 
-EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6048,15 +5428,6 @@ EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::get_e
 
 std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fabric-link")
     {
         for(auto const & c : fabric_link)
@@ -6064,28 +5435,24 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Sat
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink>();
         c->parent = this;
-        fabric_link.push_back(std::move(c));
-        children[segment_path] = fabric_link.back();
-        return children.at(segment_path);
+        fabric_link.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fabric_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6195,7 +5562,7 @@ std::string NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::Fabr
 
 }
 
-EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6224,15 +5591,6 @@ EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::Fabri
 
 std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-device")
     {
         for(auto const & c : remote_device)
@@ -6240,28 +5598,24 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Sat
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice>();
         c->parent = this;
-        remote_device.push_back(std::move(c));
-        children[segment_path] = remote_device.back();
-        return children.at(segment_path);
+        remote_device.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : remote_device)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6344,7 +5698,7 @@ std::string NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::Fabr
 
 }
 
-EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6374,20 +5728,12 @@ EntityPath NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::Fabri
 
 std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6461,7 +5807,7 @@ std::string NvSatellite::InstallProgresses::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::InstallProgresses::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::InstallProgresses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6484,15 +5830,6 @@ EntityPath NvSatellite::InstallProgresses::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> NvSatellite::InstallProgresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "install-progress")
     {
         for(auto const & c : install_progress)
@@ -6500,28 +5837,24 @@ std::shared_ptr<Entity> NvSatellite::InstallProgresses::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::InstallProgresses::InstallProgress>();
         c->parent = this;
-        install_progress.push_back(std::move(c));
-        children[segment_path] = install_progress.back();
-        return children.at(segment_path);
+        install_progress.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::InstallProgresses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallProgresses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : install_progress)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6568,7 +5901,7 @@ std::string NvSatellite::InstallProgresses::InstallProgress::get_segment_path() 
 
 }
 
-EntityPath NvSatellite::InstallProgresses::InstallProgress::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::InstallProgresses::InstallProgress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6594,20 +5927,12 @@ EntityPath NvSatellite::InstallProgresses::InstallProgress::get_entity_path(Enti
 
 std::shared_ptr<Entity> NvSatellite::InstallProgresses::InstallProgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::InstallProgresses::InstallProgress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallProgresses::InstallProgress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6665,7 +5990,7 @@ std::string NvSatellite::ReloadStatuses::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::ReloadStatuses::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::ReloadStatuses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6688,15 +6013,6 @@ EntityPath NvSatellite::ReloadStatuses::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NvSatellite::ReloadStatuses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "reload-status")
     {
         for(auto const & c : reload_status)
@@ -6704,28 +6020,24 @@ std::shared_ptr<Entity> NvSatellite::ReloadStatuses::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::ReloadStatuses::ReloadStatus>();
         c->parent = this;
-        reload_status.push_back(std::move(c));
-        children[segment_path] = reload_status.back();
-        return children.at(segment_path);
+        reload_status.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::ReloadStatuses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadStatuses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : reload_status)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6817,7 +6129,7 @@ std::string NvSatellite::ReloadStatuses::ReloadStatus::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::ReloadStatuses::ReloadStatus::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::ReloadStatuses::ReloadStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6850,20 +6162,12 @@ EntityPath NvSatellite::ReloadStatuses::ReloadStatus::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> NvSatellite::ReloadStatuses::ReloadStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::ReloadStatuses::ReloadStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadStatuses::ReloadStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6900,7 +6204,6 @@ NvSatellite::Install::Install()
     satellite_software_versions(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions>())
 {
     satellite_software_versions->parent = this;
-    children["satellite-software-versions"] = satellite_software_versions;
 
     yang_name = "install"; yang_parent_name = "nv-satellite";
 }
@@ -6929,7 +6232,7 @@ std::string NvSatellite::Install::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::Install::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6952,41 +6255,24 @@ EntityPath NvSatellite::Install::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NvSatellite::Install::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "satellite-software-versions")
     {
-        if(satellite_software_versions != nullptr)
-        {
-            children["satellite-software-versions"] = satellite_software_versions;
-        }
-        else
+        if(satellite_software_versions == nullptr)
         {
             satellite_software_versions = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions>();
-            satellite_software_versions->parent = this;
-            children["satellite-software-versions"] = satellite_software_versions;
         }
-        return children.at("satellite-software-versions");
+        return satellite_software_versions;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::get_children() const
 {
-    if(children.find("satellite-software-versions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(satellite_software_versions != nullptr)
     {
-        if(satellite_software_versions != nullptr)
-        {
-            children["satellite-software-versions"] = satellite_software_versions;
-        }
+        children["satellite-software-versions"] = satellite_software_versions;
     }
 
     return children;
@@ -7034,7 +6320,7 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::get_segment_path() 
 
 }
 
-EntityPath NvSatellite::Install::SatelliteSoftwareVersions::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::SatelliteSoftwareVersions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7057,15 +6343,6 @@ EntityPath NvSatellite::Install::SatelliteSoftwareVersions::get_entity_path(Enti
 
 std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "satellite-software-version")
     {
         for(auto const & c : satellite_software_version)
@@ -7073,28 +6350,24 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion>();
         c->parent = this;
-        satellite_software_version.push_back(std::move(c));
-        children[segment_path] = satellite_software_version.back();
-        return children.at(segment_path);
+        satellite_software_version.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::SatelliteSoftwareVersions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : satellite_software_version)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7113,7 +6386,6 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Satel
     install_package_info(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo>())
 {
     install_package_info->parent = this;
-    children["install-package-info"] = install_package_info;
 
     yang_name = "satellite-software-version"; yang_parent_name = "satellite-software-versions";
 }
@@ -7148,7 +6420,7 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVe
 
 }
 
-EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7174,41 +6446,24 @@ EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVer
 
 std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "install-package-info")
     {
-        if(install_package_info != nullptr)
-        {
-            children["install-package-info"] = install_package_info;
-        }
-        else
+        if(install_package_info == nullptr)
         {
             install_package_info = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo>();
-            install_package_info->parent = this;
-            children["install-package-info"] = install_package_info;
         }
-        return children.at("install-package-info");
+        return install_package_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::get_children() const
 {
-    if(children.find("install-package-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(install_package_info != nullptr)
     {
-        if(install_package_info != nullptr)
-        {
-            children["install-package-info"] = install_package_info;
-        }
+        children["install-package-info"] = install_package_info;
     }
 
     return children;
@@ -7237,13 +6492,10 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
 	,inactive_packages(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages>())
 {
     active_packages->parent = this;
-    children["active-packages"] = active_packages;
 
     committed_packages->parent = this;
-    children["committed-packages"] = committed_packages;
 
     inactive_packages->parent = this;
-    children["inactive-packages"] = inactive_packages;
 
     yang_name = "install-package-info"; yang_parent_name = "satellite-software-version";
 }
@@ -7276,7 +6528,7 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVe
 
 }
 
-EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7299,87 +6551,52 @@ EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVer
 
 std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "active-packages")
     {
-        if(active_packages != nullptr)
-        {
-            children["active-packages"] = active_packages;
-        }
-        else
+        if(active_packages == nullptr)
         {
             active_packages = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages>();
-            active_packages->parent = this;
-            children["active-packages"] = active_packages;
         }
-        return children.at("active-packages");
+        return active_packages;
     }
 
     if(child_yang_name == "committed-packages")
     {
-        if(committed_packages != nullptr)
-        {
-            children["committed-packages"] = committed_packages;
-        }
-        else
+        if(committed_packages == nullptr)
         {
             committed_packages = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages>();
-            committed_packages->parent = this;
-            children["committed-packages"] = committed_packages;
         }
-        return children.at("committed-packages");
+        return committed_packages;
     }
 
     if(child_yang_name == "inactive-packages")
     {
-        if(inactive_packages != nullptr)
-        {
-            children["inactive-packages"] = inactive_packages;
-        }
-        else
+        if(inactive_packages == nullptr)
         {
             inactive_packages = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages>();
-            inactive_packages->parent = this;
-            children["inactive-packages"] = inactive_packages;
         }
-        return children.at("inactive-packages");
+        return inactive_packages;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::get_children() const
 {
-    if(children.find("active-packages") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(active_packages != nullptr)
     {
-        if(active_packages != nullptr)
-        {
-            children["active-packages"] = active_packages;
-        }
+        children["active-packages"] = active_packages;
     }
 
-    if(children.find("committed-packages") == children.end())
+    if(committed_packages != nullptr)
     {
-        if(committed_packages != nullptr)
-        {
-            children["committed-packages"] = committed_packages;
-        }
+        children["committed-packages"] = committed_packages;
     }
 
-    if(children.find("inactive-packages") == children.end())
+    if(inactive_packages != nullptr)
     {
-        if(inactive_packages != nullptr)
-        {
-            children["inactive-packages"] = inactive_packages;
-        }
+        children["inactive-packages"] = inactive_packages;
     }
 
     return children;
@@ -7427,7 +6644,7 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVe
 
 }
 
-EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7450,15 +6667,6 @@ EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVer
 
 std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "package")
     {
         for(auto const & c : package)
@@ -7466,28 +6674,24 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package>();
         c->parent = this;
-        package.push_back(std::move(c));
-        children[segment_path] = package.back();
-        return children.at(segment_path);
+        package.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : package)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7534,7 +6738,7 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVe
 
 }
 
-EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7560,20 +6764,12 @@ EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVer
 
 std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7631,7 +6827,7 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVe
 
 }
 
-EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7654,15 +6850,6 @@ EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVer
 
 std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "package")
     {
         for(auto const & c : package)
@@ -7670,28 +6857,24 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package>();
         c->parent = this;
-        package.push_back(std::move(c));
-        children[segment_path] = package.back();
-        return children.at(segment_path);
+        package.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : package)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7738,7 +6921,7 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVe
 
 }
 
-EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7764,20 +6947,12 @@ EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVer
 
 std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7835,7 +7010,7 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVe
 
 }
 
-EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7858,15 +7033,6 @@ EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVer
 
 std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "package")
     {
         for(auto const & c : package)
@@ -7874,28 +7040,24 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package>();
         c->parent = this;
-        package.push_back(std::move(c));
-        children[segment_path] = package.back();
-        return children.at(segment_path);
+        package.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : package)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7942,7 +7104,7 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVe
 
 }
 
-EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7968,20 +7130,12 @@ EntityPath NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVer
 
 std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8039,7 +7193,7 @@ std::string NvSatellite::InstallOpStatuses::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::InstallOpStatuses::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::InstallOpStatuses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8062,15 +7216,6 @@ EntityPath NvSatellite::InstallOpStatuses::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> NvSatellite::InstallOpStatuses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "install-op-status")
     {
         for(auto const & c : install_op_status)
@@ -8078,28 +7223,24 @@ std::shared_ptr<Entity> NvSatellite::InstallOpStatuses::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::InstallOpStatuses::InstallOpStatus>();
         c->parent = this;
-        install_op_status.push_back(std::move(c));
-        children[segment_path] = install_op_status.back();
-        return children.at(segment_path);
+        install_op_status.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::InstallOpStatuses::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallOpStatuses::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : install_op_status)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8362,7 +7503,7 @@ std::string NvSatellite::InstallOpStatuses::InstallOpStatus::get_segment_path() 
 
 }
 
-EntityPath NvSatellite::InstallOpStatuses::InstallOpStatus::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::InstallOpStatuses::InstallOpStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8424,20 +7565,12 @@ EntityPath NvSatellite::InstallOpStatuses::InstallOpStatus::get_entity_path(Enti
 
 std::shared_ptr<Entity> NvSatellite::InstallOpStatuses::InstallOpStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::InstallOpStatuses::InstallOpStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallOpStatuses::InstallOpStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8534,7 +7667,6 @@ NvSatellite::SatelliteProperties::SatelliteProperties()
     id_ranges(std::make_shared<NvSatellite::SatelliteProperties::IdRanges>())
 {
     id_ranges->parent = this;
-    children["id-ranges"] = id_ranges;
 
     yang_name = "satellite-properties"; yang_parent_name = "nv-satellite";
 }
@@ -8563,7 +7695,7 @@ std::string NvSatellite::SatelliteProperties::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SatelliteProperties::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteProperties::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8586,41 +7718,24 @@ EntityPath NvSatellite::SatelliteProperties::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> NvSatellite::SatelliteProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "id-ranges")
     {
-        if(id_ranges != nullptr)
-        {
-            children["id-ranges"] = id_ranges;
-        }
-        else
+        if(id_ranges == nullptr)
         {
             id_ranges = std::make_shared<NvSatellite::SatelliteProperties::IdRanges>();
-            id_ranges->parent = this;
-            children["id-ranges"] = id_ranges;
         }
-        return children.at("id-ranges");
+        return id_ranges;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteProperties::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteProperties::get_children() const
 {
-    if(children.find("id-ranges") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(id_ranges != nullptr)
     {
-        if(id_ranges != nullptr)
-        {
-            children["id-ranges"] = id_ranges;
-        }
+        children["id-ranges"] = id_ranges;
     }
 
     return children;
@@ -8668,7 +7783,7 @@ std::string NvSatellite::SatelliteProperties::IdRanges::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SatelliteProperties::IdRanges::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteProperties::IdRanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8691,15 +7806,6 @@ EntityPath NvSatellite::SatelliteProperties::IdRanges::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> NvSatellite::SatelliteProperties::IdRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "id-range")
     {
         for(auto const & c : id_range)
@@ -8707,28 +7813,24 @@ std::shared_ptr<Entity> NvSatellite::SatelliteProperties::IdRanges::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SatelliteProperties::IdRanges::IdRange>();
         c->parent = this;
-        id_range.push_back(std::move(c));
-        children[segment_path] = id_range.back();
-        return children.at(segment_path);
+        id_range.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteProperties::IdRanges::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteProperties::IdRanges::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : id_range)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8775,7 +7877,7 @@ std::string NvSatellite::SatelliteProperties::IdRanges::IdRange::get_segment_pat
 
 }
 
-EntityPath NvSatellite::SatelliteProperties::IdRanges::IdRange::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SatelliteProperties::IdRanges::IdRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8801,20 +7903,12 @@ EntityPath NvSatellite::SatelliteProperties::IdRanges::IdRange::get_entity_path(
 
 std::shared_ptr<Entity> NvSatellite::SatelliteProperties::IdRanges::IdRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SatelliteProperties::IdRanges::IdRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteProperties::IdRanges::IdRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8872,7 +7966,7 @@ std::string NvSatellite::SdacpDiscovery2S::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SdacpDiscovery2S::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpDiscovery2S::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8895,15 +7989,6 @@ EntityPath NvSatellite::SdacpDiscovery2S::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sdacp-discovery2")
     {
         for(auto const & c : sdacp_discovery2)
@@ -8911,28 +7996,24 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2>();
         c->parent = this;
-        sdacp_discovery2.push_back(std::move(c));
-        children[segment_path] = sdacp_discovery2.back();
-        return children.at(segment_path);
+        sdacp_discovery2.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpDiscovery2S::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sdacp_discovery2)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8996,7 +8077,7 @@ std::string NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_segment_path() c
 
 }
 
-EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9021,15 +8102,6 @@ EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_entity_path(Entit
 
 std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -9037,15 +8109,13 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "satellite")
@@ -9055,36 +8125,29 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite>();
         c->parent = this;
-        satellite.push_back(std::move(c));
-        children[segment_path] = satellite.back();
-        return children.at(segment_path);
+        satellite.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : satellite)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9136,7 +8199,7 @@ std::string NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_segme
 
 }
 
-EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9161,20 +8224,12 @@ EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_entity
 
 std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9243,7 +8298,7 @@ std::string NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_segme
 
 }
 
-EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9271,15 +8326,6 @@ EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_entity
 
 std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -9287,28 +8333,24 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9393,7 +8435,7 @@ std::string NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface
 
 }
 
-EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9425,20 +8467,12 @@ EntityPath NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface:
 
 std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9520,7 +8554,7 @@ std::string NvSatellite::IcpeDpms::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::IcpeDpms::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::IcpeDpms::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9543,15 +8577,6 @@ EntityPath NvSatellite::IcpeDpms::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NvSatellite::IcpeDpms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "icpe-dpm")
     {
         for(auto const & c : icpe_dpm)
@@ -9559,28 +8584,24 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::IcpeDpms::IcpeDpm>();
         c->parent = this;
-        icpe_dpm.push_back(std::move(c));
-        children[segment_path] = icpe_dpm.back();
-        return children.at(segment_path);
+        icpe_dpm.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::IcpeDpms::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : icpe_dpm)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9683,7 +8704,7 @@ std::string NvSatellite::IcpeDpms::IcpeDpm::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::IcpeDpms::IcpeDpm::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::IcpeDpms::IcpeDpm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9721,15 +8742,6 @@ EntityPath NvSatellite::IcpeDpms::IcpeDpm::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "remote-host")
     {
         for(auto const & c : remote_host)
@@ -9737,15 +8749,13 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::IcpeDpms::IcpeDpm::RemoteHost>();
         c->parent = this;
-        remote_host.push_back(std::move(c));
-        children[segment_path] = remote_host.back();
-        return children.at(segment_path);
+        remote_host.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "satellite")
@@ -9755,36 +8765,29 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::get_child_by_name(const 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::IcpeDpms::IcpeDpm::Satellite>();
         c->parent = this;
-        satellite.push_back(std::move(c));
-        children[segment_path] = satellite.back();
-        return children.at(segment_path);
+        satellite.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::IcpeDpms::IcpeDpm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::IcpeDpm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : remote_host)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : satellite)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9981,7 +8984,7 @@ std::string NvSatellite::IcpeDpms::IcpeDpm::Satellite::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::IcpeDpms::IcpeDpm::Satellite::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::IcpeDpms::IcpeDpm::Satellite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10037,20 +9040,12 @@ EntityPath NvSatellite::IcpeDpms::IcpeDpm::Satellite::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::Satellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::IcpeDpms::IcpeDpm::Satellite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::IcpeDpm::Satellite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10242,7 +9237,7 @@ std::string NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10273,20 +9268,12 @@ EntityPath NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10364,7 +9351,7 @@ std::string NvSatellite::SdacpControls::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SdacpControls::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpControls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10387,15 +9374,6 @@ EntityPath NvSatellite::SdacpControls::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> NvSatellite::SdacpControls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sdacp-control")
     {
         for(auto const & c : sdacp_control)
@@ -10403,28 +9381,24 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SdacpControls::SdacpControl>();
         c->parent = this;
-        sdacp_control.push_back(std::move(c));
-        children[segment_path] = sdacp_control.back();
-        return children.at(segment_path);
+        sdacp_control.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpControls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sdacp_control)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10448,10 +9422,8 @@ NvSatellite::SdacpControls::SdacpControl::SdacpControl()
 	,transport_error_timestamp(std::make_shared<NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp>())
 {
     protocol_state_timestamp->parent = this;
-    children["protocol-state-timestamp"] = protocol_state_timestamp;
 
     transport_error_timestamp->parent = this;
-    children["transport-error-timestamp"] = transport_error_timestamp;
 
     yang_name = "sdacp-control"; yang_parent_name = "sdacp-controls";
 }
@@ -10506,7 +9478,7 @@ std::string NvSatellite::SdacpControls::SdacpControl::get_segment_path() const
 
 }
 
-EntityPath NvSatellite::SdacpControls::SdacpControl::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpControls::SdacpControl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10536,15 +9508,6 @@ EntityPath NvSatellite::SdacpControls::SdacpControl::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "channel")
     {
         for(auto const & c : channel)
@@ -10552,74 +9515,52 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel>();
         c->parent = this;
-        channel.push_back(std::move(c));
-        children[segment_path] = channel.back();
-        return children.at(segment_path);
+        channel.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "protocol-state-timestamp")
     {
-        if(protocol_state_timestamp != nullptr)
-        {
-            children["protocol-state-timestamp"] = protocol_state_timestamp;
-        }
-        else
+        if(protocol_state_timestamp == nullptr)
         {
             protocol_state_timestamp = std::make_shared<NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp>();
-            protocol_state_timestamp->parent = this;
-            children["protocol-state-timestamp"] = protocol_state_timestamp;
         }
-        return children.at("protocol-state-timestamp");
+        return protocol_state_timestamp;
     }
 
     if(child_yang_name == "transport-error-timestamp")
     {
-        if(transport_error_timestamp != nullptr)
-        {
-            children["transport-error-timestamp"] = transport_error_timestamp;
-        }
-        else
+        if(transport_error_timestamp == nullptr)
         {
             transport_error_timestamp = std::make_shared<NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp>();
-            transport_error_timestamp->parent = this;
-            children["transport-error-timestamp"] = transport_error_timestamp;
         }
-        return children.at("transport-error-timestamp");
+        return transport_error_timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpControls::SdacpControl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : channel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("protocol-state-timestamp") == children.end())
+    if(protocol_state_timestamp != nullptr)
     {
-        if(protocol_state_timestamp != nullptr)
-        {
-            children["protocol-state-timestamp"] = protocol_state_timestamp;
-        }
+        children["protocol-state-timestamp"] = protocol_state_timestamp;
     }
 
-    if(children.find("transport-error-timestamp") == children.end())
+    if(transport_error_timestamp != nullptr)
     {
-        if(transport_error_timestamp != nullptr)
-        {
-            children["transport-error-timestamp"] = transport_error_timestamp;
-        }
+        children["transport-error-timestamp"] = transport_error_timestamp;
     }
 
     return children;
@@ -10691,7 +9632,7 @@ std::string NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::ge
 
 }
 
-EntityPath NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10716,20 +9657,12 @@ EntityPath NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::get
 
 std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10779,7 +9712,7 @@ std::string NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::g
 
 }
 
-EntityPath NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10804,20 +9737,12 @@ EntityPath NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::ge
 
 std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10852,13 +9777,10 @@ NvSatellite::SdacpControls::SdacpControl::Channel::Channel()
 	,resync_state_timestamp(std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp>())
 {
     capabilities->parent = this;
-    children["capabilities"] = capabilities;
 
     channel_state_timestamp->parent = this;
-    children["channel-state-timestamp"] = channel_state_timestamp;
 
     resync_state_timestamp->parent = this;
-    children["resync-state-timestamp"] = resync_state_timestamp;
 
     yang_name = "channel"; yang_parent_name = "sdacp-control";
 }
@@ -10913,7 +9835,7 @@ std::string NvSatellite::SdacpControls::SdacpControl::Channel::get_segment_path(
 
 }
 
-EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10947,87 +9869,52 @@ EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::get_entity_path(En
 
 std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "capabilities")
     {
-        if(capabilities != nullptr)
-        {
-            children["capabilities"] = capabilities;
-        }
-        else
+        if(capabilities == nullptr)
         {
             capabilities = std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities>();
-            capabilities->parent = this;
-            children["capabilities"] = capabilities;
         }
-        return children.at("capabilities");
+        return capabilities;
     }
 
     if(child_yang_name == "channel-state-timestamp")
     {
-        if(channel_state_timestamp != nullptr)
-        {
-            children["channel-state-timestamp"] = channel_state_timestamp;
-        }
-        else
+        if(channel_state_timestamp == nullptr)
         {
             channel_state_timestamp = std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp>();
-            channel_state_timestamp->parent = this;
-            children["channel-state-timestamp"] = channel_state_timestamp;
         }
-        return children.at("channel-state-timestamp");
+        return channel_state_timestamp;
     }
 
     if(child_yang_name == "resync-state-timestamp")
     {
-        if(resync_state_timestamp != nullptr)
-        {
-            children["resync-state-timestamp"] = resync_state_timestamp;
-        }
-        else
+        if(resync_state_timestamp == nullptr)
         {
             resync_state_timestamp = std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp>();
-            resync_state_timestamp->parent = this;
-            children["resync-state-timestamp"] = resync_state_timestamp;
         }
-        return children.at("resync-state-timestamp");
+        return resync_state_timestamp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpControls::SdacpControl::Channel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::get_children() const
 {
-    if(children.find("capabilities") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(capabilities != nullptr)
     {
-        if(capabilities != nullptr)
-        {
-            children["capabilities"] = capabilities;
-        }
+        children["capabilities"] = capabilities;
     }
 
-    if(children.find("channel-state-timestamp") == children.end())
+    if(channel_state_timestamp != nullptr)
     {
-        if(channel_state_timestamp != nullptr)
-        {
-            children["channel-state-timestamp"] = channel_state_timestamp;
-        }
+        children["channel-state-timestamp"] = channel_state_timestamp;
     }
 
-    if(children.find("resync-state-timestamp") == children.end())
+    if(resync_state_timestamp != nullptr)
     {
-        if(resync_state_timestamp != nullptr)
-        {
-            children["resync-state-timestamp"] = resync_state_timestamp;
-        }
+        children["resync-state-timestamp"] = resync_state_timestamp;
     }
 
     return children;
@@ -11119,7 +10006,7 @@ std::string NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::get
 
 }
 
-EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11142,15 +10029,6 @@ EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::get_
 
 std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tl-vs")
     {
         for(auto const & c : tl_vs)
@@ -11158,28 +10036,24 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::Capab
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs>();
         c->parent = this;
-        tl_vs.push_back(std::move(c));
-        children[segment_path] = tl_vs.back();
-        return children.at(segment_path);
+        tl_vs.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tl_vs)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11235,7 +10109,7 @@ std::string NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlV
 
 }
 
-EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11262,20 +10136,12 @@ EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs
 
 std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11329,7 +10195,7 @@ std::string NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimest
 
 }
 
-EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11354,20 +10220,12 @@ EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimesta
 
 std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11417,7 +10275,7 @@ std::string NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimes
 
 }
 
-EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::get_entity_path(Entity* ancestor) const
+const EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11442,20 +10300,12 @@ EntityPath NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimest
 
 std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -20,25 +20,18 @@ L2Tp::L2Tp()
 	,tunnels(std::make_shared<L2Tp::Tunnels>())
 {
     classes->parent = this;
-    children["classes"] = classes;
 
     counter_hist_fail->parent = this;
-    children["counter-hist-fail"] = counter_hist_fail;
 
     counters->parent = this;
-    children["counters"] = counters;
 
     session->parent = this;
-    children["session"] = session;
 
     sessions->parent = this;
-    children["sessions"] = sessions;
 
     tunnel_configurations->parent = this;
-    children["tunnel-configurations"] = tunnel_configurations;
 
     tunnels->parent = this;
-    children["tunnels"] = tunnels;
 
     yang_name = "l2tp"; yang_parent_name = "Cisco-IOS-XR-tunnel-l2tun-oper";
 }
@@ -79,12 +72,12 @@ std::string L2Tp::get_segment_path() const
 
 }
 
-EntityPath L2Tp::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -99,179 +92,108 @@ EntityPath L2Tp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "classes")
     {
-        if(classes != nullptr)
-        {
-            children["classes"] = classes;
-        }
-        else
+        if(classes == nullptr)
         {
             classes = std::make_shared<L2Tp::Classes>();
-            classes->parent = this;
-            children["classes"] = classes;
         }
-        return children.at("classes");
+        return classes;
     }
 
     if(child_yang_name == "counter-hist-fail")
     {
-        if(counter_hist_fail != nullptr)
-        {
-            children["counter-hist-fail"] = counter_hist_fail;
-        }
-        else
+        if(counter_hist_fail == nullptr)
         {
             counter_hist_fail = std::make_shared<L2Tp::CounterHistFail>();
-            counter_hist_fail->parent = this;
-            children["counter-hist-fail"] = counter_hist_fail;
         }
-        return children.at("counter-hist-fail");
+        return counter_hist_fail;
     }
 
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<L2Tp::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<L2Tp::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "sessions")
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
-        else
+        if(sessions == nullptr)
         {
             sessions = std::make_shared<L2Tp::Sessions>();
-            sessions->parent = this;
-            children["sessions"] = sessions;
         }
-        return children.at("sessions");
+        return sessions;
     }
 
     if(child_yang_name == "tunnel-configurations")
     {
-        if(tunnel_configurations != nullptr)
-        {
-            children["tunnel-configurations"] = tunnel_configurations;
-        }
-        else
+        if(tunnel_configurations == nullptr)
         {
             tunnel_configurations = std::make_shared<L2Tp::TunnelConfigurations>();
-            tunnel_configurations->parent = this;
-            children["tunnel-configurations"] = tunnel_configurations;
         }
-        return children.at("tunnel-configurations");
+        return tunnel_configurations;
     }
 
     if(child_yang_name == "tunnels")
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
-        else
+        if(tunnels == nullptr)
         {
             tunnels = std::make_shared<L2Tp::Tunnels>();
-            tunnels->parent = this;
-            children["tunnels"] = tunnels;
         }
-        return children.at("tunnels");
+        return tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::get_children() const
 {
-    if(children.find("classes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(classes != nullptr)
     {
-        if(classes != nullptr)
-        {
-            children["classes"] = classes;
-        }
+        children["classes"] = classes;
     }
 
-    if(children.find("counter-hist-fail") == children.end())
+    if(counter_hist_fail != nullptr)
     {
-        if(counter_hist_fail != nullptr)
-        {
-            children["counter-hist-fail"] = counter_hist_fail;
-        }
+        children["counter-hist-fail"] = counter_hist_fail;
     }
 
-    if(children.find("counters") == children.end())
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
-    if(children.find("session") == children.end())
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("sessions") == children.end())
+    if(sessions != nullptr)
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
+        children["sessions"] = sessions;
     }
 
-    if(children.find("tunnel-configurations") == children.end())
+    if(tunnel_configurations != nullptr)
     {
-        if(tunnel_configurations != nullptr)
-        {
-            children["tunnel-configurations"] = tunnel_configurations;
-        }
+        children["tunnel-configurations"] = tunnel_configurations;
     }
 
-    if(children.find("tunnels") == children.end())
+    if(tunnels != nullptr)
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
+        children["tunnels"] = tunnels;
     }
 
     return children;
@@ -306,7 +228,6 @@ L2Tp::Counters::Counters()
     control(std::make_shared<L2Tp::Counters::Control>())
 {
     control->parent = this;
-    children["control"] = control;
 
     yang_name = "counters"; yang_parent_name = "l2tp";
 }
@@ -335,7 +256,7 @@ std::string L2Tp::Counters::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -358,41 +279,24 @@ EntityPath L2Tp::Counters::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "control")
     {
-        if(control != nullptr)
-        {
-            children["control"] = control;
-        }
-        else
+        if(control == nullptr)
         {
             control = std::make_shared<L2Tp::Counters::Control>();
-            control->parent = this;
-            children["control"] = control;
         }
-        return children.at("control");
+        return control;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::get_children() const
 {
-    if(children.find("control") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(control != nullptr)
     {
-        if(control != nullptr)
-        {
-            children["control"] = control;
-        }
+        children["control"] = control;
     }
 
     return children;
@@ -408,10 +312,8 @@ L2Tp::Counters::Control::Control()
 	,tunnels(std::make_shared<L2Tp::Counters::Control::Tunnels>())
 {
     tunnel_xr->parent = this;
-    children["tunnel-xr"] = tunnel_xr;
 
     tunnels->parent = this;
-    children["tunnels"] = tunnels;
 
     yang_name = "control"; yang_parent_name = "counters";
 }
@@ -442,7 +344,7 @@ std::string L2Tp::Counters::Control::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Counters::Control::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -465,64 +367,38 @@ EntityPath L2Tp::Counters::Control::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-xr")
     {
-        if(tunnel_xr != nullptr)
-        {
-            children["tunnel-xr"] = tunnel_xr;
-        }
-        else
+        if(tunnel_xr == nullptr)
         {
             tunnel_xr = std::make_shared<L2Tp::Counters::Control::TunnelXr>();
-            tunnel_xr->parent = this;
-            children["tunnel-xr"] = tunnel_xr;
         }
-        return children.at("tunnel-xr");
+        return tunnel_xr;
     }
 
     if(child_yang_name == "tunnels")
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
-        else
+        if(tunnels == nullptr)
         {
             tunnels = std::make_shared<L2Tp::Counters::Control::Tunnels>();
-            tunnels->parent = this;
-            children["tunnels"] = tunnels;
         }
-        return children.at("tunnels");
+        return tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::get_children() const
 {
-    if(children.find("tunnel-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnel_xr != nullptr)
     {
-        if(tunnel_xr != nullptr)
-        {
-            children["tunnel-xr"] = tunnel_xr;
-        }
+        children["tunnel-xr"] = tunnel_xr;
     }
 
-    if(children.find("tunnels") == children.end())
+    if(tunnels != nullptr)
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
+        children["tunnels"] = tunnels;
     }
 
     return children;
@@ -538,10 +414,8 @@ L2Tp::Counters::Control::TunnelXr::TunnelXr()
 	,global(std::make_shared<L2Tp::Counters::Control::TunnelXr::Global>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     global->parent = this;
-    children["global"] = global;
 
     yang_name = "tunnel-xr"; yang_parent_name = "control";
 }
@@ -572,7 +446,7 @@ std::string L2Tp::Counters::Control::TunnelXr::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -595,64 +469,38 @@ EntityPath L2Tp::Counters::Control::TunnelXr::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("global") == children.end())
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
     return children;
@@ -675,31 +523,22 @@ L2Tp::Counters::Control::TunnelXr::Authentication::Authentication()
 	,secondary_digest(std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest>())
 {
     challenge_avp->parent = this;
-    children["challenge-avp"] = challenge_avp;
 
     challenge_reponse->parent = this;
-    children["challenge-reponse"] = challenge_reponse;
 
     common_digest->parent = this;
-    children["common-digest"] = common_digest;
 
     integrity_check->parent = this;
-    children["integrity-check"] = integrity_check;
 
     local_secret->parent = this;
-    children["local-secret"] = local_secret;
 
     nonce_avp->parent = this;
-    children["nonce-avp"] = nonce_avp;
 
     overall_statistics->parent = this;
-    children["overall-statistics"] = overall_statistics;
 
     primary_digest->parent = this;
-    children["primary-digest"] = primary_digest;
 
     secondary_digest->parent = this;
-    children["secondary-digest"] = secondary_digest;
 
     yang_name = "authentication"; yang_parent_name = "tunnel-xr";
 }
@@ -744,7 +583,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::get_segment_path(
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -767,225 +606,136 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::get_entity_path(En
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "challenge-avp")
     {
-        if(challenge_avp != nullptr)
-        {
-            children["challenge-avp"] = challenge_avp;
-        }
-        else
+        if(challenge_avp == nullptr)
         {
             challenge_avp = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp>();
-            challenge_avp->parent = this;
-            children["challenge-avp"] = challenge_avp;
         }
-        return children.at("challenge-avp");
+        return challenge_avp;
     }
 
     if(child_yang_name == "challenge-reponse")
     {
-        if(challenge_reponse != nullptr)
-        {
-            children["challenge-reponse"] = challenge_reponse;
-        }
-        else
+        if(challenge_reponse == nullptr)
         {
             challenge_reponse = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse>();
-            challenge_reponse->parent = this;
-            children["challenge-reponse"] = challenge_reponse;
         }
-        return children.at("challenge-reponse");
+        return challenge_reponse;
     }
 
     if(child_yang_name == "common-digest")
     {
-        if(common_digest != nullptr)
-        {
-            children["common-digest"] = common_digest;
-        }
-        else
+        if(common_digest == nullptr)
         {
             common_digest = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest>();
-            common_digest->parent = this;
-            children["common-digest"] = common_digest;
         }
-        return children.at("common-digest");
+        return common_digest;
     }
 
     if(child_yang_name == "integrity-check")
     {
-        if(integrity_check != nullptr)
-        {
-            children["integrity-check"] = integrity_check;
-        }
-        else
+        if(integrity_check == nullptr)
         {
             integrity_check = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck>();
-            integrity_check->parent = this;
-            children["integrity-check"] = integrity_check;
         }
-        return children.at("integrity-check");
+        return integrity_check;
     }
 
     if(child_yang_name == "local-secret")
     {
-        if(local_secret != nullptr)
-        {
-            children["local-secret"] = local_secret;
-        }
-        else
+        if(local_secret == nullptr)
         {
             local_secret = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret>();
-            local_secret->parent = this;
-            children["local-secret"] = local_secret;
         }
-        return children.at("local-secret");
+        return local_secret;
     }
 
     if(child_yang_name == "nonce-avp")
     {
-        if(nonce_avp != nullptr)
-        {
-            children["nonce-avp"] = nonce_avp;
-        }
-        else
+        if(nonce_avp == nullptr)
         {
             nonce_avp = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp>();
-            nonce_avp->parent = this;
-            children["nonce-avp"] = nonce_avp;
         }
-        return children.at("nonce-avp");
+        return nonce_avp;
     }
 
     if(child_yang_name == "overall-statistics")
     {
-        if(overall_statistics != nullptr)
-        {
-            children["overall-statistics"] = overall_statistics;
-        }
-        else
+        if(overall_statistics == nullptr)
         {
             overall_statistics = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics>();
-            overall_statistics->parent = this;
-            children["overall-statistics"] = overall_statistics;
         }
-        return children.at("overall-statistics");
+        return overall_statistics;
     }
 
     if(child_yang_name == "primary-digest")
     {
-        if(primary_digest != nullptr)
-        {
-            children["primary-digest"] = primary_digest;
-        }
-        else
+        if(primary_digest == nullptr)
         {
             primary_digest = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest>();
-            primary_digest->parent = this;
-            children["primary-digest"] = primary_digest;
         }
-        return children.at("primary-digest");
+        return primary_digest;
     }
 
     if(child_yang_name == "secondary-digest")
     {
-        if(secondary_digest != nullptr)
-        {
-            children["secondary-digest"] = secondary_digest;
-        }
-        else
+        if(secondary_digest == nullptr)
         {
             secondary_digest = std::make_shared<L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest>();
-            secondary_digest->parent = this;
-            children["secondary-digest"] = secondary_digest;
         }
-        return children.at("secondary-digest");
+        return secondary_digest;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::get_children() const
 {
-    if(children.find("challenge-avp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(challenge_avp != nullptr)
     {
-        if(challenge_avp != nullptr)
-        {
-            children["challenge-avp"] = challenge_avp;
-        }
+        children["challenge-avp"] = challenge_avp;
     }
 
-    if(children.find("challenge-reponse") == children.end())
+    if(challenge_reponse != nullptr)
     {
-        if(challenge_reponse != nullptr)
-        {
-            children["challenge-reponse"] = challenge_reponse;
-        }
+        children["challenge-reponse"] = challenge_reponse;
     }
 
-    if(children.find("common-digest") == children.end())
+    if(common_digest != nullptr)
     {
-        if(common_digest != nullptr)
-        {
-            children["common-digest"] = common_digest;
-        }
+        children["common-digest"] = common_digest;
     }
 
-    if(children.find("integrity-check") == children.end())
+    if(integrity_check != nullptr)
     {
-        if(integrity_check != nullptr)
-        {
-            children["integrity-check"] = integrity_check;
-        }
+        children["integrity-check"] = integrity_check;
     }
 
-    if(children.find("local-secret") == children.end())
+    if(local_secret != nullptr)
     {
-        if(local_secret != nullptr)
-        {
-            children["local-secret"] = local_secret;
-        }
+        children["local-secret"] = local_secret;
     }
 
-    if(children.find("nonce-avp") == children.end())
+    if(nonce_avp != nullptr)
     {
-        if(nonce_avp != nullptr)
-        {
-            children["nonce-avp"] = nonce_avp;
-        }
+        children["nonce-avp"] = nonce_avp;
     }
 
-    if(children.find("overall-statistics") == children.end())
+    if(overall_statistics != nullptr)
     {
-        if(overall_statistics != nullptr)
-        {
-            children["overall-statistics"] = overall_statistics;
-        }
+        children["overall-statistics"] = overall_statistics;
     }
 
-    if(children.find("primary-digest") == children.end())
+    if(primary_digest != nullptr)
     {
-        if(primary_digest != nullptr)
-        {
-            children["primary-digest"] = primary_digest;
-        }
+        children["primary-digest"] = primary_digest;
     }
 
-    if(children.find("secondary-digest") == children.end())
+    if(secondary_digest != nullptr)
     {
-        if(secondary_digest != nullptr)
-        {
-            children["secondary-digest"] = secondary_digest;
-        }
+        children["secondary-digest"] = secondary_digest;
     }
 
     return children;
@@ -1056,7 +806,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_seg
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1090,20 +840,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_enti
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1216,7 +958,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1250,20 +992,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1376,7 +1110,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::ge
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1410,20 +1144,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1536,7 +1262,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1570,20 +1296,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::g
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1696,7 +1414,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::g
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1730,20 +1448,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::ge
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1856,7 +1566,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1890,20 +1600,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_e
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2016,7 +1718,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2050,20 +1752,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2176,7 +1870,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse:
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2210,20 +1904,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2336,7 +2022,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2370,20 +2056,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics:
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2448,16 +2126,12 @@ L2Tp::Counters::Control::TunnelXr::Global::Global()
 	,transmit(std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Transmit>())
 {
     drop->parent = this;
-    children["drop"] = drop;
 
     received->parent = this;
-    children["received"] = received;
 
     retransmit->parent = this;
-    children["retransmit"] = retransmit;
 
     transmit->parent = this;
-    children["transmit"] = transmit;
 
     yang_name = "global"; yang_parent_name = "tunnel-xr";
 }
@@ -2500,7 +2174,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Global::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Global::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2527,110 +2201,66 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Global::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "drop")
     {
-        if(drop != nullptr)
-        {
-            children["drop"] = drop;
-        }
-        else
+        if(drop == nullptr)
         {
             drop = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Drop>();
-            drop->parent = this;
-            children["drop"] = drop;
         }
-        return children.at("drop");
+        return drop;
     }
 
     if(child_yang_name == "received")
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
-        else
+        if(received == nullptr)
         {
             received = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Received>();
-            received->parent = this;
-            children["received"] = received;
         }
-        return children.at("received");
+        return received;
     }
 
     if(child_yang_name == "retransmit")
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
-        else
+        if(retransmit == nullptr)
         {
             retransmit = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Retransmit>();
-            retransmit->parent = this;
-            children["retransmit"] = retransmit;
         }
-        return children.at("retransmit");
+        return retransmit;
     }
 
     if(child_yang_name == "transmit")
     {
-        if(transmit != nullptr)
-        {
-            children["transmit"] = transmit;
-        }
-        else
+        if(transmit == nullptr)
         {
             transmit = std::make_shared<L2Tp::Counters::Control::TunnelXr::Global::Transmit>();
-            transmit->parent = this;
-            children["transmit"] = transmit;
         }
-        return children.at("transmit");
+        return transmit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::get_children() const
 {
-    if(children.find("drop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(drop != nullptr)
     {
-        if(drop != nullptr)
-        {
-            children["drop"] = drop;
-        }
+        children["drop"] = drop;
     }
 
-    if(children.find("received") == children.end())
+    if(received != nullptr)
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
+        children["received"] = received;
     }
 
-    if(children.find("retransmit") == children.end())
+    if(retransmit != nullptr)
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
+        children["retransmit"] = retransmit;
     }
 
-    if(children.find("transmit") == children.end())
+    if(transmit != nullptr)
     {
-        if(transmit != nullptr)
-        {
-            children["transmit"] = transmit;
-        }
+        children["transmit"] = transmit;
     }
 
     return children;
@@ -2741,7 +2371,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_segment_pat
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2783,20 +2413,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_entity_path(
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2965,7 +2587,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_segment_p
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3007,20 +2629,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_entity_pat
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3189,7 +2803,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Global::Received::get_segment_pat
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Global::Received::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Global::Received::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3231,20 +2845,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Global::Received::get_entity_path(
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Global::Received::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::Received::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3413,7 +3019,7 @@ std::string L2Tp::Counters::Control::TunnelXr::Global::Drop::get_segment_path() 
 
 }
 
-EntityPath L2Tp::Counters::Control::TunnelXr::Global::Drop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::TunnelXr::Global::Drop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3455,20 +3061,12 @@ EntityPath L2Tp::Counters::Control::TunnelXr::Global::Drop::get_entity_path(Enti
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::TunnelXr::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::TunnelXr::Global::Drop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr::Global::Drop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3590,7 +3188,7 @@ std::string L2Tp::Counters::Control::Tunnels::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Counters::Control::Tunnels::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::Tunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3613,15 +3211,6 @@ EntityPath L2Tp::Counters::Control::Tunnels::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel")
     {
         for(auto const & c : tunnel)
@@ -3629,28 +3218,24 @@ std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(std::move(c));
-        children[segment_path] = tunnel.back();
-        return children.at(segment_path);
+        tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::Tunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3668,10 +3253,8 @@ L2Tp::Counters::Control::Tunnels::Tunnel::Tunnel()
 	,global(std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global>())
 {
     brief->parent = this;
-    children["brief"] = brief;
 
     global->parent = this;
-    children["global"] = global;
 
     yang_name = "tunnel"; yang_parent_name = "tunnels";
 }
@@ -3704,7 +3287,7 @@ std::string L2Tp::Counters::Control::Tunnels::Tunnel::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3728,64 +3311,38 @@ EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
-        else
+        if(brief == nullptr)
         {
             brief = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Brief>();
-            brief->parent = this;
-            children["brief"] = brief;
         }
-        return children.at("brief");
+        return brief;
     }
 
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::Tunnels::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::get_children() const
 {
-    if(children.find("brief") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief != nullptr)
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
+        children["brief"] = brief;
     }
 
-    if(children.find("global") == children.end())
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
     return children;
@@ -3836,7 +3393,7 @@ std::string L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_segment_path() 
 
 }
 
-EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3862,20 +3419,12 @@ EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_entity_path(Enti
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3908,16 +3457,12 @@ L2Tp::Counters::Control::Tunnels::Tunnel::Global::Global()
 	,transmit(std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit>())
 {
     drop->parent = this;
-    children["drop"] = drop;
 
     received->parent = this;
-    children["received"] = received;
 
     retransmit->parent = this;
-    children["retransmit"] = retransmit;
 
     transmit->parent = this;
-    children["transmit"] = transmit;
 
     yang_name = "global"; yang_parent_name = "tunnel";
 }
@@ -3960,7 +3505,7 @@ std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_segment_path()
 
 }
 
-EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3987,110 +3532,66 @@ EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_entity_path(Ent
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "drop")
     {
-        if(drop != nullptr)
-        {
-            children["drop"] = drop;
-        }
-        else
+        if(drop == nullptr)
         {
             drop = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop>();
-            drop->parent = this;
-            children["drop"] = drop;
         }
-        return children.at("drop");
+        return drop;
     }
 
     if(child_yang_name == "received")
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
-        else
+        if(received == nullptr)
         {
             received = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received>();
-            received->parent = this;
-            children["received"] = received;
         }
-        return children.at("received");
+        return received;
     }
 
     if(child_yang_name == "retransmit")
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
-        else
+        if(retransmit == nullptr)
         {
             retransmit = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit>();
-            retransmit->parent = this;
-            children["retransmit"] = retransmit;
         }
-        return children.at("retransmit");
+        return retransmit;
     }
 
     if(child_yang_name == "transmit")
     {
-        if(transmit != nullptr)
-        {
-            children["transmit"] = transmit;
-        }
-        else
+        if(transmit == nullptr)
         {
             transmit = std::make_shared<L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit>();
-            transmit->parent = this;
-            children["transmit"] = transmit;
         }
-        return children.at("transmit");
+        return transmit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_children() const
 {
-    if(children.find("drop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(drop != nullptr)
     {
-        if(drop != nullptr)
-        {
-            children["drop"] = drop;
-        }
+        children["drop"] = drop;
     }
 
-    if(children.find("received") == children.end())
+    if(received != nullptr)
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
+        children["received"] = received;
     }
 
-    if(children.find("retransmit") == children.end())
+    if(retransmit != nullptr)
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
+        children["retransmit"] = retransmit;
     }
 
-    if(children.find("transmit") == children.end())
+    if(transmit != nullptr)
     {
-        if(transmit != nullptr)
-        {
-            children["transmit"] = transmit;
-        }
+        children["transmit"] = transmit;
     }
 
     return children;
@@ -4201,7 +3702,7 @@ std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_segm
 
 }
 
-EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4243,20 +3744,12 @@ EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_entit
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4425,7 +3918,7 @@ std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_se
 
 }
 
-EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4467,20 +3960,12 @@ EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_ent
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4649,7 +4134,7 @@ std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_segm
 
 }
 
-EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4691,20 +4176,12 @@ EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_entit
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4873,7 +4350,7 @@ std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_segment_
 
 }
 
-EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4915,20 +4392,12 @@ EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_entity_pa
 
 std::shared_ptr<Entity> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5050,7 +4519,7 @@ std::string L2Tp::TunnelConfigurations::get_segment_path() const
 
 }
 
-EntityPath L2Tp::TunnelConfigurations::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::TunnelConfigurations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5073,15 +4542,6 @@ EntityPath L2Tp::TunnelConfigurations::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::TunnelConfigurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-configuration")
     {
         for(auto const & c : tunnel_configuration)
@@ -5089,28 +4549,24 @@ std::shared_ptr<Entity> L2Tp::TunnelConfigurations::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tp::TunnelConfigurations::TunnelConfiguration>();
         c->parent = this;
-        tunnel_configuration.push_back(std::move(c));
-        children[segment_path] = tunnel_configuration.back();
-        return children.at(segment_path);
+        tunnel_configuration.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::TunnelConfigurations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel_configuration)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5128,7 +4584,6 @@ L2Tp::TunnelConfigurations::TunnelConfiguration::TunnelConfiguration()
     l2tp_class(std::make_shared<L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass>())
 {
     l2tp_class->parent = this;
-    children["l2tp-class"] = l2tp_class;
 
     yang_name = "tunnel-configuration"; yang_parent_name = "tunnel-configurations";
 }
@@ -5161,7 +4616,7 @@ std::string L2Tp::TunnelConfigurations::TunnelConfiguration::get_segment_path() 
 
 }
 
-EntityPath L2Tp::TunnelConfigurations::TunnelConfiguration::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::TunnelConfigurations::TunnelConfiguration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5186,41 +4641,24 @@ EntityPath L2Tp::TunnelConfigurations::TunnelConfiguration::get_entity_path(Enti
 
 std::shared_ptr<Entity> L2Tp::TunnelConfigurations::TunnelConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2tp-class")
     {
-        if(l2tp_class != nullptr)
-        {
-            children["l2tp-class"] = l2tp_class;
-        }
-        else
+        if(l2tp_class == nullptr)
         {
             l2tp_class = std::make_shared<L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass>();
-            l2tp_class->parent = this;
-            children["l2tp-class"] = l2tp_class;
         }
-        return children.at("l2tp-class");
+        return l2tp_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::TunnelConfigurations::TunnelConfiguration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::TunnelConfiguration::get_children() const
 {
-    if(children.find("l2tp-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2tp_class != nullptr)
     {
-        if(l2tp_class != nullptr)
-        {
-            children["l2tp-class"] = l2tp_class;
-        }
+        children["l2tp-class"] = l2tp_class;
     }
 
     return children;
@@ -5338,7 +4776,7 @@ std::string L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_segm
 
 }
 
-EntityPath L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5385,20 +4823,12 @@ EntityPath L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_entit
 
 std::shared_ptr<Entity> L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5551,7 +4981,7 @@ std::string L2Tp::CounterHistFail::get_segment_path() const
 
 }
 
-EntityPath L2Tp::CounterHistFail::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::CounterHistFail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5579,20 +5009,12 @@ EntityPath L2Tp::CounterHistFail::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::CounterHistFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::CounterHistFail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::CounterHistFail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5654,7 +5076,7 @@ std::string L2Tp::Classes::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5677,15 +5099,6 @@ EntityPath L2Tp::Classes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class")
     {
         for(auto const & c : class_)
@@ -5693,28 +5106,24 @@ std::shared_ptr<Entity> L2Tp::Classes::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tp::Classes::Class_>();
         c->parent = this;
-        class_.push_back(std::move(c));
-        children[segment_path] = class_.back();
-        return children.at(segment_path);
+        class_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5827,7 +5236,7 @@ std::string L2Tp::Classes::Class_::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5875,20 +5284,12 @@ EntityPath L2Tp::Classes::Class_::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6034,7 +5435,7 @@ std::string L2Tp::Tunnels::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Tunnels::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Tunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6057,15 +5458,6 @@ EntityPath L2Tp::Tunnels::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel")
     {
         for(auto const & c : tunnel)
@@ -6073,28 +5465,24 @@ std::shared_ptr<Entity> L2Tp::Tunnels::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tp::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(std::move(c));
-        children[segment_path] = tunnel.back();
-        return children.at(segment_path);
+        tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Tunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Tunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6240,7 +5628,7 @@ std::string L2Tp::Tunnels::Tunnel::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6297,20 +5685,12 @@ EntityPath L2Tp::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Tunnels::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Tunnels::Tunnel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6488,7 +5868,7 @@ std::string L2Tp::Sessions::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6511,15 +5891,6 @@ EntityPath L2Tp::Sessions::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
         for(auto const & c : session)
@@ -6527,28 +5898,24 @@ std::shared_ptr<Entity> L2Tp::Sessions::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tp::Sessions::Session>();
         c->parent = this;
-        session.push_back(std::move(c));
-        children[segment_path] = session.back();
-        return children.at(segment_path);
+        session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6560,8 +5927,8 @@ void L2Tp::Sessions::set_value(const std::string & value_path, std::string value
 
 L2Tp::Sessions::Session::Session()
     :
-    local_session_id{YType::int32, "local-session-id"},
     local_tunnel_id{YType::int32, "local-tunnel-id"},
+    local_session_id{YType::int32, "local-session-id"},
     call_serial_number{YType::uint32, "call-serial-number"},
     interface_name{YType::str, "interface-name"},
     is_conditional_debug_enabled{YType::boolean, "is-conditional-debug-enabled"},
@@ -6587,7 +5954,6 @@ L2Tp::Sessions::Session::Session()
     session_application_data(std::make_shared<L2Tp::Sessions::Session::SessionApplicationData>())
 {
     session_application_data->parent = this;
-    children["session-application-data"] = session_application_data;
 
     yang_name = "session"; yang_parent_name = "sessions";
 }
@@ -6598,8 +5964,8 @@ L2Tp::Sessions::Session::~Session()
 
 bool L2Tp::Sessions::Session::has_data() const
 {
-    return local_session_id.is_set
-	|| local_tunnel_id.is_set
+    return local_tunnel_id.is_set
+	|| local_session_id.is_set
 	|| call_serial_number.is_set
 	|| interface_name.is_set
 	|| is_conditional_debug_enabled.is_set
@@ -6627,8 +5993,8 @@ bool L2Tp::Sessions::Session::has_data() const
 bool L2Tp::Sessions::Session::has_operation() const
 {
     return is_set(operation)
-	|| is_set(local_session_id.operation)
 	|| is_set(local_tunnel_id.operation)
+	|| is_set(local_session_id.operation)
 	|| is_set(call_serial_number.operation)
 	|| is_set(interface_name.operation)
 	|| is_set(is_conditional_debug_enabled.operation)
@@ -6656,13 +6022,13 @@ bool L2Tp::Sessions::Session::has_operation() const
 std::string L2Tp::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[local-session-id='" <<local_session_id <<"']" <<"[local-tunnel-id='" <<local_tunnel_id <<"']";
+    path_buffer << "session" <<"[local-tunnel-id='" <<local_tunnel_id <<"']" <<"[local-session-id='" <<local_session_id <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath L2Tp::Sessions::Session::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Sessions::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6676,8 +6042,8 @@ EntityPath L2Tp::Sessions::Session::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_session_id.is_set || is_set(local_session_id.operation)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
     if (local_tunnel_id.is_set || is_set(local_tunnel_id.operation)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (local_session_id.is_set || is_set(local_session_id.operation)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
     if (call_serial_number.is_set || is_set(call_serial_number.operation)) leaf_name_data.push_back(call_serial_number.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (is_conditional_debug_enabled.is_set || is_set(is_conditional_debug_enabled.operation)) leaf_name_data.push_back(is_conditional_debug_enabled.get_name_leafdata());
@@ -6708,41 +6074,24 @@ EntityPath L2Tp::Sessions::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-application-data")
     {
-        if(session_application_data != nullptr)
-        {
-            children["session-application-data"] = session_application_data;
-        }
-        else
+        if(session_application_data == nullptr)
         {
             session_application_data = std::make_shared<L2Tp::Sessions::Session::SessionApplicationData>();
-            session_application_data->parent = this;
-            children["session-application-data"] = session_application_data;
         }
-        return children.at("session-application-data");
+        return session_application_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Sessions::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::get_children() const
 {
-    if(children.find("session-application-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session_application_data != nullptr)
     {
-        if(session_application_data != nullptr)
-        {
-            children["session-application-data"] = session_application_data;
-        }
+        children["session-application-data"] = session_application_data;
     }
 
     return children;
@@ -6750,13 +6099,13 @@ std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Sessions::Session::get_ch
 
 void L2Tp::Sessions::Session::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "local-session-id")
-    {
-        local_session_id = value;
-    }
     if(value_path == "local-tunnel-id")
     {
         local_tunnel_id = value;
+    }
+    if(value_path == "local-session-id")
+    {
+        local_session_id = value;
     }
     if(value_path == "call-serial-number")
     {
@@ -6852,10 +6201,8 @@ L2Tp::Sessions::Session::SessionApplicationData::SessionApplicationData()
 	,xconnect(std::make_shared<L2Tp::Sessions::Session::SessionApplicationData::Xconnect>())
 {
     vpdn->parent = this;
-    children["vpdn"] = vpdn;
 
     xconnect->parent = this;
-    children["xconnect"] = xconnect;
 
     yang_name = "session-application-data"; yang_parent_name = "session";
 }
@@ -6888,7 +6235,7 @@ std::string L2Tp::Sessions::Session::SessionApplicationData::get_segment_path() 
 
 }
 
-EntityPath L2Tp::Sessions::Session::SessionApplicationData::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Sessions::Session::SessionApplicationData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6912,64 +6259,38 @@ EntityPath L2Tp::Sessions::Session::SessionApplicationData::get_entity_path(Enti
 
 std::shared_ptr<Entity> L2Tp::Sessions::Session::SessionApplicationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vpdn")
     {
-        if(vpdn != nullptr)
-        {
-            children["vpdn"] = vpdn;
-        }
-        else
+        if(vpdn == nullptr)
         {
             vpdn = std::make_shared<L2Tp::Sessions::Session::SessionApplicationData::Vpdn>();
-            vpdn->parent = this;
-            children["vpdn"] = vpdn;
         }
-        return children.at("vpdn");
+        return vpdn;
     }
 
     if(child_yang_name == "xconnect")
     {
-        if(xconnect != nullptr)
-        {
-            children["xconnect"] = xconnect;
-        }
-        else
+        if(xconnect == nullptr)
         {
             xconnect = std::make_shared<L2Tp::Sessions::Session::SessionApplicationData::Xconnect>();
-            xconnect->parent = this;
-            children["xconnect"] = xconnect;
         }
-        return children.at("xconnect");
+        return xconnect;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Sessions::Session::SessionApplicationData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionApplicationData::get_children() const
 {
-    if(children.find("vpdn") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vpdn != nullptr)
     {
-        if(vpdn != nullptr)
-        {
-            children["vpdn"] = vpdn;
-        }
+        children["vpdn"] = vpdn;
     }
 
-    if(children.find("xconnect") == children.end())
+    if(xconnect != nullptr)
     {
-        if(xconnect != nullptr)
-        {
-            children["xconnect"] = xconnect;
-        }
+        children["xconnect"] = xconnect;
     }
 
     return children;
@@ -7029,7 +6350,7 @@ std::string L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_segme
 
 }
 
-EntityPath L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7058,20 +6379,12 @@ EntityPath L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_entity
 
 std::shared_ptr<Entity> L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7137,7 +6450,7 @@ std::string L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_segment_p
 
 }
 
-EntityPath L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7162,20 +6475,12 @@ EntityPath L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_entity_pat
 
 std::shared_ptr<Entity> L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7196,7 +6501,6 @@ L2Tp::Session::Session()
     unavailable(std::make_shared<L2Tp::Session::Unavailable>())
 {
     unavailable->parent = this;
-    children["unavailable"] = unavailable;
 
     yang_name = "session"; yang_parent_name = "l2tp";
 }
@@ -7225,7 +6529,7 @@ std::string L2Tp::Session::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Session::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7248,41 +6552,24 @@ EntityPath L2Tp::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unavailable")
     {
-        if(unavailable != nullptr)
-        {
-            children["unavailable"] = unavailable;
-        }
-        else
+        if(unavailable == nullptr)
         {
             unavailable = std::make_shared<L2Tp::Session::Unavailable>();
-            unavailable->parent = this;
-            children["unavailable"] = unavailable;
         }
-        return children.at("unavailable");
+        return unavailable;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Session::get_children() const
 {
-    if(children.find("unavailable") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(unavailable != nullptr)
     {
-        if(unavailable != nullptr)
-        {
-            children["unavailable"] = unavailable;
-        }
+        children["unavailable"] = unavailable;
     }
 
     return children;
@@ -7323,7 +6610,7 @@ std::string L2Tp::Session::Unavailable::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Session::Unavailable::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Session::Unavailable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7347,20 +6634,12 @@ EntityPath L2Tp::Session::Unavailable::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Session::Unavailable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Session::Unavailable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Session::Unavailable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7385,31 +6664,22 @@ L2Tpv2::L2Tpv2()
 	,tunnels(std::make_shared<L2Tpv2::Tunnels>())
 {
     classes->parent = this;
-    children["classes"] = classes;
 
     counter_hist_fail->parent = this;
-    children["counter-hist-fail"] = counter_hist_fail;
 
     counters->parent = this;
-    children["counters"] = counters;
 
     session->parent = this;
-    children["session"] = session;
 
     sessions->parent = this;
-    children["sessions"] = sessions;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     tunnel->parent = this;
-    children["tunnel"] = tunnel;
 
     tunnel_configurations->parent = this;
-    children["tunnel-configurations"] = tunnel_configurations;
 
     tunnels->parent = this;
-    children["tunnels"] = tunnels;
 
     yang_name = "l2tpv2"; yang_parent_name = "Cisco-IOS-XR-tunnel-l2tun-oper";
 }
@@ -7454,12 +6724,12 @@ std::string L2Tpv2::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -7474,225 +6744,136 @@ EntityPath L2Tpv2::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "classes")
     {
-        if(classes != nullptr)
-        {
-            children["classes"] = classes;
-        }
-        else
+        if(classes == nullptr)
         {
             classes = std::make_shared<L2Tpv2::Classes>();
-            classes->parent = this;
-            children["classes"] = classes;
         }
-        return children.at("classes");
+        return classes;
     }
 
     if(child_yang_name == "counter-hist-fail")
     {
-        if(counter_hist_fail != nullptr)
-        {
-            children["counter-hist-fail"] = counter_hist_fail;
-        }
-        else
+        if(counter_hist_fail == nullptr)
         {
             counter_hist_fail = std::make_shared<L2Tpv2::CounterHistFail>();
-            counter_hist_fail->parent = this;
-            children["counter-hist-fail"] = counter_hist_fail;
         }
-        return children.at("counter-hist-fail");
+        return counter_hist_fail;
     }
 
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<L2Tpv2::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<L2Tpv2::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "sessions")
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
-        else
+        if(sessions == nullptr)
         {
             sessions = std::make_shared<L2Tpv2::Sessions>();
-            sessions->parent = this;
-            children["sessions"] = sessions;
         }
-        return children.at("sessions");
+        return sessions;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<L2Tpv2::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     if(child_yang_name == "tunnel")
     {
-        if(tunnel != nullptr)
-        {
-            children["tunnel"] = tunnel;
-        }
-        else
+        if(tunnel == nullptr)
         {
             tunnel = std::make_shared<L2Tpv2::Tunnel>();
-            tunnel->parent = this;
-            children["tunnel"] = tunnel;
         }
-        return children.at("tunnel");
+        return tunnel;
     }
 
     if(child_yang_name == "tunnel-configurations")
     {
-        if(tunnel_configurations != nullptr)
-        {
-            children["tunnel-configurations"] = tunnel_configurations;
-        }
-        else
+        if(tunnel_configurations == nullptr)
         {
             tunnel_configurations = std::make_shared<L2Tpv2::TunnelConfigurations>();
-            tunnel_configurations->parent = this;
-            children["tunnel-configurations"] = tunnel_configurations;
         }
-        return children.at("tunnel-configurations");
+        return tunnel_configurations;
     }
 
     if(child_yang_name == "tunnels")
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
-        else
+        if(tunnels == nullptr)
         {
             tunnels = std::make_shared<L2Tpv2::Tunnels>();
-            tunnels->parent = this;
-            children["tunnels"] = tunnels;
         }
-        return children.at("tunnels");
+        return tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::get_children() const
 {
-    if(children.find("classes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(classes != nullptr)
     {
-        if(classes != nullptr)
-        {
-            children["classes"] = classes;
-        }
+        children["classes"] = classes;
     }
 
-    if(children.find("counter-hist-fail") == children.end())
+    if(counter_hist_fail != nullptr)
     {
-        if(counter_hist_fail != nullptr)
-        {
-            children["counter-hist-fail"] = counter_hist_fail;
-        }
+        children["counter-hist-fail"] = counter_hist_fail;
     }
 
-    if(children.find("counters") == children.end())
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
-    if(children.find("session") == children.end())
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("sessions") == children.end())
+    if(sessions != nullptr)
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
+        children["sessions"] = sessions;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
-    if(children.find("tunnel") == children.end())
+    if(tunnel != nullptr)
     {
-        if(tunnel != nullptr)
-        {
-            children["tunnel"] = tunnel;
-        }
+        children["tunnel"] = tunnel;
     }
 
-    if(children.find("tunnel-configurations") == children.end())
+    if(tunnel_configurations != nullptr)
     {
-        if(tunnel_configurations != nullptr)
-        {
-            children["tunnel-configurations"] = tunnel_configurations;
-        }
+        children["tunnel-configurations"] = tunnel_configurations;
     }
 
-    if(children.find("tunnels") == children.end())
+    if(tunnels != nullptr)
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
+        children["tunnels"] = tunnels;
     }
 
     return children;
@@ -7728,10 +6909,8 @@ L2Tpv2::Counters::Counters()
 	,forwarding(std::make_shared<L2Tpv2::Counters::Forwarding>())
 {
     control->parent = this;
-    children["control"] = control;
 
     forwarding->parent = this;
-    children["forwarding"] = forwarding;
 
     yang_name = "counters"; yang_parent_name = "l2tpv2";
 }
@@ -7762,7 +6941,7 @@ std::string L2Tpv2::Counters::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7785,64 +6964,38 @@ EntityPath L2Tpv2::Counters::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "control")
     {
-        if(control != nullptr)
-        {
-            children["control"] = control;
-        }
-        else
+        if(control == nullptr)
         {
             control = std::make_shared<L2Tpv2::Counters::Control>();
-            control->parent = this;
-            children["control"] = control;
         }
-        return children.at("control");
+        return control;
     }
 
     if(child_yang_name == "forwarding")
     {
-        if(forwarding != nullptr)
-        {
-            children["forwarding"] = forwarding;
-        }
-        else
+        if(forwarding == nullptr)
         {
             forwarding = std::make_shared<L2Tpv2::Counters::Forwarding>();
-            forwarding->parent = this;
-            children["forwarding"] = forwarding;
         }
-        return children.at("forwarding");
+        return forwarding;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::get_children() const
 {
-    if(children.find("control") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(control != nullptr)
     {
-        if(control != nullptr)
-        {
-            children["control"] = control;
-        }
+        children["control"] = control;
     }
 
-    if(children.find("forwarding") == children.end())
+    if(forwarding != nullptr)
     {
-        if(forwarding != nullptr)
-        {
-            children["forwarding"] = forwarding;
-        }
+        children["forwarding"] = forwarding;
     }
 
     return children;
@@ -7857,7 +7010,6 @@ L2Tpv2::Counters::Forwarding::Forwarding()
     sessions(std::make_shared<L2Tpv2::Counters::Forwarding::Sessions>())
 {
     sessions->parent = this;
-    children["sessions"] = sessions;
 
     yang_name = "forwarding"; yang_parent_name = "counters";
 }
@@ -7886,7 +7038,7 @@ std::string L2Tpv2::Counters::Forwarding::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Counters::Forwarding::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Forwarding::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7909,41 +7061,24 @@ EntityPath L2Tpv2::Counters::Forwarding::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Forwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sessions")
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
-        else
+        if(sessions == nullptr)
         {
             sessions = std::make_shared<L2Tpv2::Counters::Forwarding::Sessions>();
-            sessions->parent = this;
-            children["sessions"] = sessions;
         }
-        return children.at("sessions");
+        return sessions;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Forwarding::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::get_children() const
 {
-    if(children.find("sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sessions != nullptr)
     {
-        if(sessions != nullptr)
-        {
-            children["sessions"] = sessions;
-        }
+        children["sessions"] = sessions;
     }
 
     return children;
@@ -7991,7 +7126,7 @@ std::string L2Tpv2::Counters::Forwarding::Sessions::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Counters::Forwarding::Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Forwarding::Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8014,15 +7149,6 @@ EntityPath L2Tpv2::Counters::Forwarding::Sessions::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Forwarding::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
         for(auto const & c : session)
@@ -8030,28 +7156,24 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Forwarding::Sessions::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tpv2::Counters::Forwarding::Sessions::Session>();
         c->parent = this;
-        session.push_back(std::move(c));
-        children[segment_path] = session.back();
-        return children.at(segment_path);
+        session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Forwarding::Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::Sessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8063,8 +7185,8 @@ void L2Tpv2::Counters::Forwarding::Sessions::set_value(const std::string & value
 
 L2Tpv2::Counters::Forwarding::Sessions::Session::Session()
     :
-    session_id{YType::int32, "session-id"},
     tunnel_id{YType::int32, "tunnel-id"},
+    session_id{YType::int32, "session-id"},
     in_bytes{YType::uint64, "in-bytes"},
     in_packets{YType::uint64, "in-packets"},
     out_bytes{YType::uint64, "out-bytes"},
@@ -8080,8 +7202,8 @@ L2Tpv2::Counters::Forwarding::Sessions::Session::~Session()
 
 bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_data() const
 {
-    return session_id.is_set
-	|| tunnel_id.is_set
+    return tunnel_id.is_set
+	|| session_id.is_set
 	|| in_bytes.is_set
 	|| in_packets.is_set
 	|| out_bytes.is_set
@@ -8092,8 +7214,8 @@ bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_data() const
 bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_operation() const
 {
     return is_set(operation)
-	|| is_set(session_id.operation)
 	|| is_set(tunnel_id.operation)
+	|| is_set(session_id.operation)
 	|| is_set(in_bytes.operation)
 	|| is_set(in_packets.operation)
 	|| is_set(out_bytes.operation)
@@ -8104,13 +7226,13 @@ bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_operation() const
 std::string L2Tpv2::Counters::Forwarding::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-id='" <<session_id <<"']" <<"[tunnel-id='" <<tunnel_id <<"']";
+    path_buffer << "session" <<"[tunnel-id='" <<tunnel_id <<"']" <<"[session-id='" <<session_id <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath L2Tpv2::Counters::Forwarding::Sessions::Session::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Forwarding::Sessions::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8124,8 +7246,8 @@ EntityPath L2Tpv2::Counters::Forwarding::Sessions::Session::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
     if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
     if (in_bytes.is_set || is_set(in_bytes.operation)) leaf_name_data.push_back(in_bytes.get_name_leafdata());
     if (in_packets.is_set || is_set(in_packets.operation)) leaf_name_data.push_back(in_packets.get_name_leafdata());
     if (out_bytes.is_set || is_set(out_bytes.operation)) leaf_name_data.push_back(out_bytes.get_name_leafdata());
@@ -8140,32 +7262,24 @@ EntityPath L2Tpv2::Counters::Forwarding::Sessions::Session::get_entity_path(Enti
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Forwarding::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Forwarding::Sessions::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::Sessions::Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void L2Tpv2::Counters::Forwarding::Sessions::Session::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "session-id")
-    {
-        session_id = value;
-    }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+    }
+    if(value_path == "session-id")
+    {
+        session_id = value;
     }
     if(value_path == "in-bytes")
     {
@@ -8195,10 +7309,8 @@ L2Tpv2::Counters::Control::Control()
 	,tunnels(std::make_shared<L2Tpv2::Counters::Control::Tunnels>())
 {
     tunnel_xr->parent = this;
-    children["tunnel-xr"] = tunnel_xr;
 
     tunnels->parent = this;
-    children["tunnels"] = tunnels;
 
     yang_name = "control"; yang_parent_name = "counters";
 }
@@ -8229,7 +7341,7 @@ std::string L2Tpv2::Counters::Control::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Counters::Control::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8252,64 +7364,38 @@ EntityPath L2Tpv2::Counters::Control::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-xr")
     {
-        if(tunnel_xr != nullptr)
-        {
-            children["tunnel-xr"] = tunnel_xr;
-        }
-        else
+        if(tunnel_xr == nullptr)
         {
             tunnel_xr = std::make_shared<L2Tpv2::Counters::Control::TunnelXr>();
-            tunnel_xr->parent = this;
-            children["tunnel-xr"] = tunnel_xr;
         }
-        return children.at("tunnel-xr");
+        return tunnel_xr;
     }
 
     if(child_yang_name == "tunnels")
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
-        else
+        if(tunnels == nullptr)
         {
             tunnels = std::make_shared<L2Tpv2::Counters::Control::Tunnels>();
-            tunnels->parent = this;
-            children["tunnels"] = tunnels;
         }
-        return children.at("tunnels");
+        return tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::get_children() const
 {
-    if(children.find("tunnel-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnel_xr != nullptr)
     {
-        if(tunnel_xr != nullptr)
-        {
-            children["tunnel-xr"] = tunnel_xr;
-        }
+        children["tunnel-xr"] = tunnel_xr;
     }
 
-    if(children.find("tunnels") == children.end())
+    if(tunnels != nullptr)
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
+        children["tunnels"] = tunnels;
     }
 
     return children;
@@ -8325,10 +7411,8 @@ L2Tpv2::Counters::Control::TunnelXr::TunnelXr()
 	,global(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global>())
 {
     authentication->parent = this;
-    children["authentication"] = authentication;
 
     global->parent = this;
-    children["global"] = global;
 
     yang_name = "tunnel-xr"; yang_parent_name = "control";
 }
@@ -8359,7 +7443,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8382,64 +7466,38 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "authentication")
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
-        else
+        if(authentication == nullptr)
         {
             authentication = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication>();
-            authentication->parent = this;
-            children["authentication"] = authentication;
         }
-        return children.at("authentication");
+        return authentication;
     }
 
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::get_children() const
 {
-    if(children.find("authentication") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
     {
-        if(authentication != nullptr)
-        {
-            children["authentication"] = authentication;
-        }
+        children["authentication"] = authentication;
     }
 
-    if(children.find("global") == children.end())
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
     return children;
@@ -8462,31 +7520,22 @@ L2Tpv2::Counters::Control::TunnelXr::Authentication::Authentication()
 	,secondary_digest(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest>())
 {
     challenge_avp->parent = this;
-    children["challenge-avp"] = challenge_avp;
 
     challenge_reponse->parent = this;
-    children["challenge-reponse"] = challenge_reponse;
 
     common_digest->parent = this;
-    children["common-digest"] = common_digest;
 
     integrity_check->parent = this;
-    children["integrity-check"] = integrity_check;
 
     local_secret->parent = this;
-    children["local-secret"] = local_secret;
 
     nonce_avp->parent = this;
-    children["nonce-avp"] = nonce_avp;
 
     overall_statistics->parent = this;
-    children["overall-statistics"] = overall_statistics;
 
     primary_digest->parent = this;
-    children["primary-digest"] = primary_digest;
 
     secondary_digest->parent = this;
-    children["secondary-digest"] = secondary_digest;
 
     yang_name = "authentication"; yang_parent_name = "tunnel-xr";
 }
@@ -8531,7 +7580,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::get_segment_pat
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8554,225 +7603,136 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::get_entity_path(
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "challenge-avp")
     {
-        if(challenge_avp != nullptr)
-        {
-            children["challenge-avp"] = challenge_avp;
-        }
-        else
+        if(challenge_avp == nullptr)
         {
             challenge_avp = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp>();
-            challenge_avp->parent = this;
-            children["challenge-avp"] = challenge_avp;
         }
-        return children.at("challenge-avp");
+        return challenge_avp;
     }
 
     if(child_yang_name == "challenge-reponse")
     {
-        if(challenge_reponse != nullptr)
-        {
-            children["challenge-reponse"] = challenge_reponse;
-        }
-        else
+        if(challenge_reponse == nullptr)
         {
             challenge_reponse = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse>();
-            challenge_reponse->parent = this;
-            children["challenge-reponse"] = challenge_reponse;
         }
-        return children.at("challenge-reponse");
+        return challenge_reponse;
     }
 
     if(child_yang_name == "common-digest")
     {
-        if(common_digest != nullptr)
-        {
-            children["common-digest"] = common_digest;
-        }
-        else
+        if(common_digest == nullptr)
         {
             common_digest = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest>();
-            common_digest->parent = this;
-            children["common-digest"] = common_digest;
         }
-        return children.at("common-digest");
+        return common_digest;
     }
 
     if(child_yang_name == "integrity-check")
     {
-        if(integrity_check != nullptr)
-        {
-            children["integrity-check"] = integrity_check;
-        }
-        else
+        if(integrity_check == nullptr)
         {
             integrity_check = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck>();
-            integrity_check->parent = this;
-            children["integrity-check"] = integrity_check;
         }
-        return children.at("integrity-check");
+        return integrity_check;
     }
 
     if(child_yang_name == "local-secret")
     {
-        if(local_secret != nullptr)
-        {
-            children["local-secret"] = local_secret;
-        }
-        else
+        if(local_secret == nullptr)
         {
             local_secret = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret>();
-            local_secret->parent = this;
-            children["local-secret"] = local_secret;
         }
-        return children.at("local-secret");
+        return local_secret;
     }
 
     if(child_yang_name == "nonce-avp")
     {
-        if(nonce_avp != nullptr)
-        {
-            children["nonce-avp"] = nonce_avp;
-        }
-        else
+        if(nonce_avp == nullptr)
         {
             nonce_avp = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp>();
-            nonce_avp->parent = this;
-            children["nonce-avp"] = nonce_avp;
         }
-        return children.at("nonce-avp");
+        return nonce_avp;
     }
 
     if(child_yang_name == "overall-statistics")
     {
-        if(overall_statistics != nullptr)
-        {
-            children["overall-statistics"] = overall_statistics;
-        }
-        else
+        if(overall_statistics == nullptr)
         {
             overall_statistics = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics>();
-            overall_statistics->parent = this;
-            children["overall-statistics"] = overall_statistics;
         }
-        return children.at("overall-statistics");
+        return overall_statistics;
     }
 
     if(child_yang_name == "primary-digest")
     {
-        if(primary_digest != nullptr)
-        {
-            children["primary-digest"] = primary_digest;
-        }
-        else
+        if(primary_digest == nullptr)
         {
             primary_digest = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest>();
-            primary_digest->parent = this;
-            children["primary-digest"] = primary_digest;
         }
-        return children.at("primary-digest");
+        return primary_digest;
     }
 
     if(child_yang_name == "secondary-digest")
     {
-        if(secondary_digest != nullptr)
-        {
-            children["secondary-digest"] = secondary_digest;
-        }
-        else
+        if(secondary_digest == nullptr)
         {
             secondary_digest = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest>();
-            secondary_digest->parent = this;
-            children["secondary-digest"] = secondary_digest;
         }
-        return children.at("secondary-digest");
+        return secondary_digest;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::get_children() const
 {
-    if(children.find("challenge-avp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(challenge_avp != nullptr)
     {
-        if(challenge_avp != nullptr)
-        {
-            children["challenge-avp"] = challenge_avp;
-        }
+        children["challenge-avp"] = challenge_avp;
     }
 
-    if(children.find("challenge-reponse") == children.end())
+    if(challenge_reponse != nullptr)
     {
-        if(challenge_reponse != nullptr)
-        {
-            children["challenge-reponse"] = challenge_reponse;
-        }
+        children["challenge-reponse"] = challenge_reponse;
     }
 
-    if(children.find("common-digest") == children.end())
+    if(common_digest != nullptr)
     {
-        if(common_digest != nullptr)
-        {
-            children["common-digest"] = common_digest;
-        }
+        children["common-digest"] = common_digest;
     }
 
-    if(children.find("integrity-check") == children.end())
+    if(integrity_check != nullptr)
     {
-        if(integrity_check != nullptr)
-        {
-            children["integrity-check"] = integrity_check;
-        }
+        children["integrity-check"] = integrity_check;
     }
 
-    if(children.find("local-secret") == children.end())
+    if(local_secret != nullptr)
     {
-        if(local_secret != nullptr)
-        {
-            children["local-secret"] = local_secret;
-        }
+        children["local-secret"] = local_secret;
     }
 
-    if(children.find("nonce-avp") == children.end())
+    if(nonce_avp != nullptr)
     {
-        if(nonce_avp != nullptr)
-        {
-            children["nonce-avp"] = nonce_avp;
-        }
+        children["nonce-avp"] = nonce_avp;
     }
 
-    if(children.find("overall-statistics") == children.end())
+    if(overall_statistics != nullptr)
     {
-        if(overall_statistics != nullptr)
-        {
-            children["overall-statistics"] = overall_statistics;
-        }
+        children["overall-statistics"] = overall_statistics;
     }
 
-    if(children.find("primary-digest") == children.end())
+    if(primary_digest != nullptr)
     {
-        if(primary_digest != nullptr)
-        {
-            children["primary-digest"] = primary_digest;
-        }
+        children["primary-digest"] = primary_digest;
     }
 
-    if(children.find("secondary-digest") == children.end())
+    if(secondary_digest != nullptr)
     {
-        if(secondary_digest != nullptr)
-        {
-            children["secondary-digest"] = secondary_digest;
-        }
+        children["secondary-digest"] = secondary_digest;
     }
 
     return children;
@@ -8843,7 +7803,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_s
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8877,20 +7837,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_en
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9003,7 +7955,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::g
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9037,20 +7989,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::ge
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9163,7 +8107,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9197,20 +8141,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::g
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9323,7 +8259,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9357,20 +8293,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest:
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9483,7 +8411,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck:
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9517,20 +8445,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9643,7 +8563,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::ge
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9677,20 +8597,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9803,7 +8715,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::g
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9837,20 +8749,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::ge
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9963,7 +8867,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeRepons
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9997,20 +8901,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10123,7 +9019,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatisti
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10157,20 +9053,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistic
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10235,16 +9123,12 @@ L2Tpv2::Counters::Control::TunnelXr::Global::Global()
 	,transmit(std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Transmit>())
 {
     drop->parent = this;
-    children["drop"] = drop;
 
     received->parent = this;
-    children["received"] = received;
 
     retransmit->parent = this;
-    children["retransmit"] = retransmit;
 
     transmit->parent = this;
-    children["transmit"] = transmit;
 
     yang_name = "global"; yang_parent_name = "tunnel-xr";
 }
@@ -10287,7 +9171,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Global::get_segment_path() cons
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10314,110 +9198,66 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "drop")
     {
-        if(drop != nullptr)
-        {
-            children["drop"] = drop;
-        }
-        else
+        if(drop == nullptr)
         {
             drop = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Drop>();
-            drop->parent = this;
-            children["drop"] = drop;
         }
-        return children.at("drop");
+        return drop;
     }
 
     if(child_yang_name == "received")
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
-        else
+        if(received == nullptr)
         {
             received = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Received>();
-            received->parent = this;
-            children["received"] = received;
         }
-        return children.at("received");
+        return received;
     }
 
     if(child_yang_name == "retransmit")
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
-        else
+        if(retransmit == nullptr)
         {
             retransmit = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit>();
-            retransmit->parent = this;
-            children["retransmit"] = retransmit;
         }
-        return children.at("retransmit");
+        return retransmit;
     }
 
     if(child_yang_name == "transmit")
     {
-        if(transmit != nullptr)
-        {
-            children["transmit"] = transmit;
-        }
-        else
+        if(transmit == nullptr)
         {
             transmit = std::make_shared<L2Tpv2::Counters::Control::TunnelXr::Global::Transmit>();
-            transmit->parent = this;
-            children["transmit"] = transmit;
         }
-        return children.at("transmit");
+        return transmit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::get_children() const
 {
-    if(children.find("drop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(drop != nullptr)
     {
-        if(drop != nullptr)
-        {
-            children["drop"] = drop;
-        }
+        children["drop"] = drop;
     }
 
-    if(children.find("received") == children.end())
+    if(received != nullptr)
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
+        children["received"] = received;
     }
 
-    if(children.find("retransmit") == children.end())
+    if(retransmit != nullptr)
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
+        children["retransmit"] = retransmit;
     }
 
-    if(children.find("transmit") == children.end())
+    if(transmit != nullptr)
     {
-        if(transmit != nullptr)
-        {
-            children["transmit"] = transmit;
-        }
+        children["transmit"] = transmit;
     }
 
     return children;
@@ -10528,7 +9368,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_segment_p
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10570,20 +9410,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_entity_pat
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10752,7 +9584,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_segment
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10794,20 +9626,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_entity_p
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10976,7 +9800,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_segment_p
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11018,20 +9842,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_entity_pat
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11200,7 +10016,7 @@ std::string L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_segment_path(
 
 }
 
-EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11242,20 +10058,12 @@ EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_entity_path(En
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11377,7 +10185,7 @@ std::string L2Tpv2::Counters::Control::Tunnels::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Counters::Control::Tunnels::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::Tunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11400,15 +10208,6 @@ EntityPath L2Tpv2::Counters::Control::Tunnels::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel")
     {
         for(auto const & c : tunnel)
@@ -11416,28 +10215,24 @@ std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(std::move(c));
-        children[segment_path] = tunnel.back();
-        return children.at(segment_path);
+        tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::Tunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11455,10 +10250,8 @@ L2Tpv2::Counters::Control::Tunnels::Tunnel::Tunnel()
 	,global(std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global>())
 {
     brief->parent = this;
-    children["brief"] = brief;
 
     global->parent = this;
-    children["global"] = global;
 
     yang_name = "tunnel"; yang_parent_name = "tunnels";
 }
@@ -11491,7 +10284,7 @@ std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11515,64 +10308,38 @@ EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
-        else
+        if(brief == nullptr)
         {
             brief = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief>();
-            brief->parent = this;
-            children["brief"] = brief;
         }
-        return children.at("brief");
+        return brief;
     }
 
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::Tunnels::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::get_children() const
 {
-    if(children.find("brief") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief != nullptr)
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
+        children["brief"] = brief;
     }
 
-    if(children.find("global") == children.end())
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
     return children;
@@ -11623,7 +10390,7 @@ std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_segment_path(
 
 }
 
-EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11649,20 +10416,12 @@ EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_entity_path(En
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11695,16 +10454,12 @@ L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Global()
 	,transmit(std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit>())
 {
     drop->parent = this;
-    children["drop"] = drop;
 
     received->parent = this;
-    children["received"] = received;
 
     retransmit->parent = this;
-    children["retransmit"] = retransmit;
 
     transmit->parent = this;
-    children["transmit"] = transmit;
 
     yang_name = "global"; yang_parent_name = "tunnel";
 }
@@ -11747,7 +10502,7 @@ std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_segment_path
 
 }
 
-EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11774,110 +10529,66 @@ EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_entity_path(E
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "drop")
     {
-        if(drop != nullptr)
-        {
-            children["drop"] = drop;
-        }
-        else
+        if(drop == nullptr)
         {
             drop = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop>();
-            drop->parent = this;
-            children["drop"] = drop;
         }
-        return children.at("drop");
+        return drop;
     }
 
     if(child_yang_name == "received")
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
-        else
+        if(received == nullptr)
         {
             received = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received>();
-            received->parent = this;
-            children["received"] = received;
         }
-        return children.at("received");
+        return received;
     }
 
     if(child_yang_name == "retransmit")
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
-        else
+        if(retransmit == nullptr)
         {
             retransmit = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit>();
-            retransmit->parent = this;
-            children["retransmit"] = retransmit;
         }
-        return children.at("retransmit");
+        return retransmit;
     }
 
     if(child_yang_name == "transmit")
     {
-        if(transmit != nullptr)
-        {
-            children["transmit"] = transmit;
-        }
-        else
+        if(transmit == nullptr)
         {
             transmit = std::make_shared<L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit>();
-            transmit->parent = this;
-            children["transmit"] = transmit;
         }
-        return children.at("transmit");
+        return transmit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_children() const
 {
-    if(children.find("drop") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(drop != nullptr)
     {
-        if(drop != nullptr)
-        {
-            children["drop"] = drop;
-        }
+        children["drop"] = drop;
     }
 
-    if(children.find("received") == children.end())
+    if(received != nullptr)
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
+        children["received"] = received;
     }
 
-    if(children.find("retransmit") == children.end())
+    if(retransmit != nullptr)
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
+        children["retransmit"] = retransmit;
     }
 
-    if(children.find("transmit") == children.end())
+    if(transmit != nullptr)
     {
-        if(transmit != nullptr)
-        {
-            children["transmit"] = transmit;
-        }
+        children["transmit"] = transmit;
     }
 
     return children;
@@ -11988,7 +10699,7 @@ std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_se
 
 }
 
-EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12030,20 +10741,12 @@ EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_ent
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12212,7 +10915,7 @@ std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_
 
 }
 
-EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12254,20 +10957,12 @@ EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_e
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12436,7 +11131,7 @@ std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_se
 
 }
 
-EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12478,20 +11173,12 @@ EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_ent
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12660,7 +11347,7 @@ std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_segmen
 
 }
 
-EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12702,20 +11389,12 @@ EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_entity_
 
 std::shared_ptr<Entity> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12860,7 +11539,7 @@ std::string L2Tpv2::Statistics::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12894,20 +11573,12 @@ EntityPath L2Tpv2::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12964,7 +11635,6 @@ L2Tpv2::Tunnel::Tunnel()
     accounting(std::make_shared<L2Tpv2::Tunnel::Accounting>())
 {
     accounting->parent = this;
-    children["accounting"] = accounting;
 
     yang_name = "tunnel"; yang_parent_name = "l2tpv2";
 }
@@ -12993,7 +11663,7 @@ std::string L2Tpv2::Tunnel::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13016,41 +11686,24 @@ EntityPath L2Tpv2::Tunnel::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accounting")
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
-        else
+        if(accounting == nullptr)
         {
             accounting = std::make_shared<L2Tpv2::Tunnel::Accounting>();
-            accounting->parent = this;
-            children["accounting"] = accounting;
         }
-        return children.at("accounting");
+        return accounting;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::get_children() const
 {
-    if(children.find("accounting") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accounting != nullptr)
     {
-        if(accounting != nullptr)
-        {
-            children["accounting"] = accounting;
-        }
+        children["accounting"] = accounting;
     }
 
     return children;
@@ -13065,7 +11718,6 @@ L2Tpv2::Tunnel::Accounting::Accounting()
     statistics(std::make_shared<L2Tpv2::Tunnel::Accounting::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "accounting"; yang_parent_name = "tunnel";
 }
@@ -13094,7 +11746,7 @@ std::string L2Tpv2::Tunnel::Accounting::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Tunnel::Accounting::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Tunnel::Accounting::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13117,41 +11769,24 @@ EntityPath L2Tpv2::Tunnel::Accounting::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Tunnel::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<L2Tpv2::Tunnel::Accounting::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Tunnel::Accounting::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::Accounting::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -13234,7 +11869,7 @@ std::string L2Tpv2::Tunnel::Accounting::Statistics::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Tunnel::Accounting::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Tunnel::Accounting::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13272,20 +11907,12 @@ EntityPath L2Tpv2::Tunnel::Accounting::Statistics::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> L2Tpv2::Tunnel::Accounting::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Tunnel::Accounting::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::Accounting::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13391,7 +12018,7 @@ std::string L2Tpv2::TunnelConfigurations::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::TunnelConfigurations::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::TunnelConfigurations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13414,15 +12041,6 @@ EntityPath L2Tpv2::TunnelConfigurations::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::TunnelConfigurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-configuration")
     {
         for(auto const & c : tunnel_configuration)
@@ -13430,28 +12048,24 @@ std::shared_ptr<Entity> L2Tpv2::TunnelConfigurations::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tpv2::TunnelConfigurations::TunnelConfiguration>();
         c->parent = this;
-        tunnel_configuration.push_back(std::move(c));
-        children[segment_path] = tunnel_configuration.back();
-        return children.at(segment_path);
+        tunnel_configuration.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::TunnelConfigurations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel_configuration)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13469,7 +12083,6 @@ L2Tpv2::TunnelConfigurations::TunnelConfiguration::TunnelConfiguration()
     l2tp_class(std::make_shared<L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass>())
 {
     l2tp_class->parent = this;
-    children["l2tp-class"] = l2tp_class;
 
     yang_name = "tunnel-configuration"; yang_parent_name = "tunnel-configurations";
 }
@@ -13502,7 +12115,7 @@ std::string L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_segment_path(
 
 }
 
-EntityPath L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13527,41 +12140,24 @@ EntityPath L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_entity_path(En
 
 std::shared_ptr<Entity> L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "l2tp-class")
     {
-        if(l2tp_class != nullptr)
-        {
-            children["l2tp-class"] = l2tp_class;
-        }
-        else
+        if(l2tp_class == nullptr)
         {
             l2tp_class = std::make_shared<L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass>();
-            l2tp_class->parent = this;
-            children["l2tp-class"] = l2tp_class;
         }
-        return children.at("l2tp-class");
+        return l2tp_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_children() const
 {
-    if(children.find("l2tp-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2tp_class != nullptr)
     {
-        if(l2tp_class != nullptr)
-        {
-            children["l2tp-class"] = l2tp_class;
-        }
+        children["l2tp-class"] = l2tp_class;
     }
 
     return children;
@@ -13679,7 +12275,7 @@ std::string L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_se
 
 }
 
-EntityPath L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13726,20 +12322,12 @@ EntityPath L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_ent
 
 std::shared_ptr<Entity> L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13892,7 +12480,7 @@ std::string L2Tpv2::CounterHistFail::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::CounterHistFail::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::CounterHistFail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13920,20 +12508,12 @@ EntityPath L2Tpv2::CounterHistFail::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::CounterHistFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::CounterHistFail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::CounterHistFail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13995,7 +12575,7 @@ std::string L2Tpv2::Classes::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Classes::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Classes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14018,15 +12598,6 @@ EntityPath L2Tpv2::Classes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class")
     {
         for(auto const & c : class_)
@@ -14034,28 +12605,24 @@ std::shared_ptr<Entity> L2Tpv2::Classes::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tpv2::Classes::Class_>();
         c->parent = this;
-        class_.push_back(std::move(c));
-        children[segment_path] = class_.back();
-        return children.at(segment_path);
+        class_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Classes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Classes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14168,7 +12735,7 @@ std::string L2Tpv2::Classes::Class_::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Classes::Class_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Classes::Class_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14216,20 +12783,12 @@ EntityPath L2Tpv2::Classes::Class_::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Classes::Class_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Classes::Class_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14375,7 +12934,7 @@ std::string L2Tpv2::Tunnels::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Tunnels::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Tunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14398,15 +12957,6 @@ EntityPath L2Tpv2::Tunnels::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel")
     {
         for(auto const & c : tunnel)
@@ -14414,28 +12964,24 @@ std::shared_ptr<Entity> L2Tpv2::Tunnels::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tpv2::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(std::move(c));
-        children[segment_path] = tunnel.back();
-        return children.at(segment_path);
+        tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Tunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14581,7 +13127,7 @@ std::string L2Tpv2::Tunnels::Tunnel::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14638,20 +13184,12 @@ EntityPath L2Tpv2::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Tunnels::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnels::Tunnel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14829,7 +13367,7 @@ std::string L2Tpv2::Sessions::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Sessions::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Sessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14852,15 +13390,6 @@ EntityPath L2Tpv2::Sessions::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session")
     {
         for(auto const & c : session)
@@ -14868,28 +13397,24 @@ std::shared_ptr<Entity> L2Tpv2::Sessions::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tpv2::Sessions::Session>();
         c->parent = this;
-        session.push_back(std::move(c));
-        children[segment_path] = session.back();
-        return children.at(segment_path);
+        session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Sessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14901,8 +13426,8 @@ void L2Tpv2::Sessions::set_value(const std::string & value_path, std::string val
 
 L2Tpv2::Sessions::Session::Session()
     :
-    local_session_id{YType::int32, "local-session-id"},
     local_tunnel_id{YType::int32, "local-tunnel-id"},
+    local_session_id{YType::int32, "local-session-id"},
     call_serial_number{YType::uint32, "call-serial-number"},
     interface_name{YType::str, "interface-name"},
     is_conditional_debug_enabled{YType::boolean, "is-conditional-debug-enabled"},
@@ -14928,7 +13453,6 @@ L2Tpv2::Sessions::Session::Session()
     session_application_data(std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData>())
 {
     session_application_data->parent = this;
-    children["session-application-data"] = session_application_data;
 
     yang_name = "session"; yang_parent_name = "sessions";
 }
@@ -14939,8 +13463,8 @@ L2Tpv2::Sessions::Session::~Session()
 
 bool L2Tpv2::Sessions::Session::has_data() const
 {
-    return local_session_id.is_set
-	|| local_tunnel_id.is_set
+    return local_tunnel_id.is_set
+	|| local_session_id.is_set
 	|| call_serial_number.is_set
 	|| interface_name.is_set
 	|| is_conditional_debug_enabled.is_set
@@ -14968,8 +13492,8 @@ bool L2Tpv2::Sessions::Session::has_data() const
 bool L2Tpv2::Sessions::Session::has_operation() const
 {
     return is_set(operation)
-	|| is_set(local_session_id.operation)
 	|| is_set(local_tunnel_id.operation)
+	|| is_set(local_session_id.operation)
 	|| is_set(call_serial_number.operation)
 	|| is_set(interface_name.operation)
 	|| is_set(is_conditional_debug_enabled.operation)
@@ -14997,13 +13521,13 @@ bool L2Tpv2::Sessions::Session::has_operation() const
 std::string L2Tpv2::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[local-session-id='" <<local_session_id <<"']" <<"[local-tunnel-id='" <<local_tunnel_id <<"']";
+    path_buffer << "session" <<"[local-tunnel-id='" <<local_tunnel_id <<"']" <<"[local-session-id='" <<local_session_id <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath L2Tpv2::Sessions::Session::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Sessions::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15017,8 +13541,8 @@ EntityPath L2Tpv2::Sessions::Session::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_session_id.is_set || is_set(local_session_id.operation)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
     if (local_tunnel_id.is_set || is_set(local_tunnel_id.operation)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (local_session_id.is_set || is_set(local_session_id.operation)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
     if (call_serial_number.is_set || is_set(call_serial_number.operation)) leaf_name_data.push_back(call_serial_number.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (is_conditional_debug_enabled.is_set || is_set(is_conditional_debug_enabled.operation)) leaf_name_data.push_back(is_conditional_debug_enabled.get_name_leafdata());
@@ -15049,41 +13573,24 @@ EntityPath L2Tpv2::Sessions::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-application-data")
     {
-        if(session_application_data != nullptr)
-        {
-            children["session-application-data"] = session_application_data;
-        }
-        else
+        if(session_application_data == nullptr)
         {
             session_application_data = std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData>();
-            session_application_data->parent = this;
-            children["session-application-data"] = session_application_data;
         }
-        return children.at("session-application-data");
+        return session_application_data;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Sessions::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::get_children() const
 {
-    if(children.find("session-application-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session_application_data != nullptr)
     {
-        if(session_application_data != nullptr)
-        {
-            children["session-application-data"] = session_application_data;
-        }
+        children["session-application-data"] = session_application_data;
     }
 
     return children;
@@ -15091,13 +13598,13 @@ std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Sessions::Session::get_
 
 void L2Tpv2::Sessions::Session::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "local-session-id")
-    {
-        local_session_id = value;
-    }
     if(value_path == "local-tunnel-id")
     {
         local_tunnel_id = value;
+    }
+    if(value_path == "local-session-id")
+    {
+        local_session_id = value;
     }
     if(value_path == "call-serial-number")
     {
@@ -15193,10 +13700,8 @@ L2Tpv2::Sessions::Session::SessionApplicationData::SessionApplicationData()
 	,xconnect(std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect>())
 {
     vpdn->parent = this;
-    children["vpdn"] = vpdn;
 
     xconnect->parent = this;
-    children["xconnect"] = xconnect;
 
     yang_name = "session-application-data"; yang_parent_name = "session";
 }
@@ -15229,7 +13734,7 @@ std::string L2Tpv2::Sessions::Session::SessionApplicationData::get_segment_path(
 
 }
 
-EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15253,64 +13758,38 @@ EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::get_entity_path(En
 
 std::shared_ptr<Entity> L2Tpv2::Sessions::Session::SessionApplicationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vpdn")
     {
-        if(vpdn != nullptr)
-        {
-            children["vpdn"] = vpdn;
-        }
-        else
+        if(vpdn == nullptr)
         {
             vpdn = std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn>();
-            vpdn->parent = this;
-            children["vpdn"] = vpdn;
         }
-        return children.at("vpdn");
+        return vpdn;
     }
 
     if(child_yang_name == "xconnect")
     {
-        if(xconnect != nullptr)
-        {
-            children["xconnect"] = xconnect;
-        }
-        else
+        if(xconnect == nullptr)
         {
             xconnect = std::make_shared<L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect>();
-            xconnect->parent = this;
-            children["xconnect"] = xconnect;
         }
-        return children.at("xconnect");
+        return xconnect;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Sessions::Session::SessionApplicationData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::SessionApplicationData::get_children() const
 {
-    if(children.find("vpdn") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vpdn != nullptr)
     {
-        if(vpdn != nullptr)
-        {
-            children["vpdn"] = vpdn;
-        }
+        children["vpdn"] = vpdn;
     }
 
-    if(children.find("xconnect") == children.end())
+    if(xconnect != nullptr)
     {
-        if(xconnect != nullptr)
-        {
-            children["xconnect"] = xconnect;
-        }
+        children["xconnect"] = xconnect;
     }
 
     return children;
@@ -15370,7 +13849,7 @@ std::string L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_seg
 
 }
 
-EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15399,20 +13878,12 @@ EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_enti
 
 std::shared_ptr<Entity> L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15478,7 +13949,7 @@ std::string L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_segment
 
 }
 
-EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15503,20 +13974,12 @@ EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_entity_p
 
 std::shared_ptr<Entity> L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15537,7 +14000,6 @@ L2Tpv2::Session::Session()
     unavailable(std::make_shared<L2Tpv2::Session::Unavailable>())
 {
     unavailable->parent = this;
-    children["unavailable"] = unavailable;
 
     yang_name = "session"; yang_parent_name = "l2tpv2";
 }
@@ -15566,7 +14028,7 @@ std::string L2Tpv2::Session::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Session::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15589,41 +14051,24 @@ EntityPath L2Tpv2::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "unavailable")
     {
-        if(unavailable != nullptr)
-        {
-            children["unavailable"] = unavailable;
-        }
-        else
+        if(unavailable == nullptr)
         {
             unavailable = std::make_shared<L2Tpv2::Session::Unavailable>();
-            unavailable->parent = this;
-            children["unavailable"] = unavailable;
         }
-        return children.at("unavailable");
+        return unavailable;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Session::get_children() const
 {
-    if(children.find("unavailable") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(unavailable != nullptr)
     {
-        if(unavailable != nullptr)
-        {
-            children["unavailable"] = unavailable;
-        }
+        children["unavailable"] = unavailable;
     }
 
     return children;
@@ -15664,7 +14109,7 @@ std::string L2Tpv2::Session::Unavailable::get_segment_path() const
 
 }
 
-EntityPath L2Tpv2::Session::Unavailable::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tpv2::Session::Unavailable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15688,20 +14133,12 @@ EntityPath L2Tpv2::Session::Unavailable::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tpv2::Session::Unavailable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tpv2::Session::Unavailable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Session::Unavailable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

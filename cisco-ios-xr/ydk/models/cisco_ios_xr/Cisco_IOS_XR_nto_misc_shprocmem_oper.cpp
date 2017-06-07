@@ -14,7 +14,6 @@ ProcessesMemory::ProcessesMemory()
     nodes(std::make_shared<ProcessesMemory::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "processes-memory"; yang_parent_name = "Cisco-IOS-XR-nto-misc-shprocmem-oper";
 }
@@ -43,12 +42,12 @@ std::string ProcessesMemory::get_segment_path() const
 
 }
 
-EntityPath ProcessesMemory::get_entity_path(Entity* ancestor) const
+const EntityPath ProcessesMemory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath ProcessesMemory::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ProcessesMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<ProcessesMemory::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ProcessesMemory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string ProcessesMemory::Nodes::get_segment_path() const
 
 }
 
-EntityPath ProcessesMemory::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath ProcessesMemory::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath ProcessesMemory::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ProcessesMemory::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ProcessesMemory::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ProcessesMemory::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ ProcessesMemory::Nodes::Node::Node()
     job_ids(std::make_shared<ProcessesMemory::Nodes::Node::JobIds>())
 {
     job_ids->parent = this;
-    children["job-ids"] = job_ids;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -273,7 +241,7 @@ std::string ProcessesMemory::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath ProcessesMemory::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath ProcessesMemory::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath ProcessesMemory::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "job-ids")
     {
-        if(job_ids != nullptr)
-        {
-            children["job-ids"] = job_ids;
-        }
-        else
+        if(job_ids == nullptr)
         {
             job_ids = std::make_shared<ProcessesMemory::Nodes::Node::JobIds>();
-            job_ids->parent = this;
-            children["job-ids"] = job_ids;
         }
-        return children.at("job-ids");
+        return job_ids;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ProcessesMemory::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::get_children() const
 {
-    if(children.find("job-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(job_ids != nullptr)
     {
-        if(job_ids != nullptr)
-        {
-            children["job-ids"] = job_ids;
-        }
+        children["job-ids"] = job_ids;
     }
 
     return children;
@@ -383,7 +334,7 @@ std::string ProcessesMemory::Nodes::Node::JobIds::get_segment_path() const
 
 }
 
-EntityPath ProcessesMemory::Nodes::Node::JobIds::get_entity_path(Entity* ancestor) const
+const EntityPath ProcessesMemory::Nodes::Node::JobIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -406,15 +357,6 @@ EntityPath ProcessesMemory::Nodes::Node::JobIds::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::JobIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "job-id")
     {
         for(auto const & c : job_id)
@@ -422,28 +364,24 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::JobIds::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ProcessesMemory::Nodes::Node::JobIds::JobId>();
         c->parent = this;
-        job_id.push_back(std::move(c));
-        children[segment_path] = job_id.back();
-        return children.at(segment_path);
+        job_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ProcessesMemory::Nodes::Node::JobIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::JobIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : job_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -502,7 +440,7 @@ std::string ProcessesMemory::Nodes::Node::JobIds::JobId::get_segment_path() cons
 
 }
 
-EntityPath ProcessesMemory::Nodes::Node::JobIds::JobId::get_entity_path(Entity* ancestor) const
+const EntityPath ProcessesMemory::Nodes::Node::JobIds::JobId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -532,20 +470,12 @@ EntityPath ProcessesMemory::Nodes::Node::JobIds::JobId::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::JobIds::JobId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ProcessesMemory::Nodes::Node::JobIds::JobId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::JobIds::JobId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -14,7 +14,6 @@ Rcp::Rcp()
     rcp_client(std::make_shared<Rcp::RcpClient>())
 {
     rcp_client->parent = this;
-    children["rcp-client"] = rcp_client;
 
     yang_name = "rcp"; yang_parent_name = "Cisco-IOS-XR-ipv4-filesystems-cfg";
 }
@@ -43,12 +42,12 @@ std::string Rcp::get_segment_path() const
 
 }
 
-EntityPath Rcp::get_entity_path(Entity* ancestor) const
+const EntityPath Rcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Rcp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rcp-client")
     {
-        if(rcp_client != nullptr)
-        {
-            children["rcp-client"] = rcp_client;
-        }
-        else
+        if(rcp_client == nullptr)
         {
             rcp_client = std::make_shared<Rcp::RcpClient>();
-            rcp_client->parent = this;
-            children["rcp-client"] = rcp_client;
         }
-        return children.at("rcp-client");
+        return rcp_client;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcp::get_children() const
 {
-    if(children.find("rcp-client") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rcp_client != nullptr)
     {
-        if(rcp_client != nullptr)
-        {
-            children["rcp-client"] = rcp_client;
-        }
+        children["rcp-client"] = rcp_client;
     }
 
     return children;
@@ -158,7 +140,7 @@ std::string Rcp::RcpClient::get_segment_path() const
 
 }
 
-EntityPath Rcp::RcpClient::get_entity_path(Entity* ancestor) const
+const EntityPath Rcp::RcpClient::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -182,20 +164,12 @@ EntityPath Rcp::RcpClient::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcp::RcpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcp::RcpClient::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcp::RcpClient::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -212,7 +186,6 @@ Ftp::Ftp()
     ftp_client(std::make_shared<Ftp::FtpClient>())
 {
     ftp_client->parent = this;
-    children["ftp-client"] = ftp_client;
 
     yang_name = "ftp"; yang_parent_name = "Cisco-IOS-XR-ipv4-filesystems-cfg";
 }
@@ -241,12 +214,12 @@ std::string Ftp::get_segment_path() const
 
 }
 
-EntityPath Ftp::get_entity_path(Entity* ancestor) const
+const EntityPath Ftp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -261,41 +234,24 @@ EntityPath Ftp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ftp-client")
     {
-        if(ftp_client != nullptr)
-        {
-            children["ftp-client"] = ftp_client;
-        }
-        else
+        if(ftp_client == nullptr)
         {
             ftp_client = std::make_shared<Ftp::FtpClient>();
-            ftp_client->parent = this;
-            children["ftp-client"] = ftp_client;
         }
-        return children.at("ftp-client");
+        return ftp_client;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ftp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ftp::get_children() const
 {
-    if(children.find("ftp-client") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ftp_client != nullptr)
     {
-        if(ftp_client != nullptr)
-        {
-            children["ftp-client"] = ftp_client;
-        }
+        children["ftp-client"] = ftp_client;
     }
 
     return children;
@@ -365,7 +321,7 @@ std::string Ftp::FtpClient::get_segment_path() const
 
 }
 
-EntityPath Ftp::FtpClient::get_entity_path(Entity* ancestor) const
+const EntityPath Ftp::FtpClient::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -392,20 +348,12 @@ EntityPath Ftp::FtpClient::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ftp::FtpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ftp::FtpClient::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ftp::FtpClient::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -434,7 +382,6 @@ Tftp::Tftp()
     tftp_client(std::make_shared<Tftp::TftpClient>())
 {
     tftp_client->parent = this;
-    children["tftp-client"] = tftp_client;
 
     yang_name = "tftp"; yang_parent_name = "Cisco-IOS-XR-ipv4-filesystems-cfg";
 }
@@ -463,12 +410,12 @@ std::string Tftp::get_segment_path() const
 
 }
 
-EntityPath Tftp::get_entity_path(Entity* ancestor) const
+const EntityPath Tftp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -483,41 +430,24 @@ EntityPath Tftp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tftp-client")
     {
-        if(tftp_client != nullptr)
-        {
-            children["tftp-client"] = tftp_client;
-        }
-        else
+        if(tftp_client == nullptr)
         {
             tftp_client = std::make_shared<Tftp::TftpClient>();
-            tftp_client->parent = this;
-            children["tftp-client"] = tftp_client;
         }
-        return children.at("tftp-client");
+        return tftp_client;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tftp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tftp::get_children() const
 {
-    if(children.find("tftp-client") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tftp_client != nullptr)
     {
-        if(tftp_client != nullptr)
-        {
-            children["tftp-client"] = tftp_client;
-        }
+        children["tftp-client"] = tftp_client;
     }
 
     return children;
@@ -578,7 +508,7 @@ std::string Tftp::TftpClient::get_segment_path() const
 
 }
 
-EntityPath Tftp::TftpClient::get_entity_path(Entity* ancestor) const
+const EntityPath Tftp::TftpClient::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -602,20 +532,12 @@ EntityPath Tftp::TftpClient::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tftp::TftpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tftp::TftpClient::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tftp::TftpClient::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

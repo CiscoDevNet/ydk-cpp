@@ -15,10 +15,8 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
 	,protocol_routes(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes>())
 {
     information->parent = this;
-    children["information"] = information;
 
     protocol_routes->parent = this;
-    children["protocol-routes"] = protocol_routes;
 
     yang_name = "smiap"; yang_parent_name = "local";
 }
@@ -49,7 +47,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -72,64 +70,38 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "information")
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
-        else
+        if(information == nullptr)
         {
             information = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information>();
-            information->parent = this;
-            children["information"] = information;
         }
-        return children.at("information");
+        return information;
     }
 
     if(child_yang_name == "protocol-routes")
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
-        else
+        if(protocol_routes == nullptr)
         {
             protocol_routes = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes>();
-            protocol_routes->parent = this;
-            children["protocol-routes"] = protocol_routes;
         }
-        return children.at("protocol-routes");
+        return protocol_routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::get_children() const
 {
-    if(children.find("information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(information != nullptr)
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
+        children["information"] = information;
     }
 
-    if(children.find("protocol-routes") == children.end())
+    if(protocol_routes != nullptr)
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
+        children["protocol-routes"] = protocol_routes;
     }
 
     return children;
@@ -177,7 +149,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -200,15 +172,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol-route")
     {
         for(auto const & c : protocol_route)
@@ -216,28 +179,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
-        protocol_route.push_back(std::move(c));
-        children[segment_path] = protocol_route.back();
-        return children.at(segment_path);
+        protocol_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protocol_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -287,7 +246,6 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
     route_path(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath>())
 {
     route_path->parent = this;
-    children["route-path"] = route_path;
 
     yang_name = "protocol-route"; yang_parent_name = "protocol-routes";
 }
@@ -384,7 +342,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -441,41 +399,24 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-path")
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
-        else
+        if(route_path == nullptr)
         {
             route_path = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath>();
-            route_path->parent = this;
-            children["route-path"] = route_path;
         }
-        return children.at("route-path");
+        return route_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::get_children() const
 {
-    if(children.find("route-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_path != nullptr)
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
+        children["route-path"] = route_path;
     }
 
     return children;
@@ -659,7 +600,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -682,15 +623,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-rib-edm-path")
     {
         for(auto const & c : ipv4_rib_edm_path)
@@ -698,28 +630,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath>();
         c->parent = this;
-        ipv4_rib_edm_path.push_back(std::move(c));
-        children[segment_path] = ipv4_rib_edm_path.back();
-        return children.at(segment_path);
+        ipv4_rib_edm_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_rib_edm_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -889,7 +817,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -952,20 +880,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1186,7 +1106,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1220,20 +1140,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1291,10 +1203,8 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
 	,protocol_routes(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes>())
 {
     information->parent = this;
-    children["information"] = information;
 
     protocol_routes->parent = this;
-    children["protocol-routes"] = protocol_routes;
 
     yang_name = "lspv"; yang_parent_name = "local";
 }
@@ -1325,7 +1235,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1348,64 +1258,38 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "information")
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
-        else
+        if(information == nullptr)
         {
             information = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information>();
-            information->parent = this;
-            children["information"] = information;
         }
-        return children.at("information");
+        return information;
     }
 
     if(child_yang_name == "protocol-routes")
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
-        else
+        if(protocol_routes == nullptr)
         {
             protocol_routes = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes>();
-            protocol_routes->parent = this;
-            children["protocol-routes"] = protocol_routes;
         }
-        return children.at("protocol-routes");
+        return protocol_routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::get_children() const
 {
-    if(children.find("information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(information != nullptr)
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
+        children["information"] = information;
     }
 
-    if(children.find("protocol-routes") == children.end())
+    if(protocol_routes != nullptr)
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
+        children["protocol-routes"] = protocol_routes;
     }
 
     return children;
@@ -1453,7 +1337,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1476,15 +1360,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol-route")
     {
         for(auto const & c : protocol_route)
@@ -1492,28 +1367,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
-        protocol_route.push_back(std::move(c));
-        children[segment_path] = protocol_route.back();
-        return children.at(segment_path);
+        protocol_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protocol_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1563,7 +1434,6 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
     route_path(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath>())
 {
     route_path->parent = this;
-    children["route-path"] = route_path;
 
     yang_name = "protocol-route"; yang_parent_name = "protocol-routes";
 }
@@ -1660,7 +1530,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1717,41 +1587,24 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-path")
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
-        else
+        if(route_path == nullptr)
         {
             route_path = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath>();
-            route_path->parent = this;
-            children["route-path"] = route_path;
         }
-        return children.at("route-path");
+        return route_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::get_children() const
 {
-    if(children.find("route-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_path != nullptr)
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
+        children["route-path"] = route_path;
     }
 
     return children;
@@ -1935,7 +1788,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1958,15 +1811,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-rib-edm-path")
     {
         for(auto const & c : ipv4_rib_edm_path)
@@ -1974,28 +1818,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath>();
         c->parent = this;
-        ipv4_rib_edm_path.push_back(std::move(c));
-        children[segment_path] = ipv4_rib_edm_path.back();
-        return children.at(segment_path);
+        ipv4_rib_edm_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_rib_edm_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2165,7 +2005,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2228,20 +2068,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2462,7 +2294,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2496,20 +2328,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2567,10 +2391,8 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
 	,protocol_routes(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes>())
 {
     information->parent = this;
-    children["information"] = information;
 
     protocol_routes->parent = this;
-    children["protocol-routes"] = protocol_routes;
 
     yang_name = "non-as"; yang_parent_name = "local";
 }
@@ -2601,7 +2423,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2624,64 +2446,38 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "information")
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
-        else
+        if(information == nullptr)
         {
             information = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information>();
-            information->parent = this;
-            children["information"] = information;
         }
-        return children.at("information");
+        return information;
     }
 
     if(child_yang_name == "protocol-routes")
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
-        else
+        if(protocol_routes == nullptr)
         {
             protocol_routes = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes>();
-            protocol_routes->parent = this;
-            children["protocol-routes"] = protocol_routes;
         }
-        return children.at("protocol-routes");
+        return protocol_routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::get_children() const
 {
-    if(children.find("information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(information != nullptr)
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
+        children["information"] = information;
     }
 
-    if(children.find("protocol-routes") == children.end())
+    if(protocol_routes != nullptr)
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
+        children["protocol-routes"] = protocol_routes;
     }
 
     return children;
@@ -2729,7 +2525,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2752,15 +2548,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol-route")
     {
         for(auto const & c : protocol_route)
@@ -2768,28 +2555,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
-        protocol_route.push_back(std::move(c));
-        children[segment_path] = protocol_route.back();
-        return children.at(segment_path);
+        protocol_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protocol_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2839,7 +2622,6 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
     route_path(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath>())
 {
     route_path->parent = this;
-    children["route-path"] = route_path;
 
     yang_name = "protocol-route"; yang_parent_name = "protocol-routes";
 }
@@ -2936,7 +2718,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2993,41 +2775,24 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-path")
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
-        else
+        if(route_path == nullptr)
         {
             route_path = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath>();
-            route_path->parent = this;
-            children["route-path"] = route_path;
         }
-        return children.at("route-path");
+        return route_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::get_children() const
 {
-    if(children.find("route-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_path != nullptr)
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
+        children["route-path"] = route_path;
     }
 
     return children;
@@ -3211,7 +2976,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3234,15 +2999,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-rib-edm-path")
     {
         for(auto const & c : ipv4_rib_edm_path)
@@ -3250,28 +3006,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath>();
         c->parent = this;
-        ipv4_rib_edm_path.push_back(std::move(c));
-        children[segment_path] = ipv4_rib_edm_path.back();
-        return children.at(segment_path);
+        ipv4_rib_edm_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_rib_edm_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3441,7 +3193,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3504,20 +3256,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3738,7 +3482,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3772,20 +3516,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3875,7 +3611,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3898,15 +3634,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "as")
     {
         for(auto const & c : as)
@@ -3914,28 +3641,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As>();
         c->parent = this;
-        as.push_back(std::move(c));
-        children[segment_path] = as.back();
-        return children.at(segment_path);
+        as.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : as)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3953,10 +3676,8 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
 	,protocol_routes(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes>())
 {
     information->parent = this;
-    children["information"] = information;
 
     protocol_routes->parent = this;
-    children["protocol-routes"] = protocol_routes;
 
     yang_name = "as"; yang_parent_name = "bgp";
 }
@@ -3989,7 +3710,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4013,64 +3734,38 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "information")
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
-        else
+        if(information == nullptr)
         {
             information = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information>();
-            information->parent = this;
-            children["information"] = information;
         }
-        return children.at("information");
+        return information;
     }
 
     if(child_yang_name == "protocol-routes")
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
-        else
+        if(protocol_routes == nullptr)
         {
             protocol_routes = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes>();
-            protocol_routes->parent = this;
-            children["protocol-routes"] = protocol_routes;
         }
-        return children.at("protocol-routes");
+        return protocol_routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::get_children() const
 {
-    if(children.find("information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(information != nullptr)
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
+        children["information"] = information;
     }
 
-    if(children.find("protocol-routes") == children.end())
+    if(protocol_routes != nullptr)
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
+        children["protocol-routes"] = protocol_routes;
     }
 
     return children;
@@ -4122,7 +3817,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4145,15 +3840,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol-route")
     {
         for(auto const & c : protocol_route)
@@ -4161,28 +3847,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
-        protocol_route.push_back(std::move(c));
-        children[segment_path] = protocol_route.back();
-        return children.at(segment_path);
+        protocol_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protocol_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4232,7 +3914,6 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
     route_path(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath>())
 {
     route_path->parent = this;
-    children["route-path"] = route_path;
 
     yang_name = "protocol-route"; yang_parent_name = "protocol-routes";
 }
@@ -4329,7 +4010,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4386,41 +4067,24 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-path")
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
-        else
+        if(route_path == nullptr)
         {
             route_path = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath>();
-            route_path->parent = this;
-            children["route-path"] = route_path;
         }
-        return children.at("route-path");
+        return route_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::get_children() const
 {
-    if(children.find("route-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_path != nullptr)
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
+        children["route-path"] = route_path;
     }
 
     return children;
@@ -4604,7 +4268,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4627,15 +4291,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-rib-edm-path")
     {
         for(auto const & c : ipv4_rib_edm_path)
@@ -4643,28 +4298,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath>();
         c->parent = this;
-        ipv4_rib_edm_path.push_back(std::move(c));
-        children[segment_path] = ipv4_rib_edm_path.back();
-        return children.at(segment_path);
+        ipv4_rib_edm_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_rib_edm_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4834,7 +4485,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4897,20 +4548,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5131,7 +4774,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5165,20 +4808,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5268,7 +4903,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5291,15 +4926,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "as")
     {
         for(auto const & c : as)
@@ -5307,28 +4933,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As>();
         c->parent = this;
-        as.push_back(std::move(c));
-        children[segment_path] = as.back();
-        return children.at(segment_path);
+        as.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : as)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5346,10 +4968,8 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
 	,protocol_routes(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes>())
 {
     information->parent = this;
-    children["information"] = information;
 
     protocol_routes->parent = this;
-    children["protocol-routes"] = protocol_routes;
 
     yang_name = "as"; yang_parent_name = "isis";
 }
@@ -5382,7 +5002,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5406,64 +5026,38 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "information")
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
-        else
+        if(information == nullptr)
         {
             information = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information>();
-            information->parent = this;
-            children["information"] = information;
         }
-        return children.at("information");
+        return information;
     }
 
     if(child_yang_name == "protocol-routes")
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
-        else
+        if(protocol_routes == nullptr)
         {
             protocol_routes = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes>();
-            protocol_routes->parent = this;
-            children["protocol-routes"] = protocol_routes;
         }
-        return children.at("protocol-routes");
+        return protocol_routes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::get_children() const
 {
-    if(children.find("information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(information != nullptr)
     {
-        if(information != nullptr)
-        {
-            children["information"] = information;
-        }
+        children["information"] = information;
     }
 
-    if(children.find("protocol-routes") == children.end())
+    if(protocol_routes != nullptr)
     {
-        if(protocol_routes != nullptr)
-        {
-            children["protocol-routes"] = protocol_routes;
-        }
+        children["protocol-routes"] = protocol_routes;
     }
 
     return children;
@@ -5515,7 +5109,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5538,15 +5132,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protocol-route")
     {
         for(auto const & c : protocol_route)
@@ -5554,28 +5139,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
-        protocol_route.push_back(std::move(c));
-        children[segment_path] = protocol_route.back();
-        return children.at(segment_path);
+        protocol_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : protocol_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5625,7 +5206,6 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::P
     route_path(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath>())
 {
     route_path->parent = this;
-    children["route-path"] = route_path;
 
     yang_name = "protocol-route"; yang_parent_name = "protocol-routes";
 }
@@ -5722,7 +5302,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5779,41 +5359,24 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-path")
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
-        else
+        if(route_path == nullptr)
         {
             route_path = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath>();
-            route_path->parent = this;
-            children["route-path"] = route_path;
         }
-        return children.at("route-path");
+        return route_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::get_children() const
 {
-    if(children.find("route-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_path != nullptr)
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
+        children["route-path"] = route_path;
     }
 
     return children;
@@ -5997,7 +5560,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6020,15 +5583,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-rib-edm-path")
     {
         for(auto const & c : ipv4_rib_edm_path)
@@ -6036,28 +5590,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath>();
         c->parent = this;
-        ipv4_rib_edm_path.push_back(std::move(c));
-        children[segment_path] = ipv4_rib_edm_path.back();
-        return children.at(segment_path);
+        ipv4_rib_edm_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_rib_edm_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6227,7 +5777,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6290,20 +5840,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6524,7 +6066,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6558,20 +6100,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6661,7 +6195,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6684,15 +6218,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "q-route")
     {
         for(auto const & c : q_route)
@@ -6700,28 +6225,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute>();
         c->parent = this;
-        q_route.push_back(std::move(c));
-        children[segment_path] = q_route.back();
-        return children.at(segment_path);
+        q_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : q_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6771,7 +6292,6 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Q
     route_path(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath>())
 {
     route_path->parent = this;
-    children["route-path"] = route_path;
 
     yang_name = "q-route"; yang_parent_name = "q-routes";
 }
@@ -6868,7 +6388,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6925,41 +6445,24 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-path")
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
-        else
+        if(route_path == nullptr)
         {
             route_path = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath>();
-            route_path->parent = this;
-            children["route-path"] = route_path;
         }
-        return children.at("route-path");
+        return route_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::get_children() const
 {
-    if(children.find("route-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_path != nullptr)
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
+        children["route-path"] = route_path;
     }
 
     return children;
@@ -7143,7 +6646,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7166,15 +6669,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-rib-edm-path")
     {
         for(auto const & c : ipv4_rib_edm_path)
@@ -7182,28 +6676,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath>();
         c->parent = this;
-        ipv4_rib_edm_path.push_back(std::move(c));
-        children[segment_path] = ipv4_rib_edm_path.back();
-        return children.at(segment_path);
+        ipv4_rib_edm_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_rib_edm_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7373,7 +6863,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7436,20 +6926,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7647,7 +7129,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7670,15 +7152,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-route")
     {
         for(auto const & c : backup_route)
@@ -7686,28 +7159,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute>();
         c->parent = this;
-        backup_route.push_back(std::move(c));
-        children[segment_path] = backup_route.back();
-        return children.at(segment_path);
+        backup_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backup_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7758,7 +7227,6 @@ Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::B
     route_path(std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath>())
 {
     route_path->parent = this;
-    children["route-path"] = route_path;
 
     yang_name = "backup-route"; yang_parent_name = "backup-routes";
 }
@@ -7857,7 +7325,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7915,41 +7383,24 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-path")
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
-        else
+        if(route_path == nullptr)
         {
             route_path = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath>();
-            route_path->parent = this;
-            children["route-path"] = route_path;
         }
-        return children.at("route-path");
+        return route_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::get_children() const
 {
-    if(children.find("route-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_path != nullptr)
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
+        children["route-path"] = route_path;
     }
 
     return children;
@@ -8137,7 +7588,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8160,15 +7611,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-rib-edm-path")
     {
         for(auto const & c : ipv4_rib_edm_path)
@@ -8176,28 +7618,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath>();
         c->parent = this;
-        ipv4_rib_edm_path.push_back(std::move(c));
-        children[segment_path] = ipv4_rib_edm_path.back();
-        return children.at(segment_path);
+        ipv4_rib_edm_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_rib_edm_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8367,7 +7805,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8430,20 +7868,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8641,7 +8071,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8664,15 +8094,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "advert")
     {
         for(auto const & c : advert)
@@ -8680,28 +8101,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert>();
         c->parent = this;
-        advert.push_back(std::move(c));
-        children[segment_path] = advert.back();
-        return children.at(segment_path);
+        advert.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : advert)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8755,7 +8172,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8780,15 +8197,6 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-rib-edm-advert")
     {
         for(auto const & c : ipv4_rib_edm_advert)
@@ -8796,28 +8204,24 @@ std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert>();
         c->parent = this;
-        ipv4_rib_edm_advert.push_back(std::move(c));
-        children[segment_path] = ipv4_rib_edm_advert.back();
-        return children.at(segment_path);
+        ipv4_rib_edm_advert.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_rib_edm_advert)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8887,7 +8291,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 
 }
 
-EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8918,20 +8322,12 @@ EntityPath Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteT
 
 std::shared_ptr<Entity> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9009,7 +8405,7 @@ std::string Rib::RibTableIds::get_segment_path() const
 
 }
 
-EntityPath Rib::RibTableIds::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9032,15 +8428,6 @@ EntityPath Rib::RibTableIds::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rib::RibTableIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rib-table-id")
     {
         for(auto const & c : rib_table_id)
@@ -9048,28 +8435,24 @@ std::shared_ptr<Entity> Rib::RibTableIds::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId>();
         c->parent = this;
-        rib_table_id.push_back(std::move(c));
-        children[segment_path] = rib_table_id.back();
-        return children.at(segment_path);
+        rib_table_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rib_table_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9087,10 +8470,8 @@ Rib::RibTableIds::RibTableId::RibTableId()
 	,summary_protos(std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos>())
 {
     rib_table_itf_hndls->parent = this;
-    children["rib-table-itf-hndls"] = rib_table_itf_hndls;
 
     summary_protos->parent = this;
-    children["summary-protos"] = summary_protos;
 
     yang_name = "rib-table-id"; yang_parent_name = "rib-table-ids";
 }
@@ -9123,7 +8504,7 @@ std::string Rib::RibTableIds::RibTableId::get_segment_path() const
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9147,64 +8528,38 @@ EntityPath Rib::RibTableIds::RibTableId::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rib-table-itf-hndls")
     {
-        if(rib_table_itf_hndls != nullptr)
-        {
-            children["rib-table-itf-hndls"] = rib_table_itf_hndls;
-        }
-        else
+        if(rib_table_itf_hndls == nullptr)
         {
             rib_table_itf_hndls = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls>();
-            rib_table_itf_hndls->parent = this;
-            children["rib-table-itf-hndls"] = rib_table_itf_hndls;
         }
-        return children.at("rib-table-itf-hndls");
+        return rib_table_itf_hndls;
     }
 
     if(child_yang_name == "summary-protos")
     {
-        if(summary_protos != nullptr)
-        {
-            children["summary-protos"] = summary_protos;
-        }
-        else
+        if(summary_protos == nullptr)
         {
             summary_protos = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos>();
-            summary_protos->parent = this;
-            children["summary-protos"] = summary_protos;
         }
-        return children.at("summary-protos");
+        return summary_protos;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::get_children() const
 {
-    if(children.find("rib-table-itf-hndls") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rib_table_itf_hndls != nullptr)
     {
-        if(rib_table_itf_hndls != nullptr)
-        {
-            children["rib-table-itf-hndls"] = rib_table_itf_hndls;
-        }
+        children["rib-table-itf-hndls"] = rib_table_itf_hndls;
     }
 
-    if(children.find("summary-protos") == children.end())
+    if(summary_protos != nullptr)
     {
-        if(summary_protos != nullptr)
-        {
-            children["summary-protos"] = summary_protos;
-        }
+        children["summary-protos"] = summary_protos;
     }
 
     return children;
@@ -9256,7 +8611,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::get_segment_path() cons
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9279,15 +8634,6 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary-proto")
     {
         for(auto const & c : summary_proto)
@@ -9295,28 +8641,24 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto>();
         c->parent = this;
-        summary_proto.push_back(std::move(c));
-        children[segment_path] = summary_proto.back();
-        return children.at(segment_path);
+        summary_proto.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : summary_proto)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9352,58 +8694,40 @@ Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::SummaryProto()
 	,rtype_other(std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther>())
 {
     proto_route_count->parent = this;
-    children["proto-route-count"] = proto_route_count;
 
     rtype_bgp_ext->parent = this;
-    children["rtype-bgp-ext"] = rtype_bgp_ext;
 
     rtype_bgp_int->parent = this;
-    children["rtype-bgp-int"] = rtype_bgp_int;
 
     rtype_bgp_loc->parent = this;
-    children["rtype-bgp-loc"] = rtype_bgp_loc;
 
     rtype_igrp2_ext->parent = this;
-    children["rtype-igrp2-ext"] = rtype_igrp2_ext;
 
     rtype_igrp2_int->parent = this;
-    children["rtype-igrp2-int"] = rtype_igrp2_int;
 
     rtype_isis_l1->parent = this;
-    children["rtype-isis-l1"] = rtype_isis_l1;
 
     rtype_isis_l1_ia->parent = this;
-    children["rtype-isis-l1-ia"] = rtype_isis_l1_ia;
 
     rtype_isis_l2->parent = this;
-    children["rtype-isis-l2"] = rtype_isis_l2;
 
     rtype_isis_sum->parent = this;
-    children["rtype-isis-sum"] = rtype_isis_sum;
 
     rtype_none->parent = this;
-    children["rtype-none"] = rtype_none;
 
     rtype_ospf_extern1->parent = this;
-    children["rtype-ospf-extern1"] = rtype_ospf_extern1;
 
     rtype_ospf_extern2->parent = this;
-    children["rtype-ospf-extern2"] = rtype_ospf_extern2;
 
     rtype_ospf_inter->parent = this;
-    children["rtype-ospf-inter"] = rtype_ospf_inter;
 
     rtype_ospf_intra->parent = this;
-    children["rtype-ospf-intra"] = rtype_ospf_intra;
 
     rtype_ospf_nssa1->parent = this;
-    children["rtype-ospf-nssa1"] = rtype_ospf_nssa1;
 
     rtype_ospf_nssa2->parent = this;
-    children["rtype-ospf-nssa2"] = rtype_ospf_nssa2;
 
     rtype_other->parent = this;
-    children["rtype-other"] = rtype_other;
 
     yang_name = "summary-proto"; yang_parent_name = "summary-protos";
 }
@@ -9472,7 +8796,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_segme
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9498,432 +8822,262 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_entity
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "proto-route-count")
     {
-        if(proto_route_count != nullptr)
-        {
-            children["proto-route-count"] = proto_route_count;
-        }
-        else
+        if(proto_route_count == nullptr)
         {
             proto_route_count = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount>();
-            proto_route_count->parent = this;
-            children["proto-route-count"] = proto_route_count;
         }
-        return children.at("proto-route-count");
+        return proto_route_count;
     }
 
     if(child_yang_name == "rtype-bgp-ext")
     {
-        if(rtype_bgp_ext != nullptr)
-        {
-            children["rtype-bgp-ext"] = rtype_bgp_ext;
-        }
-        else
+        if(rtype_bgp_ext == nullptr)
         {
             rtype_bgp_ext = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt>();
-            rtype_bgp_ext->parent = this;
-            children["rtype-bgp-ext"] = rtype_bgp_ext;
         }
-        return children.at("rtype-bgp-ext");
+        return rtype_bgp_ext;
     }
 
     if(child_yang_name == "rtype-bgp-int")
     {
-        if(rtype_bgp_int != nullptr)
-        {
-            children["rtype-bgp-int"] = rtype_bgp_int;
-        }
-        else
+        if(rtype_bgp_int == nullptr)
         {
             rtype_bgp_int = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt>();
-            rtype_bgp_int->parent = this;
-            children["rtype-bgp-int"] = rtype_bgp_int;
         }
-        return children.at("rtype-bgp-int");
+        return rtype_bgp_int;
     }
 
     if(child_yang_name == "rtype-bgp-loc")
     {
-        if(rtype_bgp_loc != nullptr)
-        {
-            children["rtype-bgp-loc"] = rtype_bgp_loc;
-        }
-        else
+        if(rtype_bgp_loc == nullptr)
         {
             rtype_bgp_loc = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc>();
-            rtype_bgp_loc->parent = this;
-            children["rtype-bgp-loc"] = rtype_bgp_loc;
         }
-        return children.at("rtype-bgp-loc");
+        return rtype_bgp_loc;
     }
 
     if(child_yang_name == "rtype-igrp2-ext")
     {
-        if(rtype_igrp2_ext != nullptr)
-        {
-            children["rtype-igrp2-ext"] = rtype_igrp2_ext;
-        }
-        else
+        if(rtype_igrp2_ext == nullptr)
         {
             rtype_igrp2_ext = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext>();
-            rtype_igrp2_ext->parent = this;
-            children["rtype-igrp2-ext"] = rtype_igrp2_ext;
         }
-        return children.at("rtype-igrp2-ext");
+        return rtype_igrp2_ext;
     }
 
     if(child_yang_name == "rtype-igrp2-int")
     {
-        if(rtype_igrp2_int != nullptr)
-        {
-            children["rtype-igrp2-int"] = rtype_igrp2_int;
-        }
-        else
+        if(rtype_igrp2_int == nullptr)
         {
             rtype_igrp2_int = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int>();
-            rtype_igrp2_int->parent = this;
-            children["rtype-igrp2-int"] = rtype_igrp2_int;
         }
-        return children.at("rtype-igrp2-int");
+        return rtype_igrp2_int;
     }
 
     if(child_yang_name == "rtype-isis-l1")
     {
-        if(rtype_isis_l1 != nullptr)
-        {
-            children["rtype-isis-l1"] = rtype_isis_l1;
-        }
-        else
+        if(rtype_isis_l1 == nullptr)
         {
             rtype_isis_l1 = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1>();
-            rtype_isis_l1->parent = this;
-            children["rtype-isis-l1"] = rtype_isis_l1;
         }
-        return children.at("rtype-isis-l1");
+        return rtype_isis_l1;
     }
 
     if(child_yang_name == "rtype-isis-l1-ia")
     {
-        if(rtype_isis_l1_ia != nullptr)
-        {
-            children["rtype-isis-l1-ia"] = rtype_isis_l1_ia;
-        }
-        else
+        if(rtype_isis_l1_ia == nullptr)
         {
             rtype_isis_l1_ia = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia>();
-            rtype_isis_l1_ia->parent = this;
-            children["rtype-isis-l1-ia"] = rtype_isis_l1_ia;
         }
-        return children.at("rtype-isis-l1-ia");
+        return rtype_isis_l1_ia;
     }
 
     if(child_yang_name == "rtype-isis-l2")
     {
-        if(rtype_isis_l2 != nullptr)
-        {
-            children["rtype-isis-l2"] = rtype_isis_l2;
-        }
-        else
+        if(rtype_isis_l2 == nullptr)
         {
             rtype_isis_l2 = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2>();
-            rtype_isis_l2->parent = this;
-            children["rtype-isis-l2"] = rtype_isis_l2;
         }
-        return children.at("rtype-isis-l2");
+        return rtype_isis_l2;
     }
 
     if(child_yang_name == "rtype-isis-sum")
     {
-        if(rtype_isis_sum != nullptr)
-        {
-            children["rtype-isis-sum"] = rtype_isis_sum;
-        }
-        else
+        if(rtype_isis_sum == nullptr)
         {
             rtype_isis_sum = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum>();
-            rtype_isis_sum->parent = this;
-            children["rtype-isis-sum"] = rtype_isis_sum;
         }
-        return children.at("rtype-isis-sum");
+        return rtype_isis_sum;
     }
 
     if(child_yang_name == "rtype-none")
     {
-        if(rtype_none != nullptr)
-        {
-            children["rtype-none"] = rtype_none;
-        }
-        else
+        if(rtype_none == nullptr)
         {
             rtype_none = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone>();
-            rtype_none->parent = this;
-            children["rtype-none"] = rtype_none;
         }
-        return children.at("rtype-none");
+        return rtype_none;
     }
 
     if(child_yang_name == "rtype-ospf-extern1")
     {
-        if(rtype_ospf_extern1 != nullptr)
-        {
-            children["rtype-ospf-extern1"] = rtype_ospf_extern1;
-        }
-        else
+        if(rtype_ospf_extern1 == nullptr)
         {
             rtype_ospf_extern1 = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1>();
-            rtype_ospf_extern1->parent = this;
-            children["rtype-ospf-extern1"] = rtype_ospf_extern1;
         }
-        return children.at("rtype-ospf-extern1");
+        return rtype_ospf_extern1;
     }
 
     if(child_yang_name == "rtype-ospf-extern2")
     {
-        if(rtype_ospf_extern2 != nullptr)
-        {
-            children["rtype-ospf-extern2"] = rtype_ospf_extern2;
-        }
-        else
+        if(rtype_ospf_extern2 == nullptr)
         {
             rtype_ospf_extern2 = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2>();
-            rtype_ospf_extern2->parent = this;
-            children["rtype-ospf-extern2"] = rtype_ospf_extern2;
         }
-        return children.at("rtype-ospf-extern2");
+        return rtype_ospf_extern2;
     }
 
     if(child_yang_name == "rtype-ospf-inter")
     {
-        if(rtype_ospf_inter != nullptr)
-        {
-            children["rtype-ospf-inter"] = rtype_ospf_inter;
-        }
-        else
+        if(rtype_ospf_inter == nullptr)
         {
             rtype_ospf_inter = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter>();
-            rtype_ospf_inter->parent = this;
-            children["rtype-ospf-inter"] = rtype_ospf_inter;
         }
-        return children.at("rtype-ospf-inter");
+        return rtype_ospf_inter;
     }
 
     if(child_yang_name == "rtype-ospf-intra")
     {
-        if(rtype_ospf_intra != nullptr)
-        {
-            children["rtype-ospf-intra"] = rtype_ospf_intra;
-        }
-        else
+        if(rtype_ospf_intra == nullptr)
         {
             rtype_ospf_intra = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra>();
-            rtype_ospf_intra->parent = this;
-            children["rtype-ospf-intra"] = rtype_ospf_intra;
         }
-        return children.at("rtype-ospf-intra");
+        return rtype_ospf_intra;
     }
 
     if(child_yang_name == "rtype-ospf-nssa1")
     {
-        if(rtype_ospf_nssa1 != nullptr)
-        {
-            children["rtype-ospf-nssa1"] = rtype_ospf_nssa1;
-        }
-        else
+        if(rtype_ospf_nssa1 == nullptr)
         {
             rtype_ospf_nssa1 = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1>();
-            rtype_ospf_nssa1->parent = this;
-            children["rtype-ospf-nssa1"] = rtype_ospf_nssa1;
         }
-        return children.at("rtype-ospf-nssa1");
+        return rtype_ospf_nssa1;
     }
 
     if(child_yang_name == "rtype-ospf-nssa2")
     {
-        if(rtype_ospf_nssa2 != nullptr)
-        {
-            children["rtype-ospf-nssa2"] = rtype_ospf_nssa2;
-        }
-        else
+        if(rtype_ospf_nssa2 == nullptr)
         {
             rtype_ospf_nssa2 = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2>();
-            rtype_ospf_nssa2->parent = this;
-            children["rtype-ospf-nssa2"] = rtype_ospf_nssa2;
         }
-        return children.at("rtype-ospf-nssa2");
+        return rtype_ospf_nssa2;
     }
 
     if(child_yang_name == "rtype-other")
     {
-        if(rtype_other != nullptr)
-        {
-            children["rtype-other"] = rtype_other;
-        }
-        else
+        if(rtype_other == nullptr)
         {
             rtype_other = std::make_shared<Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther>();
-            rtype_other->parent = this;
-            children["rtype-other"] = rtype_other;
         }
-        return children.at("rtype-other");
+        return rtype_other;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_children() const
 {
-    if(children.find("proto-route-count") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(proto_route_count != nullptr)
     {
-        if(proto_route_count != nullptr)
-        {
-            children["proto-route-count"] = proto_route_count;
-        }
+        children["proto-route-count"] = proto_route_count;
     }
 
-    if(children.find("rtype-bgp-ext") == children.end())
+    if(rtype_bgp_ext != nullptr)
     {
-        if(rtype_bgp_ext != nullptr)
-        {
-            children["rtype-bgp-ext"] = rtype_bgp_ext;
-        }
+        children["rtype-bgp-ext"] = rtype_bgp_ext;
     }
 
-    if(children.find("rtype-bgp-int") == children.end())
+    if(rtype_bgp_int != nullptr)
     {
-        if(rtype_bgp_int != nullptr)
-        {
-            children["rtype-bgp-int"] = rtype_bgp_int;
-        }
+        children["rtype-bgp-int"] = rtype_bgp_int;
     }
 
-    if(children.find("rtype-bgp-loc") == children.end())
+    if(rtype_bgp_loc != nullptr)
     {
-        if(rtype_bgp_loc != nullptr)
-        {
-            children["rtype-bgp-loc"] = rtype_bgp_loc;
-        }
+        children["rtype-bgp-loc"] = rtype_bgp_loc;
     }
 
-    if(children.find("rtype-igrp2-ext") == children.end())
+    if(rtype_igrp2_ext != nullptr)
     {
-        if(rtype_igrp2_ext != nullptr)
-        {
-            children["rtype-igrp2-ext"] = rtype_igrp2_ext;
-        }
+        children["rtype-igrp2-ext"] = rtype_igrp2_ext;
     }
 
-    if(children.find("rtype-igrp2-int") == children.end())
+    if(rtype_igrp2_int != nullptr)
     {
-        if(rtype_igrp2_int != nullptr)
-        {
-            children["rtype-igrp2-int"] = rtype_igrp2_int;
-        }
+        children["rtype-igrp2-int"] = rtype_igrp2_int;
     }
 
-    if(children.find("rtype-isis-l1") == children.end())
+    if(rtype_isis_l1 != nullptr)
     {
-        if(rtype_isis_l1 != nullptr)
-        {
-            children["rtype-isis-l1"] = rtype_isis_l1;
-        }
+        children["rtype-isis-l1"] = rtype_isis_l1;
     }
 
-    if(children.find("rtype-isis-l1-ia") == children.end())
+    if(rtype_isis_l1_ia != nullptr)
     {
-        if(rtype_isis_l1_ia != nullptr)
-        {
-            children["rtype-isis-l1-ia"] = rtype_isis_l1_ia;
-        }
+        children["rtype-isis-l1-ia"] = rtype_isis_l1_ia;
     }
 
-    if(children.find("rtype-isis-l2") == children.end())
+    if(rtype_isis_l2 != nullptr)
     {
-        if(rtype_isis_l2 != nullptr)
-        {
-            children["rtype-isis-l2"] = rtype_isis_l2;
-        }
+        children["rtype-isis-l2"] = rtype_isis_l2;
     }
 
-    if(children.find("rtype-isis-sum") == children.end())
+    if(rtype_isis_sum != nullptr)
     {
-        if(rtype_isis_sum != nullptr)
-        {
-            children["rtype-isis-sum"] = rtype_isis_sum;
-        }
+        children["rtype-isis-sum"] = rtype_isis_sum;
     }
 
-    if(children.find("rtype-none") == children.end())
+    if(rtype_none != nullptr)
     {
-        if(rtype_none != nullptr)
-        {
-            children["rtype-none"] = rtype_none;
-        }
+        children["rtype-none"] = rtype_none;
     }
 
-    if(children.find("rtype-ospf-extern1") == children.end())
+    if(rtype_ospf_extern1 != nullptr)
     {
-        if(rtype_ospf_extern1 != nullptr)
-        {
-            children["rtype-ospf-extern1"] = rtype_ospf_extern1;
-        }
+        children["rtype-ospf-extern1"] = rtype_ospf_extern1;
     }
 
-    if(children.find("rtype-ospf-extern2") == children.end())
+    if(rtype_ospf_extern2 != nullptr)
     {
-        if(rtype_ospf_extern2 != nullptr)
-        {
-            children["rtype-ospf-extern2"] = rtype_ospf_extern2;
-        }
+        children["rtype-ospf-extern2"] = rtype_ospf_extern2;
     }
 
-    if(children.find("rtype-ospf-inter") == children.end())
+    if(rtype_ospf_inter != nullptr)
     {
-        if(rtype_ospf_inter != nullptr)
-        {
-            children["rtype-ospf-inter"] = rtype_ospf_inter;
-        }
+        children["rtype-ospf-inter"] = rtype_ospf_inter;
     }
 
-    if(children.find("rtype-ospf-intra") == children.end())
+    if(rtype_ospf_intra != nullptr)
     {
-        if(rtype_ospf_intra != nullptr)
-        {
-            children["rtype-ospf-intra"] = rtype_ospf_intra;
-        }
+        children["rtype-ospf-intra"] = rtype_ospf_intra;
     }
 
-    if(children.find("rtype-ospf-nssa1") == children.end())
+    if(rtype_ospf_nssa1 != nullptr)
     {
-        if(rtype_ospf_nssa1 != nullptr)
-        {
-            children["rtype-ospf-nssa1"] = rtype_ospf_nssa1;
-        }
+        children["rtype-ospf-nssa1"] = rtype_ospf_nssa1;
     }
 
-    if(children.find("rtype-ospf-nssa2") == children.end())
+    if(rtype_ospf_nssa2 != nullptr)
     {
-        if(rtype_ospf_nssa2 != nullptr)
-        {
-            children["rtype-ospf-nssa2"] = rtype_ospf_nssa2;
-        }
+        children["rtype-ospf-nssa2"] = rtype_ospf_nssa2;
     }
 
-    if(children.find("rtype-other") == children.end())
+    if(rtype_other != nullptr)
     {
-        if(rtype_other != nullptr)
-        {
-            children["rtype-other"] = rtype_other;
-        }
+        children["rtype-other"] = rtype_other;
     }
 
     return children;
@@ -9985,7 +9139,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRout
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10012,20 +9166,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRoute
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10089,7 +9235,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10116,20 +9262,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone:
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10193,7 +9331,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOthe
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10220,20 +9358,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10297,7 +9427,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspf
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10324,20 +9454,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfI
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10401,7 +9523,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspf
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10428,20 +9550,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfI
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10505,7 +9619,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspf
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10532,20 +9646,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfE
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10609,7 +9715,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspf
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10636,20 +9742,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfE
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10713,7 +9811,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsis
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10740,20 +9838,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisS
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10817,7 +9907,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsis
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10844,20 +9934,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10921,7 +10003,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsis
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10948,20 +10030,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11025,7 +10099,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsis
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11052,20 +10126,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11129,7 +10195,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpI
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11156,20 +10222,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpIn
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11233,7 +10291,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpE
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11260,20 +10318,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpEx
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11337,7 +10387,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpL
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11364,20 +10414,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLo
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11441,7 +10483,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspf
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11468,20 +10510,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfN
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11545,7 +10579,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspf
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11572,20 +10606,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfN
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11649,7 +10675,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11676,20 +10702,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11753,7 +10771,7 @@ std::string Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11780,20 +10798,12 @@ EntityPath Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11855,7 +10865,7 @@ std::string Rib::RibTableIds::RibTableId::RibTableItfHndls::get_segment_path() c
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11878,15 +10888,6 @@ EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::get_entity_path(Entit
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rib-table-itf-hndl")
     {
         for(auto const & c : rib_table_itf_hndl)
@@ -11894,28 +10895,24 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl>();
         c->parent = this;
-        rib_table_itf_hndl.push_back(std::move(c));
-        children[segment_path] = rib_table_itf_hndl.back();
-        return children.at(segment_path);
+        rib_table_itf_hndl.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::RibTableItfHndls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rib_table_itf_hndl)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11966,7 +10963,7 @@ std::string Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::get
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11990,15 +10987,6 @@ EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::get_
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "itf-route")
     {
         for(auto const & c : itf_route)
@@ -12006,28 +10994,24 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute>();
         c->parent = this;
-        itf_route.push_back(std::move(c));
-        children[segment_path] = itf_route.back();
-        return children.at(segment_path);
+        itf_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : itf_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12080,7 +11064,6 @@ Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::ItfRo
     route_path(std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath>())
 {
     route_path->parent = this;
-    children["route-path"] = route_path;
 
     yang_name = "itf-route"; yang_parent_name = "rib-table-itf-hndl";
 }
@@ -12175,7 +11158,7 @@ std::string Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::Itf
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12231,41 +11214,24 @@ EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfR
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "route-path")
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
-        else
+        if(route_path == nullptr)
         {
             route_path = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath>();
-            route_path->parent = this;
-            children["route-path"] = route_path;
         }
-        return children.at("route-path");
+        return route_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::get_children() const
 {
-    if(children.find("route-path") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_path != nullptr)
     {
-        if(route_path != nullptr)
-        {
-            children["route-path"] = route_path;
-        }
+        children["route-path"] = route_path;
     }
 
     return children;
@@ -12445,7 +11411,7 @@ std::string Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::Itf
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12468,15 +11434,6 @@ EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfR
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-rib-edm-path")
     {
         for(auto const & c : ipv4_rib_edm_path)
@@ -12484,28 +11441,24 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath>();
         c->parent = this;
-        ipv4_rib_edm_path.push_back(std::move(c));
-        children[segment_path] = ipv4_rib_edm_path.back();
-        return children.at(segment_path);
+        ipv4_rib_edm_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_rib_edm_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12675,7 +11628,7 @@ std::string Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::Itf
 
 }
 
-EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12738,20 +11691,12 @@ EntityPath Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfR
 
 std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -14,7 +14,6 @@ TcpConnection::TcpConnection()
     nodes(std::make_shared<TcpConnection::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "tcp-connection"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-oper";
 }
@@ -43,12 +42,12 @@ std::string TcpConnection::get_segment_path() const
 
 }
 
-EntityPath TcpConnection::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath TcpConnection::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TcpConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<TcpConnection::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string TcpConnection::Nodes::get_segment_path() const
 
 }
 
-EntityPath TcpConnection::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath TcpConnection::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TcpConnection::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> TcpConnection::Nodes::get_child_by_name(const std::strin
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -245,16 +214,12 @@ TcpConnection::Nodes::Node::Node()
 	,statistics(std::make_shared<TcpConnection::Nodes::Node::Statistics>())
 {
     brief_informations->parent = this;
-    children["brief-informations"] = brief_informations;
 
     detail_informations->parent = this;
-    children["detail-informations"] = detail_informations;
 
     extended_information->parent = this;
-    children["extended-information"] = extended_information;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -291,7 +256,7 @@ std::string TcpConnection::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath TcpConnection::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -315,110 +280,66 @@ EntityPath TcpConnection::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief-informations")
     {
-        if(brief_informations != nullptr)
-        {
-            children["brief-informations"] = brief_informations;
-        }
-        else
+        if(brief_informations == nullptr)
         {
             brief_informations = std::make_shared<TcpConnection::Nodes::Node::BriefInformations>();
-            brief_informations->parent = this;
-            children["brief-informations"] = brief_informations;
         }
-        return children.at("brief-informations");
+        return brief_informations;
     }
 
     if(child_yang_name == "detail-informations")
     {
-        if(detail_informations != nullptr)
-        {
-            children["detail-informations"] = detail_informations;
-        }
-        else
+        if(detail_informations == nullptr)
         {
             detail_informations = std::make_shared<TcpConnection::Nodes::Node::DetailInformations>();
-            detail_informations->parent = this;
-            children["detail-informations"] = detail_informations;
         }
-        return children.at("detail-informations");
+        return detail_informations;
     }
 
     if(child_yang_name == "extended-information")
     {
-        if(extended_information != nullptr)
-        {
-            children["extended-information"] = extended_information;
-        }
-        else
+        if(extended_information == nullptr)
         {
             extended_information = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation>();
-            extended_information->parent = this;
-            children["extended-information"] = extended_information;
         }
-        return children.at("extended-information");
+        return extended_information;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<TcpConnection::Nodes::Node::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::get_children() const
 {
-    if(children.find("brief-informations") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief_informations != nullptr)
     {
-        if(brief_informations != nullptr)
-        {
-            children["brief-informations"] = brief_informations;
-        }
+        children["brief-informations"] = brief_informations;
     }
 
-    if(children.find("detail-informations") == children.end())
+    if(detail_informations != nullptr)
     {
-        if(detail_informations != nullptr)
-        {
-            children["detail-informations"] = detail_informations;
-        }
+        children["detail-informations"] = detail_informations;
     }
 
-    if(children.find("extended-information") == children.end())
+    if(extended_information != nullptr)
     {
-        if(extended_information != nullptr)
-        {
-            children["extended-information"] = extended_information;
-        }
+        children["extended-information"] = extended_information;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -439,13 +360,10 @@ TcpConnection::Nodes::Node::Statistics::Statistics()
 	,summary(std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary>())
 {
     clients->parent = this;
-    children["clients"] = clients;
 
     pcbs->parent = this;
-    children["pcbs"] = pcbs;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "statistics"; yang_parent_name = "node";
 }
@@ -478,7 +396,7 @@ std::string TcpConnection::Nodes::Node::Statistics::get_segment_path() const
 
 }
 
-EntityPath TcpConnection::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -501,87 +419,52 @@ EntityPath TcpConnection::Nodes::Node::Statistics::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clients")
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
-        else
+        if(clients == nullptr)
         {
             clients = std::make_shared<TcpConnection::Nodes::Node::Statistics::Clients>();
-            clients->parent = this;
-            children["clients"] = clients;
         }
-        return children.at("clients");
+        return clients;
     }
 
     if(child_yang_name == "pcbs")
     {
-        if(pcbs != nullptr)
-        {
-            children["pcbs"] = pcbs;
-        }
-        else
+        if(pcbs == nullptr)
         {
             pcbs = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs>();
-            pcbs->parent = this;
-            children["pcbs"] = pcbs;
         }
-        return children.at("pcbs");
+        return pcbs;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::get_children() const
 {
-    if(children.find("clients") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(clients != nullptr)
     {
-        if(clients != nullptr)
-        {
-            children["clients"] = clients;
-        }
+        children["clients"] = clients;
     }
 
-    if(children.find("pcbs") == children.end())
+    if(pcbs != nullptr)
     {
-        if(pcbs != nullptr)
-        {
-            children["pcbs"] = pcbs;
-        }
+        children["pcbs"] = pcbs;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -629,7 +512,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Clients::get_segment_path() 
 
 }
 
-EntityPath TcpConnection::Nodes::Node::Statistics::Clients::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::Statistics::Clients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -652,15 +535,6 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Clients::get_entity_path(Enti
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
         for(auto const & c : client)
@@ -668,28 +542,24 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Clients::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Clients::Client>();
         c->parent = this;
-        client.push_back(std::move(c));
-        children[segment_path] = client.back();
-        return children.at(segment_path);
+        client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::Statistics::Clients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Clients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -748,7 +618,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Clients::Client::get_segment
 
 }
 
-EntityPath TcpConnection::Nodes::Node::Statistics::Clients::Client::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::Statistics::Clients::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -778,20 +648,12 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Clients::Client::get_entity_p
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::Statistics::Clients::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Clients::Client::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -865,7 +727,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::get_segment_path() con
 
 }
 
-EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -888,15 +750,6 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::get_entity_path(Entity*
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "pcb")
     {
         for(auto const & c : pcb)
@@ -904,28 +757,24 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb>();
         c->parent = this;
-        pcb.push_back(std::move(c));
-        children[segment_path] = pcb.back();
-        return children.at(segment_path);
+        pcb.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::Statistics::Pcbs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : pcb)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -960,13 +809,10 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Pcb()
 	,write_io_counts(std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts>())
 {
     async_session_stats->parent = this;
-    children["async-session-stats"] = async_session_stats;
 
     read_io_counts->parent = this;
-    children["read-io-counts"] = read_io_counts;
 
     write_io_counts->parent = this;
-    children["write-io-counts"] = write_io_counts;
 
     yang_name = "pcb"; yang_parent_name = "pcbs";
 }
@@ -1033,7 +879,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_segment_path(
 
 }
 
-EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1073,87 +919,52 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_entity_path(En
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "async-session-stats")
     {
-        if(async_session_stats != nullptr)
-        {
-            children["async-session-stats"] = async_session_stats;
-        }
-        else
+        if(async_session_stats == nullptr)
         {
             async_session_stats = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats>();
-            async_session_stats->parent = this;
-            children["async-session-stats"] = async_session_stats;
         }
-        return children.at("async-session-stats");
+        return async_session_stats;
     }
 
     if(child_yang_name == "read-io-counts")
     {
-        if(read_io_counts != nullptr)
-        {
-            children["read-io-counts"] = read_io_counts;
-        }
-        else
+        if(read_io_counts == nullptr)
         {
             read_io_counts = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts>();
-            read_io_counts->parent = this;
-            children["read-io-counts"] = read_io_counts;
         }
-        return children.at("read-io-counts");
+        return read_io_counts;
     }
 
     if(child_yang_name == "write-io-counts")
     {
-        if(write_io_counts != nullptr)
-        {
-            children["write-io-counts"] = write_io_counts;
-        }
-        else
+        if(write_io_counts == nullptr)
         {
             write_io_counts = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts>();
-            write_io_counts->parent = this;
-            children["write-io-counts"] = write_io_counts;
         }
-        return children.at("write-io-counts");
+        return write_io_counts;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_children() const
 {
-    if(children.find("async-session-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(async_session_stats != nullptr)
     {
-        if(async_session_stats != nullptr)
-        {
-            children["async-session-stats"] = async_session_stats;
-        }
+        children["async-session-stats"] = async_session_stats;
     }
 
-    if(children.find("read-io-counts") == children.end())
+    if(read_io_counts != nullptr)
     {
-        if(read_io_counts != nullptr)
-        {
-            children["read-io-counts"] = read_io_counts;
-        }
+        children["read-io-counts"] = read_io_counts;
     }
 
-    if(children.find("write-io-counts") == children.end())
+    if(write_io_counts != nullptr)
     {
-        if(write_io_counts != nullptr)
-        {
-            children["write-io-counts"] = write_io_counts;
-        }
+        children["write-io-counts"] = write_io_counts;
     }
 
     return children;
@@ -1271,7 +1082,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get
 
 }
 
-EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1298,20 +1109,12 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1375,7 +1178,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::ge
 
 }
 
-EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1402,20 +1205,12 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1590,7 +1385,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 
 }
 
-EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1634,20 +1429,12 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats:
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1985,7 +1772,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Summary::get_segment_path() 
 
 }
 
-EntityPath TcpConnection::Nodes::Node::Statistics::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::Statistics::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2094,20 +1881,12 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Summary::get_entity_path(Enti
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::Statistics::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2464,7 +2243,6 @@ TcpConnection::Nodes::Node::ExtendedInformation::ExtendedInformation()
     display_types(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes>())
 {
     display_types->parent = this;
-    children["display-types"] = display_types;
 
     yang_name = "extended-information"; yang_parent_name = "node";
 }
@@ -2493,7 +2271,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::get_segment_path() 
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2516,41 +2294,24 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::get_entity_path(Enti
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "display-types")
     {
-        if(display_types != nullptr)
-        {
-            children["display-types"] = display_types;
-        }
-        else
+        if(display_types == nullptr)
         {
             display_types = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes>();
-            display_types->parent = this;
-            children["display-types"] = display_types;
         }
-        return children.at("display-types");
+        return display_types;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::get_children() const
 {
-    if(children.find("display-types") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(display_types != nullptr)
     {
-        if(display_types != nullptr)
-        {
-            children["display-types"] = display_types;
-        }
+        children["display-types"] = display_types;
     }
 
     return children;
@@ -2598,7 +2359,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_s
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2621,15 +2382,6 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_en
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "display-type")
     {
         for(auto const & c : display_type)
@@ -2637,28 +2389,24 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType>();
         c->parent = this;
-        display_type.push_back(std::move(c));
-        children[segment_path] = display_type.back();
-        return children.at(segment_path);
+        display_type.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : display_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2709,7 +2457,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2733,15 +2481,6 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "connection-id")
     {
         for(auto const & c : connection_id)
@@ -2749,28 +2488,24 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId>();
         c->parent = this;
-        connection_id.push_back(std::move(c));
-        children[segment_path] = connection_id.back();
-        return children.at(segment_path);
+        connection_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : connection_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2796,13 +2531,10 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 	,local_address(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress>())
 {
     common->parent = this;
-    children["common"] = common;
 
     foreign_address->parent = this;
-    children["foreign-address"] = foreign_address;
 
     local_address->parent = this;
-    children["local-address"] = local_address;
 
     yang_name = "connection-id"; yang_parent_name = "display-type";
 }
@@ -2843,7 +2575,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2870,87 +2602,52 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "common")
     {
-        if(common != nullptr)
-        {
-            children["common"] = common;
-        }
-        else
+        if(common == nullptr)
         {
             common = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common>();
-            common->parent = this;
-            children["common"] = common;
         }
-        return children.at("common");
+        return common;
     }
 
     if(child_yang_name == "foreign-address")
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
-        else
+        if(foreign_address == nullptr)
         {
             foreign_address = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress>();
-            foreign_address->parent = this;
-            children["foreign-address"] = foreign_address;
         }
-        return children.at("foreign-address");
+        return foreign_address;
     }
 
     if(child_yang_name == "local-address")
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
-        else
+        if(local_address == nullptr)
         {
             local_address = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress>();
-            local_address->parent = this;
-            children["local-address"] = local_address;
         }
-        return children.at("local-address");
+        return local_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_children() const
 {
-    if(children.find("common") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(common != nullptr)
     {
-        if(common != nullptr)
-        {
-            children["common"] = common;
-        }
+        children["common"] = common;
     }
 
-    if(children.find("foreign-address") == children.end())
+    if(foreign_address != nullptr)
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
+        children["foreign-address"] = foreign_address;
     }
 
-    if(children.find("local-address") == children.end())
+    if(local_address != nullptr)
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
+        children["local-address"] = local_address;
     }
 
     return children;
@@ -3013,7 +2710,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3039,20 +2736,12 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3109,7 +2798,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3135,20 +2824,12 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3175,7 +2856,6 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     lpts_pcb(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb>())
 {
     lpts_pcb->parent = this;
-    children["lpts-pcb"] = lpts_pcb;
 
     yang_name = "common"; yang_parent_name = "connection-id";
 }
@@ -3206,7 +2886,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3230,41 +2910,24 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lpts-pcb")
     {
-        if(lpts_pcb != nullptr)
-        {
-            children["lpts-pcb"] = lpts_pcb;
-        }
-        else
+        if(lpts_pcb == nullptr)
         {
             lpts_pcb = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb>();
-            lpts_pcb->parent = this;
-            children["lpts-pcb"] = lpts_pcb;
         }
-        return children.at("lpts-pcb");
+        return lpts_pcb;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_children() const
 {
-    if(children.find("lpts-pcb") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lpts_pcb != nullptr)
     {
-        if(lpts_pcb != nullptr)
-        {
-            children["lpts-pcb"] = lpts_pcb;
-        }
+        children["lpts-pcb"] = lpts_pcb;
     }
 
     return children;
@@ -3288,13 +2951,10 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 	,options(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options>())
 {
     accept_mask->parent = this;
-    children["accept-mask"] = accept_mask;
 
     lpts_flags->parent = this;
-    children["lpts-flags"] = lpts_flags;
 
     options->parent = this;
-    children["options"] = options;
 
     yang_name = "lpts-pcb"; yang_parent_name = "common";
 }
@@ -3341,7 +3001,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3366,28 +3026,13 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "accept-mask")
     {
-        if(accept_mask != nullptr)
-        {
-            children["accept-mask"] = accept_mask;
-        }
-        else
+        if(accept_mask == nullptr)
         {
             accept_mask = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask>();
-            accept_mask->parent = this;
-            children["accept-mask"] = accept_mask;
         }
-        return children.at("accept-mask");
+        return accept_mask;
     }
 
     if(child_yang_name == "filter")
@@ -3397,82 +3042,57 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter>();
         c->parent = this;
-        filter.push_back(std::move(c));
-        children[segment_path] = filter.back();
-        return children.at(segment_path);
+        filter.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lpts-flags")
     {
-        if(lpts_flags != nullptr)
-        {
-            children["lpts-flags"] = lpts_flags;
-        }
-        else
+        if(lpts_flags == nullptr)
         {
             lpts_flags = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags>();
-            lpts_flags->parent = this;
-            children["lpts-flags"] = lpts_flags;
         }
-        return children.at("lpts-flags");
+        return lpts_flags;
     }
 
     if(child_yang_name == "options")
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
-        else
+        if(options == nullptr)
         {
             options = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options>();
-            options->parent = this;
-            children["options"] = options;
         }
-        return children.at("options");
+        return options;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_children() const
 {
-    if(children.find("accept-mask") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(accept_mask != nullptr)
     {
-        if(accept_mask != nullptr)
-        {
-            children["accept-mask"] = accept_mask;
-        }
+        children["accept-mask"] = accept_mask;
     }
 
     for (auto const & c : filter)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("lpts-flags") == children.end())
+    if(lpts_flags != nullptr)
     {
-        if(lpts_flags != nullptr)
-        {
-            children["lpts-flags"] = lpts_flags;
-        }
+        children["lpts-flags"] = lpts_flags;
     }
 
-    if(children.find("options") == children.end())
+    if(options != nullptr)
     {
-        if(options != nullptr)
-        {
-            children["options"] = options;
-        }
+        children["options"] = options;
     }
 
     return children;
@@ -3524,7 +3144,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3549,20 +3169,12 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3615,7 +3227,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3641,20 +3253,12 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3720,7 +3324,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3749,20 +3353,12 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3810,13 +3406,10 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 	,remote_address(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress>())
 {
     local_address->parent = this;
-    children["local-address"] = local_address;
 
     packet_type->parent = this;
-    children["packet-type"] = packet_type;
 
     remote_address->parent = this;
-    children["remote-address"] = remote_address;
 
     yang_name = "filter"; yang_parent_name = "lpts-pcb";
 }
@@ -3865,7 +3458,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3896,87 +3489,52 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local-address")
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
-        else
+        if(local_address == nullptr)
         {
             local_address = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress>();
-            local_address->parent = this;
-            children["local-address"] = local_address;
         }
-        return children.at("local-address");
+        return local_address;
     }
 
     if(child_yang_name == "packet-type")
     {
-        if(packet_type != nullptr)
-        {
-            children["packet-type"] = packet_type;
-        }
-        else
+        if(packet_type == nullptr)
         {
             packet_type = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType>();
-            packet_type->parent = this;
-            children["packet-type"] = packet_type;
         }
-        return children.at("packet-type");
+        return packet_type;
     }
 
     if(child_yang_name == "remote-address")
     {
-        if(remote_address != nullptr)
-        {
-            children["remote-address"] = remote_address;
-        }
-        else
+        if(remote_address == nullptr)
         {
             remote_address = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress>();
-            remote_address->parent = this;
-            children["remote-address"] = remote_address;
         }
-        return children.at("remote-address");
+        return remote_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_children() const
 {
-    if(children.find("local-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local_address != nullptr)
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
+        children["local-address"] = local_address;
     }
 
-    if(children.find("packet-type") == children.end())
+    if(packet_type != nullptr)
     {
-        if(packet_type != nullptr)
-        {
-            children["packet-type"] = packet_type;
-        }
+        children["packet-type"] = packet_type;
     }
 
-    if(children.find("remote-address") == children.end())
+    if(remote_address != nullptr)
     {
-        if(remote_address != nullptr)
-        {
-            children["remote-address"] = remote_address;
-        }
+        children["remote-address"] = remote_address;
     }
 
     return children;
@@ -4061,7 +3619,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4089,20 +3647,12 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4167,7 +3717,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4193,20 +3743,12 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4263,7 +3805,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 
 }
 
-EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4289,20 +3831,12 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4360,7 +3894,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::get_segment_path() c
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4383,15 +3917,6 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::get_entity_path(Entit
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-information")
     {
         for(auto const & c : detail_information)
@@ -4399,28 +3924,24 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation>();
         c->parent = this;
-        detail_information.push_back(std::move(c));
-        children[segment_path] = detail_information.back();
-        return children.at(segment_path);
+        detail_information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detail_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4516,31 +4037,22 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::DetailInforma
 	,state_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags>())
 {
     feature_flags->parent = this;
-    children["feature-flags"] = feature_flags;
 
     foreign_address->parent = this;
-    children["foreign-address"] = foreign_address;
 
     local_address->parent = this;
-    children["local-address"] = local_address;
 
     receive_buf_state_flags->parent = this;
-    children["receive-buf-state-flags"] = receive_buf_state_flags;
 
     request_flags->parent = this;
-    children["request-flags"] = request_flags;
 
     send_buf_state_flags->parent = this;
-    children["send-buf-state-flags"] = send_buf_state_flags;
 
     socket_option_flags->parent = this;
-    children["socket-option-flags"] = socket_option_flags;
 
     socket_state_flags->parent = this;
-    children["socket-state-flags"] = socket_state_flags;
 
     state_flags->parent = this;
-    children["state-flags"] = state_flags;
 
     yang_name = "detail-information"; yang_parent_name = "detail-informations";
 }
@@ -4777,7 +4289,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::g
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4874,88 +4386,49 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ge
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "feature-flags")
     {
-        if(feature_flags != nullptr)
-        {
-            children["feature-flags"] = feature_flags;
-        }
-        else
+        if(feature_flags == nullptr)
         {
             feature_flags = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags>();
-            feature_flags->parent = this;
-            children["feature-flags"] = feature_flags;
         }
-        return children.at("feature-flags");
+        return feature_flags;
     }
 
     if(child_yang_name == "foreign-address")
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
-        else
+        if(foreign_address == nullptr)
         {
             foreign_address = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress>();
-            foreign_address->parent = this;
-            children["foreign-address"] = foreign_address;
         }
-        return children.at("foreign-address");
+        return foreign_address;
     }
 
     if(child_yang_name == "local-address")
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
-        else
+        if(local_address == nullptr)
         {
             local_address = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress>();
-            local_address->parent = this;
-            children["local-address"] = local_address;
         }
-        return children.at("local-address");
+        return local_address;
     }
 
     if(child_yang_name == "receive-buf-state-flags")
     {
-        if(receive_buf_state_flags != nullptr)
-        {
-            children["receive-buf-state-flags"] = receive_buf_state_flags;
-        }
-        else
+        if(receive_buf_state_flags == nullptr)
         {
             receive_buf_state_flags = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags>();
-            receive_buf_state_flags->parent = this;
-            children["receive-buf-state-flags"] = receive_buf_state_flags;
         }
-        return children.at("receive-buf-state-flags");
+        return receive_buf_state_flags;
     }
 
     if(child_yang_name == "request-flags")
     {
-        if(request_flags != nullptr)
-        {
-            children["request-flags"] = request_flags;
-        }
-        else
+        if(request_flags == nullptr)
         {
             request_flags = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags>();
-            request_flags->parent = this;
-            children["request-flags"] = request_flags;
         }
-        return children.at("request-flags");
+        return request_flags;
     }
 
     if(child_yang_name == "sack-blk")
@@ -4965,30 +4438,22 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk>();
         c->parent = this;
-        sack_blk.push_back(std::move(c));
-        children[segment_path] = sack_blk.back();
-        return children.at(segment_path);
+        sack_blk.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "send-buf-state-flags")
     {
-        if(send_buf_state_flags != nullptr)
-        {
-            children["send-buf-state-flags"] = send_buf_state_flags;
-        }
-        else
+        if(send_buf_state_flags == nullptr)
         {
             send_buf_state_flags = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags>();
-            send_buf_state_flags->parent = this;
-            children["send-buf-state-flags"] = send_buf_state_flags;
         }
-        return children.at("send-buf-state-flags");
+        return send_buf_state_flags;
     }
 
     if(child_yang_name == "send-sack-hole")
@@ -4998,60 +4463,40 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole>();
         c->parent = this;
-        send_sack_hole.push_back(std::move(c));
-        children[segment_path] = send_sack_hole.back();
-        return children.at(segment_path);
+        send_sack_hole.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "socket-option-flags")
     {
-        if(socket_option_flags != nullptr)
-        {
-            children["socket-option-flags"] = socket_option_flags;
-        }
-        else
+        if(socket_option_flags == nullptr)
         {
             socket_option_flags = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags>();
-            socket_option_flags->parent = this;
-            children["socket-option-flags"] = socket_option_flags;
         }
-        return children.at("socket-option-flags");
+        return socket_option_flags;
     }
 
     if(child_yang_name == "socket-state-flags")
     {
-        if(socket_state_flags != nullptr)
-        {
-            children["socket-state-flags"] = socket_state_flags;
-        }
-        else
+        if(socket_state_flags == nullptr)
         {
             socket_state_flags = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags>();
-            socket_state_flags->parent = this;
-            children["socket-state-flags"] = socket_state_flags;
         }
-        return children.at("socket-state-flags");
+        return socket_state_flags;
     }
 
     if(child_yang_name == "state-flags")
     {
-        if(state_flags != nullptr)
-        {
-            children["state-flags"] = state_flags;
-        }
-        else
+        if(state_flags == nullptr)
         {
             state_flags = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags>();
-            state_flags->parent = this;
-            children["state-flags"] = state_flags;
         }
-        return children.at("state-flags");
+        return state_flags;
     }
 
     if(child_yang_name == "timer")
@@ -5061,116 +4506,79 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer>();
         c->parent = this;
-        timer.push_back(std::move(c));
-        children[segment_path] = timer.back();
-        return children.at(segment_path);
+        timer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_children() const
 {
-    if(children.find("feature-flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(feature_flags != nullptr)
     {
-        if(feature_flags != nullptr)
-        {
-            children["feature-flags"] = feature_flags;
-        }
+        children["feature-flags"] = feature_flags;
     }
 
-    if(children.find("foreign-address") == children.end())
+    if(foreign_address != nullptr)
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
+        children["foreign-address"] = foreign_address;
     }
 
-    if(children.find("local-address") == children.end())
+    if(local_address != nullptr)
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
+        children["local-address"] = local_address;
     }
 
-    if(children.find("receive-buf-state-flags") == children.end())
+    if(receive_buf_state_flags != nullptr)
     {
-        if(receive_buf_state_flags != nullptr)
-        {
-            children["receive-buf-state-flags"] = receive_buf_state_flags;
-        }
+        children["receive-buf-state-flags"] = receive_buf_state_flags;
     }
 
-    if(children.find("request-flags") == children.end())
+    if(request_flags != nullptr)
     {
-        if(request_flags != nullptr)
-        {
-            children["request-flags"] = request_flags;
-        }
+        children["request-flags"] = request_flags;
     }
 
     for (auto const & c : sack_blk)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("send-buf-state-flags") == children.end())
+    if(send_buf_state_flags != nullptr)
     {
-        if(send_buf_state_flags != nullptr)
-        {
-            children["send-buf-state-flags"] = send_buf_state_flags;
-        }
+        children["send-buf-state-flags"] = send_buf_state_flags;
     }
 
     for (auto const & c : send_sack_hole)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("socket-option-flags") == children.end())
+    if(socket_option_flags != nullptr)
     {
-        if(socket_option_flags != nullptr)
-        {
-            children["socket-option-flags"] = socket_option_flags;
-        }
+        children["socket-option-flags"] = socket_option_flags;
     }
 
-    if(children.find("socket-state-flags") == children.end())
+    if(socket_state_flags != nullptr)
     {
-        if(socket_state_flags != nullptr)
-        {
-            children["socket-state-flags"] = socket_state_flags;
-        }
+        children["socket-state-flags"] = socket_state_flags;
     }
 
-    if(children.find("state-flags") == children.end())
+    if(state_flags != nullptr)
     {
-        if(state_flags != nullptr)
-        {
-            children["state-flags"] = state_flags;
-        }
+        children["state-flags"] = state_flags;
     }
 
     for (auto const & c : timer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5505,7 +4913,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::L
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5531,20 +4939,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Lo
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5601,7 +5001,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::F
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5627,20 +5027,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Fo
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5721,7 +5113,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::S
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5755,20 +5147,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::So
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5893,7 +5277,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::S
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5931,20 +5315,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::So
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6067,7 +5443,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::F
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6099,20 +5475,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Fe
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6208,7 +5576,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::S
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6239,20 +5607,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::St
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6347,7 +5707,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::R
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6379,20 +5739,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Re
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6500,7 +5852,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::R
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6535,20 +5887,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Re
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6668,7 +6012,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::S
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6703,20 +6047,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Se
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6812,7 +6148,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::T
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6839,20 +6175,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Ti
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6910,7 +6238,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::S
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6935,20 +6263,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Sa
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7004,7 +6324,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::S
 
 }
 
-EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7031,20 +6351,12 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Se
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7106,7 +6418,7 @@ std::string TcpConnection::Nodes::Node::BriefInformations::get_segment_path() co
 
 }
 
-EntityPath TcpConnection::Nodes::Node::BriefInformations::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::BriefInformations::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7129,15 +6441,6 @@ EntityPath TcpConnection::Nodes::Node::BriefInformations::get_entity_path(Entity
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief-information")
     {
         for(auto const & c : brief_information)
@@ -7145,28 +6448,24 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation>();
         c->parent = this;
-        brief_information.push_back(std::move(c));
-        children[segment_path] = brief_information.back();
-        return children.at(segment_path);
+        brief_information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::BriefInformations::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::BriefInformations::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : brief_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7193,10 +6492,8 @@ TcpConnection::Nodes::Node::BriefInformations::BriefInformation::BriefInformatio
 	,local_address(std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress>())
 {
     foreign_address->parent = this;
-    children["foreign-address"] = foreign_address;
 
     local_address->parent = this;
-    children["local-address"] = local_address;
 
     yang_name = "brief-information"; yang_parent_name = "brief-informations";
 }
@@ -7247,7 +6544,7 @@ std::string TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get
 
 }
 
-EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7280,64 +6577,38 @@ EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "foreign-address")
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
-        else
+        if(foreign_address == nullptr)
         {
             foreign_address = std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress>();
-            foreign_address->parent = this;
-            children["foreign-address"] = foreign_address;
         }
-        return children.at("foreign-address");
+        return foreign_address;
     }
 
     if(child_yang_name == "local-address")
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
-        else
+        if(local_address == nullptr)
         {
             local_address = std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress>();
-            local_address->parent = this;
-            children["local-address"] = local_address;
         }
-        return children.at("local-address");
+        return local_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_children() const
 {
-    if(children.find("foreign-address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(foreign_address != nullptr)
     {
-        if(foreign_address != nullptr)
-        {
-            children["foreign-address"] = foreign_address;
-        }
+        children["foreign-address"] = foreign_address;
     }
 
-    if(children.find("local-address") == children.end())
+    if(local_address != nullptr)
     {
-        if(local_address != nullptr)
-        {
-            children["local-address"] = local_address;
-        }
+        children["local-address"] = local_address;
     }
 
     return children;
@@ -7424,7 +6695,7 @@ std::string TcpConnection::Nodes::Node::BriefInformations::BriefInformation::Loc
 
 }
 
-EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7450,20 +6721,12 @@ EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::Loca
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7520,7 +6783,7 @@ std::string TcpConnection::Nodes::Node::BriefInformations::BriefInformation::For
 
 }
 
-EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::get_entity_path(Entity* ancestor) const
+const EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7546,20 +6809,12 @@ EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::Fore
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7584,7 +6839,6 @@ Tcp::Tcp()
     nodes(std::make_shared<Tcp::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "tcp"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-oper";
 }
@@ -7613,12 +6867,12 @@ std::string Tcp::get_segment_path() const
 
 }
 
-EntityPath Tcp::get_entity_path(Entity* ancestor) const
+const EntityPath Tcp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -7633,41 +6887,24 @@ EntityPath Tcp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Tcp::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tcp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tcp::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -7735,7 +6972,7 @@ std::string Tcp::Nodes::get_segment_path() const
 
 }
 
-EntityPath Tcp::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Tcp::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7758,15 +6995,6 @@ EntityPath Tcp::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tcp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -7774,28 +7002,24 @@ std::shared_ptr<Entity> Tcp::Nodes::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Tcp::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tcp::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7812,7 +7036,6 @@ Tcp::Nodes::Node::Node()
     statistics(std::make_shared<Tcp::Nodes::Node::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -7843,7 +7066,7 @@ std::string Tcp::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Tcp::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Tcp::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7867,41 +7090,24 @@ EntityPath Tcp::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tcp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Tcp::Nodes::Node::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tcp::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::Node::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -7921,10 +7127,8 @@ Tcp::Nodes::Node::Statistics::Statistics()
 	,ipv6_traffic(std::make_shared<Tcp::Nodes::Node::Statistics::Ipv6Traffic>())
 {
     ipv4_traffic->parent = this;
-    children["ipv4-traffic"] = ipv4_traffic;
 
     ipv6_traffic->parent = this;
-    children["ipv6-traffic"] = ipv6_traffic;
 
     yang_name = "statistics"; yang_parent_name = "node";
 }
@@ -7955,7 +7159,7 @@ std::string Tcp::Nodes::Node::Statistics::get_segment_path() const
 
 }
 
-EntityPath Tcp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Tcp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7978,64 +7182,38 @@ EntityPath Tcp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Tcp::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-traffic")
     {
-        if(ipv4_traffic != nullptr)
-        {
-            children["ipv4-traffic"] = ipv4_traffic;
-        }
-        else
+        if(ipv4_traffic == nullptr)
         {
             ipv4_traffic = std::make_shared<Tcp::Nodes::Node::Statistics::Ipv4Traffic>();
-            ipv4_traffic->parent = this;
-            children["ipv4-traffic"] = ipv4_traffic;
         }
-        return children.at("ipv4-traffic");
+        return ipv4_traffic;
     }
 
     if(child_yang_name == "ipv6-traffic")
     {
-        if(ipv6_traffic != nullptr)
-        {
-            children["ipv6-traffic"] = ipv6_traffic;
-        }
-        else
+        if(ipv6_traffic == nullptr)
         {
             ipv6_traffic = std::make_shared<Tcp::Nodes::Node::Statistics::Ipv6Traffic>();
-            ipv6_traffic->parent = this;
-            children["ipv6-traffic"] = ipv6_traffic;
         }
-        return children.at("ipv6-traffic");
+        return ipv6_traffic;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tcp::Nodes::Node::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::Node::Statistics::get_children() const
 {
-    if(children.find("ipv4-traffic") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_traffic != nullptr)
     {
-        if(ipv4_traffic != nullptr)
-        {
-            children["ipv4-traffic"] = ipv4_traffic;
-        }
+        children["ipv4-traffic"] = ipv4_traffic;
     }
 
-    if(children.find("ipv6-traffic") == children.end())
+    if(ipv6_traffic != nullptr)
     {
-        if(ipv6_traffic != nullptr)
-        {
-            children["ipv6-traffic"] = ipv6_traffic;
-        }
+        children["ipv6-traffic"] = ipv6_traffic;
     }
 
     return children;
@@ -8088,7 +7266,7 @@ std::string Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_segment_path() const
 
 }
 
-EntityPath Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_entity_path(Entity* ancestor) const
+const EntityPath Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8116,20 +7294,12 @@ EntityPath Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8200,7 +7370,7 @@ std::string Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_segment_path() const
 
 }
 
-EntityPath Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_entity_path(Entity* ancestor) const
+const EntityPath Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8228,20 +7398,12 @@ EntityPath Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8274,7 +7436,6 @@ TcpNsr::TcpNsr()
     nodes(std::make_shared<TcpNsr::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "tcp-nsr"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-oper";
 }
@@ -8303,12 +7464,12 @@ std::string TcpNsr::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -8323,41 +7484,24 @@ EntityPath TcpNsr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TcpNsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<TcpNsr::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -8425,7 +7569,7 @@ std::string TcpNsr::Nodes::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8448,15 +7592,6 @@ EntityPath TcpNsr::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TcpNsr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -8464,28 +7599,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8505,16 +7636,12 @@ TcpNsr::Nodes::Node::Node()
 	,statistics(std::make_shared<TcpNsr::Nodes::Node::Statistics>())
 {
     client->parent = this;
-    children["client"] = client;
 
     session->parent = this;
-    children["session"] = session;
 
     session_set->parent = this;
-    children["session-set"] = session_set;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -8551,7 +7678,7 @@ std::string TcpNsr::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8575,110 +7702,66 @@ EntityPath TcpNsr::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client")
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
-        else
+        if(client == nullptr)
         {
             client = std::make_shared<TcpNsr::Nodes::Node::Client>();
-            client->parent = this;
-            children["client"] = client;
         }
-        return children.at("client");
+        return client;
     }
 
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<TcpNsr::Nodes::Node::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "session-set")
     {
-        if(session_set != nullptr)
-        {
-            children["session-set"] = session_set;
-        }
-        else
+        if(session_set == nullptr)
         {
             session_set = std::make_shared<TcpNsr::Nodes::Node::SessionSet>();
-            session_set->parent = this;
-            children["session-set"] = session_set;
         }
-        return children.at("session-set");
+        return session_set;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<TcpNsr::Nodes::Node::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::get_children() const
 {
-    if(children.find("client") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(client != nullptr)
     {
-        if(client != nullptr)
-        {
-            children["client"] = client;
-        }
+        children["client"] = client;
     }
 
-    if(children.find("session") == children.end())
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("session-set") == children.end())
+    if(session_set != nullptr)
     {
-        if(session_set != nullptr)
-        {
-            children["session-set"] = session_set;
-        }
+        children["session-set"] = session_set;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -8698,10 +7781,8 @@ TcpNsr::Nodes::Node::Session::Session()
 	,detail_sessions(std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions>())
 {
     brief_sessions->parent = this;
-    children["brief-sessions"] = brief_sessions;
 
     detail_sessions->parent = this;
-    children["detail-sessions"] = detail_sessions;
 
     yang_name = "session"; yang_parent_name = "node";
 }
@@ -8732,7 +7813,7 @@ std::string TcpNsr::Nodes::Node::Session::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Session::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8755,64 +7836,38 @@ EntityPath TcpNsr::Nodes::Node::Session::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief-sessions")
     {
-        if(brief_sessions != nullptr)
-        {
-            children["brief-sessions"] = brief_sessions;
-        }
-        else
+        if(brief_sessions == nullptr)
         {
             brief_sessions = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions>();
-            brief_sessions->parent = this;
-            children["brief-sessions"] = brief_sessions;
         }
-        return children.at("brief-sessions");
+        return brief_sessions;
     }
 
     if(child_yang_name == "detail-sessions")
     {
-        if(detail_sessions != nullptr)
-        {
-            children["detail-sessions"] = detail_sessions;
-        }
-        else
+        if(detail_sessions == nullptr)
         {
             detail_sessions = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions>();
-            detail_sessions->parent = this;
-            children["detail-sessions"] = detail_sessions;
         }
-        return children.at("detail-sessions");
+        return detail_sessions;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::get_children() const
 {
-    if(children.find("brief-sessions") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief_sessions != nullptr)
     {
-        if(brief_sessions != nullptr)
-        {
-            children["brief-sessions"] = brief_sessions;
-        }
+        children["brief-sessions"] = brief_sessions;
     }
 
-    if(children.find("detail-sessions") == children.end())
+    if(detail_sessions != nullptr)
     {
-        if(detail_sessions != nullptr)
-        {
-            children["detail-sessions"] = detail_sessions;
-        }
+        children["detail-sessions"] = detail_sessions;
     }
 
     return children;
@@ -8860,7 +7915,7 @@ std::string TcpNsr::Nodes::Node::Session::BriefSessions::get_segment_path() cons
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Session::BriefSessions::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Session::BriefSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8883,15 +7938,6 @@ EntityPath TcpNsr::Nodes::Node::Session::BriefSessions::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief-session")
     {
         for(auto const & c : brief_session)
@@ -8899,28 +7945,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession>();
         c->parent = this;
-        brief_session.push_back(std::move(c));
-        children[segment_path] = brief_session.back();
-        return children.at(segment_path);
+        brief_session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Session::BriefSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : brief_session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9015,7 +8057,7 @@ std::string TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_segme
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9053,20 +8095,12 @@ EntityPath TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_entity
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9164,7 +8198,7 @@ std::string TcpNsr::Nodes::Node::Session::DetailSessions::get_segment_path() con
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9187,15 +8221,6 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::get_entity_path(Entity*
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-session")
     {
         for(auto const & c : detail_session)
@@ -9203,28 +8228,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession>();
         c->parent = this;
-        detail_session.push_back(std::move(c));
-        children[segment_path] = detail_session.back();
-        return children.at(segment_path);
+        detail_session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Session::DetailSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detail_session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9286,7 +8307,6 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::DetailSession()
     set_information(std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation>())
 {
     set_information->parent = this;
-    children["set-information"] = set_information;
 
     yang_name = "detail-session"; yang_parent_name = "detail-sessions";
 }
@@ -9445,7 +8465,7 @@ std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_seg
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9516,15 +8536,6 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_enti
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "internal-ack-hold-queue")
     {
         for(auto const & c : internal_ack_hold_queue)
@@ -9532,15 +8543,13 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSess
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue>();
         c->parent = this;
-        internal_ack_hold_queue.push_back(std::move(c));
-        children[segment_path] = internal_ack_hold_queue.back();
-        return children.at(segment_path);
+        internal_ack_hold_queue.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "packet-hold-queue")
@@ -9550,59 +8559,43 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSess
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue>();
         c->parent = this;
-        packet_hold_queue.push_back(std::move(c));
-        children[segment_path] = packet_hold_queue.back();
-        return children.at(segment_path);
+        packet_hold_queue.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "set-information")
     {
-        if(set_information != nullptr)
-        {
-            children["set-information"] = set_information;
-        }
-        else
+        if(set_information == nullptr)
         {
             set_information = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation>();
-            set_information->parent = this;
-            children["set-information"] = set_information;
         }
-        return children.at("set-information");
+        return set_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : internal_ack_hold_queue)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : packet_hold_queue)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("set-information") == children.end())
+    if(set_information != nullptr)
     {
-        if(set_information != nullptr)
-        {
-            children["set-information"] = set_information;
-        }
+        children["set-information"] = set_information;
     }
 
     return children;
@@ -9878,7 +8871,7 @@ std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInfo
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9919,20 +8912,12 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInfor
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10049,7 +9034,7 @@ std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketH
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10075,20 +9060,12 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHo
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10145,7 +9122,7 @@ std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::Interna
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10171,20 +9148,12 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::Internal
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10210,10 +9179,8 @@ TcpNsr::Nodes::Node::Client::Client()
 	,detail_clients(std::make_shared<TcpNsr::Nodes::Node::Client::DetailClients>())
 {
     brief_clients->parent = this;
-    children["brief-clients"] = brief_clients;
 
     detail_clients->parent = this;
-    children["detail-clients"] = detail_clients;
 
     yang_name = "client"; yang_parent_name = "node";
 }
@@ -10244,7 +9211,7 @@ std::string TcpNsr::Nodes::Node::Client::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Client::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Client::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10267,64 +9234,38 @@ EntityPath TcpNsr::Nodes::Node::Client::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief-clients")
     {
-        if(brief_clients != nullptr)
-        {
-            children["brief-clients"] = brief_clients;
-        }
-        else
+        if(brief_clients == nullptr)
         {
             brief_clients = std::make_shared<TcpNsr::Nodes::Node::Client::BriefClients>();
-            brief_clients->parent = this;
-            children["brief-clients"] = brief_clients;
         }
-        return children.at("brief-clients");
+        return brief_clients;
     }
 
     if(child_yang_name == "detail-clients")
     {
-        if(detail_clients != nullptr)
-        {
-            children["detail-clients"] = detail_clients;
-        }
-        else
+        if(detail_clients == nullptr)
         {
             detail_clients = std::make_shared<TcpNsr::Nodes::Node::Client::DetailClients>();
-            detail_clients->parent = this;
-            children["detail-clients"] = detail_clients;
         }
-        return children.at("detail-clients");
+        return detail_clients;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Client::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::get_children() const
 {
-    if(children.find("brief-clients") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief_clients != nullptr)
     {
-        if(brief_clients != nullptr)
-        {
-            children["brief-clients"] = brief_clients;
-        }
+        children["brief-clients"] = brief_clients;
     }
 
-    if(children.find("detail-clients") == children.end())
+    if(detail_clients != nullptr)
     {
-        if(detail_clients != nullptr)
-        {
-            children["detail-clients"] = detail_clients;
-        }
+        children["detail-clients"] = detail_clients;
     }
 
     return children;
@@ -10372,7 +9313,7 @@ std::string TcpNsr::Nodes::Node::Client::DetailClients::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Client::DetailClients::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Client::DetailClients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10395,15 +9336,6 @@ EntityPath TcpNsr::Nodes::Node::Client::DetailClients::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::DetailClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-client")
     {
         for(auto const & c : detail_client)
@@ -10411,28 +9343,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::DetailClients::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Client::DetailClients::DetailClient>();
         c->parent = this;
-        detail_client.push_back(std::move(c));
-        children[segment_path] = detail_client.back();
-        return children.at(segment_path);
+        detail_client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Client::DetailClients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::DetailClients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detail_client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10503,7 +9431,7 @@ std::string TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_segmen
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10537,20 +9465,12 @@ EntityPath TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_entity_
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10640,7 +9560,7 @@ std::string TcpNsr::Nodes::Node::Client::BriefClients::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Client::BriefClients::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Client::BriefClients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10663,15 +9583,6 @@ EntityPath TcpNsr::Nodes::Node::Client::BriefClients::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::BriefClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief-client")
     {
         for(auto const & c : brief_client)
@@ -10679,28 +9590,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::BriefClients::get_child_by_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Client::BriefClients::BriefClient>();
         c->parent = this;
-        brief_client.push_back(std::move(c));
-        children[segment_path] = brief_client.back();
-        return children.at(segment_path);
+        brief_client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Client::BriefClients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::BriefClients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : brief_client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10765,7 +9672,7 @@ std::string TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_segment_
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10797,20 +9704,12 @@ EntityPath TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_entity_pa
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10860,10 +9759,8 @@ TcpNsr::Nodes::Node::SessionSet::SessionSet()
 	,detail_sets(std::make_shared<TcpNsr::Nodes::Node::SessionSet::DetailSets>())
 {
     brief_sets->parent = this;
-    children["brief-sets"] = brief_sets;
 
     detail_sets->parent = this;
-    children["detail-sets"] = detail_sets;
 
     yang_name = "session-set"; yang_parent_name = "node";
 }
@@ -10894,7 +9791,7 @@ std::string TcpNsr::Nodes::Node::SessionSet::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::Node::SessionSet::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::SessionSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10917,64 +9814,38 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief-sets")
     {
-        if(brief_sets != nullptr)
-        {
-            children["brief-sets"] = brief_sets;
-        }
-        else
+        if(brief_sets == nullptr)
         {
             brief_sets = std::make_shared<TcpNsr::Nodes::Node::SessionSet::BriefSets>();
-            brief_sets->parent = this;
-            children["brief-sets"] = brief_sets;
         }
-        return children.at("brief-sets");
+        return brief_sets;
     }
 
     if(child_yang_name == "detail-sets")
     {
-        if(detail_sets != nullptr)
-        {
-            children["detail-sets"] = detail_sets;
-        }
-        else
+        if(detail_sets == nullptr)
         {
             detail_sets = std::make_shared<TcpNsr::Nodes::Node::SessionSet::DetailSets>();
-            detail_sets->parent = this;
-            children["detail-sets"] = detail_sets;
         }
-        return children.at("detail-sets");
+        return detail_sets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::SessionSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::get_children() const
 {
-    if(children.find("brief-sets") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief_sets != nullptr)
     {
-        if(brief_sets != nullptr)
-        {
-            children["brief-sets"] = brief_sets;
-        }
+        children["brief-sets"] = brief_sets;
     }
 
-    if(children.find("detail-sets") == children.end())
+    if(detail_sets != nullptr)
     {
-        if(detail_sets != nullptr)
-        {
-            children["detail-sets"] = detail_sets;
-        }
+        children["detail-sets"] = detail_sets;
     }
 
     return children;
@@ -11022,7 +9893,7 @@ std::string TcpNsr::Nodes::Node::SessionSet::DetailSets::get_segment_path() cons
 
 }
 
-EntityPath TcpNsr::Nodes::Node::SessionSet::DetailSets::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::SessionSet::DetailSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11045,15 +9916,6 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::DetailSets::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::DetailSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail-set")
     {
         for(auto const & c : detail_set)
@@ -11061,28 +9923,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::DetailSets::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet>();
         c->parent = this;
-        detail_set.push_back(std::move(c));
-        children[segment_path] = detail_set.back();
-        return children.at(segment_path);
+        detail_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::SessionSet::DetailSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::DetailSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detail_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11222,7 +10080,7 @@ std::string TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_segment_
 
 }
 
-EntityPath TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11279,20 +10137,12 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_entity_pa
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11474,7 +10324,7 @@ std::string TcpNsr::Nodes::Node::SessionSet::BriefSets::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::Node::SessionSet::BriefSets::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::SessionSet::BriefSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11497,15 +10347,6 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::BriefSets::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::BriefSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief-set")
     {
         for(auto const & c : brief_set)
@@ -11513,28 +10354,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::BriefSets::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet>();
         c->parent = this;
-        brief_set.push_back(std::move(c));
-        children[segment_path] = brief_set.back();
-        return children.at(segment_path);
+        brief_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::SessionSet::BriefSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::BriefSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : brief_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11629,7 +10466,7 @@ std::string TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_segment_pa
 
 }
 
-EntityPath TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11671,20 +10508,12 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_entity_path
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11776,16 +10605,12 @@ TcpNsr::Nodes::Node::Statistics::Statistics()
 	,summary(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary>())
 {
     statistic_clients->parent = this;
-    children["statistic-clients"] = statistic_clients;
 
     statistic_sessions->parent = this;
-    children["statistic-sessions"] = statistic_sessions;
 
     statistic_sets->parent = this;
-    children["statistic-sets"] = statistic_sets;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "statistics"; yang_parent_name = "node";
 }
@@ -11820,7 +10645,7 @@ std::string TcpNsr::Nodes::Node::Statistics::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11843,110 +10668,66 @@ EntityPath TcpNsr::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistic-clients")
     {
-        if(statistic_clients != nullptr)
-        {
-            children["statistic-clients"] = statistic_clients;
-        }
-        else
+        if(statistic_clients == nullptr)
         {
             statistic_clients = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients>();
-            statistic_clients->parent = this;
-            children["statistic-clients"] = statistic_clients;
         }
-        return children.at("statistic-clients");
+        return statistic_clients;
     }
 
     if(child_yang_name == "statistic-sessions")
     {
-        if(statistic_sessions != nullptr)
-        {
-            children["statistic-sessions"] = statistic_sessions;
-        }
-        else
+        if(statistic_sessions == nullptr)
         {
             statistic_sessions = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions>();
-            statistic_sessions->parent = this;
-            children["statistic-sessions"] = statistic_sessions;
         }
-        return children.at("statistic-sessions");
+        return statistic_sessions;
     }
 
     if(child_yang_name == "statistic-sets")
     {
-        if(statistic_sets != nullptr)
-        {
-            children["statistic-sets"] = statistic_sets;
-        }
-        else
+        if(statistic_sets == nullptr)
         {
             statistic_sets = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSets>();
-            statistic_sets->parent = this;
-            children["statistic-sets"] = statistic_sets;
         }
-        return children.at("statistic-sets");
+        return statistic_sets;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::get_children() const
 {
-    if(children.find("statistic-clients") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistic_clients != nullptr)
     {
-        if(statistic_clients != nullptr)
-        {
-            children["statistic-clients"] = statistic_clients;
-        }
+        children["statistic-clients"] = statistic_clients;
     }
 
-    if(children.find("statistic-sessions") == children.end())
+    if(statistic_sessions != nullptr)
     {
-        if(statistic_sessions != nullptr)
-        {
-            children["statistic-sessions"] = statistic_sessions;
-        }
+        children["statistic-sessions"] = statistic_sessions;
     }
 
-    if(children.find("statistic-sets") == children.end())
+    if(statistic_sets != nullptr)
     {
-        if(statistic_sets != nullptr)
-        {
-            children["statistic-sets"] = statistic_sets;
-        }
+        children["statistic-sets"] = statistic_sets;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -11996,10 +10777,8 @@ TcpNsr::Nodes::Node::Statistics::Summary::Summary()
 	,snd_counters(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::SndCounters>())
 {
     audit_counters->parent = this;
-    children["audit-counters"] = audit_counters;
 
     snd_counters->parent = this;
-    children["snd-counters"] = snd_counters;
 
     yang_name = "summary"; yang_parent_name = "statistics";
 }
@@ -12106,7 +10885,7 @@ std::string TcpNsr::Nodes::Node::Statistics::Summary::get_segment_path() const
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12162,28 +10941,13 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "audit-counters")
     {
-        if(audit_counters != nullptr)
-        {
-            children["audit-counters"] = audit_counters;
-        }
-        else
+        if(audit_counters == nullptr)
         {
             audit_counters = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters>();
-            audit_counters->parent = this;
-            children["audit-counters"] = audit_counters;
         }
-        return children.at("audit-counters");
+        return audit_counters;
     }
 
     if(child_yang_name == "notification-statistic")
@@ -12193,59 +10957,43 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic>();
         c->parent = this;
-        notification_statistic.push_back(std::move(c));
-        children[segment_path] = notification_statistic.back();
-        return children.at(segment_path);
+        notification_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "snd-counters")
     {
-        if(snd_counters != nullptr)
-        {
-            children["snd-counters"] = snd_counters;
-        }
-        else
+        if(snd_counters == nullptr)
         {
             snd_counters = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::SndCounters>();
-            snd_counters->parent = this;
-            children["snd-counters"] = snd_counters;
         }
-        return children.at("snd-counters");
+        return snd_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::get_children() const
 {
-    if(children.find("audit-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(audit_counters != nullptr)
     {
-        if(audit_counters != nullptr)
-        {
-            children["audit-counters"] = audit_counters;
-        }
+        children["audit-counters"] = audit_counters;
     }
 
     for (auto const & c : notification_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("snd-counters") == children.end())
+    if(snd_counters != nullptr)
     {
-        if(snd_counters != nullptr)
-        {
-            children["snd-counters"] = snd_counters;
-        }
+        children["snd-counters"] = snd_counters;
     }
 
     return children;
@@ -12393,10 +11141,8 @@ TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::SndCounters()
 	,common(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common>())
 {
     aggr_only->parent = this;
-    children["aggr-only"] = aggr_only;
 
     common->parent = this;
-    children["common"] = common;
 
     yang_name = "snd-counters"; yang_parent_name = "summary";
 }
@@ -12427,7 +11173,7 @@ std::string TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_segment_p
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12450,64 +11196,38 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_entity_pat
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggr-only")
     {
-        if(aggr_only != nullptr)
-        {
-            children["aggr-only"] = aggr_only;
-        }
-        else
+        if(aggr_only == nullptr)
         {
             aggr_only = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly>();
-            aggr_only->parent = this;
-            children["aggr-only"] = aggr_only;
         }
-        return children.at("aggr-only");
+        return aggr_only;
     }
 
     if(child_yang_name == "common")
     {
-        if(common != nullptr)
-        {
-            children["common"] = common;
-        }
-        else
+        if(common == nullptr)
         {
             common = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common>();
-            common->parent = this;
-            children["common"] = common;
         }
-        return children.at("common");
+        return common;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_children() const
 {
-    if(children.find("aggr-only") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggr_only != nullptr)
     {
-        if(aggr_only != nullptr)
-        {
-            children["aggr-only"] = aggr_only;
-        }
+        children["aggr-only"] = aggr_only;
     }
 
-    if(children.find("common") == children.end())
+    if(common != nullptr)
     {
-        if(common != nullptr)
-        {
-            children["common"] = common;
-        }
+        children["common"] = common;
     }
 
     return children;
@@ -12620,7 +11340,7 @@ std::string TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_s
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12668,20 +11388,12 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_en
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12841,7 +11553,7 @@ std::string TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12872,20 +11584,12 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12931,10 +11635,8 @@ TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AuditCounters()
 	,common(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common>())
 {
     aggr_only->parent = this;
-    children["aggr-only"] = aggr_only;
 
     common->parent = this;
-    children["common"] = common;
 
     yang_name = "audit-counters"; yang_parent_name = "summary";
 }
@@ -12965,7 +11667,7 @@ std::string TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_segment
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12988,64 +11690,38 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_entity_p
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aggr-only")
     {
-        if(aggr_only != nullptr)
-        {
-            children["aggr-only"] = aggr_only;
-        }
-        else
+        if(aggr_only == nullptr)
         {
             aggr_only = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly>();
-            aggr_only->parent = this;
-            children["aggr-only"] = aggr_only;
         }
-        return children.at("aggr-only");
+        return aggr_only;
     }
 
     if(child_yang_name == "common")
     {
-        if(common != nullptr)
-        {
-            children["common"] = common;
-        }
-        else
+        if(common == nullptr)
         {
             common = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common>();
-            common->parent = this;
-            children["common"] = common;
         }
-        return children.at("common");
+        return common;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_children() const
 {
-    if(children.find("aggr-only") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aggr_only != nullptr)
     {
-        if(aggr_only != nullptr)
-        {
-            children["aggr-only"] = aggr_only;
-        }
+        children["aggr-only"] = aggr_only;
     }
 
-    if(children.find("common") == children.end())
+    if(common != nullptr)
     {
-        if(common != nullptr)
-        {
-            children["common"] = common;
-        }
+        children["common"] = common;
     }
 
     return children;
@@ -13158,7 +11834,7 @@ std::string TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13206,20 +11882,12 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13373,7 +12041,7 @@ std::string TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::g
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13402,20 +12070,12 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::ge
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13487,7 +12147,7 @@ std::string TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13514,20 +12174,12 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13589,7 +12241,7 @@ std::string TcpNsr::Nodes::Node::Statistics::StatisticClients::get_segment_path(
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13612,15 +12264,6 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::get_entity_path(En
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistic-client")
     {
         for(auto const & c : statistic_client)
@@ -13628,28 +12271,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient>();
         c->parent = this;
-        statistic_client.push_back(std::move(c));
-        children[segment_path] = statistic_client.back();
-        return children.at(segment_path);
+        statistic_client.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::StatisticClients::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticClients::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : statistic_client)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13727,7 +12366,7 @@ std::string TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13760,15 +12399,6 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::g
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "notification-statistic")
     {
         for(auto const & c : notification_statistic)
@@ -13776,28 +12406,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::Stati
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic>();
         c->parent = this;
-        notification_statistic.push_back(std::move(c));
-        children[segment_path] = notification_statistic.back();
-        return children.at(segment_path);
+        notification_statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : notification_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13887,7 +12513,7 @@ std::string TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13914,20 +12540,12 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::N
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13989,7 +12607,7 @@ std::string TcpNsr::Nodes::Node::Statistics::StatisticSets::get_segment_path() c
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSets::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14012,15 +12630,6 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSets::get_entity_path(Entit
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistic-set")
     {
         for(auto const & c : statistic_set)
@@ -14028,28 +12637,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSets::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet>();
         c->parent = this;
-        statistic_set.push_back(std::move(c));
-        children[segment_path] = statistic_set.back();
-        return children.at(segment_path);
+        statistic_set.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::StatisticSets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : statistic_set)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14114,7 +12719,7 @@ std::string TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_se
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14146,20 +12751,12 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_ent
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14241,7 +12838,7 @@ std::string TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_segment_path
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14264,15 +12861,6 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_entity_path(E
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistic-session")
     {
         for(auto const & c : statistic_session)
@@ -14280,28 +12868,24 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession>();
         c->parent = this;
-        statistic_session.push_back(std::move(c));
-        children[segment_path] = statistic_session.back();
-        return children.at(segment_path);
+        statistic_session.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : statistic_session)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14328,7 +12912,6 @@ TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::StatisticS
     snd_counters(std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters>())
 {
     snd_counters->parent = this;
-    children["snd-counters"] = snd_counters;
 
     yang_name = "statistic-session"; yang_parent_name = "statistic-sessions";
 }
@@ -14379,7 +12962,7 @@ std::string TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14413,41 +12996,24 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession:
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "snd-counters")
     {
-        if(snd_counters != nullptr)
-        {
-            children["snd-counters"] = snd_counters;
-        }
-        else
+        if(snd_counters == nullptr)
         {
             snd_counters = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters>();
-            snd_counters->parent = this;
-            children["snd-counters"] = snd_counters;
         }
-        return children.at("snd-counters");
+        return snd_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_children() const
 {
-    if(children.find("snd-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(snd_counters != nullptr)
     {
-        if(snd_counters != nullptr)
-        {
-            children["snd-counters"] = snd_counters;
-        }
+        children["snd-counters"] = snd_counters;
     }
 
     return children;
@@ -14604,7 +13170,7 @@ std::string TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession
 
 }
 
-EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::get_entity_path(Entity* ancestor) const
+const EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14652,20 +13218,12 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession:
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

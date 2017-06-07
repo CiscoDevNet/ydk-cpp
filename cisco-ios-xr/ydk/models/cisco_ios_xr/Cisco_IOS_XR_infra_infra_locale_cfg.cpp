@@ -43,12 +43,12 @@ std::string Locale::get_segment_path() const
 
 }
 
-EntityPath Locale::get_entity_path(Entity* ancestor) const
+const EntityPath Locale::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -65,20 +65,12 @@ EntityPath Locale::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Locale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Locale::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Locale::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -18,25 +18,22 @@ class Pppoe : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class AccessInterfaceStatistics; //type: Pppoe::AccessInterfaceStatistics
         class Nodes; //type: Pppoe::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::AccessInterfaceStatistics> access_interface_statistics;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes> nodes;
-
-
+        
 }; // Pppoe
 
 
@@ -48,19 +45,16 @@ class Pppoe::AccessInterfaceStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AccessInterfaceStatistic; //type: Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic> > access_interface_statistic;
-
-
+        
 }; // Pppoe::AccessInterfaceStatistics
 
 
@@ -72,20 +66,17 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
-
         class PacketCounts; //type: Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts> packet_counts;
-
-
+        
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic
 
 
@@ -97,13 +88,11 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Padi; //type: Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi
         class Pado; //type: Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado
@@ -122,8 +111,7 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts :
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess> pads_success;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt> padt;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState> session_state;
-
-
+        
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts
 
 
@@ -135,18 +123,15 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padi
 
@@ -159,18 +144,15 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Pado
 
@@ -183,18 +165,15 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padr
 
@@ -207,18 +186,15 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsSuccess
 
@@ -231,18 +207,15 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::PadsError
 
@@ -255,18 +228,15 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Padt
 
@@ -279,18 +249,15 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::SessionState
 
@@ -303,18 +270,15 @@ class Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic::PacketCounts::Other
 
@@ -327,19 +291,16 @@ class Pppoe::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Pppoe::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node> > node;
-
-
+        
 }; // Pppoe::Nodes
 
 
@@ -351,15 +312,13 @@ class Pppoe::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Statistics; //type: Pppoe::Nodes::Node::Statistics
         class AccessInterface; //type: Pppoe::Nodes::Node::AccessInterface
         class Interfaces; //type: Pppoe::Nodes::Node::Interfaces
@@ -371,8 +330,7 @@ class Pppoe::Nodes::Node : public Entity
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Interfaces> interfaces;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Statistics> statistics;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::SummaryTotal> summary_total;
-
-
+        
 }; // Pppoe::Nodes::Node
 
 
@@ -384,21 +342,18 @@ class Pppoe::Nodes::Node::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PacketCounts; //type: Pppoe::Nodes::Node::Statistics::PacketCounts
         class PacketErrorCounts; //type: Pppoe::Nodes::Node::Statistics::PacketErrorCounts
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Statistics::PacketCounts> packet_counts;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Statistics::PacketErrorCounts> packet_error_counts;
-
-
+        
 }; // Pppoe::Nodes::Node::Statistics
 
 
@@ -410,13 +365,11 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Padi; //type: Pppoe::Nodes::Node::Statistics::PacketCounts::Padi
         class Pado; //type: Pppoe::Nodes::Node::Statistics::PacketCounts::Pado
@@ -435,8 +388,7 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts : public Entity
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess> pads_success;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Statistics::PacketCounts::Padt> padt;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState> session_state;
-
-
+        
 }; // Pppoe::Nodes::Node::Statistics::PacketCounts
 
 
@@ -448,18 +400,15 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts::Padi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::Statistics::PacketCounts::Padi
 
@@ -472,18 +421,15 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts::Pado : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::Statistics::PacketCounts::Pado
 
@@ -496,18 +442,15 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts::Padr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::Statistics::PacketCounts::Padr
 
@@ -520,18 +463,15 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::Statistics::PacketCounts::PadsSuccess
 
@@ -544,18 +484,15 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::Statistics::PacketCounts::PadsError
 
@@ -568,18 +505,15 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts::Padt : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::Statistics::PacketCounts::Padt
 
@@ -592,18 +526,15 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::Statistics::PacketCounts::SessionState
 
@@ -616,18 +547,15 @@ class Pppoe::Nodes::Node::Statistics::PacketCounts::Other : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sent; //type: uint32
         YLeaf received; //type: uint32
         YLeaf dropped; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::Statistics::PacketCounts::Other
 
@@ -640,12 +568,11 @@ class Pppoe::Nodes::Node::Statistics::PacketErrorCounts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf no_interface_handle; //type: uint32
         YLeaf no_packet_payload; //type: uint32
@@ -700,8 +627,6 @@ class Pppoe::Nodes::Node::Statistics::PacketErrorCounts : public Entity
         YLeaf invalid_vlan_tags; //type: uint32
         YLeaf packet_on_srg_slave; //type: uint32
 
-
-
 }; // Pppoe::Nodes::Node::Statistics::PacketErrorCounts
 
 
@@ -713,19 +638,16 @@ class Pppoe::Nodes::Node::AccessInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Summaries; //type: Pppoe::Nodes::Node::AccessInterface::Summaries
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::AccessInterface::Summaries> summaries;
-
-
+        
 }; // Pppoe::Nodes::Node::AccessInterface
 
 
@@ -737,19 +659,16 @@ class Pppoe::Nodes::Node::AccessInterface::Summaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Summary; //type: Pppoe::Nodes::Node::AccessInterface::Summaries::Summary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::AccessInterface::Summaries::Summary> > summary;
-
-
+        
 }; // Pppoe::Nodes::Node::AccessInterface::Summaries
 
 
@@ -761,12 +680,11 @@ class Pppoe::Nodes::Node::AccessInterface::Summaries::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
@@ -776,8 +694,6 @@ class Pppoe::Nodes::Node::AccessInterface::Summaries::Summary : public Entity
         YLeaf is_ready; //type: int32
         YLeaf sessions; //type: uint32
         YLeaf incomplete_sessions; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::AccessInterface::Summaries::Summary
 
@@ -790,19 +706,16 @@ class Pppoe::Nodes::Node::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: Pppoe::Nodes::Node::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Interfaces::Interface> > interface;
-
-
+        
 }; // Pppoe::Nodes::Node::Interfaces
 
 
@@ -814,12 +727,11 @@ class Pppoe::Nodes::Node::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_name_xr; //type: string
@@ -832,12 +744,10 @@ class Pppoe::Nodes::Node::Interfaces::Interface : public Entity
         YLeaf vlan_outer_id; //type: uint16
         YLeaf vlan_inner_id; //type: uint16
         YLeaf srg_state; //type: PppoeMaSessionIdbSrgStateEnum
-
         class Tags; //type: Pppoe::Nodes::Node::Interfaces::Interface::Tags
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Interfaces::Interface::Tags> tags;
-
-
+        
 }; // Pppoe::Nodes::Node::Interfaces::Interface
 
 
@@ -849,12 +759,11 @@ class Pppoe::Nodes::Node::Interfaces::Interface::Tags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_name; //type: string
         YLeaf max_payload; //type: uint16
@@ -877,12 +786,10 @@ class Pppoe::Nodes::Node::Interfaces::Interface::Tags : public Entity
         YLeaf dsl_actual_delay_up; //type: uint32
         YLeaf dsl_max_delay_down; //type: uint32
         YLeaf dsl_actual_delay_down; //type: uint32
-
         class AccessLoopEncapsulation; //type: Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation> access_loop_encapsulation;
-
-
+        
 }; // Pppoe::Nodes::Node::Interfaces::Interface::Tags
 
 
@@ -894,18 +801,15 @@ class Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf data_link; //type: uint8
         YLeaf encaps1; //type: uint8
         YLeaf encaps2; //type: uint8
-
-
 
 }; // Pppoe::Nodes::Node::Interfaces::Interface::Tags::AccessLoopEncapsulation
 
@@ -918,19 +822,16 @@ class Pppoe::Nodes::Node::BbaGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BbaGroup; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup> > bba_group;
-
-
+        
 }; // Pppoe::Nodes::Node::BbaGroups
 
 
@@ -942,15 +843,13 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf bba_group_name; //type: string
-
         class LimitConfig; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig
         class Limits; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits
         class Throttles; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles
@@ -960,8 +859,7 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup : public Entity
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits> limits;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig> throttle_config;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles> throttles;
-
-
+        
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup
 
 
@@ -973,13 +871,11 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Card; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card
         class AccessIntf; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf
@@ -1006,8 +902,7 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig : public Entity
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId> outer_vlan_id;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId> remote_id;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId> vlan_id;
-
-
+        
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig
 
 
@@ -1019,18 +914,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Card
 
@@ -1043,18 +935,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::AccessIntf
 
@@ -1067,18 +956,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::Mac
 
@@ -1091,18 +977,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwf
 
@@ -1115,18 +998,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacAccessInterface
 
@@ -1139,18 +1019,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::MacIwfAccessInterface
 
@@ -1163,18 +1040,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitId
 
@@ -1187,18 +1061,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::RemoteId
 
@@ -1211,18 +1082,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::CircuitIdAndRemoteId
 
@@ -1235,18 +1103,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::OuterVlanId
 
@@ -1259,18 +1124,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::InnerVlanId
 
@@ -1283,18 +1145,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_limit; //type: uint32
         YLeaf threshold; //type: uint32
         YLeaf radius_override_enabled; //type: int32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::LimitConfig::VlanId
 
@@ -1307,19 +1166,16 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Limit; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit> > limit;
-
-
+        
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits
 
 
@@ -1331,12 +1187,11 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf mac_address; //type: string
@@ -1350,8 +1205,6 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit : public Entity
         YLeaf radius_override_set; //type: int32
         YLeaf override_limit; //type: uint32
 
-
-
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit
 
 
@@ -1363,19 +1216,16 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Throttle; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle> > throttle;
-
-
+        
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles
 
 
@@ -1387,12 +1237,11 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf mac_address; //type: string
@@ -1407,8 +1256,6 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle : public Enti
         YLeaf padi_count; //type: uint32
         YLeaf padr_count; //type: uint32
 
-
-
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle
 
 
@@ -1420,13 +1267,11 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Mac; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac
         class MacAccessInterface; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface
@@ -1447,8 +1292,7 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig : public Entity
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId> outer_vlan_id;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId> remote_id;
         std::shared_ptr<Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId> vlan_id;
-
-
+        
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig
 
 
@@ -1460,18 +1304,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf limit; //type: uint32
         YLeaf request_period; //type: uint32
         YLeaf blocking_period; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::Mac
 
@@ -1484,18 +1325,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf limit; //type: uint32
         YLeaf request_period; //type: uint32
         YLeaf blocking_period; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacAccessInterface
 
@@ -1508,18 +1346,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInter
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf limit; //type: uint32
         YLeaf request_period; //type: uint32
         YLeaf blocking_period; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::MacIwfAccessInterface
 
@@ -1532,18 +1367,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf limit; //type: uint32
         YLeaf request_period; //type: uint32
         YLeaf blocking_period; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitId
 
@@ -1556,18 +1388,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf limit; //type: uint32
         YLeaf request_period; //type: uint32
         YLeaf blocking_period; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::RemoteId
 
@@ -1580,18 +1409,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemot
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf limit; //type: uint32
         YLeaf request_period; //type: uint32
         YLeaf blocking_period; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::CircuitIdAndRemoteId
 
@@ -1604,18 +1430,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf limit; //type: uint32
         YLeaf request_period; //type: uint32
         YLeaf blocking_period; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::OuterVlanId
 
@@ -1628,18 +1451,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf limit; //type: uint32
         YLeaf request_period; //type: uint32
         YLeaf blocking_period; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::InnerVlanId
 
@@ -1652,18 +1472,15 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf limit; //type: uint32
         YLeaf request_period; //type: uint32
         YLeaf blocking_period; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::ThrottleConfig::VlanId
 
@@ -1676,12 +1493,11 @@ class Pppoe::Nodes::Node::SummaryTotal : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ready_access_interfaces; //type: uint32
         YLeaf not_ready_access_interfaces; //type: uint32
@@ -1693,8 +1509,6 @@ class Pppoe::Nodes::Node::SummaryTotal : public Entity
         YLeaf flow_control_disconnected_sessions; //type: uint64
         YLeaf flow_control_successful_sessions; //type: uint64
         YLeaf pppoema_subscriber_infra_flow_control; //type: uint32
-
-
 
 }; // Pppoe::Nodes::Node::SummaryTotal
 

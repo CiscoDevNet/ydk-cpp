@@ -21,19 +21,14 @@ Qos::Qos()
 	,qos_global(std::make_shared<Qos::QosGlobal>())
 {
     interface_table->parent = this;
-    children["interface-table"] = interface_table;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     nv_interface_table->parent = this;
-    children["nv-interface-table"] = nv_interface_table;
 
     nv_satellite->parent = this;
-    children["nv-satellite"] = nv_satellite;
 
     qos_global->parent = this;
-    children["qos-global"] = qos_global;
 
     yang_name = "qos"; yang_parent_name = "Cisco-IOS-XR-qos-ma-oper";
 }
@@ -70,12 +65,12 @@ std::string Qos::get_segment_path() const
 
 }
 
-EntityPath Qos::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -90,133 +85,80 @@ EntityPath Qos::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-table")
     {
-        if(interface_table != nullptr)
-        {
-            children["interface-table"] = interface_table;
-        }
-        else
+        if(interface_table == nullptr)
         {
             interface_table = std::make_shared<Qos::InterfaceTable>();
-            interface_table->parent = this;
-            children["interface-table"] = interface_table;
         }
-        return children.at("interface-table");
+        return interface_table;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Qos::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     if(child_yang_name == "nv-interface-table")
     {
-        if(nv_interface_table != nullptr)
-        {
-            children["nv-interface-table"] = nv_interface_table;
-        }
-        else
+        if(nv_interface_table == nullptr)
         {
             nv_interface_table = std::make_shared<Qos::NvInterfaceTable>();
-            nv_interface_table->parent = this;
-            children["nv-interface-table"] = nv_interface_table;
         }
-        return children.at("nv-interface-table");
+        return nv_interface_table;
     }
 
     if(child_yang_name == "nv-satellite")
     {
-        if(nv_satellite != nullptr)
-        {
-            children["nv-satellite"] = nv_satellite;
-        }
-        else
+        if(nv_satellite == nullptr)
         {
             nv_satellite = std::make_shared<Qos::NvSatellite>();
-            nv_satellite->parent = this;
-            children["nv-satellite"] = nv_satellite;
         }
-        return children.at("nv-satellite");
+        return nv_satellite;
     }
 
     if(child_yang_name == "qos-global")
     {
-        if(qos_global != nullptr)
-        {
-            children["qos-global"] = qos_global;
-        }
-        else
+        if(qos_global == nullptr)
         {
             qos_global = std::make_shared<Qos::QosGlobal>();
-            qos_global->parent = this;
-            children["qos-global"] = qos_global;
         }
-        return children.at("qos-global");
+        return qos_global;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::get_children() const
 {
-    if(children.find("interface-table") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_table != nullptr)
     {
-        if(interface_table != nullptr)
-        {
-            children["interface-table"] = interface_table;
-        }
+        children["interface-table"] = interface_table;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
-    if(children.find("nv-interface-table") == children.end())
+    if(nv_interface_table != nullptr)
     {
-        if(nv_interface_table != nullptr)
-        {
-            children["nv-interface-table"] = nv_interface_table;
-        }
+        children["nv-interface-table"] = nv_interface_table;
     }
 
-    if(children.find("nv-satellite") == children.end())
+    if(nv_satellite != nullptr)
     {
-        if(nv_satellite != nullptr)
-        {
-            children["nv-satellite"] = nv_satellite;
-        }
+        children["nv-satellite"] = nv_satellite;
     }
 
-    if(children.find("qos-global") == children.end())
+    if(qos_global != nullptr)
     {
-        if(qos_global != nullptr)
-        {
-            children["qos-global"] = qos_global;
-        }
+        children["qos-global"] = qos_global;
     }
 
     return children;
@@ -284,7 +226,7 @@ std::string Qos::NvInterfaceTable::get_segment_path() const
 
 }
 
-EntityPath Qos::NvInterfaceTable::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -307,15 +249,6 @@ EntityPath Qos::NvInterfaceTable::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -323,28 +256,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -365,19 +294,14 @@ Qos::NvInterfaceTable::Interface::Interface()
 	,satellite_ids(std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds>())
 {
     input->parent = this;
-    children["input"] = input;
 
     member_interfaces->parent = this;
-    children["member-interfaces"] = member_interfaces;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     output->parent = this;
-    children["output"] = output;
 
     satellite_ids->parent = this;
-    children["satellite-ids"] = satellite_ids;
 
     yang_name = "interface"; yang_parent_name = "nv-interface-table";
 }
@@ -416,7 +340,7 @@ std::string Qos::NvInterfaceTable::Interface::get_segment_path() const
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -440,133 +364,80 @@ EntityPath Qos::NvInterfaceTable::Interface::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input")
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
+        if(input == nullptr)
         {
             input = std::make_shared<Qos::NvInterfaceTable::Interface::Input>();
-            input->parent = this;
-            children["input"] = input;
         }
-        return children.at("input");
+        return input;
     }
 
     if(child_yang_name == "member-interfaces")
     {
-        if(member_interfaces != nullptr)
-        {
-            children["member-interfaces"] = member_interfaces;
-        }
-        else
+        if(member_interfaces == nullptr)
         {
             member_interfaces = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces>();
-            member_interfaces->parent = this;
-            children["member-interfaces"] = member_interfaces;
         }
-        return children.at("member-interfaces");
+        return member_interfaces;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<Qos::NvInterfaceTable::Interface::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     if(child_yang_name == "satellite-ids")
     {
-        if(satellite_ids != nullptr)
-        {
-            children["satellite-ids"] = satellite_ids;
-        }
-        else
+        if(satellite_ids == nullptr)
         {
             satellite_ids = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds>();
-            satellite_ids->parent = this;
-            children["satellite-ids"] = satellite_ids;
         }
-        return children.at("satellite-ids");
+        return satellite_ids;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::get_children() const
 {
-    if(children.find("input") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
+        children["input"] = input;
     }
 
-    if(children.find("member-interfaces") == children.end())
+    if(member_interfaces != nullptr)
     {
-        if(member_interfaces != nullptr)
-        {
-            children["member-interfaces"] = member_interfaces;
-        }
+        children["member-interfaces"] = member_interfaces;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
-    if(children.find("output") == children.end())
+    if(output != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["output"] = output;
     }
 
-    if(children.find("satellite-ids") == children.end())
+    if(satellite_ids != nullptr)
     {
-        if(satellite_ids != nullptr)
-        {
-            children["satellite-ids"] = satellite_ids;
-        }
+        children["satellite-ids"] = satellite_ids;
     }
 
     return children;
@@ -618,7 +489,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::get_segment_path() const
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -641,15 +512,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -657,28 +519,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::get_child_by_na
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -696,10 +554,8 @@ Qos::NvInterfaceTable::Interface::Nodes::Node::Node()
 	,output(std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output>())
 {
     input->parent = this;
-    children["input"] = input;
 
     output->parent = this;
-    children["output"] = output;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -732,7 +588,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::get_segment_path() co
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -756,64 +612,38 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::get_entity_path(Entity
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input")
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
+        if(input == nullptr)
         {
             input = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input>();
-            input->parent = this;
-            children["input"] = input;
         }
-        return children.at("input");
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::get_children() const
 {
-    if(children.find("input") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
+        children["input"] = input;
     }
 
-    if(children.find("output") == children.end())
+    if(output != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["output"] = output;
     }
 
     return children;
@@ -833,10 +663,8 @@ Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Input()
 	,statistics(std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics>())
 {
     service_policy_names->parent = this;
-    children["service-policy-names"] = service_policy_names;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "input"; yang_parent_name = "node";
 }
@@ -867,7 +695,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::get_segment_pa
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -890,64 +718,38 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::get_entity_path
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-names")
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
-        else
+        if(service_policy_names == nullptr)
         {
             service_policy_names = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames>();
-            service_policy_names->parent = this;
-            children["service-policy-names"] = service_policy_names;
         }
-        return children.at("service-policy-names");
+        return service_policy_names;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::get_children() const
 {
-    if(children.find("service-policy-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy_names != nullptr)
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
+        children["service-policy-names"] = service_policy_names;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -995,7 +797,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyN
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1018,15 +820,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNa
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-instance")
     {
         for(auto const & c : service_policy_instance)
@@ -1034,28 +827,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Se
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(std::move(c));
-        children[segment_path] = service_policy_instance.back();
-        return children.at(segment_path);
+        service_policy_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_policy_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1096,7 +885,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyN
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1120,20 +909,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNa
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1195,7 +976,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ge
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1222,15 +1003,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::get
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-stats")
     {
         for(auto const & c : class_stats)
@@ -1238,28 +1010,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::St
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(std::move(c));
-        children[segment_path] = class_stats.back();
-        return children.at(segment_path);
+        class_stats.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_stats)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1299,16 +1067,12 @@ Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::Cl
 	,iphc_stats(std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats>())
 {
     cac_stats->parent = this;
-    children["cac-stats"] = cac_stats;
 
     child_policy->parent = this;
-    children["child-policy"] = child_policy;
 
     general_stats->parent = this;
-    children["general-stats"] = general_stats;
 
     iphc_stats->parent = this;
-    children["iphc-stats"] = iphc_stats;
 
     yang_name = "class-stats"; yang_parent_name = "statistics";
 }
@@ -1383,7 +1147,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1411,73 +1175,40 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cac-stats")
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
-        else
+        if(cac_stats == nullptr)
         {
             cac_stats = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats>();
-            cac_stats->parent = this;
-            children["cac-stats"] = cac_stats;
         }
-        return children.at("cac-stats");
+        return cac_stats;
     }
 
     if(child_yang_name == "child-policy")
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
-        else
+        if(child_policy == nullptr)
         {
             child_policy = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy>();
-            child_policy->parent = this;
-            children["child-policy"] = child_policy;
         }
-        return children.at("child-policy");
+        return child_policy;
     }
 
     if(child_yang_name == "general-stats")
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
-        else
+        if(general_stats == nullptr)
         {
             general_stats = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats>();
-            general_stats->parent = this;
-            children["general-stats"] = general_stats;
         }
-        return children.at("general-stats");
+        return general_stats;
     }
 
     if(child_yang_name == "iphc-stats")
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
-        else
+        if(iphc_stats == nullptr)
         {
             iphc_stats = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats>();
-            iphc_stats->parent = this;
-            children["iphc-stats"] = iphc_stats;
         }
-        return children.at("iphc-stats");
+        return iphc_stats;
     }
 
     if(child_yang_name == "police-stats-array")
@@ -1487,15 +1218,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::St
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(std::move(c));
-        children[segment_path] = police_stats_array.back();
-        return children.at(segment_path);
+        police_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-stats-array")
@@ -1505,15 +1234,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::St
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(std::move(c));
-        children[segment_path] = queue_stats_array.back();
-        return children.at(segment_path);
+        queue_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "wred-stats-array")
@@ -1523,76 +1250,54 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::St
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(std::move(c));
-        children[segment_path] = wred_stats_array.back();
-        return children.at(segment_path);
+        wred_stats_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::get_children() const
 {
-    if(children.find("cac-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cac_stats != nullptr)
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
+        children["cac-stats"] = cac_stats;
     }
 
-    if(children.find("child-policy") == children.end())
+    if(child_policy != nullptr)
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
+        children["child-policy"] = child_policy;
     }
 
-    if(children.find("general-stats") == children.end())
+    if(general_stats != nullptr)
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
+        children["general-stats"] = general_stats;
     }
 
-    if(children.find("iphc-stats") == children.end())
+    if(iphc_stats != nullptr)
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
+        children["iphc-stats"] = iphc_stats;
     }
 
     for (auto const & c : police_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : wred_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1677,7 +1382,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1709,20 +1414,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1830,7 +1527,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1865,20 +1562,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1962,7 +1651,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1985,20 +1674,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2052,7 +1733,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2081,20 +1762,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2241,7 +1914,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2283,15 +1956,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queue-average-length")
     {
         for(auto const & c : queue_average_length)
@@ -2299,15 +1963,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::St
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(std::move(c));
-        children[segment_path] = queue_average_length.back();
-        return children.at(segment_path);
+        queue_average_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-instance-length")
@@ -2317,15 +1979,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::St
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(std::move(c));
-        children[segment_path] = queue_instance_length.back();
-        return children.at(segment_path);
+        queue_instance_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-max-length")
@@ -2335,44 +1995,34 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::St
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(std::move(c));
-        children[segment_path] = queue_max_length.back();
-        return children.at(segment_path);
+        queue_max_length.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : queue_average_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_instance_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_max_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2492,7 +2142,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2517,20 +2167,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2580,7 +2222,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2605,20 +2247,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2668,7 +2302,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2693,20 +2327,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2741,7 +2367,6 @@ Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::Po
     color_class_stats(std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
-    children["color-class-stats"] = color_class_stats;
 
     yang_name = "police-stats-array"; yang_parent_name = "class-stats";
 }
@@ -2796,7 +2421,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2832,41 +2457,24 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "color-class-stats")
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
-        else
+        if(color_class_stats == nullptr)
         {
             color_class_stats = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>();
-            color_class_stats->parent = this;
-            children["color-class-stats"] = color_class_stats;
         }
-        return children.at("color-class-stats");
+        return color_class_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    if(children.find("color-class-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(color_class_stats != nullptr)
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
+        children["color-class-stats"] = color_class_stats;
     }
 
     return children;
@@ -3010,7 +2618,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3051,20 +2659,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3209,7 +2809,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3241,15 +2841,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "red-label")
     {
         for(auto const & c : red_label)
@@ -3257,28 +2848,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::St
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(std::move(c));
-        children[segment_path] = red_label.back();
-        return children.at(segment_path);
+        red_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : red_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3358,7 +2945,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cl
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3383,20 +2970,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::Cla
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3418,10 +2997,8 @@ Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Output()
 	,statistics(std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics>())
 {
     service_policy_names->parent = this;
-    children["service-policy-names"] = service_policy_names;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "output"; yang_parent_name = "node";
 }
@@ -3452,7 +3029,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::get_segment_p
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3475,64 +3052,38 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::get_entity_pat
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-names")
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
-        else
+        if(service_policy_names == nullptr)
         {
             service_policy_names = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames>();
-            service_policy_names->parent = this;
-            children["service-policy-names"] = service_policy_names;
         }
-        return children.at("service-policy-names");
+        return service_policy_names;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::get_children() const
 {
-    if(children.find("service-policy-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy_names != nullptr)
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
+        children["service-policy-names"] = service_policy_names;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -3580,7 +3131,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicy
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3603,15 +3154,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyN
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-instance")
     {
         for(auto const & c : service_policy_instance)
@@ -3619,28 +3161,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(std::move(c));
-        children[segment_path] = service_policy_instance.back();
-        return children.at(segment_path);
+        service_policy_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_policy_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3681,7 +3219,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicy
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3705,20 +3243,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyN
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3780,7 +3310,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::g
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3807,15 +3337,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ge
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-stats")
     {
         for(auto const & c : class_stats)
@@ -3823,28 +3344,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(std::move(c));
-        children[segment_path] = class_stats.back();
-        return children.at(segment_path);
+        class_stats.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_stats)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3884,16 +3401,12 @@ Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::C
 	,iphc_stats(std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats>())
 {
     cac_stats->parent = this;
-    children["cac-stats"] = cac_stats;
 
     child_policy->parent = this;
-    children["child-policy"] = child_policy;
 
     general_stats->parent = this;
-    children["general-stats"] = general_stats;
 
     iphc_stats->parent = this;
-    children["iphc-stats"] = iphc_stats;
 
     yang_name = "class-stats"; yang_parent_name = "statistics";
 }
@@ -3968,7 +3481,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3996,73 +3509,40 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cac-stats")
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
-        else
+        if(cac_stats == nullptr)
         {
             cac_stats = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats>();
-            cac_stats->parent = this;
-            children["cac-stats"] = cac_stats;
         }
-        return children.at("cac-stats");
+        return cac_stats;
     }
 
     if(child_yang_name == "child-policy")
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
-        else
+        if(child_policy == nullptr)
         {
             child_policy = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy>();
-            child_policy->parent = this;
-            children["child-policy"] = child_policy;
         }
-        return children.at("child-policy");
+        return child_policy;
     }
 
     if(child_yang_name == "general-stats")
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
-        else
+        if(general_stats == nullptr)
         {
             general_stats = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats>();
-            general_stats->parent = this;
-            children["general-stats"] = general_stats;
         }
-        return children.at("general-stats");
+        return general_stats;
     }
 
     if(child_yang_name == "iphc-stats")
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
-        else
+        if(iphc_stats == nullptr)
         {
             iphc_stats = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats>();
-            iphc_stats->parent = this;
-            children["iphc-stats"] = iphc_stats;
         }
-        return children.at("iphc-stats");
+        return iphc_stats;
     }
 
     if(child_yang_name == "police-stats-array")
@@ -4072,15 +3552,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(std::move(c));
-        children[segment_path] = police_stats_array.back();
-        return children.at(segment_path);
+        police_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-stats-array")
@@ -4090,15 +3568,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(std::move(c));
-        children[segment_path] = queue_stats_array.back();
-        return children.at(segment_path);
+        queue_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "wred-stats-array")
@@ -4108,76 +3584,54 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(std::move(c));
-        children[segment_path] = wred_stats_array.back();
-        return children.at(segment_path);
+        wred_stats_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::get_children() const
 {
-    if(children.find("cac-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cac_stats != nullptr)
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
+        children["cac-stats"] = cac_stats;
     }
 
-    if(children.find("child-policy") == children.end())
+    if(child_policy != nullptr)
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
+        children["child-policy"] = child_policy;
     }
 
-    if(children.find("general-stats") == children.end())
+    if(general_stats != nullptr)
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
+        children["general-stats"] = general_stats;
     }
 
-    if(children.find("iphc-stats") == children.end())
+    if(iphc_stats != nullptr)
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
+        children["iphc-stats"] = iphc_stats;
     }
 
     for (auto const & c : police_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : wred_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4262,7 +3716,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4294,20 +3748,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4415,7 +3861,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4450,20 +3896,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4547,7 +3985,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4570,20 +4008,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4637,7 +4067,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4666,20 +4096,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4826,7 +4248,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4868,15 +4290,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queue-average-length")
     {
         for(auto const & c : queue_average_length)
@@ -4884,15 +4297,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(std::move(c));
-        children[segment_path] = queue_average_length.back();
-        return children.at(segment_path);
+        queue_average_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-instance-length")
@@ -4902,15 +4313,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(std::move(c));
-        children[segment_path] = queue_instance_length.back();
-        return children.at(segment_path);
+        queue_instance_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-max-length")
@@ -4920,44 +4329,34 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(std::move(c));
-        children[segment_path] = queue_max_length.back();
-        return children.at(segment_path);
+        queue_max_length.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : queue_average_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_instance_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_max_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5077,7 +4476,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5102,20 +4501,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5165,7 +4556,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5190,20 +4581,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5253,7 +4636,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5278,20 +4661,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5326,7 +4701,6 @@ Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::P
     color_class_stats(std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
-    children["color-class-stats"] = color_class_stats;
 
     yang_name = "police-stats-array"; yang_parent_name = "class-stats";
 }
@@ -5381,7 +4755,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5417,41 +4791,24 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "color-class-stats")
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
-        else
+        if(color_class_stats == nullptr)
         {
             color_class_stats = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>();
-            color_class_stats->parent = this;
-            children["color-class-stats"] = color_class_stats;
         }
-        return children.at("color-class-stats");
+        return color_class_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    if(children.find("color-class-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(color_class_stats != nullptr)
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
+        children["color-class-stats"] = color_class_stats;
     }
 
     return children;
@@ -5595,7 +4952,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5636,20 +4993,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5794,7 +5143,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5826,15 +5175,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "red-label")
     {
         for(auto const & c : red_label)
@@ -5842,28 +5182,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::S
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(std::move(c));
-        children[segment_path] = red_label.back();
-        return children.at(segment_path);
+        red_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : red_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5943,7 +5279,7 @@ std::string Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::C
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5968,20 +5304,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::Cl
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6035,7 +5363,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::get_segment_path
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6058,15 +5386,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::get_entity_path(E
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member-interface")
     {
         for(auto const & c : member_interface)
@@ -6074,28 +5393,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::get_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface>();
         c->parent = this;
-        member_interface.push_back(std::move(c));
-        children[segment_path] = member_interface.back();
-        return children.at(segment_path);
+        member_interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : member_interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6114,13 +5429,10 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::MemberInter
 	,satellite_ids(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds>())
 {
     input->parent = this;
-    children["input"] = input;
 
     output->parent = this;
-    children["output"] = output;
 
     satellite_ids->parent = this;
-    children["satellite-ids"] = satellite_ids;
 
     yang_name = "member-interface"; yang_parent_name = "member-interfaces";
 }
@@ -6155,7 +5467,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6179,87 +5491,52 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input")
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
+        if(input == nullptr)
         {
             input = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input>();
-            input->parent = this;
-            children["input"] = input;
         }
-        return children.at("input");
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     if(child_yang_name == "satellite-ids")
     {
-        if(satellite_ids != nullptr)
-        {
-            children["satellite-ids"] = satellite_ids;
-        }
-        else
+        if(satellite_ids == nullptr)
         {
             satellite_ids = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds>();
-            satellite_ids->parent = this;
-            children["satellite-ids"] = satellite_ids;
         }
-        return children.at("satellite-ids");
+        return satellite_ids;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::get_children() const
 {
-    if(children.find("input") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
+        children["input"] = input;
     }
 
-    if(children.find("output") == children.end())
+    if(output != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["output"] = output;
     }
 
-    if(children.find("satellite-ids") == children.end())
+    if(satellite_ids != nullptr)
     {
-        if(satellite_ids != nullptr)
-        {
-            children["satellite-ids"] = satellite_ids;
-        }
+        children["satellite-ids"] = satellite_ids;
     }
 
     return children;
@@ -6311,7 +5588,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6334,15 +5611,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "satellite-id")
     {
         for(auto const & c : satellite_id)
@@ -6350,28 +5618,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId>();
         c->parent = this;
-        satellite_id.push_back(std::move(c));
-        children[segment_path] = satellite_id.back();
-        return children.at(segment_path);
+        satellite_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : satellite_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6389,10 +5653,8 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteId
 	,output(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output>())
 {
     input->parent = this;
-    children["input"] = input;
 
     output->parent = this;
-    children["output"] = output;
 
     yang_name = "satellite-id"; yang_parent_name = "satellite-ids";
 }
@@ -6425,7 +5687,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6449,64 +5711,38 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input")
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
+        if(input == nullptr)
         {
             input = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input>();
-            input->parent = this;
-            children["input"] = input;
         }
-        return children.at("input");
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::get_children() const
 {
-    if(children.find("input") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
+        children["input"] = input;
     }
 
-    if(children.find("output") == children.end())
+    if(output != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["output"] = output;
     }
 
     return children;
@@ -6526,10 +5762,8 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteId
 	,statistics(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics>())
 {
     service_policy_names->parent = this;
-    children["service-policy-names"] = service_policy_names;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "input"; yang_parent_name = "satellite-id";
 }
@@ -6560,7 +5794,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6583,64 +5817,38 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-names")
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
-        else
+        if(service_policy_names == nullptr)
         {
             service_policy_names = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames>();
-            service_policy_names->parent = this;
-            children["service-policy-names"] = service_policy_names;
         }
-        return children.at("service-policy-names");
+        return service_policy_names;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::get_children() const
 {
-    if(children.find("service-policy-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy_names != nullptr)
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
+        children["service-policy-names"] = service_policy_names;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -6688,7 +5896,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6711,15 +5919,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-instance")
     {
         for(auto const & c : service_policy_instance)
@@ -6727,28 +5926,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(std::move(c));
-        children[segment_path] = service_policy_instance.back();
-        return children.at(segment_path);
+        service_policy_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_policy_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6789,7 +5984,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6813,20 +6008,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6888,7 +6075,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6915,15 +6102,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-stats")
     {
         for(auto const & c : class_stats)
@@ -6931,28 +6109,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(std::move(c));
-        children[segment_path] = class_stats.back();
-        return children.at(segment_path);
+        class_stats.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_stats)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6992,16 +6166,12 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteId
 	,iphc_stats(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats>())
 {
     cac_stats->parent = this;
-    children["cac-stats"] = cac_stats;
 
     child_policy->parent = this;
-    children["child-policy"] = child_policy;
 
     general_stats->parent = this;
-    children["general-stats"] = general_stats;
 
     iphc_stats->parent = this;
-    children["iphc-stats"] = iphc_stats;
 
     yang_name = "class-stats"; yang_parent_name = "statistics";
 }
@@ -7076,7 +6246,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7104,73 +6274,40 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cac-stats")
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
-        else
+        if(cac_stats == nullptr)
         {
             cac_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats>();
-            cac_stats->parent = this;
-            children["cac-stats"] = cac_stats;
         }
-        return children.at("cac-stats");
+        return cac_stats;
     }
 
     if(child_yang_name == "child-policy")
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
-        else
+        if(child_policy == nullptr)
         {
             child_policy = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy>();
-            child_policy->parent = this;
-            children["child-policy"] = child_policy;
         }
-        return children.at("child-policy");
+        return child_policy;
     }
 
     if(child_yang_name == "general-stats")
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
-        else
+        if(general_stats == nullptr)
         {
             general_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats>();
-            general_stats->parent = this;
-            children["general-stats"] = general_stats;
         }
-        return children.at("general-stats");
+        return general_stats;
     }
 
     if(child_yang_name == "iphc-stats")
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
-        else
+        if(iphc_stats == nullptr)
         {
             iphc_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats>();
-            iphc_stats->parent = this;
-            children["iphc-stats"] = iphc_stats;
         }
-        return children.at("iphc-stats");
+        return iphc_stats;
     }
 
     if(child_yang_name == "police-stats-array")
@@ -7180,15 +6317,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(std::move(c));
-        children[segment_path] = police_stats_array.back();
-        return children.at(segment_path);
+        police_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-stats-array")
@@ -7198,15 +6333,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(std::move(c));
-        children[segment_path] = queue_stats_array.back();
-        return children.at(segment_path);
+        queue_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "wred-stats-array")
@@ -7216,76 +6349,54 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(std::move(c));
-        children[segment_path] = wred_stats_array.back();
-        return children.at(segment_path);
+        wred_stats_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_children() const
 {
-    if(children.find("cac-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cac_stats != nullptr)
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
+        children["cac-stats"] = cac_stats;
     }
 
-    if(children.find("child-policy") == children.end())
+    if(child_policy != nullptr)
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
+        children["child-policy"] = child_policy;
     }
 
-    if(children.find("general-stats") == children.end())
+    if(general_stats != nullptr)
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
+        children["general-stats"] = general_stats;
     }
 
-    if(children.find("iphc-stats") == children.end())
+    if(iphc_stats != nullptr)
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
+        children["iphc-stats"] = iphc_stats;
     }
 
     for (auto const & c : police_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : wred_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7370,7 +6481,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7402,20 +6513,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7523,7 +6626,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7558,20 +6661,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7655,7 +6750,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7678,20 +6773,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7745,7 +6832,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7774,20 +6861,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7934,7 +7013,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7976,15 +7055,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queue-average-length")
     {
         for(auto const & c : queue_average_length)
@@ -7992,15 +7062,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(std::move(c));
-        children[segment_path] = queue_average_length.back();
-        return children.at(segment_path);
+        queue_average_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-instance-length")
@@ -8010,15 +7078,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(std::move(c));
-        children[segment_path] = queue_instance_length.back();
-        return children.at(segment_path);
+        queue_instance_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-max-length")
@@ -8028,44 +7094,34 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(std::move(c));
-        children[segment_path] = queue_max_length.back();
-        return children.at(segment_path);
+        queue_max_length.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : queue_average_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_instance_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_max_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8185,7 +7241,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8210,20 +7266,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8273,7 +7321,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8298,20 +7346,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8361,7 +7401,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8386,20 +7426,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8434,7 +7466,6 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteId
     color_class_stats(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
-    children["color-class-stats"] = color_class_stats;
 
     yang_name = "police-stats-array"; yang_parent_name = "class-stats";
 }
@@ -8489,7 +7520,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8525,41 +7556,24 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "color-class-stats")
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
-        else
+        if(color_class_stats == nullptr)
         {
             color_class_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>();
-            color_class_stats->parent = this;
-            children["color-class-stats"] = color_class_stats;
         }
-        return children.at("color-class-stats");
+        return color_class_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    if(children.find("color-class-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(color_class_stats != nullptr)
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
+        children["color-class-stats"] = color_class_stats;
     }
 
     return children;
@@ -8703,7 +7717,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8744,20 +7758,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8902,7 +7908,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8934,15 +7940,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "red-label")
     {
         for(auto const & c : red_label)
@@ -8950,28 +7947,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(std::move(c));
-        children[segment_path] = red_label.back();
-        return children.at(segment_path);
+        red_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : red_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9051,7 +8044,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9076,20 +8069,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9111,10 +8096,8 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteId
 	,statistics(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics>())
 {
     service_policy_names->parent = this;
-    children["service-policy-names"] = service_policy_names;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "output"; yang_parent_name = "satellite-id";
 }
@@ -9145,7 +8128,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9168,64 +8151,38 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-names")
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
-        else
+        if(service_policy_names == nullptr)
         {
             service_policy_names = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames>();
-            service_policy_names->parent = this;
-            children["service-policy-names"] = service_policy_names;
         }
-        return children.at("service-policy-names");
+        return service_policy_names;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::get_children() const
 {
-    if(children.find("service-policy-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy_names != nullptr)
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
+        children["service-policy-names"] = service_policy_names;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -9273,7 +8230,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9296,15 +8253,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-instance")
     {
         for(auto const & c : service_policy_instance)
@@ -9312,28 +8260,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(std::move(c));
-        children[segment_path] = service_policy_instance.back();
-        return children.at(segment_path);
+        service_policy_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_policy_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9374,7 +8318,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9398,20 +8342,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9473,7 +8409,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9500,15 +8436,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-stats")
     {
         for(auto const & c : class_stats)
@@ -9516,28 +8443,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(std::move(c));
-        children[segment_path] = class_stats.back();
-        return children.at(segment_path);
+        class_stats.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_stats)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9577,16 +8500,12 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteId
 	,iphc_stats(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats>())
 {
     cac_stats->parent = this;
-    children["cac-stats"] = cac_stats;
 
     child_policy->parent = this;
-    children["child-policy"] = child_policy;
 
     general_stats->parent = this;
-    children["general-stats"] = general_stats;
 
     iphc_stats->parent = this;
-    children["iphc-stats"] = iphc_stats;
 
     yang_name = "class-stats"; yang_parent_name = "statistics";
 }
@@ -9661,7 +8580,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9689,73 +8608,40 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cac-stats")
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
-        else
+        if(cac_stats == nullptr)
         {
             cac_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats>();
-            cac_stats->parent = this;
-            children["cac-stats"] = cac_stats;
         }
-        return children.at("cac-stats");
+        return cac_stats;
     }
 
     if(child_yang_name == "child-policy")
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
-        else
+        if(child_policy == nullptr)
         {
             child_policy = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy>();
-            child_policy->parent = this;
-            children["child-policy"] = child_policy;
         }
-        return children.at("child-policy");
+        return child_policy;
     }
 
     if(child_yang_name == "general-stats")
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
-        else
+        if(general_stats == nullptr)
         {
             general_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats>();
-            general_stats->parent = this;
-            children["general-stats"] = general_stats;
         }
-        return children.at("general-stats");
+        return general_stats;
     }
 
     if(child_yang_name == "iphc-stats")
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
-        else
+        if(iphc_stats == nullptr)
         {
             iphc_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats>();
-            iphc_stats->parent = this;
-            children["iphc-stats"] = iphc_stats;
         }
-        return children.at("iphc-stats");
+        return iphc_stats;
     }
 
     if(child_yang_name == "police-stats-array")
@@ -9765,15 +8651,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(std::move(c));
-        children[segment_path] = police_stats_array.back();
-        return children.at(segment_path);
+        police_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-stats-array")
@@ -9783,15 +8667,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(std::move(c));
-        children[segment_path] = queue_stats_array.back();
-        return children.at(segment_path);
+        queue_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "wred-stats-array")
@@ -9801,76 +8683,54 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(std::move(c));
-        children[segment_path] = wred_stats_array.back();
-        return children.at(segment_path);
+        wred_stats_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_children() const
 {
-    if(children.find("cac-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cac_stats != nullptr)
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
+        children["cac-stats"] = cac_stats;
     }
 
-    if(children.find("child-policy") == children.end())
+    if(child_policy != nullptr)
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
+        children["child-policy"] = child_policy;
     }
 
-    if(children.find("general-stats") == children.end())
+    if(general_stats != nullptr)
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
+        children["general-stats"] = general_stats;
     }
 
-    if(children.find("iphc-stats") == children.end())
+    if(iphc_stats != nullptr)
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
+        children["iphc-stats"] = iphc_stats;
     }
 
     for (auto const & c : police_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : wred_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9955,7 +8815,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9987,20 +8847,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10108,7 +8960,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10143,20 +8995,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10240,7 +9084,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10263,20 +9107,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10330,7 +9166,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10359,20 +9195,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10519,7 +9347,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10561,15 +9389,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queue-average-length")
     {
         for(auto const & c : queue_average_length)
@@ -10577,15 +9396,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(std::move(c));
-        children[segment_path] = queue_average_length.back();
-        return children.at(segment_path);
+        queue_average_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-instance-length")
@@ -10595,15 +9412,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(std::move(c));
-        children[segment_path] = queue_instance_length.back();
-        return children.at(segment_path);
+        queue_instance_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-max-length")
@@ -10613,44 +9428,34 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(std::move(c));
-        children[segment_path] = queue_max_length.back();
-        return children.at(segment_path);
+        queue_max_length.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : queue_average_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_instance_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_max_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10770,7 +9575,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10795,20 +9600,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10858,7 +9655,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10883,20 +9680,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10946,7 +9735,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10971,20 +9760,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11019,7 +9800,6 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteId
     color_class_stats(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
-    children["color-class-stats"] = color_class_stats;
 
     yang_name = "police-stats-array"; yang_parent_name = "class-stats";
 }
@@ -11074,7 +9854,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11110,41 +9890,24 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "color-class-stats")
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
-        else
+        if(color_class_stats == nullptr)
         {
             color_class_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>();
-            color_class_stats->parent = this;
-            children["color-class-stats"] = color_class_stats;
         }
-        return children.at("color-class-stats");
+        return color_class_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    if(children.find("color-class-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(color_class_stats != nullptr)
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
+        children["color-class-stats"] = color_class_stats;
     }
 
     return children;
@@ -11288,7 +10051,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11329,20 +10092,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11487,7 +10242,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11519,15 +10274,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "red-label")
     {
         for(auto const & c : red_label)
@@ -11535,28 +10281,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(std::move(c));
-        children[segment_path] = red_label.back();
-        return children.at(segment_path);
+        red_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : red_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11636,7 +10378,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11661,20 +10403,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11696,10 +10430,8 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Inpu
 	,statistics(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics>())
 {
     service_policy_names->parent = this;
-    children["service-policy-names"] = service_policy_names;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "input"; yang_parent_name = "member-interface";
 }
@@ -11730,7 +10462,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11753,64 +10485,38 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-names")
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
-        else
+        if(service_policy_names == nullptr)
         {
             service_policy_names = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames>();
-            service_policy_names->parent = this;
-            children["service-policy-names"] = service_policy_names;
         }
-        return children.at("service-policy-names");
+        return service_policy_names;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::get_children() const
 {
-    if(children.find("service-policy-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy_names != nullptr)
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
+        children["service-policy-names"] = service_policy_names;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -11858,7 +10564,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11881,15 +10587,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-instance")
     {
         for(auto const & c : service_policy_instance)
@@ -11897,28 +10594,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(std::move(c));
-        children[segment_path] = service_policy_instance.back();
-        return children.at(segment_path);
+        service_policy_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_policy_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11959,7 +10652,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11983,20 +10676,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12058,7 +10743,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12085,15 +10770,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-stats")
     {
         for(auto const & c : class_stats)
@@ -12101,28 +10777,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(std::move(c));
-        children[segment_path] = class_stats.back();
-        return children.at(segment_path);
+        class_stats.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_stats)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12162,16 +10834,12 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Stat
 	,iphc_stats(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats>())
 {
     cac_stats->parent = this;
-    children["cac-stats"] = cac_stats;
 
     child_policy->parent = this;
-    children["child-policy"] = child_policy;
 
     general_stats->parent = this;
-    children["general-stats"] = general_stats;
 
     iphc_stats->parent = this;
-    children["iphc-stats"] = iphc_stats;
 
     yang_name = "class-stats"; yang_parent_name = "statistics";
 }
@@ -12246,7 +10914,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12274,73 +10942,40 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cac-stats")
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
-        else
+        if(cac_stats == nullptr)
         {
             cac_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats>();
-            cac_stats->parent = this;
-            children["cac-stats"] = cac_stats;
         }
-        return children.at("cac-stats");
+        return cac_stats;
     }
 
     if(child_yang_name == "child-policy")
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
-        else
+        if(child_policy == nullptr)
         {
             child_policy = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy>();
-            child_policy->parent = this;
-            children["child-policy"] = child_policy;
         }
-        return children.at("child-policy");
+        return child_policy;
     }
 
     if(child_yang_name == "general-stats")
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
-        else
+        if(general_stats == nullptr)
         {
             general_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats>();
-            general_stats->parent = this;
-            children["general-stats"] = general_stats;
         }
-        return children.at("general-stats");
+        return general_stats;
     }
 
     if(child_yang_name == "iphc-stats")
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
-        else
+        if(iphc_stats == nullptr)
         {
             iphc_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats>();
-            iphc_stats->parent = this;
-            children["iphc-stats"] = iphc_stats;
         }
-        return children.at("iphc-stats");
+        return iphc_stats;
     }
 
     if(child_yang_name == "police-stats-array")
@@ -12350,15 +10985,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(std::move(c));
-        children[segment_path] = police_stats_array.back();
-        return children.at(segment_path);
+        police_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-stats-array")
@@ -12368,15 +11001,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(std::move(c));
-        children[segment_path] = queue_stats_array.back();
-        return children.at(segment_path);
+        queue_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "wred-stats-array")
@@ -12386,76 +11017,54 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(std::move(c));
-        children[segment_path] = wred_stats_array.back();
-        return children.at(segment_path);
+        wred_stats_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::get_children() const
 {
-    if(children.find("cac-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cac_stats != nullptr)
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
+        children["cac-stats"] = cac_stats;
     }
 
-    if(children.find("child-policy") == children.end())
+    if(child_policy != nullptr)
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
+        children["child-policy"] = child_policy;
     }
 
-    if(children.find("general-stats") == children.end())
+    if(general_stats != nullptr)
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
+        children["general-stats"] = general_stats;
     }
 
-    if(children.find("iphc-stats") == children.end())
+    if(iphc_stats != nullptr)
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
+        children["iphc-stats"] = iphc_stats;
     }
 
     for (auto const & c : police_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : wred_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12540,7 +11149,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12572,20 +11181,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12693,7 +11294,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12728,20 +11329,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12825,7 +11418,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12848,20 +11441,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12915,7 +11500,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12944,20 +11529,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13104,7 +11681,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13146,15 +11723,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queue-average-length")
     {
         for(auto const & c : queue_average_length)
@@ -13162,15 +11730,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(std::move(c));
-        children[segment_path] = queue_average_length.back();
-        return children.at(segment_path);
+        queue_average_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-instance-length")
@@ -13180,15 +11746,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(std::move(c));
-        children[segment_path] = queue_instance_length.back();
-        return children.at(segment_path);
+        queue_instance_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-max-length")
@@ -13198,44 +11762,34 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(std::move(c));
-        children[segment_path] = queue_max_length.back();
-        return children.at(segment_path);
+        queue_max_length.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : queue_average_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_instance_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_max_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13355,7 +11909,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13380,20 +11934,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13443,7 +11989,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13468,20 +12014,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13531,7 +12069,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13556,20 +12094,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13604,7 +12134,6 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Stat
     color_class_stats(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
-    children["color-class-stats"] = color_class_stats;
 
     yang_name = "police-stats-array"; yang_parent_name = "class-stats";
 }
@@ -13659,7 +12188,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13695,41 +12224,24 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "color-class-stats")
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
-        else
+        if(color_class_stats == nullptr)
         {
             color_class_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>();
-            color_class_stats->parent = this;
-            children["color-class-stats"] = color_class_stats;
         }
-        return children.at("color-class-stats");
+        return color_class_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    if(children.find("color-class-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(color_class_stats != nullptr)
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
+        children["color-class-stats"] = color_class_stats;
     }
 
     return children;
@@ -13873,7 +12385,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13914,20 +12426,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14072,7 +12576,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14104,15 +12608,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "red-label")
     {
         for(auto const & c : red_label)
@@ -14120,28 +12615,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(std::move(c));
-        children[segment_path] = red_label.back();
-        return children.at(segment_path);
+        red_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : red_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14221,7 +12712,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14246,20 +12737,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14281,10 +12764,8 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Out
 	,statistics(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics>())
 {
     service_policy_names->parent = this;
-    children["service-policy-names"] = service_policy_names;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "output"; yang_parent_name = "member-interface";
 }
@@ -14315,7 +12796,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14338,64 +12819,38 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-names")
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
-        else
+        if(service_policy_names == nullptr)
         {
             service_policy_names = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames>();
-            service_policy_names->parent = this;
-            children["service-policy-names"] = service_policy_names;
         }
-        return children.at("service-policy-names");
+        return service_policy_names;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::get_children() const
 {
-    if(children.find("service-policy-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy_names != nullptr)
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
+        children["service-policy-names"] = service_policy_names;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -14443,7 +12898,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14466,15 +12921,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-instance")
     {
         for(auto const & c : service_policy_instance)
@@ -14482,28 +12928,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(std::move(c));
-        children[segment_path] = service_policy_instance.back();
-        return children.at(segment_path);
+        service_policy_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_policy_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14544,7 +12986,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14568,20 +13010,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14643,7 +13077,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14670,15 +13104,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-stats")
     {
         for(auto const & c : class_stats)
@@ -14686,28 +13111,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(std::move(c));
-        children[segment_path] = class_stats.back();
-        return children.at(segment_path);
+        class_stats.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_stats)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -14747,16 +13168,12 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Sta
 	,iphc_stats(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats>())
 {
     cac_stats->parent = this;
-    children["cac-stats"] = cac_stats;
 
     child_policy->parent = this;
-    children["child-policy"] = child_policy;
 
     general_stats->parent = this;
-    children["general-stats"] = general_stats;
 
     iphc_stats->parent = this;
-    children["iphc-stats"] = iphc_stats;
 
     yang_name = "class-stats"; yang_parent_name = "statistics";
 }
@@ -14831,7 +13248,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14859,73 +13276,40 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cac-stats")
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
-        else
+        if(cac_stats == nullptr)
         {
             cac_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats>();
-            cac_stats->parent = this;
-            children["cac-stats"] = cac_stats;
         }
-        return children.at("cac-stats");
+        return cac_stats;
     }
 
     if(child_yang_name == "child-policy")
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
-        else
+        if(child_policy == nullptr)
         {
             child_policy = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy>();
-            child_policy->parent = this;
-            children["child-policy"] = child_policy;
         }
-        return children.at("child-policy");
+        return child_policy;
     }
 
     if(child_yang_name == "general-stats")
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
-        else
+        if(general_stats == nullptr)
         {
             general_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats>();
-            general_stats->parent = this;
-            children["general-stats"] = general_stats;
         }
-        return children.at("general-stats");
+        return general_stats;
     }
 
     if(child_yang_name == "iphc-stats")
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
-        else
+        if(iphc_stats == nullptr)
         {
             iphc_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats>();
-            iphc_stats->parent = this;
-            children["iphc-stats"] = iphc_stats;
         }
-        return children.at("iphc-stats");
+        return iphc_stats;
     }
 
     if(child_yang_name == "police-stats-array")
@@ -14935,15 +13319,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(std::move(c));
-        children[segment_path] = police_stats_array.back();
-        return children.at(segment_path);
+        police_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-stats-array")
@@ -14953,15 +13335,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(std::move(c));
-        children[segment_path] = queue_stats_array.back();
-        return children.at(segment_path);
+        queue_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "wred-stats-array")
@@ -14971,76 +13351,54 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(std::move(c));
-        children[segment_path] = wred_stats_array.back();
-        return children.at(segment_path);
+        wred_stats_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::get_children() const
 {
-    if(children.find("cac-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cac_stats != nullptr)
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
+        children["cac-stats"] = cac_stats;
     }
 
-    if(children.find("child-policy") == children.end())
+    if(child_policy != nullptr)
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
+        children["child-policy"] = child_policy;
     }
 
-    if(children.find("general-stats") == children.end())
+    if(general_stats != nullptr)
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
+        children["general-stats"] = general_stats;
     }
 
-    if(children.find("iphc-stats") == children.end())
+    if(iphc_stats != nullptr)
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
+        children["iphc-stats"] = iphc_stats;
     }
 
     for (auto const & c : police_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : wred_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15125,7 +13483,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15157,20 +13515,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15278,7 +13628,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15313,20 +13663,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15410,7 +13752,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15433,20 +13775,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15500,7 +13834,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15529,20 +13863,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15689,7 +14015,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15731,15 +14057,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queue-average-length")
     {
         for(auto const & c : queue_average_length)
@@ -15747,15 +14064,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(std::move(c));
-        children[segment_path] = queue_average_length.back();
-        return children.at(segment_path);
+        queue_average_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-instance-length")
@@ -15765,15 +14080,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(std::move(c));
-        children[segment_path] = queue_instance_length.back();
-        return children.at(segment_path);
+        queue_instance_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-max-length")
@@ -15783,44 +14096,34 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(std::move(c));
-        children[segment_path] = queue_max_length.back();
-        return children.at(segment_path);
+        queue_max_length.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : queue_average_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_instance_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_max_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15940,7 +14243,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15965,20 +14268,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16028,7 +14323,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16053,20 +14348,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16116,7 +14403,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16141,20 +14428,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16189,7 +14468,6 @@ Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Sta
     color_class_stats(std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
-    children["color-class-stats"] = color_class_stats;
 
     yang_name = "police-stats-array"; yang_parent_name = "class-stats";
 }
@@ -16244,7 +14522,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16280,41 +14558,24 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "color-class-stats")
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
-        else
+        if(color_class_stats == nullptr)
         {
             color_class_stats = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>();
-            color_class_stats->parent = this;
-            children["color-class-stats"] = color_class_stats;
         }
-        return children.at("color-class-stats");
+        return color_class_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    if(children.find("color-class-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(color_class_stats != nullptr)
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
+        children["color-class-stats"] = color_class_stats;
     }
 
     return children;
@@ -16458,7 +14719,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16499,20 +14760,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16657,7 +14910,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16689,15 +14942,6 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "red-label")
     {
         for(auto const & c : red_label)
@@ -16705,28 +14949,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::Memb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(std::move(c));
-        children[segment_path] = red_label.back();
-        return children.at(segment_path);
+        red_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : red_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16806,7 +15046,7 @@ std::string Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16831,20 +15071,12 @@ EntityPath Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16898,7 +15130,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::get_segment_path() c
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16921,15 +15153,6 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::get_entity_path(Entit
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "satellite-id")
     {
         for(auto const & c : satellite_id)
@@ -16937,28 +15160,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId>();
         c->parent = this;
-        satellite_id.push_back(std::move(c));
-        children[segment_path] = satellite_id.back();
-        return children.at(segment_path);
+        satellite_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : satellite_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16976,10 +15195,8 @@ Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::SatelliteId()
 	,output(std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output>())
 {
     input->parent = this;
-    children["input"] = input;
 
     output->parent = this;
-    children["output"] = output;
 
     yang_name = "satellite-id"; yang_parent_name = "satellite-ids";
 }
@@ -17012,7 +15229,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::get_seg
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17036,64 +15253,38 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::get_enti
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input")
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
+        if(input == nullptr)
         {
             input = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input>();
-            input->parent = this;
-            children["input"] = input;
         }
-        return children.at("input");
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::get_children() const
 {
-    if(children.find("input") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
+        children["input"] = input;
     }
 
-    if(children.find("output") == children.end())
+    if(output != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["output"] = output;
     }
 
     return children;
@@ -17113,10 +15304,8 @@ Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Input()
 	,statistics(std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics>())
 {
     service_policy_names->parent = this;
-    children["service-policy-names"] = service_policy_names;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "input"; yang_parent_name = "satellite-id";
 }
@@ -17147,7 +15336,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17170,64 +15359,38 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::g
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-names")
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
-        else
+        if(service_policy_names == nullptr)
         {
             service_policy_names = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames>();
-            service_policy_names->parent = this;
-            children["service-policy-names"] = service_policy_names;
         }
-        return children.at("service-policy-names");
+        return service_policy_names;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::get_children() const
 {
-    if(children.find("service-policy-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy_names != nullptr)
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
+        children["service-policy-names"] = service_policy_names;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -17275,7 +15438,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17298,15 +15461,6 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-instance")
     {
         for(auto const & c : service_policy_instance)
@@ -17314,28 +15468,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(std::move(c));
-        children[segment_path] = service_policy_instance.back();
-        return children.at(segment_path);
+        service_policy_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_policy_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17376,7 +15526,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17400,20 +15550,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17475,7 +15617,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17502,15 +15644,6 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-stats")
     {
         for(auto const & c : class_stats)
@@ -17518,28 +15651,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(std::move(c));
-        children[segment_path] = class_stats.back();
-        return children.at(segment_path);
+        class_stats.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_stats)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17579,16 +15708,12 @@ Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::
 	,iphc_stats(std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats>())
 {
     cac_stats->parent = this;
-    children["cac-stats"] = cac_stats;
 
     child_policy->parent = this;
-    children["child-policy"] = child_policy;
 
     general_stats->parent = this;
-    children["general-stats"] = general_stats;
 
     iphc_stats->parent = this;
-    children["iphc-stats"] = iphc_stats;
 
     yang_name = "class-stats"; yang_parent_name = "statistics";
 }
@@ -17663,7 +15788,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17691,73 +15816,40 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cac-stats")
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
-        else
+        if(cac_stats == nullptr)
         {
             cac_stats = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats>();
-            cac_stats->parent = this;
-            children["cac-stats"] = cac_stats;
         }
-        return children.at("cac-stats");
+        return cac_stats;
     }
 
     if(child_yang_name == "child-policy")
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
-        else
+        if(child_policy == nullptr)
         {
             child_policy = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy>();
-            child_policy->parent = this;
-            children["child-policy"] = child_policy;
         }
-        return children.at("child-policy");
+        return child_policy;
     }
 
     if(child_yang_name == "general-stats")
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
-        else
+        if(general_stats == nullptr)
         {
             general_stats = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats>();
-            general_stats->parent = this;
-            children["general-stats"] = general_stats;
         }
-        return children.at("general-stats");
+        return general_stats;
     }
 
     if(child_yang_name == "iphc-stats")
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
-        else
+        if(iphc_stats == nullptr)
         {
             iphc_stats = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats>();
-            iphc_stats->parent = this;
-            children["iphc-stats"] = iphc_stats;
         }
-        return children.at("iphc-stats");
+        return iphc_stats;
     }
 
     if(child_yang_name == "police-stats-array")
@@ -17767,15 +15859,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(std::move(c));
-        children[segment_path] = police_stats_array.back();
-        return children.at(segment_path);
+        police_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-stats-array")
@@ -17785,15 +15875,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(std::move(c));
-        children[segment_path] = queue_stats_array.back();
-        return children.at(segment_path);
+        queue_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "wred-stats-array")
@@ -17803,76 +15891,54 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(std::move(c));
-        children[segment_path] = wred_stats_array.back();
-        return children.at(segment_path);
+        wred_stats_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_children() const
 {
-    if(children.find("cac-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cac_stats != nullptr)
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
+        children["cac-stats"] = cac_stats;
     }
 
-    if(children.find("child-policy") == children.end())
+    if(child_policy != nullptr)
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
+        children["child-policy"] = child_policy;
     }
 
-    if(children.find("general-stats") == children.end())
+    if(general_stats != nullptr)
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
+        children["general-stats"] = general_stats;
     }
 
-    if(children.find("iphc-stats") == children.end())
+    if(iphc_stats != nullptr)
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
+        children["iphc-stats"] = iphc_stats;
     }
 
     for (auto const & c : police_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : wred_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17957,7 +16023,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17989,20 +16055,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18110,7 +16168,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18145,20 +16203,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18242,7 +16292,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18265,20 +16315,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18332,7 +16374,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18361,20 +16403,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18521,7 +16555,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18563,15 +16597,6 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queue-average-length")
     {
         for(auto const & c : queue_average_length)
@@ -18579,15 +16604,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(std::move(c));
-        children[segment_path] = queue_average_length.back();
-        return children.at(segment_path);
+        queue_average_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-instance-length")
@@ -18597,15 +16620,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(std::move(c));
-        children[segment_path] = queue_instance_length.back();
-        return children.at(segment_path);
+        queue_instance_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-max-length")
@@ -18615,44 +16636,34 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(std::move(c));
-        children[segment_path] = queue_max_length.back();
-        return children.at(segment_path);
+        queue_max_length.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : queue_average_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_instance_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_max_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18772,7 +16783,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18797,20 +16808,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18860,7 +16863,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18885,20 +16888,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18948,7 +16943,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18973,20 +16968,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19021,7 +17008,6 @@ Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::
     color_class_stats(std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
-    children["color-class-stats"] = color_class_stats;
 
     yang_name = "police-stats-array"; yang_parent_name = "class-stats";
 }
@@ -19076,7 +17062,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19112,41 +17098,24 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "color-class-stats")
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
-        else
+        if(color_class_stats == nullptr)
         {
             color_class_stats = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>();
-            color_class_stats->parent = this;
-            children["color-class-stats"] = color_class_stats;
         }
-        return children.at("color-class-stats");
+        return color_class_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    if(children.find("color-class-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(color_class_stats != nullptr)
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
+        children["color-class-stats"] = color_class_stats;
     }
 
     return children;
@@ -19290,7 +17259,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19331,20 +17300,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19489,7 +17450,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19521,15 +17482,6 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "red-label")
     {
         for(auto const & c : red_label)
@@ -19537,28 +17489,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(std::move(c));
-        children[segment_path] = red_label.back();
-        return children.at(segment_path);
+        red_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : red_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19638,7 +17586,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19663,20 +17611,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::S
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19698,10 +17638,8 @@ Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Output()
 	,statistics(std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics>())
 {
     service_policy_names->parent = this;
-    children["service-policy-names"] = service_policy_names;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "output"; yang_parent_name = "satellite-id";
 }
@@ -19732,7 +17670,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19755,64 +17693,38 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-names")
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
-        else
+        if(service_policy_names == nullptr)
         {
             service_policy_names = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames>();
-            service_policy_names->parent = this;
-            children["service-policy-names"] = service_policy_names;
         }
-        return children.at("service-policy-names");
+        return service_policy_names;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::get_children() const
 {
-    if(children.find("service-policy-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy_names != nullptr)
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
+        children["service-policy-names"] = service_policy_names;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -19860,7 +17772,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19883,15 +17795,6 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-instance")
     {
         for(auto const & c : service_policy_instance)
@@ -19899,28 +17802,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(std::move(c));
-        children[segment_path] = service_policy_instance.back();
-        return children.at(segment_path);
+        service_policy_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_policy_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19961,7 +17860,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19985,20 +17884,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20060,7 +17951,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20087,15 +17978,6 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class-stats")
     {
         for(auto const & c : class_stats)
@@ -20103,28 +17985,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats>();
         c->parent = this;
-        class_stats.push_back(std::move(c));
-        children[segment_path] = class_stats.back();
-        return children.at(segment_path);
+        class_stats.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_stats)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20164,16 +18042,12 @@ Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics:
 	,iphc_stats(std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats>())
 {
     cac_stats->parent = this;
-    children["cac-stats"] = cac_stats;
 
     child_policy->parent = this;
-    children["child-policy"] = child_policy;
 
     general_stats->parent = this;
-    children["general-stats"] = general_stats;
 
     iphc_stats->parent = this;
-    children["iphc-stats"] = iphc_stats;
 
     yang_name = "class-stats"; yang_parent_name = "statistics";
 }
@@ -20248,7 +18122,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20276,73 +18150,40 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "cac-stats")
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
-        else
+        if(cac_stats == nullptr)
         {
             cac_stats = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats>();
-            cac_stats->parent = this;
-            children["cac-stats"] = cac_stats;
         }
-        return children.at("cac-stats");
+        return cac_stats;
     }
 
     if(child_yang_name == "child-policy")
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
-        else
+        if(child_policy == nullptr)
         {
             child_policy = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy>();
-            child_policy->parent = this;
-            children["child-policy"] = child_policy;
         }
-        return children.at("child-policy");
+        return child_policy;
     }
 
     if(child_yang_name == "general-stats")
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
-        else
+        if(general_stats == nullptr)
         {
             general_stats = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats>();
-            general_stats->parent = this;
-            children["general-stats"] = general_stats;
         }
-        return children.at("general-stats");
+        return general_stats;
     }
 
     if(child_yang_name == "iphc-stats")
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
-        else
+        if(iphc_stats == nullptr)
         {
             iphc_stats = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats>();
-            iphc_stats->parent = this;
-            children["iphc-stats"] = iphc_stats;
         }
-        return children.at("iphc-stats");
+        return iphc_stats;
     }
 
     if(child_yang_name == "police-stats-array")
@@ -20352,15 +18193,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
-        police_stats_array.push_back(std::move(c));
-        children[segment_path] = police_stats_array.back();
-        return children.at(segment_path);
+        police_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-stats-array")
@@ -20370,15 +18209,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
-        queue_stats_array.push_back(std::move(c));
-        children[segment_path] = queue_stats_array.back();
-        return children.at(segment_path);
+        queue_stats_array.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "wred-stats-array")
@@ -20388,76 +18225,54 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
-        wred_stats_array.push_back(std::move(c));
-        children[segment_path] = wred_stats_array.back();
-        return children.at(segment_path);
+        wred_stats_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_children() const
 {
-    if(children.find("cac-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(cac_stats != nullptr)
     {
-        if(cac_stats != nullptr)
-        {
-            children["cac-stats"] = cac_stats;
-        }
+        children["cac-stats"] = cac_stats;
     }
 
-    if(children.find("child-policy") == children.end())
+    if(child_policy != nullptr)
     {
-        if(child_policy != nullptr)
-        {
-            children["child-policy"] = child_policy;
-        }
+        children["child-policy"] = child_policy;
     }
 
-    if(children.find("general-stats") == children.end())
+    if(general_stats != nullptr)
     {
-        if(general_stats != nullptr)
-        {
-            children["general-stats"] = general_stats;
-        }
+        children["general-stats"] = general_stats;
     }
 
-    if(children.find("iphc-stats") == children.end())
+    if(iphc_stats != nullptr)
     {
-        if(iphc_stats != nullptr)
-        {
-            children["iphc-stats"] = iphc_stats;
-        }
+        children["iphc-stats"] = iphc_stats;
     }
 
     for (auto const & c : police_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : wred_stats_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20542,7 +18357,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20574,20 +18389,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20695,7 +18502,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20730,20 +18537,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20827,7 +18626,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20850,20 +18649,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20917,7 +18708,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20946,20 +18737,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21106,7 +18889,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21148,15 +18931,6 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queue-average-length")
     {
         for(auto const & c : queue_average_length)
@@ -21164,15 +18938,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
-        queue_average_length.push_back(std::move(c));
-        children[segment_path] = queue_average_length.back();
-        return children.at(segment_path);
+        queue_average_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-instance-length")
@@ -21182,15 +18954,13 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
-        queue_instance_length.push_back(std::move(c));
-        children[segment_path] = queue_instance_length.back();
-        return children.at(segment_path);
+        queue_instance_length.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "queue-max-length")
@@ -21200,44 +18970,34 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
-        queue_max_length.push_back(std::move(c));
-        children[segment_path] = queue_max_length.back();
-        return children.at(segment_path);
+        queue_max_length.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : queue_average_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_instance_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : queue_max_length)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -21357,7 +19117,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21382,20 +19142,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21445,7 +19197,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21470,20 +19222,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21533,7 +19277,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21558,20 +19302,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -21606,7 +19342,6 @@ Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics:
     color_class_stats(std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>())
 {
     color_class_stats->parent = this;
-    children["color-class-stats"] = color_class_stats;
 
     yang_name = "police-stats-array"; yang_parent_name = "class-stats";
 }
@@ -21661,7 +19396,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21697,41 +19432,24 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "color-class-stats")
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
-        else
+        if(color_class_stats == nullptr)
         {
             color_class_stats = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats>();
-            color_class_stats->parent = this;
-            children["color-class-stats"] = color_class_stats;
         }
-        return children.at("color-class-stats");
+        return color_class_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    if(children.find("color-class-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(color_class_stats != nullptr)
     {
-        if(color_class_stats != nullptr)
-        {
-            children["color-class-stats"] = color_class_stats;
-        }
+        children["color-class-stats"] = color_class_stats;
     }
 
     return children;
@@ -21875,7 +19593,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -21916,20 +19634,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22074,7 +19784,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22106,15 +19816,6 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "red-label")
     {
         for(auto const & c : red_label)
@@ -22122,28 +19823,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::Satellit
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
-        red_label.push_back(std::move(c));
-        children[segment_path] = red_label.back();
-        return children.at(segment_path);
+        red_label.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : red_label)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22223,7 +19920,7 @@ std::string Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output:
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22248,20 +19945,12 @@ EntityPath Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -22283,10 +19972,8 @@ Qos::NvInterfaceTable::Interface::Input::Input()
 	,statistics(std::make_shared<Qos::NvInterfaceTable::Interface::Input::Statistics>())
 {
     service_policy_names->parent = this;
-    children["service-policy-names"] = service_policy_names;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "input"; yang_parent_name = "interface";
 }
@@ -22317,7 +20004,7 @@ std::string Qos::NvInterfaceTable::Interface::Input::get_segment_path() const
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22340,64 +20027,38 @@ EntityPath Qos::NvInterfaceTable::Interface::Input::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-names")
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
-        else
+        if(service_policy_names == nullptr)
         {
             service_policy_names = std::make_shared<Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames>();
-            service_policy_names->parent = this;
-            children["service-policy-names"] = service_policy_names;
         }
-        return children.at("service-policy-names");
+        return service_policy_names;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Qos::NvInterfaceTable::Interface::Input::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Input::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Input::get_children() const
 {
-    if(children.find("service-policy-names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(service_policy_names != nullptr)
     {
-        if(service_policy_names != nullptr)
-        {
-            children["service-policy-names"] = service_policy_names;
-        }
+        children["service-policy-names"] = service_policy_names;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -22445,7 +20106,7 @@ std::string Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::get_seg
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22468,15 +20129,6 @@ EntityPath Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::get_enti
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "service-policy-instance")
     {
         for(auto const & c : service_policy_instance)
@@ -22484,28 +20136,24 @@ std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Input::ServicePolicyNa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
-        service_policy_instance.push_back(std::move(c));
-        children[segment_path] = service_policy_instance.back();
-        return children.at(segment_path);
+        service_policy_instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : service_policy_instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -22546,7 +20194,7 @@ std::string Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::Service
 
 }
 
-EntityPath Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
+const EntityPath Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -22570,20 +20218,12 @@ EntityPath Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServiceP
 
 std::shared_ptr<Entity> Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

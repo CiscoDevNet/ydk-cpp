@@ -66,13 +66,10 @@ Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStat
 	,subscriber_address(std::make_shared<Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress>())
 {
     address->parent = this;
-    children["address"] = address;
 
     querier_address->parent = this;
-    children["querier-address"] = querier_address;
 
     subscriber_address->parent = this;
-    children["subscriber-address"] = subscriber_address;
 
     yang_name = "interface-old-format-state-on"; yang_parent_name = "interface-old-format-state-ons";
 }
@@ -203,7 +200,7 @@ std::string Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceO
 
 }
 
-EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -275,87 +272,52 @@ EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOl
 
 std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "address")
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
-        else
+        if(address == nullptr)
         {
             address = std::make_shared<Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address>();
-            address->parent = this;
-            children["address"] = address;
         }
-        return children.at("address");
+        return address;
     }
 
     if(child_yang_name == "querier-address")
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
-        else
+        if(querier_address == nullptr)
         {
             querier_address = std::make_shared<Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress>();
-            querier_address->parent = this;
-            children["querier-address"] = querier_address;
         }
-        return children.at("querier-address");
+        return querier_address;
     }
 
     if(child_yang_name == "subscriber-address")
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
-        else
+        if(subscriber_address == nullptr)
         {
             subscriber_address = std::make_shared<Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress>();
-            subscriber_address->parent = this;
-            children["subscriber-address"] = subscriber_address;
         }
-        return children.at("subscriber-address");
+        return subscriber_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::get_children() const
 {
-    if(children.find("address") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
     {
-        if(address != nullptr)
-        {
-            children["address"] = address;
-        }
+        children["address"] = address;
     }
 
-    if(children.find("querier-address") == children.end())
+    if(querier_address != nullptr)
     {
-        if(querier_address != nullptr)
-        {
-            children["querier-address"] = querier_address;
-        }
+        children["querier-address"] = querier_address;
     }
 
-    if(children.find("subscriber-address") == children.end())
+    if(subscriber_address != nullptr)
     {
-        if(subscriber_address != nullptr)
-        {
-            children["subscriber-address"] = subscriber_address;
-        }
+        children["subscriber-address"] = subscriber_address;
     }
 
     return children;
@@ -598,7 +560,7 @@ std::string Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceO
 
 }
 
-EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -624,20 +586,12 @@ EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOl
 
 std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::Address::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -694,7 +648,7 @@ std::string Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceO
 
 }
 
-EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -720,20 +674,12 @@ EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOl
 
 std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::QuerierAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -790,7 +736,7 @@ std::string Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceO
 
 }
 
-EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -816,20 +762,12 @@ EntityPath Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOl
 
 std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceOldFormatStateOns::InterfaceOldFormatStateOn::SubscriberAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

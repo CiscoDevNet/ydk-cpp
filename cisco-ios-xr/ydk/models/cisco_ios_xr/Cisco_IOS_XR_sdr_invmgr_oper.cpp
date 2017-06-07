@@ -14,7 +14,6 @@ SdrInventory::SdrInventory()
     racks(std::make_shared<SdrInventory::Racks>())
 {
     racks->parent = this;
-    children["racks"] = racks;
 
     yang_name = "sdr-inventory"; yang_parent_name = "Cisco-IOS-XR-sdr-invmgr-oper";
 }
@@ -43,12 +42,12 @@ std::string SdrInventory::get_segment_path() const
 
 }
 
-EntityPath SdrInventory::get_entity_path(Entity* ancestor) const
+const EntityPath SdrInventory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath SdrInventory::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SdrInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "racks")
     {
-        if(racks != nullptr)
-        {
-            children["racks"] = racks;
-        }
-        else
+        if(racks == nullptr)
         {
             racks = std::make_shared<SdrInventory::Racks>();
-            racks->parent = this;
-            children["racks"] = racks;
         }
-        return children.at("racks");
+        return racks;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SdrInventory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SdrInventory::get_children() const
 {
-    if(children.find("racks") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(racks != nullptr)
     {
-        if(racks != nullptr)
-        {
-            children["racks"] = racks;
-        }
+        children["racks"] = racks;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string SdrInventory::Racks::get_segment_path() const
 
 }
 
-EntityPath SdrInventory::Racks::get_entity_path(Entity* ancestor) const
+const EntityPath SdrInventory::Racks::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath SdrInventory::Racks::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SdrInventory::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rack")
     {
         for(auto const & c : rack)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> SdrInventory::Racks::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SdrInventory::Racks::Rack>();
         c->parent = this;
-        rack.push_back(std::move(c));
-        children[segment_path] = rack.back();
-        return children.at(segment_path);
+        rack.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SdrInventory::Racks::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rack)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -276,7 +245,7 @@ std::string SdrInventory::Racks::Rack::get_segment_path() const
 
 }
 
-EntityPath SdrInventory::Racks::Rack::get_entity_path(Entity* ancestor) const
+const EntityPath SdrInventory::Racks::Rack::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -300,15 +269,6 @@ EntityPath SdrInventory::Racks::Rack::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SdrInventory::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "slot")
     {
         for(auto const & c : slot)
@@ -316,28 +276,24 @@ std::shared_ptr<Entity> SdrInventory::Racks::Rack::get_child_by_name(const std::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SdrInventory::Racks::Rack::Slot>();
         c->parent = this;
-        slot.push_back(std::move(c));
-        children[segment_path] = slot.back();
-        return children.at(segment_path);
+        slot.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SdrInventory::Racks::Rack::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : slot)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -392,7 +348,7 @@ std::string SdrInventory::Racks::Rack::Slot::get_segment_path() const
 
 }
 
-EntityPath SdrInventory::Racks::Rack::Slot::get_entity_path(Entity* ancestor) const
+const EntityPath SdrInventory::Racks::Rack::Slot::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -416,15 +372,6 @@ EntityPath SdrInventory::Racks::Rack::Slot::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> SdrInventory::Racks::Rack::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "card")
     {
         for(auto const & c : card)
@@ -432,28 +379,24 @@ std::shared_ptr<Entity> SdrInventory::Racks::Rack::Slot::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SdrInventory::Racks::Rack::Slot::Card>();
         c->parent = this;
-        card.push_back(std::move(c));
-        children[segment_path] = card.back();
-        return children.at(segment_path);
+        card.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SdrInventory::Racks::Rack::Slot::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::Slot::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : card)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -474,7 +417,6 @@ SdrInventory::Racks::Rack::Slot::Card::Card()
     attributes(std::make_shared<SdrInventory::Racks::Rack::Slot::Card::Attributes>())
 {
     attributes->parent = this;
-    children["attributes"] = attributes;
 
     yang_name = "card"; yang_parent_name = "slot";
 }
@@ -505,7 +447,7 @@ std::string SdrInventory::Racks::Rack::Slot::Card::get_segment_path() const
 
 }
 
-EntityPath SdrInventory::Racks::Rack::Slot::Card::get_entity_path(Entity* ancestor) const
+const EntityPath SdrInventory::Racks::Rack::Slot::Card::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -529,41 +471,24 @@ EntityPath SdrInventory::Racks::Rack::Slot::Card::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> SdrInventory::Racks::Rack::Slot::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "attributes")
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
-        else
+        if(attributes == nullptr)
         {
             attributes = std::make_shared<SdrInventory::Racks::Rack::Slot::Card::Attributes>();
-            attributes->parent = this;
-            children["attributes"] = attributes;
         }
-        return children.at("attributes");
+        return attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SdrInventory::Racks::Rack::Slot::Card::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::Slot::Card::get_children() const
 {
-    if(children.find("attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attributes != nullptr)
     {
-        if(attributes != nullptr)
-        {
-            children["attributes"] = attributes;
-        }
+        children["attributes"] = attributes;
     }
 
     return children;
@@ -647,7 +572,7 @@ std::string SdrInventory::Racks::Rack::Slot::Card::Attributes::get_segment_path(
 
 }
 
-EntityPath SdrInventory::Racks::Rack::Slot::Card::Attributes::get_entity_path(Entity* ancestor) const
+const EntityPath SdrInventory::Racks::Rack::Slot::Card::Attributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -684,20 +609,12 @@ EntityPath SdrInventory::Racks::Rack::Slot::Card::Attributes::get_entity_path(En
 
 std::shared_ptr<Entity> SdrInventory::Racks::Rack::Slot::Card::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SdrInventory::Racks::Rack::Slot::Card::Attributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::Slot::Card::Attributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

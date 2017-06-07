@@ -14,7 +14,6 @@ Aaa::Aaa()
     usernames(std::make_shared<Aaa::Usernames>())
 {
     usernames->parent = this;
-    children["usernames"] = usernames;
 
     yang_name = "aaa"; yang_parent_name = "Cisco-IOS-XR-aaa-locald-admin-cfg";
 }
@@ -43,12 +42,12 @@ std::string Aaa::get_segment_path() const
 
 }
 
-EntityPath Aaa::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Aaa::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "usernames")
     {
-        if(usernames != nullptr)
-        {
-            children["usernames"] = usernames;
-        }
-        else
+        if(usernames == nullptr)
         {
             usernames = std::make_shared<Aaa::Usernames>();
-            usernames->parent = this;
-            children["usernames"] = usernames;
         }
-        return children.at("usernames");
+        return usernames;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
 {
-    if(children.find("usernames") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(usernames != nullptr)
     {
-        if(usernames != nullptr)
-        {
-            children["usernames"] = usernames;
-        }
+        children["usernames"] = usernames;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Aaa::Usernames::get_segment_path() const
 
 }
 
-EntityPath Aaa::Usernames::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usernames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Aaa::Usernames::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Usernames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "username")
     {
         for(auto const & c : username)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Aaa::Usernames::get_child_by_name(const std::string & ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Usernames::Username>();
         c->parent = this;
-        username.push_back(std::move(c));
-        children[segment_path] = username.back();
-        return children.at(segment_path);
+        username.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usernames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : username)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -243,7 +212,6 @@ Aaa::Usernames::Username::Username()
     usergroup_under_usernames(std::make_shared<Aaa::Usernames::Username::UsergroupUnderUsernames>())
 {
     usergroup_under_usernames->parent = this;
-    children["usergroup-under-usernames"] = usergroup_under_usernames;
 
     yang_name = "username"; yang_parent_name = "usernames";
 }
@@ -276,7 +244,7 @@ std::string Aaa::Usernames::Username::get_segment_path() const
 
 }
 
-EntityPath Aaa::Usernames::Username::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usernames::Username::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -301,41 +269,24 @@ EntityPath Aaa::Usernames::Username::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Aaa::Usernames::Username::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "usergroup-under-usernames")
     {
-        if(usergroup_under_usernames != nullptr)
-        {
-            children["usergroup-under-usernames"] = usergroup_under_usernames;
-        }
-        else
+        if(usergroup_under_usernames == nullptr)
         {
             usergroup_under_usernames = std::make_shared<Aaa::Usernames::Username::UsergroupUnderUsernames>();
-            usergroup_under_usernames->parent = this;
-            children["usergroup-under-usernames"] = usergroup_under_usernames;
         }
-        return children.at("usergroup-under-usernames");
+        return usergroup_under_usernames;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usernames::Username::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::Username::get_children() const
 {
-    if(children.find("usergroup-under-usernames") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(usergroup_under_usernames != nullptr)
     {
-        if(usergroup_under_usernames != nullptr)
-        {
-            children["usergroup-under-usernames"] = usergroup_under_usernames;
-        }
+        children["usergroup-under-usernames"] = usergroup_under_usernames;
     }
 
     return children;
@@ -391,7 +342,7 @@ std::string Aaa::Usernames::Username::UsergroupUnderUsernames::get_segment_path(
 
 }
 
-EntityPath Aaa::Usernames::Username::UsergroupUnderUsernames::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usernames::Username::UsergroupUnderUsernames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -414,15 +365,6 @@ EntityPath Aaa::Usernames::Username::UsergroupUnderUsernames::get_entity_path(En
 
 std::shared_ptr<Entity> Aaa::Usernames::Username::UsergroupUnderUsernames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "usergroup-under-username")
     {
         for(auto const & c : usergroup_under_username)
@@ -430,28 +372,24 @@ std::shared_ptr<Entity> Aaa::Usernames::Username::UsergroupUnderUsernames::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername>();
         c->parent = this;
-        usergroup_under_username.push_back(std::move(c));
-        children[segment_path] = usergroup_under_username.back();
-        return children.at(segment_path);
+        usergroup_under_username.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usernames::Username::UsergroupUnderUsernames::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::Username::UsergroupUnderUsernames::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : usergroup_under_username)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -492,7 +430,7 @@ std::string Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUse
 
 }
 
-EntityPath Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::get_entity_path(Entity* ancestor) const
+const EntityPath Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -516,20 +454,12 @@ EntityPath Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUser
 
 std::shared_ptr<Entity> Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

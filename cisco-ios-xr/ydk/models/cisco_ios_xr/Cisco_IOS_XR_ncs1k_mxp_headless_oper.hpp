@@ -18,25 +18,22 @@ class HeadlessFuncData : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class OtnPortNames; //type: HeadlessFuncData::OtnPortNames
         class EthernetPortNames; //type: HeadlessFuncData::EthernetPortNames
 
         std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_headless_oper::HeadlessFuncData::EthernetPortNames> ethernet_port_names;
         std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_headless_oper::HeadlessFuncData::OtnPortNames> otn_port_names;
-
-
+        
 }; // HeadlessFuncData
 
 
@@ -48,19 +45,16 @@ class HeadlessFuncData::OtnPortNames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class OtnPortName; //type: HeadlessFuncData::OtnPortNames::OtnPortName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_headless_oper::HeadlessFuncData::OtnPortNames::OtnPortName> > otn_port_name;
-
-
+        
 }; // HeadlessFuncData::OtnPortNames
 
 
@@ -72,23 +66,20 @@ class HeadlessFuncData::OtnPortNames::OtnPortName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf started_stateful; //type: boolean
         YLeaf headless_start_time; //type: string
         YLeaf headless_end_time; //type: string
-
         class OtnStatistics; //type: HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics
 
         std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_headless_oper::HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics> otn_statistics;
-
-
+        
 }; // HeadlessFuncData::OtnPortNames::OtnPortName
 
 
@@ -100,19 +91,16 @@ class HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf sm_bip; //type: uint64
         YLeaf sm_bei; //type: uint64
         YLeaf fec_ec; //type: uint64
         YLeaf fec_uc; //type: uint64
-
-
 
 }; // HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics
 
@@ -125,19 +113,16 @@ class HeadlessFuncData::EthernetPortNames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class EthernetPortName; //type: HeadlessFuncData::EthernetPortNames::EthernetPortName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_headless_oper::HeadlessFuncData::EthernetPortNames::EthernetPortName> > ethernet_port_name;
-
-
+        
 }; // HeadlessFuncData::EthernetPortNames
 
 
@@ -149,23 +134,20 @@ class HeadlessFuncData::EthernetPortNames::EthernetPortName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf started_stateful; //type: boolean
         YLeaf headless_start_time; //type: string
         YLeaf headless_end_time; //type: string
-
         class EtherStatistics; //type: HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics
 
         std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_headless_oper::HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics> ether_statistics;
-
-
+        
 }; // HeadlessFuncData::EthernetPortNames::EthernetPortName
 
 
@@ -177,12 +159,11 @@ class HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf rx_pkts_over_sized; //type: uint64
         YLeaf rx_pkts_bad_fcs; //type: uint64
@@ -216,8 +197,6 @@ class HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics : p
         YLeaf tx_pause; //type: uint64
         YLeaf rx_lldp_pkt; //type: uint64
         YLeaf rx8021q_pkt; //type: uint64
-
-
 
 }; // HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics
 

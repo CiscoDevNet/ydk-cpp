@@ -23,28 +23,20 @@ Rcmd::Rcmd()
 	,server(std::make_shared<Rcmd::Server>())
 {
     intf->parent = this;
-    children["intf"] = intf;
 
     isis->parent = this;
-    children["isis"] = isis;
 
     ldp->parent = this;
-    children["ldp"] = ldp;
 
     memory->parent = this;
-    children["memory"] = memory;
 
     node->parent = this;
-    children["node"] = node;
 
     ospf->parent = this;
-    children["ospf"] = ospf;
 
     process->parent = this;
-    children["process"] = process;
 
     server->parent = this;
-    children["server"] = server;
 
     yang_name = "rcmd"; yang_parent_name = "Cisco-IOS-XR-infra-rcmd-oper";
 }
@@ -87,12 +79,12 @@ std::string Rcmd::get_segment_path() const
 
 }
 
-EntityPath Rcmd::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -107,202 +99,122 @@ EntityPath Rcmd::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "intf")
     {
-        if(intf != nullptr)
-        {
-            children["intf"] = intf;
-        }
-        else
+        if(intf == nullptr)
         {
             intf = std::make_shared<Rcmd::Intf>();
-            intf->parent = this;
-            children["intf"] = intf;
         }
-        return children.at("intf");
+        return intf;
     }
 
     if(child_yang_name == "isis")
     {
-        if(isis != nullptr)
-        {
-            children["isis"] = isis;
-        }
-        else
+        if(isis == nullptr)
         {
             isis = std::make_shared<Rcmd::Isis>();
-            isis->parent = this;
-            children["isis"] = isis;
         }
-        return children.at("isis");
+        return isis;
     }
 
     if(child_yang_name == "ldp")
     {
-        if(ldp != nullptr)
-        {
-            children["ldp"] = ldp;
-        }
-        else
+        if(ldp == nullptr)
         {
             ldp = std::make_shared<Rcmd::Ldp>();
-            ldp->parent = this;
-            children["ldp"] = ldp;
         }
-        return children.at("ldp");
+        return ldp;
     }
 
     if(child_yang_name == "memory")
     {
-        if(memory != nullptr)
-        {
-            children["memory"] = memory;
-        }
-        else
+        if(memory == nullptr)
         {
             memory = std::make_shared<Rcmd::Memory>();
-            memory->parent = this;
-            children["memory"] = memory;
         }
-        return children.at("memory");
+        return memory;
     }
 
     if(child_yang_name == "node")
     {
-        if(node != nullptr)
-        {
-            children["node"] = node;
-        }
-        else
+        if(node == nullptr)
         {
             node = std::make_shared<Rcmd::Node>();
-            node->parent = this;
-            children["node"] = node;
         }
-        return children.at("node");
+        return node;
     }
 
     if(child_yang_name == "ospf")
     {
-        if(ospf != nullptr)
-        {
-            children["ospf"] = ospf;
-        }
-        else
+        if(ospf == nullptr)
         {
             ospf = std::make_shared<Rcmd::Ospf>();
-            ospf->parent = this;
-            children["ospf"] = ospf;
         }
-        return children.at("ospf");
+        return ospf;
     }
 
     if(child_yang_name == "process")
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
-        else
+        if(process == nullptr)
         {
             process = std::make_shared<Rcmd::Process>();
-            process->parent = this;
-            children["process"] = process;
         }
-        return children.at("process");
+        return process;
     }
 
     if(child_yang_name == "server")
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
-        else
+        if(server == nullptr)
         {
             server = std::make_shared<Rcmd::Server>();
-            server->parent = this;
-            children["server"] = server;
         }
-        return children.at("server");
+        return server;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::get_children() const
 {
-    if(children.find("intf") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(intf != nullptr)
     {
-        if(intf != nullptr)
-        {
-            children["intf"] = intf;
-        }
+        children["intf"] = intf;
     }
 
-    if(children.find("isis") == children.end())
+    if(isis != nullptr)
     {
-        if(isis != nullptr)
-        {
-            children["isis"] = isis;
-        }
+        children["isis"] = isis;
     }
 
-    if(children.find("ldp") == children.end())
+    if(ldp != nullptr)
     {
-        if(ldp != nullptr)
-        {
-            children["ldp"] = ldp;
-        }
+        children["ldp"] = ldp;
     }
 
-    if(children.find("memory") == children.end())
+    if(memory != nullptr)
     {
-        if(memory != nullptr)
-        {
-            children["memory"] = memory;
-        }
+        children["memory"] = memory;
     }
 
-    if(children.find("node") == children.end())
+    if(node != nullptr)
     {
-        if(node != nullptr)
-        {
-            children["node"] = node;
-        }
+        children["node"] = node;
     }
 
-    if(children.find("ospf") == children.end())
+    if(ospf != nullptr)
     {
-        if(ospf != nullptr)
-        {
-            children["ospf"] = ospf;
-        }
+        children["ospf"] = ospf;
     }
 
-    if(children.find("process") == children.end())
+    if(process != nullptr)
     {
-        if(process != nullptr)
-        {
-            children["process"] = process;
-        }
+        children["process"] = process;
     }
 
-    if(children.find("server") == children.end())
+    if(server != nullptr)
     {
-        if(server != nullptr)
-        {
-            children["server"] = server;
-        }
+        children["server"] = server;
     }
 
     return children;
@@ -337,7 +249,6 @@ Rcmd::Ospf::Ospf()
     instances(std::make_shared<Rcmd::Ospf::Instances>())
 {
     instances->parent = this;
-    children["instances"] = instances;
 
     yang_name = "ospf"; yang_parent_name = "rcmd";
 }
@@ -366,7 +277,7 @@ std::string Rcmd::Ospf::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Ospf::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -389,41 +300,24 @@ EntityPath Rcmd::Ospf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instances")
     {
-        if(instances != nullptr)
-        {
-            children["instances"] = instances;
-        }
-        else
+        if(instances == nullptr)
         {
             instances = std::make_shared<Rcmd::Ospf::Instances>();
-            instances->parent = this;
-            children["instances"] = instances;
         }
-        return children.at("instances");
+        return instances;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::get_children() const
 {
-    if(children.find("instances") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(instances != nullptr)
     {
-        if(instances != nullptr)
-        {
-            children["instances"] = instances;
-        }
+        children["instances"] = instances;
     }
 
     return children;
@@ -471,7 +365,7 @@ std::string Rcmd::Ospf::Instances::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Ospf::Instances::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -494,15 +388,6 @@ EntityPath Rcmd::Ospf::Instances::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance")
     {
         for(auto const & c : instance)
@@ -510,28 +395,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::get_child_by_name(const std::stri
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance>();
         c->parent = this;
-        instance.push_back(std::move(c));
-        children[segment_path] = instance.back();
-        return children.at(segment_path);
+        instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -557,34 +438,24 @@ Rcmd::Ospf::Instances::Instance::Instance()
 	,summary_external_event_summaries(std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries>())
 {
     ipfrr_event_offlines->parent = this;
-    children["ipfrr-event-offlines"] = ipfrr_event_offlines;
 
     ipfrr_event_summaries->parent = this;
-    children["ipfrr-event-summaries"] = ipfrr_event_summaries;
 
     prefix_event_offlines->parent = this;
-    children["prefix-event-offlines"] = prefix_event_offlines;
 
     prefix_event_statistics->parent = this;
-    children["prefix-event-statistics"] = prefix_event_statistics;
 
     prefix_event_summaries->parent = this;
-    children["prefix-event-summaries"] = prefix_event_summaries;
 
     spf_run_offlines->parent = this;
-    children["spf-run-offlines"] = spf_run_offlines;
 
     spf_run_summaries->parent = this;
-    children["spf-run-summaries"] = spf_run_summaries;
 
     summary_external_event_offlines->parent = this;
-    children["summary-external-event-offlines"] = summary_external_event_offlines;
 
     summary_external_event_statistics->parent = this;
-    children["summary-external-event-statistics"] = summary_external_event_statistics;
 
     summary_external_event_summaries->parent = this;
-    children["summary-external-event-summaries"] = summary_external_event_summaries;
 
     yang_name = "instance"; yang_parent_name = "instances";
 }
@@ -633,7 +504,7 @@ std::string Rcmd::Ospf::Instances::Instance::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -657,248 +528,150 @@ EntityPath Rcmd::Ospf::Instances::Instance::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipfrr-event-offlines")
     {
-        if(ipfrr_event_offlines != nullptr)
-        {
-            children["ipfrr-event-offlines"] = ipfrr_event_offlines;
-        }
-        else
+        if(ipfrr_event_offlines == nullptr)
         {
             ipfrr_event_offlines = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines>();
-            ipfrr_event_offlines->parent = this;
-            children["ipfrr-event-offlines"] = ipfrr_event_offlines;
         }
-        return children.at("ipfrr-event-offlines");
+        return ipfrr_event_offlines;
     }
 
     if(child_yang_name == "ipfrr-event-summaries")
     {
-        if(ipfrr_event_summaries != nullptr)
-        {
-            children["ipfrr-event-summaries"] = ipfrr_event_summaries;
-        }
-        else
+        if(ipfrr_event_summaries == nullptr)
         {
             ipfrr_event_summaries = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries>();
-            ipfrr_event_summaries->parent = this;
-            children["ipfrr-event-summaries"] = ipfrr_event_summaries;
         }
-        return children.at("ipfrr-event-summaries");
+        return ipfrr_event_summaries;
     }
 
     if(child_yang_name == "prefix-event-offlines")
     {
-        if(prefix_event_offlines != nullptr)
-        {
-            children["prefix-event-offlines"] = prefix_event_offlines;
-        }
-        else
+        if(prefix_event_offlines == nullptr)
         {
             prefix_event_offlines = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines>();
-            prefix_event_offlines->parent = this;
-            children["prefix-event-offlines"] = prefix_event_offlines;
         }
-        return children.at("prefix-event-offlines");
+        return prefix_event_offlines;
     }
 
     if(child_yang_name == "prefix-event-statistics")
     {
-        if(prefix_event_statistics != nullptr)
-        {
-            children["prefix-event-statistics"] = prefix_event_statistics;
-        }
-        else
+        if(prefix_event_statistics == nullptr)
         {
             prefix_event_statistics = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventStatistics>();
-            prefix_event_statistics->parent = this;
-            children["prefix-event-statistics"] = prefix_event_statistics;
         }
-        return children.at("prefix-event-statistics");
+        return prefix_event_statistics;
     }
 
     if(child_yang_name == "prefix-event-summaries")
     {
-        if(prefix_event_summaries != nullptr)
-        {
-            children["prefix-event-summaries"] = prefix_event_summaries;
-        }
-        else
+        if(prefix_event_summaries == nullptr)
         {
             prefix_event_summaries = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries>();
-            prefix_event_summaries->parent = this;
-            children["prefix-event-summaries"] = prefix_event_summaries;
         }
-        return children.at("prefix-event-summaries");
+        return prefix_event_summaries;
     }
 
     if(child_yang_name == "spf-run-offlines")
     {
-        if(spf_run_offlines != nullptr)
-        {
-            children["spf-run-offlines"] = spf_run_offlines;
-        }
-        else
+        if(spf_run_offlines == nullptr)
         {
             spf_run_offlines = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines>();
-            spf_run_offlines->parent = this;
-            children["spf-run-offlines"] = spf_run_offlines;
         }
-        return children.at("spf-run-offlines");
+        return spf_run_offlines;
     }
 
     if(child_yang_name == "spf-run-summaries")
     {
-        if(spf_run_summaries != nullptr)
-        {
-            children["spf-run-summaries"] = spf_run_summaries;
-        }
-        else
+        if(spf_run_summaries == nullptr)
         {
             spf_run_summaries = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries>();
-            spf_run_summaries->parent = this;
-            children["spf-run-summaries"] = spf_run_summaries;
         }
-        return children.at("spf-run-summaries");
+        return spf_run_summaries;
     }
 
     if(child_yang_name == "summary-external-event-offlines")
     {
-        if(summary_external_event_offlines != nullptr)
-        {
-            children["summary-external-event-offlines"] = summary_external_event_offlines;
-        }
-        else
+        if(summary_external_event_offlines == nullptr)
         {
             summary_external_event_offlines = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines>();
-            summary_external_event_offlines->parent = this;
-            children["summary-external-event-offlines"] = summary_external_event_offlines;
         }
-        return children.at("summary-external-event-offlines");
+        return summary_external_event_offlines;
     }
 
     if(child_yang_name == "summary-external-event-statistics")
     {
-        if(summary_external_event_statistics != nullptr)
-        {
-            children["summary-external-event-statistics"] = summary_external_event_statistics;
-        }
-        else
+        if(summary_external_event_statistics == nullptr)
         {
             summary_external_event_statistics = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics>();
-            summary_external_event_statistics->parent = this;
-            children["summary-external-event-statistics"] = summary_external_event_statistics;
         }
-        return children.at("summary-external-event-statistics");
+        return summary_external_event_statistics;
     }
 
     if(child_yang_name == "summary-external-event-summaries")
     {
-        if(summary_external_event_summaries != nullptr)
-        {
-            children["summary-external-event-summaries"] = summary_external_event_summaries;
-        }
-        else
+        if(summary_external_event_summaries == nullptr)
         {
             summary_external_event_summaries = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries>();
-            summary_external_event_summaries->parent = this;
-            children["summary-external-event-summaries"] = summary_external_event_summaries;
         }
-        return children.at("summary-external-event-summaries");
+        return summary_external_event_summaries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::get_children() const
 {
-    if(children.find("ipfrr-event-offlines") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipfrr_event_offlines != nullptr)
     {
-        if(ipfrr_event_offlines != nullptr)
-        {
-            children["ipfrr-event-offlines"] = ipfrr_event_offlines;
-        }
+        children["ipfrr-event-offlines"] = ipfrr_event_offlines;
     }
 
-    if(children.find("ipfrr-event-summaries") == children.end())
+    if(ipfrr_event_summaries != nullptr)
     {
-        if(ipfrr_event_summaries != nullptr)
-        {
-            children["ipfrr-event-summaries"] = ipfrr_event_summaries;
-        }
+        children["ipfrr-event-summaries"] = ipfrr_event_summaries;
     }
 
-    if(children.find("prefix-event-offlines") == children.end())
+    if(prefix_event_offlines != nullptr)
     {
-        if(prefix_event_offlines != nullptr)
-        {
-            children["prefix-event-offlines"] = prefix_event_offlines;
-        }
+        children["prefix-event-offlines"] = prefix_event_offlines;
     }
 
-    if(children.find("prefix-event-statistics") == children.end())
+    if(prefix_event_statistics != nullptr)
     {
-        if(prefix_event_statistics != nullptr)
-        {
-            children["prefix-event-statistics"] = prefix_event_statistics;
-        }
+        children["prefix-event-statistics"] = prefix_event_statistics;
     }
 
-    if(children.find("prefix-event-summaries") == children.end())
+    if(prefix_event_summaries != nullptr)
     {
-        if(prefix_event_summaries != nullptr)
-        {
-            children["prefix-event-summaries"] = prefix_event_summaries;
-        }
+        children["prefix-event-summaries"] = prefix_event_summaries;
     }
 
-    if(children.find("spf-run-offlines") == children.end())
+    if(spf_run_offlines != nullptr)
     {
-        if(spf_run_offlines != nullptr)
-        {
-            children["spf-run-offlines"] = spf_run_offlines;
-        }
+        children["spf-run-offlines"] = spf_run_offlines;
     }
 
-    if(children.find("spf-run-summaries") == children.end())
+    if(spf_run_summaries != nullptr)
     {
-        if(spf_run_summaries != nullptr)
-        {
-            children["spf-run-summaries"] = spf_run_summaries;
-        }
+        children["spf-run-summaries"] = spf_run_summaries;
     }
 
-    if(children.find("summary-external-event-offlines") == children.end())
+    if(summary_external_event_offlines != nullptr)
     {
-        if(summary_external_event_offlines != nullptr)
-        {
-            children["summary-external-event-offlines"] = summary_external_event_offlines;
-        }
+        children["summary-external-event-offlines"] = summary_external_event_offlines;
     }
 
-    if(children.find("summary-external-event-statistics") == children.end())
+    if(summary_external_event_statistics != nullptr)
     {
-        if(summary_external_event_statistics != nullptr)
-        {
-            children["summary-external-event-statistics"] = summary_external_event_statistics;
-        }
+        children["summary-external-event-statistics"] = summary_external_event_statistics;
     }
 
-    if(children.find("summary-external-event-summaries") == children.end())
+    if(summary_external_event_summaries != nullptr)
     {
-        if(summary_external_event_summaries != nullptr)
-        {
-            children["summary-external-event-summaries"] = summary_external_event_summaries;
-        }
+        children["summary-external-event-summaries"] = summary_external_event_summaries;
     }
 
     return children;
@@ -950,7 +723,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::get_segment_pa
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -973,15 +746,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::get_entity_path
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipfrr-event-summary")
     {
         for(auto const & c : ipfrr_event_summary)
@@ -989,28 +753,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary>();
         c->parent = this;
-        ipfrr_event_summary.push_back(std::move(c));
-        children[segment_path] = ipfrr_event_summary.back();
-        return children.at(segment_path);
+        ipfrr_event_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipfrr_event_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1104,7 +864,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1139,15 +899,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipfrr-statistic")
     {
         for(auto const & c : ipfrr_statistic)
@@ -1155,15 +906,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::Ip
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic>();
         c->parent = this;
-        ipfrr_statistic.push_back(std::move(c));
-        children[segment_path] = ipfrr_statistic.back();
-        return children.at(segment_path);
+        ipfrr_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "remote-node")
@@ -1173,36 +922,29 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::Ip
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode>();
         c->parent = this;
-        remote_node.push_back(std::move(c));
-        children[segment_path] = remote_node.back();
-        return children.at(segment_path);
+        remote_node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipfrr_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : remote_node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1312,7 +1054,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1343,20 +1085,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1449,7 +1183,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1477,15 +1211,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "primary-path")
     {
         for(auto const & c : primary_path)
@@ -1493,28 +1218,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::Ip
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath>();
         c->parent = this;
-        primary_path.push_back(std::move(c));
-        children[segment_path] = primary_path.back();
-        return children.at(segment_path);
+        primary_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : primary_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1578,7 +1299,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1603,20 +1324,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumma
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1670,7 +1383,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::get_segment_
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1693,15 +1406,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::get_entity_pa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-event-statistic")
     {
         for(auto const & c : prefix_event_statistic)
@@ -1709,28 +1413,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic>();
         c->parent = this;
-        prefix_event_statistic.push_back(std::move(c));
-        children[segment_path] = prefix_event_statistic.back();
-        return children.at(segment_path);
+        prefix_event_statistic.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prefix_event_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1816,7 +1516,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventS
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1855,20 +1555,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventSt
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1978,7 +1670,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::get_segment_path()
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2001,15 +1693,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::get_entity_path(Ent
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spf-run-summary")
     {
         for(auto const & c : spf_run_summary)
@@ -2017,28 +1700,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary>();
         c->parent = this;
-        spf_run_summary.push_back(std::move(c));
-        children[segment_path] = spf_run_summary.back();
-        return children.at(segment_path);
+        spf_run_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : spf_run_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2055,7 +1734,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfRunSummary()
     spf_summary(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary>())
 {
     spf_summary->parent = this;
-    children["spf-summary"] = spf_summary;
 
     yang_name = "spf-run-summary"; yang_parent_name = "spf-run-summaries";
 }
@@ -2106,7 +1784,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::get
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2130,15 +1808,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dijkstra-run")
     {
         for(auto const & c : dijkstra_run)
@@ -2146,15 +1815,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun>();
         c->parent = this;
-        dijkstra_run.push_back(std::move(c));
-        children[segment_path] = dijkstra_run.back();
-        return children.at(segment_path);
+        dijkstra_run.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "inter-area-and-external")
@@ -2164,59 +1831,43 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal>();
         c->parent = this;
-        inter_area_and_external.push_back(std::move(c));
-        children[segment_path] = inter_area_and_external.back();
-        return children.at(segment_path);
+        inter_area_and_external.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "spf-summary")
     {
-        if(spf_summary != nullptr)
-        {
-            children["spf-summary"] = spf_summary;
-        }
-        else
+        if(spf_summary == nullptr)
         {
             spf_summary = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary>();
-            spf_summary->parent = this;
-            children["spf-summary"] = spf_summary;
         }
-        return children.at("spf-summary");
+        return spf_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : dijkstra_run)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : inter_area_and_external)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("spf-summary") == children.end())
+    if(spf_summary != nullptr)
     {
-        if(spf_summary != nullptr)
-        {
-            children["spf-summary"] = spf_summary;
-        }
+        children["spf-summary"] = spf_summary;
     }
 
     return children;
@@ -2298,7 +1949,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2331,15 +1982,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "priority-summary")
     {
         for(auto const & c : priority_summary)
@@ -2347,28 +1989,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary>();
         c->parent = this;
-        priority_summary.push_back(std::move(c));
-        children[segment_path] = priority_summary.back();
-        return children.at(segment_path);
+        priority_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : priority_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2428,13 +2066,10 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
 	,route_statistics(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics>())
 {
     ip_convergence_time->parent = this;
-    children["ip-convergence-time"] = ip_convergence_time;
 
     mpls_convergence_time->parent = this;
-    children["mpls-convergence-time"] = mpls_convergence_time;
 
     route_statistics->parent = this;
-    children["route-statistics"] = route_statistics;
 
     yang_name = "priority-summary"; yang_parent_name = "spf-summary";
 }
@@ -2481,7 +2116,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2506,15 +2141,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-statistic")
     {
         for(auto const & c : frr_statistic)
@@ -2522,97 +2148,66 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic>();
         c->parent = this;
-        frr_statistic.push_back(std::move(c));
-        children[segment_path] = frr_statistic.back();
-        return children.at(segment_path);
+        frr_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ip-convergence-time")
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
-        else
+        if(ip_convergence_time == nullptr)
         {
             ip_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime>();
-            ip_convergence_time->parent = this;
-            children["ip-convergence-time"] = ip_convergence_time;
         }
-        return children.at("ip-convergence-time");
+        return ip_convergence_time;
     }
 
     if(child_yang_name == "mpls-convergence-time")
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
-        else
+        if(mpls_convergence_time == nullptr)
         {
             mpls_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime>();
-            mpls_convergence_time->parent = this;
-            children["mpls-convergence-time"] = mpls_convergence_time;
         }
-        return children.at("mpls-convergence-time");
+        return mpls_convergence_time;
     }
 
     if(child_yang_name == "route-statistics")
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
-        else
+        if(route_statistics == nullptr)
         {
             route_statistics = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics>();
-            route_statistics->parent = this;
-            children["route-statistics"] = route_statistics;
         }
-        return children.at("route-statistics");
+        return route_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frr_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ip-convergence-time") == children.end())
+    if(ip_convergence_time != nullptr)
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
+        children["ip-convergence-time"] = ip_convergence_time;
     }
 
-    if(children.find("mpls-convergence-time") == children.end())
+    if(mpls_convergence_time != nullptr)
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
+        children["mpls-convergence-time"] = mpls_convergence_time;
     }
 
-    if(children.find("route-statistics") == children.end())
+    if(route_statistics != nullptr)
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
+        children["route-statistics"] = route_statistics;
     }
 
     return children;
@@ -2676,7 +2271,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2705,20 +2300,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2790,7 +2377,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2817,20 +2404,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2894,7 +2473,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2921,20 +2500,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2998,7 +2569,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3025,20 +2596,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfS
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3141,7 +2704,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3171,15 +2734,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-processed")
     {
         for(auto const & c : lsa_processed)
@@ -3187,15 +2741,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed>();
         c->parent = this;
-        lsa_processed.push_back(std::move(c));
-        children[segment_path] = lsa_processed.back();
-        return children.at(segment_path);
+        lsa_processed.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "priority")
@@ -3205,15 +2757,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority>();
         c->parent = this;
-        priority.push_back(std::move(c));
-        children[segment_path] = priority.back();
-        return children.at(segment_path);
+        priority.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "trigger-lsa")
@@ -3223,44 +2773,34 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa>();
         c->parent = this;
-        trigger_lsa.push_back(std::move(c));
-        children[segment_path] = trigger_lsa.back();
-        return children.at(segment_path);
+        trigger_lsa.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsa_processed)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : priority)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : trigger_lsa)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3344,7 +2884,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3373,20 +2913,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3423,7 +2955,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Pr
     priority_summary(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary>())
 {
     priority_summary->parent = this;
-    children["priority-summary"] = priority_summary;
 
     yang_name = "priority"; yang_parent_name = "dijkstra-run";
 }
@@ -3482,7 +3013,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3505,15 +3036,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "convergence-timeline")
     {
         for(auto const & c : convergence_timeline)
@@ -3521,15 +3043,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline>();
         c->parent = this;
-        convergence_timeline.push_back(std::move(c));
-        children[segment_path] = convergence_timeline.back();
-        return children.at(segment_path);
+        convergence_timeline.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "leaf-networks-added")
@@ -3539,15 +3059,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksAdded>();
         c->parent = this;
-        leaf_networks_added.push_back(std::move(c));
-        children[segment_path] = leaf_networks_added.back();
-        return children.at(segment_path);
+        leaf_networks_added.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "leaf-networks-deleted")
@@ -3557,67 +3075,48 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted>();
         c->parent = this;
-        leaf_networks_deleted.push_back(std::move(c));
-        children[segment_path] = leaf_networks_deleted.back();
-        return children.at(segment_path);
+        leaf_networks_deleted.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "priority-summary")
     {
-        if(priority_summary != nullptr)
-        {
-            children["priority-summary"] = priority_summary;
-        }
-        else
+        if(priority_summary == nullptr)
         {
             priority_summary = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary>();
-            priority_summary->parent = this;
-            children["priority-summary"] = priority_summary;
         }
-        return children.at("priority-summary");
+        return priority_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : convergence_timeline)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : leaf_networks_added)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : leaf_networks_deleted)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("priority-summary") == children.end())
+    if(priority_summary != nullptr)
     {
-        if(priority_summary != nullptr)
-        {
-            children["priority-summary"] = priority_summary;
-        }
+        children["priority-summary"] = priority_summary;
     }
 
     return children;
@@ -3637,13 +3136,10 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Pr
 	,route_statistics(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics>())
 {
     ip_convergence_time->parent = this;
-    children["ip-convergence-time"] = ip_convergence_time;
 
     mpls_convergence_time->parent = this;
-    children["mpls-convergence-time"] = mpls_convergence_time;
 
     route_statistics->parent = this;
-    children["route-statistics"] = route_statistics;
 
     yang_name = "priority-summary"; yang_parent_name = "priority";
 }
@@ -3690,7 +3186,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3715,15 +3211,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-statistic")
     {
         for(auto const & c : frr_statistic)
@@ -3731,97 +3218,66 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::FrrStatistic>();
         c->parent = this;
-        frr_statistic.push_back(std::move(c));
-        children[segment_path] = frr_statistic.back();
-        return children.at(segment_path);
+        frr_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ip-convergence-time")
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
-        else
+        if(ip_convergence_time == nullptr)
         {
             ip_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime>();
-            ip_convergence_time->parent = this;
-            children["ip-convergence-time"] = ip_convergence_time;
         }
-        return children.at("ip-convergence-time");
+        return ip_convergence_time;
     }
 
     if(child_yang_name == "mpls-convergence-time")
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
-        else
+        if(mpls_convergence_time == nullptr)
         {
             mpls_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime>();
-            mpls_convergence_time->parent = this;
-            children["mpls-convergence-time"] = mpls_convergence_time;
         }
-        return children.at("mpls-convergence-time");
+        return mpls_convergence_time;
     }
 
     if(child_yang_name == "route-statistics")
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
-        else
+        if(route_statistics == nullptr)
         {
             route_statistics = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics>();
-            route_statistics->parent = this;
-            children["route-statistics"] = route_statistics;
         }
-        return children.at("route-statistics");
+        return route_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frr_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ip-convergence-time") == children.end())
+    if(ip_convergence_time != nullptr)
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
+        children["ip-convergence-time"] = ip_convergence_time;
     }
 
-    if(children.find("mpls-convergence-time") == children.end())
+    if(mpls_convergence_time != nullptr)
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
+        children["mpls-convergence-time"] = mpls_convergence_time;
     }
 
-    if(children.find("route-statistics") == children.end())
+    if(route_statistics != nullptr)
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
+        children["route-statistics"] = route_statistics;
     }
 
     return children;
@@ -3885,7 +3341,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3914,20 +3370,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3999,7 +3447,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4026,20 +3474,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4103,7 +3543,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4130,20 +3570,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4207,7 +3639,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4234,20 +3666,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4283,28 +3707,20 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Pr
 	,route_origin(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin>())
 {
     ldp_enter->parent = this;
-    children["ldp-enter"] = ldp_enter;
 
     ldp_exit->parent = this;
-    children["ldp-exit"] = ldp_exit;
 
     lsd_enter->parent = this;
-    children["lsd-enter"] = lsd_enter;
 
     lsd_exit->parent = this;
-    children["lsd-exit"] = lsd_exit;
 
     ri_bv4_enter->parent = this;
-    children["ri-bv4-enter"] = ri_bv4_enter;
 
     ri_bv4_exit->parent = this;
-    children["ri-bv4-exit"] = ri_bv4_exit;
 
     ri_bv4_redistribute->parent = this;
-    children["ri-bv4-redistribute"] = ri_bv4_redistribute;
 
     route_origin->parent = this;
-    children["route-origin"] = route_origin;
 
     yang_name = "convergence-timeline"; yang_parent_name = "priority";
 }
@@ -4367,7 +3783,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4390,15 +3806,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lc-ip")
     {
         for(auto const & c : lc_ip)
@@ -4406,15 +3813,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp>();
         c->parent = this;
-        lc_ip.push_back(std::move(c));
-        children[segment_path] = lc_ip.back();
-        return children.at(segment_path);
+        lc_ip.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lc-mpls")
@@ -4424,220 +3829,141 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(std::move(c));
-        children[segment_path] = lc_mpls.back();
-        return children.at(segment_path);
+        lc_mpls.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ldp-enter")
     {
-        if(ldp_enter != nullptr)
-        {
-            children["ldp-enter"] = ldp_enter;
-        }
-        else
+        if(ldp_enter == nullptr)
         {
             ldp_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter>();
-            ldp_enter->parent = this;
-            children["ldp-enter"] = ldp_enter;
         }
-        return children.at("ldp-enter");
+        return ldp_enter;
     }
 
     if(child_yang_name == "ldp-exit")
     {
-        if(ldp_exit != nullptr)
-        {
-            children["ldp-exit"] = ldp_exit;
-        }
-        else
+        if(ldp_exit == nullptr)
         {
             ldp_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpExit>();
-            ldp_exit->parent = this;
-            children["ldp-exit"] = ldp_exit;
         }
-        return children.at("ldp-exit");
+        return ldp_exit;
     }
 
     if(child_yang_name == "lsd-enter")
     {
-        if(lsd_enter != nullptr)
-        {
-            children["lsd-enter"] = lsd_enter;
-        }
-        else
+        if(lsd_enter == nullptr)
         {
             lsd_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter>();
-            lsd_enter->parent = this;
-            children["lsd-enter"] = lsd_enter;
         }
-        return children.at("lsd-enter");
+        return lsd_enter;
     }
 
     if(child_yang_name == "lsd-exit")
     {
-        if(lsd_exit != nullptr)
-        {
-            children["lsd-exit"] = lsd_exit;
-        }
-        else
+        if(lsd_exit == nullptr)
         {
             lsd_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdExit>();
-            lsd_exit->parent = this;
-            children["lsd-exit"] = lsd_exit;
         }
-        return children.at("lsd-exit");
+        return lsd_exit;
     }
 
     if(child_yang_name == "ri-bv4-enter")
     {
-        if(ri_bv4_enter != nullptr)
-        {
-            children["ri-bv4-enter"] = ri_bv4_enter;
-        }
-        else
+        if(ri_bv4_enter == nullptr)
         {
             ri_bv4_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter>();
-            ri_bv4_enter->parent = this;
-            children["ri-bv4-enter"] = ri_bv4_enter;
         }
-        return children.at("ri-bv4-enter");
+        return ri_bv4_enter;
     }
 
     if(child_yang_name == "ri-bv4-exit")
     {
-        if(ri_bv4_exit != nullptr)
-        {
-            children["ri-bv4-exit"] = ri_bv4_exit;
-        }
-        else
+        if(ri_bv4_exit == nullptr)
         {
             ri_bv4_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit>();
-            ri_bv4_exit->parent = this;
-            children["ri-bv4-exit"] = ri_bv4_exit;
         }
-        return children.at("ri-bv4-exit");
+        return ri_bv4_exit;
     }
 
     if(child_yang_name == "ri-bv4-redistribute")
     {
-        if(ri_bv4_redistribute != nullptr)
-        {
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
-        }
-        else
+        if(ri_bv4_redistribute == nullptr)
         {
             ri_bv4_redistribute = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute>();
-            ri_bv4_redistribute->parent = this;
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
         }
-        return children.at("ri-bv4-redistribute");
+        return ri_bv4_redistribute;
     }
 
     if(child_yang_name == "route-origin")
     {
-        if(route_origin != nullptr)
-        {
-            children["route-origin"] = route_origin;
-        }
-        else
+        if(route_origin == nullptr)
         {
             route_origin = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin>();
-            route_origin->parent = this;
-            children["route-origin"] = route_origin;
         }
-        return children.at("route-origin");
+        return route_origin;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lc_ip)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : lc_mpls)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ldp-enter") == children.end())
+    if(ldp_enter != nullptr)
     {
-        if(ldp_enter != nullptr)
-        {
-            children["ldp-enter"] = ldp_enter;
-        }
+        children["ldp-enter"] = ldp_enter;
     }
 
-    if(children.find("ldp-exit") == children.end())
+    if(ldp_exit != nullptr)
     {
-        if(ldp_exit != nullptr)
-        {
-            children["ldp-exit"] = ldp_exit;
-        }
+        children["ldp-exit"] = ldp_exit;
     }
 
-    if(children.find("lsd-enter") == children.end())
+    if(lsd_enter != nullptr)
     {
-        if(lsd_enter != nullptr)
-        {
-            children["lsd-enter"] = lsd_enter;
-        }
+        children["lsd-enter"] = lsd_enter;
     }
 
-    if(children.find("lsd-exit") == children.end())
+    if(lsd_exit != nullptr)
     {
-        if(lsd_exit != nullptr)
-        {
-            children["lsd-exit"] = lsd_exit;
-        }
+        children["lsd-exit"] = lsd_exit;
     }
 
-    if(children.find("ri-bv4-enter") == children.end())
+    if(ri_bv4_enter != nullptr)
     {
-        if(ri_bv4_enter != nullptr)
-        {
-            children["ri-bv4-enter"] = ri_bv4_enter;
-        }
+        children["ri-bv4-enter"] = ri_bv4_enter;
     }
 
-    if(children.find("ri-bv4-exit") == children.end())
+    if(ri_bv4_exit != nullptr)
     {
-        if(ri_bv4_exit != nullptr)
-        {
-            children["ri-bv4-exit"] = ri_bv4_exit;
-        }
+        children["ri-bv4-exit"] = ri_bv4_exit;
     }
 
-    if(children.find("ri-bv4-redistribute") == children.end())
+    if(ri_bv4_redistribute != nullptr)
     {
-        if(ri_bv4_redistribute != nullptr)
-        {
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
-        }
+        children["ri-bv4-redistribute"] = ri_bv4_redistribute;
     }
 
-    if(children.find("route-origin") == children.end())
+    if(route_origin != nullptr)
     {
-        if(route_origin != nullptr)
-        {
-            children["route-origin"] = route_origin;
-        }
+        children["route-origin"] = route_origin;
     }
 
     return children;
@@ -4684,7 +4010,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4710,20 +4036,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4780,7 +4098,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4806,20 +4124,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4876,7 +4186,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4902,20 +4212,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4972,7 +4274,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4998,20 +4300,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5068,7 +4362,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5094,20 +4388,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5164,7 +4450,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5190,20 +4476,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5260,7 +4538,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5286,20 +4564,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5356,7 +4626,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5382,20 +4652,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5423,7 +4685,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Pr
     fib_complete(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete>())
 {
     fib_complete->parent = this;
-    children["fib-complete"] = fib_complete;
 
     yang_name = "lc-ip"; yang_parent_name = "convergence-timeline";
 }
@@ -5456,7 +4717,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5481,41 +4742,24 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-complete")
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
-        else
+        if(fib_complete == nullptr)
         {
             fib_complete = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete>();
-            fib_complete->parent = this;
-            children["fib-complete"] = fib_complete;
         }
-        return children.at("fib-complete");
+        return fib_complete;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_children() const
 {
-    if(children.find("fib-complete") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fib_complete != nullptr)
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
+        children["fib-complete"] = fib_complete;
     }
 
     return children;
@@ -5570,7 +4814,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5596,20 +4840,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5637,7 +4873,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Pr
     fib_complete(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete>())
 {
     fib_complete->parent = this;
-    children["fib-complete"] = fib_complete;
 
     yang_name = "lc-mpls"; yang_parent_name = "convergence-timeline";
 }
@@ -5670,7 +4905,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5695,41 +4930,24 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-complete")
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
-        else
+        if(fib_complete == nullptr)
         {
             fib_complete = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete>();
-            fib_complete->parent = this;
-            children["fib-complete"] = fib_complete;
         }
-        return children.at("fib-complete");
+        return fib_complete;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_children() const
 {
-    if(children.find("fib-complete") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fib_complete != nullptr)
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
+        children["fib-complete"] = fib_complete;
     }
 
     return children;
@@ -5784,7 +5002,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5810,20 +5028,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5877,7 +5087,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksAdded::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksAdded::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5902,20 +5112,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksAdded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksAdded::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksAdded::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5965,7 +5167,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5990,20 +5192,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6065,7 +5259,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6094,20 +5288,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dijk
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6177,7 +5363,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6200,15 +5386,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "priority")
     {
         for(auto const & c : priority)
@@ -6216,28 +5393,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority>();
         c->parent = this;
-        priority.push_back(std::move(c));
-        children[segment_path] = priority.back();
-        return children.at(segment_path);
+        priority.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : priority)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6252,7 +5425,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExt
     priority_summary(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary>())
 {
     priority_summary->parent = this;
-    children["priority-summary"] = priority_summary;
 
     yang_name = "priority"; yang_parent_name = "inter-area-and-external";
 }
@@ -6311,7 +5483,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6334,15 +5506,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "convergence-timeline")
     {
         for(auto const & c : convergence_timeline)
@@ -6350,15 +5513,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline>();
         c->parent = this;
-        convergence_timeline.push_back(std::move(c));
-        children[segment_path] = convergence_timeline.back();
-        return children.at(segment_path);
+        convergence_timeline.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "leaf-networks-added")
@@ -6368,15 +5529,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksAdded>();
         c->parent = this;
-        leaf_networks_added.push_back(std::move(c));
-        children[segment_path] = leaf_networks_added.back();
-        return children.at(segment_path);
+        leaf_networks_added.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "leaf-networks-deleted")
@@ -6386,67 +5545,48 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted>();
         c->parent = this;
-        leaf_networks_deleted.push_back(std::move(c));
-        children[segment_path] = leaf_networks_deleted.back();
-        return children.at(segment_path);
+        leaf_networks_deleted.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "priority-summary")
     {
-        if(priority_summary != nullptr)
-        {
-            children["priority-summary"] = priority_summary;
-        }
-        else
+        if(priority_summary == nullptr)
         {
             priority_summary = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary>();
-            priority_summary->parent = this;
-            children["priority-summary"] = priority_summary;
         }
-        return children.at("priority-summary");
+        return priority_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : convergence_timeline)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : leaf_networks_added)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : leaf_networks_deleted)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("priority-summary") == children.end())
+    if(priority_summary != nullptr)
     {
-        if(priority_summary != nullptr)
-        {
-            children["priority-summary"] = priority_summary;
-        }
+        children["priority-summary"] = priority_summary;
     }
 
     return children;
@@ -6469,13 +5609,10 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExt
 	,route_statistics(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics>())
 {
     ip_convergence_time->parent = this;
-    children["ip-convergence-time"] = ip_convergence_time;
 
     mpls_convergence_time->parent = this;
-    children["mpls-convergence-time"] = mpls_convergence_time;
 
     route_statistics->parent = this;
-    children["route-statistics"] = route_statistics;
 
     yang_name = "priority-summary"; yang_parent_name = "priority";
 }
@@ -6518,7 +5655,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6546,87 +5683,52 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-convergence-time")
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
-        else
+        if(ip_convergence_time == nullptr)
         {
             ip_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime>();
-            ip_convergence_time->parent = this;
-            children["ip-convergence-time"] = ip_convergence_time;
         }
-        return children.at("ip-convergence-time");
+        return ip_convergence_time;
     }
 
     if(child_yang_name == "mpls-convergence-time")
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
-        else
+        if(mpls_convergence_time == nullptr)
         {
             mpls_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime>();
-            mpls_convergence_time->parent = this;
-            children["mpls-convergence-time"] = mpls_convergence_time;
         }
-        return children.at("mpls-convergence-time");
+        return mpls_convergence_time;
     }
 
     if(child_yang_name == "route-statistics")
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
-        else
+        if(route_statistics == nullptr)
         {
             route_statistics = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics>();
-            route_statistics->parent = this;
-            children["route-statistics"] = route_statistics;
         }
-        return children.at("route-statistics");
+        return route_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::get_children() const
 {
-    if(children.find("ip-convergence-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_convergence_time != nullptr)
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
+        children["ip-convergence-time"] = ip_convergence_time;
     }
 
-    if(children.find("mpls-convergence-time") == children.end())
+    if(mpls_convergence_time != nullptr)
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
+        children["mpls-convergence-time"] = mpls_convergence_time;
     }
 
-    if(children.find("route-statistics") == children.end())
+    if(route_statistics != nullptr)
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
+        children["route-statistics"] = route_statistics;
     }
 
     return children;
@@ -6702,7 +5804,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6731,20 +5833,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6816,7 +5910,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6843,20 +5937,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6920,7 +6006,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6947,20 +6033,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6996,28 +6074,20 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExt
 	,route_origin(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin>())
 {
     ldp_enter->parent = this;
-    children["ldp-enter"] = ldp_enter;
 
     ldp_exit->parent = this;
-    children["ldp-exit"] = ldp_exit;
 
     lsd_enter->parent = this;
-    children["lsd-enter"] = lsd_enter;
 
     lsd_exit->parent = this;
-    children["lsd-exit"] = lsd_exit;
 
     ri_bv4_enter->parent = this;
-    children["ri-bv4-enter"] = ri_bv4_enter;
 
     ri_bv4_exit->parent = this;
-    children["ri-bv4-exit"] = ri_bv4_exit;
 
     ri_bv4_redistribute->parent = this;
-    children["ri-bv4-redistribute"] = ri_bv4_redistribute;
 
     route_origin->parent = this;
-    children["route-origin"] = route_origin;
 
     yang_name = "convergence-timeline"; yang_parent_name = "priority";
 }
@@ -7080,7 +6150,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7103,15 +6173,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lc-ip")
     {
         for(auto const & c : lc_ip)
@@ -7119,15 +6180,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp>();
         c->parent = this;
-        lc_ip.push_back(std::move(c));
-        children[segment_path] = lc_ip.back();
-        return children.at(segment_path);
+        lc_ip.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lc-mpls")
@@ -7137,220 +6196,141 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRun
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(std::move(c));
-        children[segment_path] = lc_mpls.back();
-        return children.at(segment_path);
+        lc_mpls.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ldp-enter")
     {
-        if(ldp_enter != nullptr)
-        {
-            children["ldp-enter"] = ldp_enter;
-        }
-        else
+        if(ldp_enter == nullptr)
         {
             ldp_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter>();
-            ldp_enter->parent = this;
-            children["ldp-enter"] = ldp_enter;
         }
-        return children.at("ldp-enter");
+        return ldp_enter;
     }
 
     if(child_yang_name == "ldp-exit")
     {
-        if(ldp_exit != nullptr)
-        {
-            children["ldp-exit"] = ldp_exit;
-        }
-        else
+        if(ldp_exit == nullptr)
         {
             ldp_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit>();
-            ldp_exit->parent = this;
-            children["ldp-exit"] = ldp_exit;
         }
-        return children.at("ldp-exit");
+        return ldp_exit;
     }
 
     if(child_yang_name == "lsd-enter")
     {
-        if(lsd_enter != nullptr)
-        {
-            children["lsd-enter"] = lsd_enter;
-        }
-        else
+        if(lsd_enter == nullptr)
         {
             lsd_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter>();
-            lsd_enter->parent = this;
-            children["lsd-enter"] = lsd_enter;
         }
-        return children.at("lsd-enter");
+        return lsd_enter;
     }
 
     if(child_yang_name == "lsd-exit")
     {
-        if(lsd_exit != nullptr)
-        {
-            children["lsd-exit"] = lsd_exit;
-        }
-        else
+        if(lsd_exit == nullptr)
         {
             lsd_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit>();
-            lsd_exit->parent = this;
-            children["lsd-exit"] = lsd_exit;
         }
-        return children.at("lsd-exit");
+        return lsd_exit;
     }
 
     if(child_yang_name == "ri-bv4-enter")
     {
-        if(ri_bv4_enter != nullptr)
-        {
-            children["ri-bv4-enter"] = ri_bv4_enter;
-        }
-        else
+        if(ri_bv4_enter == nullptr)
         {
             ri_bv4_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter>();
-            ri_bv4_enter->parent = this;
-            children["ri-bv4-enter"] = ri_bv4_enter;
         }
-        return children.at("ri-bv4-enter");
+        return ri_bv4_enter;
     }
 
     if(child_yang_name == "ri-bv4-exit")
     {
-        if(ri_bv4_exit != nullptr)
-        {
-            children["ri-bv4-exit"] = ri_bv4_exit;
-        }
-        else
+        if(ri_bv4_exit == nullptr)
         {
             ri_bv4_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit>();
-            ri_bv4_exit->parent = this;
-            children["ri-bv4-exit"] = ri_bv4_exit;
         }
-        return children.at("ri-bv4-exit");
+        return ri_bv4_exit;
     }
 
     if(child_yang_name == "ri-bv4-redistribute")
     {
-        if(ri_bv4_redistribute != nullptr)
-        {
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
-        }
-        else
+        if(ri_bv4_redistribute == nullptr)
         {
             ri_bv4_redistribute = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute>();
-            ri_bv4_redistribute->parent = this;
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
         }
-        return children.at("ri-bv4-redistribute");
+        return ri_bv4_redistribute;
     }
 
     if(child_yang_name == "route-origin")
     {
-        if(route_origin != nullptr)
-        {
-            children["route-origin"] = route_origin;
-        }
-        else
+        if(route_origin == nullptr)
         {
             route_origin = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin>();
-            route_origin->parent = this;
-            children["route-origin"] = route_origin;
         }
-        return children.at("route-origin");
+        return route_origin;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lc_ip)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : lc_mpls)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ldp-enter") == children.end())
+    if(ldp_enter != nullptr)
     {
-        if(ldp_enter != nullptr)
-        {
-            children["ldp-enter"] = ldp_enter;
-        }
+        children["ldp-enter"] = ldp_enter;
     }
 
-    if(children.find("ldp-exit") == children.end())
+    if(ldp_exit != nullptr)
     {
-        if(ldp_exit != nullptr)
-        {
-            children["ldp-exit"] = ldp_exit;
-        }
+        children["ldp-exit"] = ldp_exit;
     }
 
-    if(children.find("lsd-enter") == children.end())
+    if(lsd_enter != nullptr)
     {
-        if(lsd_enter != nullptr)
-        {
-            children["lsd-enter"] = lsd_enter;
-        }
+        children["lsd-enter"] = lsd_enter;
     }
 
-    if(children.find("lsd-exit") == children.end())
+    if(lsd_exit != nullptr)
     {
-        if(lsd_exit != nullptr)
-        {
-            children["lsd-exit"] = lsd_exit;
-        }
+        children["lsd-exit"] = lsd_exit;
     }
 
-    if(children.find("ri-bv4-enter") == children.end())
+    if(ri_bv4_enter != nullptr)
     {
-        if(ri_bv4_enter != nullptr)
-        {
-            children["ri-bv4-enter"] = ri_bv4_enter;
-        }
+        children["ri-bv4-enter"] = ri_bv4_enter;
     }
 
-    if(children.find("ri-bv4-exit") == children.end())
+    if(ri_bv4_exit != nullptr)
     {
-        if(ri_bv4_exit != nullptr)
-        {
-            children["ri-bv4-exit"] = ri_bv4_exit;
-        }
+        children["ri-bv4-exit"] = ri_bv4_exit;
     }
 
-    if(children.find("ri-bv4-redistribute") == children.end())
+    if(ri_bv4_redistribute != nullptr)
     {
-        if(ri_bv4_redistribute != nullptr)
-        {
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
-        }
+        children["ri-bv4-redistribute"] = ri_bv4_redistribute;
     }
 
-    if(children.find("route-origin") == children.end())
+    if(route_origin != nullptr)
     {
-        if(route_origin != nullptr)
-        {
-            children["route-origin"] = route_origin;
-        }
+        children["route-origin"] = route_origin;
     }
 
     return children;
@@ -7397,7 +6377,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7423,20 +6403,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7493,7 +6465,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7519,20 +6491,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7589,7 +6553,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7615,20 +6579,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7685,7 +6641,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7711,20 +6667,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7781,7 +6729,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7807,20 +6755,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7877,7 +6817,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7903,20 +6843,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7973,7 +6905,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7999,20 +6931,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8069,7 +6993,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8095,20 +7019,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8136,7 +7052,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExt
     fib_complete(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete>())
 {
     fib_complete->parent = this;
-    children["fib-complete"] = fib_complete;
 
     yang_name = "lc-ip"; yang_parent_name = "convergence-timeline";
 }
@@ -8169,7 +7084,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8194,41 +7109,24 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-complete")
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
-        else
+        if(fib_complete == nullptr)
         {
             fib_complete = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete>();
-            fib_complete->parent = this;
-            children["fib-complete"] = fib_complete;
         }
-        return children.at("fib-complete");
+        return fib_complete;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_children() const
 {
-    if(children.find("fib-complete") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fib_complete != nullptr)
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
+        children["fib-complete"] = fib_complete;
     }
 
     return children;
@@ -8283,7 +7181,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8309,20 +7207,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8350,7 +7240,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExt
     fib_complete(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete>())
 {
     fib_complete->parent = this;
-    children["fib-complete"] = fib_complete;
 
     yang_name = "lc-mpls"; yang_parent_name = "convergence-timeline";
 }
@@ -8383,7 +7272,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8408,41 +7297,24 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-complete")
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
-        else
+        if(fib_complete == nullptr)
         {
             fib_complete = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete>();
-            fib_complete->parent = this;
-            children["fib-complete"] = fib_complete;
         }
-        return children.at("fib-complete");
+        return fib_complete;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_children() const
 {
-    if(children.find("fib-complete") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fib_complete != nullptr)
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
+        children["fib-complete"] = fib_complete;
     }
 
     return children;
@@ -8497,7 +7369,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8523,20 +7395,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8590,7 +7454,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksAdded::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksAdded::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8615,20 +7479,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksAdded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksAdded::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksAdded::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8678,7 +7534,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8703,20 +7559,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Inte
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8770,7 +7618,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::get_segment_pat
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8793,15 +7641,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::get_entity_path(
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipfrr-event-offline")
     {
         for(auto const & c : ipfrr_event_offline)
@@ -8809,28 +7648,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline>();
         c->parent = this;
-        ipfrr_event_offline.push_back(std::move(c));
-        children[segment_path] = ipfrr_event_offline.back();
-        return children.at(segment_path);
+        ipfrr_event_offline.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipfrr_event_offline)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8924,7 +7759,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8959,15 +7794,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipfrr-statistic")
     {
         for(auto const & c : ipfrr_statistic)
@@ -8975,15 +7801,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::Ipf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic>();
         c->parent = this;
-        ipfrr_statistic.push_back(std::move(c));
-        children[segment_path] = ipfrr_statistic.back();
-        return children.at(segment_path);
+        ipfrr_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "remote-node")
@@ -8993,36 +7817,29 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::Ipf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode>();
         c->parent = this;
-        remote_node.push_back(std::move(c));
-        children[segment_path] = remote_node.back();
-        return children.at(segment_path);
+        remote_node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipfrr_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : remote_node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9132,7 +7949,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9163,20 +7980,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9269,7 +8078,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9297,15 +8106,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "primary-path")
     {
         for(auto const & c : primary_path)
@@ -9313,28 +8113,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::Ipf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath>();
         c->parent = this;
-        primary_path.push_back(std::move(c));
-        children[segment_path] = primary_path.back();
-        return children.at(segment_path);
+        primary_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : primary_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9398,7 +8194,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9423,20 +8219,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflin
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9490,7 +8278,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::get_segment_path() 
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9513,15 +8301,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::get_entity_path(Enti
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "spf-run-offline")
     {
         for(auto const & c : spf_run_offline)
@@ -9529,28 +8308,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline>();
         c->parent = this;
-        spf_run_offline.push_back(std::move(c));
-        children[segment_path] = spf_run_offline.back();
-        return children.at(segment_path);
+        spf_run_offline.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : spf_run_offline)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9567,7 +8342,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfRunOffline()
     spf_summary(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary>())
 {
     spf_summary->parent = this;
-    children["spf-summary"] = spf_summary;
 
     yang_name = "spf-run-offline"; yang_parent_name = "spf-run-offlines";
 }
@@ -9618,7 +8392,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9642,15 +8416,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_e
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "dijkstra-run")
     {
         for(auto const & c : dijkstra_run)
@@ -9658,15 +8423,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun>();
         c->parent = this;
-        dijkstra_run.push_back(std::move(c));
-        children[segment_path] = dijkstra_run.back();
-        return children.at(segment_path);
+        dijkstra_run.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "inter-area-and-external")
@@ -9676,59 +8439,43 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal>();
         c->parent = this;
-        inter_area_and_external.push_back(std::move(c));
-        children[segment_path] = inter_area_and_external.back();
-        return children.at(segment_path);
+        inter_area_and_external.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "spf-summary")
     {
-        if(spf_summary != nullptr)
-        {
-            children["spf-summary"] = spf_summary;
-        }
-        else
+        if(spf_summary == nullptr)
         {
             spf_summary = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary>();
-            spf_summary->parent = this;
-            children["spf-summary"] = spf_summary;
         }
-        return children.at("spf-summary");
+        return spf_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : dijkstra_run)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : inter_area_and_external)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("spf-summary") == children.end())
+    if(spf_summary != nullptr)
     {
-        if(spf_summary != nullptr)
-        {
-            children["spf-summary"] = spf_summary;
-        }
+        children["spf-summary"] = spf_summary;
     }
 
     return children;
@@ -9810,7 +8557,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9843,15 +8590,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "priority-summary")
     {
         for(auto const & c : priority_summary)
@@ -9859,28 +8597,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary>();
         c->parent = this;
-        priority_summary.push_back(std::move(c));
-        children[segment_path] = priority_summary.back();
-        return children.at(segment_path);
+        priority_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : priority_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9940,13 +8674,10 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
 	,route_statistics(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics>())
 {
     ip_convergence_time->parent = this;
-    children["ip-convergence-time"] = ip_convergence_time;
 
     mpls_convergence_time->parent = this;
-    children["mpls-convergence-time"] = mpls_convergence_time;
 
     route_statistics->parent = this;
-    children["route-statistics"] = route_statistics;
 
     yang_name = "priority-summary"; yang_parent_name = "spf-summary";
 }
@@ -9993,7 +8724,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10018,15 +8749,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-statistic")
     {
         for(auto const & c : frr_statistic)
@@ -10034,97 +8756,66 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic>();
         c->parent = this;
-        frr_statistic.push_back(std::move(c));
-        children[segment_path] = frr_statistic.back();
-        return children.at(segment_path);
+        frr_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ip-convergence-time")
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
-        else
+        if(ip_convergence_time == nullptr)
         {
             ip_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime>();
-            ip_convergence_time->parent = this;
-            children["ip-convergence-time"] = ip_convergence_time;
         }
-        return children.at("ip-convergence-time");
+        return ip_convergence_time;
     }
 
     if(child_yang_name == "mpls-convergence-time")
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
-        else
+        if(mpls_convergence_time == nullptr)
         {
             mpls_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime>();
-            mpls_convergence_time->parent = this;
-            children["mpls-convergence-time"] = mpls_convergence_time;
         }
-        return children.at("mpls-convergence-time");
+        return mpls_convergence_time;
     }
 
     if(child_yang_name == "route-statistics")
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
-        else
+        if(route_statistics == nullptr)
         {
             route_statistics = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics>();
-            route_statistics->parent = this;
-            children["route-statistics"] = route_statistics;
         }
-        return children.at("route-statistics");
+        return route_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frr_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ip-convergence-time") == children.end())
+    if(ip_convergence_time != nullptr)
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
+        children["ip-convergence-time"] = ip_convergence_time;
     }
 
-    if(children.find("mpls-convergence-time") == children.end())
+    if(mpls_convergence_time != nullptr)
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
+        children["mpls-convergence-time"] = mpls_convergence_time;
     }
 
-    if(children.find("route-statistics") == children.end())
+    if(route_statistics != nullptr)
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
+        children["route-statistics"] = route_statistics;
     }
 
     return children;
@@ -10188,7 +8879,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10217,20 +8908,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10302,7 +8985,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10329,20 +9012,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10406,7 +9081,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10433,20 +9108,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10510,7 +9177,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10537,20 +9204,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSu
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10653,7 +9312,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10683,15 +9342,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsa-processed")
     {
         for(auto const & c : lsa_processed)
@@ -10699,15 +9349,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed>();
         c->parent = this;
-        lsa_processed.push_back(std::move(c));
-        children[segment_path] = lsa_processed.back();
-        return children.at(segment_path);
+        lsa_processed.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "priority")
@@ -10717,15 +9365,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority>();
         c->parent = this;
-        priority.push_back(std::move(c));
-        children[segment_path] = priority.back();
-        return children.at(segment_path);
+        priority.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "trigger-lsa")
@@ -10735,44 +9381,34 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa>();
         c->parent = this;
-        trigger_lsa.push_back(std::move(c));
-        children[segment_path] = trigger_lsa.back();
-        return children.at(segment_path);
+        trigger_lsa.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsa_processed)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : priority)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : trigger_lsa)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10856,7 +9492,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10885,20 +9521,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10935,7 +9563,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Pri
     priority_summary(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary>())
 {
     priority_summary->parent = this;
-    children["priority-summary"] = priority_summary;
 
     yang_name = "priority"; yang_parent_name = "dijkstra-run";
 }
@@ -10994,7 +9621,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11017,15 +9644,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "convergence-timeline")
     {
         for(auto const & c : convergence_timeline)
@@ -11033,15 +9651,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline>();
         c->parent = this;
-        convergence_timeline.push_back(std::move(c));
-        children[segment_path] = convergence_timeline.back();
-        return children.at(segment_path);
+        convergence_timeline.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "leaf-networks-added")
@@ -11051,15 +9667,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksAdded>();
         c->parent = this;
-        leaf_networks_added.push_back(std::move(c));
-        children[segment_path] = leaf_networks_added.back();
-        return children.at(segment_path);
+        leaf_networks_added.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "leaf-networks-deleted")
@@ -11069,67 +9683,48 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted>();
         c->parent = this;
-        leaf_networks_deleted.push_back(std::move(c));
-        children[segment_path] = leaf_networks_deleted.back();
-        return children.at(segment_path);
+        leaf_networks_deleted.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "priority-summary")
     {
-        if(priority_summary != nullptr)
-        {
-            children["priority-summary"] = priority_summary;
-        }
-        else
+        if(priority_summary == nullptr)
         {
             priority_summary = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary>();
-            priority_summary->parent = this;
-            children["priority-summary"] = priority_summary;
         }
-        return children.at("priority-summary");
+        return priority_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : convergence_timeline)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : leaf_networks_added)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : leaf_networks_deleted)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("priority-summary") == children.end())
+    if(priority_summary != nullptr)
     {
-        if(priority_summary != nullptr)
-        {
-            children["priority-summary"] = priority_summary;
-        }
+        children["priority-summary"] = priority_summary;
     }
 
     return children;
@@ -11149,13 +9744,10 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Pri
 	,route_statistics(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics>())
 {
     ip_convergence_time->parent = this;
-    children["ip-convergence-time"] = ip_convergence_time;
 
     mpls_convergence_time->parent = this;
-    children["mpls-convergence-time"] = mpls_convergence_time;
 
     route_statistics->parent = this;
-    children["route-statistics"] = route_statistics;
 
     yang_name = "priority-summary"; yang_parent_name = "priority";
 }
@@ -11202,7 +9794,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11227,15 +9819,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "frr-statistic")
     {
         for(auto const & c : frr_statistic)
@@ -11243,97 +9826,66 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::FrrStatistic>();
         c->parent = this;
-        frr_statistic.push_back(std::move(c));
-        children[segment_path] = frr_statistic.back();
-        return children.at(segment_path);
+        frr_statistic.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ip-convergence-time")
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
-        else
+        if(ip_convergence_time == nullptr)
         {
             ip_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime>();
-            ip_convergence_time->parent = this;
-            children["ip-convergence-time"] = ip_convergence_time;
         }
-        return children.at("ip-convergence-time");
+        return ip_convergence_time;
     }
 
     if(child_yang_name == "mpls-convergence-time")
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
-        else
+        if(mpls_convergence_time == nullptr)
         {
             mpls_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime>();
-            mpls_convergence_time->parent = this;
-            children["mpls-convergence-time"] = mpls_convergence_time;
         }
-        return children.at("mpls-convergence-time");
+        return mpls_convergence_time;
     }
 
     if(child_yang_name == "route-statistics")
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
-        else
+        if(route_statistics == nullptr)
         {
             route_statistics = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics>();
-            route_statistics->parent = this;
-            children["route-statistics"] = route_statistics;
         }
-        return children.at("route-statistics");
+        return route_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : frr_statistic)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ip-convergence-time") == children.end())
+    if(ip_convergence_time != nullptr)
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
+        children["ip-convergence-time"] = ip_convergence_time;
     }
 
-    if(children.find("mpls-convergence-time") == children.end())
+    if(mpls_convergence_time != nullptr)
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
+        children["mpls-convergence-time"] = mpls_convergence_time;
     }
 
-    if(children.find("route-statistics") == children.end())
+    if(route_statistics != nullptr)
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
+        children["route-statistics"] = route_statistics;
     }
 
     return children;
@@ -11397,7 +9949,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11426,20 +9978,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11511,7 +10055,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11538,20 +10082,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11615,7 +10151,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11642,20 +10178,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11719,7 +10247,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11746,20 +10274,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::FrrStatistic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11795,28 +10315,20 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Pri
 	,route_origin(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin>())
 {
     ldp_enter->parent = this;
-    children["ldp-enter"] = ldp_enter;
 
     ldp_exit->parent = this;
-    children["ldp-exit"] = ldp_exit;
 
     lsd_enter->parent = this;
-    children["lsd-enter"] = lsd_enter;
 
     lsd_exit->parent = this;
-    children["lsd-exit"] = lsd_exit;
 
     ri_bv4_enter->parent = this;
-    children["ri-bv4-enter"] = ri_bv4_enter;
 
     ri_bv4_exit->parent = this;
-    children["ri-bv4-exit"] = ri_bv4_exit;
 
     ri_bv4_redistribute->parent = this;
-    children["ri-bv4-redistribute"] = ri_bv4_redistribute;
 
     route_origin->parent = this;
-    children["route-origin"] = route_origin;
 
     yang_name = "convergence-timeline"; yang_parent_name = "priority";
 }
@@ -11879,7 +10391,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11902,15 +10414,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lc-ip")
     {
         for(auto const & c : lc_ip)
@@ -11918,15 +10421,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp>();
         c->parent = this;
-        lc_ip.push_back(std::move(c));
-        children[segment_path] = lc_ip.back();
-        return children.at(segment_path);
+        lc_ip.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lc-mpls")
@@ -11936,220 +10437,141 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(std::move(c));
-        children[segment_path] = lc_mpls.back();
-        return children.at(segment_path);
+        lc_mpls.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ldp-enter")
     {
-        if(ldp_enter != nullptr)
-        {
-            children["ldp-enter"] = ldp_enter;
-        }
-        else
+        if(ldp_enter == nullptr)
         {
             ldp_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter>();
-            ldp_enter->parent = this;
-            children["ldp-enter"] = ldp_enter;
         }
-        return children.at("ldp-enter");
+        return ldp_enter;
     }
 
     if(child_yang_name == "ldp-exit")
     {
-        if(ldp_exit != nullptr)
-        {
-            children["ldp-exit"] = ldp_exit;
-        }
-        else
+        if(ldp_exit == nullptr)
         {
             ldp_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpExit>();
-            ldp_exit->parent = this;
-            children["ldp-exit"] = ldp_exit;
         }
-        return children.at("ldp-exit");
+        return ldp_exit;
     }
 
     if(child_yang_name == "lsd-enter")
     {
-        if(lsd_enter != nullptr)
-        {
-            children["lsd-enter"] = lsd_enter;
-        }
-        else
+        if(lsd_enter == nullptr)
         {
             lsd_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter>();
-            lsd_enter->parent = this;
-            children["lsd-enter"] = lsd_enter;
         }
-        return children.at("lsd-enter");
+        return lsd_enter;
     }
 
     if(child_yang_name == "lsd-exit")
     {
-        if(lsd_exit != nullptr)
-        {
-            children["lsd-exit"] = lsd_exit;
-        }
-        else
+        if(lsd_exit == nullptr)
         {
             lsd_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdExit>();
-            lsd_exit->parent = this;
-            children["lsd-exit"] = lsd_exit;
         }
-        return children.at("lsd-exit");
+        return lsd_exit;
     }
 
     if(child_yang_name == "ri-bv4-enter")
     {
-        if(ri_bv4_enter != nullptr)
-        {
-            children["ri-bv4-enter"] = ri_bv4_enter;
-        }
-        else
+        if(ri_bv4_enter == nullptr)
         {
             ri_bv4_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter>();
-            ri_bv4_enter->parent = this;
-            children["ri-bv4-enter"] = ri_bv4_enter;
         }
-        return children.at("ri-bv4-enter");
+        return ri_bv4_enter;
     }
 
     if(child_yang_name == "ri-bv4-exit")
     {
-        if(ri_bv4_exit != nullptr)
-        {
-            children["ri-bv4-exit"] = ri_bv4_exit;
-        }
-        else
+        if(ri_bv4_exit == nullptr)
         {
             ri_bv4_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit>();
-            ri_bv4_exit->parent = this;
-            children["ri-bv4-exit"] = ri_bv4_exit;
         }
-        return children.at("ri-bv4-exit");
+        return ri_bv4_exit;
     }
 
     if(child_yang_name == "ri-bv4-redistribute")
     {
-        if(ri_bv4_redistribute != nullptr)
-        {
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
-        }
-        else
+        if(ri_bv4_redistribute == nullptr)
         {
             ri_bv4_redistribute = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute>();
-            ri_bv4_redistribute->parent = this;
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
         }
-        return children.at("ri-bv4-redistribute");
+        return ri_bv4_redistribute;
     }
 
     if(child_yang_name == "route-origin")
     {
-        if(route_origin != nullptr)
-        {
-            children["route-origin"] = route_origin;
-        }
-        else
+        if(route_origin == nullptr)
         {
             route_origin = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin>();
-            route_origin->parent = this;
-            children["route-origin"] = route_origin;
         }
-        return children.at("route-origin");
+        return route_origin;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lc_ip)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : lc_mpls)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ldp-enter") == children.end())
+    if(ldp_enter != nullptr)
     {
-        if(ldp_enter != nullptr)
-        {
-            children["ldp-enter"] = ldp_enter;
-        }
+        children["ldp-enter"] = ldp_enter;
     }
 
-    if(children.find("ldp-exit") == children.end())
+    if(ldp_exit != nullptr)
     {
-        if(ldp_exit != nullptr)
-        {
-            children["ldp-exit"] = ldp_exit;
-        }
+        children["ldp-exit"] = ldp_exit;
     }
 
-    if(children.find("lsd-enter") == children.end())
+    if(lsd_enter != nullptr)
     {
-        if(lsd_enter != nullptr)
-        {
-            children["lsd-enter"] = lsd_enter;
-        }
+        children["lsd-enter"] = lsd_enter;
     }
 
-    if(children.find("lsd-exit") == children.end())
+    if(lsd_exit != nullptr)
     {
-        if(lsd_exit != nullptr)
-        {
-            children["lsd-exit"] = lsd_exit;
-        }
+        children["lsd-exit"] = lsd_exit;
     }
 
-    if(children.find("ri-bv4-enter") == children.end())
+    if(ri_bv4_enter != nullptr)
     {
-        if(ri_bv4_enter != nullptr)
-        {
-            children["ri-bv4-enter"] = ri_bv4_enter;
-        }
+        children["ri-bv4-enter"] = ri_bv4_enter;
     }
 
-    if(children.find("ri-bv4-exit") == children.end())
+    if(ri_bv4_exit != nullptr)
     {
-        if(ri_bv4_exit != nullptr)
-        {
-            children["ri-bv4-exit"] = ri_bv4_exit;
-        }
+        children["ri-bv4-exit"] = ri_bv4_exit;
     }
 
-    if(children.find("ri-bv4-redistribute") == children.end())
+    if(ri_bv4_redistribute != nullptr)
     {
-        if(ri_bv4_redistribute != nullptr)
-        {
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
-        }
+        children["ri-bv4-redistribute"] = ri_bv4_redistribute;
     }
 
-    if(children.find("route-origin") == children.end())
+    if(route_origin != nullptr)
     {
-        if(route_origin != nullptr)
-        {
-            children["route-origin"] = route_origin;
-        }
+        children["route-origin"] = route_origin;
     }
 
     return children;
@@ -12196,7 +10618,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12222,20 +10644,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RouteOrigin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12292,7 +10706,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12318,20 +10732,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Enter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12388,7 +10794,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12414,20 +10820,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Exit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12484,7 +10882,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12510,20 +10908,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::RiBv4Redistribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12580,7 +10970,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12606,20 +10996,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpEnter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12676,7 +11058,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12702,20 +11084,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpExit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12772,7 +11146,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12798,20 +11172,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12868,7 +11234,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12894,20 +11260,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdExit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12935,7 +11293,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Pri
     fib_complete(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete>())
 {
     fib_complete->parent = this;
-    children["fib-complete"] = fib_complete;
 
     yang_name = "lc-ip"; yang_parent_name = "convergence-timeline";
 }
@@ -12968,7 +11325,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12993,41 +11350,24 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-complete")
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
-        else
+        if(fib_complete == nullptr)
         {
             fib_complete = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete>();
-            fib_complete->parent = this;
-            children["fib-complete"] = fib_complete;
         }
-        return children.at("fib-complete");
+        return fib_complete;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::get_children() const
 {
-    if(children.find("fib-complete") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fib_complete != nullptr)
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
+        children["fib-complete"] = fib_complete;
     }
 
     return children;
@@ -13082,7 +11422,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13108,20 +11448,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp::FibComplete::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13149,7 +11481,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Pri
     fib_complete(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete>())
 {
     fib_complete->parent = this;
-    children["fib-complete"] = fib_complete;
 
     yang_name = "lc-mpls"; yang_parent_name = "convergence-timeline";
 }
@@ -13182,7 +11513,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13207,41 +11538,24 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-complete")
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
-        else
+        if(fib_complete == nullptr)
         {
             fib_complete = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete>();
-            fib_complete->parent = this;
-            children["fib-complete"] = fib_complete;
         }
-        return children.at("fib-complete");
+        return fib_complete;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::get_children() const
 {
-    if(children.find("fib-complete") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fib_complete != nullptr)
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
+        children["fib-complete"] = fib_complete;
     }
 
     return children;
@@ -13296,7 +11610,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13322,20 +11636,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13389,7 +11695,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksAdded::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksAdded::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13414,20 +11720,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksAdded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksAdded::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksAdded::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13477,7 +11775,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13502,20 +11800,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13577,7 +11867,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13606,20 +11896,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijks
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13689,7 +11971,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13712,15 +11994,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "priority")
     {
         for(auto const & c : priority)
@@ -13728,28 +12001,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority>();
         c->parent = this;
-        priority.push_back(std::move(c));
-        children[segment_path] = priority.back();
-        return children.at(segment_path);
+        priority.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : priority)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13764,7 +12033,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExte
     priority_summary(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary>())
 {
     priority_summary->parent = this;
-    children["priority-summary"] = priority_summary;
 
     yang_name = "priority"; yang_parent_name = "inter-area-and-external";
 }
@@ -13823,7 +12091,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13846,15 +12114,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "convergence-timeline")
     {
         for(auto const & c : convergence_timeline)
@@ -13862,15 +12121,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline>();
         c->parent = this;
-        convergence_timeline.push_back(std::move(c));
-        children[segment_path] = convergence_timeline.back();
-        return children.at(segment_path);
+        convergence_timeline.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "leaf-networks-added")
@@ -13880,15 +12137,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksAdded>();
         c->parent = this;
-        leaf_networks_added.push_back(std::move(c));
-        children[segment_path] = leaf_networks_added.back();
-        return children.at(segment_path);
+        leaf_networks_added.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "leaf-networks-deleted")
@@ -13898,67 +12153,48 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted>();
         c->parent = this;
-        leaf_networks_deleted.push_back(std::move(c));
-        children[segment_path] = leaf_networks_deleted.back();
-        return children.at(segment_path);
+        leaf_networks_deleted.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "priority-summary")
     {
-        if(priority_summary != nullptr)
-        {
-            children["priority-summary"] = priority_summary;
-        }
-        else
+        if(priority_summary == nullptr)
         {
             priority_summary = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary>();
-            priority_summary->parent = this;
-            children["priority-summary"] = priority_summary;
         }
-        return children.at("priority-summary");
+        return priority_summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : convergence_timeline)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : leaf_networks_added)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : leaf_networks_deleted)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("priority-summary") == children.end())
+    if(priority_summary != nullptr)
     {
-        if(priority_summary != nullptr)
-        {
-            children["priority-summary"] = priority_summary;
-        }
+        children["priority-summary"] = priority_summary;
     }
 
     return children;
@@ -13981,13 +12217,10 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExte
 	,route_statistics(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics>())
 {
     ip_convergence_time->parent = this;
-    children["ip-convergence-time"] = ip_convergence_time;
 
     mpls_convergence_time->parent = this;
-    children["mpls-convergence-time"] = mpls_convergence_time;
 
     route_statistics->parent = this;
-    children["route-statistics"] = route_statistics;
 
     yang_name = "priority-summary"; yang_parent_name = "priority";
 }
@@ -14030,7 +12263,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14058,87 +12291,52 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-convergence-time")
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
-        else
+        if(ip_convergence_time == nullptr)
         {
             ip_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime>();
-            ip_convergence_time->parent = this;
-            children["ip-convergence-time"] = ip_convergence_time;
         }
-        return children.at("ip-convergence-time");
+        return ip_convergence_time;
     }
 
     if(child_yang_name == "mpls-convergence-time")
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
-        else
+        if(mpls_convergence_time == nullptr)
         {
             mpls_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime>();
-            mpls_convergence_time->parent = this;
-            children["mpls-convergence-time"] = mpls_convergence_time;
         }
-        return children.at("mpls-convergence-time");
+        return mpls_convergence_time;
     }
 
     if(child_yang_name == "route-statistics")
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
-        else
+        if(route_statistics == nullptr)
         {
             route_statistics = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics>();
-            route_statistics->parent = this;
-            children["route-statistics"] = route_statistics;
         }
-        return children.at("route-statistics");
+        return route_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::get_children() const
 {
-    if(children.find("ip-convergence-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_convergence_time != nullptr)
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
+        children["ip-convergence-time"] = ip_convergence_time;
     }
 
-    if(children.find("mpls-convergence-time") == children.end())
+    if(mpls_convergence_time != nullptr)
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
+        children["mpls-convergence-time"] = mpls_convergence_time;
     }
 
-    if(children.find("route-statistics") == children.end())
+    if(route_statistics != nullptr)
     {
-        if(route_statistics != nullptr)
-        {
-            children["route-statistics"] = route_statistics;
-        }
+        children["route-statistics"] = route_statistics;
     }
 
     return children;
@@ -14214,7 +12412,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14243,20 +12441,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::RouteStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14328,7 +12518,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14355,20 +12545,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::IpConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14432,7 +12614,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14459,20 +12641,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary::MplsConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14508,28 +12682,20 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExte
 	,route_origin(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin>())
 {
     ldp_enter->parent = this;
-    children["ldp-enter"] = ldp_enter;
 
     ldp_exit->parent = this;
-    children["ldp-exit"] = ldp_exit;
 
     lsd_enter->parent = this;
-    children["lsd-enter"] = lsd_enter;
 
     lsd_exit->parent = this;
-    children["lsd-exit"] = lsd_exit;
 
     ri_bv4_enter->parent = this;
-    children["ri-bv4-enter"] = ri_bv4_enter;
 
     ri_bv4_exit->parent = this;
-    children["ri-bv4-exit"] = ri_bv4_exit;
 
     ri_bv4_redistribute->parent = this;
-    children["ri-bv4-redistribute"] = ri_bv4_redistribute;
 
     route_origin->parent = this;
-    children["route-origin"] = route_origin;
 
     yang_name = "convergence-timeline"; yang_parent_name = "priority";
 }
@@ -14592,7 +12758,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14615,15 +12781,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lc-ip")
     {
         for(auto const & c : lc_ip)
@@ -14631,15 +12788,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp>();
         c->parent = this;
-        lc_ip.push_back(std::move(c));
-        children[segment_path] = lc_ip.back();
-        return children.at(segment_path);
+        lc_ip.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lc-mpls")
@@ -14649,220 +12804,141 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(std::move(c));
-        children[segment_path] = lc_mpls.back();
-        return children.at(segment_path);
+        lc_mpls.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "ldp-enter")
     {
-        if(ldp_enter != nullptr)
-        {
-            children["ldp-enter"] = ldp_enter;
-        }
-        else
+        if(ldp_enter == nullptr)
         {
             ldp_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter>();
-            ldp_enter->parent = this;
-            children["ldp-enter"] = ldp_enter;
         }
-        return children.at("ldp-enter");
+        return ldp_enter;
     }
 
     if(child_yang_name == "ldp-exit")
     {
-        if(ldp_exit != nullptr)
-        {
-            children["ldp-exit"] = ldp_exit;
-        }
-        else
+        if(ldp_exit == nullptr)
         {
             ldp_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit>();
-            ldp_exit->parent = this;
-            children["ldp-exit"] = ldp_exit;
         }
-        return children.at("ldp-exit");
+        return ldp_exit;
     }
 
     if(child_yang_name == "lsd-enter")
     {
-        if(lsd_enter != nullptr)
-        {
-            children["lsd-enter"] = lsd_enter;
-        }
-        else
+        if(lsd_enter == nullptr)
         {
             lsd_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter>();
-            lsd_enter->parent = this;
-            children["lsd-enter"] = lsd_enter;
         }
-        return children.at("lsd-enter");
+        return lsd_enter;
     }
 
     if(child_yang_name == "lsd-exit")
     {
-        if(lsd_exit != nullptr)
-        {
-            children["lsd-exit"] = lsd_exit;
-        }
-        else
+        if(lsd_exit == nullptr)
         {
             lsd_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit>();
-            lsd_exit->parent = this;
-            children["lsd-exit"] = lsd_exit;
         }
-        return children.at("lsd-exit");
+        return lsd_exit;
     }
 
     if(child_yang_name == "ri-bv4-enter")
     {
-        if(ri_bv4_enter != nullptr)
-        {
-            children["ri-bv4-enter"] = ri_bv4_enter;
-        }
-        else
+        if(ri_bv4_enter == nullptr)
         {
             ri_bv4_enter = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter>();
-            ri_bv4_enter->parent = this;
-            children["ri-bv4-enter"] = ri_bv4_enter;
         }
-        return children.at("ri-bv4-enter");
+        return ri_bv4_enter;
     }
 
     if(child_yang_name == "ri-bv4-exit")
     {
-        if(ri_bv4_exit != nullptr)
-        {
-            children["ri-bv4-exit"] = ri_bv4_exit;
-        }
-        else
+        if(ri_bv4_exit == nullptr)
         {
             ri_bv4_exit = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit>();
-            ri_bv4_exit->parent = this;
-            children["ri-bv4-exit"] = ri_bv4_exit;
         }
-        return children.at("ri-bv4-exit");
+        return ri_bv4_exit;
     }
 
     if(child_yang_name == "ri-bv4-redistribute")
     {
-        if(ri_bv4_redistribute != nullptr)
-        {
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
-        }
-        else
+        if(ri_bv4_redistribute == nullptr)
         {
             ri_bv4_redistribute = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute>();
-            ri_bv4_redistribute->parent = this;
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
         }
-        return children.at("ri-bv4-redistribute");
+        return ri_bv4_redistribute;
     }
 
     if(child_yang_name == "route-origin")
     {
-        if(route_origin != nullptr)
-        {
-            children["route-origin"] = route_origin;
-        }
-        else
+        if(route_origin == nullptr)
         {
             route_origin = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin>();
-            route_origin->parent = this;
-            children["route-origin"] = route_origin;
         }
-        return children.at("route-origin");
+        return route_origin;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lc_ip)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : lc_mpls)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("ldp-enter") == children.end())
+    if(ldp_enter != nullptr)
     {
-        if(ldp_enter != nullptr)
-        {
-            children["ldp-enter"] = ldp_enter;
-        }
+        children["ldp-enter"] = ldp_enter;
     }
 
-    if(children.find("ldp-exit") == children.end())
+    if(ldp_exit != nullptr)
     {
-        if(ldp_exit != nullptr)
-        {
-            children["ldp-exit"] = ldp_exit;
-        }
+        children["ldp-exit"] = ldp_exit;
     }
 
-    if(children.find("lsd-enter") == children.end())
+    if(lsd_enter != nullptr)
     {
-        if(lsd_enter != nullptr)
-        {
-            children["lsd-enter"] = lsd_enter;
-        }
+        children["lsd-enter"] = lsd_enter;
     }
 
-    if(children.find("lsd-exit") == children.end())
+    if(lsd_exit != nullptr)
     {
-        if(lsd_exit != nullptr)
-        {
-            children["lsd-exit"] = lsd_exit;
-        }
+        children["lsd-exit"] = lsd_exit;
     }
 
-    if(children.find("ri-bv4-enter") == children.end())
+    if(ri_bv4_enter != nullptr)
     {
-        if(ri_bv4_enter != nullptr)
-        {
-            children["ri-bv4-enter"] = ri_bv4_enter;
-        }
+        children["ri-bv4-enter"] = ri_bv4_enter;
     }
 
-    if(children.find("ri-bv4-exit") == children.end())
+    if(ri_bv4_exit != nullptr)
     {
-        if(ri_bv4_exit != nullptr)
-        {
-            children["ri-bv4-exit"] = ri_bv4_exit;
-        }
+        children["ri-bv4-exit"] = ri_bv4_exit;
     }
 
-    if(children.find("ri-bv4-redistribute") == children.end())
+    if(ri_bv4_redistribute != nullptr)
     {
-        if(ri_bv4_redistribute != nullptr)
-        {
-            children["ri-bv4-redistribute"] = ri_bv4_redistribute;
-        }
+        children["ri-bv4-redistribute"] = ri_bv4_redistribute;
     }
 
-    if(children.find("route-origin") == children.end())
+    if(route_origin != nullptr)
     {
-        if(route_origin != nullptr)
-        {
-            children["route-origin"] = route_origin;
-        }
+        children["route-origin"] = route_origin;
     }
 
     return children;
@@ -14909,7 +12985,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14935,20 +13011,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RouteOrigin::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15005,7 +13073,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15031,20 +13099,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Enter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15101,7 +13161,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15127,20 +13187,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Exit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15197,7 +13249,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15223,20 +13275,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::RiBv4Redistribute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15293,7 +13337,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15319,20 +13363,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpEnter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15389,7 +13425,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15415,20 +13451,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15485,7 +13513,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15511,20 +13539,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15581,7 +13601,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15607,20 +13627,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15648,7 +13660,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExte
     fib_complete(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete>())
 {
     fib_complete->parent = this;
-    children["fib-complete"] = fib_complete;
 
     yang_name = "lc-ip"; yang_parent_name = "convergence-timeline";
 }
@@ -15681,7 +13692,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15706,41 +13717,24 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-complete")
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
-        else
+        if(fib_complete == nullptr)
         {
             fib_complete = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete>();
-            fib_complete->parent = this;
-            children["fib-complete"] = fib_complete;
         }
-        return children.at("fib-complete");
+        return fib_complete;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::get_children() const
 {
-    if(children.find("fib-complete") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fib_complete != nullptr)
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
+        children["fib-complete"] = fib_complete;
     }
 
     return children;
@@ -15795,7 +13789,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15821,20 +13815,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp::FibComplete::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15862,7 +13848,6 @@ Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExte
     fib_complete(std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete>())
 {
     fib_complete->parent = this;
-    children["fib-complete"] = fib_complete;
 
     yang_name = "lc-mpls"; yang_parent_name = "convergence-timeline";
 }
@@ -15895,7 +13880,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15920,41 +13905,24 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-complete")
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
-        else
+        if(fib_complete == nullptr)
         {
             fib_complete = std::make_shared<Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete>();
-            fib_complete->parent = this;
-            children["fib-complete"] = fib_complete;
         }
-        return children.at("fib-complete");
+        return fib_complete;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::get_children() const
 {
-    if(children.find("fib-complete") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fib_complete != nullptr)
     {
-        if(fib_complete != nullptr)
-        {
-            children["fib-complete"] = fib_complete;
-        }
+        children["fib-complete"] = fib_complete;
     }
 
     return children;
@@ -16009,7 +13977,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16035,20 +14003,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls::FibComplete::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16102,7 +14062,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksAdded::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksAdded::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16127,20 +14087,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksAdded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksAdded::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksAdded::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16190,7 +14142,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16215,20 +14167,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inter
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16282,7 +14226,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::get_
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16305,15 +14249,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::get_e
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary-external-event-summary")
     {
         for(auto const & c : summary_external_event_summary)
@@ -16321,28 +14256,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSum
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary>();
         c->parent = this;
-        summary_external_event_summary.push_back(std::move(c));
-        children[segment_path] = summary_external_event_summary.back();
-        return children.at(segment_path);
+        summary_external_event_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : summary_external_event_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16371,10 +14302,8 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalE
 	,mpls_convergence_time(std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime>())
 {
     ip_convergence_time->parent = this;
-    children["ip-convergence-time"] = ip_convergence_time;
 
     mpls_convergence_time->parent = this;
-    children["mpls-convergence-time"] = mpls_convergence_time;
 
     yang_name = "summary-external-event-summary"; yang_parent_name = "summary-external-event-summaries";
 }
@@ -16469,7 +14398,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16504,28 +14433,13 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-convergence-time")
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
-        else
+        if(ip_convergence_time == nullptr)
         {
             ip_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::IpConvergenceTime>();
-            ip_convergence_time->parent = this;
-            children["ip-convergence-time"] = ip_convergence_time;
         }
-        return children.at("ip-convergence-time");
+        return ip_convergence_time;
     }
 
     if(child_yang_name == "lsa-processed")
@@ -16535,30 +14449,22 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSum
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::LsaProcessed>();
         c->parent = this;
-        lsa_processed.push_back(std::move(c));
-        children[segment_path] = lsa_processed.back();
-        return children.at(segment_path);
+        lsa_processed.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mpls-convergence-time")
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
-        else
+        if(mpls_convergence_time == nullptr)
         {
             mpls_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime>();
-            mpls_convergence_time->parent = this;
-            children["mpls-convergence-time"] = mpls_convergence_time;
         }
-        return children.at("mpls-convergence-time");
+        return mpls_convergence_time;
     }
 
     if(child_yang_name == "path")
@@ -16568,15 +14474,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSum
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "time-line")
@@ -16586,15 +14490,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSum
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine>();
         c->parent = this;
-        time_line.push_back(std::move(c));
-        children[segment_path] = time_line.back();
-        return children.at(segment_path);
+        time_line.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "trigger-lsa")
@@ -16604,68 +14506,49 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSum
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa>();
         c->parent = this;
-        trigger_lsa.push_back(std::move(c));
-        children[segment_path] = trigger_lsa.back();
-        return children.at(segment_path);
+        trigger_lsa.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::get_children() const
 {
-    if(children.find("ip-convergence-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_convergence_time != nullptr)
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
+        children["ip-convergence-time"] = ip_convergence_time;
     }
 
     for (auto const & c : lsa_processed)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mpls-convergence-time") == children.end())
+    if(mpls_convergence_time != nullptr)
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
+        children["mpls-convergence-time"] = mpls_convergence_time;
     }
 
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : time_line)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : trigger_lsa)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16763,7 +14646,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16790,20 +14673,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::IpConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::IpConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::IpConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16867,7 +14742,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16894,20 +14769,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16981,7 +14848,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17008,15 +14875,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lfa-path")
     {
         for(auto const & c : lfa_path)
@@ -17024,28 +14882,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSum
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath>();
         c->parent = this;
-        lfa_path.push_back(std::move(c));
-        children[segment_path] = lfa_path.back();
-        return children.at(segment_path);
+        lfa_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lfa_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17117,7 +14971,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17146,20 +15000,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17237,7 +15083,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17266,20 +15112,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17383,7 +15221,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17414,15 +15252,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lc-ip")
     {
         for(auto const & c : lc_ip)
@@ -17430,15 +15259,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSum
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp>();
         c->parent = this;
-        lc_ip.push_back(std::move(c));
-        children[segment_path] = lc_ip.back();
-        return children.at(segment_path);
+        lc_ip.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lc-mpls")
@@ -17448,36 +15275,29 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSum
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(std::move(c));
-        children[segment_path] = lc_mpls.back();
-        return children.at(segment_path);
+        lc_mpls.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lc_ip)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : lc_mpls)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17556,7 +15376,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17582,20 +15402,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17652,7 +15464,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17678,20 +15490,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17757,7 +15561,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::LsaProcessed::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::LsaProcessed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17786,20 +15590,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summa
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::LsaProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::LsaProcessed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::LsaProcessed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17869,7 +15665,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::get_segment_p
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17892,15 +15688,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::get_entity_pat
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "prefix-event-summary")
     {
         for(auto const & c : prefix_event_summary)
@@ -17908,28 +15695,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary>();
         c->parent = this;
-        prefix_event_summary.push_back(std::move(c));
-        children[segment_path] = prefix_event_summary.back();
-        return children.at(segment_path);
+        prefix_event_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : prefix_event_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17958,10 +15741,8 @@ Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Prefi
 	,mpls_convergence_time(std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime>())
 {
     ip_convergence_time->parent = this;
-    children["ip-convergence-time"] = ip_convergence_time;
 
     mpls_convergence_time->parent = this;
-    children["mpls-convergence-time"] = mpls_convergence_time;
 
     yang_name = "prefix-event-summary"; yang_parent_name = "prefix-event-summaries";
 }
@@ -18056,7 +15837,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18091,28 +15872,13 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-convergence-time")
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
-        else
+        if(ip_convergence_time == nullptr)
         {
             ip_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime>();
-            ip_convergence_time->parent = this;
-            children["ip-convergence-time"] = ip_convergence_time;
         }
-        return children.at("ip-convergence-time");
+        return ip_convergence_time;
     }
 
     if(child_yang_name == "lsa-processed")
@@ -18122,30 +15888,22 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::P
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed>();
         c->parent = this;
-        lsa_processed.push_back(std::move(c));
-        children[segment_path] = lsa_processed.back();
-        return children.at(segment_path);
+        lsa_processed.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mpls-convergence-time")
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
-        else
+        if(mpls_convergence_time == nullptr)
         {
             mpls_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime>();
-            mpls_convergence_time->parent = this;
-            children["mpls-convergence-time"] = mpls_convergence_time;
         }
-        return children.at("mpls-convergence-time");
+        return mpls_convergence_time;
     }
 
     if(child_yang_name == "path")
@@ -18155,15 +15913,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::P
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "time-line")
@@ -18173,15 +15929,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::P
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine>();
         c->parent = this;
-        time_line.push_back(std::move(c));
-        children[segment_path] = time_line.back();
-        return children.at(segment_path);
+        time_line.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "trigger-lsa")
@@ -18191,68 +15945,49 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::P
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa>();
         c->parent = this;
-        trigger_lsa.push_back(std::move(c));
-        children[segment_path] = trigger_lsa.back();
-        return children.at(segment_path);
+        trigger_lsa.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::get_children() const
 {
-    if(children.find("ip-convergence-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_convergence_time != nullptr)
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
+        children["ip-convergence-time"] = ip_convergence_time;
     }
 
     for (auto const & c : lsa_processed)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mpls-convergence-time") == children.end())
+    if(mpls_convergence_time != nullptr)
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
+        children["mpls-convergence-time"] = mpls_convergence_time;
     }
 
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : time_line)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : trigger_lsa)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18350,7 +16085,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18377,20 +16112,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18454,7 +16181,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18481,20 +16208,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18568,7 +16287,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18595,15 +16314,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lfa-path")
     {
         for(auto const & c : lfa_path)
@@ -18611,28 +16321,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::P
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath>();
         c->parent = this;
-        lfa_path.push_back(std::move(c));
-        children[segment_path] = lfa_path.back();
-        return children.at(segment_path);
+        lfa_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lfa_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18704,7 +16410,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18733,20 +16439,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18824,7 +16522,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18853,20 +16551,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18970,7 +16660,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19001,15 +16691,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lc-ip")
     {
         for(auto const & c : lc_ip)
@@ -19017,15 +16698,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::P
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp>();
         c->parent = this;
-        lc_ip.push_back(std::move(c));
-        children[segment_path] = lc_ip.back();
-        return children.at(segment_path);
+        lc_ip.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "lc-mpls")
@@ -19035,36 +16714,29 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::P
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(std::move(c));
-        children[segment_path] = lc_mpls.back();
-        return children.at(segment_path);
+        lc_mpls.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lc_ip)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : lc_mpls)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19143,7 +16815,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19169,20 +16841,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19239,7 +16903,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19265,20 +16929,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19344,7 +17000,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19373,20 +17029,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSum
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19456,7 +17104,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::get_s
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19479,15 +17127,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::get_en
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary-external-event-offline")
     {
         for(auto const & c : summary_external_event_offline)
@@ -19495,28 +17134,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOff
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline>();
         c->parent = this;
-        summary_external_event_offline.push_back(std::move(c));
-        children[segment_path] = summary_external_event_offline.back();
-        return children.at(segment_path);
+        summary_external_event_offline.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : summary_external_event_offline)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19545,10 +17180,8 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
 	,mpls_convergence_time(std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime>())
 {
     ip_convergence_time->parent = this;
-    children["ip-convergence-time"] = ip_convergence_time;
 
     mpls_convergence_time->parent = this;
-    children["mpls-convergence-time"] = mpls_convergence_time;
 
     yang_name = "summary-external-event-offline"; yang_parent_name = "summary-external-event-offlines";
 }
@@ -19643,7 +17276,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19678,28 +17311,13 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip-convergence-time")
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
-        else
+        if(ip_convergence_time == nullptr)
         {
             ip_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::IpConvergenceTime>();
-            ip_convergence_time->parent = this;
-            children["ip-convergence-time"] = ip_convergence_time;
         }
-        return children.at("ip-convergence-time");
+        return ip_convergence_time;
     }
 
     if(child_yang_name == "lsa-processed")
@@ -19709,30 +17327,22 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOff
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::LsaProcessed>();
         c->parent = this;
-        lsa_processed.push_back(std::move(c));
-        children[segment_path] = lsa_processed.back();
-        return children.at(segment_path);
+        lsa_processed.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "mpls-convergence-time")
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
-        else
+        if(mpls_convergence_time == nullptr)
         {
             mpls_convergence_time = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime>();
-            mpls_convergence_time->parent = this;
-            children["mpls-convergence-time"] = mpls_convergence_time;
         }
-        return children.at("mpls-convergence-time");
+        return mpls_convergence_time;
     }
 
     if(child_yang_name == "path")
@@ -19742,15 +17352,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOff
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path>();
         c->parent = this;
-        path.push_back(std::move(c));
-        children[segment_path] = path.back();
-        return children.at(segment_path);
+        path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "time-line")
@@ -19760,15 +17368,13 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOff
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine>();
         c->parent = this;
-        time_line.push_back(std::move(c));
-        children[segment_path] = time_line.back();
-        return children.at(segment_path);
+        time_line.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "trigger-lsa")
@@ -19778,68 +17384,49 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOff
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TriggerLsa>();
         c->parent = this;
-        trigger_lsa.push_back(std::move(c));
-        children[segment_path] = trigger_lsa.back();
-        return children.at(segment_path);
+        trigger_lsa.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::get_children() const
 {
-    if(children.find("ip-convergence-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_convergence_time != nullptr)
     {
-        if(ip_convergence_time != nullptr)
-        {
-            children["ip-convergence-time"] = ip_convergence_time;
-        }
+        children["ip-convergence-time"] = ip_convergence_time;
     }
 
     for (auto const & c : lsa_processed)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("mpls-convergence-time") == children.end())
+    if(mpls_convergence_time != nullptr)
     {
-        if(mpls_convergence_time != nullptr)
-        {
-            children["mpls-convergence-time"] = mpls_convergence_time;
-        }
+        children["mpls-convergence-time"] = mpls_convergence_time;
     }
 
     for (auto const & c : path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : time_line)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : trigger_lsa)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19937,7 +17524,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::IpConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::IpConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19964,20 +17551,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::IpConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::IpConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::IpConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20041,7 +17620,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20068,20 +17647,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -20155,7 +17726,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20182,15 +17753,6 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lfa-path")
     {
         for(auto const & c : lfa_path)
@@ -20198,28 +17760,24 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOff
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath>();
         c->parent = this;
-        lfa_path.push_back(std::move(c));
-        children[segment_path] = lfa_path.back();
-        return children.at(segment_path);
+        lfa_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lfa_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20291,7 +17849,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 
 }
 
-EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20320,20 +17878,12 @@ EntityPath Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summar
 
 std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

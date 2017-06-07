@@ -16,10 +16,8 @@ MplsTe::Tunnels::Summary::AutoTunServerSummary::AutoTunServerSummary()
 	,total_auto_p2p_tunnels(std::make_shared<MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2PTunnels>())
 {
     total_auto_p2mp_tunnels->parent = this;
-    children["total-auto-p2mp-tunnels"] = total_auto_p2mp_tunnels;
 
     total_auto_p2p_tunnels->parent = this;
-    children["total-auto-p2p-tunnels"] = total_auto_p2p_tunnels;
 
     yang_name = "auto-tun-server-summary"; yang_parent_name = "summary";
 }
@@ -60,7 +58,7 @@ std::string MplsTe::Tunnels::Summary::AutoTunServerSummary::get_segment_path() c
 
 }
 
-EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -83,15 +81,6 @@ EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::get_entity_path(Entit
 
 std::shared_ptr<Entity> MplsTe::Tunnels::Summary::AutoTunServerSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "clients-summary")
     {
         for(auto const & c : clients_summary)
@@ -99,74 +88,52 @@ std::shared_ptr<Entity> MplsTe::Tunnels::Summary::AutoTunServerSummary::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary>();
         c->parent = this;
-        clients_summary.push_back(std::move(c));
-        children[segment_path] = clients_summary.back();
-        return children.at(segment_path);
+        clients_summary.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "total-auto-p2mp-tunnels")
     {
-        if(total_auto_p2mp_tunnels != nullptr)
-        {
-            children["total-auto-p2mp-tunnels"] = total_auto_p2mp_tunnels;
-        }
-        else
+        if(total_auto_p2mp_tunnels == nullptr)
         {
             total_auto_p2mp_tunnels = std::make_shared<MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2MpTunnels>();
-            total_auto_p2mp_tunnels->parent = this;
-            children["total-auto-p2mp-tunnels"] = total_auto_p2mp_tunnels;
         }
-        return children.at("total-auto-p2mp-tunnels");
+        return total_auto_p2mp_tunnels;
     }
 
     if(child_yang_name == "total-auto-p2p-tunnels")
     {
-        if(total_auto_p2p_tunnels != nullptr)
-        {
-            children["total-auto-p2p-tunnels"] = total_auto_p2p_tunnels;
-        }
-        else
+        if(total_auto_p2p_tunnels == nullptr)
         {
             total_auto_p2p_tunnels = std::make_shared<MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2PTunnels>();
-            total_auto_p2p_tunnels->parent = this;
-            children["total-auto-p2p-tunnels"] = total_auto_p2p_tunnels;
         }
-        return children.at("total-auto-p2p-tunnels");
+        return total_auto_p2p_tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::Summary::AutoTunServerSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::Summary::AutoTunServerSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : clients_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("total-auto-p2mp-tunnels") == children.end())
+    if(total_auto_p2mp_tunnels != nullptr)
     {
-        if(total_auto_p2mp_tunnels != nullptr)
-        {
-            children["total-auto-p2mp-tunnels"] = total_auto_p2mp_tunnels;
-        }
+        children["total-auto-p2mp-tunnels"] = total_auto_p2mp_tunnels;
     }
 
-    if(children.find("total-auto-p2p-tunnels") == children.end())
+    if(total_auto_p2p_tunnels != nullptr)
     {
-        if(total_auto_p2p_tunnels != nullptr)
-        {
-            children["total-auto-p2p-tunnels"] = total_auto_p2p_tunnels;
-        }
+        children["total-auto-p2p-tunnels"] = total_auto_p2p_tunnels;
     }
 
     return children;
@@ -225,7 +192,7 @@ std::string MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2MpTunnels
 
 }
 
-EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2MpTunnels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2MpTunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -255,20 +222,12 @@ EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2MpTunnels:
 
 std::shared_ptr<Entity> MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2MpTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2MpTunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2MpTunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -341,7 +300,7 @@ std::string MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2PTunnels:
 
 }
 
-EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2PTunnels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2PTunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -367,20 +326,12 @@ EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2PTunnels::
 
 std::shared_ptr<Entity> MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2PTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2PTunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2PTunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -410,10 +361,8 @@ MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::ClientsSummary()
 	,p2p_info(std::make_shared<MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2PInfo>())
 {
     p2mp_info->parent = this;
-    children["p2mp-info"] = p2mp_info;
 
     p2p_info->parent = this;
-    children["p2p-info"] = p2p_info;
 
     yang_name = "clients-summary"; yang_parent_name = "auto-tun-server-summary";
 }
@@ -450,7 +399,7 @@ std::string MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::get_
 
 }
 
-EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -476,64 +425,38 @@ EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::get_e
 
 std::shared_ptr<Entity> MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2mp-info")
     {
-        if(p2mp_info != nullptr)
-        {
-            children["p2mp-info"] = p2mp_info;
-        }
-        else
+        if(p2mp_info == nullptr)
         {
             p2mp_info = std::make_shared<MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2MpInfo>();
-            p2mp_info->parent = this;
-            children["p2mp-info"] = p2mp_info;
         }
-        return children.at("p2mp-info");
+        return p2mp_info;
     }
 
     if(child_yang_name == "p2p-info")
     {
-        if(p2p_info != nullptr)
-        {
-            children["p2p-info"] = p2p_info;
-        }
-        else
+        if(p2p_info == nullptr)
         {
             p2p_info = std::make_shared<MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2PInfo>();
-            p2p_info->parent = this;
-            children["p2p-info"] = p2p_info;
         }
-        return children.at("p2p-info");
+        return p2p_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::get_children() const
 {
-    if(children.find("p2mp-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(p2mp_info != nullptr)
     {
-        if(p2mp_info != nullptr)
-        {
-            children["p2mp-info"] = p2mp_info;
-        }
+        children["p2mp-info"] = p2mp_info;
     }
 
-    if(children.find("p2p-info") == children.end())
+    if(p2p_info != nullptr)
     {
-        if(p2p_info != nullptr)
-        {
-            children["p2p-info"] = p2p_info;
-        }
+        children["p2p-info"] = p2p_info;
     }
 
     return children;
@@ -604,7 +527,7 @@ std::string MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2Mp
 
 }
 
-EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2MpInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2MpInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -634,20 +557,12 @@ EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2MpI
 
 std::shared_ptr<Entity> MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2MpInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2MpInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2MpInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -720,7 +635,7 @@ std::string MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2PI
 
 }
 
-EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2PInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2PInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -746,20 +661,12 @@ EntityPath MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2PIn
 
 std::shared_ptr<Entity> MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2PInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2PInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::P2PInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -817,7 +724,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -840,15 +747,6 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-path-protection")
     {
         for(auto const & c : tunnel_path_protection)
@@ -856,28 +754,24 @@ std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection>();
         c->parent = this;
-        tunnel_path_protection.push_back(std::move(c));
-        children[segment_path] = tunnel_path_protection.back();
-        return children.at(segment_path);
+        tunnel_path_protection.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel_path_protection)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -902,13 +796,10 @@ MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::TunnelPathProtecti
 	,standby_lsp(std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp>())
 {
     current_lsp->parent = this;
-    children["current-lsp"] = current_lsp;
 
     path_protection->parent = this;
-    children["path-protection"] = path_protection;
 
     standby_lsp->parent = this;
-    children["standby-lsp"] = standby_lsp;
 
     yang_name = "tunnel-path-protection"; yang_parent_name = "tunnel-path-protections";
 }
@@ -955,7 +846,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::get_se
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -985,87 +876,52 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::get_ent
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "current-lsp")
     {
-        if(current_lsp != nullptr)
-        {
-            children["current-lsp"] = current_lsp;
-        }
-        else
+        if(current_lsp == nullptr)
         {
             current_lsp = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp>();
-            current_lsp->parent = this;
-            children["current-lsp"] = current_lsp;
         }
-        return children.at("current-lsp");
+        return current_lsp;
     }
 
     if(child_yang_name == "path-protection")
     {
-        if(path_protection != nullptr)
-        {
-            children["path-protection"] = path_protection;
-        }
-        else
+        if(path_protection == nullptr)
         {
             path_protection = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection>();
-            path_protection->parent = this;
-            children["path-protection"] = path_protection;
         }
-        return children.at("path-protection");
+        return path_protection;
     }
 
     if(child_yang_name == "standby-lsp")
     {
-        if(standby_lsp != nullptr)
-        {
-            children["standby-lsp"] = standby_lsp;
-        }
-        else
+        if(standby_lsp == nullptr)
         {
             standby_lsp = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp>();
-            standby_lsp->parent = this;
-            children["standby-lsp"] = standby_lsp;
         }
-        return children.at("standby-lsp");
+        return standby_lsp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::get_children() const
 {
-    if(children.find("current-lsp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(current_lsp != nullptr)
     {
-        if(current_lsp != nullptr)
-        {
-            children["current-lsp"] = current_lsp;
-        }
+        children["current-lsp"] = current_lsp;
     }
 
-    if(children.find("path-protection") == children.end())
+    if(path_protection != nullptr)
     {
-        if(path_protection != nullptr)
-        {
-            children["path-protection"] = path_protection;
-        }
+        children["path-protection"] = path_protection;
     }
 
-    if(children.find("standby-lsp") == children.end())
+    if(standby_lsp != nullptr)
     {
-        if(standby_lsp != nullptr)
-        {
-            children["standby-lsp"] = standby_lsp;
-        }
+        children["standby-lsp"] = standby_lsp;
     }
 
     return children;
@@ -1120,7 +976,6 @@ MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::Pa
     switchover(std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::Switchover>())
 {
     switchover->parent = this;
-    children["switchover"] = switchover;
 
     yang_name = "path-protection"; yang_parent_name = "tunnel-path-protection";
 }
@@ -1171,7 +1026,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathPr
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1205,41 +1060,24 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathPro
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "switchover")
     {
-        if(switchover != nullptr)
-        {
-            children["switchover"] = switchover;
-        }
-        else
+        if(switchover == nullptr)
         {
             switchover = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::Switchover>();
-            switchover->parent = this;
-            children["switchover"] = switchover;
         }
-        return children.at("switchover");
+        return switchover;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::get_children() const
 {
-    if(children.find("switchover") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(switchover != nullptr)
     {
-        if(switchover != nullptr)
-        {
-            children["switchover"] = switchover;
-        }
+        children["switchover"] = switchover;
     }
 
     return children;
@@ -1345,7 +1183,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathPr
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::Switchover::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::Switchover::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1376,20 +1214,12 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathPro
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::Switchover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::Switchover::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::PathProtection::Switchover::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1495,7 +1325,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Curren
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1524,15 +1354,6 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Current
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-hop")
     {
         for(auto const & c : lsp_hop)
@@ -1540,15 +1361,13 @@ std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtec
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop>();
         c->parent = this;
-        lsp_hop.push_back(std::move(c));
-        children[segment_path] = lsp_hop.back();
-        return children.at(segment_path);
+        lsp_hop.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "srlsp-outgoing-info")
@@ -1558,36 +1377,29 @@ std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtec
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::SrlspOutgoingInfo>();
         c->parent = this;
-        srlsp_outgoing_info.push_back(std::move(c));
-        children[segment_path] = srlsp_outgoing_info.back();
-        return children.at(segment_path);
+        srlsp_outgoing_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsp_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : srlsp_outgoing_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1655,7 +1467,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Curren
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::SrlspOutgoingInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::SrlspOutgoingInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1680,20 +1492,12 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Current
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::SrlspOutgoingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::SrlspOutgoingInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::SrlspOutgoingInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1717,10 +1521,8 @@ MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop
 	,unnumbered_ero_sub_object(std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::UnnumberedEroSubObject>())
 {
     ipv4ero_sub_object->parent = this;
-    children["ipv4ero-sub-object"] = ipv4ero_sub_object;
 
     unnumbered_ero_sub_object->parent = this;
-    children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
 
     yang_name = "lsp-hop"; yang_parent_name = "current-lsp";
 }
@@ -1753,7 +1555,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Curren
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1777,64 +1579,38 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Current
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4ero-sub-object")
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
-        else
+        if(ipv4ero_sub_object == nullptr)
         {
             ipv4ero_sub_object = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::Ipv4EroSubObject>();
-            ipv4ero_sub_object->parent = this;
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
         }
-        return children.at("ipv4ero-sub-object");
+        return ipv4ero_sub_object;
     }
 
     if(child_yang_name == "unnumbered-ero-sub-object")
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
-        else
+        if(unnumbered_ero_sub_object == nullptr)
         {
             unnumbered_ero_sub_object = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::UnnumberedEroSubObject>();
-            unnumbered_ero_sub_object->parent = this;
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
         }
-        return children.at("unnumbered-ero-sub-object");
+        return unnumbered_ero_sub_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::get_children() const
 {
-    if(children.find("ipv4ero-sub-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4ero_sub_object != nullptr)
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
+        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
     }
 
-    if(children.find("unnumbered-ero-sub-object") == children.end())
+    if(unnumbered_ero_sub_object != nullptr)
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
+        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
     }
 
     return children;
@@ -1885,7 +1661,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Curren
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1911,20 +1687,12 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Current
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::Ipv4EroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::Ipv4EroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1984,7 +1752,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Curren
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2011,20 +1779,12 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Current
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::UnnumberedEroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::CurrentLsp::LspHop::UnnumberedEroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2114,7 +1874,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standb
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2143,15 +1903,6 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standby
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-hop")
     {
         for(auto const & c : lsp_hop)
@@ -2159,15 +1910,13 @@ std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtec
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop>();
         c->parent = this;
-        lsp_hop.push_back(std::move(c));
-        children[segment_path] = lsp_hop.back();
-        return children.at(segment_path);
+        lsp_hop.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "srlsp-outgoing-info")
@@ -2177,36 +1926,29 @@ std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtec
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::SrlspOutgoingInfo>();
         c->parent = this;
-        srlsp_outgoing_info.push_back(std::move(c));
-        children[segment_path] = srlsp_outgoing_info.back();
-        return children.at(segment_path);
+        srlsp_outgoing_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsp_hop)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : srlsp_outgoing_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2274,7 +2016,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standb
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::SrlspOutgoingInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::SrlspOutgoingInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2299,20 +2041,12 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standby
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::SrlspOutgoingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::SrlspOutgoingInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::SrlspOutgoingInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2336,10 +2070,8 @@ MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop
 	,unnumbered_ero_sub_object(std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::UnnumberedEroSubObject>())
 {
     ipv4ero_sub_object->parent = this;
-    children["ipv4ero-sub-object"] = ipv4ero_sub_object;
 
     unnumbered_ero_sub_object->parent = this;
-    children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
 
     yang_name = "lsp-hop"; yang_parent_name = "standby-lsp";
 }
@@ -2372,7 +2104,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standb
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2396,64 +2128,38 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standby
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4ero-sub-object")
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
-        else
+        if(ipv4ero_sub_object == nullptr)
         {
             ipv4ero_sub_object = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::Ipv4EroSubObject>();
-            ipv4ero_sub_object->parent = this;
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
         }
-        return children.at("ipv4ero-sub-object");
+        return ipv4ero_sub_object;
     }
 
     if(child_yang_name == "unnumbered-ero-sub-object")
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
-        else
+        if(unnumbered_ero_sub_object == nullptr)
         {
             unnumbered_ero_sub_object = std::make_shared<MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::UnnumberedEroSubObject>();
-            unnumbered_ero_sub_object->parent = this;
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
         }
-        return children.at("unnumbered-ero-sub-object");
+        return unnumbered_ero_sub_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::get_children() const
 {
-    if(children.find("ipv4ero-sub-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4ero_sub_object != nullptr)
     {
-        if(ipv4ero_sub_object != nullptr)
-        {
-            children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-        }
+        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
     }
 
-    if(children.find("unnumbered-ero-sub-object") == children.end())
+    if(unnumbered_ero_sub_object != nullptr)
     {
-        if(unnumbered_ero_sub_object != nullptr)
-        {
-            children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-        }
+        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
     }
 
     return children;
@@ -2504,7 +2210,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standb
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2530,20 +2236,12 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standby
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::Ipv4EroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::Ipv4EroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2603,7 +2301,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standb
 
 }
 
-EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2630,20 +2328,12 @@ EntityPath MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standby
 
 std::shared_ptr<Entity> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::UnnumberedEroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::StandbyLsp::LspHop::UnnumberedEroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2746,7 +2436,7 @@ std::string MplsTe::MaximumTunnels::get_segment_path() const
 
 }
 
-EntityPath MplsTe::MaximumTunnels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::MaximumTunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2786,20 +2476,12 @@ EntityPath MplsTe::MaximumTunnels::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::MaximumTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::MaximumTunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::MaximumTunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2880,7 +2562,6 @@ MplsTe::PathProtection::PathProtection()
     switchover_log(std::make_shared<MplsTe::PathProtection::SwitchoverLog>())
 {
     switchover_log->parent = this;
-    children["switchover-log"] = switchover_log;
 
     yang_name = "path-protection"; yang_parent_name = "mpls-te";
 }
@@ -2909,7 +2590,7 @@ std::string MplsTe::PathProtection::get_segment_path() const
 
 }
 
-EntityPath MplsTe::PathProtection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::PathProtection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2932,41 +2613,24 @@ EntityPath MplsTe::PathProtection::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::PathProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "switchover-log")
     {
-        if(switchover_log != nullptr)
-        {
-            children["switchover-log"] = switchover_log;
-        }
-        else
+        if(switchover_log == nullptr)
         {
             switchover_log = std::make_shared<MplsTe::PathProtection::SwitchoverLog>();
-            switchover_log->parent = this;
-            children["switchover-log"] = switchover_log;
         }
-        return children.at("switchover-log");
+        return switchover_log;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::PathProtection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::PathProtection::get_children() const
 {
-    if(children.find("switchover-log") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(switchover_log != nullptr)
     {
-        if(switchover_log != nullptr)
-        {
-            children["switchover-log"] = switchover_log;
-        }
+        children["switchover-log"] = switchover_log;
     }
 
     return children;
@@ -3023,7 +2687,7 @@ std::string MplsTe::PathProtection::SwitchoverLog::get_segment_path() const
 
 }
 
-EntityPath MplsTe::PathProtection::SwitchoverLog::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::PathProtection::SwitchoverLog::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3049,15 +2713,6 @@ EntityPath MplsTe::PathProtection::SwitchoverLog::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MplsTe::PathProtection::SwitchoverLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-protection-switchover-entry")
     {
         for(auto const & c : path_protection_switchover_entry)
@@ -3065,28 +2720,24 @@ std::shared_ptr<Entity> MplsTe::PathProtection::SwitchoverLog::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::PathProtection::SwitchoverLog::PathProtectionSwitchoverEntry>();
         c->parent = this;
-        path_protection_switchover_entry.push_back(std::move(c));
-        children[segment_path] = path_protection_switchover_entry.back();
-        return children.at(segment_path);
+        path_protection_switchover_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::PathProtection::SwitchoverLog::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::PathProtection::SwitchoverLog::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_protection_switchover_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3160,7 +2811,7 @@ std::string MplsTe::PathProtection::SwitchoverLog::PathProtectionSwitchoverEntry
 
 }
 
-EntityPath MplsTe::PathProtection::SwitchoverLog::PathProtectionSwitchoverEntry::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::PathProtection::SwitchoverLog::PathProtectionSwitchoverEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3191,20 +2842,12 @@ EntityPath MplsTe::PathProtection::SwitchoverLog::PathProtectionSwitchoverEntry:
 
 std::shared_ptr<Entity> MplsTe::PathProtection::SwitchoverLog::PathProtectionSwitchoverEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::PathProtection::SwitchoverLog::PathProtectionSwitchoverEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::PathProtection::SwitchoverLog::PathProtectionSwitchoverEntry::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3282,7 +2925,7 @@ std::string MplsTe::FibNextHopLabelRoutes::get_segment_path() const
 
 }
 
-EntityPath MplsTe::FibNextHopLabelRoutes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::FibNextHopLabelRoutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3305,15 +2948,6 @@ EntityPath MplsTe::FibNextHopLabelRoutes::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> MplsTe::FibNextHopLabelRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fib-next-hop-label-route")
     {
         for(auto const & c : fib_next_hop_label_route)
@@ -3321,28 +2955,24 @@ std::shared_ptr<Entity> MplsTe::FibNextHopLabelRoutes::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute>();
         c->parent = this;
-        fib_next_hop_label_route.push_back(std::move(c));
-        children[segment_path] = fib_next_hop_label_route.back();
-        return children.at(segment_path);
+        fib_next_hop_label_route.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::FibNextHopLabelRoutes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::FibNextHopLabelRoutes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : fib_next_hop_label_route)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3368,7 +2998,6 @@ MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::FibNextHopLabelRoute()
     target_address(std::make_shared<MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::TargetAddress>())
 {
     target_address->parent = this;
-    children["target-address"] = target_address;
 
     yang_name = "fib-next-hop-label-route"; yang_parent_name = "fib-next-hop-label-routes";
 }
@@ -3427,7 +3056,7 @@ std::string MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::get_segment_pat
 
 }
 
-EntityPath MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3460,15 +3089,6 @@ EntityPath MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::get_entity_path(
 
 std::shared_ptr<Entity> MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "next-hop-path")
     {
         for(auto const & c : next_hop_path)
@@ -3476,51 +3096,38 @@ std::shared_ptr<Entity> MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath>();
         c->parent = this;
-        next_hop_path.push_back(std::move(c));
-        children[segment_path] = next_hop_path.back();
-        return children.at(segment_path);
+        next_hop_path.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "target-address")
     {
-        if(target_address != nullptr)
-        {
-            children["target-address"] = target_address;
-        }
-        else
+        if(target_address == nullptr)
         {
             target_address = std::make_shared<MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::TargetAddress>();
-            target_address->parent = this;
-            children["target-address"] = target_address;
         }
-        return children.at("target-address");
+        return target_address;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : next_hop_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("target-address") == children.end())
+    if(target_address != nullptr)
     {
-        if(target_address != nullptr)
-        {
-            children["target-address"] = target_address;
-        }
+        children["target-address"] = target_address;
     }
 
     return children;
@@ -3607,7 +3214,7 @@ std::string MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::TargetAddress::
 
 }
 
-EntityPath MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::TargetAddress::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::TargetAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3633,20 +3240,12 @@ EntityPath MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::TargetAddress::g
 
 std::shared_ptr<Entity> MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::TargetAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::TargetAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3721,7 +3320,7 @@ std::string MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath::ge
 
 }
 
-EntityPath MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3751,20 +3350,12 @@ EntityPath MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath::get
 
 std::shared_ptr<Entity> MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3803,13 +3394,10 @@ MplsTe::P2Mp::P2Mp()
 	,tunnel_rewrites(std::make_shared<MplsTe::P2Mp::TunnelRewrites>())
 {
     collaborator_timers->parent = this;
-    children["collaborator-timers"] = collaborator_timers;
 
     forwarding_output_label_rewrites->parent = this;
-    children["forwarding-output-label-rewrites"] = forwarding_output_label_rewrites;
 
     tunnel_rewrites->parent = this;
-    children["tunnel-rewrites"] = tunnel_rewrites;
 
     yang_name = "p2mp"; yang_parent_name = "mpls-te";
 }
@@ -3842,7 +3430,7 @@ std::string MplsTe::P2Mp::get_segment_path() const
 
 }
 
-EntityPath MplsTe::P2Mp::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3865,87 +3453,52 @@ EntityPath MplsTe::P2Mp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::P2Mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "collaborator-timers")
     {
-        if(collaborator_timers != nullptr)
-        {
-            children["collaborator-timers"] = collaborator_timers;
-        }
-        else
+        if(collaborator_timers == nullptr)
         {
             collaborator_timers = std::make_shared<MplsTe::P2Mp::CollaboratorTimers>();
-            collaborator_timers->parent = this;
-            children["collaborator-timers"] = collaborator_timers;
         }
-        return children.at("collaborator-timers");
+        return collaborator_timers;
     }
 
     if(child_yang_name == "forwarding-output-label-rewrites")
     {
-        if(forwarding_output_label_rewrites != nullptr)
-        {
-            children["forwarding-output-label-rewrites"] = forwarding_output_label_rewrites;
-        }
-        else
+        if(forwarding_output_label_rewrites == nullptr)
         {
             forwarding_output_label_rewrites = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites>();
-            forwarding_output_label_rewrites->parent = this;
-            children["forwarding-output-label-rewrites"] = forwarding_output_label_rewrites;
         }
-        return children.at("forwarding-output-label-rewrites");
+        return forwarding_output_label_rewrites;
     }
 
     if(child_yang_name == "tunnel-rewrites")
     {
-        if(tunnel_rewrites != nullptr)
-        {
-            children["tunnel-rewrites"] = tunnel_rewrites;
-        }
-        else
+        if(tunnel_rewrites == nullptr)
         {
             tunnel_rewrites = std::make_shared<MplsTe::P2Mp::TunnelRewrites>();
-            tunnel_rewrites->parent = this;
-            children["tunnel-rewrites"] = tunnel_rewrites;
         }
-        return children.at("tunnel-rewrites");
+        return tunnel_rewrites;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::get_children() const
 {
-    if(children.find("collaborator-timers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(collaborator_timers != nullptr)
     {
-        if(collaborator_timers != nullptr)
-        {
-            children["collaborator-timers"] = collaborator_timers;
-        }
+        children["collaborator-timers"] = collaborator_timers;
     }
 
-    if(children.find("forwarding-output-label-rewrites") == children.end())
+    if(forwarding_output_label_rewrites != nullptr)
     {
-        if(forwarding_output_label_rewrites != nullptr)
-        {
-            children["forwarding-output-label-rewrites"] = forwarding_output_label_rewrites;
-        }
+        children["forwarding-output-label-rewrites"] = forwarding_output_label_rewrites;
     }
 
-    if(children.find("tunnel-rewrites") == children.end())
+    if(tunnel_rewrites != nullptr)
     {
-        if(tunnel_rewrites != nullptr)
-        {
-            children["tunnel-rewrites"] = tunnel_rewrites;
-        }
+        children["tunnel-rewrites"] = tunnel_rewrites;
     }
 
     return children;
@@ -3993,7 +3546,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::get_segment_path() const
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4016,15 +3569,6 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-rewrite")
     {
         for(auto const & c : tunnel_rewrite)
@@ -4032,28 +3576,24 @@ std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite>();
         c->parent = this;
-        tunnel_rewrite.push_back(std::move(c));
-        children[segment_path] = tunnel_rewrite.back();
-        return children.at(segment_path);
+        tunnel_rewrite.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel_rewrite)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4065,9 +3605,9 @@ void MplsTe::P2Mp::TunnelRewrites::set_value(const std::string & value_path, std
 
 MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::TunnelRewrite()
     :
-    ctype{YType::enumeration, "ctype"},
-    lsp_id{YType::int32, "lsp-id"},
     tunnel_id{YType::int32, "tunnel-id"},
+    lsp_id{YType::int32, "lsp-id"},
+    ctype{YType::enumeration, "ctype"},
     is_segment_routing{YType::boolean, "is-segment-routing"},
     tunnel_interface{YType::str, "tunnel-interface"},
     tunnel_signal_name{YType::str, "tunnel-signal-name"}
@@ -4077,13 +3617,10 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::TunnelRewrite()
 	,successful_rewrite(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite>())
 {
     failed_rewrite->parent = this;
-    children["failed-rewrite"] = failed_rewrite;
 
     pending_rewrite->parent = this;
-    children["pending-rewrite"] = pending_rewrite;
 
     successful_rewrite->parent = this;
-    children["successful-rewrite"] = successful_rewrite;
 
     yang_name = "tunnel-rewrite"; yang_parent_name = "tunnel-rewrites";
 }
@@ -4094,9 +3631,9 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::~TunnelRewrite()
 
 bool MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::has_data() const
 {
-    return ctype.is_set
+    return tunnel_id.is_set
 	|| lsp_id.is_set
-	|| tunnel_id.is_set
+	|| ctype.is_set
 	|| is_segment_routing.is_set
 	|| tunnel_interface.is_set
 	|| tunnel_signal_name.is_set
@@ -4108,9 +3645,9 @@ bool MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::has_data() const
 bool MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::has_operation() const
 {
     return is_set(operation)
-	|| is_set(ctype.operation)
-	|| is_set(lsp_id.operation)
 	|| is_set(tunnel_id.operation)
+	|| is_set(lsp_id.operation)
+	|| is_set(ctype.operation)
 	|| is_set(is_segment_routing.operation)
 	|| is_set(tunnel_interface.operation)
 	|| is_set(tunnel_signal_name.operation)
@@ -4122,13 +3659,13 @@ bool MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::has_operation() const
 std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel-rewrite" <<"[ctype='" <<ctype <<"']" <<"[lsp-id='" <<lsp_id <<"']" <<"[tunnel-id='" <<tunnel_id <<"']";
+    path_buffer << "tunnel-rewrite" <<"[tunnel-id='" <<tunnel_id <<"']" <<"[lsp-id='" <<lsp_id <<"']" <<"[ctype='" <<ctype <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4142,9 +3679,9 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ctype.is_set || is_set(ctype.operation)) leaf_name_data.push_back(ctype.get_name_leafdata());
-    if (lsp_id.is_set || is_set(lsp_id.operation)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
     if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (lsp_id.is_set || is_set(lsp_id.operation)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
+    if (ctype.is_set || is_set(ctype.operation)) leaf_name_data.push_back(ctype.get_name_leafdata());
     if (is_segment_routing.is_set || is_set(is_segment_routing.operation)) leaf_name_data.push_back(is_segment_routing.get_name_leafdata());
     if (tunnel_interface.is_set || is_set(tunnel_interface.operation)) leaf_name_data.push_back(tunnel_interface.get_name_leafdata());
     if (tunnel_signal_name.is_set || is_set(tunnel_signal_name.operation)) leaf_name_data.push_back(tunnel_signal_name.get_name_leafdata());
@@ -4157,87 +3694,52 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "failed-rewrite")
     {
-        if(failed_rewrite != nullptr)
-        {
-            children["failed-rewrite"] = failed_rewrite;
-        }
-        else
+        if(failed_rewrite == nullptr)
         {
             failed_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite>();
-            failed_rewrite->parent = this;
-            children["failed-rewrite"] = failed_rewrite;
         }
-        return children.at("failed-rewrite");
+        return failed_rewrite;
     }
 
     if(child_yang_name == "pending-rewrite")
     {
-        if(pending_rewrite != nullptr)
-        {
-            children["pending-rewrite"] = pending_rewrite;
-        }
-        else
+        if(pending_rewrite == nullptr)
         {
             pending_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite>();
-            pending_rewrite->parent = this;
-            children["pending-rewrite"] = pending_rewrite;
         }
-        return children.at("pending-rewrite");
+        return pending_rewrite;
     }
 
     if(child_yang_name == "successful-rewrite")
     {
-        if(successful_rewrite != nullptr)
-        {
-            children["successful-rewrite"] = successful_rewrite;
-        }
-        else
+        if(successful_rewrite == nullptr)
         {
             successful_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite>();
-            successful_rewrite->parent = this;
-            children["successful-rewrite"] = successful_rewrite;
         }
-        return children.at("successful-rewrite");
+        return successful_rewrite;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::get_children() const
 {
-    if(children.find("failed-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(failed_rewrite != nullptr)
     {
-        if(failed_rewrite != nullptr)
-        {
-            children["failed-rewrite"] = failed_rewrite;
-        }
+        children["failed-rewrite"] = failed_rewrite;
     }
 
-    if(children.find("pending-rewrite") == children.end())
+    if(pending_rewrite != nullptr)
     {
-        if(pending_rewrite != nullptr)
-        {
-            children["pending-rewrite"] = pending_rewrite;
-        }
+        children["pending-rewrite"] = pending_rewrite;
     }
 
-    if(children.find("successful-rewrite") == children.end())
+    if(successful_rewrite != nullptr)
     {
-        if(successful_rewrite != nullptr)
-        {
-            children["successful-rewrite"] = successful_rewrite;
-        }
+        children["successful-rewrite"] = successful_rewrite;
     }
 
     return children;
@@ -4245,17 +3747,17 @@ std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::T
 
 void MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "ctype")
+    if(value_path == "tunnel-id")
     {
-        ctype = value;
+        tunnel_id = value;
     }
     if(value_path == "lsp-id")
     {
         lsp_id = value;
     }
-    if(value_path == "tunnel-id")
+    if(value_path == "ctype")
     {
-        tunnel_id = value;
+        ctype = value;
     }
     if(value_path == "is-segment-routing")
     {
@@ -4278,7 +3780,6 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::SuccessfulRewrit
     tunnel_rewrite(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_>())
 {
     tunnel_rewrite->parent = this;
-    children["tunnel-rewrite"] = tunnel_rewrite;
 
     yang_name = "successful-rewrite"; yang_parent_name = "tunnel-rewrite";
 }
@@ -4309,7 +3810,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::get_
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4333,41 +3834,24 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::get_e
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-rewrite")
     {
-        if(tunnel_rewrite != nullptr)
-        {
-            children["tunnel-rewrite"] = tunnel_rewrite;
-        }
-        else
+        if(tunnel_rewrite == nullptr)
         {
             tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_>();
-            tunnel_rewrite->parent = this;
-            children["tunnel-rewrite"] = tunnel_rewrite;
         }
-        return children.at("tunnel-rewrite");
+        return tunnel_rewrite;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::get_children() const
 {
-    if(children.find("tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnel_rewrite != nullptr)
     {
-        if(tunnel_rewrite != nullptr)
-        {
-            children["tunnel-rewrite"] = tunnel_rewrite;
-        }
+        children["tunnel-rewrite"] = tunnel_rewrite;
     }
 
     return children;
@@ -4389,10 +3873,8 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::
 	,p2p_tunnel_rewrite(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite>())
 {
     p2mp_tunnel_rewrite->parent = this;
-    children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
 
     p2p_tunnel_rewrite->parent = this;
-    children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
 
     yang_name = "tunnel-rewrite"; yang_parent_name = "successful-rewrite";
 }
@@ -4425,7 +3907,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunn
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4449,64 +3931,38 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunne
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2mp-tunnel-rewrite")
     {
-        if(p2mp_tunnel_rewrite != nullptr)
-        {
-            children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
-        }
-        else
+        if(p2mp_tunnel_rewrite == nullptr)
         {
             p2mp_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2MpTunnelRewrite>();
-            p2mp_tunnel_rewrite->parent = this;
-            children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
         }
-        return children.at("p2mp-tunnel-rewrite");
+        return p2mp_tunnel_rewrite;
     }
 
     if(child_yang_name == "p2p-tunnel-rewrite")
     {
-        if(p2p_tunnel_rewrite != nullptr)
-        {
-            children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
-        }
-        else
+        if(p2p_tunnel_rewrite == nullptr)
         {
             p2p_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite>();
-            p2p_tunnel_rewrite->parent = this;
-            children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
         }
-        return children.at("p2p-tunnel-rewrite");
+        return p2p_tunnel_rewrite;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::get_children() const
 {
-    if(children.find("p2mp-tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(p2mp_tunnel_rewrite != nullptr)
     {
-        if(p2mp_tunnel_rewrite != nullptr)
-        {
-            children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
-        }
+        children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
     }
 
-    if(children.find("p2p-tunnel-rewrite") == children.end())
+    if(p2p_tunnel_rewrite != nullptr)
     {
-        if(p2p_tunnel_rewrite != nullptr)
-        {
-            children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
-        }
+        children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
     }
 
     return children;
@@ -4537,10 +3993,8 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::
 	,primary_s2l(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L>())
 {
     backup_tunnel_rewrite->parent = this;
-    children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
 
     primary_s2l->parent = this;
-    children["primary-s2l"] = primary_s2l;
 
     yang_name = "p2p-tunnel-rewrite"; yang_parent_name = "tunnel-rewrite";
 }
@@ -4591,7 +4045,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunn
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4624,64 +4078,38 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunne
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-tunnel-rewrite")
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
-        else
+        if(backup_tunnel_rewrite == nullptr)
         {
             backup_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite>();
-            backup_tunnel_rewrite->parent = this;
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
         }
-        return children.at("backup-tunnel-rewrite");
+        return backup_tunnel_rewrite;
     }
 
     if(child_yang_name == "primary-s2l")
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
-        else
+        if(primary_s2l == nullptr)
         {
             primary_s2l = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L>();
-            primary_s2l->parent = this;
-            children["primary-s2l"] = primary_s2l;
         }
-        return children.at("primary-s2l");
+        return primary_s2l;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::get_children() const
 {
-    if(children.find("backup-tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_tunnel_rewrite != nullptr)
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
+        children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
     }
 
-    if(children.find("primary-s2l") == children.end())
+    if(primary_s2l != nullptr)
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
+        children["primary-s2l"] = primary_s2l;
     }
 
     return children;
@@ -4789,7 +4217,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunn
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4820,20 +4248,12 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunne
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4927,7 +4347,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunn
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4958,20 +4378,12 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunne
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5038,7 +4450,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunn
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5062,20 +4474,12 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunne
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5094,7 +4498,6 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::FailedRewrite()
     tunnel_rewrite(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_>())
 {
     tunnel_rewrite->parent = this;
-    children["tunnel-rewrite"] = tunnel_rewrite;
 
     yang_name = "failed-rewrite"; yang_parent_name = "tunnel-rewrite";
 }
@@ -5125,7 +4528,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::get_segm
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5149,41 +4552,24 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::get_entit
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-rewrite")
     {
-        if(tunnel_rewrite != nullptr)
-        {
-            children["tunnel-rewrite"] = tunnel_rewrite;
-        }
-        else
+        if(tunnel_rewrite == nullptr)
         {
             tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_>();
-            tunnel_rewrite->parent = this;
-            children["tunnel-rewrite"] = tunnel_rewrite;
         }
-        return children.at("tunnel-rewrite");
+        return tunnel_rewrite;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::get_children() const
 {
-    if(children.find("tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnel_rewrite != nullptr)
     {
-        if(tunnel_rewrite != nullptr)
-        {
-            children["tunnel-rewrite"] = tunnel_rewrite;
-        }
+        children["tunnel-rewrite"] = tunnel_rewrite;
     }
 
     return children;
@@ -5205,10 +4591,8 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::Tunn
 	,p2p_tunnel_rewrite(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite>())
 {
     p2mp_tunnel_rewrite->parent = this;
-    children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
 
     p2p_tunnel_rewrite->parent = this;
-    children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
 
     yang_name = "tunnel-rewrite"; yang_parent_name = "failed-rewrite";
 }
@@ -5241,7 +4625,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRe
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5265,64 +4649,38 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2mp-tunnel-rewrite")
     {
-        if(p2mp_tunnel_rewrite != nullptr)
-        {
-            children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
-        }
-        else
+        if(p2mp_tunnel_rewrite == nullptr)
         {
             p2mp_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2MpTunnelRewrite>();
-            p2mp_tunnel_rewrite->parent = this;
-            children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
         }
-        return children.at("p2mp-tunnel-rewrite");
+        return p2mp_tunnel_rewrite;
     }
 
     if(child_yang_name == "p2p-tunnel-rewrite")
     {
-        if(p2p_tunnel_rewrite != nullptr)
-        {
-            children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
-        }
-        else
+        if(p2p_tunnel_rewrite == nullptr)
         {
             p2p_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite>();
-            p2p_tunnel_rewrite->parent = this;
-            children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
         }
-        return children.at("p2p-tunnel-rewrite");
+        return p2p_tunnel_rewrite;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::get_children() const
 {
-    if(children.find("p2mp-tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(p2mp_tunnel_rewrite != nullptr)
     {
-        if(p2mp_tunnel_rewrite != nullptr)
-        {
-            children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
-        }
+        children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
     }
 
-    if(children.find("p2p-tunnel-rewrite") == children.end())
+    if(p2p_tunnel_rewrite != nullptr)
     {
-        if(p2p_tunnel_rewrite != nullptr)
-        {
-            children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
-        }
+        children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
     }
 
     return children;
@@ -5353,10 +4711,8 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PT
 	,primary_s2l(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L>())
 {
     backup_tunnel_rewrite->parent = this;
-    children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
 
     primary_s2l->parent = this;
-    children["primary-s2l"] = primary_s2l;
 
     yang_name = "p2p-tunnel-rewrite"; yang_parent_name = "tunnel-rewrite";
 }
@@ -5407,7 +4763,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRe
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5440,64 +4796,38 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-tunnel-rewrite")
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
-        else
+        if(backup_tunnel_rewrite == nullptr)
         {
             backup_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite>();
-            backup_tunnel_rewrite->parent = this;
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
         }
-        return children.at("backup-tunnel-rewrite");
+        return backup_tunnel_rewrite;
     }
 
     if(child_yang_name == "primary-s2l")
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
-        else
+        if(primary_s2l == nullptr)
         {
             primary_s2l = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L>();
-            primary_s2l->parent = this;
-            children["primary-s2l"] = primary_s2l;
         }
-        return children.at("primary-s2l");
+        return primary_s2l;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::get_children() const
 {
-    if(children.find("backup-tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_tunnel_rewrite != nullptr)
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
+        children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
     }
 
-    if(children.find("primary-s2l") == children.end())
+    if(primary_s2l != nullptr)
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
+        children["primary-s2l"] = primary_s2l;
     }
 
     return children;
@@ -5605,7 +4935,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRe
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5636,20 +4966,12 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5743,7 +5065,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRe
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5774,20 +5096,12 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5854,7 +5168,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRe
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5878,20 +5192,12 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5910,7 +5216,6 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::PendingRewrite()
     tunnel_rewrite(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_>())
 {
     tunnel_rewrite->parent = this;
-    children["tunnel-rewrite"] = tunnel_rewrite;
 
     yang_name = "pending-rewrite"; yang_parent_name = "tunnel-rewrite";
 }
@@ -5941,7 +5246,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::get_seg
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5965,41 +5270,24 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::get_enti
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-rewrite")
     {
-        if(tunnel_rewrite != nullptr)
-        {
-            children["tunnel-rewrite"] = tunnel_rewrite;
-        }
-        else
+        if(tunnel_rewrite == nullptr)
         {
             tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_>();
-            tunnel_rewrite->parent = this;
-            children["tunnel-rewrite"] = tunnel_rewrite;
         }
-        return children.at("tunnel-rewrite");
+        return tunnel_rewrite;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::get_children() const
 {
-    if(children.find("tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnel_rewrite != nullptr)
     {
-        if(tunnel_rewrite != nullptr)
-        {
-            children["tunnel-rewrite"] = tunnel_rewrite;
-        }
+        children["tunnel-rewrite"] = tunnel_rewrite;
     }
 
     return children;
@@ -6021,10 +5309,8 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::Tun
 	,p2p_tunnel_rewrite(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite>())
 {
     p2mp_tunnel_rewrite->parent = this;
-    children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
 
     p2p_tunnel_rewrite->parent = this;
-    children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
 
     yang_name = "tunnel-rewrite"; yang_parent_name = "pending-rewrite";
 }
@@ -6057,7 +5343,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelR
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6081,64 +5367,38 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRe
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2mp-tunnel-rewrite")
     {
-        if(p2mp_tunnel_rewrite != nullptr)
-        {
-            children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
-        }
-        else
+        if(p2mp_tunnel_rewrite == nullptr)
         {
             p2mp_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite>();
-            p2mp_tunnel_rewrite->parent = this;
-            children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
         }
-        return children.at("p2mp-tunnel-rewrite");
+        return p2mp_tunnel_rewrite;
     }
 
     if(child_yang_name == "p2p-tunnel-rewrite")
     {
-        if(p2p_tunnel_rewrite != nullptr)
-        {
-            children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
-        }
-        else
+        if(p2p_tunnel_rewrite == nullptr)
         {
             p2p_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite>();
-            p2p_tunnel_rewrite->parent = this;
-            children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
         }
-        return children.at("p2p-tunnel-rewrite");
+        return p2p_tunnel_rewrite;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::get_children() const
 {
-    if(children.find("p2mp-tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(p2mp_tunnel_rewrite != nullptr)
     {
-        if(p2mp_tunnel_rewrite != nullptr)
-        {
-            children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
-        }
+        children["p2mp-tunnel-rewrite"] = p2mp_tunnel_rewrite;
     }
 
-    if(children.find("p2p-tunnel-rewrite") == children.end())
+    if(p2p_tunnel_rewrite != nullptr)
     {
-        if(p2p_tunnel_rewrite != nullptr)
-        {
-            children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
-        }
+        children["p2p-tunnel-rewrite"] = p2p_tunnel_rewrite;
     }
 
     return children;
@@ -6169,10 +5429,8 @@ MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2P
 	,primary_s2l(std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L>())
 {
     backup_tunnel_rewrite->parent = this;
-    children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
 
     primary_s2l->parent = this;
-    children["primary-s2l"] = primary_s2l;
 
     yang_name = "p2p-tunnel-rewrite"; yang_parent_name = "tunnel-rewrite";
 }
@@ -6223,7 +5481,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelR
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6256,64 +5514,38 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRe
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-tunnel-rewrite")
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
-        else
+        if(backup_tunnel_rewrite == nullptr)
         {
             backup_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite>();
-            backup_tunnel_rewrite->parent = this;
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
         }
-        return children.at("backup-tunnel-rewrite");
+        return backup_tunnel_rewrite;
     }
 
     if(child_yang_name == "primary-s2l")
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
-        else
+        if(primary_s2l == nullptr)
         {
             primary_s2l = std::make_shared<MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L>();
-            primary_s2l->parent = this;
-            children["primary-s2l"] = primary_s2l;
         }
-        return children.at("primary-s2l");
+        return primary_s2l;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::get_children() const
 {
-    if(children.find("backup-tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_tunnel_rewrite != nullptr)
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
+        children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
     }
 
-    if(children.find("primary-s2l") == children.end())
+    if(primary_s2l != nullptr)
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
+        children["primary-s2l"] = primary_s2l;
     }
 
     return children;
@@ -6421,7 +5653,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelR
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6452,20 +5684,12 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRe
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::PrimaryS2L::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6559,7 +5783,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelR
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6590,20 +5814,12 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRe
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2PTunnelRewrite::BackupTunnelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6670,7 +5886,7 @@ std::string MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelR
 
 }
 
-EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6694,20 +5910,12 @@ EntityPath MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRe
 
 std::shared_ptr<Entity> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelRewrite_::P2MpTunnelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6757,7 +5965,7 @@ std::string MplsTe::P2Mp::CollaboratorTimers::get_segment_path() const
 
 }
 
-EntityPath MplsTe::P2Mp::CollaboratorTimers::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::CollaboratorTimers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6780,15 +5988,6 @@ EntityPath MplsTe::P2Mp::CollaboratorTimers::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> MplsTe::P2Mp::CollaboratorTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2mp-timer")
     {
         for(auto const & c : p2mp_timer)
@@ -6796,28 +5995,24 @@ std::shared_ptr<Entity> MplsTe::P2Mp::CollaboratorTimers::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2Mp::CollaboratorTimers::P2MpTimer>();
         c->parent = this;
-        p2mp_timer.push_back(std::move(c));
-        children[segment_path] = p2mp_timer.back();
-        return children.at(segment_path);
+        p2mp_timer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::CollaboratorTimers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::CollaboratorTimers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : p2mp_timer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6876,7 +6071,7 @@ std::string MplsTe::P2Mp::CollaboratorTimers::P2MpTimer::get_segment_path() cons
 
 }
 
-EntityPath MplsTe::P2Mp::CollaboratorTimers::P2MpTimer::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::CollaboratorTimers::P2MpTimer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6906,20 +6101,12 @@ EntityPath MplsTe::P2Mp::CollaboratorTimers::P2MpTimer::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsTe::P2Mp::CollaboratorTimers::P2MpTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::CollaboratorTimers::P2MpTimer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::CollaboratorTimers::P2MpTimer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6993,7 +6180,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::get_segment_path() cons
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7016,15 +6203,6 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "forwarding-output-label-rewrite")
     {
         for(auto const & c : forwarding_output_label_rewrite)
@@ -7032,28 +6210,24 @@ std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite>();
         c->parent = this;
-        forwarding_output_label_rewrite.push_back(std::move(c));
-        children[segment_path] = forwarding_output_label_rewrite.back();
-        return children.at(segment_path);
+        forwarding_output_label_rewrite.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : forwarding_output_label_rewrite)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7065,15 +6239,15 @@ void MplsTe::P2Mp::ForwardingOutputLabelRewrites::set_value(const std::string & 
 
 MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::ForwardingOutputLabelRewrite()
     :
-    ctype{YType::enumeration, "ctype"},
-    destination_address{YType::str, "destination-address"},
-    extended_tunnel_id{YType::str, "extended-tunnel-id"},
-    lsp_id{YType::int32, "lsp-id"},
-    next_hop_address{YType::str, "next-hop-address"},
-    p2mp_id{YType::int32, "p2mp-id"},
-    previous_hop_address{YType::str, "previous-hop-address"},
-    source_address{YType::str, "source-address"},
     tunnel_id{YType::int32, "tunnel-id"},
+    lsp_id{YType::int32, "lsp-id"},
+    extended_tunnel_id{YType::str, "extended-tunnel-id"},
+    source_address{YType::str, "source-address"},
+    p2mp_id{YType::int32, "p2mp-id"},
+    destination_address{YType::str, "destination-address"},
+    next_hop_address{YType::str, "next-hop-address"},
+    previous_hop_address{YType::str, "previous-hop-address"},
+    ctype{YType::enumeration, "ctype"},
     backup_tunnel_name{YType::str, "backup-tunnel-name"},
     is_segment_routing{YType::boolean, "is-segment-routing"},
     original_input_interface{YType::str, "original-input-interface"},
@@ -7082,7 +6256,6 @@ MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::Forwa
     s2l_output_rewrite(std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite>())
 {
     s2l_output_rewrite->parent = this;
-    children["s2l-output-rewrite"] = s2l_output_rewrite;
 
     yang_name = "forwarding-output-label-rewrite"; yang_parent_name = "forwarding-output-label-rewrites";
 }
@@ -7103,15 +6276,15 @@ bool MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::
         if(s2lsr_path[index]->has_data())
             return true;
     }
-    return ctype.is_set
-	|| destination_address.is_set
-	|| extended_tunnel_id.is_set
+    return tunnel_id.is_set
 	|| lsp_id.is_set
-	|| next_hop_address.is_set
-	|| p2mp_id.is_set
-	|| previous_hop_address.is_set
+	|| extended_tunnel_id.is_set
 	|| source_address.is_set
-	|| tunnel_id.is_set
+	|| p2mp_id.is_set
+	|| destination_address.is_set
+	|| next_hop_address.is_set
+	|| previous_hop_address.is_set
+	|| ctype.is_set
 	|| backup_tunnel_name.is_set
 	|| is_segment_routing.is_set
 	|| original_input_interface.is_set
@@ -7132,15 +6305,15 @@ bool MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::
             return true;
     }
     return is_set(operation)
-	|| is_set(ctype.operation)
-	|| is_set(destination_address.operation)
-	|| is_set(extended_tunnel_id.operation)
-	|| is_set(lsp_id.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(p2mp_id.operation)
-	|| is_set(previous_hop_address.operation)
-	|| is_set(source_address.operation)
 	|| is_set(tunnel_id.operation)
+	|| is_set(lsp_id.operation)
+	|| is_set(extended_tunnel_id.operation)
+	|| is_set(source_address.operation)
+	|| is_set(p2mp_id.operation)
+	|| is_set(destination_address.operation)
+	|| is_set(next_hop_address.operation)
+	|| is_set(previous_hop_address.operation)
+	|| is_set(ctype.operation)
 	|| is_set(backup_tunnel_name.operation)
 	|| is_set(is_segment_routing.operation)
 	|| is_set(original_input_interface.operation)
@@ -7151,13 +6324,13 @@ bool MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::
 std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "forwarding-output-label-rewrite" <<"[ctype='" <<ctype <<"']" <<"[destination-address='" <<destination_address <<"']" <<"[extended-tunnel-id='" <<extended_tunnel_id <<"']" <<"[lsp-id='" <<lsp_id <<"']" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[p2mp-id='" <<p2mp_id <<"']" <<"[previous-hop-address='" <<previous_hop_address <<"']" <<"[source-address='" <<source_address <<"']" <<"[tunnel-id='" <<tunnel_id <<"']";
+    path_buffer << "forwarding-output-label-rewrite" <<"[tunnel-id='" <<tunnel_id <<"']" <<"[lsp-id='" <<lsp_id <<"']" <<"[extended-tunnel-id='" <<extended_tunnel_id <<"']" <<"[source-address='" <<source_address <<"']" <<"[p2mp-id='" <<p2mp_id <<"']" <<"[destination-address='" <<destination_address <<"']" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[previous-hop-address='" <<previous_hop_address <<"']" <<"[ctype='" <<ctype <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7171,15 +6344,15 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ctype.is_set || is_set(ctype.operation)) leaf_name_data.push_back(ctype.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.operation)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
-    if (lsp_id.is_set || is_set(lsp_id.operation)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (p2mp_id.is_set || is_set(p2mp_id.operation)) leaf_name_data.push_back(p2mp_id.get_name_leafdata());
-    if (previous_hop_address.is_set || is_set(previous_hop_address.operation)) leaf_name_data.push_back(previous_hop_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
     if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (lsp_id.is_set || is_set(lsp_id.operation)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
+    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.operation)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (p2mp_id.is_set || is_set(p2mp_id.operation)) leaf_name_data.push_back(p2mp_id.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (previous_hop_address.is_set || is_set(previous_hop_address.operation)) leaf_name_data.push_back(previous_hop_address.get_name_leafdata());
+    if (ctype.is_set || is_set(ctype.operation)) leaf_name_data.push_back(ctype.get_name_leafdata());
     if (backup_tunnel_name.is_set || is_set(backup_tunnel_name.operation)) leaf_name_data.push_back(backup_tunnel_name.get_name_leafdata());
     if (is_segment_routing.is_set || is_set(is_segment_routing.operation)) leaf_name_data.push_back(is_segment_routing.get_name_leafdata());
     if (original_input_interface.is_set || is_set(original_input_interface.operation)) leaf_name_data.push_back(original_input_interface.get_name_leafdata());
@@ -7193,15 +6366,6 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "s2l")
     {
         for(auto const & c : s2l)
@@ -7209,30 +6373,22 @@ std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L>();
         c->parent = this;
-        s2l.push_back(std::move(c));
-        children[segment_path] = s2l.back();
-        return children.at(segment_path);
+        s2l.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "s2l-output-rewrite")
     {
-        if(s2l_output_rewrite != nullptr)
-        {
-            children["s2l-output-rewrite"] = s2l_output_rewrite;
-        }
-        else
+        if(s2l_output_rewrite == nullptr)
         {
             s2l_output_rewrite = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite>();
-            s2l_output_rewrite->parent = this;
-            children["s2l-output-rewrite"] = s2l_output_rewrite;
         }
-        return children.at("s2l-output-rewrite");
+        return s2l_output_rewrite;
     }
 
     if(child_yang_name == "s2lsr-path")
@@ -7242,44 +6398,34 @@ std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingO
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath>();
         c->parent = this;
-        s2lsr_path.push_back(std::move(c));
-        children[segment_path] = s2lsr_path.back();
-        return children.at(segment_path);
+        s2lsr_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : s2l)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("s2l-output-rewrite") == children.end())
+    if(s2l_output_rewrite != nullptr)
     {
-        if(s2l_output_rewrite != nullptr)
-        {
-            children["s2l-output-rewrite"] = s2l_output_rewrite;
-        }
+        children["s2l-output-rewrite"] = s2l_output_rewrite;
     }
 
     for (auto const & c : s2lsr_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7287,41 +6433,41 @@ std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputL
 
 void MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "ctype")
+    if(value_path == "tunnel-id")
     {
-        ctype = value;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-    }
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id = value;
+        tunnel_id = value;
     }
     if(value_path == "lsp-id")
     {
         lsp_id = value;
     }
-    if(value_path == "next-hop-address")
+    if(value_path == "extended-tunnel-id")
     {
-        next_hop_address = value;
-    }
-    if(value_path == "p2mp-id")
-    {
-        p2mp_id = value;
-    }
-    if(value_path == "previous-hop-address")
-    {
-        previous_hop_address = value;
+        extended_tunnel_id = value;
     }
     if(value_path == "source-address")
     {
         source_address = value;
     }
-    if(value_path == "tunnel-id")
+    if(value_path == "p2mp-id")
     {
-        tunnel_id = value;
+        p2mp_id = value;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address = value;
+    }
+    if(value_path == "previous-hop-address")
+    {
+        previous_hop_address = value;
+    }
+    if(value_path == "ctype")
+    {
+        ctype = value;
     }
     if(value_path == "backup-tunnel-name")
     {
@@ -7349,16 +6495,12 @@ MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOu
 	,successful_rewrite(std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite>())
 {
     failed_rewrite->parent = this;
-    children["failed-rewrite"] = failed_rewrite;
 
     pending_rewrite->parent = this;
-    children["pending-rewrite"] = pending_rewrite;
 
     subfamily->parent = this;
-    children["subfamily"] = subfamily;
 
     successful_rewrite->parent = this;
-    children["successful-rewrite"] = successful_rewrite;
 
     yang_name = "s2l-output-rewrite"; yang_parent_name = "forwarding-output-label-rewrite";
 }
@@ -7393,7 +6535,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7416,110 +6558,66 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "failed-rewrite")
     {
-        if(failed_rewrite != nullptr)
-        {
-            children["failed-rewrite"] = failed_rewrite;
-        }
-        else
+        if(failed_rewrite == nullptr)
         {
             failed_rewrite = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite>();
-            failed_rewrite->parent = this;
-            children["failed-rewrite"] = failed_rewrite;
         }
-        return children.at("failed-rewrite");
+        return failed_rewrite;
     }
 
     if(child_yang_name == "pending-rewrite")
     {
-        if(pending_rewrite != nullptr)
-        {
-            children["pending-rewrite"] = pending_rewrite;
-        }
-        else
+        if(pending_rewrite == nullptr)
         {
             pending_rewrite = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite>();
-            pending_rewrite->parent = this;
-            children["pending-rewrite"] = pending_rewrite;
         }
-        return children.at("pending-rewrite");
+        return pending_rewrite;
     }
 
     if(child_yang_name == "subfamily")
     {
-        if(subfamily != nullptr)
-        {
-            children["subfamily"] = subfamily;
-        }
-        else
+        if(subfamily == nullptr)
         {
             subfamily = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily>();
-            subfamily->parent = this;
-            children["subfamily"] = subfamily;
         }
-        return children.at("subfamily");
+        return subfamily;
     }
 
     if(child_yang_name == "successful-rewrite")
     {
-        if(successful_rewrite != nullptr)
-        {
-            children["successful-rewrite"] = successful_rewrite;
-        }
-        else
+        if(successful_rewrite == nullptr)
         {
             successful_rewrite = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite>();
-            successful_rewrite->parent = this;
-            children["successful-rewrite"] = successful_rewrite;
         }
-        return children.at("successful-rewrite");
+        return successful_rewrite;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::get_children() const
 {
-    if(children.find("failed-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(failed_rewrite != nullptr)
     {
-        if(failed_rewrite != nullptr)
-        {
-            children["failed-rewrite"] = failed_rewrite;
-        }
+        children["failed-rewrite"] = failed_rewrite;
     }
 
-    if(children.find("pending-rewrite") == children.end())
+    if(pending_rewrite != nullptr)
     {
-        if(pending_rewrite != nullptr)
-        {
-            children["pending-rewrite"] = pending_rewrite;
-        }
+        children["pending-rewrite"] = pending_rewrite;
     }
 
-    if(children.find("subfamily") == children.end())
+    if(subfamily != nullptr)
     {
-        if(subfamily != nullptr)
-        {
-            children["subfamily"] = subfamily;
-        }
+        children["subfamily"] = subfamily;
     }
 
-    if(children.find("successful-rewrite") == children.end())
+    if(successful_rewrite != nullptr)
     {
-        if(successful_rewrite != nullptr)
-        {
-            children["successful-rewrite"] = successful_rewrite;
-        }
+        children["successful-rewrite"] = successful_rewrite;
     }
 
     return children;
@@ -7537,7 +6635,6 @@ MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOu
     lsp_fec(std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec>())
 {
     lsp_fec->parent = this;
-    children["lsp-fec"] = lsp_fec;
 
     yang_name = "subfamily"; yang_parent_name = "s2l-output-rewrite";
 }
@@ -7570,7 +6667,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7595,41 +6692,24 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-fec")
     {
-        if(lsp_fec != nullptr)
-        {
-            children["lsp-fec"] = lsp_fec;
-        }
-        else
+        if(lsp_fec == nullptr)
         {
             lsp_fec = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec>();
-            lsp_fec->parent = this;
-            children["lsp-fec"] = lsp_fec;
         }
-        return children.at("lsp-fec");
+        return lsp_fec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::get_children() const
 {
-    if(children.find("lsp-fec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsp_fec != nullptr)
     {
-        if(lsp_fec != nullptr)
-        {
-            children["lsp-fec"] = lsp_fec;
-        }
+        children["lsp-fec"] = lsp_fec;
     }
 
     return children;
@@ -7658,7 +6738,6 @@ MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOu
     fec_destination_info(std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo>())
 {
     fec_destination_info->parent = this;
-    children["fec-destination-info"] = fec_destination_info;
 
     yang_name = "lsp-fec"; yang_parent_name = "subfamily";
 }
@@ -7697,7 +6776,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7725,41 +6804,24 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fec-destination-info")
     {
-        if(fec_destination_info != nullptr)
-        {
-            children["fec-destination-info"] = fec_destination_info;
-        }
-        else
+        if(fec_destination_info == nullptr)
         {
             fec_destination_info = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo>();
-            fec_destination_info->parent = this;
-            children["fec-destination-info"] = fec_destination_info;
         }
-        return children.at("fec-destination-info");
+        return fec_destination_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::get_children() const
 {
-    if(children.find("fec-destination-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fec_destination_info != nullptr)
     {
-        if(fec_destination_info != nullptr)
-        {
-            children["fec-destination-info"] = fec_destination_info;
-        }
+        children["fec-destination-info"] = fec_destination_info;
     }
 
     return children;
@@ -7826,7 +6888,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7852,20 +6914,12 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::Subfamily::LspFec::FecDestinationInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7899,10 +6953,8 @@ MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOu
 	,primary_s2l(std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L>())
 {
     backup_tunnel_rewrite->parent = this;
-    children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
 
     primary_s2l->parent = this;
-    children["primary-s2l"] = primary_s2l;
 
     yang_name = "successful-rewrite"; yang_parent_name = "s2l-output-rewrite";
 }
@@ -7947,7 +6999,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7977,64 +7029,38 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-tunnel-rewrite")
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
-        else
+        if(backup_tunnel_rewrite == nullptr)
         {
             backup_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite>();
-            backup_tunnel_rewrite->parent = this;
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
         }
-        return children.at("backup-tunnel-rewrite");
+        return backup_tunnel_rewrite;
     }
 
     if(child_yang_name == "primary-s2l")
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
-        else
+        if(primary_s2l == nullptr)
         {
             primary_s2l = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L>();
-            primary_s2l->parent = this;
-            children["primary-s2l"] = primary_s2l;
         }
-        return children.at("primary-s2l");
+        return primary_s2l;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::get_children() const
 {
-    if(children.find("backup-tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_tunnel_rewrite != nullptr)
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
+        children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
     }
 
-    if(children.find("primary-s2l") == children.end())
+    if(primary_s2l != nullptr)
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
+        children["primary-s2l"] = primary_s2l;
     }
 
     return children;
@@ -8130,7 +7156,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8161,20 +7187,12 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::PrimaryS2L::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8268,7 +7286,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8299,20 +7317,12 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::SuccessfulRewrite::BackupTunnelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8362,10 +7372,8 @@ MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOu
 	,primary_s2l(std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L>())
 {
     backup_tunnel_rewrite->parent = this;
-    children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
 
     primary_s2l->parent = this;
-    children["primary-s2l"] = primary_s2l;
 
     yang_name = "failed-rewrite"; yang_parent_name = "s2l-output-rewrite";
 }
@@ -8410,7 +7418,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8440,64 +7448,38 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-tunnel-rewrite")
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
-        else
+        if(backup_tunnel_rewrite == nullptr)
         {
             backup_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite>();
-            backup_tunnel_rewrite->parent = this;
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
         }
-        return children.at("backup-tunnel-rewrite");
+        return backup_tunnel_rewrite;
     }
 
     if(child_yang_name == "primary-s2l")
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
-        else
+        if(primary_s2l == nullptr)
         {
             primary_s2l = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L>();
-            primary_s2l->parent = this;
-            children["primary-s2l"] = primary_s2l;
         }
-        return children.at("primary-s2l");
+        return primary_s2l;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::get_children() const
 {
-    if(children.find("backup-tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_tunnel_rewrite != nullptr)
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
+        children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
     }
 
-    if(children.find("primary-s2l") == children.end())
+    if(primary_s2l != nullptr)
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
+        children["primary-s2l"] = primary_s2l;
     }
 
     return children;
@@ -8593,7 +7575,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8624,20 +7606,12 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::PrimaryS2L::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8731,7 +7705,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8762,20 +7736,12 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::FailedRewrite::BackupTunnelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8825,10 +7791,8 @@ MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOu
 	,primary_s2l(std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L>())
 {
     backup_tunnel_rewrite->parent = this;
-    children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
 
     primary_s2l->parent = this;
-    children["primary-s2l"] = primary_s2l;
 
     yang_name = "pending-rewrite"; yang_parent_name = "s2l-output-rewrite";
 }
@@ -8873,7 +7837,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8903,64 +7867,38 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup-tunnel-rewrite")
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
-        else
+        if(backup_tunnel_rewrite == nullptr)
         {
             backup_tunnel_rewrite = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite>();
-            backup_tunnel_rewrite->parent = this;
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
         }
-        return children.at("backup-tunnel-rewrite");
+        return backup_tunnel_rewrite;
     }
 
     if(child_yang_name == "primary-s2l")
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
-        else
+        if(primary_s2l == nullptr)
         {
             primary_s2l = std::make_shared<MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L>();
-            primary_s2l->parent = this;
-            children["primary-s2l"] = primary_s2l;
         }
-        return children.at("primary-s2l");
+        return primary_s2l;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::get_children() const
 {
-    if(children.find("backup-tunnel-rewrite") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup_tunnel_rewrite != nullptr)
     {
-        if(backup_tunnel_rewrite != nullptr)
-        {
-            children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
-        }
+        children["backup-tunnel-rewrite"] = backup_tunnel_rewrite;
     }
 
-    if(children.find("primary-s2l") == children.end())
+    if(primary_s2l != nullptr)
     {
-        if(primary_s2l != nullptr)
-        {
-            children["primary-s2l"] = primary_s2l;
-        }
+        children["primary-s2l"] = primary_s2l;
     }
 
     return children;
@@ -9056,7 +7994,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9087,20 +8025,12 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::PrimaryS2L::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9194,7 +8124,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9225,20 +8155,12 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LOutputRewrite::PendingRewrite::BackupTunnelRewrite::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9311,7 +8233,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9337,20 +8259,12 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2L::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9428,7 +8342,7 @@ std::string MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 
 }
 
-EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9459,20 +8373,12 @@ EntityPath MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRew
 
 std::shared_ptr<Entity> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2Mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRewrite::S2LsrPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9514,10 +8420,8 @@ MplsTe::OpenConfig::OpenConfig()
 	,lsp_states(std::make_shared<MplsTe::OpenConfig::LspStates>())
 {
     lsp_counters->parent = this;
-    children["lsp-counters"] = lsp_counters;
 
     lsp_states->parent = this;
-    children["lsp-states"] = lsp_states;
 
     yang_name = "open-config"; yang_parent_name = "mpls-te";
 }
@@ -9548,7 +8452,7 @@ std::string MplsTe::OpenConfig::get_segment_path() const
 
 }
 
-EntityPath MplsTe::OpenConfig::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::OpenConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9571,64 +8475,38 @@ EntityPath MplsTe::OpenConfig::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::OpenConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-counters")
     {
-        if(lsp_counters != nullptr)
-        {
-            children["lsp-counters"] = lsp_counters;
-        }
-        else
+        if(lsp_counters == nullptr)
         {
             lsp_counters = std::make_shared<MplsTe::OpenConfig::LspCounters>();
-            lsp_counters->parent = this;
-            children["lsp-counters"] = lsp_counters;
         }
-        return children.at("lsp-counters");
+        return lsp_counters;
     }
 
     if(child_yang_name == "lsp-states")
     {
-        if(lsp_states != nullptr)
-        {
-            children["lsp-states"] = lsp_states;
-        }
-        else
+        if(lsp_states == nullptr)
         {
             lsp_states = std::make_shared<MplsTe::OpenConfig::LspStates>();
-            lsp_states->parent = this;
-            children["lsp-states"] = lsp_states;
         }
-        return children.at("lsp-states");
+        return lsp_states;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::OpenConfig::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::OpenConfig::get_children() const
 {
-    if(children.find("lsp-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsp_counters != nullptr)
     {
-        if(lsp_counters != nullptr)
-        {
-            children["lsp-counters"] = lsp_counters;
-        }
+        children["lsp-counters"] = lsp_counters;
     }
 
-    if(children.find("lsp-states") == children.end())
+    if(lsp_states != nullptr)
     {
-        if(lsp_states != nullptr)
-        {
-            children["lsp-states"] = lsp_states;
-        }
+        children["lsp-states"] = lsp_states;
     }
 
     return children;
@@ -9676,7 +8554,7 @@ std::string MplsTe::OpenConfig::LspStates::get_segment_path() const
 
 }
 
-EntityPath MplsTe::OpenConfig::LspStates::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::OpenConfig::LspStates::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9699,15 +8577,6 @@ EntityPath MplsTe::OpenConfig::LspStates::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> MplsTe::OpenConfig::LspStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-state")
     {
         for(auto const & c : lsp_state)
@@ -9715,28 +8584,24 @@ std::shared_ptr<Entity> MplsTe::OpenConfig::LspStates::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::OpenConfig::LspStates::LspState>();
         c->parent = this;
-        lsp_state.push_back(std::move(c));
-        children[segment_path] = lsp_state.back();
-        return children.at(segment_path);
+        lsp_state.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::OpenConfig::LspStates::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::OpenConfig::LspStates::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsp_state)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9825,7 +8690,7 @@ std::string MplsTe::OpenConfig::LspStates::LspState::get_segment_path() const
 
 }
 
-EntityPath MplsTe::OpenConfig::LspStates::LspState::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::OpenConfig::LspStates::LspState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9865,20 +8730,12 @@ EntityPath MplsTe::OpenConfig::LspStates::LspState::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> MplsTe::OpenConfig::LspStates::LspState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::OpenConfig::LspStates::LspState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::OpenConfig::LspStates::LspState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9992,7 +8849,7 @@ std::string MplsTe::OpenConfig::LspCounters::get_segment_path() const
 
 }
 
-EntityPath MplsTe::OpenConfig::LspCounters::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::OpenConfig::LspCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10015,15 +8872,6 @@ EntityPath MplsTe::OpenConfig::LspCounters::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MplsTe::OpenConfig::LspCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-counter")
     {
         for(auto const & c : lsp_counter)
@@ -10031,28 +8879,24 @@ std::shared_ptr<Entity> MplsTe::OpenConfig::LspCounters::get_child_by_name(const
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::OpenConfig::LspCounters::LspCounter>();
         c->parent = this;
-        lsp_counter.push_back(std::move(c));
-        children[segment_path] = lsp_counter.back();
-        return children.at(segment_path);
+        lsp_counter.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::OpenConfig::LspCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::OpenConfig::LspCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsp_counter)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10123,7 +8967,7 @@ std::string MplsTe::OpenConfig::LspCounters::LspCounter::get_segment_path() cons
 
 }
 
-EntityPath MplsTe::OpenConfig::LspCounters::LspCounter::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::OpenConfig::LspCounters::LspCounter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10157,20 +9001,12 @@ EntityPath MplsTe::OpenConfig::LspCounters::LspCounter::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsTe::OpenConfig::LspCounters::LspCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::OpenConfig::LspCounters::LspCounter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::OpenConfig::LspCounters::LspCounter::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10227,7 +9063,6 @@ MplsTe::LspOutOfResources::LspOutOfResources()
     summary(std::make_shared<MplsTe::LspOutOfResources::Summary>())
 {
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "lsp-out-of-resources"; yang_parent_name = "mpls-te";
 }
@@ -10256,7 +9091,7 @@ std::string MplsTe::LspOutOfResources::get_segment_path() const
 
 }
 
-EntityPath MplsTe::LspOutOfResources::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::LspOutOfResources::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10279,41 +9114,24 @@ EntityPath MplsTe::LspOutOfResources::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::LspOutOfResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<MplsTe::LspOutOfResources::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::LspOutOfResources::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::LspOutOfResources::get_children() const
 {
-    if(children.find("summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -10376,7 +9194,7 @@ std::string MplsTe::LspOutOfResources::Summary::get_segment_path() const
 
 }
 
-EntityPath MplsTe::LspOutOfResources::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::LspOutOfResources::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10404,15 +9222,6 @@ EntityPath MplsTe::LspOutOfResources::Summary::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MplsTe::LspOutOfResources::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-oor-state-xr")
     {
         for(auto const & c : lsp_oor_state_xr)
@@ -10420,28 +9229,24 @@ std::shared_ptr<Entity> MplsTe::LspOutOfResources::Summary::get_child_by_name(co
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::LspOutOfResources::Summary::LspOorStateXr>();
         c->parent = this;
-        lsp_oor_state_xr.push_back(std::move(c));
-        children[segment_path] = lsp_oor_state_xr.back();
-        return children.at(segment_path);
+        lsp_oor_state_xr.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::LspOutOfResources::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::LspOutOfResources::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : lsp_oor_state_xr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10485,7 +9290,6 @@ MplsTe::LspOutOfResources::Summary::LspOorStateXr::LspOorStateXr()
     statistics(std::make_shared<MplsTe::LspOutOfResources::Summary::LspOorStateXr::Statistics>())
 {
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "lsp-oor-state-xr"; yang_parent_name = "summary";
 }
@@ -10530,7 +9334,7 @@ std::string MplsTe::LspOutOfResources::Summary::LspOorStateXr::get_segment_path(
 
 }
 
-EntityPath MplsTe::LspOutOfResources::Summary::LspOorStateXr::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::LspOutOfResources::Summary::LspOorStateXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10561,41 +9365,24 @@ EntityPath MplsTe::LspOutOfResources::Summary::LspOorStateXr::get_entity_path(En
 
 std::shared_ptr<Entity> MplsTe::LspOutOfResources::Summary::LspOorStateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<MplsTe::LspOutOfResources::Summary::LspOorStateXr::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::LspOutOfResources::Summary::LspOorStateXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::LspOutOfResources::Summary::LspOorStateXr::get_children() const
 {
-    if(children.find("statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -10680,7 +9467,7 @@ std::string MplsTe::LspOutOfResources::Summary::LspOorStateXr::Statistics::get_s
 
 }
 
-EntityPath MplsTe::LspOutOfResources::Summary::LspOorStateXr::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::LspOutOfResources::Summary::LspOorStateXr::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10708,20 +9495,12 @@ EntityPath MplsTe::LspOutOfResources::Summary::LspOorStateXr::Statistics::get_en
 
 std::shared_ptr<Entity> MplsTe::LspOutOfResources::Summary::LspOorStateXr::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::LspOutOfResources::Summary::LspOorStateXr::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::LspOutOfResources::Summary::LspOorStateXr::Statistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10758,19 +9537,14 @@ MplsTe::Bfd::Bfd()
 	,tail_infos(std::make_shared<MplsTe::Bfd::TailInfos>())
 {
     counters->parent = this;
-    children["counters"] = counters;
 
     head_infos->parent = this;
-    children["head-infos"] = head_infos;
 
     links->parent = this;
-    children["links"] = links;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     tail_infos->parent = this;
-    children["tail-infos"] = tail_infos;
 
     yang_name = "bfd"; yang_parent_name = "mpls-te";
 }
@@ -10807,7 +9581,7 @@ std::string MplsTe::Bfd::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10830,133 +9604,80 @@ EntityPath MplsTe::Bfd::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "counters")
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
-        else
+        if(counters == nullptr)
         {
             counters = std::make_shared<MplsTe::Bfd::Counters>();
-            counters->parent = this;
-            children["counters"] = counters;
         }
-        return children.at("counters");
+        return counters;
     }
 
     if(child_yang_name == "head-infos")
     {
-        if(head_infos != nullptr)
-        {
-            children["head-infos"] = head_infos;
-        }
-        else
+        if(head_infos == nullptr)
         {
             head_infos = std::make_shared<MplsTe::Bfd::HeadInfos>();
-            head_infos->parent = this;
-            children["head-infos"] = head_infos;
         }
-        return children.at("head-infos");
+        return head_infos;
     }
 
     if(child_yang_name == "links")
     {
-        if(links != nullptr)
-        {
-            children["links"] = links;
-        }
-        else
+        if(links == nullptr)
         {
             links = std::make_shared<MplsTe::Bfd::Links>();
-            links->parent = this;
-            children["links"] = links;
         }
-        return children.at("links");
+        return links;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<MplsTe::Bfd::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "tail-infos")
     {
-        if(tail_infos != nullptr)
-        {
-            children["tail-infos"] = tail_infos;
-        }
-        else
+        if(tail_infos == nullptr)
         {
             tail_infos = std::make_shared<MplsTe::Bfd::TailInfos>();
-            tail_infos->parent = this;
-            children["tail-infos"] = tail_infos;
         }
-        return children.at("tail-infos");
+        return tail_infos;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::get_children() const
 {
-    if(children.find("counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(counters != nullptr)
     {
-        if(counters != nullptr)
-        {
-            children["counters"] = counters;
-        }
+        children["counters"] = counters;
     }
 
-    if(children.find("head-infos") == children.end())
+    if(head_infos != nullptr)
     {
-        if(head_infos != nullptr)
-        {
-            children["head-infos"] = head_infos;
-        }
+        children["head-infos"] = head_infos;
     }
 
-    if(children.find("links") == children.end())
+    if(links != nullptr)
     {
-        if(links != nullptr)
-        {
-            children["links"] = links;
-        }
+        children["links"] = links;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("tail-infos") == children.end())
+    if(tail_infos != nullptr)
     {
-        if(tail_infos != nullptr)
-        {
-            children["tail-infos"] = tail_infos;
-        }
+        children["tail-infos"] = tail_infos;
     }
 
     return children;
@@ -11004,7 +9725,7 @@ std::string MplsTe::Bfd::HeadInfos::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::HeadInfos::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::HeadInfos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11027,15 +9748,6 @@ EntityPath MplsTe::Bfd::HeadInfos::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Bfd::HeadInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "head-info")
     {
         for(auto const & c : head_info)
@@ -11043,28 +9755,24 @@ std::shared_ptr<Entity> MplsTe::Bfd::HeadInfos::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Bfd::HeadInfos::HeadInfo>();
         c->parent = this;
-        head_info.push_back(std::move(c));
-        children[segment_path] = head_info.back();
-        return children.at(segment_path);
+        head_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::HeadInfos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::HeadInfos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : head_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11086,13 +9794,10 @@ MplsTe::Bfd::HeadInfos::HeadInfo::HeadInfo()
 	,standby_lspbfd_info(std::make_shared<MplsTe::Bfd::HeadInfos::HeadInfo::StandbyLspbfdInfo>())
 {
     current_lspbfd_info->parent = this;
-    children["current-lspbfd-info"] = current_lspbfd_info;
 
     reoptimized_lspbfd_info->parent = this;
-    children["reoptimized-lspbfd-info"] = reoptimized_lspbfd_info;
 
     standby_lspbfd_info->parent = this;
-    children["standby-lspbfd-info"] = standby_lspbfd_info;
 
     yang_name = "head-info"; yang_parent_name = "head-infos";
 }
@@ -11133,7 +9838,7 @@ std::string MplsTe::Bfd::HeadInfos::HeadInfo::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11160,87 +9865,52 @@ EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> MplsTe::Bfd::HeadInfos::HeadInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "current-lspbfd-info")
     {
-        if(current_lspbfd_info != nullptr)
-        {
-            children["current-lspbfd-info"] = current_lspbfd_info;
-        }
-        else
+        if(current_lspbfd_info == nullptr)
         {
             current_lspbfd_info = std::make_shared<MplsTe::Bfd::HeadInfos::HeadInfo::CurrentLspbfdInfo>();
-            current_lspbfd_info->parent = this;
-            children["current-lspbfd-info"] = current_lspbfd_info;
         }
-        return children.at("current-lspbfd-info");
+        return current_lspbfd_info;
     }
 
     if(child_yang_name == "reoptimized-lspbfd-info")
     {
-        if(reoptimized_lspbfd_info != nullptr)
-        {
-            children["reoptimized-lspbfd-info"] = reoptimized_lspbfd_info;
-        }
-        else
+        if(reoptimized_lspbfd_info == nullptr)
         {
             reoptimized_lspbfd_info = std::make_shared<MplsTe::Bfd::HeadInfos::HeadInfo::ReoptimizedLspbfdInfo>();
-            reoptimized_lspbfd_info->parent = this;
-            children["reoptimized-lspbfd-info"] = reoptimized_lspbfd_info;
         }
-        return children.at("reoptimized-lspbfd-info");
+        return reoptimized_lspbfd_info;
     }
 
     if(child_yang_name == "standby-lspbfd-info")
     {
-        if(standby_lspbfd_info != nullptr)
-        {
-            children["standby-lspbfd-info"] = standby_lspbfd_info;
-        }
-        else
+        if(standby_lspbfd_info == nullptr)
         {
             standby_lspbfd_info = std::make_shared<MplsTe::Bfd::HeadInfos::HeadInfo::StandbyLspbfdInfo>();
-            standby_lspbfd_info->parent = this;
-            children["standby-lspbfd-info"] = standby_lspbfd_info;
         }
-        return children.at("standby-lspbfd-info");
+        return standby_lspbfd_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::HeadInfos::HeadInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::HeadInfos::HeadInfo::get_children() const
 {
-    if(children.find("current-lspbfd-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(current_lspbfd_info != nullptr)
     {
-        if(current_lspbfd_info != nullptr)
-        {
-            children["current-lspbfd-info"] = current_lspbfd_info;
-        }
+        children["current-lspbfd-info"] = current_lspbfd_info;
     }
 
-    if(children.find("reoptimized-lspbfd-info") == children.end())
+    if(reoptimized_lspbfd_info != nullptr)
     {
-        if(reoptimized_lspbfd_info != nullptr)
-        {
-            children["reoptimized-lspbfd-info"] = reoptimized_lspbfd_info;
-        }
+        children["reoptimized-lspbfd-info"] = reoptimized_lspbfd_info;
     }
 
-    if(children.find("standby-lspbfd-info") == children.end())
+    if(standby_lspbfd_info != nullptr)
     {
-        if(standby_lspbfd_info != nullptr)
-        {
-            children["standby-lspbfd-info"] = standby_lspbfd_info;
-        }
+        children["standby-lspbfd-info"] = standby_lspbfd_info;
     }
 
     return children;
@@ -11300,7 +9970,7 @@ std::string MplsTe::Bfd::HeadInfos::HeadInfo::CurrentLspbfdInfo::get_segment_pat
 
 }
 
-EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::CurrentLspbfdInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::CurrentLspbfdInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11325,20 +9995,12 @@ EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::CurrentLspbfdInfo::get_entity_path(
 
 std::shared_ptr<Entity> MplsTe::Bfd::HeadInfos::HeadInfo::CurrentLspbfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::HeadInfos::HeadInfo::CurrentLspbfdInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::HeadInfos::HeadInfo::CurrentLspbfdInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11388,7 +10050,7 @@ std::string MplsTe::Bfd::HeadInfos::HeadInfo::StandbyLspbfdInfo::get_segment_pat
 
 }
 
-EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::StandbyLspbfdInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::StandbyLspbfdInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11413,20 +10075,12 @@ EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::StandbyLspbfdInfo::get_entity_path(
 
 std::shared_ptr<Entity> MplsTe::Bfd::HeadInfos::HeadInfo::StandbyLspbfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::HeadInfos::HeadInfo::StandbyLspbfdInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::HeadInfos::HeadInfo::StandbyLspbfdInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11476,7 +10130,7 @@ std::string MplsTe::Bfd::HeadInfos::HeadInfo::ReoptimizedLspbfdInfo::get_segment
 
 }
 
-EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::ReoptimizedLspbfdInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::ReoptimizedLspbfdInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11501,20 +10155,12 @@ EntityPath MplsTe::Bfd::HeadInfos::HeadInfo::ReoptimizedLspbfdInfo::get_entity_p
 
 std::shared_ptr<Entity> MplsTe::Bfd::HeadInfos::HeadInfo::ReoptimizedLspbfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::HeadInfos::HeadInfo::ReoptimizedLspbfdInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::HeadInfos::HeadInfo::ReoptimizedLspbfdInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11568,7 +10214,7 @@ std::string MplsTe::Bfd::Links::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::Links::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::Links::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11591,15 +10237,6 @@ EntityPath MplsTe::Bfd::Links::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Bfd::Links::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "link")
     {
         for(auto const & c : link)
@@ -11607,28 +10244,24 @@ std::shared_ptr<Entity> MplsTe::Bfd::Links::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Bfd::Links::Link>();
         c->parent = this;
-        link.push_back(std::move(c));
-        children[segment_path] = link.back();
-        return children.at(segment_path);
+        link.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::Links::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::Links::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11679,7 +10312,7 @@ std::string MplsTe::Bfd::Links::Link::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::Links::Link::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::Links::Link::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11703,15 +10336,6 @@ EntityPath MplsTe::Bfd::Links::Link::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Bfd::Links::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -11719,28 +10343,24 @@ std::shared_ptr<Entity> MplsTe::Bfd::Links::Link::get_child_by_name(const std::s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Bfd::Links::Link::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::Links::Link::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::Links::Link::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11788,7 +10408,7 @@ std::string MplsTe::Bfd::Links::Link::Neighbor::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::Links::Link::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::Links::Link::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11813,20 +10433,12 @@ EntityPath MplsTe::Bfd::Links::Link::Neighbor::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MplsTe::Bfd::Links::Link::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::Links::Link::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::Links::Link::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11880,7 +10492,7 @@ std::string MplsTe::Bfd::TailInfos::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::TailInfos::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::TailInfos::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11903,15 +10515,6 @@ EntityPath MplsTe::Bfd::TailInfos::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Bfd::TailInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tail-info")
     {
         for(auto const & c : tail_info)
@@ -11919,28 +10522,24 @@ std::shared_ptr<Entity> MplsTe::Bfd::TailInfos::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Bfd::TailInfos::TailInfo>();
         c->parent = this;
-        tail_info.push_back(std::move(c));
-        children[segment_path] = tail_info.back();
-        return children.at(segment_path);
+        tail_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::TailInfos::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::TailInfos::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tail_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11965,7 +10564,6 @@ MplsTe::Bfd::TailInfos::TailInfo::TailInfo()
     lsp_fec(std::make_shared<MplsTe::Bfd::TailInfos::TailInfo::LspFec>())
 {
     lsp_fec->parent = this;
-    children["lsp-fec"] = lsp_fec;
 
     yang_name = "tail-info"; yang_parent_name = "tail-infos";
 }
@@ -12012,7 +10610,7 @@ std::string MplsTe::Bfd::TailInfos::TailInfo::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::TailInfos::TailInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::TailInfos::TailInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12044,41 +10642,24 @@ EntityPath MplsTe::Bfd::TailInfos::TailInfo::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> MplsTe::Bfd::TailInfos::TailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "lsp-fec")
     {
-        if(lsp_fec != nullptr)
-        {
-            children["lsp-fec"] = lsp_fec;
-        }
-        else
+        if(lsp_fec == nullptr)
         {
             lsp_fec = std::make_shared<MplsTe::Bfd::TailInfos::TailInfo::LspFec>();
-            lsp_fec->parent = this;
-            children["lsp-fec"] = lsp_fec;
         }
-        return children.at("lsp-fec");
+        return lsp_fec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::TailInfos::TailInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::TailInfos::TailInfo::get_children() const
 {
-    if(children.find("lsp-fec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lsp_fec != nullptr)
     {
-        if(lsp_fec != nullptr)
-        {
-            children["lsp-fec"] = lsp_fec;
-        }
+        children["lsp-fec"] = lsp_fec;
     }
 
     return children;
@@ -12135,7 +10716,6 @@ MplsTe::Bfd::TailInfos::TailInfo::LspFec::LspFec()
     fec_destination_info(std::make_shared<MplsTe::Bfd::TailInfos::TailInfo::LspFec::FecDestinationInfo>())
 {
     fec_destination_info->parent = this;
-    children["fec-destination-info"] = fec_destination_info;
 
     yang_name = "lsp-fec"; yang_parent_name = "tail-info";
 }
@@ -12174,7 +10754,7 @@ std::string MplsTe::Bfd::TailInfos::TailInfo::LspFec::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::TailInfos::TailInfo::LspFec::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::TailInfos::TailInfo::LspFec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12202,41 +10782,24 @@ EntityPath MplsTe::Bfd::TailInfos::TailInfo::LspFec::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> MplsTe::Bfd::TailInfos::TailInfo::LspFec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fec-destination-info")
     {
-        if(fec_destination_info != nullptr)
-        {
-            children["fec-destination-info"] = fec_destination_info;
-        }
-        else
+        if(fec_destination_info == nullptr)
         {
             fec_destination_info = std::make_shared<MplsTe::Bfd::TailInfos::TailInfo::LspFec::FecDestinationInfo>();
-            fec_destination_info->parent = this;
-            children["fec-destination-info"] = fec_destination_info;
         }
-        return children.at("fec-destination-info");
+        return fec_destination_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::TailInfos::TailInfo::LspFec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::TailInfos::TailInfo::LspFec::get_children() const
 {
-    if(children.find("fec-destination-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fec_destination_info != nullptr)
     {
-        if(fec_destination_info != nullptr)
-        {
-            children["fec-destination-info"] = fec_destination_info;
-        }
+        children["fec-destination-info"] = fec_destination_info;
     }
 
     return children;
@@ -12303,7 +10866,7 @@ std::string MplsTe::Bfd::TailInfos::TailInfo::LspFec::FecDestinationInfo::get_se
 
 }
 
-EntityPath MplsTe::Bfd::TailInfos::TailInfo::LspFec::FecDestinationInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::TailInfos::TailInfo::LspFec::FecDestinationInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12329,20 +10892,12 @@ EntityPath MplsTe::Bfd::TailInfos::TailInfo::LspFec::FecDestinationInfo::get_ent
 
 std::shared_ptr<Entity> MplsTe::Bfd::TailInfos::TailInfo::LspFec::FecDestinationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::TailInfos::TailInfo::LspFec::FecDestinationInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::TailInfos::TailInfo::LspFec::FecDestinationInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12432,7 +10987,7 @@ std::string MplsTe::Bfd::Summary::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12469,20 +11024,12 @@ EntityPath MplsTe::Bfd::Summary::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Bfd::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12556,16 +11103,12 @@ MplsTe::Bfd::Counters::Counters()
 	,sbfd_over_lsp_head_counters(std::make_shared<MplsTe::Bfd::Counters::SbfdOverLspHeadCounters>())
 {
     bf_do_lm_counters->parent = this;
-    children["bf-do-lm-counters"] = bf_do_lm_counters;
 
     bfd_over_lsp_head_counters->parent = this;
-    children["bfd-over-lsp-head-counters"] = bfd_over_lsp_head_counters;
 
     bfd_over_lsp_tail_counters->parent = this;
-    children["bfd-over-lsp-tail-counters"] = bfd_over_lsp_tail_counters;
 
     sbfd_over_lsp_head_counters->parent = this;
-    children["sbfd-over-lsp-head-counters"] = sbfd_over_lsp_head_counters;
 
     yang_name = "counters"; yang_parent_name = "bfd";
 }
@@ -12602,7 +11145,7 @@ std::string MplsTe::Bfd::Counters::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::Counters::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::Counters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12626,110 +11169,66 @@ EntityPath MplsTe::Bfd::Counters::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Bfd::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bf-do-lm-counters")
     {
-        if(bf_do_lm_counters != nullptr)
-        {
-            children["bf-do-lm-counters"] = bf_do_lm_counters;
-        }
-        else
+        if(bf_do_lm_counters == nullptr)
         {
             bf_do_lm_counters = std::make_shared<MplsTe::Bfd::Counters::BfDoLmCounters>();
-            bf_do_lm_counters->parent = this;
-            children["bf-do-lm-counters"] = bf_do_lm_counters;
         }
-        return children.at("bf-do-lm-counters");
+        return bf_do_lm_counters;
     }
 
     if(child_yang_name == "bfd-over-lsp-head-counters")
     {
-        if(bfd_over_lsp_head_counters != nullptr)
-        {
-            children["bfd-over-lsp-head-counters"] = bfd_over_lsp_head_counters;
-        }
-        else
+        if(bfd_over_lsp_head_counters == nullptr)
         {
             bfd_over_lsp_head_counters = std::make_shared<MplsTe::Bfd::Counters::BfdOverLspHeadCounters>();
-            bfd_over_lsp_head_counters->parent = this;
-            children["bfd-over-lsp-head-counters"] = bfd_over_lsp_head_counters;
         }
-        return children.at("bfd-over-lsp-head-counters");
+        return bfd_over_lsp_head_counters;
     }
 
     if(child_yang_name == "bfd-over-lsp-tail-counters")
     {
-        if(bfd_over_lsp_tail_counters != nullptr)
-        {
-            children["bfd-over-lsp-tail-counters"] = bfd_over_lsp_tail_counters;
-        }
-        else
+        if(bfd_over_lsp_tail_counters == nullptr)
         {
             bfd_over_lsp_tail_counters = std::make_shared<MplsTe::Bfd::Counters::BfdOverLspTailCounters>();
-            bfd_over_lsp_tail_counters->parent = this;
-            children["bfd-over-lsp-tail-counters"] = bfd_over_lsp_tail_counters;
         }
-        return children.at("bfd-over-lsp-tail-counters");
+        return bfd_over_lsp_tail_counters;
     }
 
     if(child_yang_name == "sbfd-over-lsp-head-counters")
     {
-        if(sbfd_over_lsp_head_counters != nullptr)
-        {
-            children["sbfd-over-lsp-head-counters"] = sbfd_over_lsp_head_counters;
-        }
-        else
+        if(sbfd_over_lsp_head_counters == nullptr)
         {
             sbfd_over_lsp_head_counters = std::make_shared<MplsTe::Bfd::Counters::SbfdOverLspHeadCounters>();
-            sbfd_over_lsp_head_counters->parent = this;
-            children["sbfd-over-lsp-head-counters"] = sbfd_over_lsp_head_counters;
         }
-        return children.at("sbfd-over-lsp-head-counters");
+        return sbfd_over_lsp_head_counters;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::Counters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::Counters::get_children() const
 {
-    if(children.find("bf-do-lm-counters") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bf_do_lm_counters != nullptr)
     {
-        if(bf_do_lm_counters != nullptr)
-        {
-            children["bf-do-lm-counters"] = bf_do_lm_counters;
-        }
+        children["bf-do-lm-counters"] = bf_do_lm_counters;
     }
 
-    if(children.find("bfd-over-lsp-head-counters") == children.end())
+    if(bfd_over_lsp_head_counters != nullptr)
     {
-        if(bfd_over_lsp_head_counters != nullptr)
-        {
-            children["bfd-over-lsp-head-counters"] = bfd_over_lsp_head_counters;
-        }
+        children["bfd-over-lsp-head-counters"] = bfd_over_lsp_head_counters;
     }
 
-    if(children.find("bfd-over-lsp-tail-counters") == children.end())
+    if(bfd_over_lsp_tail_counters != nullptr)
     {
-        if(bfd_over_lsp_tail_counters != nullptr)
-        {
-            children["bfd-over-lsp-tail-counters"] = bfd_over_lsp_tail_counters;
-        }
+        children["bfd-over-lsp-tail-counters"] = bfd_over_lsp_tail_counters;
     }
 
-    if(children.find("sbfd-over-lsp-head-counters") == children.end())
+    if(sbfd_over_lsp_head_counters != nullptr)
     {
-        if(sbfd_over_lsp_head_counters != nullptr)
-        {
-            children["sbfd-over-lsp-head-counters"] = sbfd_over_lsp_head_counters;
-        }
+        children["sbfd-over-lsp-head-counters"] = sbfd_over_lsp_head_counters;
     }
 
     return children;
@@ -12798,7 +11297,7 @@ std::string MplsTe::Bfd::Counters::BfdOverLspHeadCounters::get_segment_path() co
 
 }
 
-EntityPath MplsTe::Bfd::Counters::BfdOverLspHeadCounters::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::Counters::BfdOverLspHeadCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12830,20 +11329,12 @@ EntityPath MplsTe::Bfd::Counters::BfdOverLspHeadCounters::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsTe::Bfd::Counters::BfdOverLspHeadCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::Counters::BfdOverLspHeadCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::Counters::BfdOverLspHeadCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12942,7 +11433,7 @@ std::string MplsTe::Bfd::Counters::SbfdOverLspHeadCounters::get_segment_path() c
 
 }
 
-EntityPath MplsTe::Bfd::Counters::SbfdOverLspHeadCounters::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::Counters::SbfdOverLspHeadCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12974,20 +11465,12 @@ EntityPath MplsTe::Bfd::Counters::SbfdOverLspHeadCounters::get_entity_path(Entit
 
 std::shared_ptr<Entity> MplsTe::Bfd::Counters::SbfdOverLspHeadCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::Counters::SbfdOverLspHeadCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::Counters::SbfdOverLspHeadCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13083,7 +11566,7 @@ std::string MplsTe::Bfd::Counters::BfdOverLspTailCounters::get_segment_path() co
 
 }
 
-EntityPath MplsTe::Bfd::Counters::BfdOverLspTailCounters::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::Counters::BfdOverLspTailCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13114,20 +11597,12 @@ EntityPath MplsTe::Bfd::Counters::BfdOverLspTailCounters::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsTe::Bfd::Counters::BfdOverLspTailCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::Counters::BfdOverLspTailCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::Counters::BfdOverLspTailCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13219,7 +11694,7 @@ std::string MplsTe::Bfd::Counters::BfDoLmCounters::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Bfd::Counters::BfDoLmCounters::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Bfd::Counters::BfDoLmCounters::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13250,20 +11725,12 @@ EntityPath MplsTe::Bfd::Counters::BfDoLmCounters::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MplsTe::Bfd::Counters::BfDoLmCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Bfd::Counters::BfDoLmCounters::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Bfd::Counters::BfDoLmCounters::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13309,10 +11776,8 @@ MplsTe::Nsr::Nsr()
 	,status(std::make_shared<MplsTe::Nsr::Status>())
 {
     detail->parent = this;
-    children["detail"] = detail;
 
     status->parent = this;
-    children["status"] = status;
 
     yang_name = "nsr"; yang_parent_name = "mpls-te";
 }
@@ -13343,7 +11808,7 @@ std::string MplsTe::Nsr::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Nsr::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13366,64 +11831,38 @@ EntityPath MplsTe::Nsr::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<MplsTe::Nsr::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     if(child_yang_name == "status")
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
-        else
+        if(status == nullptr)
         {
             status = std::make_shared<MplsTe::Nsr::Status>();
-            status->parent = this;
-            children["status"] = status;
         }
-        return children.at("status");
+        return status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::get_children() const
 {
-    if(children.find("detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
-    if(children.find("status") == children.end())
+    if(status != nullptr)
     {
-        if(status != nullptr)
-        {
-            children["status"] = status;
-        }
+        children["status"] = status;
     }
 
     return children;
@@ -13440,7 +11879,6 @@ MplsTe::Nsr::Status::Status()
     sync_status_information(std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation>())
 {
     sync_status_information->parent = this;
-    children["sync-status-information"] = sync_status_information;
 
     yang_name = "status"; yang_parent_name = "nsr";
 }
@@ -13471,7 +11909,7 @@ std::string MplsTe::Nsr::Status::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Nsr::Status::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13495,41 +11933,24 @@ EntityPath MplsTe::Nsr::Status::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sync-status-information")
     {
-        if(sync_status_information != nullptr)
-        {
-            children["sync-status-information"] = sync_status_information;
-        }
-        else
+        if(sync_status_information == nullptr)
         {
             sync_status_information = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation>();
-            sync_status_information->parent = this;
-            children["sync-status-information"] = sync_status_information;
         }
-        return children.at("sync-status-information");
+        return sync_status_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::get_children() const
 {
-    if(children.find("sync-status-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sync_status_information != nullptr)
     {
-        if(sync_status_information != nullptr)
-        {
-            children["sync-status-information"] = sync_status_information;
-        }
+        children["sync-status-information"] = sync_status_information;
     }
 
     return children;
@@ -13551,10 +11972,8 @@ MplsTe::Nsr::Status::SyncStatusInformation::SyncStatusInformation()
 	,slave_sync_information(std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation>())
 {
     master_sync_information->parent = this;
-    children["master-sync-information"] = master_sync_information;
 
     slave_sync_information->parent = this;
-    children["slave-sync-information"] = slave_sync_information;
 
     yang_name = "sync-status-information"; yang_parent_name = "status";
 }
@@ -13587,7 +12006,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13611,64 +12030,38 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "master-sync-information")
     {
-        if(master_sync_information != nullptr)
-        {
-            children["master-sync-information"] = master_sync_information;
-        }
-        else
+        if(master_sync_information == nullptr)
         {
             master_sync_information = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation>();
-            master_sync_information->parent = this;
-            children["master-sync-information"] = master_sync_information;
         }
-        return children.at("master-sync-information");
+        return master_sync_information;
     }
 
     if(child_yang_name == "slave-sync-information")
     {
-        if(slave_sync_information != nullptr)
-        {
-            children["slave-sync-information"] = slave_sync_information;
-        }
-        else
+        if(slave_sync_information == nullptr)
         {
             slave_sync_information = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation>();
-            slave_sync_information->parent = this;
-            children["slave-sync-information"] = slave_sync_information;
         }
-        return children.at("slave-sync-information");
+        return slave_sync_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::get_children() const
 {
-    if(children.find("master-sync-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(master_sync_information != nullptr)
     {
-        if(master_sync_information != nullptr)
-        {
-            children["master-sync-information"] = master_sync_information;
-        }
+        children["master-sync-information"] = master_sync_information;
     }
 
-    if(children.find("slave-sync-information") == children.end())
+    if(slave_sync_information != nullptr)
     {
-        if(slave_sync_information != nullptr)
-        {
-            children["slave-sync-information"] = slave_sync_information;
-        }
+        children["slave-sync-information"] = slave_sync_information;
     }
 
     return children;
@@ -13692,7 +12085,6 @@ MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::SlaveSyncInfor
     idt(std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt>())
 {
     idt->parent = this;
-    children["idt"] = idt;
 
     yang_name = "slave-sync-information"; yang_parent_name = "sync-status-information";
 }
@@ -13749,7 +12141,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::ge
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13776,28 +12168,13 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::get
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "idt")
     {
-        if(idt != nullptr)
-        {
-            children["idt"] = idt;
-        }
-        else
+        if(idt == nullptr)
         {
             idt = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt>();
-            idt->parent = this;
-            children["idt"] = idt;
         }
-        return children.at("idt");
+        return idt;
     }
 
     if(child_yang_name == "s2l-pending")
@@ -13807,15 +12184,13 @@ std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending>();
         c->parent = this;
-        s2l_pending.push_back(std::move(c));
-        children[segment_path] = s2l_pending.back();
-        return children.at(segment_path);
+        s2l_pending.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vif-pending")
@@ -13825,44 +12200,34 @@ std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPending>();
         c->parent = this;
-        vif_pending.push_back(std::move(c));
-        children[segment_path] = vif_pending.back();
-        return children.at(segment_path);
+        vif_pending.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::get_children() const
 {
-    if(children.find("idt") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(idt != nullptr)
     {
-        if(idt != nullptr)
-        {
-            children["idt"] = idt;
-        }
+        children["idt"] = idt;
     }
 
     for (auto const & c : s2l_pending)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vif_pending)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13894,10 +12259,8 @@ MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::Idt()
 	,previous_idt_status(std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus>())
 {
     current_idt_info->parent = this;
-    children["current-idt-info"] = current_idt_info;
 
     previous_idt_status->parent = this;
-    children["previous-idt-status"] = previous_idt_status;
 
     yang_name = "idt"; yang_parent_name = "slave-sync-information";
 }
@@ -13928,7 +12291,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Id
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13951,64 +12314,38 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "current-idt-info")
     {
-        if(current_idt_info != nullptr)
-        {
-            children["current-idt-info"] = current_idt_info;
-        }
-        else
+        if(current_idt_info == nullptr)
         {
             current_idt_info = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo>();
-            current_idt_info->parent = this;
-            children["current-idt-info"] = current_idt_info;
         }
-        return children.at("current-idt-info");
+        return current_idt_info;
     }
 
     if(child_yang_name == "previous-idt-status")
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
-        else
+        if(previous_idt_status == nullptr)
         {
             previous_idt_status = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus>();
-            previous_idt_status->parent = this;
-            children["previous-idt-status"] = previous_idt_status;
         }
-        return children.at("previous-idt-status");
+        return previous_idt_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::get_children() const
 {
-    if(children.find("current-idt-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(current_idt_info != nullptr)
     {
-        if(current_idt_info != nullptr)
-        {
-            children["current-idt-info"] = current_idt_info;
-        }
+        children["current-idt-info"] = current_idt_info;
     }
 
-    if(children.find("previous-idt-status") == children.end())
+    if(previous_idt_status != nullptr)
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
+        children["previous-idt-status"] = previous_idt_status;
     }
 
     return children;
@@ -14064,7 +12401,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Id
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14093,20 +12430,12 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14184,7 +12513,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Id
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14213,20 +12542,12 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14292,7 +12613,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Vi
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPending::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPending::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14317,20 +12638,12 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Vif
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPending::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPending::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::VifPending::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14383,7 +12696,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14409,20 +12722,12 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2L
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14447,7 +12752,6 @@ MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::MasterSyncInf
     idt(std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt>())
 {
     idt->parent = this;
-    children["idt"] = idt;
 
     yang_name = "master-sync-information"; yang_parent_name = "sync-status-information";
 }
@@ -14476,7 +12780,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::g
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14499,41 +12803,24 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::ge
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "idt")
     {
-        if(idt != nullptr)
-        {
-            children["idt"] = idt;
-        }
-        else
+        if(idt == nullptr)
         {
             idt = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt>();
-            idt->parent = this;
-            children["idt"] = idt;
         }
-        return children.at("idt");
+        return idt;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::get_children() const
 {
-    if(children.find("idt") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(idt != nullptr)
     {
-        if(idt != nullptr)
-        {
-            children["idt"] = idt;
-        }
+        children["idt"] = idt;
     }
 
     return children;
@@ -14549,10 +12836,8 @@ MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::Idt()
 	,previous_idt_status(std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus>())
 {
     current_idt_info->parent = this;
-    children["current-idt-info"] = current_idt_info;
 
     previous_idt_status->parent = this;
-    children["previous-idt-status"] = previous_idt_status;
 
     yang_name = "idt"; yang_parent_name = "master-sync-information";
 }
@@ -14583,7 +12868,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::I
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14606,64 +12891,38 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Id
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "current-idt-info")
     {
-        if(current_idt_info != nullptr)
-        {
-            children["current-idt-info"] = current_idt_info;
-        }
-        else
+        if(current_idt_info == nullptr)
         {
             current_idt_info = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo>();
-            current_idt_info->parent = this;
-            children["current-idt-info"] = current_idt_info;
         }
-        return children.at("current-idt-info");
+        return current_idt_info;
     }
 
     if(child_yang_name == "previous-idt-status")
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
-        else
+        if(previous_idt_status == nullptr)
         {
             previous_idt_status = std::make_shared<MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus>();
-            previous_idt_status->parent = this;
-            children["previous-idt-status"] = previous_idt_status;
         }
-        return children.at("previous-idt-status");
+        return previous_idt_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::get_children() const
 {
-    if(children.find("current-idt-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(current_idt_info != nullptr)
     {
-        if(current_idt_info != nullptr)
-        {
-            children["current-idt-info"] = current_idt_info;
-        }
+        children["current-idt-info"] = current_idt_info;
     }
 
-    if(children.find("previous-idt-status") == children.end())
+    if(previous_idt_status != nullptr)
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
+        children["previous-idt-status"] = previous_idt_status;
     }
 
     return children;
@@ -14719,7 +12978,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::I
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14748,20 +13007,12 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Id
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14839,7 +13090,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::I
 
 }
 
-EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14868,20 +13119,12 @@ EntityPath MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Id
 
 std::shared_ptr<Entity> MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Status::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -14920,7 +13163,6 @@ MplsTe::Nsr::Detail::Detail()
     sync_status_information(std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation>())
 {
     sync_status_information->parent = this;
-    children["sync-status-information"] = sync_status_information;
 
     yang_name = "detail"; yang_parent_name = "nsr";
 }
@@ -14951,7 +13193,7 @@ std::string MplsTe::Nsr::Detail::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Nsr::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14975,41 +13217,24 @@ EntityPath MplsTe::Nsr::Detail::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sync-status-information")
     {
-        if(sync_status_information != nullptr)
-        {
-            children["sync-status-information"] = sync_status_information;
-        }
-        else
+        if(sync_status_information == nullptr)
         {
             sync_status_information = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation>();
-            sync_status_information->parent = this;
-            children["sync-status-information"] = sync_status_information;
         }
-        return children.at("sync-status-information");
+        return sync_status_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::get_children() const
 {
-    if(children.find("sync-status-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sync_status_information != nullptr)
     {
-        if(sync_status_information != nullptr)
-        {
-            children["sync-status-information"] = sync_status_information;
-        }
+        children["sync-status-information"] = sync_status_information;
     }
 
     return children;
@@ -15031,10 +13256,8 @@ MplsTe::Nsr::Detail::SyncStatusInformation::SyncStatusInformation()
 	,slave_sync_information(std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation>())
 {
     master_sync_information->parent = this;
-    children["master-sync-information"] = master_sync_information;
 
     slave_sync_information->parent = this;
-    children["slave-sync-information"] = slave_sync_information;
 
     yang_name = "sync-status-information"; yang_parent_name = "detail";
 }
@@ -15067,7 +13290,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15091,64 +13314,38 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "master-sync-information")
     {
-        if(master_sync_information != nullptr)
-        {
-            children["master-sync-information"] = master_sync_information;
-        }
-        else
+        if(master_sync_information == nullptr)
         {
             master_sync_information = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation>();
-            master_sync_information->parent = this;
-            children["master-sync-information"] = master_sync_information;
         }
-        return children.at("master-sync-information");
+        return master_sync_information;
     }
 
     if(child_yang_name == "slave-sync-information")
     {
-        if(slave_sync_information != nullptr)
-        {
-            children["slave-sync-information"] = slave_sync_information;
-        }
-        else
+        if(slave_sync_information == nullptr)
         {
             slave_sync_information = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation>();
-            slave_sync_information->parent = this;
-            children["slave-sync-information"] = slave_sync_information;
         }
-        return children.at("slave-sync-information");
+        return slave_sync_information;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::get_children() const
 {
-    if(children.find("master-sync-information") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(master_sync_information != nullptr)
     {
-        if(master_sync_information != nullptr)
-        {
-            children["master-sync-information"] = master_sync_information;
-        }
+        children["master-sync-information"] = master_sync_information;
     }
 
-    if(children.find("slave-sync-information") == children.end())
+    if(slave_sync_information != nullptr)
     {
-        if(slave_sync_information != nullptr)
-        {
-            children["slave-sync-information"] = slave_sync_information;
-        }
+        children["slave-sync-information"] = slave_sync_information;
     }
 
     return children;
@@ -15172,7 +13369,6 @@ MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::SlaveSyncInfor
     idt(std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt>())
 {
     idt->parent = this;
-    children["idt"] = idt;
 
     yang_name = "slave-sync-information"; yang_parent_name = "sync-status-information";
 }
@@ -15229,7 +13425,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::ge
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15256,28 +13452,13 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::get
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "idt")
     {
-        if(idt != nullptr)
-        {
-            children["idt"] = idt;
-        }
-        else
+        if(idt == nullptr)
         {
             idt = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt>();
-            idt->parent = this;
-            children["idt"] = idt;
         }
-        return children.at("idt");
+        return idt;
     }
 
     if(child_yang_name == "s2l-pending")
@@ -15287,15 +13468,13 @@ std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending>();
         c->parent = this;
-        s2l_pending.push_back(std::move(c));
-        children[segment_path] = s2l_pending.back();
-        return children.at(segment_path);
+        s2l_pending.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "vif-pending")
@@ -15305,44 +13484,34 @@ std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInf
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending>();
         c->parent = this;
-        vif_pending.push_back(std::move(c));
-        children[segment_path] = vif_pending.back();
-        return children.at(segment_path);
+        vif_pending.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::get_children() const
 {
-    if(children.find("idt") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(idt != nullptr)
     {
-        if(idt != nullptr)
-        {
-            children["idt"] = idt;
-        }
+        children["idt"] = idt;
     }
 
     for (auto const & c : s2l_pending)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : vif_pending)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15374,10 +13543,8 @@ MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::Idt()
 	,previous_idt_status(std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus>())
 {
     current_idt_info->parent = this;
-    children["current-idt-info"] = current_idt_info;
 
     previous_idt_status->parent = this;
-    children["previous-idt-status"] = previous_idt_status;
 
     yang_name = "idt"; yang_parent_name = "slave-sync-information";
 }
@@ -15408,7 +13575,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Id
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15431,64 +13598,38 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "current-idt-info")
     {
-        if(current_idt_info != nullptr)
-        {
-            children["current-idt-info"] = current_idt_info;
-        }
-        else
+        if(current_idt_info == nullptr)
         {
             current_idt_info = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo>();
-            current_idt_info->parent = this;
-            children["current-idt-info"] = current_idt_info;
         }
-        return children.at("current-idt-info");
+        return current_idt_info;
     }
 
     if(child_yang_name == "previous-idt-status")
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
-        else
+        if(previous_idt_status == nullptr)
         {
             previous_idt_status = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus>();
-            previous_idt_status->parent = this;
-            children["previous-idt-status"] = previous_idt_status;
         }
-        return children.at("previous-idt-status");
+        return previous_idt_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::get_children() const
 {
-    if(children.find("current-idt-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(current_idt_info != nullptr)
     {
-        if(current_idt_info != nullptr)
-        {
-            children["current-idt-info"] = current_idt_info;
-        }
+        children["current-idt-info"] = current_idt_info;
     }
 
-    if(children.find("previous-idt-status") == children.end())
+    if(previous_idt_status != nullptr)
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
+        children["previous-idt-status"] = previous_idt_status;
     }
 
     return children;
@@ -15544,7 +13685,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Id
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15573,20 +13714,12 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::CurrentIdtInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15664,7 +13797,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Id
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15693,20 +13826,12 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Idt::PreviousIdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15772,7 +13897,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Vi
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15797,20 +13922,12 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Vif
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::VifPending::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15863,7 +13980,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15889,20 +14006,12 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2L
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2LPending::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15927,7 +14036,6 @@ MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::MasterSyncInf
     idt(std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt>())
 {
     idt->parent = this;
-    children["idt"] = idt;
 
     yang_name = "master-sync-information"; yang_parent_name = "sync-status-information";
 }
@@ -15956,7 +14064,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::g
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15979,41 +14087,24 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::ge
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "idt")
     {
-        if(idt != nullptr)
-        {
-            children["idt"] = idt;
-        }
-        else
+        if(idt == nullptr)
         {
             idt = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt>();
-            idt->parent = this;
-            children["idt"] = idt;
         }
-        return children.at("idt");
+        return idt;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::get_children() const
 {
-    if(children.find("idt") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(idt != nullptr)
     {
-        if(idt != nullptr)
-        {
-            children["idt"] = idt;
-        }
+        children["idt"] = idt;
     }
 
     return children;
@@ -16029,10 +14120,8 @@ MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::Idt()
 	,previous_idt_status(std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus>())
 {
     current_idt_info->parent = this;
-    children["current-idt-info"] = current_idt_info;
 
     previous_idt_status->parent = this;
-    children["previous-idt-status"] = previous_idt_status;
 
     yang_name = "idt"; yang_parent_name = "master-sync-information";
 }
@@ -16063,7 +14152,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::I
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16086,64 +14175,38 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Id
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "current-idt-info")
     {
-        if(current_idt_info != nullptr)
-        {
-            children["current-idt-info"] = current_idt_info;
-        }
-        else
+        if(current_idt_info == nullptr)
         {
             current_idt_info = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo>();
-            current_idt_info->parent = this;
-            children["current-idt-info"] = current_idt_info;
         }
-        return children.at("current-idt-info");
+        return current_idt_info;
     }
 
     if(child_yang_name == "previous-idt-status")
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
-        else
+        if(previous_idt_status == nullptr)
         {
             previous_idt_status = std::make_shared<MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus>();
-            previous_idt_status->parent = this;
-            children["previous-idt-status"] = previous_idt_status;
         }
-        return children.at("previous-idt-status");
+        return previous_idt_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::get_children() const
 {
-    if(children.find("current-idt-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(current_idt_info != nullptr)
     {
-        if(current_idt_info != nullptr)
-        {
-            children["current-idt-info"] = current_idt_info;
-        }
+        children["current-idt-info"] = current_idt_info;
     }
 
-    if(children.find("previous-idt-status") == children.end())
+    if(previous_idt_status != nullptr)
     {
-        if(previous_idt_status != nullptr)
-        {
-            children["previous-idt-status"] = previous_idt_status;
-        }
+        children["previous-idt-status"] = previous_idt_status;
     }
 
     return children;
@@ -16199,7 +14262,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::I
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16228,20 +14291,12 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Id
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::CurrentIdtInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16319,7 +14374,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::I
 
 }
 
-EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16348,20 +14403,12 @@ EntityPath MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Id
 
 std::shared_ptr<Entity> MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Nsr::Detail::SyncStatusInformation::MasterSyncInformation::Idt::PreviousIdtStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16398,7 +14445,6 @@ MplsTe::AutoTunnelServices::AutoTunnelServices()
     sr_policy_entries(std::make_shared<MplsTe::AutoTunnelServices::SrPolicyEntries>())
 {
     sr_policy_entries->parent = this;
-    children["sr-policy-entries"] = sr_policy_entries;
 
     yang_name = "auto-tunnel-services"; yang_parent_name = "mpls-te";
 }
@@ -16427,7 +14473,7 @@ std::string MplsTe::AutoTunnelServices::get_segment_path() const
 
 }
 
-EntityPath MplsTe::AutoTunnelServices::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::AutoTunnelServices::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16450,41 +14496,24 @@ EntityPath MplsTe::AutoTunnelServices::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::AutoTunnelServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sr-policy-entries")
     {
-        if(sr_policy_entries != nullptr)
-        {
-            children["sr-policy-entries"] = sr_policy_entries;
-        }
-        else
+        if(sr_policy_entries == nullptr)
         {
             sr_policy_entries = std::make_shared<MplsTe::AutoTunnelServices::SrPolicyEntries>();
-            sr_policy_entries->parent = this;
-            children["sr-policy-entries"] = sr_policy_entries;
         }
-        return children.at("sr-policy-entries");
+        return sr_policy_entries;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::AutoTunnelServices::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::AutoTunnelServices::get_children() const
 {
-    if(children.find("sr-policy-entries") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sr_policy_entries != nullptr)
     {
-        if(sr_policy_entries != nullptr)
-        {
-            children["sr-policy-entries"] = sr_policy_entries;
-        }
+        children["sr-policy-entries"] = sr_policy_entries;
     }
 
     return children;
@@ -16532,7 +14561,7 @@ std::string MplsTe::AutoTunnelServices::SrPolicyEntries::get_segment_path() cons
 
 }
 
-EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16555,15 +14584,6 @@ EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsTe::AutoTunnelServices::SrPolicyEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sr-policy-entry")
     {
         for(auto const & c : sr_policy_entry)
@@ -16571,28 +14591,24 @@ std::shared_ptr<Entity> MplsTe::AutoTunnelServices::SrPolicyEntries::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry>();
         c->parent = this;
-        sr_policy_entry.push_back(std::move(c));
-        children[segment_path] = sr_policy_entry.back();
-        return children.at(segment_path);
+        sr_policy_entry.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::AutoTunnelServices::SrPolicyEntries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::AutoTunnelServices::SrPolicyEntries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sr_policy_entry)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16606,8 +14622,8 @@ MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::SrPolicyEntry()
     :
     client_id{YType::int32, "client-id"},
     color{YType::int32, "color"},
-    distinguisher{YType::int32, "distinguisher"},
     end_point{YType::str, "end-point"},
+    distinguisher{YType::int32, "distinguisher"},
     allocated_binding_sid{YType::uint32, "allocated-binding-sid"},
     binding_sid_context_id{YType::uint32, "binding-sid-context-id"},
     binding_sid_request_pending{YType::boolean, "binding-sid-request-pending"},
@@ -16630,7 +14646,6 @@ MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::SrPolicyEntry()
     end_point_xr(std::make_shared<MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPointXr>())
 {
     end_point_xr->parent = this;
-    children["end-point-xr"] = end_point_xr;
 
     yang_name = "sr-policy-entry"; yang_parent_name = "sr-policy-entries";
 }
@@ -16648,8 +14663,8 @@ bool MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::has_data() cons
     }
     return client_id.is_set
 	|| color.is_set
-	|| distinguisher.is_set
 	|| end_point.is_set
+	|| distinguisher.is_set
 	|| allocated_binding_sid.is_set
 	|| binding_sid_context_id.is_set
 	|| binding_sid_request_pending.is_set
@@ -16681,8 +14696,8 @@ bool MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::has_operation()
     return is_set(operation)
 	|| is_set(client_id.operation)
 	|| is_set(color.operation)
-	|| is_set(distinguisher.operation)
 	|| is_set(end_point.operation)
+	|| is_set(distinguisher.operation)
 	|| is_set(allocated_binding_sid.operation)
 	|| is_set(binding_sid_context_id.operation)
 	|| is_set(binding_sid_request_pending.operation)
@@ -16707,13 +14722,13 @@ bool MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::has_operation()
 std::string MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sr-policy-entry" <<"[client-id='" <<client_id <<"']" <<"[color='" <<color <<"']" <<"[distinguisher='" <<distinguisher <<"']" <<"[end-point='" <<end_point <<"']";
+    path_buffer << "sr-policy-entry" <<"[client-id='" <<client_id <<"']" <<"[color='" <<color <<"']" <<"[end-point='" <<end_point <<"']" <<"[distinguisher='" <<distinguisher <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16729,8 +14744,8 @@ EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::get_entit
 
     if (client_id.is_set || is_set(client_id.operation)) leaf_name_data.push_back(client_id.get_name_leafdata());
     if (color.is_set || is_set(color.operation)) leaf_name_data.push_back(color.get_name_leafdata());
-    if (distinguisher.is_set || is_set(distinguisher.operation)) leaf_name_data.push_back(distinguisher.get_name_leafdata());
     if (end_point.is_set || is_set(end_point.operation)) leaf_name_data.push_back(end_point.get_name_leafdata());
+    if (distinguisher.is_set || is_set(distinguisher.operation)) leaf_name_data.push_back(distinguisher.get_name_leafdata());
     if (allocated_binding_sid.is_set || is_set(allocated_binding_sid.operation)) leaf_name_data.push_back(allocated_binding_sid.get_name_leafdata());
     if (binding_sid_context_id.is_set || is_set(binding_sid_context_id.operation)) leaf_name_data.push_back(binding_sid_context_id.get_name_leafdata());
     if (binding_sid_request_pending.is_set || is_set(binding_sid_request_pending.operation)) leaf_name_data.push_back(binding_sid_request_pending.get_name_leafdata());
@@ -16758,28 +14773,13 @@ EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::get_entit
 
 std::shared_ptr<Entity> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "end-point-xr")
     {
-        if(end_point_xr != nullptr)
-        {
-            children["end-point-xr"] = end_point_xr;
-        }
-        else
+        if(end_point_xr == nullptr)
         {
             end_point_xr = std::make_shared<MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPointXr>();
-            end_point_xr->parent = this;
-            children["end-point-xr"] = end_point_xr;
         }
-        return children.at("end-point-xr");
+        return end_point_xr;
     }
 
     if(child_yang_name == "explicit-path")
@@ -16789,36 +14789,29 @@ std::shared_ptr<Entity> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEnt
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath>();
         c->parent = this;
-        explicit_path.push_back(std::move(c));
-        children[segment_path] = explicit_path.back();
-        return children.at(segment_path);
+        explicit_path.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::get_children() const
 {
-    if(children.find("end-point-xr") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(end_point_xr != nullptr)
     {
-        if(end_point_xr != nullptr)
-        {
-            children["end-point-xr"] = end_point_xr;
-        }
+        children["end-point-xr"] = end_point_xr;
     }
 
     for (auto const & c : explicit_path)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16834,13 +14827,13 @@ void MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::set_value(const
     {
         color = value;
     }
-    if(value_path == "distinguisher")
-    {
-        distinguisher = value;
-    }
     if(value_path == "end-point")
     {
         end_point = value;
+    }
+    if(value_path == "distinguisher")
+    {
+        distinguisher = value;
     }
     if(value_path == "allocated-binding-sid")
     {
@@ -16953,7 +14946,7 @@ std::string MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPoint
 
 }
 
-EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPointXr::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPointXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16979,20 +14972,12 @@ EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPointX
 
 std::shared_ptr<Entity> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPointXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPointXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::EndPointXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17023,7 +15008,6 @@ MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::Explic
     tunnel_info(std::make_shared<MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::TunnelInfo>())
 {
     tunnel_info->parent = this;
-    children["tunnel-info"] = tunnel_info;
 
     yang_name = "explicit-path"; yang_parent_name = "sr-policy-entry";
 }
@@ -17072,7 +15056,7 @@ std::string MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::Explicit
 
 }
 
-EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17100,15 +15084,6 @@ EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitP
 
 std::shared_ptr<Entity> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hops")
     {
         for(auto const & c : hops)
@@ -17116,51 +15091,38 @@ std::shared_ptr<Entity> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEnt
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::Hops>();
         c->parent = this;
-        hops.push_back(std::move(c));
-        children[segment_path] = hops.back();
-        return children.at(segment_path);
+        hops.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tunnel-info")
     {
-        if(tunnel_info != nullptr)
-        {
-            children["tunnel-info"] = tunnel_info;
-        }
-        else
+        if(tunnel_info == nullptr)
         {
             tunnel_info = std::make_shared<MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::TunnelInfo>();
-            tunnel_info->parent = this;
-            children["tunnel-info"] = tunnel_info;
         }
-        return children.at("tunnel-info");
+        return tunnel_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hops)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("tunnel-info") == children.end())
+    if(tunnel_info != nullptr)
     {
-        if(tunnel_info != nullptr)
-        {
-            children["tunnel-info"] = tunnel_info;
-        }
+        children["tunnel-info"] = tunnel_info;
     }
 
     return children;
@@ -17227,7 +15189,7 @@ std::string MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::Explicit
 
 }
 
-EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::TunnelInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::TunnelInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17253,20 +15215,12 @@ EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitP
 
 std::shared_ptr<Entity> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::TunnelInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::TunnelInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::TunnelInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17323,7 +15277,7 @@ std::string MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::Explicit
 
 }
 
-EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::Hops::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::Hops::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17349,20 +15303,12 @@ EntityPath MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitP
 
 std::shared_ptr<Entity> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::Hops::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::ExplicitPath::Hops::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17420,7 +15366,7 @@ std::string MplsTe::AffinityMap::get_segment_path() const
 
 }
 
-EntityPath MplsTe::AffinityMap::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::AffinityMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17443,15 +15389,6 @@ EntityPath MplsTe::AffinityMap::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::AffinityMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity-map-array")
     {
         for(auto const & c : affinity_map_array)
@@ -17459,28 +15396,24 @@ std::shared_ptr<Entity> MplsTe::AffinityMap::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::AffinityMap::AffinityMapArray>();
         c->parent = this;
-        affinity_map_array.push_back(std::move(c));
-        children[segment_path] = affinity_map_array.back();
-        return children.at(segment_path);
+        affinity_map_array.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::AffinityMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::AffinityMap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : affinity_map_array)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17542,7 +15475,7 @@ std::string MplsTe::AffinityMap::AffinityMapArray::get_segment_path() const
 
 }
 
-EntityPath MplsTe::AffinityMap::AffinityMapArray::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::AffinityMap::AffinityMapArray::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17571,20 +15504,12 @@ EntityPath MplsTe::AffinityMap::AffinityMapArray::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MplsTe::AffinityMap::AffinityMapArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::AffinityMap::AffinityMapArray::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::AffinityMap::AffinityMapArray::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17650,7 +15575,7 @@ std::string MplsTe::TopologyBriefs::get_segment_path() const
 
 }
 
-EntityPath MplsTe::TopologyBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17673,15 +15598,6 @@ EntityPath MplsTe::TopologyBriefs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology-brief")
     {
         for(auto const & c : topology_brief)
@@ -17689,28 +15605,24 @@ std::shared_ptr<Entity> MplsTe::TopologyBriefs::get_child_by_name(const std::str
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief>();
         c->parent = this;
-        topology_brief.push_back(std::move(c));
-        children[segment_path] = topology_brief.back();
-        return children.at(segment_path);
+        topology_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : topology_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17722,18 +15634,17 @@ void MplsTe::TopologyBriefs::set_value(const std::string & value_path, std::stri
 
 MplsTe::TopologyBriefs::TopologyBrief::TopologyBrief()
     :
-    area{YType::int32, "area"},
-    igp_id{YType::str, "igp-id"},
-    igp_node_id{YType::str, "igp-node-id"},
     protocol{YType::enumeration, "protocol"},
+    igp_id{YType::str, "igp-id"},
+    area{YType::int32, "area"},
     topology_node_type{YType::enumeration, "topology-node-type"},
+    igp_node_id{YType::str, "igp-node-id"},
     topology_node_overloaded{YType::boolean, "topology-node-overloaded"},
     topology_node_te_router_id{YType::str, "topology-node-te-router-id"}
     	,
     topology_node_sid_and_srbg(std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg>())
 {
     topology_node_sid_and_srbg->parent = this;
-    children["topology-node-sid-and-srbg"] = topology_node_sid_and_srbg;
 
     yang_name = "topology-brief"; yang_parent_name = "topology-briefs";
 }
@@ -17749,11 +15660,11 @@ bool MplsTe::TopologyBriefs::TopologyBrief::has_data() const
         if(topology_node_link[index]->has_data())
             return true;
     }
-    return area.is_set
+    return protocol.is_set
 	|| igp_id.is_set
-	|| igp_node_id.is_set
-	|| protocol.is_set
+	|| area.is_set
 	|| topology_node_type.is_set
+	|| igp_node_id.is_set
 	|| topology_node_overloaded.is_set
 	|| topology_node_te_router_id.is_set
 	|| (topology_node_sid_and_srbg !=  nullptr && topology_node_sid_and_srbg->has_data());
@@ -17767,11 +15678,11 @@ bool MplsTe::TopologyBriefs::TopologyBrief::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| is_set(area.operation)
-	|| is_set(igp_id.operation)
-	|| is_set(igp_node_id.operation)
 	|| is_set(protocol.operation)
+	|| is_set(igp_id.operation)
+	|| is_set(area.operation)
 	|| is_set(topology_node_type.operation)
+	|| is_set(igp_node_id.operation)
 	|| is_set(topology_node_overloaded.operation)
 	|| is_set(topology_node_te_router_id.operation)
 	|| (topology_node_sid_and_srbg !=  nullptr && topology_node_sid_and_srbg->has_operation());
@@ -17780,13 +15691,13 @@ bool MplsTe::TopologyBriefs::TopologyBrief::has_operation() const
 std::string MplsTe::TopologyBriefs::TopologyBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology-brief" <<"[area='" <<area <<"']" <<"[igp-id='" <<igp_id <<"']" <<"[igp-node-id='" <<igp_node_id <<"']" <<"[protocol='" <<protocol <<"']" <<"[topology-node-type='" <<topology_node_type <<"']";
+    path_buffer << "topology-brief" <<"[protocol='" <<protocol <<"']" <<"[igp-id='" <<igp_id <<"']" <<"[area='" <<area <<"']" <<"[topology-node-type='" <<topology_node_type <<"']" <<"[igp-node-id='" <<igp_node_id <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17800,11 +15711,11 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area.is_set || is_set(area.operation)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (igp_id.is_set || is_set(igp_id.operation)) leaf_name_data.push_back(igp_id.get_name_leafdata());
-    if (igp_node_id.is_set || is_set(igp_node_id.operation)) leaf_name_data.push_back(igp_node_id.get_name_leafdata());
     if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (igp_id.is_set || is_set(igp_id.operation)) leaf_name_data.push_back(igp_id.get_name_leafdata());
+    if (area.is_set || is_set(area.operation)) leaf_name_data.push_back(area.get_name_leafdata());
     if (topology_node_type.is_set || is_set(topology_node_type.operation)) leaf_name_data.push_back(topology_node_type.get_name_leafdata());
+    if (igp_node_id.is_set || is_set(igp_node_id.operation)) leaf_name_data.push_back(igp_node_id.get_name_leafdata());
     if (topology_node_overloaded.is_set || is_set(topology_node_overloaded.operation)) leaf_name_data.push_back(topology_node_overloaded.get_name_leafdata());
     if (topology_node_te_router_id.is_set || is_set(topology_node_te_router_id.operation)) leaf_name_data.push_back(topology_node_te_router_id.get_name_leafdata());
 
@@ -17816,15 +15727,6 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology-node-link")
     {
         for(auto const & c : topology_node_link)
@@ -17832,51 +15734,38 @@ std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink>();
         c->parent = this;
-        topology_node_link.push_back(std::move(c));
-        children[segment_path] = topology_node_link.back();
-        return children.at(segment_path);
+        topology_node_link.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "topology-node-sid-and-srbg")
     {
-        if(topology_node_sid_and_srbg != nullptr)
-        {
-            children["topology-node-sid-and-srbg"] = topology_node_sid_and_srbg;
-        }
-        else
+        if(topology_node_sid_and_srbg == nullptr)
         {
             topology_node_sid_and_srbg = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg>();
-            topology_node_sid_and_srbg->parent = this;
-            children["topology-node-sid-and-srbg"] = topology_node_sid_and_srbg;
         }
-        return children.at("topology-node-sid-and-srbg");
+        return topology_node_sid_and_srbg;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : topology_node_link)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("topology-node-sid-and-srbg") == children.end())
+    if(topology_node_sid_and_srbg != nullptr)
     {
-        if(topology_node_sid_and_srbg != nullptr)
-        {
-            children["topology-node-sid-and-srbg"] = topology_node_sid_and_srbg;
-        }
+        children["topology-node-sid-and-srbg"] = topology_node_sid_and_srbg;
     }
 
     return children;
@@ -17884,25 +15773,25 @@ std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::Topolog
 
 void MplsTe::TopologyBriefs::TopologyBrief::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "area")
+    if(value_path == "protocol")
     {
-        area = value;
+        protocol = value;
     }
     if(value_path == "igp-id")
     {
         igp_id = value;
     }
-    if(value_path == "igp-node-id")
+    if(value_path == "area")
     {
-        igp_node_id = value;
-    }
-    if(value_path == "protocol")
-    {
-        protocol = value;
+        area = value;
     }
     if(value_path == "topology-node-type")
     {
         topology_node_type = value;
+    }
+    if(value_path == "igp-node-id")
+    {
+        igp_node_id = value;
     }
     if(value_path == "topology-node-overloaded")
     {
@@ -17954,7 +15843,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg::get_s
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17981,20 +15870,12 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg::get_en
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeSidAndSrbg::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18042,10 +15923,8 @@ MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyNodeLink()
 	,topology_link_bandwidth(std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth>())
 {
     odu_link_capabilities->parent = this;
-    children["odu-link-capabilities"] = odu_link_capabilities;
 
     topology_link_bandwidth->parent = this;
-    children["topology-link-bandwidth"] = topology_link_bandwidth;
 
     yang_name = "topology-node-link"; yang_parent_name = "topology-brief";
 }
@@ -18139,7 +16018,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::get_segment
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18180,15 +16059,6 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::get_entity_p
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjacency-sid")
     {
         for(auto const & c : adjacency_sid)
@@ -18196,30 +16066,22 @@ std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySid>();
         c->parent = this;
-        adjacency_sid.push_back(std::move(c));
-        children[segment_path] = adjacency_sid.back();
-        return children.at(segment_path);
+        adjacency_sid.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "odu-link-capabilities")
     {
-        if(odu_link_capabilities != nullptr)
-        {
-            children["odu-link-capabilities"] = odu_link_capabilities;
-        }
-        else
+        if(odu_link_capabilities == nullptr)
         {
             odu_link_capabilities = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities>();
-            odu_link_capabilities->parent = this;
-            children["odu-link-capabilities"] = odu_link_capabilities;
         }
-        return children.at("odu-link-capabilities");
+        return odu_link_capabilities;
     }
 
     if(child_yang_name == "shared-risk-link-group")
@@ -18229,67 +16091,48 @@ std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskLinkGroup>();
         c->parent = this;
-        shared_risk_link_group.push_back(std::move(c));
-        children[segment_path] = shared_risk_link_group.back();
-        return children.at(segment_path);
+        shared_risk_link_group.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "topology-link-bandwidth")
     {
-        if(topology_link_bandwidth != nullptr)
-        {
-            children["topology-link-bandwidth"] = topology_link_bandwidth;
-        }
-        else
+        if(topology_link_bandwidth == nullptr)
         {
             topology_link_bandwidth = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth>();
-            topology_link_bandwidth->parent = this;
-            children["topology-link-bandwidth"] = topology_link_bandwidth;
         }
-        return children.at("topology-link-bandwidth");
+        return topology_link_bandwidth;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : adjacency_sid)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("odu-link-capabilities") == children.end())
+    if(odu_link_capabilities != nullptr)
     {
-        if(odu_link_capabilities != nullptr)
-        {
-            children["odu-link-capabilities"] = odu_link_capabilities;
-        }
+        children["odu-link-capabilities"] = odu_link_capabilities;
     }
 
     for (auto const & c : shared_risk_link_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("topology-link-bandwidth") == children.end())
+    if(topology_link_bandwidth != nullptr)
     {
-        if(topology_link_bandwidth != nullptr)
-        {
-            children["topology-link-bandwidth"] = topology_link_bandwidth;
-        }
+        children["topology-link-bandwidth"] = topology_link_bandwidth;
     }
 
     return children;
@@ -18375,10 +16218,8 @@ MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::
 	,topology_link_bandwidth_standard(std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard>())
 {
     topology_link_bandwidth_prestandard->parent = this;
-    children["topology-link-bandwidth-prestandard"] = topology_link_bandwidth_prestandard;
 
     topology_link_bandwidth_standard->parent = this;
-    children["topology-link-bandwidth-standard"] = topology_link_bandwidth_standard;
 
     yang_name = "topology-link-bandwidth"; yang_parent_name = "topology-node-link";
 }
@@ -18411,7 +16252,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18435,64 +16276,38 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLink
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology-link-bandwidth-prestandard")
     {
-        if(topology_link_bandwidth_prestandard != nullptr)
-        {
-            children["topology-link-bandwidth-prestandard"] = topology_link_bandwidth_prestandard;
-        }
-        else
+        if(topology_link_bandwidth_prestandard == nullptr)
         {
             topology_link_bandwidth_prestandard = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard>();
-            topology_link_bandwidth_prestandard->parent = this;
-            children["topology-link-bandwidth-prestandard"] = topology_link_bandwidth_prestandard;
         }
-        return children.at("topology-link-bandwidth-prestandard");
+        return topology_link_bandwidth_prestandard;
     }
 
     if(child_yang_name == "topology-link-bandwidth-standard")
     {
-        if(topology_link_bandwidth_standard != nullptr)
-        {
-            children["topology-link-bandwidth-standard"] = topology_link_bandwidth_standard;
-        }
-        else
+        if(topology_link_bandwidth_standard == nullptr)
         {
             topology_link_bandwidth_standard = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard>();
-            topology_link_bandwidth_standard->parent = this;
-            children["topology-link-bandwidth-standard"] = topology_link_bandwidth_standard;
         }
-        return children.at("topology-link-bandwidth-standard");
+        return topology_link_bandwidth_standard;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::get_children() const
 {
-    if(children.find("topology-link-bandwidth-prestandard") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(topology_link_bandwidth_prestandard != nullptr)
     {
-        if(topology_link_bandwidth_prestandard != nullptr)
-        {
-            children["topology-link-bandwidth-prestandard"] = topology_link_bandwidth_prestandard;
-        }
+        children["topology-link-bandwidth-prestandard"] = topology_link_bandwidth_prestandard;
     }
 
-    if(children.find("topology-link-bandwidth-standard") == children.end())
+    if(topology_link_bandwidth_standard != nullptr)
     {
-        if(topology_link_bandwidth_standard != nullptr)
-        {
-            children["topology-link-bandwidth-standard"] = topology_link_bandwidth_standard;
-        }
+        children["topology-link-bandwidth-standard"] = topology_link_bandwidth_standard;
     }
 
     return children;
@@ -18515,7 +16330,6 @@ MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::
     topology_link_prestandard_bandwidth_detail(std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail>())
 {
     topology_link_prestandard_bandwidth_detail->parent = this;
-    children["topology-link-prestandard-bandwidth-detail"] = topology_link_prestandard_bandwidth_detail;
 
     yang_name = "topology-link-bandwidth-prestandard"; yang_parent_name = "topology-link-bandwidth";
 }
@@ -18550,7 +16364,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18576,41 +16390,24 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLink
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topology-link-prestandard-bandwidth-detail")
     {
-        if(topology_link_prestandard_bandwidth_detail != nullptr)
-        {
-            children["topology-link-prestandard-bandwidth-detail"] = topology_link_prestandard_bandwidth_detail;
-        }
-        else
+        if(topology_link_prestandard_bandwidth_detail == nullptr)
         {
             topology_link_prestandard_bandwidth_detail = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail>();
-            topology_link_prestandard_bandwidth_detail->parent = this;
-            children["topology-link-prestandard-bandwidth-detail"] = topology_link_prestandard_bandwidth_detail;
         }
-        return children.at("topology-link-prestandard-bandwidth-detail");
+        return topology_link_prestandard_bandwidth_detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::get_children() const
 {
-    if(children.find("topology-link-prestandard-bandwidth-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(topology_link_prestandard_bandwidth_detail != nullptr)
     {
-        if(topology_link_prestandard_bandwidth_detail != nullptr)
-        {
-            children["topology-link-prestandard-bandwidth-detail"] = topology_link_prestandard_bandwidth_detail;
-        }
+        children["topology-link-prestandard-bandwidth-detail"] = topology_link_prestandard_bandwidth_detail;
     }
 
     return children;
@@ -18697,7 +16494,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18726,20 +16523,12 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLink
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthPrestandard::TopologyLinkPrestandardBandwidthDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18769,7 +16558,6 @@ MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::
     topo_link_std_bw_detail(std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail>())
 {
     topo_link_std_bw_detail->parent = this;
-    children["topo-link-std-bw-detail"] = topo_link_std_bw_detail;
 
     yang_name = "topology-link-bandwidth-standard"; yang_parent_name = "topology-link-bandwidth";
 }
@@ -18806,7 +16594,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18833,41 +16621,24 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLink
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "topo-link-std-bw-detail")
     {
-        if(topo_link_std_bw_detail != nullptr)
-        {
-            children["topo-link-std-bw-detail"] = topo_link_std_bw_detail;
-        }
-        else
+        if(topo_link_std_bw_detail == nullptr)
         {
             topo_link_std_bw_detail = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail>();
-            topo_link_std_bw_detail->parent = this;
-            children["topo-link-std-bw-detail"] = topo_link_std_bw_detail;
         }
-        return children.at("topo-link-std-bw-detail");
+        return topo_link_std_bw_detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::get_children() const
 {
-    if(children.find("topo-link-std-bw-detail") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(topo_link_std_bw_detail != nullptr)
     {
-        if(topo_link_std_bw_detail != nullptr)
-        {
-            children["topo-link-std-bw-detail"] = topo_link_std_bw_detail;
-        }
+        children["topo-link-std-bw-detail"] = topo_link_std_bw_detail;
     }
 
     return children;
@@ -18946,7 +16717,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18973,20 +16744,12 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLink
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLinkBandwidth::TopologyLinkBandwidthStandard::TopoLinkStdBwDetail::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19053,7 +16816,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapa
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19078,15 +16841,6 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapab
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "odu-capability")
     {
         for(auto const & c : odu_capability)
@@ -19094,28 +16848,24 @@ std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability>();
         c->parent = this;
-        odu_capability.push_back(std::move(c));
-        children[segment_path] = odu_capability.back();
-        return children.at(segment_path);
+        odu_capability.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : odu_capability)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19146,7 +16896,6 @@ MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::Od
     bandwidth_info(std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo>())
 {
     bandwidth_info->parent = this;
-    children["bandwidth-info"] = bandwidth_info;
 
     yang_name = "odu-capability"; yang_parent_name = "odu-link-capabilities";
 }
@@ -19197,7 +16946,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapa
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19231,41 +16980,24 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapab
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bandwidth-info")
     {
-        if(bandwidth_info != nullptr)
-        {
-            children["bandwidth-info"] = bandwidth_info;
-        }
-        else
+        if(bandwidth_info == nullptr)
         {
             bandwidth_info = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo>();
-            bandwidth_info->parent = this;
-            children["bandwidth-info"] = bandwidth_info;
         }
-        return children.at("bandwidth-info");
+        return bandwidth_info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::get_children() const
 {
-    if(children.find("bandwidth-info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bandwidth_info != nullptr)
     {
-        if(bandwidth_info != nullptr)
-        {
-            children["bandwidth-info"] = bandwidth_info;
-        }
+        children["bandwidth-info"] = bandwidth_info;
     }
 
     return children;
@@ -19327,10 +17059,8 @@ MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::Od
 	,flex(std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex>())
 {
     fixed->parent = this;
-    children["fixed"] = fixed;
 
     flex->parent = this;
-    children["flex"] = flex;
 
     yang_name = "bandwidth-info"; yang_parent_name = "odu-capability";
 }
@@ -19363,7 +17093,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapa
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19387,64 +17117,38 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapab
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "fixed")
     {
-        if(fixed != nullptr)
-        {
-            children["fixed"] = fixed;
-        }
-        else
+        if(fixed == nullptr)
         {
             fixed = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed>();
-            fixed->parent = this;
-            children["fixed"] = fixed;
         }
-        return children.at("fixed");
+        return fixed;
     }
 
     if(child_yang_name == "flex")
     {
-        if(flex != nullptr)
-        {
-            children["flex"] = flex;
-        }
-        else
+        if(flex == nullptr)
         {
             flex = std::make_shared<MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex>();
-            flex->parent = this;
-            children["flex"] = flex;
         }
-        return children.at("flex");
+        return flex;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::get_children() const
 {
-    if(children.find("fixed") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fixed != nullptr)
     {
-        if(fixed != nullptr)
-        {
-            children["fixed"] = fixed;
-        }
+        children["fixed"] = fixed;
     }
 
-    if(children.find("flex") == children.end())
+    if(flex != nullptr)
     {
-        if(flex != nullptr)
-        {
-            children["flex"] = flex;
-        }
+        children["flex"] = flex;
     }
 
     return children;
@@ -19492,7 +17196,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapa
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19517,20 +17221,12 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapab
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19583,7 +17279,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapa
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19609,20 +17305,12 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapab
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19676,7 +17364,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskL
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskLinkGroup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskLinkGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19701,20 +17389,12 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskLi
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskLinkGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskLinkGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskLinkGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19791,7 +17471,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySi
 
 }
 
-EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySid::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySid::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19825,20 +17505,12 @@ EntityPath MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySid
 
 std::shared_ptr<Entity> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySid::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySid::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19907,43 +17579,30 @@ MplsLcacStandby::MplsLcacStandby()
 	,statistics(std::make_shared<MplsLcacStandby::Statistics>())
 {
     admission_control->parent = this;
-    children["admission-control"] = admission_control;
 
     advertisements->parent = this;
-    children["advertisements"] = advertisements;
 
     bandwidth_account->parent = this;
-    children["bandwidth-account"] = bandwidth_account;
 
     bandwidth_allocation->parent = this;
-    children["bandwidth-allocation"] = bandwidth_allocation;
 
     bfd_neighbors->parent = this;
-    children["bfd-neighbors"] = bfd_neighbors;
 
     gmpls->parent = this;
-    children["gmpls"] = gmpls;
 
     link_information->parent = this;
-    children["link-information"] = link_information;
 
     link_summary->parent = this;
-    children["link-summary"] = link_summary;
 
     neighbors->parent = this;
-    children["neighbors"] = neighbors;
 
     preemption_events->parent = this;
-    children["preemption-events"] = preemption_events;
 
     soft_preemption_global_info->parent = this;
-    children["soft-preemption-global-info"] = soft_preemption_global_info;
 
     soft_preemptions->parent = this;
-    children["soft-preemptions"] = soft_preemptions;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "mpls-lcac-standby"; yang_parent_name = "Cisco-IOS-XR-mpls-te-oper";
 }
@@ -19996,12 +17655,12 @@ std::string MplsLcacStandby::get_segment_path() const
 
 }
 
-EntityPath MplsLcacStandby::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLcacStandby::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -20016,317 +17675,192 @@ EntityPath MplsLcacStandby::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLcacStandby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "admission-control")
     {
-        if(admission_control != nullptr)
-        {
-            children["admission-control"] = admission_control;
-        }
-        else
+        if(admission_control == nullptr)
         {
             admission_control = std::make_shared<MplsLcacStandby::AdmissionControl>();
-            admission_control->parent = this;
-            children["admission-control"] = admission_control;
         }
-        return children.at("admission-control");
+        return admission_control;
     }
 
     if(child_yang_name == "advertisements")
     {
-        if(advertisements != nullptr)
-        {
-            children["advertisements"] = advertisements;
-        }
-        else
+        if(advertisements == nullptr)
         {
             advertisements = std::make_shared<MplsLcacStandby::Advertisements>();
-            advertisements->parent = this;
-            children["advertisements"] = advertisements;
         }
-        return children.at("advertisements");
+        return advertisements;
     }
 
     if(child_yang_name == "bandwidth-account")
     {
-        if(bandwidth_account != nullptr)
-        {
-            children["bandwidth-account"] = bandwidth_account;
-        }
-        else
+        if(bandwidth_account == nullptr)
         {
             bandwidth_account = std::make_shared<MplsLcacStandby::BandwidthAccount>();
-            bandwidth_account->parent = this;
-            children["bandwidth-account"] = bandwidth_account;
         }
-        return children.at("bandwidth-account");
+        return bandwidth_account;
     }
 
     if(child_yang_name == "bandwidth-allocation")
     {
-        if(bandwidth_allocation != nullptr)
-        {
-            children["bandwidth-allocation"] = bandwidth_allocation;
-        }
-        else
+        if(bandwidth_allocation == nullptr)
         {
             bandwidth_allocation = std::make_shared<MplsLcacStandby::BandwidthAllocation>();
-            bandwidth_allocation->parent = this;
-            children["bandwidth-allocation"] = bandwidth_allocation;
         }
-        return children.at("bandwidth-allocation");
+        return bandwidth_allocation;
     }
 
     if(child_yang_name == "bfd-neighbors")
     {
-        if(bfd_neighbors != nullptr)
-        {
-            children["bfd-neighbors"] = bfd_neighbors;
-        }
-        else
+        if(bfd_neighbors == nullptr)
         {
             bfd_neighbors = std::make_shared<MplsLcacStandby::BfdNeighbors>();
-            bfd_neighbors->parent = this;
-            children["bfd-neighbors"] = bfd_neighbors;
         }
-        return children.at("bfd-neighbors");
+        return bfd_neighbors;
     }
 
     if(child_yang_name == "gmpls")
     {
-        if(gmpls != nullptr)
-        {
-            children["gmpls"] = gmpls;
-        }
-        else
+        if(gmpls == nullptr)
         {
             gmpls = std::make_shared<MplsLcacStandby::Gmpls>();
-            gmpls->parent = this;
-            children["gmpls"] = gmpls;
         }
-        return children.at("gmpls");
+        return gmpls;
     }
 
     if(child_yang_name == "link-information")
     {
-        if(link_information != nullptr)
-        {
-            children["link-information"] = link_information;
-        }
-        else
+        if(link_information == nullptr)
         {
             link_information = std::make_shared<MplsLcacStandby::LinkInformation>();
-            link_information->parent = this;
-            children["link-information"] = link_information;
         }
-        return children.at("link-information");
+        return link_information;
     }
 
     if(child_yang_name == "link-summary")
     {
-        if(link_summary != nullptr)
-        {
-            children["link-summary"] = link_summary;
-        }
-        else
+        if(link_summary == nullptr)
         {
             link_summary = std::make_shared<MplsLcacStandby::LinkSummary>();
-            link_summary->parent = this;
-            children["link-summary"] = link_summary;
         }
-        return children.at("link-summary");
+        return link_summary;
     }
 
     if(child_yang_name == "neighbors")
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
-        else
+        if(neighbors == nullptr)
         {
             neighbors = std::make_shared<MplsLcacStandby::Neighbors>();
-            neighbors->parent = this;
-            children["neighbors"] = neighbors;
         }
-        return children.at("neighbors");
+        return neighbors;
     }
 
     if(child_yang_name == "preemption-events")
     {
-        if(preemption_events != nullptr)
-        {
-            children["preemption-events"] = preemption_events;
-        }
-        else
+        if(preemption_events == nullptr)
         {
             preemption_events = std::make_shared<MplsLcacStandby::PreemptionEvents>();
-            preemption_events->parent = this;
-            children["preemption-events"] = preemption_events;
         }
-        return children.at("preemption-events");
+        return preemption_events;
     }
 
     if(child_yang_name == "soft-preemption-global-info")
     {
-        if(soft_preemption_global_info != nullptr)
-        {
-            children["soft-preemption-global-info"] = soft_preemption_global_info;
-        }
-        else
+        if(soft_preemption_global_info == nullptr)
         {
             soft_preemption_global_info = std::make_shared<MplsLcacStandby::SoftPreemptionGlobalInfo>();
-            soft_preemption_global_info->parent = this;
-            children["soft-preemption-global-info"] = soft_preemption_global_info;
         }
-        return children.at("soft-preemption-global-info");
+        return soft_preemption_global_info;
     }
 
     if(child_yang_name == "soft-preemptions")
     {
-        if(soft_preemptions != nullptr)
-        {
-            children["soft-preemptions"] = soft_preemptions;
-        }
-        else
+        if(soft_preemptions == nullptr)
         {
             soft_preemptions = std::make_shared<MplsLcacStandby::SoftPreemptions>();
-            soft_preemptions->parent = this;
-            children["soft-preemptions"] = soft_preemptions;
         }
-        return children.at("soft-preemptions");
+        return soft_preemptions;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<MplsLcacStandby::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLcacStandby::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::get_children() const
 {
-    if(children.find("admission-control") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(admission_control != nullptr)
     {
-        if(admission_control != nullptr)
-        {
-            children["admission-control"] = admission_control;
-        }
+        children["admission-control"] = admission_control;
     }
 
-    if(children.find("advertisements") == children.end())
+    if(advertisements != nullptr)
     {
-        if(advertisements != nullptr)
-        {
-            children["advertisements"] = advertisements;
-        }
+        children["advertisements"] = advertisements;
     }
 
-    if(children.find("bandwidth-account") == children.end())
+    if(bandwidth_account != nullptr)
     {
-        if(bandwidth_account != nullptr)
-        {
-            children["bandwidth-account"] = bandwidth_account;
-        }
+        children["bandwidth-account"] = bandwidth_account;
     }
 
-    if(children.find("bandwidth-allocation") == children.end())
+    if(bandwidth_allocation != nullptr)
     {
-        if(bandwidth_allocation != nullptr)
-        {
-            children["bandwidth-allocation"] = bandwidth_allocation;
-        }
+        children["bandwidth-allocation"] = bandwidth_allocation;
     }
 
-    if(children.find("bfd-neighbors") == children.end())
+    if(bfd_neighbors != nullptr)
     {
-        if(bfd_neighbors != nullptr)
-        {
-            children["bfd-neighbors"] = bfd_neighbors;
-        }
+        children["bfd-neighbors"] = bfd_neighbors;
     }
 
-    if(children.find("gmpls") == children.end())
+    if(gmpls != nullptr)
     {
-        if(gmpls != nullptr)
-        {
-            children["gmpls"] = gmpls;
-        }
+        children["gmpls"] = gmpls;
     }
 
-    if(children.find("link-information") == children.end())
+    if(link_information != nullptr)
     {
-        if(link_information != nullptr)
-        {
-            children["link-information"] = link_information;
-        }
+        children["link-information"] = link_information;
     }
 
-    if(children.find("link-summary") == children.end())
+    if(link_summary != nullptr)
     {
-        if(link_summary != nullptr)
-        {
-            children["link-summary"] = link_summary;
-        }
+        children["link-summary"] = link_summary;
     }
 
-    if(children.find("neighbors") == children.end())
+    if(neighbors != nullptr)
     {
-        if(neighbors != nullptr)
-        {
-            children["neighbors"] = neighbors;
-        }
+        children["neighbors"] = neighbors;
     }
 
-    if(children.find("preemption-events") == children.end())
+    if(preemption_events != nullptr)
     {
-        if(preemption_events != nullptr)
-        {
-            children["preemption-events"] = preemption_events;
-        }
+        children["preemption-events"] = preemption_events;
     }
 
-    if(children.find("soft-preemption-global-info") == children.end())
+    if(soft_preemption_global_info != nullptr)
     {
-        if(soft_preemption_global_info != nullptr)
-        {
-            children["soft-preemption-global-info"] = soft_preemption_global_info;
-        }
+        children["soft-preemption-global-info"] = soft_preemption_global_info;
     }
 
-    if(children.find("soft-preemptions") == children.end())
+    if(soft_preemptions != nullptr)
     {
-        if(soft_preemptions != nullptr)
-        {
-            children["soft-preemptions"] = soft_preemptions;
-        }
+        children["soft-preemptions"] = soft_preemptions;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -20394,7 +17928,7 @@ std::string MplsLcacStandby::Neighbors::get_segment_path() const
 
 }
 
-EntityPath MplsLcacStandby::Neighbors::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLcacStandby::Neighbors::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20417,15 +17951,6 @@ EntityPath MplsLcacStandby::Neighbors::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsLcacStandby::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -20433,28 +17958,24 @@ std::shared_ptr<Entity> MplsLcacStandby::Neighbors::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLcacStandby::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLcacStandby::Neighbors::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Neighbors::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20505,7 +18026,7 @@ std::string MplsLcacStandby::Neighbors::Neighbor::get_segment_path() const
 
 }
 
-EntityPath MplsLcacStandby::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLcacStandby::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20529,15 +18050,6 @@ EntityPath MplsLcacStandby::Neighbors::Neighbor::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> MplsLcacStandby::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "neighbor")
     {
         for(auto const & c : neighbor)
@@ -20545,28 +18057,24 @@ std::shared_ptr<Entity> MplsLcacStandby::Neighbors::Neighbor::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsLcacStandby::Neighbors::Neighbor::Neighbor_>();
         c->parent = this;
-        neighbor.push_back(std::move(c));
-        children[segment_path] = neighbor.back();
-        return children.at(segment_path);
+        neighbor.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLcacStandby::Neighbors::Neighbor::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Neighbors::Neighbor::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : neighbor)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -20620,7 +18128,7 @@ std::string MplsLcacStandby::Neighbors::Neighbor::Neighbor_::get_segment_path() 
 
 }
 
-EntityPath MplsLcacStandby::Neighbors::Neighbor::Neighbor_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsLcacStandby::Neighbors::Neighbor::Neighbor_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -20647,20 +18155,12 @@ EntityPath MplsLcacStandby::Neighbors::Neighbor::Neighbor_::get_entity_path(Enti
 
 std::shared_ptr<Entity> MplsLcacStandby::Neighbors::Neighbor::Neighbor_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsLcacStandby::Neighbors::Neighbor::Neighbor_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Neighbors::Neighbor::Neighbor_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

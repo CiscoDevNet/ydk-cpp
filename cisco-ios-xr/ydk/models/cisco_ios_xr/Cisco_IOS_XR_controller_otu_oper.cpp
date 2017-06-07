@@ -14,7 +14,6 @@ Otu::Otu()
     controllers(std::make_shared<Otu::Controllers>())
 {
     controllers->parent = this;
-    children["controllers"] = controllers;
 
     yang_name = "otu"; yang_parent_name = "Cisco-IOS-XR-controller-otu-oper";
 }
@@ -43,12 +42,12 @@ std::string Otu::get_segment_path() const
 
 }
 
-EntityPath Otu::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath Otu::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Otu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "controllers")
     {
-        if(controllers != nullptr)
-        {
-            children["controllers"] = controllers;
-        }
-        else
+        if(controllers == nullptr)
         {
             controllers = std::make_shared<Otu::Controllers>();
-            controllers->parent = this;
-            children["controllers"] = controllers;
         }
-        return children.at("controllers");
+        return controllers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::get_children() const
 {
-    if(children.find("controllers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(controllers != nullptr)
     {
-        if(controllers != nullptr)
-        {
-            children["controllers"] = controllers;
-        }
+        children["controllers"] = controllers;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string Otu::Controllers::get_segment_path() const
 
 }
 
-EntityPath Otu::Controllers::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath Otu::Controllers::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Otu::Controllers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "controller")
     {
         for(auto const & c : controller)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> Otu::Controllers::get_child_by_name(const std::string & 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Otu::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(std::move(c));
-        children[segment_path] = controller.back();
-        return children.at(segment_path);
+        controller.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : controller)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -242,7 +211,6 @@ Otu::Controllers::Controller::Controller()
     info(std::make_shared<Otu::Controllers::Controller::Info>())
 {
     info->parent = this;
-    children["info"] = info;
 
     yang_name = "controller"; yang_parent_name = "controllers";
 }
@@ -273,7 +241,7 @@ std::string Otu::Controllers::Controller::get_segment_path() const
 
 }
 
-EntityPath Otu::Controllers::Controller::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -297,41 +265,24 @@ EntityPath Otu::Controllers::Controller::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "info")
     {
-        if(info != nullptr)
-        {
-            children["info"] = info;
-        }
-        else
+        if(info == nullptr)
         {
             info = std::make_shared<Otu::Controllers::Controller::Info>();
-            info->parent = this;
-            children["info"] = info;
         }
-        return children.at("info");
+        return info;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::get_children() const
 {
-    if(children.find("info") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(info != nullptr)
     {
-        if(info != nullptr)
-        {
-            children["info"] = info;
-        }
+        children["info"] = info;
     }
 
     return children;
@@ -382,25 +333,18 @@ Otu::Controllers::Controller::Info::Info()
 	,tti_mode(std::make_shared<Otu::Controllers::Controller::Info::TtiMode>())
 {
     local->parent = this;
-    children["local"] = local;
 
     network_srlg->parent = this;
-    children["network-srlg"] = network_srlg;
 
     otu_alarm_info->parent = this;
-    children["otu-alarm-info"] = otu_alarm_info;
 
     otu_fec_satistics->parent = this;
-    children["otu-fec-satistics"] = otu_fec_satistics;
 
     proactive->parent = this;
-    children["proactive"] = proactive;
 
     remote->parent = this;
-    children["remote"] = remote;
 
     tti_mode->parent = this;
-    children["tti-mode"] = tti_mode;
 
     yang_name = "info"; yang_parent_name = "controller";
 }
@@ -491,7 +435,7 @@ std::string Otu::Controllers::Controller::Info::get_segment_path() const
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -539,179 +483,108 @@ EntityPath Otu::Controllers::Controller::Info::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "local")
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
-        else
+        if(local == nullptr)
         {
             local = std::make_shared<Otu::Controllers::Controller::Info::Local>();
-            local->parent = this;
-            children["local"] = local;
         }
-        return children.at("local");
+        return local;
     }
 
     if(child_yang_name == "network-srlg")
     {
-        if(network_srlg != nullptr)
-        {
-            children["network-srlg"] = network_srlg;
-        }
-        else
+        if(network_srlg == nullptr)
         {
             network_srlg = std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg>();
-            network_srlg->parent = this;
-            children["network-srlg"] = network_srlg;
         }
-        return children.at("network-srlg");
+        return network_srlg;
     }
 
     if(child_yang_name == "otu-alarm-info")
     {
-        if(otu_alarm_info != nullptr)
-        {
-            children["otu-alarm-info"] = otu_alarm_info;
-        }
-        else
+        if(otu_alarm_info == nullptr)
         {
             otu_alarm_info = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo>();
-            otu_alarm_info->parent = this;
-            children["otu-alarm-info"] = otu_alarm_info;
         }
-        return children.at("otu-alarm-info");
+        return otu_alarm_info;
     }
 
     if(child_yang_name == "otu-fec-satistics")
     {
-        if(otu_fec_satistics != nullptr)
-        {
-            children["otu-fec-satistics"] = otu_fec_satistics;
-        }
-        else
+        if(otu_fec_satistics == nullptr)
         {
             otu_fec_satistics = std::make_shared<Otu::Controllers::Controller::Info::OtuFecSatistics>();
-            otu_fec_satistics->parent = this;
-            children["otu-fec-satistics"] = otu_fec_satistics;
         }
-        return children.at("otu-fec-satistics");
+        return otu_fec_satistics;
     }
 
     if(child_yang_name == "proactive")
     {
-        if(proactive != nullptr)
-        {
-            children["proactive"] = proactive;
-        }
-        else
+        if(proactive == nullptr)
         {
             proactive = std::make_shared<Otu::Controllers::Controller::Info::Proactive>();
-            proactive->parent = this;
-            children["proactive"] = proactive;
         }
-        return children.at("proactive");
+        return proactive;
     }
 
     if(child_yang_name == "remote")
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
-        else
+        if(remote == nullptr)
         {
             remote = std::make_shared<Otu::Controllers::Controller::Info::Remote>();
-            remote->parent = this;
-            children["remote"] = remote;
         }
-        return children.at("remote");
+        return remote;
     }
 
     if(child_yang_name == "tti-mode")
     {
-        if(tti_mode != nullptr)
-        {
-            children["tti-mode"] = tti_mode;
-        }
-        else
+        if(tti_mode == nullptr)
         {
             tti_mode = std::make_shared<Otu::Controllers::Controller::Info::TtiMode>();
-            tti_mode->parent = this;
-            children["tti-mode"] = tti_mode;
         }
-        return children.at("tti-mode");
+        return tti_mode;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::get_children() const
 {
-    if(children.find("local") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(local != nullptr)
     {
-        if(local != nullptr)
-        {
-            children["local"] = local;
-        }
+        children["local"] = local;
     }
 
-    if(children.find("network-srlg") == children.end())
+    if(network_srlg != nullptr)
     {
-        if(network_srlg != nullptr)
-        {
-            children["network-srlg"] = network_srlg;
-        }
+        children["network-srlg"] = network_srlg;
     }
 
-    if(children.find("otu-alarm-info") == children.end())
+    if(otu_alarm_info != nullptr)
     {
-        if(otu_alarm_info != nullptr)
-        {
-            children["otu-alarm-info"] = otu_alarm_info;
-        }
+        children["otu-alarm-info"] = otu_alarm_info;
     }
 
-    if(children.find("otu-fec-satistics") == children.end())
+    if(otu_fec_satistics != nullptr)
     {
-        if(otu_fec_satistics != nullptr)
-        {
-            children["otu-fec-satistics"] = otu_fec_satistics;
-        }
+        children["otu-fec-satistics"] = otu_fec_satistics;
     }
 
-    if(children.find("proactive") == children.end())
+    if(proactive != nullptr)
     {
-        if(proactive != nullptr)
-        {
-            children["proactive"] = proactive;
-        }
+        children["proactive"] = proactive;
     }
 
-    if(children.find("remote") == children.end())
+    if(remote != nullptr)
     {
-        if(remote != nullptr)
-        {
-            children["remote"] = remote;
-        }
+        children["remote"] = remote;
     }
 
-    if(children.find("tti-mode") == children.end())
+    if(tti_mode != nullptr)
     {
-        if(tti_mode != nullptr)
-        {
-            children["tti-mode"] = tti_mode;
-        }
+        children["tti-mode"] = tti_mode;
     }
 
     return children;
@@ -855,7 +728,7 @@ std::string Otu::Controllers::Controller::Info::Local::get_segment_path() const
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::Local::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::Local::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -880,20 +753,12 @@ EntityPath Otu::Controllers::Controller::Info::Local::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::Local::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::Local::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -943,7 +808,7 @@ std::string Otu::Controllers::Controller::Info::Remote::get_segment_path() const
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::Remote::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::Remote::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -968,20 +833,12 @@ EntityPath Otu::Controllers::Controller::Info::Remote::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::Remote::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::Remote::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1011,13 +868,10 @@ Otu::Controllers::Controller::Info::TtiMode::TtiMode()
 	,tx(std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx>())
 {
     exp->parent = this;
-    children["exp"] = exp;
 
     rec->parent = this;
-    children["rec"] = rec;
 
     tx->parent = this;
-    children["tx"] = tx;
 
     yang_name = "tti-mode"; yang_parent_name = "info";
 }
@@ -1062,7 +916,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::get_segment_path() cons
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::TtiMode::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::TtiMode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1091,87 +945,52 @@ EntityPath Otu::Controllers::Controller::Info::TtiMode::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exp")
     {
-        if(exp != nullptr)
-        {
-            children["exp"] = exp;
-        }
-        else
+        if(exp == nullptr)
         {
             exp = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp>();
-            exp->parent = this;
-            children["exp"] = exp;
         }
-        return children.at("exp");
+        return exp;
     }
 
     if(child_yang_name == "rec")
     {
-        if(rec != nullptr)
-        {
-            children["rec"] = rec;
-        }
-        else
+        if(rec == nullptr)
         {
             rec = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec>();
-            rec->parent = this;
-            children["rec"] = rec;
         }
-        return children.at("rec");
+        return rec;
     }
 
     if(child_yang_name == "tx")
     {
-        if(tx != nullptr)
-        {
-            children["tx"] = tx;
-        }
-        else
+        if(tx == nullptr)
         {
             tx = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx>();
-            tx->parent = this;
-            children["tx"] = tx;
         }
-        return children.at("tx");
+        return tx;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::TtiMode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::get_children() const
 {
-    if(children.find("exp") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(exp != nullptr)
     {
-        if(exp != nullptr)
-        {
-            children["exp"] = exp;
-        }
+        children["exp"] = exp;
     }
 
-    if(children.find("rec") == children.end())
+    if(rec != nullptr)
     {
-        if(rec != nullptr)
-        {
-            children["rec"] = rec;
-        }
+        children["rec"] = rec;
     }
 
-    if(children.find("tx") == children.end())
+    if(tx != nullptr)
     {
-        if(tx != nullptr)
-        {
-            children["tx"] = tx;
-        }
+        children["tx"] = tx;
     }
 
     return children;
@@ -1272,7 +1091,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Tx::get_segment_path() 
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::TtiMode::Tx::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::TtiMode::Tx::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1302,20 +1121,12 @@ EntityPath Otu::Controllers::Controller::Info::TtiMode::Tx::get_entity_path(Enti
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::TtiMode::Tx::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1406,7 +1217,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Exp::get_segment_path()
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::TtiMode::Exp::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::TtiMode::Exp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1436,20 +1247,12 @@ EntityPath Otu::Controllers::Controller::Info::TtiMode::Exp::get_entity_path(Ent
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::TtiMode::Exp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1540,7 +1343,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Rec::get_segment_path()
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::TtiMode::Rec::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::TtiMode::Rec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1570,20 +1373,12 @@ EntityPath Otu::Controllers::Controller::Info::TtiMode::Rec::get_entity_path(Ent
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::TtiMode::Rec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1645,7 +1440,7 @@ std::string Otu::Controllers::Controller::Info::NetworkSrlg::get_segment_path() 
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::NetworkSrlg::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::NetworkSrlg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1668,15 +1463,6 @@ EntityPath Otu::Controllers::Controller::Info::NetworkSrlg::get_entity_path(Enti
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "srlg-info")
     {
         for(auto const & c : srlg_info)
@@ -1684,28 +1470,24 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo>();
         c->parent = this;
-        srlg_info.push_back(std::move(c));
-        children[segment_path] = srlg_info.back();
-        return children.at(segment_path);
+        srlg_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::NetworkSrlg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : srlg_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1758,7 +1540,7 @@ std::string Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_segme
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1784,20 +1566,12 @@ EntityPath Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_entity
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1834,55 +1608,38 @@ Otu::Controllers::Controller::Info::OtuAlarmInfo::OtuAlarmInfo()
 	,uc(std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc>())
 {
     ais->parent = this;
-    children["ais"] = ais;
 
     bdi->parent = this;
-    children["bdi"] = bdi;
 
     biae->parent = this;
-    children["biae"] = biae;
 
     ec->parent = this;
-    children["ec"] = ec;
 
     eoc->parent = this;
-    children["eoc"] = eoc;
 
     fec_mismatch->parent = this;
-    children["fec-mismatch"] = fec_mismatch;
 
     fecunc->parent = this;
-    children["fecunc"] = fecunc;
 
     iae->parent = this;
-    children["iae"] = iae;
 
     lof->parent = this;
-    children["lof"] = lof;
 
     lom->parent = this;
-    children["lom"] = lom;
 
     los->parent = this;
-    children["los"] = los;
 
     oof->parent = this;
-    children["oof"] = oof;
 
     oom->parent = this;
-    children["oom"] = oom;
 
     sd_ber->parent = this;
-    children["sd-ber"] = sd_ber;
 
     sf_ber->parent = this;
-    children["sf-ber"] = sf_ber;
 
     tim->parent = this;
-    children["tim"] = tim;
 
     uc->parent = this;
-    children["uc"] = uc;
 
     yang_name = "otu-alarm-info"; yang_parent_name = "info";
 }
@@ -1943,7 +1700,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::get_segment_path()
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1966,409 +1723,248 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::get_entity_path(Ent
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ais")
     {
-        if(ais != nullptr)
-        {
-            children["ais"] = ais;
-        }
-        else
+        if(ais == nullptr)
         {
             ais = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais>();
-            ais->parent = this;
-            children["ais"] = ais;
         }
-        return children.at("ais");
+        return ais;
     }
 
     if(child_yang_name == "bdi")
     {
-        if(bdi != nullptr)
-        {
-            children["bdi"] = bdi;
-        }
-        else
+        if(bdi == nullptr)
         {
             bdi = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi>();
-            bdi->parent = this;
-            children["bdi"] = bdi;
         }
-        return children.at("bdi");
+        return bdi;
     }
 
     if(child_yang_name == "biae")
     {
-        if(biae != nullptr)
-        {
-            children["biae"] = biae;
-        }
-        else
+        if(biae == nullptr)
         {
             biae = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae>();
-            biae->parent = this;
-            children["biae"] = biae;
         }
-        return children.at("biae");
+        return biae;
     }
 
     if(child_yang_name == "ec")
     {
-        if(ec != nullptr)
-        {
-            children["ec"] = ec;
-        }
-        else
+        if(ec == nullptr)
         {
             ec = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec>();
-            ec->parent = this;
-            children["ec"] = ec;
         }
-        return children.at("ec");
+        return ec;
     }
 
     if(child_yang_name == "eoc")
     {
-        if(eoc != nullptr)
-        {
-            children["eoc"] = eoc;
-        }
-        else
+        if(eoc == nullptr)
         {
             eoc = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc>();
-            eoc->parent = this;
-            children["eoc"] = eoc;
         }
-        return children.at("eoc");
+        return eoc;
     }
 
     if(child_yang_name == "fec-mismatch")
     {
-        if(fec_mismatch != nullptr)
-        {
-            children["fec-mismatch"] = fec_mismatch;
-        }
-        else
+        if(fec_mismatch == nullptr)
         {
             fec_mismatch = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch>();
-            fec_mismatch->parent = this;
-            children["fec-mismatch"] = fec_mismatch;
         }
-        return children.at("fec-mismatch");
+        return fec_mismatch;
     }
 
     if(child_yang_name == "fecunc")
     {
-        if(fecunc != nullptr)
-        {
-            children["fecunc"] = fecunc;
-        }
-        else
+        if(fecunc == nullptr)
         {
             fecunc = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc>();
-            fecunc->parent = this;
-            children["fecunc"] = fecunc;
         }
-        return children.at("fecunc");
+        return fecunc;
     }
 
     if(child_yang_name == "iae")
     {
-        if(iae != nullptr)
-        {
-            children["iae"] = iae;
-        }
-        else
+        if(iae == nullptr)
         {
             iae = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae>();
-            iae->parent = this;
-            children["iae"] = iae;
         }
-        return children.at("iae");
+        return iae;
     }
 
     if(child_yang_name == "lof")
     {
-        if(lof != nullptr)
-        {
-            children["lof"] = lof;
-        }
-        else
+        if(lof == nullptr)
         {
             lof = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof>();
-            lof->parent = this;
-            children["lof"] = lof;
         }
-        return children.at("lof");
+        return lof;
     }
 
     if(child_yang_name == "lom")
     {
-        if(lom != nullptr)
-        {
-            children["lom"] = lom;
-        }
-        else
+        if(lom == nullptr)
         {
             lom = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom>();
-            lom->parent = this;
-            children["lom"] = lom;
         }
-        return children.at("lom");
+        return lom;
     }
 
     if(child_yang_name == "los")
     {
-        if(los != nullptr)
-        {
-            children["los"] = los;
-        }
-        else
+        if(los == nullptr)
         {
             los = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Los>();
-            los->parent = this;
-            children["los"] = los;
         }
-        return children.at("los");
+        return los;
     }
 
     if(child_yang_name == "oof")
     {
-        if(oof != nullptr)
-        {
-            children["oof"] = oof;
-        }
-        else
+        if(oof == nullptr)
         {
             oof = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof>();
-            oof->parent = this;
-            children["oof"] = oof;
         }
-        return children.at("oof");
+        return oof;
     }
 
     if(child_yang_name == "oom")
     {
-        if(oom != nullptr)
-        {
-            children["oom"] = oom;
-        }
-        else
+        if(oom == nullptr)
         {
             oom = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom>();
-            oom->parent = this;
-            children["oom"] = oom;
         }
-        return children.at("oom");
+        return oom;
     }
 
     if(child_yang_name == "sd-ber")
     {
-        if(sd_ber != nullptr)
-        {
-            children["sd-ber"] = sd_ber;
-        }
-        else
+        if(sd_ber == nullptr)
         {
             sd_ber = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer>();
-            sd_ber->parent = this;
-            children["sd-ber"] = sd_ber;
         }
-        return children.at("sd-ber");
+        return sd_ber;
     }
 
     if(child_yang_name == "sf-ber")
     {
-        if(sf_ber != nullptr)
-        {
-            children["sf-ber"] = sf_ber;
-        }
-        else
+        if(sf_ber == nullptr)
         {
             sf_ber = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer>();
-            sf_ber->parent = this;
-            children["sf-ber"] = sf_ber;
         }
-        return children.at("sf-ber");
+        return sf_ber;
     }
 
     if(child_yang_name == "tim")
     {
-        if(tim != nullptr)
-        {
-            children["tim"] = tim;
-        }
-        else
+        if(tim == nullptr)
         {
             tim = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim>();
-            tim->parent = this;
-            children["tim"] = tim;
         }
-        return children.at("tim");
+        return tim;
     }
 
     if(child_yang_name == "uc")
     {
-        if(uc != nullptr)
-        {
-            children["uc"] = uc;
-        }
-        else
+        if(uc == nullptr)
         {
             uc = std::make_shared<Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc>();
-            uc->parent = this;
-            children["uc"] = uc;
         }
-        return children.at("uc");
+        return uc;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::get_children() const
 {
-    if(children.find("ais") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ais != nullptr)
     {
-        if(ais != nullptr)
-        {
-            children["ais"] = ais;
-        }
+        children["ais"] = ais;
     }
 
-    if(children.find("bdi") == children.end())
+    if(bdi != nullptr)
     {
-        if(bdi != nullptr)
-        {
-            children["bdi"] = bdi;
-        }
+        children["bdi"] = bdi;
     }
 
-    if(children.find("biae") == children.end())
+    if(biae != nullptr)
     {
-        if(biae != nullptr)
-        {
-            children["biae"] = biae;
-        }
+        children["biae"] = biae;
     }
 
-    if(children.find("ec") == children.end())
+    if(ec != nullptr)
     {
-        if(ec != nullptr)
-        {
-            children["ec"] = ec;
-        }
+        children["ec"] = ec;
     }
 
-    if(children.find("eoc") == children.end())
+    if(eoc != nullptr)
     {
-        if(eoc != nullptr)
-        {
-            children["eoc"] = eoc;
-        }
+        children["eoc"] = eoc;
     }
 
-    if(children.find("fec-mismatch") == children.end())
+    if(fec_mismatch != nullptr)
     {
-        if(fec_mismatch != nullptr)
-        {
-            children["fec-mismatch"] = fec_mismatch;
-        }
+        children["fec-mismatch"] = fec_mismatch;
     }
 
-    if(children.find("fecunc") == children.end())
+    if(fecunc != nullptr)
     {
-        if(fecunc != nullptr)
-        {
-            children["fecunc"] = fecunc;
-        }
+        children["fecunc"] = fecunc;
     }
 
-    if(children.find("iae") == children.end())
+    if(iae != nullptr)
     {
-        if(iae != nullptr)
-        {
-            children["iae"] = iae;
-        }
+        children["iae"] = iae;
     }
 
-    if(children.find("lof") == children.end())
+    if(lof != nullptr)
     {
-        if(lof != nullptr)
-        {
-            children["lof"] = lof;
-        }
+        children["lof"] = lof;
     }
 
-    if(children.find("lom") == children.end())
+    if(lom != nullptr)
     {
-        if(lom != nullptr)
-        {
-            children["lom"] = lom;
-        }
+        children["lom"] = lom;
     }
 
-    if(children.find("los") == children.end())
+    if(los != nullptr)
     {
-        if(los != nullptr)
-        {
-            children["los"] = los;
-        }
+        children["los"] = los;
     }
 
-    if(children.find("oof") == children.end())
+    if(oof != nullptr)
     {
-        if(oof != nullptr)
-        {
-            children["oof"] = oof;
-        }
+        children["oof"] = oof;
     }
 
-    if(children.find("oom") == children.end())
+    if(oom != nullptr)
     {
-        if(oom != nullptr)
-        {
-            children["oom"] = oom;
-        }
+        children["oom"] = oom;
     }
 
-    if(children.find("sd-ber") == children.end())
+    if(sd_ber != nullptr)
     {
-        if(sd_ber != nullptr)
-        {
-            children["sd-ber"] = sd_ber;
-        }
+        children["sd-ber"] = sd_ber;
     }
 
-    if(children.find("sf-ber") == children.end())
+    if(sf_ber != nullptr)
     {
-        if(sf_ber != nullptr)
-        {
-            children["sf-ber"] = sf_ber;
-        }
+        children["sf-ber"] = sf_ber;
     }
 
-    if(children.find("tim") == children.end())
+    if(tim != nullptr)
     {
-        if(tim != nullptr)
-        {
-            children["tim"] = tim;
-        }
+        children["tim"] = tim;
     }
 
-    if(children.find("uc") == children.end())
+    if(uc != nullptr)
     {
-        if(uc != nullptr)
-        {
-            children["uc"] = uc;
-        }
+        children["uc"] = uc;
     }
 
     return children;
@@ -2418,7 +2014,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2445,20 +2041,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2522,7 +2110,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2549,20 +2137,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2626,7 +2206,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2653,20 +2233,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2730,7 +2302,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2757,20 +2329,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2834,7 +2398,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2861,20 +2425,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2938,7 +2494,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2965,20 +2521,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3042,7 +2590,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3069,20 +2617,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3146,7 +2686,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_segment_
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3173,20 +2713,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_entity_pa
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3250,7 +2782,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3277,20 +2809,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3354,7 +2878,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3381,20 +2905,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3458,7 +2974,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_segment_p
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3485,20 +3001,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_entity_pat
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3562,7 +3070,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_s
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3589,20 +3097,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_en
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3666,7 +3166,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_segment
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3693,20 +3193,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_entity_p
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3770,7 +3262,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_segment
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3797,20 +3289,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_entity_p
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3874,7 +3358,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_segment_pa
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3901,20 +3385,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_entity_path
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3978,7 +3454,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_segment_pa
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4005,20 +3481,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_entity_path
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4082,7 +3550,7 @@ std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_segmen
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4109,20 +3577,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_entity_
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4207,7 +3667,7 @@ std::string Otu::Controllers::Controller::Info::Proactive::get_segment_path() co
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::Proactive::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::Proactive::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4241,20 +3701,12 @@ EntityPath Otu::Controllers::Controller::Info::Proactive::get_entity_path(Entity
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::Proactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::Proactive::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::Proactive::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4340,7 +3792,7 @@ std::string Otu::Controllers::Controller::Info::OtuFecSatistics::get_segment_pat
 
 }
 
-EntityPath Otu::Controllers::Controller::Info::OtuFecSatistics::get_entity_path(Entity* ancestor) const
+const EntityPath Otu::Controllers::Controller::Info::OtuFecSatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4365,20 +3817,12 @@ EntityPath Otu::Controllers::Controller::Info::OtuFecSatistics::get_entity_path(
 
 std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuFecSatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Otu::Controllers::Controller::Info::OtuFecSatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuFecSatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

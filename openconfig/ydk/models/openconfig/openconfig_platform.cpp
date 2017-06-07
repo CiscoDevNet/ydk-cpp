@@ -47,12 +47,12 @@ std::string Components::get_segment_path() const
 
 }
 
-EntityPath Components::get_entity_path(Entity* ancestor) const
+const EntityPath Components::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -67,15 +67,6 @@ EntityPath Components::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Components::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "component")
     {
         for(auto const & c : component)
@@ -83,28 +74,24 @@ std::shared_ptr<Entity> Components::get_child_by_name(const std::string & child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Components::Component>();
         c->parent = this;
-        component.push_back(std::move(c));
-        children[segment_path] = component.back();
-        return children.at(segment_path);
+        component.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : component)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -146,22 +133,16 @@ Components::Component::Component()
 	,transceiver(std::make_shared<Components::Component::Transceiver>())
 {
     config->parent = this;
-    children["config"] = config;
 
     optical_channel->parent = this;
-    children["optical-channel"] = optical_channel;
 
     properties->parent = this;
-    children["properties"] = properties;
 
     state->parent = this;
-    children["state"] = state;
 
     subcomponents->parent = this;
-    children["subcomponents"] = subcomponents;
 
     transceiver->parent = this;
-    children["transceiver"] = transceiver;
 
     yang_name = "component"; yang_parent_name = "components";
 }
@@ -202,7 +183,7 @@ std::string Components::Component::get_segment_path() const
 
 }
 
-EntityPath Components::Component::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -226,156 +207,94 @@ EntityPath Components::Component::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Components::Component::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "optical-channel")
     {
-        if(optical_channel != nullptr)
-        {
-            children["optical-channel"] = optical_channel;
-        }
-        else
+        if(optical_channel == nullptr)
         {
             optical_channel = std::make_shared<Components::Component::OpticalChannel>();
-            optical_channel->parent = this;
-            children["optical-channel"] = optical_channel;
         }
-        return children.at("optical-channel");
+        return optical_channel;
     }
 
     if(child_yang_name == "properties")
     {
-        if(properties != nullptr)
-        {
-            children["properties"] = properties;
-        }
-        else
+        if(properties == nullptr)
         {
             properties = std::make_shared<Components::Component::Properties>();
-            properties->parent = this;
-            children["properties"] = properties;
         }
-        return children.at("properties");
+        return properties;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Components::Component::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     if(child_yang_name == "subcomponents")
     {
-        if(subcomponents != nullptr)
-        {
-            children["subcomponents"] = subcomponents;
-        }
-        else
+        if(subcomponents == nullptr)
         {
             subcomponents = std::make_shared<Components::Component::Subcomponents>();
-            subcomponents->parent = this;
-            children["subcomponents"] = subcomponents;
         }
-        return children.at("subcomponents");
+        return subcomponents;
     }
 
     if(child_yang_name == "transceiver")
     {
-        if(transceiver != nullptr)
-        {
-            children["transceiver"] = transceiver;
-        }
-        else
+        if(transceiver == nullptr)
         {
             transceiver = std::make_shared<Components::Component::Transceiver>();
-            transceiver->parent = this;
-            children["transceiver"] = transceiver;
         }
-        return children.at("transceiver");
+        return transceiver;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("optical-channel") == children.end())
+    if(optical_channel != nullptr)
     {
-        if(optical_channel != nullptr)
-        {
-            children["optical-channel"] = optical_channel;
-        }
+        children["optical-channel"] = optical_channel;
     }
 
-    if(children.find("properties") == children.end())
+    if(properties != nullptr)
     {
-        if(properties != nullptr)
-        {
-            children["properties"] = properties;
-        }
+        children["properties"] = properties;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
-    if(children.find("subcomponents") == children.end())
+    if(subcomponents != nullptr)
     {
-        if(subcomponents != nullptr)
-        {
-            children["subcomponents"] = subcomponents;
-        }
+        children["subcomponents"] = subcomponents;
     }
 
-    if(children.find("transceiver") == children.end())
+    if(transceiver != nullptr)
     {
-        if(transceiver != nullptr)
-        {
-            children["transceiver"] = transceiver;
-        }
+        children["transceiver"] = transceiver;
     }
 
     return children;
@@ -420,7 +339,7 @@ std::string Components::Component::Config::get_segment_path() const
 
 }
 
-EntityPath Components::Component::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -444,20 +363,12 @@ EntityPath Components::Component::Config::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Components::Component::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -521,7 +432,7 @@ std::string Components::Component::State::get_segment_path() const
 
 }
 
-EntityPath Components::Component::State::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -552,20 +463,12 @@ EntityPath Components::Component::State::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Components::Component::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -643,7 +546,7 @@ std::string Components::Component::Properties::get_segment_path() const
 
 }
 
-EntityPath Components::Component::Properties::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Properties::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -666,15 +569,6 @@ EntityPath Components::Component::Properties::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> Components::Component::Properties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "property")
     {
         for(auto const & c : property)
@@ -682,28 +576,24 @@ std::shared_ptr<Entity> Components::Component::Properties::get_child_by_name(con
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Components::Component::Properties::Property>();
         c->parent = this;
-        property.push_back(std::move(c));
-        children[segment_path] = property.back();
-        return children.at(segment_path);
+        property.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Properties::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : property)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -721,10 +611,8 @@ Components::Component::Properties::Property::Property()
 	,state(std::make_shared<Components::Component::Properties::Property::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "property"; yang_parent_name = "properties";
 }
@@ -757,7 +645,7 @@ std::string Components::Component::Properties::Property::get_segment_path() cons
 
 }
 
-EntityPath Components::Component::Properties::Property::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Properties::Property::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -781,64 +669,38 @@ EntityPath Components::Component::Properties::Property::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Components::Component::Properties::Property::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Components::Component::Properties::Property::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Components::Component::Properties::Property::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Properties::Property::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::Property::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -886,7 +748,7 @@ std::string Components::Component::Properties::Property::Config::get_segment_pat
 
 }
 
-EntityPath Components::Component::Properties::Property::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Properties::Property::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -911,20 +773,12 @@ EntityPath Components::Component::Properties::Property::Config::get_entity_path(
 
 std::shared_ptr<Entity> Components::Component::Properties::Property::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Properties::Property::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::Property::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -977,7 +831,7 @@ std::string Components::Component::Properties::Property::State::get_segment_path
 
 }
 
-EntityPath Components::Component::Properties::Property::State::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Properties::Property::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1003,20 +857,12 @@ EntityPath Components::Component::Properties::Property::State::get_entity_path(E
 
 std::shared_ptr<Entity> Components::Component::Properties::Property::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Properties::Property::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::Property::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1074,7 +920,7 @@ std::string Components::Component::Subcomponents::get_segment_path() const
 
 }
 
-EntityPath Components::Component::Subcomponents::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Subcomponents::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1097,15 +943,6 @@ EntityPath Components::Component::Subcomponents::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Components::Component::Subcomponents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "subcomponent")
     {
         for(auto const & c : subcomponent)
@@ -1113,28 +950,24 @@ std::shared_ptr<Entity> Components::Component::Subcomponents::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Components::Component::Subcomponents::Subcomponent>();
         c->parent = this;
-        subcomponent.push_back(std::move(c));
-        children[segment_path] = subcomponent.back();
-        return children.at(segment_path);
+        subcomponent.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Subcomponents::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : subcomponent)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1152,10 +985,8 @@ Components::Component::Subcomponents::Subcomponent::Subcomponent()
 	,state(std::make_shared<Components::Component::Subcomponents::Subcomponent::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "subcomponent"; yang_parent_name = "subcomponents";
 }
@@ -1188,7 +1019,7 @@ std::string Components::Component::Subcomponents::Subcomponent::get_segment_path
 
 }
 
-EntityPath Components::Component::Subcomponents::Subcomponent::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Subcomponents::Subcomponent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1212,64 +1043,38 @@ EntityPath Components::Component::Subcomponents::Subcomponent::get_entity_path(E
 
 std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Components::Component::Subcomponents::Subcomponent::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Components::Component::Subcomponents::Subcomponent::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Subcomponents::Subcomponent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::Subcomponent::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1314,7 +1119,7 @@ std::string Components::Component::Subcomponents::Subcomponent::Config::get_segm
 
 }
 
-EntityPath Components::Component::Subcomponents::Subcomponent::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Subcomponents::Subcomponent::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1338,20 +1143,12 @@ EntityPath Components::Component::Subcomponents::Subcomponent::Config::get_entit
 
 std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Subcomponents::Subcomponent::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::Subcomponent::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1394,7 +1191,7 @@ std::string Components::Component::Subcomponents::Subcomponent::State::get_segme
 
 }
 
-EntityPath Components::Component::Subcomponents::Subcomponent::State::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Subcomponents::Subcomponent::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1418,20 +1215,12 @@ EntityPath Components::Component::Subcomponents::Subcomponent::State::get_entity
 
 std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Subcomponents::Subcomponent::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::Subcomponent::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1450,13 +1239,10 @@ Components::Component::Transceiver::Transceiver()
 	,state(std::make_shared<Components::Component::Transceiver::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     physical_channels->parent = this;
-    children["physical-channels"] = physical_channels;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "transceiver"; yang_parent_name = "component";
 }
@@ -1489,7 +1275,7 @@ std::string Components::Component::Transceiver::get_segment_path() const
 
 }
 
-EntityPath Components::Component::Transceiver::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1512,87 +1298,52 @@ EntityPath Components::Component::Transceiver::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Components::Component::Transceiver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Components::Component::Transceiver::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "physical-channels")
     {
-        if(physical_channels != nullptr)
-        {
-            children["physical-channels"] = physical_channels;
-        }
-        else
+        if(physical_channels == nullptr)
         {
             physical_channels = std::make_shared<Components::Component::Transceiver::PhysicalChannels>();
-            physical_channels->parent = this;
-            children["physical-channels"] = physical_channels;
         }
-        return children.at("physical-channels");
+        return physical_channels;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Components::Component::Transceiver::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("physical-channels") == children.end())
+    if(physical_channels != nullptr)
     {
-        if(physical_channels != nullptr)
-        {
-            children["physical-channels"] = physical_channels;
-        }
+        children["physical-channels"] = physical_channels;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -1636,7 +1387,7 @@ std::string Components::Component::Transceiver::Config::get_segment_path() const
 
 }
 
-EntityPath Components::Component::Transceiver::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1661,20 +1412,12 @@ EntityPath Components::Component::Transceiver::Config::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Components::Component::Transceiver::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1760,7 +1503,7 @@ std::string Components::Component::Transceiver::State::get_segment_path() const
 
 }
 
-EntityPath Components::Component::Transceiver::State::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1797,20 +1540,12 @@ EntityPath Components::Component::Transceiver::State::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> Components::Component::Transceiver::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1912,7 +1647,7 @@ std::string Components::Component::Transceiver::PhysicalChannels::get_segment_pa
 
 }
 
-EntityPath Components::Component::Transceiver::PhysicalChannels::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::PhysicalChannels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1935,15 +1670,6 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::get_entity_path
 
 std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "channel")
     {
         for(auto const & c : channel)
@@ -1951,28 +1677,24 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::ge
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel>();
         c->parent = this;
-        channel.push_back(std::move(c));
-        children[segment_path] = channel.back();
-        return children.at(segment_path);
+        channel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::PhysicalChannels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : channel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1990,10 +1712,8 @@ Components::Component::Transceiver::PhysicalChannels::Channel::Channel()
 	,state(std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "channel"; yang_parent_name = "physical-channels";
 }
@@ -2026,7 +1746,7 @@ std::string Components::Component::Transceiver::PhysicalChannels::Channel::get_s
 
 }
 
-EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2050,64 +1770,38 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::get_en
 
 std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::PhysicalChannels::Channel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -2161,7 +1855,7 @@ std::string Components::Component::Transceiver::PhysicalChannels::Channel::Confi
 
 }
 
-EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2188,20 +1882,12 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::Config
 
 std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2238,13 +1924,10 @@ Components::Component::Transceiver::PhysicalChannels::Channel::State::State()
 	,output_power(std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower>())
 {
     input_power->parent = this;
-    children["input-power"] = input_power;
 
     laser_bias_current->parent = this;
-    children["laser-bias-current"] = laser_bias_current;
 
     output_power->parent = this;
-    children["output-power"] = output_power;
 
     yang_name = "state"; yang_parent_name = "channel";
 }
@@ -2287,7 +1970,7 @@ std::string Components::Component::Transceiver::PhysicalChannels::Channel::State
 
 }
 
-EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2315,87 +1998,52 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State:
 
 std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input-power")
     {
-        if(input_power != nullptr)
-        {
-            children["input-power"] = input_power;
-        }
-        else
+        if(input_power == nullptr)
         {
             input_power = std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower>();
-            input_power->parent = this;
-            children["input-power"] = input_power;
         }
-        return children.at("input-power");
+        return input_power;
     }
 
     if(child_yang_name == "laser-bias-current")
     {
-        if(laser_bias_current != nullptr)
-        {
-            children["laser-bias-current"] = laser_bias_current;
-        }
-        else
+        if(laser_bias_current == nullptr)
         {
             laser_bias_current = std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent>();
-            laser_bias_current->parent = this;
-            children["laser-bias-current"] = laser_bias_current;
         }
-        return children.at("laser-bias-current");
+        return laser_bias_current;
     }
 
     if(child_yang_name == "output-power")
     {
-        if(output_power != nullptr)
-        {
-            children["output-power"] = output_power;
-        }
-        else
+        if(output_power == nullptr)
         {
             output_power = std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower>();
-            output_power->parent = this;
-            children["output-power"] = output_power;
         }
-        return children.at("output-power");
+        return output_power;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::PhysicalChannels::Channel::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::get_children() const
 {
-    if(children.find("input-power") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input_power != nullptr)
     {
-        if(input_power != nullptr)
-        {
-            children["input-power"] = input_power;
-        }
+        children["input-power"] = input_power;
     }
 
-    if(children.find("laser-bias-current") == children.end())
+    if(laser_bias_current != nullptr)
     {
-        if(laser_bias_current != nullptr)
-        {
-            children["laser-bias-current"] = laser_bias_current;
-        }
+        children["laser-bias-current"] = laser_bias_current;
     }
 
-    if(children.find("output-power") == children.end())
+    if(output_power != nullptr)
     {
-        if(output_power != nullptr)
-        {
-            children["output-power"] = output_power;
-        }
+        children["output-power"] = output_power;
     }
 
     return children;
@@ -2465,7 +2113,7 @@ std::string Components::Component::Transceiver::PhysicalChannels::Channel::State
 
 }
 
-EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2492,20 +2140,12 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State:
 
 std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2569,7 +2209,7 @@ std::string Components::Component::Transceiver::PhysicalChannels::Channel::State
 
 }
 
-EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2596,20 +2236,12 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State:
 
 std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2673,7 +2305,7 @@ std::string Components::Component::Transceiver::PhysicalChannels::Channel::State
 
 }
 
-EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2700,20 +2332,12 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State:
 
 std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2743,10 +2367,8 @@ Components::Component::OpticalChannel::OpticalChannel()
 	,state(std::make_shared<Components::Component::OpticalChannel::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "optical-channel"; yang_parent_name = "component";
 }
@@ -2777,7 +2399,7 @@ std::string Components::Component::OpticalChannel::get_segment_path() const
 
 }
 
-EntityPath Components::Component::OpticalChannel::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2800,64 +2422,38 @@ EntityPath Components::Component::OpticalChannel::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Components::Component::OpticalChannel::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Components::Component::OpticalChannel::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -2907,7 +2503,7 @@ std::string Components::Component::OpticalChannel::Config::get_segment_path() co
 
 }
 
-EntityPath Components::Component::OpticalChannel::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2934,20 +2530,12 @@ EntityPath Components::Component::OpticalChannel::Config::get_entity_path(Entity
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2988,25 +2576,18 @@ Components::Component::OpticalChannel::State::State()
 	,second_order_polarization_mode_dispersion(std::make_shared<Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion>())
 {
     chromatic_dispersion->parent = this;
-    children["chromatic-dispersion"] = chromatic_dispersion;
 
     input_power->parent = this;
-    children["input-power"] = input_power;
 
     laser_bias_current->parent = this;
-    children["laser-bias-current"] = laser_bias_current;
 
     output_power->parent = this;
-    children["output-power"] = output_power;
 
     polarization_dependent_loss->parent = this;
-    children["polarization-dependent-loss"] = polarization_dependent_loss;
 
     polarization_mode_dispersion->parent = this;
-    children["polarization-mode-dispersion"] = polarization_mode_dispersion;
 
     second_order_polarization_mode_dispersion->parent = this;
-    children["second-order-polarization-mode-dispersion"] = second_order_polarization_mode_dispersion;
 
     yang_name = "state"; yang_parent_name = "optical-channel";
 }
@@ -3057,7 +2638,7 @@ std::string Components::Component::OpticalChannel::State::get_segment_path() con
 
 }
 
-EntityPath Components::Component::OpticalChannel::State::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3085,179 +2666,108 @@ EntityPath Components::Component::OpticalChannel::State::get_entity_path(Entity*
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "chromatic-dispersion")
     {
-        if(chromatic_dispersion != nullptr)
-        {
-            children["chromatic-dispersion"] = chromatic_dispersion;
-        }
-        else
+        if(chromatic_dispersion == nullptr)
         {
             chromatic_dispersion = std::make_shared<Components::Component::OpticalChannel::State::ChromaticDispersion>();
-            chromatic_dispersion->parent = this;
-            children["chromatic-dispersion"] = chromatic_dispersion;
         }
-        return children.at("chromatic-dispersion");
+        return chromatic_dispersion;
     }
 
     if(child_yang_name == "input-power")
     {
-        if(input_power != nullptr)
-        {
-            children["input-power"] = input_power;
-        }
-        else
+        if(input_power == nullptr)
         {
             input_power = std::make_shared<Components::Component::OpticalChannel::State::InputPower>();
-            input_power->parent = this;
-            children["input-power"] = input_power;
         }
-        return children.at("input-power");
+        return input_power;
     }
 
     if(child_yang_name == "laser-bias-current")
     {
-        if(laser_bias_current != nullptr)
-        {
-            children["laser-bias-current"] = laser_bias_current;
-        }
-        else
+        if(laser_bias_current == nullptr)
         {
             laser_bias_current = std::make_shared<Components::Component::OpticalChannel::State::LaserBiasCurrent>();
-            laser_bias_current->parent = this;
-            children["laser-bias-current"] = laser_bias_current;
         }
-        return children.at("laser-bias-current");
+        return laser_bias_current;
     }
 
     if(child_yang_name == "output-power")
     {
-        if(output_power != nullptr)
-        {
-            children["output-power"] = output_power;
-        }
-        else
+        if(output_power == nullptr)
         {
             output_power = std::make_shared<Components::Component::OpticalChannel::State::OutputPower>();
-            output_power->parent = this;
-            children["output-power"] = output_power;
         }
-        return children.at("output-power");
+        return output_power;
     }
 
     if(child_yang_name == "polarization-dependent-loss")
     {
-        if(polarization_dependent_loss != nullptr)
-        {
-            children["polarization-dependent-loss"] = polarization_dependent_loss;
-        }
-        else
+        if(polarization_dependent_loss == nullptr)
         {
             polarization_dependent_loss = std::make_shared<Components::Component::OpticalChannel::State::PolarizationDependentLoss>();
-            polarization_dependent_loss->parent = this;
-            children["polarization-dependent-loss"] = polarization_dependent_loss;
         }
-        return children.at("polarization-dependent-loss");
+        return polarization_dependent_loss;
     }
 
     if(child_yang_name == "polarization-mode-dispersion")
     {
-        if(polarization_mode_dispersion != nullptr)
-        {
-            children["polarization-mode-dispersion"] = polarization_mode_dispersion;
-        }
-        else
+        if(polarization_mode_dispersion == nullptr)
         {
             polarization_mode_dispersion = std::make_shared<Components::Component::OpticalChannel::State::PolarizationModeDispersion>();
-            polarization_mode_dispersion->parent = this;
-            children["polarization-mode-dispersion"] = polarization_mode_dispersion;
         }
-        return children.at("polarization-mode-dispersion");
+        return polarization_mode_dispersion;
     }
 
     if(child_yang_name == "second-order-polarization-mode-dispersion")
     {
-        if(second_order_polarization_mode_dispersion != nullptr)
-        {
-            children["second-order-polarization-mode-dispersion"] = second_order_polarization_mode_dispersion;
-        }
-        else
+        if(second_order_polarization_mode_dispersion == nullptr)
         {
             second_order_polarization_mode_dispersion = std::make_shared<Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion>();
-            second_order_polarization_mode_dispersion->parent = this;
-            children["second-order-polarization-mode-dispersion"] = second_order_polarization_mode_dispersion;
         }
-        return children.at("second-order-polarization-mode-dispersion");
+        return second_order_polarization_mode_dispersion;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::get_children() const
 {
-    if(children.find("chromatic-dispersion") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(chromatic_dispersion != nullptr)
     {
-        if(chromatic_dispersion != nullptr)
-        {
-            children["chromatic-dispersion"] = chromatic_dispersion;
-        }
+        children["chromatic-dispersion"] = chromatic_dispersion;
     }
 
-    if(children.find("input-power") == children.end())
+    if(input_power != nullptr)
     {
-        if(input_power != nullptr)
-        {
-            children["input-power"] = input_power;
-        }
+        children["input-power"] = input_power;
     }
 
-    if(children.find("laser-bias-current") == children.end())
+    if(laser_bias_current != nullptr)
     {
-        if(laser_bias_current != nullptr)
-        {
-            children["laser-bias-current"] = laser_bias_current;
-        }
+        children["laser-bias-current"] = laser_bias_current;
     }
 
-    if(children.find("output-power") == children.end())
+    if(output_power != nullptr)
     {
-        if(output_power != nullptr)
-        {
-            children["output-power"] = output_power;
-        }
+        children["output-power"] = output_power;
     }
 
-    if(children.find("polarization-dependent-loss") == children.end())
+    if(polarization_dependent_loss != nullptr)
     {
-        if(polarization_dependent_loss != nullptr)
-        {
-            children["polarization-dependent-loss"] = polarization_dependent_loss;
-        }
+        children["polarization-dependent-loss"] = polarization_dependent_loss;
     }
 
-    if(children.find("polarization-mode-dispersion") == children.end())
+    if(polarization_mode_dispersion != nullptr)
     {
-        if(polarization_mode_dispersion != nullptr)
-        {
-            children["polarization-mode-dispersion"] = polarization_mode_dispersion;
-        }
+        children["polarization-mode-dispersion"] = polarization_mode_dispersion;
     }
 
-    if(children.find("second-order-polarization-mode-dispersion") == children.end())
+    if(second_order_polarization_mode_dispersion != nullptr)
     {
-        if(second_order_polarization_mode_dispersion != nullptr)
-        {
-            children["second-order-polarization-mode-dispersion"] = second_order_polarization_mode_dispersion;
-        }
+        children["second-order-polarization-mode-dispersion"] = second_order_polarization_mode_dispersion;
     }
 
     return children;
@@ -3327,7 +2837,7 @@ std::string Components::Component::OpticalChannel::State::OutputPower::get_segme
 
 }
 
-EntityPath Components::Component::OpticalChannel::State::OutputPower::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::State::OutputPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3354,20 +2864,12 @@ EntityPath Components::Component::OpticalChannel::State::OutputPower::get_entity
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::State::OutputPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::OutputPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3431,7 +2933,7 @@ std::string Components::Component::OpticalChannel::State::InputPower::get_segmen
 
 }
 
-EntityPath Components::Component::OpticalChannel::State::InputPower::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::State::InputPower::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3458,20 +2960,12 @@ EntityPath Components::Component::OpticalChannel::State::InputPower::get_entity_
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::State::InputPower::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::InputPower::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3535,7 +3029,7 @@ std::string Components::Component::OpticalChannel::State::LaserBiasCurrent::get_
 
 }
 
-EntityPath Components::Component::OpticalChannel::State::LaserBiasCurrent::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::State::LaserBiasCurrent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3562,20 +3056,12 @@ EntityPath Components::Component::OpticalChannel::State::LaserBiasCurrent::get_e
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::State::LaserBiasCurrent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::LaserBiasCurrent::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3639,7 +3125,7 @@ std::string Components::Component::OpticalChannel::State::ChromaticDispersion::g
 
 }
 
-EntityPath Components::Component::OpticalChannel::State::ChromaticDispersion::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::State::ChromaticDispersion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3666,20 +3152,12 @@ EntityPath Components::Component::OpticalChannel::State::ChromaticDispersion::ge
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::State::ChromaticDispersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::State::ChromaticDispersion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::ChromaticDispersion::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3743,7 +3221,7 @@ std::string Components::Component::OpticalChannel::State::PolarizationModeDisper
 
 }
 
-EntityPath Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3770,20 +3248,12 @@ EntityPath Components::Component::OpticalChannel::State::PolarizationModeDispers
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3847,7 +3317,7 @@ std::string Components::Component::OpticalChannel::State::SecondOrderPolarizatio
 
 }
 
-EntityPath Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3874,20 +3344,12 @@ EntityPath Components::Component::OpticalChannel::State::SecondOrderPolarization
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3951,7 +3413,7 @@ std::string Components::Component::OpticalChannel::State::PolarizationDependentL
 
 }
 
-EntityPath Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_entity_path(Entity* ancestor) const
+const EntityPath Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3978,20 +3440,12 @@ EntityPath Components::Component::OpticalChannel::State::PolarizationDependentLo
 
 std::shared_ptr<Entity> Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

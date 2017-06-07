@@ -15,10 +15,8 @@ Ipv4Network::Ipv4Network()
 	,nodes(std::make_shared<Ipv4Network::Nodes>())
 {
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "ipv4-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-io-oper";
 }
@@ -49,12 +47,12 @@ std::string Ipv4Network::get_segment_path() const
 
 }
 
-EntityPath Ipv4Network::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -69,64 +67,38 @@ EntityPath Ipv4Network::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<Ipv4Network::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<Ipv4Network::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::get_children() const
 {
-    if(children.find("interfaces") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("nodes") == children.end())
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -194,7 +166,7 @@ std::string Ipv4Network::Nodes::get_segment_path() const
 
 }
 
-EntityPath Ipv4Network::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -217,15 +189,6 @@ EntityPath Ipv4Network::Nodes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -233,28 +196,24 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -272,10 +231,8 @@ Ipv4Network::Nodes::Node::Node()
 	,statistics(std::make_shared<Ipv4Network::Nodes::Node::Statistics>())
 {
     interface_data->parent = this;
-    children["interface-data"] = interface_data;
 
     statistics->parent = this;
-    children["statistics"] = statistics;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -308,7 +265,7 @@ std::string Ipv4Network::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -332,64 +289,38 @@ EntityPath Ipv4Network::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-data")
     {
-        if(interface_data != nullptr)
-        {
-            children["interface-data"] = interface_data;
-        }
-        else
+        if(interface_data == nullptr)
         {
             interface_data = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData>();
-            interface_data->parent = this;
-            children["interface-data"] = interface_data;
         }
-        return children.at("interface-data");
+        return interface_data;
     }
 
     if(child_yang_name == "statistics")
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
-        else
+        if(statistics == nullptr)
         {
             statistics = std::make_shared<Ipv4Network::Nodes::Node::Statistics>();
-            statistics->parent = this;
-            children["statistics"] = statistics;
         }
-        return children.at("statistics");
+        return statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::get_children() const
 {
-    if(children.find("interface-data") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_data != nullptr)
     {
-        if(interface_data != nullptr)
-        {
-            children["interface-data"] = interface_data;
-        }
+        children["interface-data"] = interface_data;
     }
 
-    if(children.find("statistics") == children.end())
+    if(statistics != nullptr)
     {
-        if(statistics != nullptr)
-        {
-            children["statistics"] = statistics;
-        }
+        children["statistics"] = statistics;
     }
 
     return children;
@@ -409,10 +340,8 @@ Ipv4Network::Nodes::Node::InterfaceData::InterfaceData()
 	,vrfs(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs>())
 {
     summary->parent = this;
-    children["summary"] = summary;
 
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "interface-data"; yang_parent_name = "node";
 }
@@ -443,7 +372,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::get_segment_path() const
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -466,64 +395,38 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::get_children() const
 {
-    if(children.find("summary") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
-    if(children.find("vrfs") == children.end())
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -571,7 +474,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_segment_path() co
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -594,15 +497,6 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_entity_path(Entity
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -610,28 +504,24 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -649,10 +539,8 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Vrf()
 	,details(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details>())
 {
     briefs->parent = this;
-    children["briefs"] = briefs;
 
     details->parent = this;
-    children["details"] = details;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -685,7 +573,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_segment_path
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -709,64 +597,38 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_entity_path(E
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "briefs")
     {
-        if(briefs != nullptr)
-        {
-            children["briefs"] = briefs;
-        }
-        else
+        if(briefs == nullptr)
         {
             briefs = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs>();
-            briefs->parent = this;
-            children["briefs"] = briefs;
         }
-        return children.at("briefs");
+        return briefs;
     }
 
     if(child_yang_name == "details")
     {
-        if(details != nullptr)
-        {
-            children["details"] = details;
-        }
-        else
+        if(details == nullptr)
         {
             details = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details>();
-            details->parent = this;
-            children["details"] = details;
         }
-        return children.at("details");
+        return details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_children() const
 {
-    if(children.find("briefs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(briefs != nullptr)
     {
-        if(briefs != nullptr)
-        {
-            children["briefs"] = briefs;
-        }
+        children["briefs"] = briefs;
     }
 
-    if(children.find("details") == children.end())
+    if(details != nullptr)
     {
-        if(details != nullptr)
-        {
-            children["details"] = details;
-        }
+        children["details"] = details;
     }
 
     return children;
@@ -818,7 +680,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_segm
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -841,15 +703,6 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_entit
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
         for(auto const & c : brief)
@@ -857,28 +710,24 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief>();
         c->parent = this;
-        brief.push_back(std::move(c));
-        children[segment_path] = brief.back();
-        return children.at(segment_path);
+        brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -928,7 +777,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::g
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -955,20 +804,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::ge
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1030,7 +871,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_seg
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1053,15 +894,6 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_enti
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
         for(auto const & c : detail)
@@ -1069,28 +901,24 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail>();
         c->parent = this;
-        detail.push_back(std::move(c));
-        children[segment_path] = detail.back();
-        return children.at(segment_path);
+        detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1132,34 +960,24 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
 	,rpf(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf>())
 {
     acl->parent = this;
-    children["acl"] = acl;
 
     bgp_pa->parent = this;
-    children["bgp-pa"] = bgp_pa;
 
     caps_utime->parent = this;
-    children["caps-utime"] = caps_utime;
 
     fwd_dis_utime->parent = this;
-    children["fwd-dis-utime"] = fwd_dis_utime;
 
     fwd_en_utime->parent = this;
-    children["fwd-en-utime"] = fwd_en_utime;
 
     helper_address->parent = this;
-    children["helper-address"] = helper_address;
 
     idb_utime->parent = this;
-    children["idb-utime"] = idb_utime;
 
     multi_acl->parent = this;
-    children["multi-acl"] = multi_acl;
 
     pub_utime->parent = this;
-    children["pub-utime"] = pub_utime;
 
     rpf->parent = this;
-    children["rpf"] = rpf;
 
     yang_name = "detail"; yang_parent_name = "details";
 }
@@ -1260,7 +1078,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1300,133 +1118,76 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "acl")
     {
-        if(acl != nullptr)
-        {
-            children["acl"] = acl;
-        }
-        else
+        if(acl == nullptr)
         {
             acl = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl>();
-            acl->parent = this;
-            children["acl"] = acl;
         }
-        return children.at("acl");
+        return acl;
     }
 
     if(child_yang_name == "bgp-pa")
     {
-        if(bgp_pa != nullptr)
-        {
-            children["bgp-pa"] = bgp_pa;
-        }
-        else
+        if(bgp_pa == nullptr)
         {
             bgp_pa = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa>();
-            bgp_pa->parent = this;
-            children["bgp-pa"] = bgp_pa;
         }
-        return children.at("bgp-pa");
+        return bgp_pa;
     }
 
     if(child_yang_name == "caps-utime")
     {
-        if(caps_utime != nullptr)
-        {
-            children["caps-utime"] = caps_utime;
-        }
-        else
+        if(caps_utime == nullptr)
         {
             caps_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime>();
-            caps_utime->parent = this;
-            children["caps-utime"] = caps_utime;
         }
-        return children.at("caps-utime");
+        return caps_utime;
     }
 
     if(child_yang_name == "fwd-dis-utime")
     {
-        if(fwd_dis_utime != nullptr)
-        {
-            children["fwd-dis-utime"] = fwd_dis_utime;
-        }
-        else
+        if(fwd_dis_utime == nullptr)
         {
             fwd_dis_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime>();
-            fwd_dis_utime->parent = this;
-            children["fwd-dis-utime"] = fwd_dis_utime;
         }
-        return children.at("fwd-dis-utime");
+        return fwd_dis_utime;
     }
 
     if(child_yang_name == "fwd-en-utime")
     {
-        if(fwd_en_utime != nullptr)
-        {
-            children["fwd-en-utime"] = fwd_en_utime;
-        }
-        else
+        if(fwd_en_utime == nullptr)
         {
             fwd_en_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime>();
-            fwd_en_utime->parent = this;
-            children["fwd-en-utime"] = fwd_en_utime;
         }
-        return children.at("fwd-en-utime");
+        return fwd_en_utime;
     }
 
     if(child_yang_name == "helper-address")
     {
-        if(helper_address != nullptr)
-        {
-            children["helper-address"] = helper_address;
-        }
-        else
+        if(helper_address == nullptr)
         {
             helper_address = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress>();
-            helper_address->parent = this;
-            children["helper-address"] = helper_address;
         }
-        return children.at("helper-address");
+        return helper_address;
     }
 
     if(child_yang_name == "idb-utime")
     {
-        if(idb_utime != nullptr)
-        {
-            children["idb-utime"] = idb_utime;
-        }
-        else
+        if(idb_utime == nullptr)
         {
             idb_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime>();
-            idb_utime->parent = this;
-            children["idb-utime"] = idb_utime;
         }
-        return children.at("idb-utime");
+        return idb_utime;
     }
 
     if(child_yang_name == "multi-acl")
     {
-        if(multi_acl != nullptr)
-        {
-            children["multi-acl"] = multi_acl;
-        }
-        else
+        if(multi_acl == nullptr)
         {
             multi_acl = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl>();
-            multi_acl->parent = this;
-            children["multi-acl"] = multi_acl;
         }
-        return children.at("multi-acl");
+        return multi_acl;
     }
 
     if(child_yang_name == "multicast-group")
@@ -1436,45 +1197,31 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup>();
         c->parent = this;
-        multicast_group.push_back(std::move(c));
-        children[segment_path] = multicast_group.back();
-        return children.at(segment_path);
+        multicast_group.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pub-utime")
     {
-        if(pub_utime != nullptr)
-        {
-            children["pub-utime"] = pub_utime;
-        }
-        else
+        if(pub_utime == nullptr)
         {
             pub_utime = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime>();
-            pub_utime->parent = this;
-            children["pub-utime"] = pub_utime;
         }
-        return children.at("pub-utime");
+        return pub_utime;
     }
 
     if(child_yang_name == "rpf")
     {
-        if(rpf != nullptr)
-        {
-            children["rpf"] = rpf;
-        }
-        else
+        if(rpf == nullptr)
         {
             rpf = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf>();
-            rpf->parent = this;
-            children["rpf"] = rpf;
         }
-        return children.at("rpf");
+        return rpf;
     }
 
     if(child_yang_name == "secondary-address")
@@ -1484,116 +1231,79 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress>();
         c->parent = this;
-        secondary_address.push_back(std::move(c));
-        children[segment_path] = secondary_address.back();
-        return children.at(segment_path);
+        secondary_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_children() const
 {
-    if(children.find("acl") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(acl != nullptr)
     {
-        if(acl != nullptr)
-        {
-            children["acl"] = acl;
-        }
+        children["acl"] = acl;
     }
 
-    if(children.find("bgp-pa") == children.end())
+    if(bgp_pa != nullptr)
     {
-        if(bgp_pa != nullptr)
-        {
-            children["bgp-pa"] = bgp_pa;
-        }
+        children["bgp-pa"] = bgp_pa;
     }
 
-    if(children.find("caps-utime") == children.end())
+    if(caps_utime != nullptr)
     {
-        if(caps_utime != nullptr)
-        {
-            children["caps-utime"] = caps_utime;
-        }
+        children["caps-utime"] = caps_utime;
     }
 
-    if(children.find("fwd-dis-utime") == children.end())
+    if(fwd_dis_utime != nullptr)
     {
-        if(fwd_dis_utime != nullptr)
-        {
-            children["fwd-dis-utime"] = fwd_dis_utime;
-        }
+        children["fwd-dis-utime"] = fwd_dis_utime;
     }
 
-    if(children.find("fwd-en-utime") == children.end())
+    if(fwd_en_utime != nullptr)
     {
-        if(fwd_en_utime != nullptr)
-        {
-            children["fwd-en-utime"] = fwd_en_utime;
-        }
+        children["fwd-en-utime"] = fwd_en_utime;
     }
 
-    if(children.find("helper-address") == children.end())
+    if(helper_address != nullptr)
     {
-        if(helper_address != nullptr)
-        {
-            children["helper-address"] = helper_address;
-        }
+        children["helper-address"] = helper_address;
     }
 
-    if(children.find("idb-utime") == children.end())
+    if(idb_utime != nullptr)
     {
-        if(idb_utime != nullptr)
-        {
-            children["idb-utime"] = idb_utime;
-        }
+        children["idb-utime"] = idb_utime;
     }
 
-    if(children.find("multi-acl") == children.end())
+    if(multi_acl != nullptr)
     {
-        if(multi_acl != nullptr)
-        {
-            children["multi-acl"] = multi_acl;
-        }
+        children["multi-acl"] = multi_acl;
     }
 
     for (auto const & c : multicast_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("pub-utime") == children.end())
+    if(pub_utime != nullptr)
     {
-        if(pub_utime != nullptr)
-        {
-            children["pub-utime"] = pub_utime;
-        }
+        children["pub-utime"] = pub_utime;
     }
 
-    if(children.find("rpf") == children.end())
+    if(rpf != nullptr)
     {
-        if(rpf != nullptr)
-        {
-            children["rpf"] = rpf;
-        }
+        children["rpf"] = rpf;
     }
 
     for (auto const & c : secondary_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1711,7 +1421,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1738,20 +1448,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1840,7 +1542,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1869,20 +1571,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1943,7 +1637,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1968,20 +1662,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2033,7 +1719,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2060,20 +1746,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2103,10 +1781,8 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::BgpP
 	,output(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output>())
 {
     input->parent = this;
-    children["input"] = input;
 
     output->parent = this;
-    children["output"] = output;
 
     yang_name = "bgp-pa"; yang_parent_name = "detail";
 }
@@ -2137,7 +1813,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2160,64 +1836,38 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input")
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
+        if(input == nullptr)
         {
             input = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input>();
-            input->parent = this;
-            children["input"] = input;
         }
-        return children.at("input");
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::get_children() const
 {
-    if(children.find("input") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
+        children["input"] = input;
     }
 
-    if(children.find("output") == children.end())
+    if(output != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["output"] = output;
     }
 
     return children;
@@ -2264,7 +1914,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2290,20 +1940,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2360,7 +2002,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2386,20 +2028,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2447,7 +2081,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2470,20 +2104,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2519,7 +2145,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2542,20 +2168,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2591,7 +2209,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2614,20 +2232,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2663,7 +2273,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2686,20 +2296,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2735,7 +2337,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2758,20 +2360,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2810,7 +2404,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2834,20 +2428,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2896,7 +2482,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2922,20 +2508,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2965,16 +2543,12 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::Summary()
 	,if_up_up(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp>())
 {
     if_down_down->parent = this;
-    children["if-down-down"] = if_down_down;
 
     if_shutdown_down->parent = this;
-    children["if-shutdown-down"] = if_shutdown_down;
 
     if_up_down->parent = this;
-    children["if-up-down"] = if_up_down;
 
     if_up_up->parent = this;
-    children["if-up-up"] = if_up_up;
 
     yang_name = "summary"; yang_parent_name = "interface-data";
 }
@@ -3011,7 +2585,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Summary::get_segment_path()
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3035,110 +2609,66 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::get_entity_path(Ent
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "if-down-down")
     {
-        if(if_down_down != nullptr)
-        {
-            children["if-down-down"] = if_down_down;
-        }
-        else
+        if(if_down_down == nullptr)
         {
             if_down_down = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown>();
-            if_down_down->parent = this;
-            children["if-down-down"] = if_down_down;
         }
-        return children.at("if-down-down");
+        return if_down_down;
     }
 
     if(child_yang_name == "if-shutdown-down")
     {
-        if(if_shutdown_down != nullptr)
-        {
-            children["if-shutdown-down"] = if_shutdown_down;
-        }
-        else
+        if(if_shutdown_down == nullptr)
         {
             if_shutdown_down = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown>();
-            if_shutdown_down->parent = this;
-            children["if-shutdown-down"] = if_shutdown_down;
         }
-        return children.at("if-shutdown-down");
+        return if_shutdown_down;
     }
 
     if(child_yang_name == "if-up-down")
     {
-        if(if_up_down != nullptr)
-        {
-            children["if-up-down"] = if_up_down;
-        }
-        else
+        if(if_up_down == nullptr)
         {
             if_up_down = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown>();
-            if_up_down->parent = this;
-            children["if-up-down"] = if_up_down;
         }
-        return children.at("if-up-down");
+        return if_up_down;
     }
 
     if(child_yang_name == "if-up-up")
     {
-        if(if_up_up != nullptr)
-        {
-            children["if-up-up"] = if_up_up;
-        }
-        else
+        if(if_up_up == nullptr)
         {
             if_up_up = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp>();
-            if_up_up->parent = this;
-            children["if-up-up"] = if_up_up;
         }
-        return children.at("if-up-up");
+        return if_up_up;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Summary::get_children() const
 {
-    if(children.find("if-down-down") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(if_down_down != nullptr)
     {
-        if(if_down_down != nullptr)
-        {
-            children["if-down-down"] = if_down_down;
-        }
+        children["if-down-down"] = if_down_down;
     }
 
-    if(children.find("if-shutdown-down") == children.end())
+    if(if_shutdown_down != nullptr)
     {
-        if(if_shutdown_down != nullptr)
-        {
-            children["if-shutdown-down"] = if_shutdown_down;
-        }
+        children["if-shutdown-down"] = if_shutdown_down;
     }
 
-    if(children.find("if-up-down") == children.end())
+    if(if_up_down != nullptr)
     {
-        if(if_up_down != nullptr)
-        {
-            children["if-up-down"] = if_up_down;
-        }
+        children["if-up-down"] = if_up_down;
     }
 
-    if(children.find("if-up-up") == children.end())
+    if(if_up_up != nullptr)
     {
-        if(if_up_up != nullptr)
-        {
-            children["if-up-up"] = if_up_up;
-        }
+        children["if-up-up"] = if_up_up;
     }
 
     return children;
@@ -3189,7 +2719,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_segmen
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3215,20 +2745,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_entity_
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3285,7 +2807,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_segm
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3311,20 +2833,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_entit
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3381,7 +2895,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_se
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3407,20 +2921,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_ent
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3477,7 +2983,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::ge
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3503,20 +3009,12 @@ EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3541,7 +3039,6 @@ Ipv4Network::Nodes::Node::Statistics::Statistics()
     traffic(std::make_shared<Ipv4Network::Nodes::Node::Statistics::Traffic>())
 {
     traffic->parent = this;
-    children["traffic"] = traffic;
 
     yang_name = "statistics"; yang_parent_name = "node";
 }
@@ -3570,7 +3067,7 @@ std::string Ipv4Network::Nodes::Node::Statistics::get_segment_path() const
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3593,41 +3090,24 @@ EntityPath Ipv4Network::Nodes::Node::Statistics::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "traffic")
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
-        else
+        if(traffic == nullptr)
         {
             traffic = std::make_shared<Ipv4Network::Nodes::Node::Statistics::Traffic>();
-            traffic->parent = this;
-            children["traffic"] = traffic;
         }
-        return children.at("traffic");
+        return traffic;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::Statistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Statistics::get_children() const
 {
-    if(children.find("traffic") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(traffic != nullptr)
     {
-        if(traffic != nullptr)
-        {
-            children["traffic"] = traffic;
-        }
+        children["traffic"] = traffic;
     }
 
     return children;
@@ -3643,10 +3123,8 @@ Ipv4Network::Nodes::Node::Statistics::Traffic::Traffic()
 	,ipv4_stats(std::make_shared<Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats>())
 {
     icmp_stats->parent = this;
-    children["icmp-stats"] = icmp_stats;
 
     ipv4_stats->parent = this;
-    children["ipv4-stats"] = ipv4_stats;
 
     yang_name = "traffic"; yang_parent_name = "statistics";
 }
@@ -3677,7 +3155,7 @@ std::string Ipv4Network::Nodes::Node::Statistics::Traffic::get_segment_path() co
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3700,64 +3178,38 @@ EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::get_entity_path(Entity
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::Statistics::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "icmp-stats")
     {
-        if(icmp_stats != nullptr)
-        {
-            children["icmp-stats"] = icmp_stats;
-        }
-        else
+        if(icmp_stats == nullptr)
         {
             icmp_stats = std::make_shared<Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats>();
-            icmp_stats->parent = this;
-            children["icmp-stats"] = icmp_stats;
         }
-        return children.at("icmp-stats");
+        return icmp_stats;
     }
 
     if(child_yang_name == "ipv4-stats")
     {
-        if(ipv4_stats != nullptr)
-        {
-            children["ipv4-stats"] = ipv4_stats;
-        }
-        else
+        if(ipv4_stats == nullptr)
         {
             ipv4_stats = std::make_shared<Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats>();
-            ipv4_stats->parent = this;
-            children["ipv4-stats"] = ipv4_stats;
         }
-        return children.at("ipv4-stats");
+        return ipv4_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::Statistics::Traffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Statistics::Traffic::get_children() const
 {
-    if(children.find("icmp-stats") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(icmp_stats != nullptr)
     {
-        if(icmp_stats != nullptr)
-        {
-            children["icmp-stats"] = icmp_stats;
-        }
+        children["icmp-stats"] = icmp_stats;
     }
 
-    if(children.find("ipv4-stats") == children.end())
+    if(ipv4_stats != nullptr)
     {
-        if(ipv4_stats != nullptr)
-        {
-            children["ipv4-stats"] = ipv4_stats;
-        }
+        children["ipv4-stats"] = ipv4_stats;
     }
 
     return children;
@@ -3930,7 +3382,7 @@ std::string Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::get_segmen
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3998,20 +3450,12 @@ EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::get_entity_
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4338,7 +3782,7 @@ std::string Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::get_segmen
 
 }
 
-EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4398,20 +3842,12 @@ EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::get_entity_
 
 std::shared_ptr<Entity> Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4605,7 +4041,7 @@ std::string Ipv4Network::Interfaces::get_segment_path() const
 
 }
 
-EntityPath Ipv4Network::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4628,15 +4064,6 @@ EntityPath Ipv4Network::Interfaces::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -4644,28 +4071,24 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::get_child_by_name(const std::st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4682,7 +4105,6 @@ Ipv4Network::Interfaces::Interface::Interface()
     vrfs(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs>())
 {
     vrfs->parent = this;
-    children["vrfs"] = vrfs;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -4713,7 +4135,7 @@ std::string Ipv4Network::Interfaces::Interface::get_segment_path() const
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4737,41 +4159,24 @@ EntityPath Ipv4Network::Interfaces::Interface::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrfs")
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
-        else
+        if(vrfs == nullptr)
         {
             vrfs = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs>();
-            vrfs->parent = this;
-            children["vrfs"] = vrfs;
         }
-        return children.at("vrfs");
+        return vrfs;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::get_children() const
 {
-    if(children.find("vrfs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vrfs != nullptr)
     {
-        if(vrfs != nullptr)
-        {
-            children["vrfs"] = vrfs;
-        }
+        children["vrfs"] = vrfs;
     }
 
     return children;
@@ -4823,7 +4228,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::get_segment_path() const
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4846,15 +4251,6 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "vrf")
     {
         for(auto const & c : vrf)
@@ -4862,28 +4258,24 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(std::move(c));
-        children[segment_path] = vrf.back();
-        return children.at(segment_path);
+        vrf.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : vrf)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4901,10 +4293,8 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Vrf()
 	,detail(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail>())
 {
     brief->parent = this;
-    children["brief"] = brief;
 
     detail->parent = this;
-    children["detail"] = detail;
 
     yang_name = "vrf"; yang_parent_name = "vrfs";
 }
@@ -4937,7 +4327,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::get_segment_path() co
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4961,64 +4351,38 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::get_entity_path(Entity
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
-        else
+        if(brief == nullptr)
         {
             brief = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief>();
-            brief->parent = this;
-            children["brief"] = brief;
         }
-        return children.at("brief");
+        return brief;
     }
 
     if(child_yang_name == "detail")
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
-        else
+        if(detail == nullptr)
         {
             detail = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail>();
-            detail->parent = this;
-            children["detail"] = detail;
         }
-        return children.at("detail");
+        return detail;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::get_children() const
 {
-    if(children.find("brief") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(brief != nullptr)
     {
-        if(brief != nullptr)
-        {
-            children["brief"] = brief;
-        }
+        children["brief"] = brief;
     }
 
-    if(children.find("detail") == children.end())
+    if(detail != nullptr)
     {
-        if(detail != nullptr)
-        {
-            children["detail"] = detail;
-        }
+        children["detail"] = detail;
     }
 
     return children;
@@ -5063,34 +4427,24 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Detail()
 	,rpf(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf>())
 {
     acl->parent = this;
-    children["acl"] = acl;
 
     bgp_pa->parent = this;
-    children["bgp-pa"] = bgp_pa;
 
     caps_utime->parent = this;
-    children["caps-utime"] = caps_utime;
 
     fwd_dis_utime->parent = this;
-    children["fwd-dis-utime"] = fwd_dis_utime;
 
     fwd_en_utime->parent = this;
-    children["fwd-en-utime"] = fwd_en_utime;
 
     helper_address->parent = this;
-    children["helper-address"] = helper_address;
 
     idb_utime->parent = this;
-    children["idb-utime"] = idb_utime;
 
     multi_acl->parent = this;
-    children["multi-acl"] = multi_acl;
 
     pub_utime->parent = this;
-    children["pub-utime"] = pub_utime;
 
     rpf->parent = this;
-    children["rpf"] = rpf;
 
     yang_name = "detail"; yang_parent_name = "vrf";
 }
@@ -5189,7 +4543,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::get_segment_p
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5228,133 +4582,76 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::get_entity_pat
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "acl")
     {
-        if(acl != nullptr)
-        {
-            children["acl"] = acl;
-        }
-        else
+        if(acl == nullptr)
         {
             acl = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl>();
-            acl->parent = this;
-            children["acl"] = acl;
         }
-        return children.at("acl");
+        return acl;
     }
 
     if(child_yang_name == "bgp-pa")
     {
-        if(bgp_pa != nullptr)
-        {
-            children["bgp-pa"] = bgp_pa;
-        }
-        else
+        if(bgp_pa == nullptr)
         {
             bgp_pa = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa>();
-            bgp_pa->parent = this;
-            children["bgp-pa"] = bgp_pa;
         }
-        return children.at("bgp-pa");
+        return bgp_pa;
     }
 
     if(child_yang_name == "caps-utime")
     {
-        if(caps_utime != nullptr)
-        {
-            children["caps-utime"] = caps_utime;
-        }
-        else
+        if(caps_utime == nullptr)
         {
             caps_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime>();
-            caps_utime->parent = this;
-            children["caps-utime"] = caps_utime;
         }
-        return children.at("caps-utime");
+        return caps_utime;
     }
 
     if(child_yang_name == "fwd-dis-utime")
     {
-        if(fwd_dis_utime != nullptr)
-        {
-            children["fwd-dis-utime"] = fwd_dis_utime;
-        }
-        else
+        if(fwd_dis_utime == nullptr)
         {
             fwd_dis_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime>();
-            fwd_dis_utime->parent = this;
-            children["fwd-dis-utime"] = fwd_dis_utime;
         }
-        return children.at("fwd-dis-utime");
+        return fwd_dis_utime;
     }
 
     if(child_yang_name == "fwd-en-utime")
     {
-        if(fwd_en_utime != nullptr)
-        {
-            children["fwd-en-utime"] = fwd_en_utime;
-        }
-        else
+        if(fwd_en_utime == nullptr)
         {
             fwd_en_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime>();
-            fwd_en_utime->parent = this;
-            children["fwd-en-utime"] = fwd_en_utime;
         }
-        return children.at("fwd-en-utime");
+        return fwd_en_utime;
     }
 
     if(child_yang_name == "helper-address")
     {
-        if(helper_address != nullptr)
-        {
-            children["helper-address"] = helper_address;
-        }
-        else
+        if(helper_address == nullptr)
         {
             helper_address = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress>();
-            helper_address->parent = this;
-            children["helper-address"] = helper_address;
         }
-        return children.at("helper-address");
+        return helper_address;
     }
 
     if(child_yang_name == "idb-utime")
     {
-        if(idb_utime != nullptr)
-        {
-            children["idb-utime"] = idb_utime;
-        }
-        else
+        if(idb_utime == nullptr)
         {
             idb_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime>();
-            idb_utime->parent = this;
-            children["idb-utime"] = idb_utime;
         }
-        return children.at("idb-utime");
+        return idb_utime;
     }
 
     if(child_yang_name == "multi-acl")
     {
-        if(multi_acl != nullptr)
-        {
-            children["multi-acl"] = multi_acl;
-        }
-        else
+        if(multi_acl == nullptr)
         {
             multi_acl = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl>();
-            multi_acl->parent = this;
-            children["multi-acl"] = multi_acl;
         }
-        return children.at("multi-acl");
+        return multi_acl;
     }
 
     if(child_yang_name == "multicast-group")
@@ -5364,45 +4661,31 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup>();
         c->parent = this;
-        multicast_group.push_back(std::move(c));
-        children[segment_path] = multicast_group.back();
-        return children.at(segment_path);
+        multicast_group.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "pub-utime")
     {
-        if(pub_utime != nullptr)
-        {
-            children["pub-utime"] = pub_utime;
-        }
-        else
+        if(pub_utime == nullptr)
         {
             pub_utime = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime>();
-            pub_utime->parent = this;
-            children["pub-utime"] = pub_utime;
         }
-        return children.at("pub-utime");
+        return pub_utime;
     }
 
     if(child_yang_name == "rpf")
     {
-        if(rpf != nullptr)
-        {
-            children["rpf"] = rpf;
-        }
-        else
+        if(rpf == nullptr)
         {
             rpf = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf>();
-            rpf->parent = this;
-            children["rpf"] = rpf;
         }
-        return children.at("rpf");
+        return rpf;
     }
 
     if(child_yang_name == "secondary-address")
@@ -5412,116 +4695,79 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::g
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress>();
         c->parent = this;
-        secondary_address.push_back(std::move(c));
-        children[segment_path] = secondary_address.back();
-        return children.at(segment_path);
+        secondary_address.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::get_children() const
 {
-    if(children.find("acl") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(acl != nullptr)
     {
-        if(acl != nullptr)
-        {
-            children["acl"] = acl;
-        }
+        children["acl"] = acl;
     }
 
-    if(children.find("bgp-pa") == children.end())
+    if(bgp_pa != nullptr)
     {
-        if(bgp_pa != nullptr)
-        {
-            children["bgp-pa"] = bgp_pa;
-        }
+        children["bgp-pa"] = bgp_pa;
     }
 
-    if(children.find("caps-utime") == children.end())
+    if(caps_utime != nullptr)
     {
-        if(caps_utime != nullptr)
-        {
-            children["caps-utime"] = caps_utime;
-        }
+        children["caps-utime"] = caps_utime;
     }
 
-    if(children.find("fwd-dis-utime") == children.end())
+    if(fwd_dis_utime != nullptr)
     {
-        if(fwd_dis_utime != nullptr)
-        {
-            children["fwd-dis-utime"] = fwd_dis_utime;
-        }
+        children["fwd-dis-utime"] = fwd_dis_utime;
     }
 
-    if(children.find("fwd-en-utime") == children.end())
+    if(fwd_en_utime != nullptr)
     {
-        if(fwd_en_utime != nullptr)
-        {
-            children["fwd-en-utime"] = fwd_en_utime;
-        }
+        children["fwd-en-utime"] = fwd_en_utime;
     }
 
-    if(children.find("helper-address") == children.end())
+    if(helper_address != nullptr)
     {
-        if(helper_address != nullptr)
-        {
-            children["helper-address"] = helper_address;
-        }
+        children["helper-address"] = helper_address;
     }
 
-    if(children.find("idb-utime") == children.end())
+    if(idb_utime != nullptr)
     {
-        if(idb_utime != nullptr)
-        {
-            children["idb-utime"] = idb_utime;
-        }
+        children["idb-utime"] = idb_utime;
     }
 
-    if(children.find("multi-acl") == children.end())
+    if(multi_acl != nullptr)
     {
-        if(multi_acl != nullptr)
-        {
-            children["multi-acl"] = multi_acl;
-        }
+        children["multi-acl"] = multi_acl;
     }
 
     for (auto const & c : multicast_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("pub-utime") == children.end())
+    if(pub_utime != nullptr)
     {
-        if(pub_utime != nullptr)
-        {
-            children["pub-utime"] = pub_utime;
-        }
+        children["pub-utime"] = pub_utime;
     }
 
-    if(children.find("rpf") == children.end())
+    if(rpf != nullptr)
     {
-        if(rpf != nullptr)
-        {
-            children["rpf"] = rpf;
-        }
+        children["rpf"] = rpf;
     }
 
     for (auto const & c : secondary_address)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5635,7 +4881,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::get_segm
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5662,20 +4908,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::get_entit
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5764,7 +5002,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5793,20 +5031,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get_
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5867,7 +5097,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5892,20 +5122,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress:
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5957,7 +5179,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::get_segm
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5984,20 +5206,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::get_entit
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6027,10 +5241,8 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::BgpPa()
 	,output(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output>())
 {
     input->parent = this;
-    children["input"] = input;
 
     output->parent = this;
-    children["output"] = output;
 
     yang_name = "bgp-pa"; yang_parent_name = "detail";
 }
@@ -6061,7 +5273,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::get_se
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6084,64 +5296,38 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::get_ent
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "input")
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
-        else
+        if(input == nullptr)
         {
             input = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input>();
-            input->parent = this;
-            children["input"] = input;
         }
-        return children.at("input");
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
-        else
+        if(output == nullptr)
         {
             output = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output>();
-            output->parent = this;
-            children["output"] = output;
         }
-        return children.at("output");
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::get_children() const
 {
-    if(children.find("input") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(input != nullptr)
     {
-        if(input != nullptr)
-        {
-            children["input"] = input;
-        }
+        children["input"] = input;
     }
 
-    if(children.find("output") == children.end())
+    if(output != nullptr)
     {
-        if(output != nullptr)
-        {
-            children["output"] = output;
-        }
+        children["output"] = output;
     }
 
     return children;
@@ -6188,7 +5374,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input:
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6214,20 +5400,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6284,7 +5462,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6310,20 +5488,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output:
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6371,7 +5541,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6394,20 +5564,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6443,7 +5605,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6466,20 +5628,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6515,7 +5669,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::ge
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6538,20 +5692,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6587,7 +5733,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::g
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6610,20 +5756,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::ge
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6659,7 +5797,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6682,20 +5820,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::g
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6734,7 +5864,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGrou
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6758,20 +5888,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6820,7 +5942,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddr
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6846,20 +5968,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddre
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6916,7 +6030,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::get_segment_pa
 
 }
 
-EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6942,20 +6056,12 @@ EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::get_entity_path
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

@@ -18,17 +18,15 @@ class Sam : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class SystemInformation; //type: Sam::SystemInformation
         class LogContents; //type: Sam::LogContents
@@ -43,8 +41,7 @@ class Sam : public Entity
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents> log_contents;
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Packages> packages;
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::SystemInformation> system_information;
-
-
+        
 }; // Sam
 
 
@@ -56,18 +53,15 @@ class Sam::SystemInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_running; //type: boolean
         YLeaf prompt_interval; //type: uint32
         YLeaf is_default_response; //type: boolean
-
-
 
 }; // Sam::SystemInformation
 
@@ -80,19 +74,16 @@ class Sam::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class LogContent; //type: Sam::LogContents::LogContent
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents::LogContent> > log_content;
-
-
+        
 }; // Sam::LogContents
 
 
@@ -104,22 +95,19 @@ class Sam::LogContents::LogContent : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf number_of_lines; //type: int32
         YLeaf total_entries; //type: uint32
         YLeaf entries_shown; //type: uint32
-
         class Logs; //type: Sam::LogContents::LogContent::Logs
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents::LogContent::Logs> > logs;
-
-
+        
 }; // Sam::LogContents::LogContent
 
 
@@ -131,12 +119,11 @@ class Sam::LogContents::LogContent::Logs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf time; //type: string
         YLeaf code; //type: LogCodeEnum
@@ -150,8 +137,6 @@ class Sam::LogContents::LogContent::Logs : public Entity
         YLeaf source_device; //type: string
         YLeaf table; //type: LogTablesEnum
 
-
-
 }; // Sam::LogContents::LogContent::Logs
 
 
@@ -163,19 +148,16 @@ class Sam::Devices : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Device; //type: Sam::Devices::Device
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device> > device;
-
-
+        
 }; // Sam::Devices
 
 
@@ -187,20 +169,17 @@ class Sam::Devices::Device : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf device_name; //type: string
-
         class Certificate; //type: Sam::Devices::Device::Certificate
 
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate> certificate;
-
-
+        
 }; // Sam::Devices::Device
 
 
@@ -212,21 +191,18 @@ class Sam::Devices::Device::Certificate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Brief; //type: Sam::Devices::Device::Certificate::Brief
         class CertificateIndexes; //type: Sam::Devices::Device::Certificate::CertificateIndexes
 
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::Brief> brief;
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes> certificate_indexes;
-
-
+        
 }; // Sam::Devices::Device::Certificate
 
 
@@ -238,21 +214,18 @@ class Sam::Devices::Device::Certificate::Brief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
         YLeaf certificate_index; //type: uint16
-
         class CertificateFlags; //type: Sam::Devices::Device::Certificate::Brief::CertificateFlags
 
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::Brief::CertificateFlags> certificate_flags;
-
-
+        
 }; // Sam::Devices::Device::Certificate::Brief
 
 
@@ -264,19 +237,16 @@ class Sam::Devices::Device::Certificate::Brief::CertificateFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_trusted; //type: boolean
         YLeaf is_revoked; //type: boolean
         YLeaf is_expired; //type: boolean
         YLeaf is_validated; //type: boolean
-
-
 
 }; // Sam::Devices::Device::Certificate::Brief::CertificateFlags
 
@@ -289,19 +259,16 @@ class Sam::Devices::Device::Certificate::CertificateIndexes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CertificateIndex; //type: Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex> > certificate_index;
-
-
+        
 }; // Sam::Devices::Device::Certificate::CertificateIndexes
 
 
@@ -313,20 +280,17 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: int32
-
         class Detail; //type: Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail
 
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail> detail;
-
-
+        
 }; // Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex
 
 
@@ -338,21 +302,18 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::D
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf location; //type: string
         YLeaf certificate_index; //type: uint16
-
         class CertificateFlags; //type: Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags
 
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags> certificate_flags;
-
-
+        
 }; // Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail
 
 
@@ -364,19 +325,16 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::D
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_trusted; //type: boolean
         YLeaf is_revoked; //type: boolean
         YLeaf is_expired; //type: boolean
         YLeaf is_validated; //type: boolean
-
-
 
 }; // Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags
 
@@ -389,19 +347,16 @@ class Sam::Packages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Package; //type: Sam::Packages::Package
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Packages::Package> > package;
-
-
+        
 }; // Sam::Packages
 
 
@@ -413,22 +368,19 @@ class Sam::Packages::Package : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf package_name; //type: string
         YLeaf location; //type: string
         YLeaf certificate_index; //type: uint16
-
         class CertificateFlags; //type: Sam::Packages::Package::CertificateFlags
 
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Packages::Package::CertificateFlags> certificate_flags;
-
-
+        
 }; // Sam::Packages::Package
 
 
@@ -440,19 +392,16 @@ class Sam::Packages::Package::CertificateFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf is_trusted; //type: boolean
         YLeaf is_revoked; //type: boolean
         YLeaf is_expired; //type: boolean
         YLeaf is_validated; //type: boolean
-
-
 
 }; // Sam::Packages::Package::CertificateFlags
 
@@ -465,19 +414,16 @@ class Sam::CertificateRevocations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class CertificateRevocation; //type: Sam::CertificateRevocations::CertificateRevocation
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation> > certificate_revocation;
-
-
+        
 }; // Sam::CertificateRevocations
 
 
@@ -489,20 +435,17 @@ class Sam::CertificateRevocations::CertificateRevocation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf crl_index; //type: int32
-
         class CertificateRevocationListDetail; //type: Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail
 
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail> certificate_revocation_list_detail;
-
-
+        
 }; // Sam::CertificateRevocations::CertificateRevocation
 
 
@@ -514,21 +457,18 @@ class Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationL
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf crl_index; //type: uint16
         YLeaf updates; //type: string
-
         class Issuer; //type: Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer
 
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer> issuer;
-
-
+        
 }; // Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail
 
 
@@ -540,18 +480,15 @@ class Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationL
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf common_name; //type: string
         YLeaf organization; //type: string
         YLeaf country; //type: string
-
-
 
 }; // Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer
 
@@ -564,21 +501,18 @@ class Sam::CertificateRevocationListSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf crl_index; //type: uint16
         YLeaf updates; //type: string
-
         class Issuer; //type: Sam::CertificateRevocationListSummary::Issuer
 
         std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocationListSummary::Issuer> issuer;
-
-
+        
 }; // Sam::CertificateRevocationListSummary
 
 
@@ -590,18 +524,15 @@ class Sam::CertificateRevocationListSummary::Issuer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf common_name; //type: string
         YLeaf organization; //type: string
         YLeaf country; //type: string
-
-
 
 }; // Sam::CertificateRevocationListSummary::Issuer
 

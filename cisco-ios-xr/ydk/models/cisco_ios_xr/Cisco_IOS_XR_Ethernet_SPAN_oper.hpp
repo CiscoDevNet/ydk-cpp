@@ -19,25 +19,22 @@ class SpanMonitorSession : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Global; //type: SpanMonitorSession::Global
         class Nodes; //type: SpanMonitorSession::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global> global;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes> nodes;
-
-
+        
 }; // SpanMonitorSession
 
 
@@ -49,21 +46,18 @@ class SpanMonitorSession::Global : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Statistics; //type: SpanMonitorSession::Global::Statistics
         class GlobalSessions; //type: SpanMonitorSession::Global::GlobalSessions
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions> global_sessions;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::Statistics> statistics;
-
-
+        
 }; // SpanMonitorSession::Global
 
 
@@ -75,19 +69,16 @@ class SpanMonitorSession::Global::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Statistic; //type: SpanMonitorSession::Global::Statistics::Statistic
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::Statistics::Statistic> > statistic;
-
-
+        
 }; // SpanMonitorSession::Global::Statistics
 
 
@@ -99,12 +90,11 @@ class SpanMonitorSession::Global::Statistics::Statistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session; //type: string
         YLeaf interface; //type: string
@@ -114,8 +104,6 @@ class SpanMonitorSession::Global::Statistics::Statistic : public Entity
         YLeaf tx_octets_mirrored; //type: uint64
         YLeaf packets_not_mirrored; //type: uint64
         YLeaf octets_not_mirrored; //type: uint64
-
-
 
 }; // SpanMonitorSession::Global::Statistics::Statistic
 
@@ -128,19 +116,16 @@ class SpanMonitorSession::Global::GlobalSessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class GlobalSession; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession> > global_session;
-
-
+        
 }; // SpanMonitorSession::Global::GlobalSessions
 
 
@@ -152,12 +137,11 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session; //type: string
         YLeaf name; //type: string
@@ -167,14 +151,12 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession : public Entity
         YLeaf destination_interface_name; //type: string
         YLeaf destination_interface_handle; //type: string
         YLeaf interface_error; //type: uint32
-
         class DestinationData; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
         class DestinationId; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData> destination_data;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId> destination_id;
-
-
+        
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession
 
 
@@ -186,16 +168,14 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_class; //type: DestinationClassEnum
         YLeaf invalid_value; //type: uint32
-
         class InterfaceData; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData
         class PseudowireData; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData
         class NextHopIpv4Data; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data
@@ -205,8 +185,7 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data> next_hop_ipv4_data;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data> next_hop_ipv6_data;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData> pseudowire_data;
-
-
+        
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
 
 
@@ -218,17 +197,14 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf interface_state; //type: ImStateEnumEnum
-
-
 
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData
 
@@ -241,17 +217,14 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pseudowire_name; //type: string
         YLeaf pseudowire_is_up; //type: boolean
-
-
 
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData
 
@@ -264,18 +237,15 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_address; //type: string
         YLeaf vrf_name; //type: string
         YLeaf address_is_reachable; //type: boolean
-
-
 
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data
 
@@ -288,18 +258,15 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_address; //type: string
         YLeaf vrf_name; //type: string
         YLeaf address_is_reachable; //type: boolean
-
-
 
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data
 
@@ -312,25 +279,22 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_class; //type: DestinationClassEnum
         YLeaf interface; //type: string
         YLeaf pseudowire_id; //type: uint32
         YLeaf invalid_value; //type: uint32
-
         class Ipv4AddressAndVrf; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf
         class Ipv6AddressAndVrf; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-
-
+        
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId
 
 
@@ -342,17 +306,14 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf
 
@@ -365,17 +326,14 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf
 
@@ -388,19 +346,16 @@ class SpanMonitorSession::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: SpanMonitorSession::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node> > node;
-
-
+        
 }; // SpanMonitorSession::Nodes
 
 
@@ -412,15 +367,13 @@ class SpanMonitorSession::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node; //type: string
-
         class Attachments; //type: SpanMonitorSession::Nodes::Node::Attachments
         class HardwareSessions; //type: SpanMonitorSession::Nodes::Node::HardwareSessions
         class Interfaces; //type: SpanMonitorSession::Nodes::Node::Interfaces
@@ -428,8 +381,7 @@ class SpanMonitorSession::Nodes::Node : public Entity
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments> attachments;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions> hardware_sessions;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces> interfaces;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node
 
 
@@ -441,19 +393,16 @@ class SpanMonitorSession::Nodes::Node::Attachments : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Attachment; //type: SpanMonitorSession::Nodes::Node::Attachments::Attachment
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment> > attachment;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::Attachments
 
 
@@ -465,12 +414,11 @@ class SpanMonitorSession::Nodes::Node::Attachments::Attachment : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session; //type: string
         YLeaf interface; //type: string
@@ -486,14 +434,12 @@ class SpanMonitorSession::Nodes::Node::Attachments::Attachment : public Entity
         YLeaf source_interface_is_a_destination; //type: boolean
         YLeaf destination_interface; //type: string
         YLeaf traffic_direction; //type: TrafficDirectionEnum
-
         class TrafficParameters; //type: SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters
         class DestinationId; //type: SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId> destination_id;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters> traffic_parameters;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::Attachments::Attachment
 
 
@@ -505,20 +451,17 @@ class SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameter
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf traffic_direction; //type: TrafficDirectionEnum
         YLeaf port_level; //type: boolean
         YLeaf is_acl_enabled; //type: boolean
         YLeaf mirror_bytes; //type: uint32
         YLeaf mirror_interval; //type: MirrorIntervalEnum
-
-
 
 }; // SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters
 
@@ -531,25 +474,22 @@ class SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_class; //type: DestinationClassEnum
         YLeaf interface; //type: string
         YLeaf pseudowire_id; //type: uint32
         YLeaf invalid_value; //type: uint32
-
         class Ipv4AddressAndVrf; //type: SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf
         class Ipv6AddressAndVrf; //type: SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId
 
 
@@ -561,17 +501,14 @@ class SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf
 
@@ -584,17 +521,14 @@ class SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf
 
@@ -607,19 +541,16 @@ class SpanMonitorSession::Nodes::Node::HardwareSessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class HardwareSession; //type: SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession> > hardware_session;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::HardwareSessions
 
 
@@ -631,12 +562,11 @@ class SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_class; //type: SpanSessionClassEnum
         YLeaf session_id; //type: int32
@@ -645,12 +575,10 @@ class SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession : publi
         YLeaf session_class_xr; //type: SessionClassEnum
         YLeaf destination_interface; //type: string
         YLeaf platform_error; //type: uint32
-
         class DestinationId; //type: SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId> destination_id;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession
 
 
@@ -662,25 +590,22 @@ class SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::Destin
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_class; //type: DestinationClassEnum
         YLeaf interface; //type: string
         YLeaf pseudowire_id; //type: uint32
         YLeaf invalid_value; //type: uint32
-
         class Ipv4AddressAndVrf; //type: SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf
         class Ipv6AddressAndVrf; //type: SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId
 
 
@@ -692,17 +617,14 @@ class SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::Destin
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf
 
@@ -715,17 +637,14 @@ class SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::Destin
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf
 
@@ -738,19 +657,16 @@ class SpanMonitorSession::Nodes::Node::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Interface; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface> > interface;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::Interfaces
 
 
@@ -762,19 +678,17 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface; //type: string
         YLeaf source_interface; //type: string
         YLeaf platform_error; //type: uint32
         YLeaf destination_interface; //type: string
         YLeaf traffic_direction; //type: TrafficDirectionEnum
-
         class DestinationId; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId
         class TrafficMirroringParameters; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters
         class Attachment; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment
@@ -782,8 +696,7 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface : public Entity
         std::vector<std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment> > attachment;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId> destination_id;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters> traffic_mirroring_parameters;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface
 
 
@@ -795,25 +708,22 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_class; //type: DestinationClassEnum
         YLeaf interface; //type: string
         YLeaf pseudowire_id; //type: uint32
         YLeaf invalid_value; //type: uint32
-
         class Ipv4AddressAndVrf; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf
         class Ipv6AddressAndVrf; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId
 
 
@@ -825,17 +735,14 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf
 
@@ -848,17 +755,14 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf
 
@@ -871,20 +775,17 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringPa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf traffic_direction; //type: TrafficDirectionEnum
         YLeaf port_level; //type: boolean
         YLeaf is_acl_enabled; //type: boolean
         YLeaf mirror_bytes; //type: uint32
         YLeaf mirror_interval; //type: MirrorIntervalEnum
-
-
 
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters
 
@@ -897,22 +798,19 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf class_; //type: SessionClassEnum
-
         class DestinationId; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId
         class TrafficMirroringParameters; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId> destination_id;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters> traffic_mirroring_parameters;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment
 
 
@@ -924,25 +822,22 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Destin
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf destination_class; //type: DestinationClassEnum
         YLeaf interface; //type: string
         YLeaf pseudowire_id; //type: uint32
         YLeaf invalid_value; //type: uint32
-
         class Ipv4AddressAndVrf; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf
         class Ipv6AddressAndVrf; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-
-
+        
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId
 
 
@@ -954,17 +849,14 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Destin
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv4_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf
 
@@ -977,17 +869,14 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Destin
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf ipv6_address; //type: string
         YLeaf vrf_name; //type: string
-
-
 
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf
 
@@ -1000,20 +889,17 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Traffi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf traffic_direction; //type: TrafficDirectionEnum
         YLeaf port_level; //type: boolean
         YLeaf is_acl_enabled; //type: boolean
         YLeaf mirror_bytes; //type: uint32
         YLeaf mirror_interval; //type: MirrorIntervalEnum
-
-
 
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters
 

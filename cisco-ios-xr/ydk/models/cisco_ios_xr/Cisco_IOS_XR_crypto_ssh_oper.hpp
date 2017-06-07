@@ -18,23 +18,20 @@ class Ssh1 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Kex; //type: Ssh1::Kex
 
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh1::Kex> kex;
-
-
+        
 }; // Ssh1
 
 
@@ -46,19 +43,16 @@ class Ssh1::Kex : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Nodes; //type: Ssh1::Kex::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh1::Kex::Nodes> nodes;
-
-
+        
 }; // Ssh1::Kex
 
 
@@ -70,19 +64,16 @@ class Ssh1::Kex::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: Ssh1::Kex::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh1::Kex::Nodes::Node> > node;
-
-
+        
 }; // Ssh1::Kex::Nodes
 
 
@@ -94,22 +85,19 @@ class Ssh1::Kex::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class IncomingSessions; //type: Ssh1::Kex::Nodes::Node::IncomingSessions
         class OutgoingConnections; //type: Ssh1::Kex::Nodes::Node::OutgoingConnections
 
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh1::Kex::Nodes::Node::IncomingSessions> incoming_sessions;
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh1::Kex::Nodes::Node::OutgoingConnections> outgoing_connections;
-
-
+        
 }; // Ssh1::Kex::Nodes::Node
 
 
@@ -121,19 +109,16 @@ class Ssh1::Kex::Nodes::Node::IncomingSessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SessionDetailInfo; //type: Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo> > session_detail_info;
-
-
+        
 }; // Ssh1::Kex::Nodes::Node::IncomingSessions
 
 
@@ -145,12 +130,11 @@ class Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: uint32
         YLeaf key_exchange; //type: KexNameEnum
@@ -159,8 +143,6 @@ class Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo : public Entit
         YLeaf out_cipher; //type: CipherEnum
         YLeaf in_mac; //type: MacEnum
         YLeaf out_mac; //type: MacEnum
-
-
 
 }; // Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo
 
@@ -173,19 +155,16 @@ class Ssh1::Kex::Nodes::Node::OutgoingConnections : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SessionDetailInfo; //type: Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo> > session_detail_info;
-
-
+        
 }; // Ssh1::Kex::Nodes::Node::OutgoingConnections
 
 
@@ -197,12 +176,11 @@ class Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: uint32
         YLeaf key_exchange; //type: KexNameEnum
@@ -211,8 +189,6 @@ class Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo : public En
         YLeaf out_cipher; //type: CipherEnum
         YLeaf in_mac; //type: MacEnum
         YLeaf out_mac; //type: MacEnum
-
-
 
 }; // Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo
 
@@ -224,23 +200,20 @@ class Ssh : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Session; //type: Ssh::Session
 
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session> session;
-
-
+        
 }; // Ssh
 
 
@@ -252,13 +225,11 @@ class Ssh::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rekey; //type: Ssh::Session::Rekey
         class Brief; //type: Ssh::Session::Brief
@@ -267,8 +238,7 @@ class Ssh::Session : public Entity
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Brief> brief;
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Detail> detail;
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Rekey> rekey;
-
-
+        
 }; // Ssh::Session
 
 
@@ -280,21 +250,18 @@ class Ssh::Session::Rekey : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IncomingSessions; //type: Ssh::Session::Rekey::IncomingSessions
         class OutgoingConnections; //type: Ssh::Session::Rekey::OutgoingConnections
 
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Rekey::IncomingSessions> incoming_sessions;
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Rekey::OutgoingConnections> outgoing_connections;
-
-
+        
 }; // Ssh::Session::Rekey
 
 
@@ -306,19 +273,16 @@ class Ssh::Session::Rekey::IncomingSessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SessionRekeyInfo; //type: Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo> > session_rekey_info;
-
-
+        
 }; // Ssh::Session::Rekey::IncomingSessions
 
 
@@ -330,19 +294,16 @@ class Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: uint32
         YLeaf session_rekey_count; //type: uint32
         YLeaf time_to_rekey; //type: string
         YLeaf volume_to_rekey; //type: string
-
-
 
 }; // Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo
 
@@ -355,19 +316,16 @@ class Ssh::Session::Rekey::OutgoingConnections : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SessionRekeyInfo; //type: Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo> > session_rekey_info;
-
-
+        
 }; // Ssh::Session::Rekey::OutgoingConnections
 
 
@@ -379,19 +337,16 @@ class Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: uint32
         YLeaf session_rekey_count; //type: uint32
         YLeaf time_to_rekey; //type: string
         YLeaf volume_to_rekey; //type: string
-
-
 
 }; // Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo
 
@@ -404,21 +359,18 @@ class Ssh::Session::Brief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IncomingSessions; //type: Ssh::Session::Brief::IncomingSessions
         class OutgoingSessions; //type: Ssh::Session::Brief::OutgoingSessions
 
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Brief::IncomingSessions> incoming_sessions;
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Brief::OutgoingSessions> outgoing_sessions;
-
-
+        
 }; // Ssh::Session::Brief
 
 
@@ -430,19 +382,16 @@ class Ssh::Session::Brief::IncomingSessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SessionBriefInfo; //type: Ssh::Session::Brief::IncomingSessions::SessionBriefInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Brief::IncomingSessions::SessionBriefInfo> > session_brief_info;
-
-
+        
 }; // Ssh::Session::Brief::IncomingSessions
 
 
@@ -454,12 +403,11 @@ class Ssh::Session::Brief::IncomingSessions::SessionBriefInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: uint32
         YLeaf channel_id; //type: uint32
@@ -472,8 +420,6 @@ class Ssh::Session::Brief::IncomingSessions::SessionBriefInfo : public Entity
         YLeaf version; //type: VersionEnum
         YLeaf authentication_type; //type: AuthenEnum
         YLeaf connection_type; //type: ConnectionEnum
-
-
 
 }; // Ssh::Session::Brief::IncomingSessions::SessionBriefInfo
 
@@ -486,19 +432,16 @@ class Ssh::Session::Brief::OutgoingSessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SessionBriefInfo; //type: Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo> > session_brief_info;
-
-
+        
 }; // Ssh::Session::Brief::OutgoingSessions
 
 
@@ -510,12 +453,11 @@ class Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: uint32
         YLeaf channel_id; //type: uint32
@@ -529,8 +471,6 @@ class Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo : public Entity
         YLeaf authentication_type; //type: AuthenEnum
         YLeaf connection_type; //type: ConnectionEnum
 
-
-
 }; // Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo
 
 
@@ -542,21 +482,18 @@ class Ssh::Session::Detail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IncomingSessions; //type: Ssh::Session::Detail::IncomingSessions
         class OutgoingConnections; //type: Ssh::Session::Detail::OutgoingConnections
 
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Detail::IncomingSessions> incoming_sessions;
         std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Detail::OutgoingConnections> outgoing_connections;
-
-
+        
 }; // Ssh::Session::Detail
 
 
@@ -568,19 +505,16 @@ class Ssh::Session::Detail::IncomingSessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SessionDetailInfo; //type: Ssh::Session::Detail::IncomingSessions::SessionDetailInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Detail::IncomingSessions::SessionDetailInfo> > session_detail_info;
-
-
+        
 }; // Ssh::Session::Detail::IncomingSessions
 
 
@@ -592,12 +526,11 @@ class Ssh::Session::Detail::IncomingSessions::SessionDetailInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: uint32
         YLeaf key_exchange; //type: KexNameEnum
@@ -606,8 +539,6 @@ class Ssh::Session::Detail::IncomingSessions::SessionDetailInfo : public Entity
         YLeaf out_cipher; //type: CipherEnum
         YLeaf in_mac; //type: MacEnum
         YLeaf out_mac; //type: MacEnum
-
-
 
 }; // Ssh::Session::Detail::IncomingSessions::SessionDetailInfo
 
@@ -620,19 +551,16 @@ class Ssh::Session::Detail::OutgoingConnections : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SessionDetailInfo; //type: Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_ssh_oper::Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo> > session_detail_info;
-
-
+        
 }; // Ssh::Session::Detail::OutgoingConnections
 
 
@@ -644,12 +572,11 @@ class Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_id; //type: uint32
         YLeaf key_exchange; //type: KexNameEnum
@@ -658,8 +585,6 @@ class Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo : public Enti
         YLeaf out_cipher; //type: CipherEnum
         YLeaf in_mac; //type: MacEnum
         YLeaf out_mac; //type: MacEnum
-
-
 
 }; // Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo
 

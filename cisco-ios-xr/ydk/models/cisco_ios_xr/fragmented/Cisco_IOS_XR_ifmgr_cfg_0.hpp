@@ -19,20 +19,17 @@ class GlobalInterfaceConfiguration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
         YLeaf link_status; //type: LinkStatusEnumEnum
-
-
 
 }; // GlobalInterfaceConfiguration
 
@@ -44,23 +41,20 @@ class InterfaceConfigurations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class InterfaceConfiguration; //type: InterfaceConfigurations::InterfaceConfiguration
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration> > interface_configuration;
-
-
+        
 }; // InterfaceConfigurations
 
 
@@ -72,12 +66,11 @@ class InterfaceConfigurations::InterfaceConfiguration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf active; //type: string
         YLeaf interface_name; //type: string
@@ -88,20 +81,33 @@ class InterfaceConfigurations::InterfaceConfiguration : public Entity
         YLeaf bandwidth; //type: uint32
         YLeaf link_status; //type: empty
         YLeaf description; //type: string
-        YLeaf maintenance_embargo; //type: boolean
-        YLeaf vrf; //type: string
-        YLeaf mac_addr; //type: string
-        YLeaf track_name; //type: string
         YLeaf laser_squelch; //type: empty
         YLeaf perf_mon_disable; //type: empty
-
+        YLeaf maintenance_embargo; //type: boolean
+        YLeaf vrf; //type: string
+        YLeaf track_name; //type: string
+        YLeaf mac_addr; //type: string
         class Dampening; //type: InterfaceConfigurations::InterfaceConfiguration::Dampening
         class Mtus; //type: InterfaceConfigurations::InterfaceConfiguration::Mtus
         class Encapsulation; //type: InterfaceConfigurations::InterfaceConfiguration::Encapsulation
+        class AaaTable; //type: InterfaceConfigurations::InterfaceConfiguration::AaaTable
+        class EthernetControl; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetControl
         class PseudowireEther; //type: InterfaceConfigurations::InterfaceConfiguration::PseudowireEther
         class PseudowireIw; //type: InterfaceConfigurations::InterfaceConfiguration::PseudowireIw
         class Bvi; //type: InterfaceConfigurations::InterfaceConfiguration::Bvi
         class L2Transport; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport
+        class Atm; //type: InterfaceConfigurations::InterfaceConfiguration::Atm
+        class Bfd; //type: InterfaceConfigurations::InterfaceConfiguration::Bfd
+        class Bundle; //type: InterfaceConfigurations::InterfaceConfiguration::Bundle
+        class Lacp; //type: InterfaceConfigurations::InterfaceConfiguration::Lacp
+        class BundleMember; //type: InterfaceConfigurations::InterfaceConfiguration::BundleMember
+        class Mlacp; //type: InterfaceConfigurations::InterfaceConfiguration::Mlacp
+        class Cdp; //type: InterfaceConfigurations::InterfaceConfiguration::Cdp
+        class Optics; //type: InterfaceConfigurations::InterfaceConfiguration::Optics
+        class Otu; //type: InterfaceConfigurations::InterfaceConfiguration::Otu
+        class Macsec; //type: InterfaceConfigurations::InterfaceConfiguration::Macsec
+        class Ethernet; //type: InterfaceConfigurations::InterfaceConfiguration::Ethernet
+        class Dwdm; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm
         class VlanSubConfiguration; //type: InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration
         class EthernetService; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetService
         class EthernetBng; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetBng
@@ -109,56 +115,42 @@ class InterfaceConfigurations::InterfaceConfiguration : public Entity
         class EthernetFeatures; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures
         class CarrierDelay; //type: InterfaceConfigurations::InterfaceConfiguration::CarrierDelay
         class VlanTrunkConfiguration; //type: InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration
-        class Pbr; //type: InterfaceConfigurations::InterfaceConfiguration::Pbr
-        class Dwdm; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm
-        class Ethernet; //type: InterfaceConfigurations::InterfaceConfiguration::Ethernet
-        class CiscoIosXrPppMaFsmCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaFsmCfg_Ppp
-        class Afs; //type: InterfaceConfigurations::InterfaceConfiguration::Afs
-        class Nve; //type: InterfaceConfigurations::InterfaceConfiguration::Nve
-        class Ipv6Neighbor; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor
-        class NetFlow; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow
-        class Lldp; //type: InterfaceConfigurations::InterfaceConfiguration::Lldp
-        class Atm; //type: InterfaceConfigurations::InterfaceConfiguration::Atm
-        class Subscriber; //type: InterfaceConfigurations::InterfaceConfiguration::Subscriber
-        class Dagrs; //type: InterfaceConfigurations::InterfaceConfiguration::Dagrs
-        class Ipv4Arp; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Arp
-        class ClientPort; //type: InterfaceConfigurations::InterfaceConfiguration::ClientPort
-        class TunnelTeAttributes; //type: InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes
-        class TransportProfileTunnel; //type: InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel
-        class MteTunnelAttributes; //type: InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes
-        class TunnelIp; //type: InterfaceConfigurations::InterfaceConfiguration::TunnelIp
-        class SsrpSession; //type: InterfaceConfigurations::InterfaceConfiguration::SsrpSession
         class NvSatelliteAccess; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess
         class NvSatelliteFabricLink; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink
         class NvSatelliteFabricNetwork; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork
+        class Lldp; //type: InterfaceConfigurations::InterfaceConfiguration::Lldp
         class SpanMonitorSessions; //type: InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions
-        class CiscoIosXrPppMaCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp
-        class Ipv4Network; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network
-        class Ipv4NetworkForwarding; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding
-        class PerformanceManagement; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement
-        class Macsec; //type: InterfaceConfigurations::InterfaceConfiguration::Macsec
-        class Qos; //type: InterfaceConfigurations::InterfaceConfiguration::Qos
-        class Optics; //type: InterfaceConfigurations::InterfaceConfiguration::Optics
-        class Bfd; //type: InterfaceConfigurations::InterfaceConfiguration::Bfd
-        class Bundle; //type: InterfaceConfigurations::InterfaceConfiguration::Bundle
-        class Lacp; //type: InterfaceConfigurations::InterfaceConfiguration::Lacp
-        class BundleMember; //type: InterfaceConfigurations::InterfaceConfiguration::BundleMember
-        class Mlacp; //type: InterfaceConfigurations::InterfaceConfiguration::Mlacp
-        class CiscoIosXrPppMaIpcpiwCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaIpcpiwCfg_Ppp
-        class CiscoIosXrPppMaLcpCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaLcpCfg_Ppp
-        class Wanphy; //type: InterfaceConfigurations::InterfaceConfiguration::Wanphy
+        class ServicePolicies; //type: InterfaceConfigurations::InterfaceConfiguration::ServicePolicies
+        class Afs; //type: InterfaceConfigurations::InterfaceConfiguration::Afs
         class Statistics; //type: InterfaceConfigurations::InterfaceConfiguration::Statistics
-        class Ipv6Network; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Network
-        class Pppoe; //type: InterfaceConfigurations::InterfaceConfiguration::Pppoe
-        class CiscoIosXrPppMaIpcpCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaIpcpCfg_Ppp
-        class AaaTable; //type: InterfaceConfigurations::InterfaceConfiguration::AaaTable
-        class Otu; //type: InterfaceConfigurations::InterfaceConfiguration::Otu
-        class EthernetControl; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetControl
-        class Cdp; //type: InterfaceConfigurations::InterfaceConfiguration::Cdp
         class Ipv6PacketFilter; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter
         class EsPacketFilter; //type: InterfaceConfigurations::InterfaceConfiguration::EsPacketFilter
         class Ipv4PacketFilter; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter
-        class ServicePolicies; //type: InterfaceConfigurations::InterfaceConfiguration::ServicePolicies
+        class Dagrs; //type: InterfaceConfigurations::InterfaceConfiguration::Dagrs
+        class Ipv4Arp; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Arp
+        class Ipv4Network; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network
+        class Ipv4NetworkForwarding; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding
+        class Ipv6Network; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Network
+        class Ipv6Neighbor; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor
+        class TunnelTeAttributes; //type: InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes
+        class TransportProfileTunnel; //type: InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel
+        class MteTunnelAttributes; //type: InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes
+        class ClientPort; //type: InterfaceConfigurations::InterfaceConfiguration::ClientPort
+        class Pbr; //type: InterfaceConfigurations::InterfaceConfiguration::Pbr
+        class PerformanceManagement; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement
+        class CiscoIosXrPppMaCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaCfg_Ppp
+        class CiscoIosXrPppMaFsmCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaFsmCfg_Ppp
+        class CiscoIosXrPppMaIpcpCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaIpcpCfg_Ppp
+        class CiscoIosXrPppMaIpcpiwCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaIpcpiwCfg_Ppp
+        class CiscoIosXrPppMaLcpCfg_Ppp; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaLcpCfg_Ppp
+        class SsrpSession; //type: InterfaceConfigurations::InterfaceConfiguration::SsrpSession
+        class Qos; //type: InterfaceConfigurations::InterfaceConfiguration::Qos
+        class Subscriber; //type: InterfaceConfigurations::InterfaceConfiguration::Subscriber
+        class Pppoe; //type: InterfaceConfigurations::InterfaceConfiguration::Pppoe
+        class NetFlow; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow
+        class TunnelIp; //type: InterfaceConfigurations::InterfaceConfiguration::TunnelIp
+        class Nve; //type: InterfaceConfigurations::InterfaceConfiguration::Nve
+        class Wanphy; //type: InterfaceConfigurations::InterfaceConfiguration::Wanphy
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::AaaTable> aaa_table;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Afs> afs;
@@ -224,8 +216,7 @@ class InterfaceConfigurations::InterfaceConfiguration : public Entity
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration> vlan_sub_configuration;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration> vlan_trunk_configuration;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Wanphy> wanphy;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration
 
 
@@ -237,12 +228,11 @@ class InterfaceConfigurations::InterfaceConfiguration::Dampening : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf args; //type: ArgsEnum
         YLeaf half_life; //type: uint32
@@ -250,9 +240,7 @@ class InterfaceConfigurations::InterfaceConfiguration::Dampening : public Entity
         YLeaf suppress_threshold; //type: uint32
         YLeaf suppress_time; //type: uint32
         YLeaf restart_penalty; //type: uint32
-
         class ArgsEnum;
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::Dampening
 
@@ -265,19 +253,16 @@ class InterfaceConfigurations::InterfaceConfiguration::Mtus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Mtu; //type: InterfaceConfigurations::InterfaceConfiguration::Mtus::Mtu
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Mtus::Mtu> > mtu;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::Mtus
 
 
@@ -289,17 +274,14 @@ class InterfaceConfigurations::InterfaceConfiguration::Mtus::Mtu : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf owner; //type: string
         YLeaf mtu; //type: uint32
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::Mtus::Mtu
 
@@ -312,19 +294,141 @@ class InterfaceConfigurations::InterfaceConfiguration::Encapsulation : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf encapsulation; //type: string
         YLeaf capsulation_options; //type: int32
 
-
-
 }; // InterfaceConfigurations::InterfaceConfiguration::Encapsulation
+
+
+class InterfaceConfigurations::InterfaceConfiguration::AaaTable : public Entity
+{
+    public:
+        AaaTable();
+        ~AaaTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Radius; //type: InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius> radius;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::AaaTable
+
+
+class InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius : public Entity
+{
+    public:
+        Radius();
+        ~Radius();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Attribute; //type: InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius::Attribute
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius::Attribute> attribute;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius
+
+
+class InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius::Attribute : public Entity
+{
+    public:
+        Attribute();
+        ~Attribute();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf nas_port_type; //type: NasPortValueEnum
+
+}; // InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius::Attribute
+
+
+class InterfaceConfigurations::InterfaceConfiguration::EthernetControl : public Entity
+{
+    public:
+        EthernetControl();
+        ~EthernetControl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf transport_mode; //type: EtherCtrlTransportModeEnum
+        YLeaf small_frame_padding; //type: empty
+        class Transceiver; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver> transceiver;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetControl
+
+
+class InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver : public Entity
+{
+    public:
+        Transceiver();
+        ~Transceiver();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Permit; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit> permit;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver
+
+
+class InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit : public Entity
+{
+    public:
+        Permit();
+        ~Permit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf type; //type: PermitPluggableEnum
+        YLeaf pid; //type: PermitPluggablePidEnum
+
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit
 
 
 class InterfaceConfigurations::InterfaceConfiguration::PseudowireEther : public Entity
@@ -335,17 +439,14 @@ class InterfaceConfigurations::InterfaceConfiguration::PseudowireEther : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf generic_interface_list; //type: string
         YLeaf l2_overhead; //type: uint32
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::PseudowireEther
 
@@ -358,17 +459,14 @@ class InterfaceConfigurations::InterfaceConfiguration::PseudowireIw : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2_overhead; //type: uint32
         YLeaf generic_interface_list; //type: string
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::PseudowireIw
 
@@ -381,16 +479,13 @@ class InterfaceConfigurations::InterfaceConfiguration::Bvi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_routing; //type: empty
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::Bvi
 
@@ -403,19 +498,17 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: empty
         YLeaf propagate_remote_status; //type: empty
-
+        class AtmPortModeParameters; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters
         class L2Protocols; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols
         class L2EthernetFeatures; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2EthernetFeatures
-        class AtmPortModeParameters; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters
         class SpanMonitorSessions; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions
         class Pac; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac
         class Cac; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac
@@ -426,9 +519,49 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport : public Enti
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols> l2_protocols;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac> pac;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions> span_monitor_sessions;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport
+
+
+class InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters : public Entity
+{
+    public:
+        AtmPortModeParameters();
+        ~AtmPortModeParameters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class CellPacking; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::CellPacking
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::CellPacking> cell_packing; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters
+
+
+class InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::CellPacking : public Entity
+{
+    public:
+        CellPacking();
+        ~CellPacking();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf maximum_cells_packed; //type: uint32
+        YLeaf cell_packing_timer_id; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::CellPacking
 
 
 class InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols : public Entity
@@ -439,19 +572,16 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class L2Protocol; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols::L2Protocol
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols::L2Protocol> > l2_protocol;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols
 
 
@@ -463,18 +593,15 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf l2_protocol_name; //type: L2ProtocolNameEnum
         YLeaf mode; //type: L2ProtocolModeEnum
         YLeaf mpls_exp_bits_value; //type: uint32
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols::L2Protocol
 
@@ -487,66 +614,16 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2EthernetFe
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf egress_filtering; //type: EgressFilteringEnum
         YLeaf source_bypass_egress_filtering; //type: empty
 
-
-
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2EthernetFeatures
-
-
-class InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters : public Entity
-{
-    public:
-        AtmPortModeParameters();
-        ~AtmPortModeParameters();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class CellPacking; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::CellPacking
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::CellPacking> cell_packing; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters
-
-
-class InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::CellPacking : public Entity
-{
-    public:
-        CellPacking();
-        ~CellPacking();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf maximum_cells_packed; //type: uint32
-        YLeaf cell_packing_timer_id; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::CellPacking
 
 
 class InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions : public Entity
@@ -557,19 +634,16 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SpanMonitorSession; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession> > span_monitor_session;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions
 
 
@@ -581,23 +655,20 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_class; //type: SpanSessionClassEnum
         YLeaf mirror_first; //type: uint32
         YLeaf mirror_interval; //type: SpanMirrorIntervalEnum
         YLeaf acl; //type: empty
-
         class Attachment; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession::Attachment
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession
 
 
@@ -609,18 +680,15 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorS
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf session_name; //type: string
         YLeaf direction; //type: SpanTrafficDirectionEnum
         YLeaf port_level_enable; //type: empty
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession::Attachment
 
@@ -633,19 +701,16 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Qos; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos> qos;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac
 
 
@@ -657,21 +722,18 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Output; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output
         class Input; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input> input;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output> output;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos
 
 
@@ -683,21 +745,18 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicy
         class ServicePolicyQos; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicy> > service_policy;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos> > service_policy_qos;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output
 
 
@@ -709,12 +768,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
         YLeaf account_type; //type: QosPolicyAccountEnum
@@ -723,8 +781,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Ou
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicy
 
@@ -737,22 +793,19 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
         class SubscriberGroupNames; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberGroupNames
         class SubscriberParent; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberParent
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberGroupNames> subscriber_group_names;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberParent> subscriber_parent;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos
 
 
@@ -764,19 +817,16 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SubscriberGroupName; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName> > subscriber_group_name;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberGroupNames
 
 
@@ -788,12 +838,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf subscriber_group_string; //type: string
         YLeaf account_type; //type: QosPolicyAccountEnum
@@ -803,8 +852,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Ou
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName
 
@@ -817,12 +864,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf account_type; //type: QosPolicyAccountEnum
         YLeaf l1_user_defined; //type: int32
@@ -831,8 +877,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Ou
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberParent
 
@@ -845,21 +889,18 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicy
         class ServicePolicyQos; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicy> > service_policy;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos> > service_policy_qos;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input
 
 
@@ -871,12 +912,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
         YLeaf account_type; //type: QosPolicyAccountEnum
@@ -885,8 +925,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::In
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicy
 
@@ -899,22 +937,19 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
         class SubscriberGroupNames; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberGroupNames
         class SubscriberParent; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberParent
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberGroupNames> subscriber_group_names;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberParent> subscriber_parent;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos
 
 
@@ -926,19 +961,16 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SubscriberGroupName; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName> > subscriber_group_name;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberGroupNames
 
 
@@ -950,12 +982,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf subscriber_group_string; //type: string
         YLeaf account_type; //type: QosPolicyAccountEnum
@@ -965,8 +996,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::In
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName
 
@@ -979,12 +1008,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf account_type; //type: QosPolicyAccountEnum
         YLeaf l1_user_defined; //type: int32
@@ -993,8 +1021,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::In
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberParent
 
@@ -1007,19 +1033,16 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Qos; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos> qos;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac
 
 
@@ -1031,21 +1054,18 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Output; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output
         class Input; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input> input;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output> output;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos
 
 
@@ -1057,21 +1077,18 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicy
         class ServicePolicyQos; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicy> > service_policy;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos> > service_policy_qos;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output
 
 
@@ -1083,12 +1100,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
         YLeaf account_type; //type: QosPolicyAccountEnum
@@ -1097,8 +1113,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Ou
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicy
 
@@ -1111,22 +1125,19 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
         class SubscriberGroupNames; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberGroupNames
         class SubscriberParent; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberParent
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberGroupNames> subscriber_group_names;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberParent> subscriber_parent;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos
 
 
@@ -1138,19 +1149,16 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SubscriberGroupName; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName> > subscriber_group_name;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberGroupNames
 
 
@@ -1162,12 +1170,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf subscriber_group_string; //type: string
         YLeaf account_type; //type: QosPolicyAccountEnum
@@ -1177,8 +1184,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Ou
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName
 
@@ -1191,12 +1196,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Ou
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf account_type; //type: QosPolicyAccountEnum
         YLeaf l1_user_defined; //type: int32
@@ -1205,8 +1209,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Ou
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberParent
 
@@ -1219,21 +1221,18 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicy
         class ServicePolicyQos; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicy> > service_policy;
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos> > service_policy_qos;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input
 
 
@@ -1245,12 +1244,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
         YLeaf account_type; //type: QosPolicyAccountEnum
@@ -1259,8 +1257,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::In
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicy
 
@@ -1273,22 +1269,19 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf service_policy_name; //type: string
-
         class SubscriberGroupNames; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberGroupNames
         class SubscriberParent; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberParent
 
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberGroupNames> subscriber_group_names;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberParent> subscriber_parent;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos
 
 
@@ -1300,19 +1293,16 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class SubscriberGroupName; //type: InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName> > subscriber_group_name;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberGroupNames
 
 
@@ -1324,12 +1314,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf subscriber_group_string; //type: string
         YLeaf account_type; //type: QosPolicyAccountEnum
@@ -1339,8 +1328,6 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::In
         YLeaf subscriber_parent_policy; //type: boolean
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName
 
@@ -1353,12 +1340,11 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf account_type; //type: QosPolicyAccountEnum
         YLeaf l1_user_defined; //type: int32
@@ -1368,1151 +1354,953 @@ class InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::In
         YLeaf resource_id; //type: uint32
         YLeaf service_fragment_parent_policy; //type: boolean
 
-
-
 }; // InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberParent
 
 
-class InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm : public Entity
 {
     public:
-        VlanSubConfiguration();
-        ~VlanSubConfiguration();
+        Atm();
+        ~Atm();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf max_vpi_bits; //type: AtmVpiBitsModeEnum
+        YLeaf vc_class; //type: string
+        class Pvps; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps
+        class Pvcs; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs
+        class MaximumCellPackingTimers; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers
+        class VpTunnels; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers> maximum_cell_packing_timers; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs> pvcs;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps> pvps;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels> vp_tunnels;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm
 
 
-
-        class VlanIdentifier; //type: InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier> vlan_identifier; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration
-
-
-class InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps : public Entity
 {
     public:
-        VlanIdentifier();
-        ~VlanIdentifier();
+        Pvps();
+        ~Pvps();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Pvp; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp> > pvp;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps
 
 
-        YLeaf vlan_type; //type: VlanEnum
-        YLeaf first_tag; //type: uint32
-        YLeaf second_tag; //type: one of uint32, enumeration
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetService : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp : public Entity
 {
     public:
-        EthernetService();
-        ~EthernetService();
+        Pvp();
+        ~Pvp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf vpi; //type: uint32
+        YLeaf enable; //type: empty
+        YLeaf test_mode; //type: AtmPvpTestModeEnum
+        YLeaf oam_segment_endpoint; //type: empty
+        class Shape; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape
+        class CellPacking; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking> cell_packing; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape> shape;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp
 
 
-
-        class LocalTrafficDefaultEncapsulation; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetService::LocalTrafficDefaultEncapsulation
-        class Encapsulation; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetService::Encapsulation
-        class Rewrite; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetService::Rewrite
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetService::Encapsulation> encapsulation; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetService::LocalTrafficDefaultEncapsulation> local_traffic_default_encapsulation; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetService::Rewrite> rewrite; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetService
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetService::LocalTrafficDefaultEncapsulation : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape : public Entity
 {
     public:
-        LocalTrafficDefaultEncapsulation();
-        ~LocalTrafficDefaultEncapsulation();
+        Shape();
+        ~Shape();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf type; //type: AtmPvcShapingEnum
+        YLeaf peak_cell_rate; //type: uint32
+        YLeaf sustained_cell_rate; //type: uint32
+        YLeaf burst_size; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape
 
 
-        YLeaf outer_tag_type; //type: VlanEnum
-        YLeaf outer_vlan_id; //type: uint32
-        YLeaf inner_vlan_id; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetService::LocalTrafficDefaultEncapsulation
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetService::Encapsulation : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking : public Entity
 {
     public:
-        Encapsulation();
-        ~Encapsulation();
+        CellPacking();
+        ~CellPacking();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf maximum_cells_packed; //type: uint32
+        YLeaf cell_packing_timer_id; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking
 
 
-        YLeaf outer_tag_type; //type: MatchEnum
-        YLeaf outer_range1_low; //type: one of uint32, enumeration
-        YLeaf outer_range1_high; //type: one of uint32, enumeration
-        YLeaf inner_tag_type; //type: MatchEnum
-        YLeaf inner_range1_low; //type: one of uint32, enumeration
-        YLeaf inner_range1_high; //type: uint32
-        YLeaf additional_range1_low; //type: one of uint32, enumeration
-        YLeaf additional_range1_high; //type: uint32
-        YLeaf additional_range2_low; //type: one of uint32, enumeration
-        YLeaf additional_range2_high; //type: uint32
-        YLeaf additional_range3_low; //type: one of uint32, enumeration
-        YLeaf additional_range3_high; //type: uint32
-        YLeaf additional_range4_low; //type: one of uint32, enumeration
-        YLeaf additional_range4_high; //type: uint32
-        YLeaf additional_range5_low; //type: one of uint32, enumeration
-        YLeaf additional_range5_high; //type: uint32
-        YLeaf additional_range6_low; //type: one of uint32, enumeration
-        YLeaf additional_range6_high; //type: uint32
-        YLeaf additional_range7_low; //type: one of uint32, enumeration
-        YLeaf additional_range7_high; //type: uint32
-        YLeaf additional_range8_low; //type: one of uint32, enumeration
-        YLeaf additional_range8_high; //type: uint32
-        YLeaf outer_class_of_service; //type: uint32
-        YLeaf inner_class_of_service; //type: uint32
-        YLeaf payload_ethertype_match; //type: EthertypeMatchEnum
-        YLeaf ingress_source_mac; //type: string
-        YLeaf ingress_destination_mac; //type: string
-        YLeaf exact; //type: empty
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetService::Encapsulation
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetService::Rewrite : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs : public Entity
 {
     public:
-        Rewrite();
-        ~Rewrite();
+        Pvcs();
+        ~Pvcs();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Pvc; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc> > pvc;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs
 
 
-        YLeaf rewrite_type; //type: RewriteEnum
-        YLeaf outer_tag_type; //type: MatchEnum
-        YLeaf outer_tag_value; //type: uint32
-        YLeaf inner_tag_type; //type: MatchEnum
-        YLeaf inner_tag_value; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetService::Rewrite
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetBng : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc : public Entity
 {
     public:
-        EthernetBng();
-        ~EthernetBng();
+        Pvc();
+        ~Pvc();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf vpi; //type: uint32
+        YLeaf vci; //type: uint32
+        YLeaf pv_ctype; //type: AtmPvcDataEnum
+        YLeaf vc_class; //type: string
+        YLeaf encapsulation; //type: AtmPvcEncapsulationEnum
+        YLeaf enable; //type: empty
+        YLeaf test_mode; //type: AtmPvcTestModeEnum
+        YLeaf oam_segment_endpoint; //type: empty
+        class Shape; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape
+        class OamEmulation; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation
+        class CellPacking; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking> cell_packing; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation> oam_emulation;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape> shape;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc
 
 
-
-        class AmbiguousEncapsulation; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetBng::AmbiguousEncapsulation
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetBng::AmbiguousEncapsulation> ambiguous_encapsulation; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetBng
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetBng::AmbiguousEncapsulation : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape : public Entity
 {
     public:
-        AmbiguousEncapsulation();
-        ~AmbiguousEncapsulation();
+        Shape();
+        ~Shape();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf type; //type: AtmPvcShapingEnum
+        YLeaf peak_cell_rate; //type: uint32
+        YLeaf sustained_cell_rate; //type: uint32
+        YLeaf burst_size; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape
 
 
-        YLeaf outer_tag_type; //type: MatchEnum
-        YLeaf outer_range1_low; //type: one of uint32, enumeration
-        YLeaf outer_range1_high; //type: one of uint32, enumeration
-        YLeaf inner_tag_type; //type: MatchEnum
-        YLeaf inner_range1_low; //type: one of uint32, enumeration
-        YLeaf inner_range1_high; //type: uint32
-        YLeaf additional_range1_low; //type: one of uint32, enumeration
-        YLeaf additional_range1_high; //type: uint32
-        YLeaf additional_range2_low; //type: one of uint32, enumeration
-        YLeaf additional_range2_high; //type: uint32
-        YLeaf additional_range3_low; //type: one of uint32, enumeration
-        YLeaf additional_range3_high; //type: uint32
-        YLeaf additional_range4_low; //type: one of uint32, enumeration
-        YLeaf additional_range4_high; //type: uint32
-        YLeaf additional_range5_low; //type: one of uint32, enumeration
-        YLeaf additional_range5_high; //type: uint32
-        YLeaf additional_range6_low; //type: one of uint32, enumeration
-        YLeaf additional_range6_high; //type: uint32
-        YLeaf additional_range7_low; //type: one of uint32, enumeration
-        YLeaf additional_range7_high; //type: uint32
-        YLeaf additional_range8_low; //type: one of uint32, enumeration
-        YLeaf additional_range8_high; //type: uint32
-        YLeaf outer_class_of_service; //type: uint32
-        YLeaf inner_class_of_service; //type: uint32
-        YLeaf payload_ethertype_match; //type: EthertypeMatchEnum
-        YLeaf ingress_source_mac; //type: string
-        YLeaf ingress_destination_mac; //type: string
-        YLeaf exact; //type: empty
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetBng::AmbiguousEncapsulation
-
-
-class InterfaceConfigurations::InterfaceConfiguration::MacAccounting : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation : public Entity
 {
     public:
-        MacAccounting();
-        ~MacAccounting();
+        OamEmulation();
+        ~OamEmulation();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf enable; //type: empty
+        YLeaf ais_transmit_rate; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation
 
 
-        YLeaf ingress; //type: empty
-        YLeaf egress; //type: empty
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::MacAccounting
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking : public Entity
 {
     public:
-        EthernetFeatures();
-        ~EthernetFeatures();
+        CellPacking();
+        ~CellPacking();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf maximum_cells_packed; //type: uint32
+        YLeaf cell_packing_timer_id; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking
 
 
-        YLeaf filtering; //type: FilteringEnum
-        YLeaf ether_link_oam_enable; //type: empty
-
-        class Cfm; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm
-        class EtherLinkOam; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm> cfm;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam> ether_link_oam;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers : public Entity
 {
     public:
-        Cfm();
-        ~Cfm();
+        MaximumCellPackingTimers();
+        ~MaximumCellPackingTimers();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf cell_packing_timer1; //type: uint32
+        YLeaf cell_packing_timer2; //type: uint32
+        YLeaf cell_packing_timer3; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers
 
 
-
-        class Domains; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains
-        class AisUp; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp> ais_up;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains> domains;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels : public Entity
 {
     public:
-        Domains();
-        ~Domains();
+        VpTunnels();
+        ~VpTunnels();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class VpTunnel; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel> > vp_tunnel;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels
 
 
-
-        class Domain; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain> > domain;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel : public Entity
 {
     public:
-        Domain();
-        ~Domain();
+        VpTunnel();
+        ~VpTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf vpi; //type: uint32
+        YLeaf enable_hierarchical_shaping; //type: empty
+        YLeaf enable; //type: empty
+        YLeaf disable_f4oam; //type: empty
+        class Shape; //type: InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape> shape;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel
 
 
-        YLeaf domain; //type: string
-
-        class Mep; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep> mep;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape : public Entity
 {
     public:
-        Mep();
-        ~Mep();
+        Shape();
+        ~Shape();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf type; //type: AtmVpShapingEnum
+        YLeaf peak_cell_rate; //type: uint32
+        YLeaf sustained_cell_rate; //type: uint32
+        YLeaf burst_size; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape
 
 
-        YLeaf cos; //type: uint32
-
-        class SlaProfileTargetMepIds; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds
-        class MepProperties; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::MepProperties
-        class LossMeasurementCounters; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::LossMeasurementCounters
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::LossMeasurementCounters> loss_measurement_counters; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::MepProperties> mep_properties; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds> sla_profile_target_mep_ids;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bfd : public Entity
 {
     public:
-        SlaProfileTargetMepIds();
-        ~SlaProfileTargetMepIds();
+        Bfd();
+        ~Bfd();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf mode; //type: BfdModeEnum
+        class AddressFamily; //type: InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily> address_family;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Bfd
 
 
-
-        class SlaProfileTargetMepId; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMepId
-        class SlaProfileTargetMacAddress; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMacAddress
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMacAddress> > sla_profile_target_mac_address;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMepId> > sla_profile_target_mep_id;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMepId : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily : public Entity
 {
     public:
-        SlaProfileTargetMepId();
-        ~SlaProfileTargetMepId();
+        AddressFamily();
+        ~AddressFamily();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Ipv6; //type: InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6
+        class Ipv4; //type: InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4> ipv4;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6> ipv6;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily
 
 
-        YLeaf profile; //type: string
-        YLeaf target_mep_id; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMepId
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMacAddress : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6 : public Entity
 {
     public:
-        SlaProfileTargetMacAddress();
-        ~SlaProfileTargetMacAddress();
+        Ipv6();
+        ~Ipv6();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf ipv6_destination_address; //type: string
+        YLeaf ipv6_detection_multiplier; //type: uint32
+        YLeaf ipv6_fast_detect; //type: empty
+        YLeaf ipv6_interval; //type: uint32
+        class Ipv6Timers; //type: InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6::Ipv6Timers
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6::Ipv6Timers> ipv6_timers;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6
 
 
-        YLeaf profile; //type: string
-        YLeaf target_mac_address; //type: string
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMacAddress
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::MepProperties : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6::Ipv6Timers : public Entity
 {
     public:
-        MepProperties();
-        ~MepProperties();
+        Ipv6Timers();
+        ~Ipv6Timers();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf ipv6_nbor_unconfig_timer; //type: uint32
+        YLeaf ipv6_start_timer; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6::Ipv6Timers
 
 
-        YLeaf service; //type: string
-        YLeaf mep_id; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::MepProperties
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::LossMeasurementCounters : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4 : public Entity
 {
     public:
-        LossMeasurementCounters();
-        ~LossMeasurementCounters();
+        Ipv4();
+        ~Ipv4();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf interval; //type: uint32
+        YLeaf detection_multiplier; //type: uint32
+        YLeaf destination_address; //type: string
+        YLeaf fast_detect; //type: empty
+        class Echo; //type: InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Echo
+        class Timers; //type: InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Timers
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Echo> echo;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Timers> timers;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4
 
 
-        YLeaf cfg_type; //type: CfmLmCountersCfgEnum
-        YLeaf cos0; //type: uint32
-        YLeaf cos1; //type: uint32
-        YLeaf cos2; //type: uint32
-        YLeaf cos3; //type: uint32
-        YLeaf cos4; //type: uint32
-        YLeaf cos5; //type: uint32
-        YLeaf cos6; //type: uint32
-        YLeaf cos7; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::LossMeasurementCounters
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Echo : public Entity
 {
     public:
-        AisUp();
-        ~AisUp();
+        Echo();
+        ~Echo();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf min_interval; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Echo
 
 
-
-        class Transmission; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp::Transmission
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp::Transmission> transmission; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp::Transmission : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Timers : public Entity
 {
     public:
-        Transmission();
-        ~Transmission();
+        Timers();
+        ~Timers();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf nbor_unconfig_timer; //type: uint32
+        YLeaf start_timer; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Timers
 
 
-        YLeaf ais_interval; //type: CfmAisIntervalEnum
-        YLeaf cos; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp::Transmission
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bundle : public Entity
 {
     public:
-        EtherLinkOam();
-        ~EtherLinkOam();
+        Bundle();
+        ~Bundle();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf lacp_delay; //type: uint32
+        YLeaf shutdown; //type: empty
+        YLeaf wait_while; //type: uint32
+        class BundleLoadBalancing; //type: InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing
+        class MinimumActive; //type: InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive
+        class MaximumActive; //type: InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing> bundle_load_balancing;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive> maximum_active;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive> minimum_active;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Bundle
 
 
-        YLeaf timeout; //type: uint32
-        YLeaf mode; //type: EtherLinkOamModeEnumEnum
-        YLeaf mib_retrieval; //type: boolean
-        YLeaf profile_name; //type: string
-        YLeaf remote_loopback; //type: boolean
-        YLeaf hello_interval; //type: EtherLinkOamHelloIntervalEnumEnum
-        YLeaf udlf; //type: boolean
-
-        class Action; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::Action
-        class RequireRemote; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::RequireRemote
-        class LinkMonitoring; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::Action> action;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring> link_monitoring;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::RequireRemote> require_remote;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::Action : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing : public Entity
 {
     public:
-        Action();
-        ~Action();
+        BundleLoadBalancing();
+        ~BundleLoadBalancing();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf localize_links; //type: uint32
+        class HashFunction; //type: InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing::HashFunction
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing::HashFunction> hash_function; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing
 
 
-        YLeaf dying_gasp; //type: EtherLinkOamEventActionEnumEnum
-        YLeaf link_fault; //type: EtherLinkOamEventActionEnumEfdEnum
-        YLeaf capabilities_conflict; //type: EtherLinkOamEventActionEnumEfdEnum
-        YLeaf session_up; //type: EtherLinkOamEventActionPrimEnumEnum
-        YLeaf critical_event; //type: EtherLinkOamEventActionEnumEnum
-        YLeaf remote_loopback; //type: EtherLinkOamEventActionPrimEnumEnum
-        YLeaf wiring_conflict; //type: EtherLinkOamEventActionEnumEfdEnum
-        YLeaf high_threshold; //type: EtherLinkOamEventActionEnumEnum
-        YLeaf discovery_timeout; //type: EtherLinkOamEventActionEnumEfdEnum
-        YLeaf session_down; //type: EtherLinkOamEventActionEnumEfdEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::Action
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::RequireRemote : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing::HashFunction : public Entity
 {
     public:
-        RequireRemote();
-        ~RequireRemote();
+        HashFunction();
+        ~HashFunction();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf hash_type; //type: BundleLoadBalanceEnum
+        YLeaf hash_value; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing::HashFunction
 
 
-        YLeaf mode; //type: EtherLinkOamRequireModeEnumEnum
-        YLeaf mib_retrieval; //type: boolean
-        YLeaf remote_loopback; //type: boolean
-        YLeaf link_monitoring; //type: boolean
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::RequireRemote
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive : public Entity
 {
     public:
-        LinkMonitoring();
-        ~LinkMonitoring();
+        MinimumActive();
+        ~MinimumActive();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf links; //type: uint32
+        class Bandwidth; //type: InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive::Bandwidth
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive::Bandwidth> bandwidth; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive
 
 
-        YLeaf monitoring; //type: boolean
-
-        class SymbolPeriod; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod
-        class FramePeriod; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod
-        class FrameSeconds; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds
-        class Frame; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame> frame;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod> frame_period;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds> frame_seconds;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod> symbol_period;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive::Bandwidth : public Entity
 {
     public:
-        SymbolPeriod();
-        ~SymbolPeriod();
+        Bandwidth();
+        ~Bandwidth();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf min_bandwidth_range; //type: BundleMinimumBandwidthRangeEnum
+        YLeaf bandwidth; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive::Bandwidth
 
 
-
-        class Window; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Window
-        class Threshold; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Threshold
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Threshold> threshold;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Window> window; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Window : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive : public Entity
 {
     public:
-        Window();
-        ~Window();
+        MaximumActive();
+        ~MaximumActive();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class Links; //type: InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive::Links
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive::Links> links; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive
 
 
-        YLeaf window; //type: uint32
-        YLeaf units; //type: EtherLinkOamWindowUnitsSymbolsEnumEnum
-        YLeaf multiplier; //type: EtherLinkOamThresholdWindowMultiplierEnumEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Window
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Threshold : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive::Links : public Entity
 {
     public:
-        Threshold();
-        ~Threshold();
+        Links();
+        ~Links();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf links; //type: uint32
+        YLeaf max_active_links_mode; //type: BundleMaximumActiveLinksModeEnum
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive::Links
 
 
-        YLeaf threshold_low; //type: uint32
-        YLeaf threshold_high; //type: uint32
-        YLeaf units; //type: EtherLinkOamThresholdUnitsSymbolsEnumEnum
-        YLeaf multiplier_low; //type: EtherLinkOamThresholdWindowMultiplierEnumEnum
-        YLeaf multiplier_high; //type: EtherLinkOamThresholdWindowMultiplierEnumEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Threshold
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Lacp : public Entity
 {
     public:
-        FramePeriod();
-        ~FramePeriod();
+        Lacp();
+        ~Lacp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf system_priority; //type: uint32
+        YLeaf period; //type: one of uint32, enumeration
+        YLeaf collector_max_delay; //type: uint32
+        YLeaf lacp_nonrevertive; //type: empty
+        YLeaf mode; //type: BundleModeEnum
+        YLeaf fast_switchover; //type: empty
+        YLeaf suppress_flaps; //type: uint32
+        YLeaf system_mac; //type: string
+        YLeaf period_short; //type: one of uint32, enumeration
+        YLeaf churn_logging; //type: ChurnLoggingEnum
+        class CiscoExtensions; //type: InterfaceConfigurations::InterfaceConfiguration::Lacp::CiscoExtensions
+        class Timeout; //type: InterfaceConfigurations::InterfaceConfiguration::Lacp::Timeout
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Lacp::CiscoExtensions> cisco_extensions; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Lacp::Timeout> timeout;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Lacp
 
 
-
-        class Window; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Window
-        class Threshold; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Threshold
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Threshold> threshold;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Window> window; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Window : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Lacp::CiscoExtensions : public Entity
 {
     public:
-        Window();
-        ~Window();
+        CiscoExtensions();
+        ~CiscoExtensions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf cisco_ext; //type: empty
+        YLeaf cisco_ext_type; //type: BundleCiscoExtTypesEnum
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Lacp::CiscoExtensions
 
 
-        YLeaf window; //type: uint32
-        YLeaf units; //type: EtherLinkOamWindowUnitsFramesEnumEnum
-        YLeaf multiplier; //type: EtherLinkOamThresholdWindowMultiplierEnumEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Window
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Threshold : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Lacp::Timeout : public Entity
 {
     public:
-        Threshold();
-        ~Threshold();
+        Timeout();
+        ~Timeout();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf rx_default; //type: uint32
+        YLeaf actor_churn; //type: uint32
+        YLeaf partner_churn; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Lacp::Timeout
 
 
-        YLeaf threshold_low; //type: uint32
-        YLeaf threshold_high; //type: uint32
-        YLeaf units; //type: EtherLinkOamThresholdUnitsFramesEnumEnum
-        YLeaf multiplier_low; //type: EtherLinkOamThresholdWindowMultiplierEnumEnum
-        YLeaf multiplier_high; //type: EtherLinkOamThresholdWindowMultiplierEnumEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Threshold
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::BundleMember : public Entity
 {
     public:
-        FrameSeconds();
-        ~FrameSeconds();
+        BundleMember();
+        ~BundleMember();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf port_priority; //type: uint16
+        class Id; //type: InterfaceConfigurations::InterfaceConfiguration::BundleMember::Id
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::BundleMember::Id> id;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::BundleMember
 
 
-        YLeaf window; //type: uint32
-
-        class Threshold; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold> threshold;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::BundleMember::Id : public Entity
 {
     public:
-        Threshold();
-        ~Threshold();
+        Id();
+        ~Id();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf bundle_id; //type: uint32
+        YLeaf port_activity; //type: BundlePortActivityEnum
+
+}; // InterfaceConfigurations::InterfaceConfiguration::BundleMember::Id
 
 
-        YLeaf threshold_low; //type: uint32
-        YLeaf threshold_high; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Mlacp : public Entity
 {
     public:
-        Frame();
-        ~Frame();
+        Mlacp();
+        ~Mlacp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf port_priority; //type: uint16
+        YLeaf recovery_delay; //type: uint32
+        YLeaf switchover_type; //type: MlacpSwitchoverEnum
+        YLeaf iccp_group; //type: uint32
+        class Maximize; //type: InterfaceConfigurations::InterfaceConfiguration::Mlacp::Maximize
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Mlacp::Maximize> maximize; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Mlacp
 
 
-        YLeaf window; //type: uint32
-
-        class Threshold; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold> threshold;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame
-
-
-class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Mlacp::Maximize : public Entity
 {
     public:
-        Threshold();
-        ~Threshold();
+        Maximize();
+        ~Maximize();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf maximize_by; //type: MlacpMaximizeParameterEnum
+        YLeaf link_threshold; //type: uint32
+        YLeaf bandwidth_threshold; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Mlacp::Maximize
 
 
-        YLeaf threshold_low; //type: uint32
-        YLeaf threshold_high; //type: uint32
-        YLeaf multiplier_low; //type: EtherLinkOamThresholdWindowMultiplierEnumEnum
-        YLeaf multiplier_high; //type: EtherLinkOamThresholdWindowMultiplierEnumEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold
-
-
-class InterfaceConfigurations::InterfaceConfiguration::CarrierDelay : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Cdp : public Entity
 {
     public:
-        CarrierDelay();
-        ~CarrierDelay();
+        Cdp();
+        ~Cdp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf enable; //type: empty
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Cdp
 
 
-        YLeaf carrier_delay_up; //type: uint32
-        YLeaf carrier_delay_down; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::CarrierDelay
-
-
-class InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics : public Entity
 {
     public:
-        VlanTrunkConfiguration();
-        ~VlanTrunkConfiguration();
+        Optics();
+        ~Optics();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf optics_transmit_power; //type: int32
+        YLeaf optics_ots_channel_power_max_delta; //type: int32
+        YLeaf optics_loopback; //type: OpticsLoopbackEnum
+        YLeaf optics_ots_osri; //type: boolean
+        YLeaf optics_ots_amplifier_gain_degrade_high_threshold; //type: int32
+        YLeaf optics_ots_rx_voa_attenuation; //type: int32
+        YLeaf optics_fec; //type: OpticsFecEnum
+        YLeaf optics_dgd_high_threshold; //type: int32
+        YLeaf optics_ots_amplifier_channel_power; //type: int32
+        YLeaf optics_ots_amplifier_control_mode; //type: OpticsOtsAmpliControlModeEnum
+        YLeaf optics_ots_amplifier_gain; //type: int32
+        YLeaf optics_ots_amplifier_gain_range; //type: OpticsOtsAmpliGainRangeEnum
+        YLeaf optics_ots_safety_control_mode; //type: OpticsOtsSafetyControlModeEnum
+        YLeaf optics_cd_min; //type: int32
+        YLeaf optics_ots_tx_voa_attenuation; //type: int32
+        YLeaf optics_ots_amplifier_tilt; //type: int32
+        YLeaf optics_transmit_shutdown; //type: boolean
+        YLeaf optics_description; //type: string
+        YLeaf optics_performance_monitoring; //type: boolean
+        YLeaf optics_cd_max; //type: int32
+        YLeaf optics_lbc_high_threshold; //type: int32
+        YLeaf optics_cd_high_threshold; //type: int32
+        YLeaf optics_osnr_low_threshold; //type: int32
+        YLeaf optics_ots_amplifier_gain_degrade_low_threshold; //type: int32
+        YLeaf optics_cd_low_threshold; //type: int32
+        YLeaf breakout; //type: string
+        class RxThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds
+        class OpticsNetworkSrlgs; //type: InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs
+        class OpticsDwdmCarrier; //type: InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier
+        class OpticsLanes; //type: InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes
+        class TxThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier> optics_dwdm_carrier; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes> optics_lanes;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs> optics_network_srlgs;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds> rx_thresholds;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds> tx_thresholds;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics
 
 
-        YLeaf tunneling_ethertype; //type: TunnelingEthertypeEnum
-
-        class NativeVlanIdentifier; //type: InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier> native_vlan_identifier; // presence node
-        class TunnelingEthertypeEnum;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration
-
-
-class InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds : public Entity
 {
     public:
-        NativeVlanIdentifier();
-        ~NativeVlanIdentifier();
+        RxThresholds();
+        ~RxThresholds();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class RxThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold> > rx_threshold;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds
 
 
-        YLeaf vlan_type; //type: VlanEnum
-        YLeaf vlan_identifier; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Pbr : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold : public Entity
 {
     public:
-        Pbr();
-        ~Pbr();
+        RxThreshold();
+        ~RxThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
-
-        YLeaf service_policy_in; //type: string
-
-        class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy> service_policy;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Pbr
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy : public Entity
-{
-    public:
-        ServicePolicy();
-        ~ServicePolicy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf input; //type: string
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm : public Entity
-{
-    public:
-        Dwdm();
-        ~Dwdm();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf enable_vtxp; //type: boolean
-        YLeaf network_port_id; //type: string
-        YLeaf transport_admin_state; //type: DwdmAdminStateEnum
-        YLeaf laser; //type: empty
-        YLeaf transmit_power; //type: int32
+        YLeaf rx_threshold_type; //type: ThresholdEnum
         YLeaf rx_threshold; //type: int32
-        YLeaf network_connection_id; //type: string
-        YLeaf loopback; //type: DwdmLoopbackEnum
 
-        class NetworkSrlgs; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs
-        class G709; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709
-        class Wavelength; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709> g709;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs> network_srlgs;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength> wavelength; // presence node
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold
 
 
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs : public Entity
 {
     public:
-        NetworkSrlgs();
-        ~NetworkSrlgs();
+        OpticsNetworkSrlgs();
+        ~OpticsNetworkSrlgs();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class OpticsNetworkSrlg; //type: InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg> > optics_network_srlg;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs
 
 
-
-        class NetworkSrlg; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg> > network_srlg;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg : public Entity
 {
     public:
-        NetworkSrlg();
-        ~NetworkSrlg();
+        OpticsNetworkSrlg();
+        ~OpticsNetworkSrlg();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf set_id; //type: uint32
         YLeaf srlg1; //type: uint32
@@ -2522,220 +2310,113 @@ class InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::Netwo
         YLeaf srlg5; //type: uint32
         YLeaf srlg6; //type: uint32
 
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg
 
 
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709 : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier : public Entity
 {
     public:
-        G709();
-        ~G709();
+        OpticsDwdmCarrier();
+        ~OpticsDwdmCarrier();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf grid_type; //type: OpticsDwdmCarrierGridEnum
+        YLeaf param_type; //type: OpticsDwdmCarrierParamEnum
+        YLeaf param_value; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier
 
 
-        YLeaf proactive; //type: ProactiveEnum
-        YLeaf bdi_to_gais; //type: empty
-        YLeaf tim_to_gais; //type: empty
-        YLeaf proactive_logging_file; //type: string
-        YLeaf tti_processing; //type: empty
-        YLeaf enable; //type: boolean
-        YLeaf framing; //type: FramingEnum
-
-        class Odu; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu
-        class Otu; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu
-        class Prbs; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs
-        class Fec; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec> fec; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu> odu;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu> otu;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs> prbs; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes : public Entity
 {
     public:
-        Odu();
-        ~Odu();
+        OpticsLanes();
+        ~OpticsLanes();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class OpticsLane; //type: InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane> > optics_lane;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes
 
 
-
-        class OduReports; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports
-        class OduThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds
-        class OduExpectedTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti
-        class OduTxTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti> odu_expected_tti;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports> odu_reports;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds> odu_thresholds;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti> odu_tx_tti;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane : public Entity
 {
     public:
-        OduReports();
-        ~OduReports();
+        OpticsLane();
+        ~OpticsLane();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf index_; //type: int32
+        YLeaf description; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane
 
 
-
-        class OduReport; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport> > odu_report;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds : public Entity
 {
     public:
-        OduReport();
-        ~OduReport();
+        TxThresholds();
+        ~TxThresholds();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class TxThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold> > tx_threshold;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds
 
 
-        YLeaf alarm; //type: OduAlarmEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold : public Entity
 {
     public:
-        OduThresholds();
-        ~OduThresholds();
+        TxThreshold();
+        ~TxThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf tx_threshold_type; //type: ThresholdEnum
+        YLeaf tx_threshold; //type: int32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold
 
 
-
-        class OduThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold> > odu_threshold;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold : public Entity
-{
-    public:
-        OduThreshold();
-        ~OduThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf threshold; //type: OduThresholdEnum
-        YLeaf threshold_value; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti : public Entity
-{
-    public:
-        OduExpectedTti();
-        ~OduExpectedTti();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf string_type; //type: ExpectedTtiEnum
-        YLeaf ascii_string; //type: string
-        YLeaf hex_string; //type: string
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti : public Entity
-{
-    public:
-        OduTxTti();
-        ~OduTxTti();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf string_type; //type: TxTtiEnum
-        YLeaf ascii_string; //type: string
-        YLeaf hex_string; //type: string
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu : public Entity
 {
     public:
         Otu();
@@ -2743,178 +2424,134 @@ class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf gcc; //type: empty
+        YLeaf sf; //type: uint32
+        YLeaf secondary_admin_state; //type: OtnSecAdminStateEnum
+        YLeaf sd; //type: uint32
+        YLeaf performance_monitoring; //type: OtnPerMonEnum
+        YLeaf loopback; //type: OtnLoopbackEnum
+        YLeaf fec; //type: OtuForwardErrorCorrectionEnum
+        class OtnSendTtitcmos; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmos
+        class OtnSendTtitcmdapi; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmdapi
+        class OtnExpectedTtisapi; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtisapi
+        class ProactiveProtection; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection
+        class NetworkSrlgs; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs
+        class OtnSendTti; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTti
+        class OtnExpectedTtitcmdapi; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmdapi
+        class OtnSendTtisapi; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtisapi
+        class OtnExpectedTtitcmos; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmos
+        class OtnExpectedTti; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTti
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs> network_srlgs;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTti> otn_expected_tti;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtisapi> otn_expected_ttisapi;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmdapi> otn_expected_ttitcmdapi;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmos> otn_expected_ttitcmos;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTti> otn_send_tti;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtisapi> otn_send_ttisapi;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmdapi> otn_send_ttitcmdapi;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmos> otn_send_ttitcmos;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection> proactive_protection;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu
 
 
-
-        class OtuExpectedTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti
-        class OtuThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds
-        class Frr; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr
-        class OtuReports; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports
-        class OtuTxTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr> frr;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti> otu_expected_tti;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports> otu_reports;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds> otu_thresholds;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti> otu_tx_tti;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmos : public Entity
 {
     public:
-        OtuExpectedTti();
-        ~OtuExpectedTti();
+        OtnSendTtitcmos();
+        ~OtnSendTtitcmos();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: OtnSendTtiTypeOsEnum
+        YLeaf osascii_string; //type: string
+        YLeaf oshex_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmos
 
 
-        YLeaf string_type; //type: ExpectedTtiEnum
-        YLeaf ascii_string; //type: string
-        YLeaf hex_string; //type: string
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmdapi : public Entity
 {
     public:
-        OtuThresholds();
-        ~OtuThresholds();
+        OtnSendTtitcmdapi();
+        ~OtnSendTtitcmdapi();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: OtnSendTtiTypeDapiEnum
+        YLeaf dapi_ascii_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmdapi
 
 
-
-        class OtuThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold> > otu_threshold;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtisapi : public Entity
 {
     public:
-        OtuThreshold();
-        ~OtuThreshold();
+        OtnExpectedTtisapi();
+        ~OtnExpectedTtisapi();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: OtnExpTtiTypeSapiEnum
+        YLeaf sapi_ascii_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtisapi
 
 
-        YLeaf threshold; //type: OtuThresholdEnum
-        YLeaf threshold_value; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection : public Entity
 {
     public:
-        Frr();
-        ~Frr();
+        ProactiveProtection();
+        ~ProactiveProtection();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf status; //type: empty
+        class TriggerThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerThreshold
+        class RevertWindow; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertWindow
+        class TriggerWindow; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerWindow
+        class RevertThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertThreshold
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertThreshold> revert_threshold;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertWindow> revert_window;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerThreshold> trigger_threshold;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerWindow> trigger_window;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection
 
 
-
-        class TriggerWindow; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow
-        class RevertThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold
-        class TriggerThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold
-        class RevertWindow; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold> revert_threshold; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow> revert_window; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold> trigger_threshold; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow> trigger_window; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow : public Entity
-{
-    public:
-        TriggerWindow();
-        ~TriggerWindow();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf window; //type: uint32
-        YLeaf dummy; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold : public Entity
-{
-    public:
-        RevertThreshold();
-        ~RevertThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf ber_base; //type: uint32
-        YLeaf ber_power; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerThreshold : public Entity
 {
     public:
         TriggerThreshold();
@@ -2922,22 +2559,20 @@ class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::Tri
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf coefficient; //type: uint32
+        YLeaf power; //type: uint32
+        YLeaf enable; //type: empty
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerThreshold
 
 
-        YLeaf ber_base; //type: uint32
-        YLeaf ber_power; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertWindow : public Entity
 {
     public:
         RevertWindow();
@@ -2945,159 +2580,271 @@ class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::Rev
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf value_; //type: uint32
+        YLeaf enable; //type: empty
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertWindow
 
 
-        YLeaf window; //type: uint32
-        YLeaf dummy; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerWindow : public Entity
 {
     public:
-        OtuReports();
-        ~OtuReports();
+        TriggerWindow();
+        ~TriggerWindow();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf value_; //type: uint32
+        YLeaf enable; //type: empty
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerWindow
 
 
-
-        class OtuReport; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport> > otu_report;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertThreshold : public Entity
 {
     public:
-        OtuReport();
-        ~OtuReport();
+        RevertThreshold();
+        ~RevertThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf coefficient; //type: uint32
+        YLeaf power; //type: uint32
+        YLeaf enable; //type: empty
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertThreshold
 
 
-        YLeaf alarm; //type: OtuAlarmEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs : public Entity
 {
     public:
-        OtuTxTti();
-        ~OtuTxTti();
+        NetworkSrlgs();
+        ~NetworkSrlgs();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class NetworkSrlg; //type: InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs::NetworkSrlg
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs::NetworkSrlg> > network_srlg;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs
 
 
-        YLeaf string_type; //type: TxTtiEnum
-        YLeaf ascii_string; //type: string
+class InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs::NetworkSrlg : public Entity
+{
+    public:
+        NetworkSrlg();
+        ~NetworkSrlg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf set_id; //type: uint32
+        YLeaf srlg1; //type: uint32
+        YLeaf srlg2; //type: uint32
+        YLeaf srlg3; //type: uint32
+        YLeaf srlg4; //type: uint32
+        YLeaf srlg5; //type: uint32
+        YLeaf srlg6; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs::NetworkSrlg
+
+
+class InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTti : public Entity
+{
+    public:
+        OtnSendTti();
+        ~OtnSendTti();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: OtnSendTtiTypeFullEnum
+        YLeaf full_ascii_string; //type: string
         YLeaf hex_string; //type: string
 
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTti
 
 
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmdapi : public Entity
 {
     public:
-        Prbs();
-        ~Prbs();
+        OtnExpectedTtitcmdapi();
+        ~OtnExpectedTtitcmdapi();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: OtnExpTtiTypeDapiEnum
+        YLeaf dapi_ascii_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmdapi
 
 
-        YLeaf prbs_mode; //type: PrbsModeEnum
-        YLeaf prbs_pattern; //type: PrbsPatternEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtisapi : public Entity
 {
     public:
-        Fec();
-        ~Fec();
+        OtnSendTtisapi();
+        ~OtnSendTtisapi();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: OtnSendTtiTypeSapiEnum
+        YLeaf sapi_ascii_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtisapi
 
 
-        YLeaf fec_mode; //type: FecEnum
-        YLeaf efec_mode; //type: EfecEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmos : public Entity
 {
     public:
-        Wavelength();
-        ~Wavelength();
+        OtnExpectedTtitcmos();
+        ~OtnExpectedTtitcmos();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: OtnExpTtiTypeOsEnum
+        YLeaf osascii_string; //type: string
+        YLeaf oshex_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmos
 
 
-        YLeaf wave_channel; //type: uint32
-        YLeaf wave_channel_number; //type: WaveChannelNumEnum
-        YLeaf prog_frequency; //type: string
+class InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTti : public Entity
+{
+    public:
+        OtnExpectedTti();
+        ~OtnExpectedTti();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: OtnExpTtiTypeFullEnum
+        YLeaf full_ascii_string; //type: string
+        YLeaf hex_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTti
 
 
+class InterfaceConfigurations::InterfaceConfiguration::Macsec : public Entity
+{
+    public:
+        Macsec();
+        ~Macsec();
 
-}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class MacsecService; //type: InterfaceConfigurations::InterfaceConfiguration::Macsec::MacsecService
+        class PskKeyChain; //type: InterfaceConfigurations::InterfaceConfiguration::Macsec::PskKeyChain
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Macsec::MacsecService> macsec_service; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Macsec::PskKeyChain> psk_key_chain; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Macsec
+
+
+class InterfaceConfigurations::InterfaceConfiguration::Macsec::MacsecService : public Entity
+{
+    public:
+        MacsecService();
+        ~MacsecService();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf decrypt_port; //type: string
+        YLeaf key_chain; //type: string
+        YLeaf policy; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Macsec::MacsecService
+
+
+class InterfaceConfigurations::InterfaceConfiguration::Macsec::PskKeyChain : public Entity
+{
+    public:
+        PskKeyChain();
+        ~PskKeyChain();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf key_chain_name; //type: string
+        YLeaf policy_name; //type: string
+        YLeaf fallback_key_chain; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Macsec::PskKeyChain
 
 
 class InterfaceConfigurations::InterfaceConfiguration::Ethernet : public Entity
@@ -3108,12 +2855,11 @@ class InterfaceConfigurations::InterfaceConfiguration::Ethernet : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf duplex; //type: EthernetDuplexEnum
         YLeaf auto_negotiation; //type: EthernetAutoNegotiationEnum
@@ -3123,7 +2869,6 @@ class InterfaceConfigurations::InterfaceConfiguration::Ethernet : public Entity
         YLeaf loopback; //type: EthernetLoopbackEnum
         YLeaf speed; //type: EthernetSpeedEnum
         YLeaf inter_packet_gap; //type: EthernetIpgEnum
-
         class SignalFailBitErrorRate; //type: InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalFailBitErrorRate
         class SignalDegradeBitErrorRate; //type: InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalDegradeBitErrorRate
         class CarrierDelay; //type: InterfaceConfigurations::InterfaceConfiguration::Ethernet::CarrierDelay
@@ -3131,8 +2876,7 @@ class InterfaceConfigurations::InterfaceConfiguration::Ethernet : public Entity
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ethernet::CarrierDelay> carrier_delay;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalDegradeBitErrorRate> signal_degrade_bit_error_rate;
         std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalFailBitErrorRate> signal_fail_bit_error_rate;
-
-
+        
 }; // InterfaceConfigurations::InterfaceConfiguration::Ethernet
 
 
@@ -3144,18 +2888,15 @@ class InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalFailBitEr
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_remote_fault; //type: empty
         YLeaf signal_fail_threshold; //type: uint32
         YLeaf signal_fail_report_disable; //type: empty
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalFailBitErrorRate
 
@@ -3168,17 +2909,14 @@ class InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalDegradeBi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf signal_degrade_threshold; //type: uint32
         YLeaf signal_degrade_report; //type: empty
-
-
 
 }; // InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalDegradeBitErrorRate
 
@@ -3191,870 +2929,641 @@ class InterfaceConfigurations::InterfaceConfiguration::Ethernet::CarrierDelay : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf carrier_delay_up; //type: uint32
         YLeaf carrier_delay_down; //type: uint32
 
-
-
 }; // InterfaceConfigurations::InterfaceConfiguration::Ethernet::CarrierDelay
 
 
-class InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaFsmCfg_Ppp : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm : public Entity
 {
     public:
-        CiscoIosXrPppMaFsmCfg_Ppp();
-        ~CiscoIosXrPppMaFsmCfg_Ppp();
+        Dwdm();
+        ~Dwdm();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf enable_vtxp; //type: boolean
+        YLeaf network_port_id; //type: string
+        YLeaf transport_admin_state; //type: DwdmAdminStateEnum
+        YLeaf laser; //type: empty
+        YLeaf transmit_power; //type: int32
+        YLeaf rx_threshold; //type: int32
+        YLeaf network_connection_id; //type: string
+        YLeaf loopback; //type: DwdmLoopbackEnum
+        class NetworkSrlgs; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs
+        class G709; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709
+        class Wavelength; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709> g709;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs> network_srlgs;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength> wavelength; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm
 
 
-
-        class Fsm; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaFsmCfg_Ppp::Fsm
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaFsmCfg_Ppp::Fsm> fsm;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaFsmCfg_Ppp
-
-
-class InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaFsmCfg_Ppp::Fsm : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs : public Entity
 {
     public:
-        Fsm();
-        ~Fsm();
+        NetworkSrlgs();
+        ~NetworkSrlgs();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class NetworkSrlg; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg> > network_srlg;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs
 
 
-        YLeaf retry_timeout; //type: uint32
-        YLeaf max_unacknowledged_term_requests; //type: uint32
-        YLeaf max_consecutive_conf_naks; //type: uint32
-        YLeaf max_unacknowledged_conf_requests; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::CiscoIosXrPppMaFsmCfg_Ppp::Fsm
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Afs : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg : public Entity
 {
     public:
-        Afs();
-        ~Afs();
+        NetworkSrlg();
+        ~NetworkSrlg();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf set_id; //type: uint32
+        YLeaf srlg1; //type: uint32
+        YLeaf srlg2; //type: uint32
+        YLeaf srlg3; //type: uint32
+        YLeaf srlg4; //type: uint32
+        YLeaf srlg5; //type: uint32
+        YLeaf srlg6; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg
 
 
-
-        class Af; //type: InterfaceConfigurations::InterfaceConfiguration::Afs::Af
-        class AfTopologyName; //type: InterfaceConfigurations::InterfaceConfiguration::Afs::AfTopologyName
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Afs::Af> > af;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Afs::AfTopologyName> > af_topology_name;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Afs
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Afs::Af : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709 : public Entity
 {
     public:
-        Af();
-        ~Af();
+        G709();
+        ~G709();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf proactive; //type: ProactiveEnum
+        YLeaf bdi_to_gais; //type: empty
+        YLeaf tim_to_gais; //type: empty
+        YLeaf proactive_logging_file; //type: string
+        YLeaf tti_processing; //type: empty
+        YLeaf enable; //type: boolean
+        YLeaf framing; //type: FramingEnum
+        class Odu; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu
+        class Otu; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu
+        class Prbs; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs
+        class Fec; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec> fec; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu> odu;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu> otu;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs> prbs; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709
 
 
-        YLeaf af_name; //type: VrfAddressFamilyEnum
-        YLeaf saf_name; //type: VrfSubAddressFamilyEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Afs::Af
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Afs::AfTopologyName : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu : public Entity
 {
     public:
-        AfTopologyName();
-        ~AfTopologyName();
+        Odu();
+        ~Odu();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class OduReports; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports
+        class OduThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds
+        class OduExpectedTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti
+        class OduTxTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti> odu_expected_tti;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports> odu_reports;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds> odu_thresholds;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti> odu_tx_tti;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu
 
 
-        YLeaf topology_name; //type: string
-        YLeaf af_name; //type: VrfAddressFamilyEnum
-        YLeaf saf_name; //type: VrfSubAddressFamilyEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Afs::AfTopologyName
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Nve : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports : public Entity
 {
     public:
-        Nve();
-        ~Nve();
+        OduReports();
+        ~OduReports();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class OduReport; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport> > odu_report;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports
 
 
-        YLeaf vx_lan_udp_port; //type: VxlanUdpPortEnumEnum
-        YLeaf overlay_encapsulation; //type: OverlayEncapEnumEnum
-        YLeaf source_interface; //type: string
-
-        class Anycast; //type: InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast
-        class Redundancy; //type: InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy
-        class MemberVnis; //type: InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast> anycast;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis> member_vnis;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy> redundancy;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Nve
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport : public Entity
 {
     public:
-        Anycast();
-        ~Anycast();
+        OduReport();
+        ~OduReport();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf alarm; //type: OduAlarmEnum
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport
 
 
-        YLeaf source_interface; //type: string
-        YLeaf sync_group; //type: string
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds : public Entity
 {
     public:
-        Redundancy();
-        ~Redundancy();
+        OduThresholds();
+        ~OduThresholds();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class OduThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold> > odu_threshold;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds
 
 
-        YLeaf enable; //type: empty
-
-        class BackboneVxLan; //type: InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan
-        class BackboneMpls; //type: InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls> backbone_mpls;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan> backbone_vx_lan;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold : public Entity
 {
     public:
-        BackboneVxLan();
-        ~BackboneVxLan();
+        OduThreshold();
+        ~OduThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf threshold; //type: OduThresholdEnum
+        YLeaf threshold_value; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold
 
 
-        YLeaf enable; //type: empty
-        YLeaf backbone_vx_laniccp; //type: int32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti : public Entity
 {
     public:
-        BackboneMpls();
-        ~BackboneMpls();
+        OduExpectedTti();
+        ~OduExpectedTti();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: ExpectedTtiEnum
+        YLeaf ascii_string; //type: string
+        YLeaf hex_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti
 
 
-        YLeaf backbone_mplsiccp; //type: int32
-        YLeaf enable; //type: empty
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti : public Entity
 {
     public:
-        MemberVnis();
-        ~MemberVnis();
+        OduTxTti();
+        ~OduTxTti();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: TxTtiEnum
+        YLeaf ascii_string; //type: string
+        YLeaf hex_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti
 
 
-
-        class MemberVni; //type: InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni> > member_vni;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu : public Entity
 {
     public:
-        MemberVni();
-        ~MemberVni();
+        Otu();
+        ~Otu();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class OtuExpectedTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti
+        class OtuThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds
+        class Frr; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr
+        class OtuReports; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports
+        class OtuTxTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr> frr;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti> otu_expected_tti;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports> otu_reports;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds> otu_thresholds;
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti> otu_tx_tti;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu
 
 
-        YLeaf vni_start; //type: uint32
-        YLeaf vni_end; //type: uint32
-        YLeaf host_reachability; //type: HostReachProtocolEnum
-        YLeaf vrf; //type: string
-        YLeaf unknown_unicast_flooding; //type: UnknownUnicastFloodingEnumEnum
-        YLeaf load_balance_per_evi; //type: LoadBalanceEnumEnum
-        YLeaf enable; //type: empty
-
-        class Multicast; //type: InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast> multicast; // presence node
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti : public Entity
 {
     public:
-        Multicast();
-        ~Multicast();
+        OtuExpectedTti();
+        ~OtuExpectedTti();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: ExpectedTtiEnum
+        YLeaf ascii_string; //type: string
+        YLeaf hex_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti
 
 
-        YLeaf multicast_group_min; //type: string
-        YLeaf multicast_group_max; //type: string
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds : public Entity
 {
     public:
-        Ipv6Neighbor();
-        ~Ipv6Neighbor();
+        OtuThresholds();
+        ~OtuThresholds();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class OtuThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold> > otu_threshold;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds
 
 
-        YLeaf reachable_time; //type: uint32
-        YLeaf ra_unspecify_hoplimit; //type: empty
-        YLeaf dad_attempts; //type: uint32
-        YLeaf srp_multicast_encapsulation; //type: Ipv6SrpEncapsulationEnum
-        YLeaf ns_interval; //type: uint32
-        YLeaf cache_limit; //type: uint32
-        YLeaf redirect; //type: empty
-        YLeaf srp_unicast_encapsulation; //type: Ipv6SrpEncapsulationEnum
-        YLeaf ramtu_suppress; //type: empty
-        YLeaf managed_config; //type: empty
-        YLeaf ra_unicast; //type: empty
-        YLeaf ra_lifetime; //type: uint32
-        YLeaf other_config; //type: empty
-        YLeaf ra_suppress; //type: empty
-        YLeaf router_preference; //type: Ipv6NdRouterPrefEnum
-
-        class RaspecificRouteS; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaspecificRouteS
-        class RadnsSearches; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsSearches
-        class RadnsServers; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsServers
-        class RaInterval; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaInterval
-        class Ipv6Prefixes; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::Ipv6Prefixes
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::Ipv6Prefixes> ipv6_prefixes;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaInterval> ra_interval; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsSearches> radns_searches;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsServers> radns_servers;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaspecificRouteS> raspecific_route_s;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaspecificRouteS : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold : public Entity
 {
     public:
-        RaspecificRouteS();
-        ~RaspecificRouteS();
+        OtuThreshold();
+        ~OtuThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf threshold; //type: OtuThresholdEnum
+        YLeaf threshold_value; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold
 
 
-
-        class RaspecificRoute; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaspecificRouteS::RaspecificRoute
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaspecificRouteS::RaspecificRoute> > raspecific_route;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaspecificRouteS
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaspecificRouteS::RaspecificRoute : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr : public Entity
 {
     public:
-        RaspecificRoute();
-        ~RaspecificRoute();
+        Frr();
+        ~Frr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class TriggerWindow; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow
+        class RevertThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold
+        class TriggerThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold
+        class RevertWindow; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold> revert_threshold; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow> revert_window; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold> trigger_threshold; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow> trigger_window; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr
 
 
-        YLeaf specific_route; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf lifetime; //type: uint32
-        YLeaf preference; //type: Ipv6NdRouterPrefEnum
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaspecificRouteS::RaspecificRoute
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsSearches : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow : public Entity
 {
     public:
-        RadnsSearches();
-        ~RadnsSearches();
+        TriggerWindow();
+        ~TriggerWindow();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf window; //type: uint32
+        YLeaf dummy; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow
 
 
-
-        class RadnsSearch; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsSearches::RadnsSearch
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsSearches::RadnsSearch> > radns_search;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsSearches
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsSearches::RadnsSearch : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold : public Entity
 {
     public:
-        RadnsSearch();
-        ~RadnsSearch();
+        RevertThreshold();
+        ~RevertThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf ber_base; //type: uint32
+        YLeaf ber_power; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold
 
 
-        YLeaf dns_search_list; //type: string
-        YLeaf lifetime; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsSearches::RadnsSearch
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsServers : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold : public Entity
 {
     public:
-        RadnsServers();
-        ~RadnsServers();
+        TriggerThreshold();
+        ~TriggerThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf ber_base; //type: uint32
+        YLeaf ber_power; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold
 
 
-
-        class RadnsServer; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsServers::RadnsServer
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsServers::RadnsServer> > radns_server;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsServers
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsServers::RadnsServer : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow : public Entity
 {
     public:
-        RadnsServer();
-        ~RadnsServer();
+        RevertWindow();
+        ~RevertWindow();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf window; //type: uint32
+        YLeaf dummy; //type: uint32
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow
 
 
-        YLeaf dns_server; //type: string
-        YLeaf lifetime; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RadnsServers::RadnsServer
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaInterval : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports : public Entity
 {
     public:
-        RaInterval();
-        ~RaInterval();
+        OtuReports();
+        ~OtuReports();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class OtuReport; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport> > otu_report;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports
 
 
-        YLeaf maximum; //type: uint32
-        YLeaf minimum; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::RaInterval
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::Ipv6Prefixes : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport : public Entity
 {
     public:
-        Ipv6Prefixes();
-        ~Ipv6Prefixes();
+        OtuReport();
+        ~OtuReport();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf alarm; //type: OtuAlarmEnum
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport
 
 
-
-        class Ipv6Prefix; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::Ipv6Prefixes::Ipv6Prefix
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::Ipv6Prefixes::Ipv6Prefix> > ipv6_prefix;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::Ipv6Prefixes
-
-
-class InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::Ipv6Prefixes::Ipv6Prefix : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti : public Entity
 {
     public:
-        Ipv6Prefix();
-        ~Ipv6Prefix();
+        OtuTxTti();
+        ~OtuTxTti();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf string_type; //type: TxTtiEnum
+        YLeaf ascii_string; //type: string
+        YLeaf hex_string; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti
 
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_zone; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf valid_lifetime; //type: uint32
-        YLeaf preferred_lifetime; //type: uint32
-        YLeaf off_link; //type: boolean
-        YLeaf no_auto_config; //type: boolean
-        YLeaf no_advertize; //type: boolean
-        YLeaf expiry_month; //type: Ipv6NdMonthEnum
-        YLeaf expiry_date; //type: uint32
-        YLeaf expiry_year; //type: uint32
-        YLeaf expiry_hour; //type: uint32
-        YLeaf expiry_minute; //type: uint32
-        YLeaf pref_expiry_month; //type: Ipv6NdMonthEnum
-        YLeaf pref_expiry_date; //type: uint32
-        YLeaf pref_expiry_year; //type: uint32
-        YLeaf pref_expiry_hour; //type: uint32
-        YLeaf pref_expiry_minute; //type: uint32
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6Neighbor::Ipv6Prefixes::Ipv6Prefix
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs : public Entity
 {
     public:
-        NetFlow();
-        ~NetFlow();
+        Prbs();
+        ~Prbs();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf prbs_mode; //type: PrbsModeEnum
+        YLeaf prbs_pattern; //type: PrbsPatternEnum
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs
 
 
-
-        class DataLinkFrameSection; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection
-        class Mpls; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls
-        class Ipv6; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6
-        class Ipv4; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection> data_link_frame_section;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4> ipv4;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6> ipv6;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls> mpls;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec : public Entity
 {
     public:
-        DataLinkFrameSection();
-        ~DataLinkFrameSection();
+        Fec();
+        ~Fec();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf fec_mode; //type: FecEnum
+        YLeaf efec_mode; //type: EfecEnum
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec
 
 
-
-        class FlowMonitorMap; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap> flow_monitor_map;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength : public Entity
 {
     public:
-        FlowMonitorMap();
-        ~FlowMonitorMap();
+        Wavelength();
+        ~Wavelength();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        YLeaf wave_channel; //type: uint32
+        YLeaf wave_channel_number; //type: WaveChannelNumEnum
+        YLeaf prog_frequency; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength
 
 
-
-        class Ingress; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress
-        class Egress; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress> egress;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress> ingress;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration : public Entity
 {
     public:
-        Ingress();
-        ~Ingress();
+        VlanSubConfiguration();
+        ~VlanSubConfiguration();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+
+        class VlanIdentifier; //type: InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier
+
+        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier> vlan_identifier; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration
 
 
-
-        class FlowMonitorName; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName> > flow_monitor_name;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName : public Entity
+class InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier : public Entity
 {
     public:
-        FlowMonitorName();
-        ~FlowMonitorName();
+        VlanIdentifier();
+        ~VlanIdentifier();
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
+        YLeaf vlan_type; //type: VlanEnum
+        YLeaf first_tag; //type: uint32
+        YLeaf second_tag; //type: one of uint32, enumeration
 
-        YLeaf monitor_map_name; //type: string
-        YLeaf sampler_map_name; //type: string
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress : public Entity
-{
-    public:
-        Egress();
-        ~Egress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class FlowMonitorName; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName> > flow_monitor_name;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName : public Entity
-{
-    public:
-        FlowMonitorName();
-        ~FlowMonitorName();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-        YLeaf monitor_map_name; //type: string
-        YLeaf sampler_map_name; //type: string
-
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls : public Entity
-{
-    public:
-        Mpls();
-        ~Mpls();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class FlowMonitorMap; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap> flow_monitor_map;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap : public Entity
-{
-    public:
-        FlowMonitorMap();
-        ~FlowMonitorMap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class Ingress; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress
-        class Egress; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress
-
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress> egress;
-        std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress> ingress;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap
-
-
-class InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress : public Entity
-{
-    public:
-        Ingress();
-        ~Ingress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
-
-        class FlowMonitorName; //type: InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::FlowMonitorName
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::FlowMonitorName> > flow_monitor_name;
-
-
-}; // InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress
+}; // InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier
 
 class InterfaceModeEnumEnum : public Enum
 {
@@ -4089,14 +3598,6 @@ class InterfaceConfigurations::InterfaceConfiguration::Dampening::ArgsEnum : pub
         static const Enum::YLeaf specify_half_life;
         static const Enum::YLeaf specify_all;
         static const Enum::YLeaf specify_rp;
-
-};
-
-class InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::TunnelingEthertypeEnum : public Enum
-{
-    public:
-        static const Enum::YLeaf Y_0x9100;
-        static const Enum::YLeaf Y_0x9200;
 
 };
 

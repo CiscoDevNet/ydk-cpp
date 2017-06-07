@@ -18,23 +18,20 @@ class ProcessesMemory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: ProcessesMemory::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_procmem_oper::ProcessesMemory::Nodes> nodes;
-
-
+        
 }; // ProcessesMemory
 
 
@@ -46,19 +43,16 @@ class ProcessesMemory::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: ProcessesMemory::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_procmem_oper::ProcessesMemory::Nodes::Node> > node;
-
-
+        
 }; // ProcessesMemory::Nodes
 
 
@@ -70,20 +64,17 @@ class ProcessesMemory::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class ProcessIds; //type: ProcessesMemory::Nodes::Node::ProcessIds
 
         std::shared_ptr<Cisco_IOS_XR_procmem_oper::ProcessesMemory::Nodes::Node::ProcessIds> process_ids;
-
-
+        
 }; // ProcessesMemory::Nodes::Node
 
 
@@ -95,19 +86,16 @@ class ProcessesMemory::Nodes::Node::ProcessIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ProcessId; //type: ProcessesMemory::Nodes::Node::ProcessIds::ProcessId
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_procmem_oper::ProcessesMemory::Nodes::Node::ProcessIds::ProcessId> > process_id;
-
-
+        
 }; // ProcessesMemory::Nodes::Node::ProcessIds
 
 
@@ -119,12 +107,11 @@ class ProcessesMemory::Nodes::Node::ProcessIds::ProcessId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf process_id; //type: int32
         YLeaf name; //type: string
@@ -137,8 +124,6 @@ class ProcessesMemory::Nodes::Node::ProcessIds::ProcessId : public Entity
         YLeaf dyn_limit; //type: uint32
         YLeaf shared_mem; //type: uint32
         YLeaf physical_mem; //type: uint32
-
-
 
 }; // ProcessesMemory::Nodes::Node::ProcessIds::ProcessId
 

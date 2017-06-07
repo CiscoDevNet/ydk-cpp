@@ -17,9 +17,6 @@ class SyslogFacilityIdentity : public virtual Identity
         ~SyslogFacilityIdentity();
 
 
-
-
-
 }; // SyslogFacilityIdentity
 
 class Cron2Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -27,8 +24,6 @@ class Cron2Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual 
     public:
         Cron2Identity();
         ~Cron2Identity();
-
-
 
 
 }; // Cron2Identity
@@ -40,8 +35,6 @@ class CronIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual I
         ~CronIdentity();
 
 
-
-
 }; // CronIdentity
 
 class SyslogIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -49,8 +42,6 @@ class SyslogIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
     public:
         SyslogIdentity();
         ~SyslogIdentity();
-
-
 
 
 }; // SyslogIdentity
@@ -62,8 +53,6 @@ class Local4Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
         ~Local4Identity();
 
 
-
-
 }; // Local4Identity
 
 class FtpIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -71,8 +60,6 @@ class FtpIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Id
     public:
         FtpIdentity();
         ~FtpIdentity();
-
-
 
 
 }; // FtpIdentity
@@ -84,8 +71,6 @@ class UucpIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual I
         ~UucpIdentity();
 
 
-
-
 }; // UucpIdentity
 
 class ConsoleIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -93,8 +78,6 @@ class ConsoleIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtua
     public:
         ConsoleIdentity();
         ~ConsoleIdentity();
-
-
 
 
 }; // ConsoleIdentity
@@ -106,8 +89,6 @@ class MailIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual I
         ~MailIdentity();
 
 
-
-
 }; // MailIdentity
 
 class AuthprivIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -115,8 +96,6 @@ class AuthprivIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtu
     public:
         AuthprivIdentity();
         ~AuthprivIdentity();
-
-
 
 
 }; // AuthprivIdentity
@@ -128,8 +107,6 @@ class NtpIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Id
         ~NtpIdentity();
 
 
-
-
 }; // NtpIdentity
 
 class AuthIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -137,8 +114,6 @@ class AuthIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual I
     public:
         AuthIdentity();
         ~AuthIdentity();
-
-
 
 
 }; // AuthIdentity
@@ -150,8 +125,6 @@ class UserIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual I
         ~UserIdentity();
 
 
-
-
 }; // UserIdentity
 
 class Local5Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -159,8 +132,6 @@ class Local5Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
     public:
         Local5Identity();
         ~Local5Identity();
-
-
 
 
 }; // Local5Identity
@@ -172,8 +143,6 @@ class NewsIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual I
         ~NewsIdentity();
 
 
-
-
 }; // NewsIdentity
 
 class Local7Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -181,8 +150,6 @@ class Local7Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
     public:
         Local7Identity();
         ~Local7Identity();
-
-
 
 
 }; // Local7Identity
@@ -194,8 +161,6 @@ class Local6Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
         ~Local6Identity();
 
 
-
-
 }; // Local6Identity
 
 class Local1Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -203,8 +168,6 @@ class Local1Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
     public:
         Local1Identity();
         ~Local1Identity();
-
-
 
 
 }; // Local1Identity
@@ -216,8 +179,6 @@ class Local0Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
         ~Local0Identity();
 
 
-
-
 }; // Local0Identity
 
 class Local3Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -225,8 +186,6 @@ class Local3Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
     public:
         Local3Identity();
         ~Local3Identity();
-
-
 
 
 }; // Local3Identity
@@ -238,8 +197,6 @@ class Local2Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
         ~Local2Identity();
 
 
-
-
 }; // Local2Identity
 
 class AuditIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -247,8 +204,6 @@ class AuditIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual 
     public:
         AuditIdentity();
         ~AuditIdentity();
-
-
 
 
 }; // AuditIdentity
@@ -260,8 +215,6 @@ class DaemonIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual
         ~DaemonIdentity();
 
 
-
-
 }; // DaemonIdentity
 
 class LprIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -271,8 +224,6 @@ class LprIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Id
         ~LprIdentity();
 
 
-
-
 }; // LprIdentity
 
 class KernIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
@@ -280,8 +231,6 @@ class KernIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual I
     public:
         KernIdentity();
         ~KernIdentity();
-
-
 
 
 }; // KernIdentity

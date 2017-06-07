@@ -18,25 +18,22 @@ class PolicyManager : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class ClassMaps; //type: PolicyManager::ClassMaps
         class PolicyMaps; //type: PolicyManager::PolicyMaps
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps> class_maps;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps> policy_maps;
-
-
+        
 }; // PolicyManager
 
 
@@ -48,19 +45,16 @@ class PolicyManager::ClassMaps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class ClassMap; //type: PolicyManager::ClassMaps::ClassMap
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap> > class_map;
-
-
+        
 }; // PolicyManager::ClassMaps
 
 
@@ -72,26 +66,23 @@ class PolicyManager::ClassMaps::ClassMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: ClassMapTypeEnum
         YLeaf name; //type: string
         YLeaf class_map_mode_match_any; //type: empty
         YLeaf class_map_mode_match_all; //type: empty
         YLeaf description; //type: string
-
         class Match; //type: PolicyManager::ClassMaps::ClassMap::Match
         class MatchNot; //type: PolicyManager::ClassMaps::ClassMap::MatchNot
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match> match;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot> match_not;
-
-
+        
 }; // PolicyManager::ClassMaps::ClassMap
 
 
@@ -103,12 +94,11 @@ class PolicyManager::ClassMaps::ClassMap::Match : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dei; //type: uint8
         YLeaf dei_inner; //type: uint8
@@ -172,7 +162,6 @@ class PolicyManager::ClassMaps::ClassMap::Match : public Entity
         YLeafList user_name_regex; //type: list of  string
         YLeafList source_mac; //type: list of  string
         YLeafList destination_mac; //type: list of  string
-
         class DestinationAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4
         class DestinationAddressIpv6; //type: PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6
         class SourceAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4
@@ -188,8 +177,7 @@ class PolicyManager::ClassMaps::ClassMap::Match : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::Flow> flow;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4> > source_address_ipv4;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6> > source_address_ipv6;
-
-
+        
 }; // PolicyManager::ClassMaps::ClassMap::Match
 
 
@@ -201,17 +189,14 @@ class PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4 : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf netmask; //type: string
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4
 
@@ -224,17 +209,14 @@ class PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6 : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6
 
@@ -247,17 +229,14 @@ class PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4 : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf netmask; //type: string
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4
 
@@ -270,17 +249,14 @@ class PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6 : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6
 
@@ -293,17 +269,14 @@ class PolicyManager::ClassMaps::ClassMap::Match::DomainName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf format; //type: string
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::DomainName
 
@@ -316,17 +289,14 @@ class PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf regex; //type: string
         YLeaf format; //type: string
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex
 
@@ -339,20 +309,17 @@ class PolicyManager::ClassMaps::ClassMap::Match::Flow : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList flow_key; //type: list of  string
-
         class FlowCache; //type: PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache> flow_cache;
-
-
+        
 }; // PolicyManager::ClassMaps::ClassMap::Match::Flow
 
 
@@ -364,16 +331,13 @@ class PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf idle_timeout; //type: one of uint16, string
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache
 
@@ -386,12 +350,11 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dei; //type: uint8
         YLeaf dei_inner; //type: uint8
@@ -451,7 +414,6 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public Entity
         YLeafList user_name_regex; //type: list of  string
         YLeafList source_mac; //type: list of  string
         YLeafList destination_mac; //type: list of  string
-
         class DestinationAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4
         class DestinationAddressIpv6; //type: PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6
         class SourceAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4
@@ -467,8 +429,7 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::Flow> flow;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4> > source_address_ipv4;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6> > source_address_ipv6;
-
-
+        
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot
 
 
@@ -480,17 +441,14 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4 : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf netmask; //type: string
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4
 
@@ -503,17 +461,14 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6 : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6
 
@@ -526,17 +481,14 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4 : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf netmask; //type: string
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4
 
@@ -549,17 +501,14 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6 : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf address; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6
 
@@ -572,17 +521,14 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf format; //type: string
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName
 
@@ -595,17 +541,14 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf regex; //type: string
         YLeaf format; //type: string
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex
 
@@ -618,16 +561,13 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::Flow : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeafList flow_tag; //type: list of  uint16
-
-
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::Flow
 
@@ -640,19 +580,16 @@ class PolicyManager::PolicyMaps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PolicyMap; //type: PolicyManager::PolicyMaps::PolicyMap
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap> > policy_map;
-
-
+        
 }; // PolicyManager::PolicyMaps
 
 
@@ -664,24 +601,21 @@ class PolicyManager::PolicyMaps::PolicyMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf type; //type: PolicyMapTypeEnum
         YLeaf name; //type: string
         YLeaf description; //type: string
-
         class Event; //type: PolicyManager::PolicyMaps::PolicyMap::Event
         class PolicyMapRule; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event> > event;
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule> > policy_map_rule;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap
 
 
@@ -693,22 +627,19 @@ class PolicyManager::PolicyMaps::PolicyMap::Event : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf event_type; //type: EventTypeEnum
         YLeaf event_mode_match_all; //type: empty
         YLeaf event_mode_match_first; //type: empty
-
         class Class_; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_> > class_;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::Event
 
 
@@ -720,22 +651,19 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf class_name; //type: string
         YLeaf class_type; //type: PmapClassMapTypeEnum
         YLeaf class_execution_strategy; //type: ExecutionStrategyEnum
-
         class ActionRule; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule> > action_rule;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_
 
 
@@ -747,17 +675,15 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf action_sequence_number; //type: uint16
         YLeaf disconnect; //type: empty
         YLeaf monitor; //type: empty
-
         class ActivateDynamicTemplate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate
         class Authenticate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate
         class Authorize; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
@@ -771,8 +697,7 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule : public E
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate> deactivate_dynamic_template; // presence node
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer> set_timer; // presence node
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer> stop_timer;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
 
@@ -784,17 +709,14 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateD
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf aaa_list; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate
 
@@ -807,16 +729,13 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authentic
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf aaa_list; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate
 
@@ -829,19 +748,16 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf aaa_list; //type: string
         YLeaf format; //type: string
         YLeaf identifier; //type: AuthorizeIdentifierEnum
         YLeaf password; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
 
@@ -854,17 +770,14 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Deactivat
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf aaa_list; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate
 
@@ -877,17 +790,14 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf timer_name; //type: string
         YLeaf timer_value; //type: uint32
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer
 
@@ -900,16 +810,13 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf timer_name; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer
 
@@ -922,12 +829,11 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf class_name; //type: string
         YLeaf class_type; //type: PmapClassMapTypeEnum
@@ -940,7 +846,6 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public Entity
         YLeaf decap_gre; //type: empty
         YLeaf service_fragment; //type: string
         YLeaf fragment; //type: string
-
         class Shape; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape
         class MinBandwidth; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth
         class BandwidthRemaining; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining
@@ -972,8 +877,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy> service_policy;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set> set;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape> shape;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule
 
 
@@ -985,21 +889,18 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate
         class Burst; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst> burst;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate> rate;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape
 
 
@@ -1011,17 +912,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate
 
@@ -1034,17 +932,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf units; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst
 
@@ -1057,17 +952,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth
 
@@ -1080,17 +972,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining
 
@@ -1103,17 +992,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit
 
@@ -1126,15 +1012,13 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pfc_pause_set; //type: empty
-
         class PfcBufferSize; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize
         class PfcPauseThreshold; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold
         class PfcResumeThreshold; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold
@@ -1142,8 +1026,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize> pfc_buffer_size;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold> pfc_pause_threshold;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold> pfc_resume_threshold;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc
 
 
@@ -1155,17 +1038,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize
 
@@ -1178,17 +1058,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshol
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold
 
@@ -1201,17 +1078,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThresho
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf unit; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold
 
@@ -1224,12 +1098,11 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf threshold_min_value; //type: uint32
         YLeaf threshold_min_units; //type: string
@@ -1243,8 +1116,6 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect : public
         YLeafList mpls_exp; //type: list of  uint8
         YLeafList precedence; //type: list of  one of uint8, string
 
-
-
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect
 
 
@@ -1256,12 +1127,11 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dscp; //type: string
         YLeaf qos_group; //type: uint16
@@ -1282,8 +1152,6 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set : public Entity
         YLeaf source_address; //type: string
         YLeaf destination_address; //type: string
 
-
-
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set
 
 
@@ -1295,13 +1163,11 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate
         class PeakRate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate
@@ -1318,8 +1184,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police : public Entit
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate> peak_rate;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate> rate;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction> violate_action;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police
 
 
@@ -1331,17 +1196,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf units; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate
 
@@ -1354,17 +1216,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf units; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate
 
@@ -1377,17 +1236,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf units; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst
 
@@ -1400,17 +1256,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf units; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst
 
@@ -1423,21 +1276,18 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit; //type: empty
         YLeaf drop; //type: empty
-
         class Set; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set> set;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
 
 
@@ -1449,12 +1299,11 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dscp; //type: string
         YLeaf qos_group; //type: uint16
@@ -1474,8 +1323,6 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
         YLeaf dei_imposition; //type: uint8
         YLeaf source_address; //type: string
         YLeaf destination_address; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set
 
@@ -1488,21 +1335,18 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit; //type: empty
         YLeaf drop; //type: empty
-
         class Set; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set> set;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction
 
 
@@ -1514,12 +1358,11 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dscp; //type: string
         YLeaf qos_group; //type: uint16
@@ -1539,8 +1382,6 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction:
         YLeaf dei_imposition; //type: uint8
         YLeaf source_address; //type: string
         YLeaf destination_address; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set
 
@@ -1553,21 +1394,18 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf transmit; //type: empty
         YLeaf drop; //type: empty
-
         class Set; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set> set;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
 
 
@@ -1579,12 +1417,11 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf dscp; //type: string
         YLeaf qos_group; //type: uint16
@@ -1605,8 +1442,6 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
         YLeaf source_address; //type: string
         YLeaf destination_address; //type: string
 
-
-
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set
 
 
@@ -1618,17 +1453,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policy_name; //type: string
         YLeaf type; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy
 
@@ -1641,22 +1473,19 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf flow_idle_timeout; //type: one of uint16, string
-
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate
         class FlowRate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate> flow_rate;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate> rate;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal
 
 
@@ -1668,17 +1497,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf units; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate
 
@@ -1691,17 +1517,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf value_; //type: uint32
         YLeaf units; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate
 
@@ -1714,19 +1537,16 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_flow; //type: uint16
         YLeaf interval_duration; //type: uint32
         YLeaf history; //type: uint32
         YLeaf timeout; //type: uint32
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams
 
@@ -1739,21 +1559,18 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate
         class MediaPacket; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket> media_packet;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate> rate;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr
 
 
@@ -1765,18 +1582,15 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf layer3; //type: uint32
         YLeaf packet; //type: uint32
         YLeaf media; //type: uint32
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate
 
@@ -1789,17 +1603,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPa
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf size; //type: uint16
         YLeaf count_in_layer3; //type: uint8
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket
 
@@ -1812,12 +1623,11 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf descrition; //type: string
         YLeaf criterion_delay_factor; //type: empty
@@ -1825,7 +1635,6 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React : public Entity
         YLeaf criterion_mrv; //type: empty
         YLeaf criterion_flow_count; //type: empty
         YLeaf criterion_packet_rate; //type: empty
-
         class Action; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action
         class Alarm; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm
         class Threshold; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
@@ -1833,8 +1642,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action> action;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm> alarm;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold> threshold;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React
 
 
@@ -1846,17 +1654,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf syslog; //type: empty
         YLeaf snmp; //type: empty
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action
 
@@ -1869,20 +1674,17 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf severity; //type: string
-
         class Type; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type> type;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm
 
 
@@ -1894,18 +1696,15 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf discrete; //type: empty
         YLeaf group_count; //type: uint16
         YLeaf group_percent; //type: uint16
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type
 
@@ -1918,21 +1717,18 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TriggerValue; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue
         class TriggerType; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType> trigger_type;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue> trigger_value;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
 
 
@@ -1944,20 +1740,17 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::Tri
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf greater_than; //type: string
         YLeaf greater_than_equal; //type: string
         YLeaf less_than; //type: string
         YLeaf less_than_equal; //type: string
         YLeaf range; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue
 
@@ -1970,17 +1763,14 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::Tri
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf immediate; //type: empty
         YLeaf average; //type: uint32
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType
 
@@ -1993,20 +1783,17 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf default_; //type: empty
-
         class NextHop; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop> next_hop;
-
-
+        
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward
 
 
@@ -2018,18 +1805,15 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf vrf; //type: string
         YLeaf ipv4_address; //type: string
         YLeaf ipv6_address; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop
 
@@ -2042,18 +1826,15 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf path_id; //type: uint32
         YLeaf index_; //type: uint8
         YLeaf metadata; //type: string
-
-
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath
 

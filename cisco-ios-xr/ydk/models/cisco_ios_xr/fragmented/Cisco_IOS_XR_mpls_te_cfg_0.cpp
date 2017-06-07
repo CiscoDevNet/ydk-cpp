@@ -25,28 +25,20 @@ MplsTe::MplsTe()
 	,transport_profile(std::make_shared<MplsTe::TransportProfile>())
 {
     diff_serv_traffic_engineering->parent = this;
-    children["diff-serv-traffic-engineering"] = diff_serv_traffic_engineering;
 
     global_attributes->parent = this;
-    children["global-attributes"] = global_attributes;
 
     gmpls_nni->parent = this;
-    children["gmpls-nni"] = gmpls_nni;
 
     gmpls_uni->parent = this;
-    children["gmpls-uni"] = gmpls_uni;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     lcac->parent = this;
-    children["lcac"] = lcac;
 
     named_tunnels->parent = this;
-    children["named-tunnels"] = named_tunnels;
 
     transport_profile->parent = this;
-    children["transport-profile"] = transport_profile;
 
     yang_name = "mpls-te"; yang_parent_name = "Cisco-IOS-XR-mpls-te-cfg";
 }
@@ -91,12 +83,12 @@ std::string MplsTe::get_segment_path() const
 
 }
 
-EntityPath MplsTe::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -112,202 +104,122 @@ EntityPath MplsTe::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "diff-serv-traffic-engineering")
     {
-        if(diff_serv_traffic_engineering != nullptr)
-        {
-            children["diff-serv-traffic-engineering"] = diff_serv_traffic_engineering;
-        }
-        else
+        if(diff_serv_traffic_engineering == nullptr)
         {
             diff_serv_traffic_engineering = std::make_shared<MplsTe::DiffServTrafficEngineering>();
-            diff_serv_traffic_engineering->parent = this;
-            children["diff-serv-traffic-engineering"] = diff_serv_traffic_engineering;
         }
-        return children.at("diff-serv-traffic-engineering");
+        return diff_serv_traffic_engineering;
     }
 
     if(child_yang_name == "global-attributes")
     {
-        if(global_attributes != nullptr)
-        {
-            children["global-attributes"] = global_attributes;
-        }
-        else
+        if(global_attributes == nullptr)
         {
             global_attributes = std::make_shared<MplsTe::GlobalAttributes>();
-            global_attributes->parent = this;
-            children["global-attributes"] = global_attributes;
         }
-        return children.at("global-attributes");
+        return global_attributes;
     }
 
     if(child_yang_name == "gmpls-nni")
     {
-        if(gmpls_nni != nullptr)
-        {
-            children["gmpls-nni"] = gmpls_nni;
-        }
-        else
+        if(gmpls_nni == nullptr)
         {
             gmpls_nni = std::make_shared<MplsTe::GmplsNni>();
-            gmpls_nni->parent = this;
-            children["gmpls-nni"] = gmpls_nni;
         }
-        return children.at("gmpls-nni");
+        return gmpls_nni;
     }
 
     if(child_yang_name == "gmpls-uni")
     {
-        if(gmpls_uni != nullptr)
-        {
-            children["gmpls-uni"] = gmpls_uni;
-        }
-        else
+        if(gmpls_uni == nullptr)
         {
             gmpls_uni = std::make_shared<MplsTe::GmplsUni>();
-            gmpls_uni->parent = this;
-            children["gmpls-uni"] = gmpls_uni;
         }
-        return children.at("gmpls-uni");
+        return gmpls_uni;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<MplsTe::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "lcac")
     {
-        if(lcac != nullptr)
-        {
-            children["lcac"] = lcac;
-        }
-        else
+        if(lcac == nullptr)
         {
             lcac = std::make_shared<MplsTe::Lcac>();
-            lcac->parent = this;
-            children["lcac"] = lcac;
         }
-        return children.at("lcac");
+        return lcac;
     }
 
     if(child_yang_name == "named-tunnels")
     {
-        if(named_tunnels != nullptr)
-        {
-            children["named-tunnels"] = named_tunnels;
-        }
-        else
+        if(named_tunnels == nullptr)
         {
             named_tunnels = std::make_shared<MplsTe::NamedTunnels>();
-            named_tunnels->parent = this;
-            children["named-tunnels"] = named_tunnels;
         }
-        return children.at("named-tunnels");
+        return named_tunnels;
     }
 
     if(child_yang_name == "transport-profile")
     {
-        if(transport_profile != nullptr)
-        {
-            children["transport-profile"] = transport_profile;
-        }
-        else
+        if(transport_profile == nullptr)
         {
             transport_profile = std::make_shared<MplsTe::TransportProfile>();
-            transport_profile->parent = this;
-            children["transport-profile"] = transport_profile;
         }
-        return children.at("transport-profile");
+        return transport_profile;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::get_children() const
 {
-    if(children.find("diff-serv-traffic-engineering") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(diff_serv_traffic_engineering != nullptr)
     {
-        if(diff_serv_traffic_engineering != nullptr)
-        {
-            children["diff-serv-traffic-engineering"] = diff_serv_traffic_engineering;
-        }
+        children["diff-serv-traffic-engineering"] = diff_serv_traffic_engineering;
     }
 
-    if(children.find("global-attributes") == children.end())
+    if(global_attributes != nullptr)
     {
-        if(global_attributes != nullptr)
-        {
-            children["global-attributes"] = global_attributes;
-        }
+        children["global-attributes"] = global_attributes;
     }
 
-    if(children.find("gmpls-nni") == children.end())
+    if(gmpls_nni != nullptr)
     {
-        if(gmpls_nni != nullptr)
-        {
-            children["gmpls-nni"] = gmpls_nni;
-        }
+        children["gmpls-nni"] = gmpls_nni;
     }
 
-    if(children.find("gmpls-uni") == children.end())
+    if(gmpls_uni != nullptr)
     {
-        if(gmpls_uni != nullptr)
-        {
-            children["gmpls-uni"] = gmpls_uni;
-        }
+        children["gmpls-uni"] = gmpls_uni;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("lcac") == children.end())
+    if(lcac != nullptr)
     {
-        if(lcac != nullptr)
-        {
-            children["lcac"] = lcac;
-        }
+        children["lcac"] = lcac;
     }
 
-    if(children.find("named-tunnels") == children.end())
+    if(named_tunnels != nullptr)
     {
-        if(named_tunnels != nullptr)
-        {
-            children["named-tunnels"] = named_tunnels;
-        }
+        children["named-tunnels"] = named_tunnels;
     }
 
-    if(children.find("transport-profile") == children.end())
+    if(transport_profile != nullptr)
     {
-        if(transport_profile != nullptr)
-        {
-            children["transport-profile"] = transport_profile;
-        }
+        children["transport-profile"] = transport_profile;
     }
 
     return children;
@@ -349,7 +261,6 @@ MplsTe::DiffServTrafficEngineering::DiffServTrafficEngineering()
     classes(std::make_shared<MplsTe::DiffServTrafficEngineering::Classes>())
 {
     classes->parent = this;
-    children["classes"] = classes;
 
     yang_name = "diff-serv-traffic-engineering"; yang_parent_name = "mpls-te";
 }
@@ -382,7 +293,7 @@ std::string MplsTe::DiffServTrafficEngineering::get_segment_path() const
 
 }
 
-EntityPath MplsTe::DiffServTrafficEngineering::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::DiffServTrafficEngineering::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -407,41 +318,24 @@ EntityPath MplsTe::DiffServTrafficEngineering::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MplsTe::DiffServTrafficEngineering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "classes")
     {
-        if(classes != nullptr)
-        {
-            children["classes"] = classes;
-        }
-        else
+        if(classes == nullptr)
         {
             classes = std::make_shared<MplsTe::DiffServTrafficEngineering::Classes>();
-            classes->parent = this;
-            children["classes"] = classes;
         }
-        return children.at("classes");
+        return classes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::DiffServTrafficEngineering::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::DiffServTrafficEngineering::get_children() const
 {
-    if(children.find("classes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(classes != nullptr)
     {
-        if(classes != nullptr)
-        {
-            children["classes"] = classes;
-        }
+        children["classes"] = classes;
     }
 
     return children;
@@ -497,7 +391,7 @@ std::string MplsTe::DiffServTrafficEngineering::Classes::get_segment_path() cons
 
 }
 
-EntityPath MplsTe::DiffServTrafficEngineering::Classes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::DiffServTrafficEngineering::Classes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -520,15 +414,6 @@ EntityPath MplsTe::DiffServTrafficEngineering::Classes::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsTe::DiffServTrafficEngineering::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class")
     {
         for(auto const & c : class_)
@@ -536,28 +421,24 @@ std::shared_ptr<Entity> MplsTe::DiffServTrafficEngineering::Classes::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::DiffServTrafficEngineering::Classes::Class_>();
         c->parent = this;
-        class_.push_back(std::move(c));
-        children[segment_path] = class_.back();
-        return children.at(segment_path);
+        class_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::DiffServTrafficEngineering::Classes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::DiffServTrafficEngineering::Classes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -607,7 +488,7 @@ std::string MplsTe::DiffServTrafficEngineering::Classes::Class_::get_segment_pat
 
 }
 
-EntityPath MplsTe::DiffServTrafficEngineering::Classes::Class_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::DiffServTrafficEngineering::Classes::Class_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -634,20 +515,12 @@ EntityPath MplsTe::DiffServTrafficEngineering::Classes::Class_::get_entity_path(
 
 std::shared_ptr<Entity> MplsTe::DiffServTrafficEngineering::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::DiffServTrafficEngineering::Classes::Class_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::DiffServTrafficEngineering::Classes::Class_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -678,7 +551,6 @@ MplsTe::NamedTunnels::NamedTunnels()
     tunnels(std::make_shared<MplsTe::NamedTunnels::Tunnels>())
 {
     tunnels->parent = this;
-    children["tunnels"] = tunnels;
 
     yang_name = "named-tunnels"; yang_parent_name = "mpls-te";
 }
@@ -709,7 +581,7 @@ std::string MplsTe::NamedTunnels::get_segment_path() const
 
 }
 
-EntityPath MplsTe::NamedTunnels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -733,41 +605,24 @@ EntityPath MplsTe::NamedTunnels::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnels")
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
-        else
+        if(tunnels == nullptr)
         {
             tunnels = std::make_shared<MplsTe::NamedTunnels::Tunnels>();
-            tunnels->parent = this;
-            children["tunnels"] = tunnels;
         }
-        return children.at("tunnels");
+        return tunnels;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::get_children() const
 {
-    if(children.find("tunnels") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnels != nullptr)
     {
-        if(tunnels != nullptr)
-        {
-            children["tunnels"] = tunnels;
-        }
+        children["tunnels"] = tunnels;
     }
 
     return children;
@@ -819,7 +674,7 @@ std::string MplsTe::NamedTunnels::Tunnels::get_segment_path() const
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -842,15 +697,6 @@ EntityPath MplsTe::NamedTunnels::Tunnels::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel")
     {
         for(auto const & c : tunnel)
@@ -858,28 +704,24 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(std::move(c));
-        children[segment_path] = tunnel.back();
-        return children.at(segment_path);
+        tunnel.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : tunnel)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -899,7 +741,6 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::Tunnel()
 	,tunnel_id(nullptr) // presence node
 {
     tunnel_attributes->parent = this;
-    children["tunnel-attributes"] = tunnel_attributes;
 
     yang_name = "tunnel"; yang_parent_name = "tunnels";
 }
@@ -936,7 +777,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::get_segment_path() const
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -962,64 +803,38 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-attributes")
     {
-        if(tunnel_attributes != nullptr)
-        {
-            children["tunnel-attributes"] = tunnel_attributes;
-        }
-        else
+        if(tunnel_attributes == nullptr)
         {
             tunnel_attributes = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes>();
-            tunnel_attributes->parent = this;
-            children["tunnel-attributes"] = tunnel_attributes;
         }
-        return children.at("tunnel-attributes");
+        return tunnel_attributes;
     }
 
     if(child_yang_name == "tunnel-id")
     {
-        if(tunnel_id != nullptr)
-        {
-            children["tunnel-id"] = tunnel_id;
-        }
-        else
+        if(tunnel_id == nullptr)
         {
             tunnel_id = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId>();
-            tunnel_id->parent = this;
-            children["tunnel-id"] = tunnel_id;
         }
-        return children.at("tunnel-id");
+        return tunnel_id;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::get_children() const
 {
-    if(children.find("tunnel-attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnel_attributes != nullptr)
     {
-        if(tunnel_attributes != nullptr)
-        {
-            children["tunnel-attributes"] = tunnel_attributes;
-        }
+        children["tunnel-attributes"] = tunnel_attributes;
     }
 
-    if(children.find("tunnel-id") == children.end())
+    if(tunnel_id != nullptr)
     {
-        if(tunnel_id != nullptr)
-        {
-            children["tunnel-id"] = tunnel_id;
-        }
+        children["tunnel-id"] = tunnel_id;
     }
 
     return children;
@@ -1062,22 +877,16 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelAttributes()
 	,tunnel_path_selection(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection>())
 {
     auto_bandwidth->parent = this;
-    children["auto-bandwidth"] = auto_bandwidth;
 
     autoroute->parent = this;
-    children["autoroute"] = autoroute;
 
     logging->parent = this;
-    children["logging"] = logging;
 
     new_style_affinity_affinity_types->parent = this;
-    children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
 
     path_setups->parent = this;
-    children["path-setups"] = path_setups;
 
     tunnel_path_selection->parent = this;
-    children["tunnel-path-selection"] = tunnel_path_selection;
 
     yang_name = "tunnel-attributes"; yang_parent_name = "tunnel";
 }
@@ -1136,7 +945,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::get_segment
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1166,225 +975,136 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::get_entity_p
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto-bandwidth")
     {
-        if(auto_bandwidth != nullptr)
-        {
-            children["auto-bandwidth"] = auto_bandwidth;
-        }
-        else
+        if(auto_bandwidth == nullptr)
         {
             auto_bandwidth = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth>();
-            auto_bandwidth->parent = this;
-            children["auto-bandwidth"] = auto_bandwidth;
         }
-        return children.at("auto-bandwidth");
+        return auto_bandwidth;
     }
 
     if(child_yang_name == "autoroute")
     {
-        if(autoroute != nullptr)
-        {
-            children["autoroute"] = autoroute;
-        }
-        else
+        if(autoroute == nullptr)
         {
             autoroute = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute>();
-            autoroute->parent = this;
-            children["autoroute"] = autoroute;
         }
-        return children.at("autoroute");
+        return autoroute;
     }
 
     if(child_yang_name == "bandwidth")
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
-        else
+        if(bandwidth == nullptr)
         {
             bandwidth = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth>();
-            bandwidth->parent = this;
-            children["bandwidth"] = bandwidth;
         }
-        return children.at("bandwidth");
+        return bandwidth;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "logging")
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
-        else
+        if(logging == nullptr)
         {
             logging = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging>();
-            logging->parent = this;
-            children["logging"] = logging;
         }
-        return children.at("logging");
+        return logging;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-types")
     {
-        if(new_style_affinity_affinity_types != nullptr)
-        {
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
-        }
-        else
+        if(new_style_affinity_affinity_types == nullptr)
         {
             new_style_affinity_affinity_types = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes>();
-            new_style_affinity_affinity_types->parent = this;
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
         }
-        return children.at("new-style-affinity-affinity-types");
+        return new_style_affinity_affinity_types;
     }
 
     if(child_yang_name == "path-setups")
     {
-        if(path_setups != nullptr)
-        {
-            children["path-setups"] = path_setups;
-        }
-        else
+        if(path_setups == nullptr)
         {
             path_setups = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups>();
-            path_setups->parent = this;
-            children["path-setups"] = path_setups;
         }
-        return children.at("path-setups");
+        return path_setups;
     }
 
     if(child_yang_name == "priority")
     {
-        if(priority != nullptr)
-        {
-            children["priority"] = priority;
-        }
-        else
+        if(priority == nullptr)
         {
             priority = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority>();
-            priority->parent = this;
-            children["priority"] = priority;
         }
-        return children.at("priority");
+        return priority;
     }
 
     if(child_yang_name == "tunnel-path-selection")
     {
-        if(tunnel_path_selection != nullptr)
-        {
-            children["tunnel-path-selection"] = tunnel_path_selection;
-        }
-        else
+        if(tunnel_path_selection == nullptr)
         {
             tunnel_path_selection = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection>();
-            tunnel_path_selection->parent = this;
-            children["tunnel-path-selection"] = tunnel_path_selection;
         }
-        return children.at("tunnel-path-selection");
+        return tunnel_path_selection;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::get_children() const
 {
-    if(children.find("auto-bandwidth") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_bandwidth != nullptr)
     {
-        if(auto_bandwidth != nullptr)
-        {
-            children["auto-bandwidth"] = auto_bandwidth;
-        }
+        children["auto-bandwidth"] = auto_bandwidth;
     }
 
-    if(children.find("autoroute") == children.end())
+    if(autoroute != nullptr)
     {
-        if(autoroute != nullptr)
-        {
-            children["autoroute"] = autoroute;
-        }
+        children["autoroute"] = autoroute;
     }
 
-    if(children.find("bandwidth") == children.end())
+    if(bandwidth != nullptr)
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
+        children["bandwidth"] = bandwidth;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("logging") == children.end())
+    if(logging != nullptr)
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
+        children["logging"] = logging;
     }
 
-    if(children.find("new-style-affinity-affinity-types") == children.end())
+    if(new_style_affinity_affinity_types != nullptr)
     {
-        if(new_style_affinity_affinity_types != nullptr)
-        {
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
-        }
+        children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
     }
 
-    if(children.find("path-setups") == children.end())
+    if(path_setups != nullptr)
     {
-        if(path_setups != nullptr)
-        {
-            children["path-setups"] = path_setups;
-        }
+        children["path-setups"] = path_setups;
     }
 
-    if(children.find("priority") == children.end())
+    if(priority != nullptr)
     {
-        if(priority != nullptr)
-        {
-            children["priority"] = priority;
-        }
+        children["priority"] = priority;
     }
 
-    if(children.find("tunnel-path-selection") == children.end())
+    if(tunnel_path_selection != nullptr)
     {
-        if(tunnel_path_selection != nullptr)
-        {
-            children["tunnel-path-selection"] = tunnel_path_selection;
-        }
+        children["tunnel-path-selection"] = tunnel_path_selection;
     }
 
     return children;
@@ -1460,7 +1180,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups:
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1483,15 +1203,6 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-setup")
     {
         for(auto const & c : path_setup)
@@ -1499,28 +1210,24 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup>();
         c->parent = this;
-        path_setup.push_back(std::move(c));
-        children[segment_path] = path_setup.back();
-        return children.at(segment_path);
+        path_setup.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_setup)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1571,7 +1278,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups:
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1597,41 +1304,24 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-computation")
     {
-        if(path_computation != nullptr)
-        {
-            children["path-computation"] = path_computation;
-        }
-        else
+        if(path_computation == nullptr)
         {
             path_computation = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation>();
-            path_computation->parent = this;
-            children["path-computation"] = path_computation;
         }
-        return children.at("path-computation");
+        return path_computation;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::get_children() const
 {
-    if(children.find("path-computation") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_computation != nullptr)
     {
-        if(path_computation != nullptr)
-        {
-            children["path-computation"] = path_computation;
-        }
+        children["path-computation"] = path_computation;
     }
 
     return children;
@@ -1690,7 +1380,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups:
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1716,20 +1406,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1790,7 +1472,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathS
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1816,41 +1498,24 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSe
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "invalidation")
     {
-        if(invalidation != nullptr)
-        {
-            children["invalidation"] = invalidation;
-        }
-        else
+        if(invalidation == nullptr)
         {
             invalidation = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation>();
-            invalidation->parent = this;
-            children["invalidation"] = invalidation;
         }
-        return children.at("invalidation");
+        return invalidation;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::get_children() const
 {
-    if(children.find("invalidation") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(invalidation != nullptr)
     {
-        if(invalidation != nullptr)
-        {
-            children["invalidation"] = invalidation;
-        }
+        children["invalidation"] = invalidation;
     }
 
     return children;
@@ -1906,7 +1571,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathS
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1931,20 +1596,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSe
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2016,7 +1673,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwid
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2044,110 +1701,66 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "adjustment-threshold")
     {
-        if(adjustment_threshold != nullptr)
-        {
-            children["adjustment-threshold"] = adjustment_threshold;
-        }
-        else
+        if(adjustment_threshold == nullptr)
         {
             adjustment_threshold = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold>();
-            adjustment_threshold->parent = this;
-            children["adjustment-threshold"] = adjustment_threshold;
         }
-        return children.at("adjustment-threshold");
+        return adjustment_threshold;
     }
 
     if(child_yang_name == "bandwidth-limits")
     {
-        if(bandwidth_limits != nullptr)
-        {
-            children["bandwidth-limits"] = bandwidth_limits;
-        }
-        else
+        if(bandwidth_limits == nullptr)
         {
             bandwidth_limits = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits>();
-            bandwidth_limits->parent = this;
-            children["bandwidth-limits"] = bandwidth_limits;
         }
-        return children.at("bandwidth-limits");
+        return bandwidth_limits;
     }
 
     if(child_yang_name == "overflow")
     {
-        if(overflow != nullptr)
-        {
-            children["overflow"] = overflow;
-        }
-        else
+        if(overflow == nullptr)
         {
             overflow = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow>();
-            overflow->parent = this;
-            children["overflow"] = overflow;
         }
-        return children.at("overflow");
+        return overflow;
     }
 
     if(child_yang_name == "underflow")
     {
-        if(underflow != nullptr)
-        {
-            children["underflow"] = underflow;
-        }
-        else
+        if(underflow == nullptr)
         {
             underflow = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflow>();
-            underflow->parent = this;
-            children["underflow"] = underflow;
         }
-        return children.at("underflow");
+        return underflow;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::get_children() const
 {
-    if(children.find("adjustment-threshold") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(adjustment_threshold != nullptr)
     {
-        if(adjustment_threshold != nullptr)
-        {
-            children["adjustment-threshold"] = adjustment_threshold;
-        }
+        children["adjustment-threshold"] = adjustment_threshold;
     }
 
-    if(children.find("bandwidth-limits") == children.end())
+    if(bandwidth_limits != nullptr)
     {
-        if(bandwidth_limits != nullptr)
-        {
-            children["bandwidth-limits"] = bandwidth_limits;
-        }
+        children["bandwidth-limits"] = bandwidth_limits;
     }
 
-    if(children.find("overflow") == children.end())
+    if(overflow != nullptr)
     {
-        if(overflow != nullptr)
-        {
-            children["overflow"] = overflow;
-        }
+        children["overflow"] = overflow;
     }
 
-    if(children.find("underflow") == children.end())
+    if(underflow != nullptr)
     {
-        if(underflow != nullptr)
-        {
-            children["underflow"] = underflow;
-        }
+        children["underflow"] = underflow;
     }
 
     return children;
@@ -2214,7 +1827,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwid
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflow::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2240,20 +1853,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2310,7 +1915,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwid
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2336,20 +1941,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2403,7 +2000,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwid
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2428,20 +2025,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2491,7 +2080,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwid
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2516,20 +2105,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidt
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2579,7 +2160,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::g
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2604,20 +2185,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::ge
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2694,7 +2267,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::ge
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2728,20 +2301,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::get
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2830,7 +2395,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2856,20 +2421,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::g
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2898,13 +2455,10 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Autoroute()
 	,metric(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Metric>())
 {
     autoroute_announce->parent = this;
-    children["autoroute-announce"] = autoroute_announce;
 
     destination_xr->parent = this;
-    children["destination-xr"] = destination_xr;
 
     metric->parent = this;
-    children["metric"] = metric;
 
     yang_name = "autoroute"; yang_parent_name = "tunnel-attributes";
 }
@@ -2939,7 +2493,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2963,87 +2517,52 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::g
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "autoroute-announce")
     {
-        if(autoroute_announce != nullptr)
-        {
-            children["autoroute-announce"] = autoroute_announce;
-        }
-        else
+        if(autoroute_announce == nullptr)
         {
             autoroute_announce = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce>();
-            autoroute_announce->parent = this;
-            children["autoroute-announce"] = autoroute_announce;
         }
-        return children.at("autoroute-announce");
+        return autoroute_announce;
     }
 
     if(child_yang_name == "destination-xr")
     {
-        if(destination_xr != nullptr)
-        {
-            children["destination-xr"] = destination_xr;
-        }
-        else
+        if(destination_xr == nullptr)
         {
             destination_xr = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr>();
-            destination_xr->parent = this;
-            children["destination-xr"] = destination_xr;
         }
-        return children.at("destination-xr");
+        return destination_xr;
     }
 
     if(child_yang_name == "metric")
     {
-        if(metric != nullptr)
-        {
-            children["metric"] = metric;
-        }
-        else
+        if(metric == nullptr)
         {
             metric = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Metric>();
-            metric->parent = this;
-            children["metric"] = metric;
         }
-        return children.at("metric");
+        return metric;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::get_children() const
 {
-    if(children.find("autoroute-announce") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(autoroute_announce != nullptr)
     {
-        if(autoroute_announce != nullptr)
-        {
-            children["autoroute-announce"] = autoroute_announce;
-        }
+        children["autoroute-announce"] = autoroute_announce;
     }
 
-    if(children.find("destination-xr") == children.end())
+    if(destination_xr != nullptr)
     {
-        if(destination_xr != nullptr)
-        {
-            children["destination-xr"] = destination_xr;
-        }
+        children["destination-xr"] = destination_xr;
     }
 
-    if(children.find("metric") == children.end())
+    if(metric != nullptr)
     {
-        if(metric != nullptr)
-        {
-            children["metric"] = metric;
-        }
+        children["metric"] = metric;
     }
 
     return children;
@@ -3097,7 +2616,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Metric::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Metric::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3124,20 +2643,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::M
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Metric::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Metric::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3170,10 +2681,8 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnn
 	,metric(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric>())
 {
     exclude_traffic->parent = this;
-    children["exclude-traffic"] = exclude_traffic;
 
     metric->parent = this;
-    children["metric"] = metric;
 
     yang_name = "autoroute-announce"; yang_parent_name = "autoroute";
 }
@@ -3208,7 +2717,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3233,64 +2742,38 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::A
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "exclude-traffic")
     {
-        if(exclude_traffic != nullptr)
-        {
-            children["exclude-traffic"] = exclude_traffic;
-        }
-        else
+        if(exclude_traffic == nullptr)
         {
             exclude_traffic = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic>();
-            exclude_traffic->parent = this;
-            children["exclude-traffic"] = exclude_traffic;
         }
-        return children.at("exclude-traffic");
+        return exclude_traffic;
     }
 
     if(child_yang_name == "metric")
     {
-        if(metric != nullptr)
-        {
-            children["metric"] = metric;
-        }
-        else
+        if(metric == nullptr)
         {
             metric = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric>();
-            metric->parent = this;
-            children["metric"] = metric;
         }
-        return children.at("metric");
+        return metric;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::get_children() const
 {
-    if(children.find("exclude-traffic") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(exclude_traffic != nullptr)
     {
-        if(exclude_traffic != nullptr)
-        {
-            children["exclude-traffic"] = exclude_traffic;
-        }
+        children["exclude-traffic"] = exclude_traffic;
     }
 
-    if(children.find("metric") == children.end())
+    if(metric != nullptr)
     {
-        if(metric != nullptr)
-        {
-            children["metric"] = metric;
-        }
+        children["metric"] = metric;
     }
 
     return children;
@@ -3339,7 +2822,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3363,20 +2846,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::A
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3428,7 +2903,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3455,20 +2930,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::A
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3530,7 +2997,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3553,15 +3020,6 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::D
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "destination")
     {
         for(auto const & c : destination)
@@ -3569,28 +3027,24 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::Destination>();
         c->parent = this;
-        destination.push_back(std::move(c));
-        children[segment_path] = destination.back();
-        return children.at(segment_path);
+        destination.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : destination)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3631,7 +3085,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::Destination::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::Destination::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3655,20 +3109,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::D
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::Destination::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::DestinationXr::Destination::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3818,7 +3264,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAff
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3841,15 +3287,6 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "new-style-affinity-affinity-type")
     {
         for(auto const & c : new_style_affinity_affinity_type)
@@ -3857,15 +3294,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
         c->parent = this;
-        new_style_affinity_affinity_type.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1")
@@ -3875,15 +3310,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2")
@@ -3893,15 +3326,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3")
@@ -3911,15 +3342,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4")
@@ -3929,15 +3358,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5")
@@ -3947,15 +3374,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6")
@@ -3965,15 +3390,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7")
@@ -3983,15 +3406,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8")
@@ -4001,15 +3422,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9")
@@ -4019,15 +3438,13 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
@@ -4037,108 +3454,74 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : new_style_affinity_affinity_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4179,7 +3562,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAff
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4203,20 +3586,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4230,8 +3605,8 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
     :
-    affinity1{YType::str, "affinity1"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -4242,27 +3617,27 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
 {
-    return affinity1.is_set
-	|| affinity_type.is_set;
+    return affinity_type.is_set
+	|| affinity1.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
 {
     return is_set(operation)
-	|| is_set(affinity1.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4276,8 +3651,8 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4287,40 +3662,32 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-    }
     if(value_path == "affinity-type")
     {
         affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
     }
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::NewStyleAffinityAffinityTypeAffinity1Affinity2()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity2{YType::str, "affinity2"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -4331,29 +3698,29 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
 {
-    return affinity1.is_set
-	|| affinity2.is_set
-	|| affinity_type.is_set;
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
-	|| is_set(affinity2.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity2.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4367,9 +3734,9 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4379,25 +3746,21 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -4406,18 +3769,14 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
     {
         affinity2 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity3{YType::str, "affinity3"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -4428,31 +3787,31 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity_type.is_set;
+	|| affinity3.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
-	|| is_set(affinity3.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity3.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4466,10 +3825,10 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4479,25 +3838,21 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -4510,19 +3865,15 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
     {
         affinity3 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity4{YType::str, "affinity4"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -4533,33 +3884,33 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity_type.is_set;
+	|| affinity4.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
-	|| is_set(affinity4.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity4.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4573,11 +3924,11 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4587,25 +3938,21 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -4622,20 +3969,16 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
     {
         affinity4 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity5{YType::str, "affinity5"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -4646,35 +3989,35 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
-	|| affinity5.is_set
-	|| affinity_type.is_set;
+	|| affinity5.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
-	|| is_set(affinity5.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity5.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4688,12 +4031,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
     if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4703,25 +4046,21 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -4742,21 +4081,17 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
     {
         affinity5 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
     affinity5{YType::str, "affinity5"},
-    affinity6{YType::str, "affinity6"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity6{YType::str, "affinity6"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -4767,37 +4102,37 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
 	|| affinity5.is_set
-	|| affinity6.is_set
-	|| affinity_type.is_set;
+	|| affinity6.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
 	|| is_set(affinity5.operation)
-	|| is_set(affinity6.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity6.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4811,13 +4146,13 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
     if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
     if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4827,25 +4162,21 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -4870,22 +4201,18 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
     {
         affinity6 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
     affinity5{YType::str, "affinity5"},
     affinity6{YType::str, "affinity6"},
-    affinity7{YType::str, "affinity7"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity7{YType::str, "affinity7"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -4896,39 +4223,39 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
 	|| affinity5.is_set
 	|| affinity6.is_set
-	|| affinity7.is_set
-	|| affinity_type.is_set;
+	|| affinity7.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
 	|| is_set(affinity5.operation)
 	|| is_set(affinity6.operation)
-	|| is_set(affinity7.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity7.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4942,6 +4269,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
@@ -4949,7 +4277,6 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
     if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4959,25 +4286,21 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -5006,14 +4329,11 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
     {
         affinity7 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
@@ -5021,8 +4341,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity5{YType::str, "affinity5"},
     affinity6{YType::str, "affinity6"},
     affinity7{YType::str, "affinity7"},
-    affinity8{YType::str, "affinity8"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity8{YType::str, "affinity8"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -5033,20 +4352,21 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
 	|| affinity5.is_set
 	|| affinity6.is_set
 	|| affinity7.is_set
-	|| affinity8.is_set
-	|| affinity_type.is_set;
+	|| affinity8.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
@@ -5054,20 +4374,19 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 	|| is_set(affinity5.operation)
 	|| is_set(affinity6.operation)
 	|| is_set(affinity7.operation)
-	|| is_set(affinity8.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity8.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5081,6 +4400,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
@@ -5089,7 +4409,6 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
     if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5099,25 +4418,21 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -5150,14 +4465,11 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
     {
         affinity8 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
@@ -5166,8 +4478,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity6{YType::str, "affinity6"},
     affinity7{YType::str, "affinity7"},
     affinity8{YType::str, "affinity8"},
-    affinity9{YType::str, "affinity9"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity9{YType::str, "affinity9"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -5178,7 +4489,8 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
@@ -5186,13 +4498,13 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 	|| affinity6.is_set
 	|| affinity7.is_set
 	|| affinity8.is_set
-	|| affinity9.is_set
-	|| affinity_type.is_set;
+	|| affinity9.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
@@ -5201,20 +4513,19 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 	|| is_set(affinity6.operation)
 	|| is_set(affinity7.operation)
 	|| is_set(affinity8.operation)
-	|| is_set(affinity9.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity9.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5228,6 +4539,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
@@ -5237,7 +4549,6 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
     if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
     if (affinity9.is_set || is_set(affinity9.operation)) leaf_name_data.push_back(affinity9.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5247,25 +4558,21 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -5302,16 +4609,12 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
     {
         affinity9 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
-    affinity10{YType::str, "affinity10"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
@@ -5320,7 +4623,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity7{YType::str, "affinity7"},
     affinity8{YType::str, "affinity8"},
     affinity9{YType::str, "affinity9"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity10{YType::str, "affinity10"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -5331,8 +4634,8 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_data() const
 {
-    return affinity1.is_set
-	|| affinity10.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
@@ -5341,14 +4644,14 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 	|| affinity7.is_set
 	|| affinity8.is_set
 	|| affinity9.is_set
-	|| affinity_type.is_set;
+	|| affinity10.is_set;
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
-	|| is_set(affinity10.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
@@ -5357,19 +4660,19 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 	|| is_set(affinity7.operation)
 	|| is_set(affinity8.operation)
 	|| is_set(affinity9.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity10.operation);
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity10='" <<affinity10 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity10='" <<affinity10 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5383,8 +4686,8 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity10.is_set || is_set(affinity10.operation)) leaf_name_data.push_back(affinity10.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
@@ -5393,7 +4696,7 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
     if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
     if (affinity9.is_set || is_set(affinity9.operation)) leaf_name_data.push_back(affinity9.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity10.is_set || is_set(affinity10.operation)) leaf_name_data.push_back(affinity10.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5403,32 +4706,24 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffi
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
-    }
-    if(value_path == "affinity10")
-    {
-        affinity10 = value;
     }
     if(value_path == "affinity2")
     {
@@ -5462,9 +4757,9 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
     {
         affinity9 = value;
     }
-    if(value_path == "affinity-type")
+    if(value_path == "affinity10")
     {
-        affinity_type = value;
+        affinity10 = value;
     }
 }
 
@@ -5502,7 +4797,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5527,20 +4822,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute:
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5590,7 +4877,7 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::get_segment_path() 
 
 }
 
-EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5615,20 +4902,12 @@ EntityPath MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::get_entity_path(Enti
 
 std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5650,10 +4929,8 @@ MplsTe::GmplsUni::GmplsUni()
 	,timers(std::make_shared<MplsTe::GmplsUni::Timers>())
 {
     controllers->parent = this;
-    children["controllers"] = controllers;
 
     timers->parent = this;
-    children["timers"] = timers;
 
     yang_name = "gmpls-uni"; yang_parent_name = "mpls-te";
 }
@@ -5684,7 +4961,7 @@ std::string MplsTe::GmplsUni::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GmplsUni::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5707,64 +4984,38 @@ EntityPath MplsTe::GmplsUni::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "controllers")
     {
-        if(controllers != nullptr)
-        {
-            children["controllers"] = controllers;
-        }
-        else
+        if(controllers == nullptr)
         {
             controllers = std::make_shared<MplsTe::GmplsUni::Controllers>();
-            controllers->parent = this;
-            children["controllers"] = controllers;
         }
-        return children.at("controllers");
+        return controllers;
     }
 
     if(child_yang_name == "timers")
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
-        else
+        if(timers == nullptr)
         {
             timers = std::make_shared<MplsTe::GmplsUni::Timers>();
-            timers->parent = this;
-            children["timers"] = timers;
         }
-        return children.at("timers");
+        return timers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::get_children() const
 {
-    if(children.find("controllers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(controllers != nullptr)
     {
-        if(controllers != nullptr)
-        {
-            children["controllers"] = controllers;
-        }
+        children["controllers"] = controllers;
     }
 
-    if(children.find("timers") == children.end())
+    if(timers != nullptr)
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
+        children["timers"] = timers;
     }
 
     return children;
@@ -5779,7 +5030,6 @@ MplsTe::GmplsUni::Timers::Timers()
     path_option_timers(std::make_shared<MplsTe::GmplsUni::Timers::PathOptionTimers>())
 {
     path_option_timers->parent = this;
-    children["path-option-timers"] = path_option_timers;
 
     yang_name = "timers"; yang_parent_name = "gmpls-uni";
 }
@@ -5808,7 +5058,7 @@ std::string MplsTe::GmplsUni::Timers::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GmplsUni::Timers::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Timers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5831,41 +5081,24 @@ EntityPath MplsTe::GmplsUni::Timers::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-option-timers")
     {
-        if(path_option_timers != nullptr)
-        {
-            children["path-option-timers"] = path_option_timers;
-        }
-        else
+        if(path_option_timers == nullptr)
         {
             path_option_timers = std::make_shared<MplsTe::GmplsUni::Timers::PathOptionTimers>();
-            path_option_timers->parent = this;
-            children["path-option-timers"] = path_option_timers;
         }
-        return children.at("path-option-timers");
+        return path_option_timers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Timers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Timers::get_children() const
 {
-    if(children.find("path-option-timers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(path_option_timers != nullptr)
     {
-        if(path_option_timers != nullptr)
-        {
-            children["path-option-timers"] = path_option_timers;
-        }
+        children["path-option-timers"] = path_option_timers;
     }
 
     return children;
@@ -5880,7 +5113,6 @@ MplsTe::GmplsUni::Timers::PathOptionTimers::PathOptionTimers()
     holddown(std::make_shared<MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown>())
 {
     holddown->parent = this;
-    children["holddown"] = holddown;
 
     yang_name = "path-option-timers"; yang_parent_name = "timers";
 }
@@ -5909,7 +5141,7 @@ std::string MplsTe::GmplsUni::Timers::PathOptionTimers::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GmplsUni::Timers::PathOptionTimers::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Timers::PathOptionTimers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5932,41 +5164,24 @@ EntityPath MplsTe::GmplsUni::Timers::PathOptionTimers::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Timers::PathOptionTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "holddown")
     {
-        if(holddown != nullptr)
-        {
-            children["holddown"] = holddown;
-        }
-        else
+        if(holddown == nullptr)
         {
             holddown = std::make_shared<MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown>();
-            holddown->parent = this;
-            children["holddown"] = holddown;
         }
-        return children.at("holddown");
+        return holddown;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Timers::PathOptionTimers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Timers::PathOptionTimers::get_children() const
 {
-    if(children.find("holddown") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(holddown != nullptr)
     {
-        if(holddown != nullptr)
-        {
-            children["holddown"] = holddown;
-        }
+        children["holddown"] = holddown;
     }
 
     return children;
@@ -6010,7 +5225,7 @@ std::string MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::get_segment_pa
 
 }
 
-EntityPath MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6035,20 +5250,12 @@ EntityPath MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::get_entity_path
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6102,7 +5309,7 @@ std::string MplsTe::GmplsUni::Controllers::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6125,15 +5332,6 @@ EntityPath MplsTe::GmplsUni::Controllers::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "controller")
     {
         for(auto const & c : controller)
@@ -6141,28 +5339,24 @@ std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GmplsUni::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(std::move(c));
-        children[segment_path] = controller.back();
-        return children.at(segment_path);
+        controller.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : controller)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6182,13 +5376,10 @@ MplsTe::GmplsUni::Controllers::Controller::Controller()
 	,gmpls_unitunnel_head(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead>())
 {
     announce->parent = this;
-    children["announce"] = announce;
 
     controller_logging->parent = this;
-    children["controller-logging"] = controller_logging;
 
     gmpls_unitunnel_head->parent = this;
-    children["gmpls-unitunnel-head"] = gmpls_unitunnel_head;
 
     yang_name = "controller"; yang_parent_name = "controllers";
 }
@@ -6225,7 +5416,7 @@ std::string MplsTe::GmplsUni::Controllers::Controller::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::Controller::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::Controller::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6250,87 +5441,52 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "announce")
     {
-        if(announce != nullptr)
-        {
-            children["announce"] = announce;
-        }
-        else
+        if(announce == nullptr)
         {
             announce = std::make_shared<MplsTe::GmplsUni::Controllers::Controller::Announce>();
-            announce->parent = this;
-            children["announce"] = announce;
         }
-        return children.at("announce");
+        return announce;
     }
 
     if(child_yang_name == "controller-logging")
     {
-        if(controller_logging != nullptr)
-        {
-            children["controller-logging"] = controller_logging;
-        }
-        else
+        if(controller_logging == nullptr)
         {
             controller_logging = std::make_shared<MplsTe::GmplsUni::Controllers::Controller::ControllerLogging>();
-            controller_logging->parent = this;
-            children["controller-logging"] = controller_logging;
         }
-        return children.at("controller-logging");
+        return controller_logging;
     }
 
     if(child_yang_name == "gmpls-unitunnel-head")
     {
-        if(gmpls_unitunnel_head != nullptr)
-        {
-            children["gmpls-unitunnel-head"] = gmpls_unitunnel_head;
-        }
-        else
+        if(gmpls_unitunnel_head == nullptr)
         {
             gmpls_unitunnel_head = std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead>();
-            gmpls_unitunnel_head->parent = this;
-            children["gmpls-unitunnel-head"] = gmpls_unitunnel_head;
         }
-        return children.at("gmpls-unitunnel-head");
+        return gmpls_unitunnel_head;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::Controller::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Controller::get_children() const
 {
-    if(children.find("announce") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(announce != nullptr)
     {
-        if(announce != nullptr)
-        {
-            children["announce"] = announce;
-        }
+        children["announce"] = announce;
     }
 
-    if(children.find("controller-logging") == children.end())
+    if(controller_logging != nullptr)
     {
-        if(controller_logging != nullptr)
-        {
-            children["controller-logging"] = controller_logging;
-        }
+        children["controller-logging"] = controller_logging;
     }
 
-    if(children.find("gmpls-unitunnel-head") == children.end())
+    if(gmpls_unitunnel_head != nullptr)
     {
-        if(gmpls_unitunnel_head != nullptr)
-        {
-            children["gmpls-unitunnel-head"] = gmpls_unitunnel_head;
-        }
+        children["gmpls-unitunnel-head"] = gmpls_unitunnel_head;
     }
 
     return children;
@@ -6379,7 +5535,7 @@ std::string MplsTe::GmplsUni::Controllers::Controller::Announce::get_segment_pat
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::Controller::Announce::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::Controller::Announce::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6403,20 +5559,12 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::Announce::get_entity_path(
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::Announce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::Controller::Announce::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Controller::Announce::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6459,7 +5607,7 @@ std::string MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::get_se
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6483,20 +5631,12 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::get_ent
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6522,13 +5662,10 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::GmplsUnitunnelHea
 	,recording(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording>())
 {
     logging->parent = this;
-    children["logging"] = logging;
 
     path_options->parent = this;
-    children["path-options"] = path_options;
 
     recording->parent = this;
-    children["recording"] = recording;
 
     yang_name = "gmpls-unitunnel-head"; yang_parent_name = "controller";
 }
@@ -6573,7 +5710,7 @@ std::string MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::get_s
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6601,110 +5738,66 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::get_en
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "logging")
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
-        else
+        if(logging == nullptr)
         {
             logging = std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging>();
-            logging->parent = this;
-            children["logging"] = logging;
         }
-        return children.at("logging");
+        return logging;
     }
 
     if(child_yang_name == "path-options")
     {
-        if(path_options != nullptr)
-        {
-            children["path-options"] = path_options;
-        }
-        else
+        if(path_options == nullptr)
         {
             path_options = std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions>();
-            path_options->parent = this;
-            children["path-options"] = path_options;
         }
-        return children.at("path-options");
+        return path_options;
     }
 
     if(child_yang_name == "priority")
     {
-        if(priority != nullptr)
-        {
-            children["priority"] = priority;
-        }
-        else
+        if(priority == nullptr)
         {
             priority = std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority>();
-            priority->parent = this;
-            children["priority"] = priority;
         }
-        return children.at("priority");
+        return priority;
     }
 
     if(child_yang_name == "recording")
     {
-        if(recording != nullptr)
-        {
-            children["recording"] = recording;
-        }
-        else
+        if(recording == nullptr)
         {
             recording = std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording>();
-            recording->parent = this;
-            children["recording"] = recording;
         }
-        return children.at("recording");
+        return recording;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::get_children() const
 {
-    if(children.find("logging") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(logging != nullptr)
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
+        children["logging"] = logging;
     }
 
-    if(children.find("path-options") == children.end())
+    if(path_options != nullptr)
     {
-        if(path_options != nullptr)
-        {
-            children["path-options"] = path_options;
-        }
+        children["path-options"] = path_options;
     }
 
-    if(children.find("priority") == children.end())
+    if(priority != nullptr)
     {
-        if(priority != nullptr)
-        {
-            children["priority"] = priority;
-        }
+        children["priority"] = priority;
     }
 
-    if(children.find("recording") == children.end())
+    if(recording != nullptr)
     {
-        if(recording != nullptr)
-        {
-            children["recording"] = recording;
-        }
+        children["recording"] = recording;
     }
 
     return children;
@@ -6772,7 +5865,7 @@ std::string MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathO
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6795,15 +5888,6 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOp
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-option")
     {
         for(auto const & c : path_option)
@@ -6811,28 +5895,24 @@ std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunne
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption>();
         c->parent = this;
-        path_option.push_back(std::move(c));
-        children[segment_path] = path_option.back();
-        return children.at(segment_path);
+        path_option.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_option)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6900,7 +5980,7 @@ std::string MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathO
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6933,20 +6013,12 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOp
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7025,7 +6097,7 @@ std::string MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recor
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7049,20 +6121,12 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Record
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7105,7 +6169,7 @@ std::string MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Loggi
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7129,20 +6193,12 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Loggin
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7188,7 +6244,7 @@ std::string MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Prior
 
 }
 
-EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7213,20 +6269,12 @@ EntityPath MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priori
 
 std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7287,46 +6335,32 @@ MplsTe::GlobalAttributes::GlobalAttributes()
 	,srlg(std::make_shared<MplsTe::GlobalAttributes::Srlg>())
 {
     affinity_mappings->parent = this;
-    children["affinity-mappings"] = affinity_mappings;
 
     attribute_set->parent = this;
-    children["attribute-set"] = attribute_set;
 
     auto_tunnel->parent = this;
-    children["auto-tunnel"] = auto_tunnel;
 
     bfd_over_lsp->parent = this;
-    children["bfd-over-lsp"] = bfd_over_lsp;
 
     fast_reroute->parent = this;
-    children["fast-reroute"] = fast_reroute;
 
     hardware_out_of_resource->parent = this;
-    children["hardware-out-of-resource"] = hardware_out_of_resource;
 
     lsp_out_of_resource->parent = this;
-    children["lsp-out-of-resource"] = lsp_out_of_resource;
 
     mib->parent = this;
-    children["mib"] = mib;
 
     path_selection->parent = this;
-    children["path-selection"] = path_selection;
 
     pce_attributes->parent = this;
-    children["pce-attributes"] = pce_attributes;
 
     queues->parent = this;
-    children["queues"] = queues;
 
     secondary_router_ids->parent = this;
-    children["secondary-router-ids"] = secondary_router_ids;
 
     soft_preemption->parent = this;
-    children["soft-preemption"] = soft_preemption;
 
     srlg->parent = this;
-    children["srlg"] = srlg;
 
     yang_name = "global-attributes"; yang_parent_name = "mpls-te";
 }
@@ -7433,7 +6467,7 @@ std::string MplsTe::GlobalAttributes::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7482,340 +6516,206 @@ EntityPath MplsTe::GlobalAttributes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity-mappings")
     {
-        if(affinity_mappings != nullptr)
-        {
-            children["affinity-mappings"] = affinity_mappings;
-        }
-        else
+        if(affinity_mappings == nullptr)
         {
             affinity_mappings = std::make_shared<MplsTe::GlobalAttributes::AffinityMappings>();
-            affinity_mappings->parent = this;
-            children["affinity-mappings"] = affinity_mappings;
         }
-        return children.at("affinity-mappings");
+        return affinity_mappings;
     }
 
     if(child_yang_name == "attribute-set")
     {
-        if(attribute_set != nullptr)
-        {
-            children["attribute-set"] = attribute_set;
-        }
-        else
+        if(attribute_set == nullptr)
         {
             attribute_set = std::make_shared<MplsTe::GlobalAttributes::AttributeSet>();
-            attribute_set->parent = this;
-            children["attribute-set"] = attribute_set;
         }
-        return children.at("attribute-set");
+        return attribute_set;
     }
 
     if(child_yang_name == "auto-tunnel")
     {
-        if(auto_tunnel != nullptr)
-        {
-            children["auto-tunnel"] = auto_tunnel;
-        }
-        else
+        if(auto_tunnel == nullptr)
         {
             auto_tunnel = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel>();
-            auto_tunnel->parent = this;
-            children["auto-tunnel"] = auto_tunnel;
         }
-        return children.at("auto-tunnel");
+        return auto_tunnel;
     }
 
     if(child_yang_name == "bfd-over-lsp")
     {
-        if(bfd_over_lsp != nullptr)
-        {
-            children["bfd-over-lsp"] = bfd_over_lsp;
-        }
-        else
+        if(bfd_over_lsp == nullptr)
         {
             bfd_over_lsp = std::make_shared<MplsTe::GlobalAttributes::BfdOverLsp>();
-            bfd_over_lsp->parent = this;
-            children["bfd-over-lsp"] = bfd_over_lsp;
         }
-        return children.at("bfd-over-lsp");
+        return bfd_over_lsp;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<MplsTe::GlobalAttributes::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "hardware-out-of-resource")
     {
-        if(hardware_out_of_resource != nullptr)
-        {
-            children["hardware-out-of-resource"] = hardware_out_of_resource;
-        }
-        else
+        if(hardware_out_of_resource == nullptr)
         {
             hardware_out_of_resource = std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource>();
-            hardware_out_of_resource->parent = this;
-            children["hardware-out-of-resource"] = hardware_out_of_resource;
         }
-        return children.at("hardware-out-of-resource");
+        return hardware_out_of_resource;
     }
 
     if(child_yang_name == "lsp-out-of-resource")
     {
-        if(lsp_out_of_resource != nullptr)
-        {
-            children["lsp-out-of-resource"] = lsp_out_of_resource;
-        }
-        else
+        if(lsp_out_of_resource == nullptr)
         {
             lsp_out_of_resource = std::make_shared<MplsTe::GlobalAttributes::LspOutOfResource>();
-            lsp_out_of_resource->parent = this;
-            children["lsp-out-of-resource"] = lsp_out_of_resource;
         }
-        return children.at("lsp-out-of-resource");
+        return lsp_out_of_resource;
     }
 
     if(child_yang_name == "mib")
     {
-        if(mib != nullptr)
-        {
-            children["mib"] = mib;
-        }
-        else
+        if(mib == nullptr)
         {
             mib = std::make_shared<MplsTe::GlobalAttributes::Mib>();
-            mib->parent = this;
-            children["mib"] = mib;
         }
-        return children.at("mib");
+        return mib;
     }
 
     if(child_yang_name == "path-selection")
     {
-        if(path_selection != nullptr)
-        {
-            children["path-selection"] = path_selection;
-        }
-        else
+        if(path_selection == nullptr)
         {
             path_selection = std::make_shared<MplsTe::GlobalAttributes::PathSelection>();
-            path_selection->parent = this;
-            children["path-selection"] = path_selection;
         }
-        return children.at("path-selection");
+        return path_selection;
     }
 
     if(child_yang_name == "pce-attributes")
     {
-        if(pce_attributes != nullptr)
-        {
-            children["pce-attributes"] = pce_attributes;
-        }
-        else
+        if(pce_attributes == nullptr)
         {
             pce_attributes = std::make_shared<MplsTe::GlobalAttributes::PceAttributes>();
-            pce_attributes->parent = this;
-            children["pce-attributes"] = pce_attributes;
         }
-        return children.at("pce-attributes");
+        return pce_attributes;
     }
 
     if(child_yang_name == "queues")
     {
-        if(queues != nullptr)
-        {
-            children["queues"] = queues;
-        }
-        else
+        if(queues == nullptr)
         {
             queues = std::make_shared<MplsTe::GlobalAttributes::Queues>();
-            queues->parent = this;
-            children["queues"] = queues;
         }
-        return children.at("queues");
+        return queues;
     }
 
     if(child_yang_name == "secondary-router-ids")
     {
-        if(secondary_router_ids != nullptr)
-        {
-            children["secondary-router-ids"] = secondary_router_ids;
-        }
-        else
+        if(secondary_router_ids == nullptr)
         {
             secondary_router_ids = std::make_shared<MplsTe::GlobalAttributes::SecondaryRouterIds>();
-            secondary_router_ids->parent = this;
-            children["secondary-router-ids"] = secondary_router_ids;
         }
-        return children.at("secondary-router-ids");
+        return secondary_router_ids;
     }
 
     if(child_yang_name == "soft-preemption")
     {
-        if(soft_preemption != nullptr)
-        {
-            children["soft-preemption"] = soft_preemption;
-        }
-        else
+        if(soft_preemption == nullptr)
         {
             soft_preemption = std::make_shared<MplsTe::GlobalAttributes::SoftPreemption>();
-            soft_preemption->parent = this;
-            children["soft-preemption"] = soft_preemption;
         }
-        return children.at("soft-preemption");
+        return soft_preemption;
     }
 
     if(child_yang_name == "srlg")
     {
-        if(srlg != nullptr)
-        {
-            children["srlg"] = srlg;
-        }
-        else
+        if(srlg == nullptr)
         {
             srlg = std::make_shared<MplsTe::GlobalAttributes::Srlg>();
-            srlg->parent = this;
-            children["srlg"] = srlg;
         }
-        return children.at("srlg");
+        return srlg;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::get_children() const
 {
-    if(children.find("affinity-mappings") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity_mappings != nullptr)
     {
-        if(affinity_mappings != nullptr)
-        {
-            children["affinity-mappings"] = affinity_mappings;
-        }
+        children["affinity-mappings"] = affinity_mappings;
     }
 
-    if(children.find("attribute-set") == children.end())
+    if(attribute_set != nullptr)
     {
-        if(attribute_set != nullptr)
-        {
-            children["attribute-set"] = attribute_set;
-        }
+        children["attribute-set"] = attribute_set;
     }
 
-    if(children.find("auto-tunnel") == children.end())
+    if(auto_tunnel != nullptr)
     {
-        if(auto_tunnel != nullptr)
-        {
-            children["auto-tunnel"] = auto_tunnel;
-        }
+        children["auto-tunnel"] = auto_tunnel;
     }
 
-    if(children.find("bfd-over-lsp") == children.end())
+    if(bfd_over_lsp != nullptr)
     {
-        if(bfd_over_lsp != nullptr)
-        {
-            children["bfd-over-lsp"] = bfd_over_lsp;
-        }
+        children["bfd-over-lsp"] = bfd_over_lsp;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("hardware-out-of-resource") == children.end())
+    if(hardware_out_of_resource != nullptr)
     {
-        if(hardware_out_of_resource != nullptr)
-        {
-            children["hardware-out-of-resource"] = hardware_out_of_resource;
-        }
+        children["hardware-out-of-resource"] = hardware_out_of_resource;
     }
 
-    if(children.find("lsp-out-of-resource") == children.end())
+    if(lsp_out_of_resource != nullptr)
     {
-        if(lsp_out_of_resource != nullptr)
-        {
-            children["lsp-out-of-resource"] = lsp_out_of_resource;
-        }
+        children["lsp-out-of-resource"] = lsp_out_of_resource;
     }
 
-    if(children.find("mib") == children.end())
+    if(mib != nullptr)
     {
-        if(mib != nullptr)
-        {
-            children["mib"] = mib;
-        }
+        children["mib"] = mib;
     }
 
-    if(children.find("path-selection") == children.end())
+    if(path_selection != nullptr)
     {
-        if(path_selection != nullptr)
-        {
-            children["path-selection"] = path_selection;
-        }
+        children["path-selection"] = path_selection;
     }
 
-    if(children.find("pce-attributes") == children.end())
+    if(pce_attributes != nullptr)
     {
-        if(pce_attributes != nullptr)
-        {
-            children["pce-attributes"] = pce_attributes;
-        }
+        children["pce-attributes"] = pce_attributes;
     }
 
-    if(children.find("queues") == children.end())
+    if(queues != nullptr)
     {
-        if(queues != nullptr)
-        {
-            children["queues"] = queues;
-        }
+        children["queues"] = queues;
     }
 
-    if(children.find("secondary-router-ids") == children.end())
+    if(secondary_router_ids != nullptr)
     {
-        if(secondary_router_ids != nullptr)
-        {
-            children["secondary-router-ids"] = secondary_router_ids;
-        }
+        children["secondary-router-ids"] = secondary_router_ids;
     }
 
-    if(children.find("soft-preemption") == children.end())
+    if(soft_preemption != nullptr)
     {
-        if(soft_preemption != nullptr)
-        {
-            children["soft-preemption"] = soft_preemption;
-        }
+        children["soft-preemption"] = soft_preemption;
     }
 
-    if(children.find("srlg") == children.end())
+    if(srlg != nullptr)
     {
-        if(srlg != nullptr)
-        {
-            children["srlg"] = srlg;
-        }
+        children["srlg"] = srlg;
     }
 
     return children;
@@ -7938,19 +6838,14 @@ MplsTe::GlobalAttributes::AutoTunnel::AutoTunnel()
 	,pcc(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Pcc>())
 {
     backup->parent = this;
-    children["backup"] = backup;
 
     mesh->parent = this;
-    children["mesh"] = mesh;
 
     p2mp_auto_tunnel->parent = this;
-    children["p2mp-auto-tunnel"] = p2mp_auto_tunnel;
 
     p2p_auto_tunnel->parent = this;
-    children["p2p-auto-tunnel"] = p2p_auto_tunnel;
 
     pcc->parent = this;
-    children["pcc"] = pcc;
 
     yang_name = "auto-tunnel"; yang_parent_name = "global-attributes";
 }
@@ -7987,7 +6882,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8010,133 +6905,80 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backup")
     {
-        if(backup != nullptr)
-        {
-            children["backup"] = backup;
-        }
-        else
+        if(backup == nullptr)
         {
             backup = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup>();
-            backup->parent = this;
-            children["backup"] = backup;
         }
-        return children.at("backup");
+        return backup;
     }
 
     if(child_yang_name == "mesh")
     {
-        if(mesh != nullptr)
-        {
-            children["mesh"] = mesh;
-        }
-        else
+        if(mesh == nullptr)
         {
             mesh = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh>();
-            mesh->parent = this;
-            children["mesh"] = mesh;
         }
-        return children.at("mesh");
+        return mesh;
     }
 
     if(child_yang_name == "p2mp-auto-tunnel")
     {
-        if(p2mp_auto_tunnel != nullptr)
-        {
-            children["p2mp-auto-tunnel"] = p2mp_auto_tunnel;
-        }
-        else
+        if(p2mp_auto_tunnel == nullptr)
         {
             p2mp_auto_tunnel = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel>();
-            p2mp_auto_tunnel->parent = this;
-            children["p2mp-auto-tunnel"] = p2mp_auto_tunnel;
         }
-        return children.at("p2mp-auto-tunnel");
+        return p2mp_auto_tunnel;
     }
 
     if(child_yang_name == "p2p-auto-tunnel")
     {
-        if(p2p_auto_tunnel != nullptr)
-        {
-            children["p2p-auto-tunnel"] = p2p_auto_tunnel;
-        }
-        else
+        if(p2p_auto_tunnel == nullptr)
         {
             p2p_auto_tunnel = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel>();
-            p2p_auto_tunnel->parent = this;
-            children["p2p-auto-tunnel"] = p2p_auto_tunnel;
         }
-        return children.at("p2p-auto-tunnel");
+        return p2p_auto_tunnel;
     }
 
     if(child_yang_name == "pcc")
     {
-        if(pcc != nullptr)
-        {
-            children["pcc"] = pcc;
-        }
-        else
+        if(pcc == nullptr)
         {
             pcc = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Pcc>();
-            pcc->parent = this;
-            children["pcc"] = pcc;
         }
-        return children.at("pcc");
+        return pcc;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::get_children() const
 {
-    if(children.find("backup") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backup != nullptr)
     {
-        if(backup != nullptr)
-        {
-            children["backup"] = backup;
-        }
+        children["backup"] = backup;
     }
 
-    if(children.find("mesh") == children.end())
+    if(mesh != nullptr)
     {
-        if(mesh != nullptr)
-        {
-            children["mesh"] = mesh;
-        }
+        children["mesh"] = mesh;
     }
 
-    if(children.find("p2mp-auto-tunnel") == children.end())
+    if(p2mp_auto_tunnel != nullptr)
     {
-        if(p2mp_auto_tunnel != nullptr)
-        {
-            children["p2mp-auto-tunnel"] = p2mp_auto_tunnel;
-        }
+        children["p2mp-auto-tunnel"] = p2mp_auto_tunnel;
     }
 
-    if(children.find("p2p-auto-tunnel") == children.end())
+    if(p2p_auto_tunnel != nullptr)
     {
-        if(p2p_auto_tunnel != nullptr)
-        {
-            children["p2p-auto-tunnel"] = p2p_auto_tunnel;
-        }
+        children["p2p-auto-tunnel"] = p2p_auto_tunnel;
     }
 
-    if(children.find("pcc") == children.end())
+    if(pcc != nullptr)
     {
-        if(pcc != nullptr)
-        {
-            children["pcc"] = pcc;
-        }
+        children["pcc"] = pcc;
     }
 
     return children;
@@ -8151,7 +6993,6 @@ MplsTe::GlobalAttributes::AutoTunnel::Pcc::Pcc()
     tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange>())
 {
     tunnel_range->parent = this;
-    children["tunnel-range"] = tunnel_range;
 
     yang_name = "pcc"; yang_parent_name = "auto-tunnel";
 }
@@ -8180,7 +7021,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Pcc::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Pcc::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Pcc::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8203,41 +7044,24 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Pcc::get_entity_path(Entity* an
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Pcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-range")
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
-        else
+        if(tunnel_range == nullptr)
         {
             tunnel_range = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange>();
-            tunnel_range->parent = this;
-            children["tunnel-range"] = tunnel_range;
         }
-        return children.at("tunnel-range");
+        return tunnel_range;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Pcc::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Pcc::get_children() const
 {
-    if(children.find("tunnel-range") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnel_range != nullptr)
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
+        children["tunnel-range"] = tunnel_range;
     }
 
     return children;
@@ -8281,7 +7105,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::get_segment_
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8306,20 +7130,12 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::get_entity_pa
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8340,7 +7156,6 @@ MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::P2PAutoTunnel()
     tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange>())
 {
     tunnel_range->parent = this;
-    children["tunnel-range"] = tunnel_range;
 
     yang_name = "p2p-auto-tunnel"; yang_parent_name = "auto-tunnel";
 }
@@ -8369,7 +7184,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_segment_pat
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8392,41 +7207,24 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_entity_path(
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-range")
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
-        else
+        if(tunnel_range == nullptr)
         {
             tunnel_range = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange>();
-            tunnel_range->parent = this;
-            children["tunnel-range"] = tunnel_range;
         }
-        return children.at("tunnel-range");
+        return tunnel_range;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_children() const
 {
-    if(children.find("tunnel-range") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnel_range != nullptr)
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
+        children["tunnel-range"] = tunnel_range;
     }
 
     return children;
@@ -8470,7 +7268,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::ge
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8495,20 +7293,12 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8532,10 +7322,8 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::Backup()
 	,tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange>())
 {
     timers->parent = this;
-    children["timers"] = timers;
 
     tunnel_range->parent = this;
-    children["tunnel-range"] = tunnel_range;
 
     yang_name = "backup"; yang_parent_name = "auto-tunnel";
 }
@@ -8568,7 +7356,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Backup::get_segment_path() con
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8592,64 +7380,38 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::get_entity_path(Entity*
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timers")
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
-        else
+        if(timers == nullptr)
         {
             timers = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers>();
-            timers->parent = this;
-            children["timers"] = timers;
         }
-        return children.at("timers");
+        return timers;
     }
 
     if(child_yang_name == "tunnel-range")
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
-        else
+        if(tunnel_range == nullptr)
         {
             tunnel_range = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange>();
-            tunnel_range->parent = this;
-            children["tunnel-range"] = tunnel_range;
         }
-        return children.at("tunnel-range");
+        return tunnel_range;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Backup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Backup::get_children() const
 {
-    if(children.find("timers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timers != nullptr)
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
+        children["timers"] = timers;
     }
 
-    if(children.find("tunnel-range") == children.end())
+    if(tunnel_range != nullptr)
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
+        children["tunnel-range"] = tunnel_range;
     }
 
     return children;
@@ -8668,7 +7430,6 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Timers()
     removal(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal>())
 {
     removal->parent = this;
-    children["removal"] = removal;
 
     yang_name = "timers"; yang_parent_name = "backup";
 }
@@ -8697,7 +7458,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::get_segment_pa
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8720,41 +7481,24 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::get_entity_path
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "removal")
     {
-        if(removal != nullptr)
-        {
-            children["removal"] = removal;
-        }
-        else
+        if(removal == nullptr)
         {
             removal = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal>();
-            removal->parent = this;
-            children["removal"] = removal;
         }
-        return children.at("removal");
+        return removal;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::get_children() const
 {
-    if(children.find("removal") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(removal != nullptr)
     {
-        if(removal != nullptr)
-        {
-            children["removal"] = removal;
-        }
+        children["removal"] = removal;
     }
 
     return children;
@@ -8795,7 +7539,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::get_s
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8819,20 +7563,12 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::get_en
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8878,7 +7614,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::get_segme
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8903,20 +7639,12 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::get_entity
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8939,13 +7667,10 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::Mesh()
 	,tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange>())
 {
     mesh_groups->parent = this;
-    children["mesh-groups"] = mesh_groups;
 
     timers->parent = this;
-    children["timers"] = timers;
 
     tunnel_range->parent = this;
-    children["tunnel-range"] = tunnel_range;
 
     yang_name = "mesh"; yang_parent_name = "auto-tunnel";
 }
@@ -8978,7 +7703,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9001,87 +7726,52 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Mesh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mesh-groups")
     {
-        if(mesh_groups != nullptr)
-        {
-            children["mesh-groups"] = mesh_groups;
-        }
-        else
+        if(mesh_groups == nullptr)
         {
             mesh_groups = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups>();
-            mesh_groups->parent = this;
-            children["mesh-groups"] = mesh_groups;
         }
-        return children.at("mesh-groups");
+        return mesh_groups;
     }
 
     if(child_yang_name == "timers")
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
-        else
+        if(timers == nullptr)
         {
             timers = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers>();
-            timers->parent = this;
-            children["timers"] = timers;
         }
-        return children.at("timers");
+        return timers;
     }
 
     if(child_yang_name == "tunnel-range")
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
-        else
+        if(tunnel_range == nullptr)
         {
             tunnel_range = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange>();
-            tunnel_range->parent = this;
-            children["tunnel-range"] = tunnel_range;
         }
-        return children.at("tunnel-range");
+        return tunnel_range;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Mesh::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Mesh::get_children() const
 {
-    if(children.find("mesh-groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mesh_groups != nullptr)
     {
-        if(mesh_groups != nullptr)
-        {
-            children["mesh-groups"] = mesh_groups;
-        }
+        children["mesh-groups"] = mesh_groups;
     }
 
-    if(children.find("timers") == children.end())
+    if(timers != nullptr)
     {
-        if(timers != nullptr)
-        {
-            children["timers"] = timers;
-        }
+        children["timers"] = timers;
     }
 
-    if(children.find("tunnel-range") == children.end())
+    if(tunnel_range != nullptr)
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
+        children["tunnel-range"] = tunnel_range;
     }
 
     return children;
@@ -9129,7 +7819,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::get_segment_
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9152,15 +7842,6 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::get_entity_pa
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "mesh-group")
     {
         for(auto const & c : mesh_group)
@@ -9168,28 +7849,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup>();
         c->parent = this;
-        mesh_group.push_back(std::move(c));
-        children[segment_path] = mesh_group.back();
-        return children.at(segment_path);
+        mesh_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mesh_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9245,7 +7922,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::g
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9274,20 +7951,12 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::ge
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9324,7 +7993,6 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Timers()
     removal(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal>())
 {
     removal->parent = this;
-    children["removal"] = removal;
 
     yang_name = "timers"; yang_parent_name = "mesh";
 }
@@ -9353,7 +8021,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::get_segment_path
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9376,41 +8044,24 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::get_entity_path(E
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "removal")
     {
-        if(removal != nullptr)
-        {
-            children["removal"] = removal;
-        }
-        else
+        if(removal == nullptr)
         {
             removal = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal>();
-            removal->parent = this;
-            children["removal"] = removal;
         }
-        return children.at("removal");
+        return removal;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::get_children() const
 {
-    if(children.find("removal") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(removal != nullptr)
     {
-        if(removal != nullptr)
-        {
-            children["removal"] = removal;
-        }
+        children["removal"] = removal;
     }
 
     return children;
@@ -9451,7 +8102,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::get_seg
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9475,20 +8126,12 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::get_enti
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9534,7 +8177,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::get_segment
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9559,20 +8202,12 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::get_entity_p
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9593,7 +8228,6 @@ MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::P2MpAutoTunnel()
     tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange>())
 {
     tunnel_range->parent = this;
-    children["tunnel-range"] = tunnel_range;
 
     yang_name = "p2mp-auto-tunnel"; yang_parent_name = "auto-tunnel";
 }
@@ -9622,7 +8256,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_segment_pa
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9645,41 +8279,24 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_entity_path
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "tunnel-range")
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
-        else
+        if(tunnel_range == nullptr)
         {
             tunnel_range = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange>();
-            tunnel_range->parent = this;
-            children["tunnel-range"] = tunnel_range;
         }
-        return children.at("tunnel-range");
+        return tunnel_range;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_children() const
 {
-    if(children.find("tunnel-range") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(tunnel_range != nullptr)
     {
-        if(tunnel_range != nullptr)
-        {
-            children["tunnel-range"] = tunnel_range;
-        }
+        children["tunnel-range"] = tunnel_range;
     }
 
     return children;
@@ -9723,7 +8340,7 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::g
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9748,20 +8365,12 @@ EntityPath MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::ge
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9784,13 +8393,10 @@ MplsTe::GlobalAttributes::HardwareOutOfResource::HardwareOutOfResource()
 	,oor_yellow_state(std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState>())
 {
     oor_green_state->parent = this;
-    children["oor-green-state"] = oor_green_state;
 
     oor_red_state->parent = this;
-    children["oor-red-state"] = oor_red_state;
 
     oor_yellow_state->parent = this;
-    children["oor-yellow-state"] = oor_yellow_state;
 
     yang_name = "hardware-out-of-resource"; yang_parent_name = "global-attributes";
 }
@@ -9823,7 +8429,7 @@ std::string MplsTe::GlobalAttributes::HardwareOutOfResource::get_segment_path() 
 
 }
 
-EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9846,87 +8452,52 @@ EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::get_entity_path(Enti
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::HardwareOutOfResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "oor-green-state")
     {
-        if(oor_green_state != nullptr)
-        {
-            children["oor-green-state"] = oor_green_state;
-        }
-        else
+        if(oor_green_state == nullptr)
         {
             oor_green_state = std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState>();
-            oor_green_state->parent = this;
-            children["oor-green-state"] = oor_green_state;
         }
-        return children.at("oor-green-state");
+        return oor_green_state;
     }
 
     if(child_yang_name == "oor-red-state")
     {
-        if(oor_red_state != nullptr)
-        {
-            children["oor-red-state"] = oor_red_state;
-        }
-        else
+        if(oor_red_state == nullptr)
         {
             oor_red_state = std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState>();
-            oor_red_state->parent = this;
-            children["oor-red-state"] = oor_red_state;
         }
-        return children.at("oor-red-state");
+        return oor_red_state;
     }
 
     if(child_yang_name == "oor-yellow-state")
     {
-        if(oor_yellow_state != nullptr)
-        {
-            children["oor-yellow-state"] = oor_yellow_state;
-        }
-        else
+        if(oor_yellow_state == nullptr)
         {
             oor_yellow_state = std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState>();
-            oor_yellow_state->parent = this;
-            children["oor-yellow-state"] = oor_yellow_state;
         }
-        return children.at("oor-yellow-state");
+        return oor_yellow_state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::HardwareOutOfResource::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::HardwareOutOfResource::get_children() const
 {
-    if(children.find("oor-green-state") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(oor_green_state != nullptr)
     {
-        if(oor_green_state != nullptr)
-        {
-            children["oor-green-state"] = oor_green_state;
-        }
+        children["oor-green-state"] = oor_green_state;
     }
 
-    if(children.find("oor-red-state") == children.end())
+    if(oor_red_state != nullptr)
     {
-        if(oor_red_state != nullptr)
-        {
-            children["oor-red-state"] = oor_red_state;
-        }
+        children["oor-red-state"] = oor_red_state;
     }
 
-    if(children.find("oor-yellow-state") == children.end())
+    if(oor_yellow_state != nullptr)
     {
-        if(oor_yellow_state != nullptr)
-        {
-            children["oor-yellow-state"] = oor_yellow_state;
-        }
+        children["oor-yellow-state"] = oor_yellow_state;
     }
 
     return children;
@@ -9979,7 +8550,7 @@ std::string MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::get_se
 
 }
 
-EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10007,20 +8578,12 @@ EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::get_ent
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10091,7 +8654,7 @@ std::string MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::get
 
 }
 
-EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10119,20 +8682,12 @@ EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::get_
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10206,7 +8761,7 @@ std::string MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::get_
 
 }
 
-EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10235,20 +8790,12 @@ EntityPath MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::get_e
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10318,7 +8865,7 @@ std::string MplsTe::GlobalAttributes::SecondaryRouterIds::get_segment_path() con
 
 }
 
-EntityPath MplsTe::GlobalAttributes::SecondaryRouterIds::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::SecondaryRouterIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10341,15 +8888,6 @@ EntityPath MplsTe::GlobalAttributes::SecondaryRouterIds::get_entity_path(Entity*
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::SecondaryRouterIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "secondary-router-id")
     {
         for(auto const & c : secondary_router_id)
@@ -10357,28 +8895,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::SecondaryRouterIds::get_child_
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId>();
         c->parent = this;
-        secondary_router_id.push_back(std::move(c));
-        children[segment_path] = secondary_router_id.back();
-        return children.at(segment_path);
+        secondary_router_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::SecondaryRouterIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::SecondaryRouterIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : secondary_router_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10419,7 +8953,7 @@ std::string MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::get
 
 }
 
-EntityPath MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10443,20 +8977,12 @@ EntityPath MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::get_
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10477,10 +9003,8 @@ MplsTe::GlobalAttributes::Srlg::Srlg()
 	,values(std::make_shared<MplsTe::GlobalAttributes::Srlg::Values>())
 {
     names->parent = this;
-    children["names"] = names;
 
     values->parent = this;
-    children["values"] = values;
 
     yang_name = "srlg"; yang_parent_name = "global-attributes";
 }
@@ -10515,7 +9039,7 @@ std::string MplsTe::GlobalAttributes::Srlg::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Srlg::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Srlg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10540,64 +9064,38 @@ EntityPath MplsTe::GlobalAttributes::Srlg::get_entity_path(Entity* ancestor) con
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "names")
     {
-        if(names != nullptr)
-        {
-            children["names"] = names;
-        }
-        else
+        if(names == nullptr)
         {
             names = std::make_shared<MplsTe::GlobalAttributes::Srlg::Names>();
-            names->parent = this;
-            children["names"] = names;
         }
-        return children.at("names");
+        return names;
     }
 
     if(child_yang_name == "values")
     {
-        if(values != nullptr)
-        {
-            children["values"] = values;
-        }
-        else
+        if(values == nullptr)
         {
             values = std::make_shared<MplsTe::GlobalAttributes::Srlg::Values>();
-            values->parent = this;
-            children["values"] = values;
         }
-        return children.at("values");
+        return values;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Srlg::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::get_children() const
 {
-    if(children.find("names") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(names != nullptr)
     {
-        if(names != nullptr)
-        {
-            children["names"] = names;
-        }
+        children["names"] = names;
     }
 
-    if(children.find("values") == children.end())
+    if(values != nullptr)
     {
-        if(values != nullptr)
-        {
-            children["values"] = values;
-        }
+        children["values"] = values;
     }
 
     return children;
@@ -10653,7 +9151,7 @@ std::string MplsTe::GlobalAttributes::Srlg::Names::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Srlg::Names::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Srlg::Names::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10676,15 +9174,6 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Names::get_entity_path(Entity* ancest
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Names::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "name")
     {
         for(auto const & c : name)
@@ -10692,28 +9181,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Names::get_child_by_name
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::Srlg::Names::Name>();
         c->parent = this;
-        name.push_back(std::move(c));
-        children[segment_path] = name.back();
-        return children.at(segment_path);
+        name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Srlg::Names::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::Names::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10731,7 +9216,6 @@ MplsTe::GlobalAttributes::Srlg::Names::Name::Name()
     static_srlg_members(std::make_shared<MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers>())
 {
     static_srlg_members->parent = this;
-    children["static-srlg-members"] = static_srlg_members;
 
     yang_name = "name"; yang_parent_name = "names";
 }
@@ -10764,7 +9248,7 @@ std::string MplsTe::GlobalAttributes::Srlg::Names::Name::get_segment_path() cons
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10789,41 +9273,24 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Names::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "static-srlg-members")
     {
-        if(static_srlg_members != nullptr)
-        {
-            children["static-srlg-members"] = static_srlg_members;
-        }
-        else
+        if(static_srlg_members == nullptr)
         {
             static_srlg_members = std::make_shared<MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers>();
-            static_srlg_members->parent = this;
-            children["static-srlg-members"] = static_srlg_members;
         }
-        return children.at("static-srlg-members");
+        return static_srlg_members;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Srlg::Names::Name::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::Names::Name::get_children() const
 {
-    if(children.find("static-srlg-members") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(static_srlg_members != nullptr)
     {
-        if(static_srlg_members != nullptr)
-        {
-            children["static-srlg-members"] = static_srlg_members;
-        }
+        children["static-srlg-members"] = static_srlg_members;
     }
 
     return children;
@@ -10879,7 +9346,7 @@ std::string MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::get_
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10902,15 +9369,6 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::get_e
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "static-srlg-member")
     {
         for(auto const & c : static_srlg_member)
@@ -10918,28 +9376,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgM
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember>();
         c->parent = this;
-        static_srlg_member.push_back(std::move(c));
-        children[segment_path] = static_srlg_member.back();
-        return children.at(segment_path);
+        static_srlg_member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : static_srlg_member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -10983,7 +9437,7 @@ std::string MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::Stat
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11008,20 +9462,12 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::Stati
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11075,7 +9521,7 @@ std::string MplsTe::GlobalAttributes::Srlg::Values::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Srlg::Values::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Srlg::Values::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11098,15 +9544,6 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Values::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Values::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "value")
     {
         for(auto const & c : value_)
@@ -11114,28 +9551,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Values::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::Srlg::Values::Value_>();
         c->parent = this;
-        value_.push_back(std::move(c));
-        children[segment_path] = value_.back();
-        return children.at(segment_path);
+        value_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Srlg::Values::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::Values::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : value_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11153,7 +9586,6 @@ MplsTe::GlobalAttributes::Srlg::Values::Value_::Value_()
     ipv4_address_maps(std::make_shared<MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps>())
 {
     ipv4_address_maps->parent = this;
-    children["ipv4-address-maps"] = ipv4_address_maps;
 
     yang_name = "value"; yang_parent_name = "values";
 }
@@ -11186,7 +9618,7 @@ std::string MplsTe::GlobalAttributes::Srlg::Values::Value_::get_segment_path() c
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11211,41 +9643,24 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::get_entity_path(Entit
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Values::Value_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-address-maps")
     {
-        if(ipv4_address_maps != nullptr)
-        {
-            children["ipv4-address-maps"] = ipv4_address_maps;
-        }
-        else
+        if(ipv4_address_maps == nullptr)
         {
             ipv4_address_maps = std::make_shared<MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps>();
-            ipv4_address_maps->parent = this;
-            children["ipv4-address-maps"] = ipv4_address_maps;
         }
-        return children.at("ipv4-address-maps");
+        return ipv4_address_maps;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Srlg::Values::Value_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::Values::Value_::get_children() const
 {
-    if(children.find("ipv4-address-maps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_address_maps != nullptr)
     {
-        if(ipv4_address_maps != nullptr)
-        {
-            children["ipv4-address-maps"] = ipv4_address_maps;
-        }
+        children["ipv4-address-maps"] = ipv4_address_maps;
     }
 
     return children;
@@ -11301,7 +9716,7 @@ std::string MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::get
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11324,15 +9739,6 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::get_
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4-address-map")
     {
         for(auto const & c : ipv4_address_map)
@@ -11340,28 +9746,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4Addr
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::Ipv4AddressMap>();
         c->parent = this;
-        ipv4_address_map.push_back(std::move(c));
-        children[segment_path] = ipv4_address_map.back();
-        return children.at(segment_path);
+        ipv4_address_map.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipv4_address_map)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11405,7 +9807,7 @@ std::string MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::Ipv
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::Ipv4AddressMap::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::Ipv4AddressMap::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11430,20 +9832,12 @@ EntityPath MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::Ipv4
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::Ipv4AddressMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::Ipv4AddressMap::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::Values::Value_::Ipv4AddressMaps::Ipv4AddressMap::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11497,7 +9891,7 @@ std::string MplsTe::GlobalAttributes::Queues::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Queues::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Queues::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11520,15 +9914,6 @@ EntityPath MplsTe::GlobalAttributes::Queues::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Queues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "queue")
     {
         for(auto const & c : queue)
@@ -11536,28 +9921,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::Queues::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::Queues::Queue>();
         c->parent = this;
-        queue.push_back(std::move(c));
-        children[segment_path] = queue.back();
-        return children.at(segment_path);
+        queue.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Queues::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Queues::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : queue)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -11601,7 +9982,7 @@ std::string MplsTe::GlobalAttributes::Queues::Queue::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Queues::Queue::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Queues::Queue::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11626,20 +10007,12 @@ EntityPath MplsTe::GlobalAttributes::Queues::Queue::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Queues::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Queues::Queue::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Queues::Queue::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11686,7 +10059,7 @@ std::string MplsTe::GlobalAttributes::Mib::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::Mib::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::Mib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11710,20 +10083,12 @@ EntityPath MplsTe::GlobalAttributes::Mib::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::Mib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Mib::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11746,25 +10111,18 @@ MplsTe::GlobalAttributes::AttributeSet::AttributeSet()
 	,xro_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::XroAttributes>())
 {
     auto_backup_attributes->parent = this;
-    children["auto-backup-attributes"] = auto_backup_attributes;
 
     auto_mesh_attributes->parent = this;
-    children["auto-mesh-attributes"] = auto_mesh_attributes;
 
     otn_pp_attributes->parent = this;
-    children["otn-pp-attributes"] = otn_pp_attributes;
 
     p2mpte_attributes->parent = this;
-    children["p2mpte-attributes"] = p2mpte_attributes;
 
     p2p_te_attributes->parent = this;
-    children["p2p-te-attributes"] = p2p_te_attributes;
 
     path_option_attributes->parent = this;
-    children["path-option-attributes"] = path_option_attributes;
 
     xro_attributes->parent = this;
-    children["xro-attributes"] = xro_attributes;
 
     yang_name = "attribute-set"; yang_parent_name = "global-attributes";
 }
@@ -11805,7 +10163,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::get_segment_path() const
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11828,179 +10186,108 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "auto-backup-attributes")
     {
-        if(auto_backup_attributes != nullptr)
-        {
-            children["auto-backup-attributes"] = auto_backup_attributes;
-        }
-        else
+        if(auto_backup_attributes == nullptr)
         {
             auto_backup_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes>();
-            auto_backup_attributes->parent = this;
-            children["auto-backup-attributes"] = auto_backup_attributes;
         }
-        return children.at("auto-backup-attributes");
+        return auto_backup_attributes;
     }
 
     if(child_yang_name == "auto-mesh-attributes")
     {
-        if(auto_mesh_attributes != nullptr)
-        {
-            children["auto-mesh-attributes"] = auto_mesh_attributes;
-        }
-        else
+        if(auto_mesh_attributes == nullptr)
         {
             auto_mesh_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes>();
-            auto_mesh_attributes->parent = this;
-            children["auto-mesh-attributes"] = auto_mesh_attributes;
         }
-        return children.at("auto-mesh-attributes");
+        return auto_mesh_attributes;
     }
 
     if(child_yang_name == "otn-pp-attributes")
     {
-        if(otn_pp_attributes != nullptr)
-        {
-            children["otn-pp-attributes"] = otn_pp_attributes;
-        }
-        else
+        if(otn_pp_attributes == nullptr)
         {
             otn_pp_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes>();
-            otn_pp_attributes->parent = this;
-            children["otn-pp-attributes"] = otn_pp_attributes;
         }
-        return children.at("otn-pp-attributes");
+        return otn_pp_attributes;
     }
 
     if(child_yang_name == "p2mpte-attributes")
     {
-        if(p2mpte_attributes != nullptr)
-        {
-            children["p2mpte-attributes"] = p2mpte_attributes;
-        }
-        else
+        if(p2mpte_attributes == nullptr)
         {
             p2mpte_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes>();
-            p2mpte_attributes->parent = this;
-            children["p2mpte-attributes"] = p2mpte_attributes;
         }
-        return children.at("p2mpte-attributes");
+        return p2mpte_attributes;
     }
 
     if(child_yang_name == "p2p-te-attributes")
     {
-        if(p2p_te_attributes != nullptr)
-        {
-            children["p2p-te-attributes"] = p2p_te_attributes;
-        }
-        else
+        if(p2p_te_attributes == nullptr)
         {
             p2p_te_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes>();
-            p2p_te_attributes->parent = this;
-            children["p2p-te-attributes"] = p2p_te_attributes;
         }
-        return children.at("p2p-te-attributes");
+        return p2p_te_attributes;
     }
 
     if(child_yang_name == "path-option-attributes")
     {
-        if(path_option_attributes != nullptr)
-        {
-            children["path-option-attributes"] = path_option_attributes;
-        }
-        else
+        if(path_option_attributes == nullptr)
         {
             path_option_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes>();
-            path_option_attributes->parent = this;
-            children["path-option-attributes"] = path_option_attributes;
         }
-        return children.at("path-option-attributes");
+        return path_option_attributes;
     }
 
     if(child_yang_name == "xro-attributes")
     {
-        if(xro_attributes != nullptr)
-        {
-            children["xro-attributes"] = xro_attributes;
-        }
-        else
+        if(xro_attributes == nullptr)
         {
             xro_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::XroAttributes>();
-            xro_attributes->parent = this;
-            children["xro-attributes"] = xro_attributes;
         }
-        return children.at("xro-attributes");
+        return xro_attributes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::get_children() const
 {
-    if(children.find("auto-backup-attributes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(auto_backup_attributes != nullptr)
     {
-        if(auto_backup_attributes != nullptr)
-        {
-            children["auto-backup-attributes"] = auto_backup_attributes;
-        }
+        children["auto-backup-attributes"] = auto_backup_attributes;
     }
 
-    if(children.find("auto-mesh-attributes") == children.end())
+    if(auto_mesh_attributes != nullptr)
     {
-        if(auto_mesh_attributes != nullptr)
-        {
-            children["auto-mesh-attributes"] = auto_mesh_attributes;
-        }
+        children["auto-mesh-attributes"] = auto_mesh_attributes;
     }
 
-    if(children.find("otn-pp-attributes") == children.end())
+    if(otn_pp_attributes != nullptr)
     {
-        if(otn_pp_attributes != nullptr)
-        {
-            children["otn-pp-attributes"] = otn_pp_attributes;
-        }
+        children["otn-pp-attributes"] = otn_pp_attributes;
     }
 
-    if(children.find("p2mpte-attributes") == children.end())
+    if(p2mpte_attributes != nullptr)
     {
-        if(p2mpte_attributes != nullptr)
-        {
-            children["p2mpte-attributes"] = p2mpte_attributes;
-        }
+        children["p2mpte-attributes"] = p2mpte_attributes;
     }
 
-    if(children.find("p2p-te-attributes") == children.end())
+    if(p2p_te_attributes != nullptr)
     {
-        if(p2p_te_attributes != nullptr)
-        {
-            children["p2p-te-attributes"] = p2p_te_attributes;
-        }
+        children["p2p-te-attributes"] = p2p_te_attributes;
     }
 
-    if(children.find("path-option-attributes") == children.end())
+    if(path_option_attributes != nullptr)
     {
-        if(path_option_attributes != nullptr)
-        {
-            children["path-option-attributes"] = path_option_attributes;
-        }
+        children["path-option-attributes"] = path_option_attributes;
     }
 
-    if(children.find("xro-attributes") == children.end())
+    if(xro_attributes != nullptr)
     {
-        if(xro_attributes != nullptr)
-        {
-            children["xro-attributes"] = xro_attributes;
-        }
+        children["xro-attributes"] = xro_attributes;
     }
 
     return children;
@@ -12048,7 +10335,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::get_se
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12071,15 +10358,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::get_ent
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-option-attribute")
     {
         for(auto const & c : path_option_attribute)
@@ -12087,28 +10365,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute>();
         c->parent = this;
-        path_option_attribute.push_back(std::move(c));
-        children[segment_path] = path_option_attribute.back();
-        return children.at(segment_path);
+        path_option_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_option_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -12131,13 +10405,10 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 	,pce(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce>())
 {
     att_path_option_path_selection->parent = this;
-    children["att-path-option-path-selection"] = att_path_option_path_selection;
 
     new_style_affinity_affinity_types->parent = this;
-    children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
 
     pce->parent = this;
-    children["pce"] = pce;
 
     yang_name = "path-option-attribute"; yang_parent_name = "path-option-attributes";
 }
@@ -12180,7 +10451,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12205,156 +10476,94 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity-mask")
     {
-        if(affinity_mask != nullptr)
-        {
-            children["affinity-mask"] = affinity_mask;
-        }
-        else
+        if(affinity_mask == nullptr)
         {
             affinity_mask = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AffinityMask>();
-            affinity_mask->parent = this;
-            children["affinity-mask"] = affinity_mask;
         }
-        return children.at("affinity-mask");
+        return affinity_mask;
     }
 
     if(child_yang_name == "att-path-option-path-selection")
     {
-        if(att_path_option_path_selection != nullptr)
-        {
-            children["att-path-option-path-selection"] = att_path_option_path_selection;
-        }
-        else
+        if(att_path_option_path_selection == nullptr)
         {
             att_path_option_path_selection = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection>();
-            att_path_option_path_selection->parent = this;
-            children["att-path-option-path-selection"] = att_path_option_path_selection;
         }
-        return children.at("att-path-option-path-selection");
+        return att_path_option_path_selection;
     }
 
     if(child_yang_name == "bandwidth")
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
-        else
+        if(bandwidth == nullptr)
         {
             bandwidth = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Bandwidth>();
-            bandwidth->parent = this;
-            children["bandwidth"] = bandwidth;
         }
-        return children.at("bandwidth");
+        return bandwidth;
     }
 
     if(child_yang_name == "bfd-reverse-path")
     {
-        if(bfd_reverse_path != nullptr)
-        {
-            children["bfd-reverse-path"] = bfd_reverse_path;
-        }
-        else
+        if(bfd_reverse_path == nullptr)
         {
             bfd_reverse_path = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::BfdReversePath>();
-            bfd_reverse_path->parent = this;
-            children["bfd-reverse-path"] = bfd_reverse_path;
         }
-        return children.at("bfd-reverse-path");
+        return bfd_reverse_path;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-types")
     {
-        if(new_style_affinity_affinity_types != nullptr)
-        {
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
-        }
-        else
+        if(new_style_affinity_affinity_types == nullptr)
         {
             new_style_affinity_affinity_types = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes>();
-            new_style_affinity_affinity_types->parent = this;
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
         }
-        return children.at("new-style-affinity-affinity-types");
+        return new_style_affinity_affinity_types;
     }
 
     if(child_yang_name == "pce")
     {
-        if(pce != nullptr)
-        {
-            children["pce"] = pce;
-        }
-        else
+        if(pce == nullptr)
         {
             pce = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce>();
-            pce->parent = this;
-            children["pce"] = pce;
         }
-        return children.at("pce");
+        return pce;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::get_children() const
 {
-    if(children.find("affinity-mask") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity_mask != nullptr)
     {
-        if(affinity_mask != nullptr)
-        {
-            children["affinity-mask"] = affinity_mask;
-        }
+        children["affinity-mask"] = affinity_mask;
     }
 
-    if(children.find("att-path-option-path-selection") == children.end())
+    if(att_path_option_path_selection != nullptr)
     {
-        if(att_path_option_path_selection != nullptr)
-        {
-            children["att-path-option-path-selection"] = att_path_option_path_selection;
-        }
+        children["att-path-option-path-selection"] = att_path_option_path_selection;
     }
 
-    if(children.find("bandwidth") == children.end())
+    if(bandwidth != nullptr)
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
+        children["bandwidth"] = bandwidth;
     }
 
-    if(children.find("bfd-reverse-path") == children.end())
+    if(bfd_reverse_path != nullptr)
     {
-        if(bfd_reverse_path != nullptr)
-        {
-            children["bfd-reverse-path"] = bfd_reverse_path;
-        }
+        children["bfd-reverse-path"] = bfd_reverse_path;
     }
 
-    if(children.find("new-style-affinity-affinity-types") == children.end())
+    if(new_style_affinity_affinity_types != nullptr)
     {
-        if(new_style_affinity_affinity_types != nullptr)
-        {
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
-        }
+        children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
     }
 
-    if(children.find("pce") == children.end())
+    if(pce != nullptr)
     {
-        if(pce != nullptr)
-        {
-            children["pce"] = pce;
-        }
+        children["pce"] = pce;
     }
 
     return children;
@@ -12406,7 +10615,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::BfdReversePath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::BfdReversePath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12431,20 +10640,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::BfdReversePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::BfdReversePath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::BfdReversePath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12501,7 +10702,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12527,41 +10728,24 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "invalidation")
     {
-        if(invalidation != nullptr)
-        {
-            children["invalidation"] = invalidation;
-        }
-        else
+        if(invalidation == nullptr)
         {
             invalidation = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation>();
-            invalidation->parent = this;
-            children["invalidation"] = invalidation;
         }
-        return children.at("invalidation");
+        return invalidation;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::get_children() const
 {
-    if(children.find("invalidation") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(invalidation != nullptr)
     {
-        if(invalidation != nullptr)
-        {
-            children["invalidation"] = invalidation;
-        }
+        children["invalidation"] = invalidation;
     }
 
     return children;
@@ -12617,7 +10801,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12642,20 +10826,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12709,7 +10885,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12733,64 +10909,38 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bidirectional")
     {
-        if(bidirectional != nullptr)
-        {
-            children["bidirectional"] = bidirectional;
-        }
-        else
+        if(bidirectional == nullptr)
         {
             bidirectional = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::Bidirectional>();
-            bidirectional->parent = this;
-            children["bidirectional"] = bidirectional;
         }
-        return children.at("bidirectional");
+        return bidirectional;
     }
 
     if(child_yang_name == "disjoint-path")
     {
-        if(disjoint_path != nullptr)
-        {
-            children["disjoint-path"] = disjoint_path;
-        }
-        else
+        if(disjoint_path == nullptr)
         {
             disjoint_path = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::DisjointPath>();
-            disjoint_path->parent = this;
-            children["disjoint-path"] = disjoint_path;
         }
-        return children.at("disjoint-path");
+        return disjoint_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::get_children() const
 {
-    if(children.find("bidirectional") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bidirectional != nullptr)
     {
-        if(bidirectional != nullptr)
-        {
-            children["bidirectional"] = bidirectional;
-        }
+        children["bidirectional"] = bidirectional;
     }
 
-    if(children.find("disjoint-path") == children.end())
+    if(disjoint_path != nullptr)
     {
-        if(disjoint_path != nullptr)
-        {
-            children["disjoint-path"] = disjoint_path;
-        }
+        children["disjoint-path"] = disjoint_path;
     }
 
     return children;
@@ -12838,7 +10988,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::Bidirectional::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::Bidirectional::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12863,20 +11013,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::Bidirectional::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::Bidirectional::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::Bidirectional::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -12929,7 +11071,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::DisjointPath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::DisjointPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -12955,20 +11097,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::DisjointPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::DisjointPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13022,7 +11156,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AffinityMask::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AffinityMask::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13047,20 +11181,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AffinityMask::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AffinityMask::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13113,7 +11239,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Bandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Bandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13139,20 +11265,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Bandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Bandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13310,7 +11428,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13333,15 +11451,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "new-style-affinity-affinity-type")
     {
         for(auto const & c : new_style_affinity_affinity_type)
@@ -13349,15 +11458,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
         c->parent = this;
-        new_style_affinity_affinity_type.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1")
@@ -13367,15 +11474,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2")
@@ -13385,15 +11490,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3")
@@ -13403,15 +11506,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4")
@@ -13421,15 +11522,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5")
@@ -13439,15 +11538,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6")
@@ -13457,15 +11554,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7")
@@ -13475,15 +11570,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8")
@@ -13493,15 +11586,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9")
@@ -13511,15 +11602,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
@@ -13529,108 +11618,74 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : new_style_affinity_affinity_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -13671,7 +11726,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13695,20 +11750,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -13722,8 +11769,8 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
     :
-    affinity1{YType::str, "affinity1"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -13734,27 +11781,27 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
 {
-    return affinity1.is_set
-	|| affinity_type.is_set;
+    return affinity_type.is_set
+	|| affinity1.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
 {
     return is_set(operation)
-	|| is_set(affinity1.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13768,8 +11815,8 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13779,40 +11826,32 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-    }
     if(value_path == "affinity-type")
     {
         affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
     }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::NewStyleAffinityAffinityTypeAffinity1Affinity2()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity2{YType::str, "affinity2"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -13823,29 +11862,29 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
 {
-    return affinity1.is_set
-	|| affinity2.is_set
-	|| affinity_type.is_set;
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
-	|| is_set(affinity2.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity2.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13859,9 +11898,9 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13871,25 +11910,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -13898,18 +11933,14 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         affinity2 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity3{YType::str, "affinity3"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -13920,31 +11951,31 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity_type.is_set;
+	|| affinity3.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
-	|| is_set(affinity3.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity3.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -13958,10 +11989,10 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13971,25 +12002,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -14002,19 +12029,15 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         affinity3 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity4{YType::str, "affinity4"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -14025,33 +12048,33 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity_type.is_set;
+	|| affinity4.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
-	|| is_set(affinity4.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity4.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14065,11 +12088,11 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14079,25 +12102,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -14114,20 +12133,16 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         affinity4 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity5{YType::str, "affinity5"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -14138,35 +12153,35 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
-	|| affinity5.is_set
-	|| affinity_type.is_set;
+	|| affinity5.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
-	|| is_set(affinity5.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity5.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14180,12 +12195,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
     if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14195,25 +12210,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -14234,21 +12245,17 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         affinity5 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
     affinity5{YType::str, "affinity5"},
-    affinity6{YType::str, "affinity6"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity6{YType::str, "affinity6"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -14259,37 +12266,37 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
 	|| affinity5.is_set
-	|| affinity6.is_set
-	|| affinity_type.is_set;
+	|| affinity6.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
 	|| is_set(affinity5.operation)
-	|| is_set(affinity6.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity6.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14303,13 +12310,13 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
     if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
     if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14319,25 +12326,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -14362,22 +12365,18 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         affinity6 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
     affinity5{YType::str, "affinity5"},
     affinity6{YType::str, "affinity6"},
-    affinity7{YType::str, "affinity7"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity7{YType::str, "affinity7"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -14388,39 +12387,39 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
 	|| affinity5.is_set
 	|| affinity6.is_set
-	|| affinity7.is_set
-	|| affinity_type.is_set;
+	|| affinity7.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
 	|| is_set(affinity5.operation)
 	|| is_set(affinity6.operation)
-	|| is_set(affinity7.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity7.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14434,6 +12433,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
@@ -14441,7 +12441,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
     if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14451,25 +12450,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -14498,14 +12493,11 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         affinity7 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
@@ -14513,8 +12505,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity5{YType::str, "affinity5"},
     affinity6{YType::str, "affinity6"},
     affinity7{YType::str, "affinity7"},
-    affinity8{YType::str, "affinity8"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity8{YType::str, "affinity8"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -14525,20 +12516,21 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
 	|| affinity5.is_set
 	|| affinity6.is_set
 	|| affinity7.is_set
-	|| affinity8.is_set
-	|| affinity_type.is_set;
+	|| affinity8.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
@@ -14546,20 +12538,19 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 	|| is_set(affinity5.operation)
 	|| is_set(affinity6.operation)
 	|| is_set(affinity7.operation)
-	|| is_set(affinity8.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity8.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14573,6 +12564,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
@@ -14581,7 +12573,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
     if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14591,25 +12582,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -14642,14 +12629,11 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         affinity8 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
@@ -14658,8 +12642,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity6{YType::str, "affinity6"},
     affinity7{YType::str, "affinity7"},
     affinity8{YType::str, "affinity8"},
-    affinity9{YType::str, "affinity9"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity9{YType::str, "affinity9"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -14670,7 +12653,8 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
@@ -14678,13 +12662,13 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 	|| affinity6.is_set
 	|| affinity7.is_set
 	|| affinity8.is_set
-	|| affinity9.is_set
-	|| affinity_type.is_set;
+	|| affinity9.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
@@ -14693,20 +12677,19 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 	|| is_set(affinity6.operation)
 	|| is_set(affinity7.operation)
 	|| is_set(affinity8.operation)
-	|| is_set(affinity9.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity9.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14720,6 +12703,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
@@ -14729,7 +12713,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
     if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
     if (affinity9.is_set || is_set(affinity9.operation)) leaf_name_data.push_back(affinity9.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14739,25 +12722,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -14794,16 +12773,12 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         affinity9 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
-    affinity10{YType::str, "affinity10"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
@@ -14812,7 +12787,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity7{YType::str, "affinity7"},
     affinity8{YType::str, "affinity8"},
     affinity9{YType::str, "affinity9"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity10{YType::str, "affinity10"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -14823,8 +12798,8 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_data() const
 {
-    return affinity1.is_set
-	|| affinity10.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
@@ -14833,14 +12808,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 	|| affinity7.is_set
 	|| affinity8.is_set
 	|| affinity9.is_set
-	|| affinity_type.is_set;
+	|| affinity10.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
-	|| is_set(affinity10.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
@@ -14849,19 +12824,19 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 	|| is_set(affinity7.operation)
 	|| is_set(affinity8.operation)
 	|| is_set(affinity9.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity10.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity10='" <<affinity10 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity10='" <<affinity10 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -14875,8 +12850,8 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity10.is_set || is_set(affinity10.operation)) leaf_name_data.push_back(affinity10.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
@@ -14885,7 +12860,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
     if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
     if (affinity9.is_set || is_set(affinity9.operation)) leaf_name_data.push_back(affinity9.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity10.is_set || is_set(affinity10.operation)) leaf_name_data.push_back(affinity10.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14895,32 +12870,24 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOpt
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
-    }
-    if(value_path == "affinity10")
-    {
-        affinity10 = value;
     }
     if(value_path == "affinity2")
     {
@@ -14954,9 +12921,9 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         affinity9 = value;
     }
-    if(value_path == "affinity-type")
+    if(value_path == "affinity10")
     {
-        affinity_type = value;
+        affinity10 = value;
     }
 }
 
@@ -14998,7 +12965,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_segmen
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15021,15 +12988,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_entity_
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2mpte-attribute")
     {
         for(auto const & c : p2mpte_attribute)
@@ -15037,28 +12995,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute>();
         c->parent = this;
-        p2mpte_attribute.push_back(std::move(c));
-        children[segment_path] = p2mpte_attribute.back();
-        return children.at(segment_path);
+        p2mpte_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : p2mpte_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -15084,13 +13038,10 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::P2Mpt
 	,priority(nullptr) // presence node
 {
     logging->parent = this;
-    children["logging"] = logging;
 
     new_style_affinity_affinity_types->parent = this;
-    children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
 
     path_selection->parent = this;
-    children["path-selection"] = path_selection;
 
     yang_name = "p2mpte-attribute"; yang_parent_name = "p2mpte-attributes";
 }
@@ -15139,7 +13090,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttr
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15166,179 +13117,108 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity-mask")
     {
-        if(affinity_mask != nullptr)
-        {
-            children["affinity-mask"] = affinity_mask;
-        }
-        else
+        if(affinity_mask == nullptr)
         {
             affinity_mask = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask>();
-            affinity_mask->parent = this;
-            children["affinity-mask"] = affinity_mask;
         }
-        return children.at("affinity-mask");
+        return affinity_mask;
     }
 
     if(child_yang_name == "bandwidth")
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
-        else
+        if(bandwidth == nullptr)
         {
             bandwidth = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth>();
-            bandwidth->parent = this;
-            children["bandwidth"] = bandwidth;
         }
-        return children.at("bandwidth");
+        return bandwidth;
     }
 
     if(child_yang_name == "fast-reroute")
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
-        else
+        if(fast_reroute == nullptr)
         {
             fast_reroute = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute>();
-            fast_reroute->parent = this;
-            children["fast-reroute"] = fast_reroute;
         }
-        return children.at("fast-reroute");
+        return fast_reroute;
     }
 
     if(child_yang_name == "logging")
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
-        else
+        if(logging == nullptr)
         {
             logging = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging>();
-            logging->parent = this;
-            children["logging"] = logging;
         }
-        return children.at("logging");
+        return logging;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-types")
     {
-        if(new_style_affinity_affinity_types != nullptr)
-        {
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
-        }
-        else
+        if(new_style_affinity_affinity_types == nullptr)
         {
             new_style_affinity_affinity_types = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes>();
-            new_style_affinity_affinity_types->parent = this;
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
         }
-        return children.at("new-style-affinity-affinity-types");
+        return new_style_affinity_affinity_types;
     }
 
     if(child_yang_name == "path-selection")
     {
-        if(path_selection != nullptr)
-        {
-            children["path-selection"] = path_selection;
-        }
-        else
+        if(path_selection == nullptr)
         {
             path_selection = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection>();
-            path_selection->parent = this;
-            children["path-selection"] = path_selection;
         }
-        return children.at("path-selection");
+        return path_selection;
     }
 
     if(child_yang_name == "priority")
     {
-        if(priority != nullptr)
-        {
-            children["priority"] = priority;
-        }
-        else
+        if(priority == nullptr)
         {
             priority = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority>();
-            priority->parent = this;
-            children["priority"] = priority;
         }
-        return children.at("priority");
+        return priority;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_children() const
 {
-    if(children.find("affinity-mask") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity_mask != nullptr)
     {
-        if(affinity_mask != nullptr)
-        {
-            children["affinity-mask"] = affinity_mask;
-        }
+        children["affinity-mask"] = affinity_mask;
     }
 
-    if(children.find("bandwidth") == children.end())
+    if(bandwidth != nullptr)
     {
-        if(bandwidth != nullptr)
-        {
-            children["bandwidth"] = bandwidth;
-        }
+        children["bandwidth"] = bandwidth;
     }
 
-    if(children.find("fast-reroute") == children.end())
+    if(fast_reroute != nullptr)
     {
-        if(fast_reroute != nullptr)
-        {
-            children["fast-reroute"] = fast_reroute;
-        }
+        children["fast-reroute"] = fast_reroute;
     }
 
-    if(children.find("logging") == children.end())
+    if(logging != nullptr)
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
+        children["logging"] = logging;
     }
 
-    if(children.find("new-style-affinity-affinity-types") == children.end())
+    if(new_style_affinity_affinity_types != nullptr)
     {
-        if(new_style_affinity_affinity_types != nullptr)
-        {
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
-        }
+        children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
     }
 
-    if(children.find("path-selection") == children.end())
+    if(path_selection != nullptr)
     {
-        if(path_selection != nullptr)
-        {
-            children["path-selection"] = path_selection;
-        }
+        children["path-selection"] = path_selection;
     }
 
-    if(children.find("priority") == children.end())
+    if(priority != nullptr)
     {
-        if(priority != nullptr)
-        {
-            children["priority"] = priority;
-        }
+        children["priority"] = priority;
     }
 
     return children;
@@ -15398,7 +13278,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttr
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15423,20 +13303,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15486,7 +13358,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttr
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15511,20 +13383,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15577,7 +13441,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttr
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15603,20 +13467,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15667,7 +13523,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttr
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15691,20 +13547,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -15854,7 +13702,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttr
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -15877,15 +13725,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "new-style-affinity-affinity-type")
     {
         for(auto const & c : new_style_affinity_affinity_type)
@@ -15893,15 +13732,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
         c->parent = this;
-        new_style_affinity_affinity_type.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1")
@@ -15911,15 +13748,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2")
@@ -15929,15 +13764,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3")
@@ -15947,15 +13780,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4")
@@ -15965,15 +13796,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5")
@@ -15983,15 +13812,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6")
@@ -16001,15 +13828,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7")
@@ -16019,15 +13844,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8")
@@ -16037,15 +13860,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9")
@@ -16055,15 +13876,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
@@ -16073,108 +13892,74 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : new_style_affinity_affinity_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -16215,7 +14000,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttr
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16239,20 +14024,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -16266,8 +14043,8 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
     :
-    affinity1{YType::str, "affinity1"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -16278,27 +14055,27 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
 {
-    return affinity1.is_set
-	|| affinity_type.is_set;
+    return affinity_type.is_set
+	|| affinity1.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
 {
     return is_set(operation)
-	|| is_set(affinity1.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16312,8 +14089,8 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16323,40 +14100,32 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-    }
     if(value_path == "affinity-type")
     {
         affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
     }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::NewStyleAffinityAffinityTypeAffinity1Affinity2()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity2{YType::str, "affinity2"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -16367,29 +14136,29 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
 {
-    return affinity1.is_set
-	|| affinity2.is_set
-	|| affinity_type.is_set;
+    return affinity_type.is_set
+	|| affinity1.is_set
+	|| affinity2.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
-	|| is_set(affinity2.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity2.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16403,9 +14172,9 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16415,25 +14184,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -16442,18 +14207,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     {
         affinity2 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity3{YType::str, "affinity3"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -16464,31 +14225,31 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity_type.is_set;
+	|| affinity3.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
-	|| is_set(affinity3.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity3.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16502,10 +14263,10 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16515,25 +14276,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -16546,19 +14303,15 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     {
         affinity3 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity4{YType::str, "affinity4"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -16569,33 +14322,33 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity_type.is_set;
+	|| affinity4.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
-	|| is_set(affinity4.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity4.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16609,11 +14362,11 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16623,25 +14376,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -16658,20 +14407,16 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     {
         affinity4 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity5{YType::str, "affinity5"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -16682,35 +14427,35 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
-	|| affinity5.is_set
-	|| affinity_type.is_set;
+	|| affinity5.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
-	|| is_set(affinity5.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity5.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16724,12 +14469,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
     if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16739,25 +14484,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -16778,21 +14519,17 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     {
         affinity5 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
     affinity5{YType::str, "affinity5"},
-    affinity6{YType::str, "affinity6"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity6{YType::str, "affinity6"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -16803,37 +14540,37 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
 	|| affinity5.is_set
-	|| affinity6.is_set
-	|| affinity_type.is_set;
+	|| affinity6.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
 	|| is_set(affinity5.operation)
-	|| is_set(affinity6.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity6.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16847,13 +14584,13 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
     if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
     if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16863,25 +14600,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -16906,22 +14639,18 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     {
         affinity6 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
     affinity5{YType::str, "affinity5"},
     affinity6{YType::str, "affinity6"},
-    affinity7{YType::str, "affinity7"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity7{YType::str, "affinity7"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -16932,39 +14661,39 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
 	|| affinity5.is_set
 	|| affinity6.is_set
-	|| affinity7.is_set
-	|| affinity_type.is_set;
+	|| affinity7.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
 	|| is_set(affinity5.operation)
 	|| is_set(affinity6.operation)
-	|| is_set(affinity7.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity7.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -16978,6 +14707,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
@@ -16985,7 +14715,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     if (affinity5.is_set || is_set(affinity5.operation)) leaf_name_data.push_back(affinity5.get_name_leafdata());
     if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16995,25 +14724,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -17042,14 +14767,11 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     {
         affinity7 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
@@ -17057,8 +14779,7 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity5{YType::str, "affinity5"},
     affinity6{YType::str, "affinity6"},
     affinity7{YType::str, "affinity7"},
-    affinity8{YType::str, "affinity8"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity8{YType::str, "affinity8"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -17069,20 +14790,21 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
 	|| affinity5.is_set
 	|| affinity6.is_set
 	|| affinity7.is_set
-	|| affinity8.is_set
-	|| affinity_type.is_set;
+	|| affinity8.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
@@ -17090,20 +14812,19 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| is_set(affinity5.operation)
 	|| is_set(affinity6.operation)
 	|| is_set(affinity7.operation)
-	|| is_set(affinity8.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity8.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17117,6 +14838,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
@@ -17125,7 +14847,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     if (affinity6.is_set || is_set(affinity6.operation)) leaf_name_data.push_back(affinity6.get_name_leafdata());
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
     if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17135,25 +14856,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -17186,14 +14903,11 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     {
         affinity8 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
@@ -17202,8 +14916,7 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity6{YType::str, "affinity6"},
     affinity7{YType::str, "affinity7"},
     affinity8{YType::str, "affinity8"},
-    affinity9{YType::str, "affinity9"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity9{YType::str, "affinity9"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -17214,7 +14927,8 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_data() const
 {
-    return affinity1.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
@@ -17222,13 +14936,13 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| affinity6.is_set
 	|| affinity7.is_set
 	|| affinity8.is_set
-	|| affinity9.is_set
-	|| affinity_type.is_set;
+	|| affinity9.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
@@ -17237,20 +14951,19 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| is_set(affinity6.operation)
 	|| is_set(affinity7.operation)
 	|| is_set(affinity8.operation)
-	|| is_set(affinity9.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity9.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17264,6 +14977,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
@@ -17273,7 +14987,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
     if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
     if (affinity9.is_set || is_set(affinity9.operation)) leaf_name_data.push_back(affinity9.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17283,25 +14996,21 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
@@ -17338,16 +15047,12 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     {
         affinity9 = value;
     }
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-    }
 }
 
 MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
     :
+    affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
-    affinity10{YType::str, "affinity10"},
     affinity2{YType::str, "affinity2"},
     affinity3{YType::str, "affinity3"},
     affinity4{YType::str, "affinity4"},
@@ -17356,7 +15061,7 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity7{YType::str, "affinity7"},
     affinity8{YType::str, "affinity8"},
     affinity9{YType::str, "affinity9"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity10{YType::str, "affinity10"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -17367,8 +15072,8 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_data() const
 {
-    return affinity1.is_set
-	|| affinity10.is_set
+    return affinity_type.is_set
+	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set
 	|| affinity4.is_set
@@ -17377,14 +15082,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| affinity7.is_set
 	|| affinity8.is_set
 	|| affinity9.is_set
-	|| affinity_type.is_set;
+	|| affinity10.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_operation() const
 {
     return is_set(operation)
+	|| is_set(affinity_type.operation)
 	|| is_set(affinity1.operation)
-	|| is_set(affinity10.operation)
 	|| is_set(affinity2.operation)
 	|| is_set(affinity3.operation)
 	|| is_set(affinity4.operation)
@@ -17393,19 +15098,19 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| is_set(affinity7.operation)
 	|| is_set(affinity8.operation)
 	|| is_set(affinity9.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity10.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity10='" <<affinity10 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity10='" <<affinity10 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17419,8 +15124,8 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
     if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity10.is_set || is_set(affinity10.operation)) leaf_name_data.push_back(affinity10.get_name_leafdata());
     if (affinity2.is_set || is_set(affinity2.operation)) leaf_name_data.push_back(affinity2.get_name_leafdata());
     if (affinity3.is_set || is_set(affinity3.operation)) leaf_name_data.push_back(affinity3.get_name_leafdata());
     if (affinity4.is_set || is_set(affinity4.operation)) leaf_name_data.push_back(affinity4.get_name_leafdata());
@@ -17429,7 +15134,7 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
     if (affinity7.is_set || is_set(affinity7.operation)) leaf_name_data.push_back(affinity7.get_name_leafdata());
     if (affinity8.is_set || is_set(affinity8.operation)) leaf_name_data.push_back(affinity8.get_name_leafdata());
     if (affinity9.is_set || is_set(affinity9.operation)) leaf_name_data.push_back(affinity9.get_name_leafdata());
-    if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity10.is_set || is_set(affinity10.operation)) leaf_name_data.push_back(affinity10.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17439,32 +15144,24 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_value(const std::string & value_path, std::string value)
 {
+    if(value_path == "affinity-type")
+    {
+        affinity_type = value;
+    }
     if(value_path == "affinity1")
     {
         affinity1 = value;
-    }
-    if(value_path == "affinity10")
-    {
-        affinity10 = value;
     }
     if(value_path == "affinity2")
     {
@@ -17498,9 +15195,9 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     {
         affinity9 = value;
     }
-    if(value_path == "affinity-type")
+    if(value_path == "affinity10")
     {
-        affinity_type = value;
+        affinity10 = value;
     }
 }
 
@@ -17538,7 +15235,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttr
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17563,20 +15260,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17647,7 +15336,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttr
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17679,20 +15368,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttri
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -17774,7 +15455,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_segment
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17797,15 +15478,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_entity_p
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2p-te-attribute")
     {
         for(auto const & c : p2p_te_attribute)
@@ -17813,28 +15485,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute>();
         c->parent = this;
-        p2p_te_attribute.push_back(std::move(c));
-        children[segment_path] = p2p_te_attribute.back();
-        return children.at(segment_path);
+        p2p_te_attribute.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : p2p_te_attribute)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -17856,16 +15524,12 @@ MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P2PTeAt
 	,pce(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce>())
 {
     logging->parent = this;
-    children["logging"] = logging;
 
     new_style_affinity_affinity_types->parent = this;
-    children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
 
     path_selection->parent = this;
-    children["path-selection"] = path_selection;
 
     pce->parent = this;
-    children["pce"] = pce;
 
     yang_name = "p2p-te-attribute"; yang_parent_name = "p2p-te-attributes";
 }
@@ -17906,7 +15570,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -17931,133 +15595,80 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "affinity-mask")
     {
-        if(affinity_mask != nullptr)
-        {
-            children["affinity-mask"] = affinity_mask;
-        }
-        else
+        if(affinity_mask == nullptr)
         {
             affinity_mask = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask>();
-            affinity_mask->parent = this;
-            children["affinity-mask"] = affinity_mask;
         }
-        return children.at("affinity-mask");
+        return affinity_mask;
     }
 
     if(child_yang_name == "logging")
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
-        else
+        if(logging == nullptr)
         {
             logging = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging>();
-            logging->parent = this;
-            children["logging"] = logging;
         }
-        return children.at("logging");
+        return logging;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-types")
     {
-        if(new_style_affinity_affinity_types != nullptr)
-        {
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
-        }
-        else
+        if(new_style_affinity_affinity_types == nullptr)
         {
             new_style_affinity_affinity_types = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes>();
-            new_style_affinity_affinity_types->parent = this;
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
         }
-        return children.at("new-style-affinity-affinity-types");
+        return new_style_affinity_affinity_types;
     }
 
     if(child_yang_name == "path-selection")
     {
-        if(path_selection != nullptr)
-        {
-            children["path-selection"] = path_selection;
-        }
-        else
+        if(path_selection == nullptr)
         {
             path_selection = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection>();
-            path_selection->parent = this;
-            children["path-selection"] = path_selection;
         }
-        return children.at("path-selection");
+        return path_selection;
     }
 
     if(child_yang_name == "pce")
     {
-        if(pce != nullptr)
-        {
-            children["pce"] = pce;
-        }
-        else
+        if(pce == nullptr)
         {
             pce = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce>();
-            pce->parent = this;
-            children["pce"] = pce;
         }
-        return children.at("pce");
+        return pce;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_children() const
 {
-    if(children.find("affinity-mask") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(affinity_mask != nullptr)
     {
-        if(affinity_mask != nullptr)
-        {
-            children["affinity-mask"] = affinity_mask;
-        }
+        children["affinity-mask"] = affinity_mask;
     }
 
-    if(children.find("logging") == children.end())
+    if(logging != nullptr)
     {
-        if(logging != nullptr)
-        {
-            children["logging"] = logging;
-        }
+        children["logging"] = logging;
     }
 
-    if(children.find("new-style-affinity-affinity-types") == children.end())
+    if(new_style_affinity_affinity_types != nullptr)
     {
-        if(new_style_affinity_affinity_types != nullptr)
-        {
-            children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
-        }
+        children["new-style-affinity-affinity-types"] = new_style_affinity_affinity_types;
     }
 
-    if(children.find("path-selection") == children.end())
+    if(path_selection != nullptr)
     {
-        if(path_selection != nullptr)
-        {
-            children["path-selection"] = path_selection;
-        }
+        children["path-selection"] = path_selection;
     }
 
-    if(children.find("pce") == children.end())
+    if(pce != nullptr)
     {
-        if(pce != nullptr)
-        {
-            children["pce"] = pce;
-        }
+        children["pce"] = pce;
     }
 
     return children;
@@ -18085,10 +15696,8 @@ MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSel
 	,segment_routing_prepend(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend>())
 {
     invalidation->parent = this;
-    children["invalidation"] = invalidation;
 
     segment_routing_prepend->parent = this;
-    children["segment-routing-prepend"] = segment_routing_prepend;
 
     yang_name = "path-selection"; yang_parent_name = "p2p-te-attribute";
 }
@@ -18125,7 +15734,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18151,64 +15760,38 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "invalidation")
     {
-        if(invalidation != nullptr)
-        {
-            children["invalidation"] = invalidation;
-        }
-        else
+        if(invalidation == nullptr)
         {
             invalidation = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation>();
-            invalidation->parent = this;
-            children["invalidation"] = invalidation;
         }
-        return children.at("invalidation");
+        return invalidation;
     }
 
     if(child_yang_name == "segment-routing-prepend")
     {
-        if(segment_routing_prepend != nullptr)
-        {
-            children["segment-routing-prepend"] = segment_routing_prepend;
-        }
-        else
+        if(segment_routing_prepend == nullptr)
         {
             segment_routing_prepend = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend>();
-            segment_routing_prepend->parent = this;
-            children["segment-routing-prepend"] = segment_routing_prepend;
         }
-        return children.at("segment-routing-prepend");
+        return segment_routing_prepend;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_children() const
 {
-    if(children.find("invalidation") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(invalidation != nullptr)
     {
-        if(invalidation != nullptr)
-        {
-            children["invalidation"] = invalidation;
-        }
+        children["invalidation"] = invalidation;
     }
 
-    if(children.find("segment-routing-prepend") == children.end())
+    if(segment_routing_prepend != nullptr)
     {
-        if(segment_routing_prepend != nullptr)
-        {
-            children["segment-routing-prepend"] = segment_routing_prepend;
-        }
+        children["segment-routing-prepend"] = segment_routing_prepend;
     }
 
     return children;
@@ -18237,7 +15820,6 @@ MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSel
     indexes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes>())
 {
     indexes->parent = this;
-    children["indexes"] = indexes;
 
     yang_name = "segment-routing-prepend"; yang_parent_name = "path-selection";
 }
@@ -18268,7 +15850,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18292,41 +15874,24 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "indexes")
     {
-        if(indexes != nullptr)
-        {
-            children["indexes"] = indexes;
-        }
-        else
+        if(indexes == nullptr)
         {
             indexes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes>();
-            indexes->parent = this;
-            children["indexes"] = indexes;
         }
-        return children.at("indexes");
+        return indexes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_children() const
 {
-    if(children.find("indexes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(indexes != nullptr)
     {
-        if(indexes != nullptr)
-        {
-            children["indexes"] = indexes;
-        }
+        children["indexes"] = indexes;
     }
 
     return children;
@@ -18378,7 +15943,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18401,15 +15966,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "index")
     {
         for(auto const & c : index_)
@@ -18417,28 +15973,24 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_>();
         c->parent = this;
-        index_.push_back(std::move(c));
-        children[segment_path] = index_.back();
-        return children.at(segment_path);
+        index_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : index_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -18485,7 +16037,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18511,20 +16063,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18578,7 +16122,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18603,20 +16147,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18670,7 +16206,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18694,64 +16230,38 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bidirectional")
     {
-        if(bidirectional != nullptr)
-        {
-            children["bidirectional"] = bidirectional;
-        }
-        else
+        if(bidirectional == nullptr)
         {
             bidirectional = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional>();
-            bidirectional->parent = this;
-            children["bidirectional"] = bidirectional;
         }
-        return children.at("bidirectional");
+        return bidirectional;
     }
 
     if(child_yang_name == "disjoint-path")
     {
-        if(disjoint_path != nullptr)
-        {
-            children["disjoint-path"] = disjoint_path;
-        }
-        else
+        if(disjoint_path == nullptr)
         {
             disjoint_path = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath>();
-            disjoint_path->parent = this;
-            children["disjoint-path"] = disjoint_path;
         }
-        return children.at("disjoint-path");
+        return disjoint_path;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_children() const
 {
-    if(children.find("bidirectional") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bidirectional != nullptr)
     {
-        if(bidirectional != nullptr)
-        {
-            children["bidirectional"] = bidirectional;
-        }
+        children["bidirectional"] = bidirectional;
     }
 
-    if(children.find("disjoint-path") == children.end())
+    if(disjoint_path != nullptr)
     {
-        if(disjoint_path != nullptr)
-        {
-            children["disjoint-path"] = disjoint_path;
-        }
+        children["disjoint-path"] = disjoint_path;
     }
 
     return children;
@@ -18799,7 +16309,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18824,20 +16334,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18890,7 +16392,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -18916,20 +16418,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -18983,7 +16477,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19008,20 +16502,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19098,7 +16584,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19132,20 +16618,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19335,7 +16813,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19358,15 +16836,6 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "new-style-affinity-affinity-type")
     {
         for(auto const & c : new_style_affinity_affinity_type)
@@ -19374,15 +16843,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
         c->parent = this;
-        new_style_affinity_affinity_type.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1")
@@ -19392,15 +16859,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2")
@@ -19410,15 +16875,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3")
@@ -19428,15 +16891,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4")
@@ -19446,15 +16907,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5")
@@ -19464,15 +16923,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6")
@@ -19482,15 +16939,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7")
@@ -19500,15 +16955,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8")
@@ -19518,15 +16971,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9")
@@ -19536,15 +16987,13 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
@@ -19554,108 +17003,74 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(std::move(c));
-        children[segment_path] = new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.back();
-        return children.at(segment_path);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : new_style_affinity_affinity_type)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -19696,7 +17111,7 @@ std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttrib
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19720,20 +17135,12 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -19747,8 +17154,8 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
 
 MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
     :
-    affinity1{YType::str, "affinity1"},
-    affinity_type{YType::enumeration, "affinity-type"}
+    affinity_type{YType::enumeration, "affinity-type"},
+    affinity1{YType::str, "affinity1"}
 {
     yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types";
 }
@@ -19759,27 +17166,27 @@ MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyl
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
 {
-    return affinity1.is_set
-	|| affinity_type.is_set;
+    return affinity_type.is_set
+	|| affinity1.is_set;
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
 {
     return is_set(operation)
-	|| is_set(affinity1.operation)
-	|| is_set(affinity_type.operation);
+	|| is_set(affinity_type.operation)
+	|| is_set(affinity1.operation);
 }
 
 std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -19793,8 +17200,8 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
     if (affinity_type.is_set || is_set(affinity_type.operation)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
+    if (affinity1.is_set || is_set(affinity1.operation)) leaf_name_data.push_back(affinity1.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -19804,32 +17211,24 @@ EntityPath MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribu
 
 std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-    }
     if(value_path == "affinity-type")
     {
         affinity_type = value;
+    }
+    if(value_path == "affinity1")
+    {
+        affinity1 = value;
     }
 }
 

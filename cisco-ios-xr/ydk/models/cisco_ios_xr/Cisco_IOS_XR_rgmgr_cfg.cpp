@@ -17,10 +17,8 @@ RedundancyGroupManager::RedundancyGroupManager()
 	,iccp(std::make_shared<RedundancyGroupManager::Iccp>())
 {
     aps->parent = this;
-    children["aps"] = aps;
 
     iccp->parent = this;
-    children["iccp"] = iccp;
 
     yang_name = "redundancy-group-manager"; yang_parent_name = "Cisco-IOS-XR-rgmgr-cfg";
 }
@@ -53,12 +51,12 @@ std::string RedundancyGroupManager::get_segment_path() const
 
 }
 
-EntityPath RedundancyGroupManager::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -74,64 +72,38 @@ EntityPath RedundancyGroupManager::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RedundancyGroupManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "aps")
     {
-        if(aps != nullptr)
-        {
-            children["aps"] = aps;
-        }
-        else
+        if(aps == nullptr)
         {
             aps = std::make_shared<RedundancyGroupManager::Aps>();
-            aps->parent = this;
-            children["aps"] = aps;
         }
-        return children.at("aps");
+        return aps;
     }
 
     if(child_yang_name == "iccp")
     {
-        if(iccp != nullptr)
-        {
-            children["iccp"] = iccp;
-        }
-        else
+        if(iccp == nullptr)
         {
             iccp = std::make_shared<RedundancyGroupManager::Iccp>();
-            iccp->parent = this;
-            children["iccp"] = iccp;
         }
-        return children.at("iccp");
+        return iccp;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::get_children() const
 {
-    if(children.find("aps") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(aps != nullptr)
     {
-        if(aps != nullptr)
-        {
-            children["aps"] = aps;
-        }
+        children["aps"] = aps;
     }
 
-    if(children.find("iccp") == children.end())
+    if(iccp != nullptr)
     {
-        if(iccp != nullptr)
-        {
-            children["iccp"] = iccp;
-        }
+        children["iccp"] = iccp;
     }
 
     return children;
@@ -171,10 +143,8 @@ RedundancyGroupManager::Aps::Aps()
 	,groups(std::make_shared<RedundancyGroupManager::Aps::Groups>())
 {
     default_redundancy_group->parent = this;
-    children["default-redundancy-group"] = default_redundancy_group;
 
     groups->parent = this;
-    children["groups"] = groups;
 
     yang_name = "aps"; yang_parent_name = "redundancy-group-manager";
 }
@@ -205,7 +175,7 @@ std::string RedundancyGroupManager::Aps::get_segment_path() const
 
 }
 
-EntityPath RedundancyGroupManager::Aps::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Aps::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -228,64 +198,38 @@ EntityPath RedundancyGroupManager::Aps::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RedundancyGroupManager::Aps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "default-redundancy-group")
     {
-        if(default_redundancy_group != nullptr)
-        {
-            children["default-redundancy-group"] = default_redundancy_group;
-        }
-        else
+        if(default_redundancy_group == nullptr)
         {
             default_redundancy_group = std::make_shared<RedundancyGroupManager::Aps::DefaultRedundancyGroup>();
-            default_redundancy_group->parent = this;
-            children["default-redundancy-group"] = default_redundancy_group;
         }
-        return children.at("default-redundancy-group");
+        return default_redundancy_group;
     }
 
     if(child_yang_name == "groups")
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-        else
+        if(groups == nullptr)
         {
             groups = std::make_shared<RedundancyGroupManager::Aps::Groups>();
-            groups->parent = this;
-            children["groups"] = groups;
         }
-        return children.at("groups");
+        return groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Aps::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::get_children() const
 {
-    if(children.find("default-redundancy-group") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(default_redundancy_group != nullptr)
     {
-        if(default_redundancy_group != nullptr)
-        {
-            children["default-redundancy-group"] = default_redundancy_group;
-        }
+        children["default-redundancy-group"] = default_redundancy_group;
     }
 
-    if(children.find("groups") == children.end())
+    if(groups != nullptr)
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
+        children["groups"] = groups;
     }
 
     return children;
@@ -329,7 +273,7 @@ std::string RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_segment_pat
 
 }
 
-EntityPath RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -354,20 +298,12 @@ EntityPath RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_entity_path(
 
 std::shared_ptr<Entity> RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -421,7 +357,7 @@ std::string RedundancyGroupManager::Aps::Groups::get_segment_path() const
 
 }
 
-EntityPath RedundancyGroupManager::Aps::Groups::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Aps::Groups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -444,15 +380,6 @@ EntityPath RedundancyGroupManager::Aps::Groups::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> RedundancyGroupManager::Aps::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group")
     {
         for(auto const & c : group)
@@ -460,28 +387,24 @@ std::shared_ptr<Entity> RedundancyGroupManager::Aps::Groups::get_child_by_name(c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RedundancyGroupManager::Aps::Groups::Group>();
         c->parent = this;
-        group.push_back(std::move(c));
-        children[segment_path] = group.back();
-        return children.at(segment_path);
+        group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Aps::Groups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Groups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -498,7 +421,6 @@ RedundancyGroupManager::Aps::Groups::Group::Group()
     controllers(std::make_shared<RedundancyGroupManager::Aps::Groups::Group::Controllers>())
 {
     controllers->parent = this;
-    children["controllers"] = controllers;
 
     yang_name = "group"; yang_parent_name = "groups";
 }
@@ -529,7 +451,7 @@ std::string RedundancyGroupManager::Aps::Groups::Group::get_segment_path() const
 
 }
 
-EntityPath RedundancyGroupManager::Aps::Groups::Group::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Aps::Groups::Group::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -553,41 +475,24 @@ EntityPath RedundancyGroupManager::Aps::Groups::Group::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> RedundancyGroupManager::Aps::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "controllers")
     {
-        if(controllers != nullptr)
-        {
-            children["controllers"] = controllers;
-        }
-        else
+        if(controllers == nullptr)
         {
             controllers = std::make_shared<RedundancyGroupManager::Aps::Groups::Group::Controllers>();
-            controllers->parent = this;
-            children["controllers"] = controllers;
         }
-        return children.at("controllers");
+        return controllers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Aps::Groups::Group::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Groups::Group::get_children() const
 {
-    if(children.find("controllers") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(controllers != nullptr)
     {
-        if(controllers != nullptr)
-        {
-            children["controllers"] = controllers;
-        }
+        children["controllers"] = controllers;
     }
 
     return children;
@@ -639,7 +544,7 @@ std::string RedundancyGroupManager::Aps::Groups::Group::Controllers::get_segment
 
 }
 
-EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -662,15 +567,6 @@ EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::get_entity_p
 
 std::shared_ptr<Entity> RedundancyGroupManager::Aps::Groups::Group::Controllers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "controller")
     {
         for(auto const & c : controller)
@@ -678,28 +574,24 @@ std::shared_ptr<Entity> RedundancyGroupManager::Aps::Groups::Group::Controllers:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(std::move(c));
-        children[segment_path] = controller.back();
-        return children.at(segment_path);
+        controller.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Aps::Groups::Group::Controllers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Groups::Group::Controllers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : controller)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -746,7 +638,7 @@ std::string RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller:
 
 }
 
-EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -772,20 +664,12 @@ EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::
 
 std::shared_ptr<Entity> RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -810,7 +694,6 @@ RedundancyGroupManager::Iccp::Iccp()
     iccp_groups(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups>())
 {
     iccp_groups->parent = this;
-    children["iccp-groups"] = iccp_groups;
 
     yang_name = "iccp"; yang_parent_name = "redundancy-group-manager";
 }
@@ -839,7 +722,7 @@ std::string RedundancyGroupManager::Iccp::get_segment_path() const
 
 }
 
-EntityPath RedundancyGroupManager::Iccp::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Iccp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -862,41 +745,24 @@ EntityPath RedundancyGroupManager::Iccp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> RedundancyGroupManager::Iccp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "iccp-groups")
     {
-        if(iccp_groups != nullptr)
-        {
-            children["iccp-groups"] = iccp_groups;
-        }
-        else
+        if(iccp_groups == nullptr)
         {
             iccp_groups = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups>();
-            iccp_groups->parent = this;
-            children["iccp-groups"] = iccp_groups;
         }
-        return children.at("iccp-groups");
+        return iccp_groups;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Iccp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::get_children() const
 {
-    if(children.find("iccp-groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(iccp_groups != nullptr)
     {
-        if(iccp_groups != nullptr)
-        {
-            children["iccp-groups"] = iccp_groups;
-        }
+        children["iccp-groups"] = iccp_groups;
     }
 
     return children;
@@ -944,7 +810,7 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::get_segment_path() const
 
 }
 
-EntityPath RedundancyGroupManager::Iccp::IccpGroups::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Iccp::IccpGroups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -967,15 +833,6 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::get_entity_path(Entity* anc
 
 std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "iccp-group")
     {
         for(auto const & c : iccp_group)
@@ -983,28 +840,24 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::get_child_by_n
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup>();
         c->parent = this;
-        iccp_group.push_back(std::move(c));
-        children[segment_path] = iccp_group.back();
-        return children.at(segment_path);
+        iccp_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Iccp::IccpGroups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : iccp_group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1026,16 +879,12 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::IccpGroup()
 	,nv_satellite(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite>())
 {
     backbones->parent = this;
-    children["backbones"] = backbones;
 
     members->parent = this;
-    children["members"] = members;
 
     mlacp->parent = this;
-    children["mlacp"] = mlacp;
 
     nv_satellite->parent = this;
-    children["nv-satellite"] = nv_satellite;
 
     yang_name = "iccp-group"; yang_parent_name = "iccp-groups";
 }
@@ -1076,7 +925,7 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_segment_pat
 
 }
 
-EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1102,110 +951,66 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_entity_path(
 
 std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backbones")
     {
-        if(backbones != nullptr)
-        {
-            children["backbones"] = backbones;
-        }
-        else
+        if(backbones == nullptr)
         {
             backbones = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones>();
-            backbones->parent = this;
-            children["backbones"] = backbones;
         }
-        return children.at("backbones");
+        return backbones;
     }
 
     if(child_yang_name == "members")
     {
-        if(members != nullptr)
-        {
-            children["members"] = members;
-        }
-        else
+        if(members == nullptr)
         {
             members = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members>();
-            members->parent = this;
-            children["members"] = members;
         }
-        return children.at("members");
+        return members;
     }
 
     if(child_yang_name == "mlacp")
     {
-        if(mlacp != nullptr)
-        {
-            children["mlacp"] = mlacp;
-        }
-        else
+        if(mlacp == nullptr)
         {
             mlacp = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp>();
-            mlacp->parent = this;
-            children["mlacp"] = mlacp;
         }
-        return children.at("mlacp");
+        return mlacp;
     }
 
     if(child_yang_name == "nv-satellite")
     {
-        if(nv_satellite != nullptr)
-        {
-            children["nv-satellite"] = nv_satellite;
-        }
-        else
+        if(nv_satellite == nullptr)
         {
             nv_satellite = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite>();
-            nv_satellite->parent = this;
-            children["nv-satellite"] = nv_satellite;
         }
-        return children.at("nv-satellite");
+        return nv_satellite;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_children() const
 {
-    if(children.find("backbones") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(backbones != nullptr)
     {
-        if(backbones != nullptr)
-        {
-            children["backbones"] = backbones;
-        }
+        children["backbones"] = backbones;
     }
 
-    if(children.find("members") == children.end())
+    if(members != nullptr)
     {
-        if(members != nullptr)
-        {
-            children["members"] = members;
-        }
+        children["members"] = members;
     }
 
-    if(children.find("mlacp") == children.end())
+    if(mlacp != nullptr)
     {
-        if(mlacp != nullptr)
-        {
-            children["mlacp"] = mlacp;
-        }
+        children["mlacp"] = mlacp;
     }
 
-    if(children.find("nv-satellite") == children.end())
+    if(nv_satellite != nullptr)
     {
-        if(nv_satellite != nullptr)
-        {
-            children["nv-satellite"] = nv_satellite;
-        }
+        children["nv-satellite"] = nv_satellite;
     }
 
     return children;
@@ -1265,7 +1070,7 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_
 
 }
 
-EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1288,15 +1093,6 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_e
 
 std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "backbone")
     {
         for(auto const & c : backbone)
@@ -1304,28 +1100,24 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Bac
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone>();
         c->parent = this;
-        backbone.push_back(std::move(c));
-        children[segment_path] = backbone.back();
-        return children.at(segment_path);
+        backbone.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : backbone)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1366,7 +1158,7 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Back
 
 }
 
-EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1390,20 +1182,12 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backb
 
 std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1453,7 +1237,7 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_se
 
 }
 
-EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1476,15 +1260,6 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_ent
 
 std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "member")
     {
         for(auto const & c : member)
@@ -1492,28 +1267,24 @@ std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mem
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member>();
         c->parent = this;
-        member.push_back(std::move(c));
-        children[segment_path] = member.back();
-        return children.at(segment_path);
+        member.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : member)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1554,7 +1325,7 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member
 
 }
 
-EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1578,20 +1349,12 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member:
 
 std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1600,86 +1363,6 @@ void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::set_v
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
-    }
-}
-
-RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::NvSatellite()
-    :
-    system_mac{YType::str, "system-mac"}
-{
-    yang_name = "nv-satellite"; yang_parent_name = "iccp-group";
-}
-
-RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::~NvSatellite()
-{
-}
-
-bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_data() const
-{
-    return system_mac.is_set;
-}
-
-bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(system_mac.operation);
-}
-
-std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite";
-
-    return path_buffer.str();
-
-}
-
-EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NvSatellite' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (system_mac.is_set || is_set(system_mac.operation)) leaf_name_data.push_back(system_mac.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_children()
-{
-    return children;
-}
-
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "system-mac")
-    {
-        system_mac = value;
     }
 }
 
@@ -1723,7 +1406,7 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_segm
 
 }
 
-EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_entity_path(Entity* ancestor) const
+const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1750,20 +1433,12 @@ EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_entit
 
 std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1784,6 +1459,78 @@ void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::set_value(const
     if(value_path == "system-priority")
     {
         system_priority = value;
+    }
+}
+
+RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::NvSatellite()
+    :
+    system_mac{YType::str, "system-mac"}
+{
+    yang_name = "nv-satellite"; yang_parent_name = "iccp-group";
+}
+
+RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::~NvSatellite()
+{
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_data() const
+{
+    return system_mac.is_set;
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_operation() const
+{
+    return is_set(operation)
+	|| is_set(system_mac.operation);
+}
+
+std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NvSatellite' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (system_mac.is_set || is_set(system_mac.operation)) leaf_name_data.push_back(system_mac.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_value(const std::string & value_path, std::string value)
+{
+    if(value_path == "system-mac")
+    {
+        system_mac = value;
     }
 }
 

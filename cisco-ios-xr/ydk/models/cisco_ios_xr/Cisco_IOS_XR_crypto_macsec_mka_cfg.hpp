@@ -18,23 +18,20 @@ class Macsec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Policy; //type: Macsec::Policy
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_macsec_mka_cfg::Macsec::Policy> > policy;
-
-
+        
 }; // Macsec
 
 
@@ -46,12 +43,11 @@ class Macsec::Policy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf delay_protection; //type: boolean
@@ -64,8 +60,6 @@ class Macsec::Policy : public Entity
         YLeaf cipher_suite; //type: MacsecMkaCipherSuiteEnum
         YLeaf include_icv_indicator; //type: boolean
         YLeaf vlan_tags_in_clear; //type: uint32
-
-
 
 }; // Macsec::Policy
 

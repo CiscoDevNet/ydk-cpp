@@ -67,7 +67,7 @@ std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_seg
 
 }
 
-EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -100,20 +100,12 @@ EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_enti
 
 std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -201,7 +193,7 @@ std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_segment_p
 
 }
 
-EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -228,20 +220,12 @@ EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_entity_pat
 
 std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -270,7 +254,6 @@ Rcmd::Intf::Intf()
     events(std::make_shared<Rcmd::Intf::Events>())
 {
     events->parent = this;
-    children["events"] = events;
 
     yang_name = "intf"; yang_parent_name = "rcmd";
 }
@@ -299,7 +282,7 @@ std::string Rcmd::Intf::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Intf::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Intf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -322,41 +305,24 @@ EntityPath Rcmd::Intf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Intf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "events")
     {
-        if(events != nullptr)
-        {
-            children["events"] = events;
-        }
-        else
+        if(events == nullptr)
         {
             events = std::make_shared<Rcmd::Intf::Events>();
-            events->parent = this;
-            children["events"] = events;
         }
-        return children.at("events");
+        return events;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Intf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::get_children() const
 {
-    if(children.find("events") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(events != nullptr)
     {
-        if(events != nullptr)
-        {
-            children["events"] = events;
-        }
+        children["events"] = events;
     }
 
     return children;
@@ -404,7 +370,7 @@ std::string Rcmd::Intf::Events::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Intf::Events::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Intf::Events::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -427,15 +393,6 @@ EntityPath Rcmd::Intf::Events::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Intf::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "event")
     {
         for(auto const & c : event)
@@ -443,28 +400,24 @@ std::shared_ptr<Entity> Rcmd::Intf::Events::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Intf::Events::Event>();
         c->parent = this;
-        event.push_back(std::move(c));
-        children[segment_path] = event.back();
-        return children.at(segment_path);
+        event.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Intf::Events::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : event)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -523,7 +476,7 @@ std::string Rcmd::Intf::Events::Event::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Intf::Events::Event::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Intf::Events::Event::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -553,20 +506,12 @@ EntityPath Rcmd::Intf::Events::Event::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Intf::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Intf::Events::Event::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::Event::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -609,13 +554,10 @@ Rcmd::Process::Process()
 	,ospf(std::make_shared<Rcmd::Process::Ospf>())
 {
     isis->parent = this;
-    children["isis"] = isis;
 
     ldp->parent = this;
-    children["ldp"] = ldp;
 
     ospf->parent = this;
-    children["ospf"] = ospf;
 
     yang_name = "process"; yang_parent_name = "rcmd";
 }
@@ -648,7 +590,7 @@ std::string Rcmd::Process::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Process::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -671,87 +613,52 @@ EntityPath Rcmd::Process::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "isis")
     {
-        if(isis != nullptr)
-        {
-            children["isis"] = isis;
-        }
-        else
+        if(isis == nullptr)
         {
             isis = std::make_shared<Rcmd::Process::Isis>();
-            isis->parent = this;
-            children["isis"] = isis;
         }
-        return children.at("isis");
+        return isis;
     }
 
     if(child_yang_name == "ldp")
     {
-        if(ldp != nullptr)
-        {
-            children["ldp"] = ldp;
-        }
-        else
+        if(ldp == nullptr)
         {
             ldp = std::make_shared<Rcmd::Process::Ldp>();
-            ldp->parent = this;
-            children["ldp"] = ldp;
         }
-        return children.at("ldp");
+        return ldp;
     }
 
     if(child_yang_name == "ospf")
     {
-        if(ospf != nullptr)
-        {
-            children["ospf"] = ospf;
-        }
-        else
+        if(ospf == nullptr)
         {
             ospf = std::make_shared<Rcmd::Process::Ospf>();
-            ospf->parent = this;
-            children["ospf"] = ospf;
         }
-        return children.at("ospf");
+        return ospf;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::get_children() const
 {
-    if(children.find("isis") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(isis != nullptr)
     {
-        if(isis != nullptr)
-        {
-            children["isis"] = isis;
-        }
+        children["isis"] = isis;
     }
 
-    if(children.find("ldp") == children.end())
+    if(ldp != nullptr)
     {
-        if(ldp != nullptr)
-        {
-            children["ldp"] = ldp;
-        }
+        children["ldp"] = ldp;
     }
 
-    if(children.find("ospf") == children.end())
+    if(ospf != nullptr)
     {
-        if(ospf != nullptr)
-        {
-            children["ospf"] = ospf;
-        }
+        children["ospf"] = ospf;
     }
 
     return children;
@@ -799,7 +706,7 @@ std::string Rcmd::Process::Isis::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Process::Isis::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Isis::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -822,15 +729,6 @@ EntityPath Rcmd::Process::Isis::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Process::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process")
     {
         for(auto const & c : process)
@@ -838,28 +736,24 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Process::Isis::Process_>();
         c->parent = this;
-        process.push_back(std::move(c));
-        children[segment_path] = process.back();
-        return children.at(segment_path);
+        process.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Isis::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : process)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -913,7 +807,7 @@ std::string Rcmd::Process::Isis::Process_::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Process::Isis::Process_::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Isis::Process_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -938,15 +832,6 @@ EntityPath Rcmd::Process::Isis::Process_::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance-name")
     {
         for(auto const & c : instance_name)
@@ -954,28 +839,24 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName>();
         c->parent = this;
-        instance_name.push_back(std::move(c));
-        children[segment_path] = instance_name.back();
-        return children.at(segment_path);
+        instance_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Isis::Process_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1061,7 +942,7 @@ std::string Rcmd::Process::Isis::Process_::InstanceName::get_segment_path() cons
 
 }
 
-EntityPath Rcmd::Process::Isis::Process_::InstanceName::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Isis::Process_::InstanceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1094,15 +975,6 @@ EntityPath Rcmd::Process::Isis::Process_::InstanceName::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance")
     {
         for(auto const & c : instance)
@@ -1110,28 +982,24 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName::Instance>();
         c->parent = this;
-        instance.push_back(std::move(c));
-        children[segment_path] = instance.back();
-        return children.at(segment_path);
+        instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Isis::Process_::InstanceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::InstanceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1248,7 +1116,7 @@ std::string Rcmd::Process::Isis::Process_::InstanceName::Instance::get_segment_p
 
 }
 
-EntityPath Rcmd::Process::Isis::Process_::InstanceName::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Isis::Process_::InstanceName::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1284,20 +1152,12 @@ EntityPath Rcmd::Process::Isis::Process_::InstanceName::Instance::get_entity_pat
 
 std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Isis::Process_::InstanceName::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::InstanceName::Instance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1395,7 +1255,7 @@ std::string Rcmd::Process::Ospf::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Process::Ospf::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Ospf::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1418,15 +1278,6 @@ EntityPath Rcmd::Process::Ospf::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Process::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process")
     {
         for(auto const & c : process)
@@ -1434,28 +1285,24 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::get_child_by_name(const std::string
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Process::Ospf::Process_>();
         c->parent = this;
-        process.push_back(std::move(c));
-        children[segment_path] = process.back();
-        return children.at(segment_path);
+        process.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Ospf::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : process)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1509,7 +1356,7 @@ std::string Rcmd::Process::Ospf::Process_::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Process::Ospf::Process_::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Ospf::Process_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1534,15 +1381,6 @@ EntityPath Rcmd::Process::Ospf::Process_::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance-name")
     {
         for(auto const & c : instance_name)
@@ -1550,28 +1388,24 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName>();
         c->parent = this;
-        instance_name.push_back(std::move(c));
-        children[segment_path] = instance_name.back();
-        return children.at(segment_path);
+        instance_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Ospf::Process_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1657,7 +1491,7 @@ std::string Rcmd::Process::Ospf::Process_::InstanceName::get_segment_path() cons
 
 }
 
-EntityPath Rcmd::Process::Ospf::Process_::InstanceName::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Ospf::Process_::InstanceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1690,15 +1524,6 @@ EntityPath Rcmd::Process::Ospf::Process_::InstanceName::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance")
     {
         for(auto const & c : instance)
@@ -1706,28 +1531,24 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::InstanceName::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName::Instance>();
         c->parent = this;
-        instance.push_back(std::move(c));
-        children[segment_path] = instance.back();
-        return children.at(segment_path);
+        instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Ospf::Process_::InstanceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::InstanceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1844,7 +1665,7 @@ std::string Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_segment_p
 
 }
 
-EntityPath Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1880,20 +1701,12 @@ EntityPath Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_entity_pat
 
 std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1991,7 +1804,7 @@ std::string Rcmd::Process::Ldp::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Process::Ldp::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Ldp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2014,15 +1827,6 @@ EntityPath Rcmd::Process::Ldp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Process::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "process")
     {
         for(auto const & c : process)
@@ -2030,28 +1834,24 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::get_child_by_name(const std::string 
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Process::Ldp::Process_>();
         c->parent = this;
-        process.push_back(std::move(c));
-        children[segment_path] = process.back();
-        return children.at(segment_path);
+        process.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Ldp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : process)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2105,7 +1905,7 @@ std::string Rcmd::Process::Ldp::Process_::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Process::Ldp::Process_::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Ldp::Process_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2130,15 +1930,6 @@ EntityPath Rcmd::Process::Ldp::Process_::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance-name")
     {
         for(auto const & c : instance_name)
@@ -2146,28 +1937,24 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const st
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName>();
         c->parent = this;
-        instance_name.push_back(std::move(c));
-        children[segment_path] = instance_name.back();
-        return children.at(segment_path);
+        instance_name.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Ldp::Process_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance_name)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2253,7 +2040,7 @@ std::string Rcmd::Process::Ldp::Process_::InstanceName::get_segment_path() const
 
 }
 
-EntityPath Rcmd::Process::Ldp::Process_::InstanceName::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Ldp::Process_::InstanceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2286,15 +2073,6 @@ EntityPath Rcmd::Process::Ldp::Process_::InstanceName::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "instance")
     {
         for(auto const & c : instance)
@@ -2302,28 +2080,24 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName::Instance>();
         c->parent = this;
-        instance.push_back(std::move(c));
-        children[segment_path] = instance.back();
-        return children.at(segment_path);
+        instance.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Ldp::Process_::InstanceName::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : instance)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2440,7 +2214,7 @@ std::string Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_segment_pa
 
 }
 
-EntityPath Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_entity_path(Entity* ancestor) const
+const EntityPath Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2476,20 +2250,12 @@ EntityPath Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_entity_path
 
 std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

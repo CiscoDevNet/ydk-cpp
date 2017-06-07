@@ -40,7 +40,7 @@ std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config::get_segment_pa
 
 }
 
-EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -64,20 +64,12 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config::get_entity_path
 
 std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -120,7 +112,7 @@ std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State::get_segment_pat
 
 }
 
-EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -144,20 +136,12 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State::get_entity_path(
 
 std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -175,10 +159,8 @@ Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Ebgp()
 	,state(std::make_shared<Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ebgp"; yang_parent_name = "use-multiple-paths";
 }
@@ -209,7 +191,7 @@ std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::get_segment_path
 
 }
 
-EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -232,64 +214,38 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::get_entity_path(E
 
 std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -333,7 +289,7 @@ std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config::get_segm
 
 }
 
-EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -358,20 +314,12 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config::get_entit
 
 std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -421,7 +369,7 @@ std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State::get_segme
 
 }
 
-EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -446,20 +394,12 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State::get_entity
 
 std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -481,10 +421,8 @@ Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Ibgp()
 	,state(std::make_shared<Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State>())
 {
     config->parent = this;
-    children["config"] = config;
 
     state->parent = this;
-    children["state"] = state;
 
     yang_name = "ibgp"; yang_parent_name = "use-multiple-paths";
 }
@@ -515,7 +453,7 @@ std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::get_segment_path
 
 }
 
-EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -538,64 +476,38 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::get_entity_path(E
 
 std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "config")
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
-        else
+        if(config == nullptr)
         {
             config = std::make_shared<Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config>();
-            config->parent = this;
-            children["config"] = config;
         }
-        return children.at("config");
+        return config;
     }
 
     if(child_yang_name == "state")
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
-        else
+        if(state == nullptr)
         {
             state = std::make_shared<Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State>();
-            state->parent = this;
-            children["state"] = state;
         }
-        return children.at("state");
+        return state;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::get_children() const
 {
-    if(children.find("config") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
     {
-        if(config != nullptr)
-        {
-            children["config"] = config;
-        }
+        children["config"] = config;
     }
 
-    if(children.find("state") == children.end())
+    if(state != nullptr)
     {
-        if(state != nullptr)
-        {
-            children["state"] = state;
-        }
+        children["state"] = state;
     }
 
     return children;
@@ -636,7 +548,7 @@ std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config::get_segm
 
 }
 
-EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -660,20 +572,12 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config::get_entit
 
 std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -716,7 +620,7 @@ std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State::get_segme
 
 }
 
-EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -740,20 +644,12 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State::get_entity
 
 std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

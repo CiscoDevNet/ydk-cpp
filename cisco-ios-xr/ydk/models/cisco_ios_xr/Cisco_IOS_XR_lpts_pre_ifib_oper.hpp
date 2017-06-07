@@ -19,23 +19,20 @@ class LptsPifib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: LptsPifib::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes> nodes;
-
-
+        
 }; // LptsPifib
 
 
@@ -47,19 +44,16 @@ class LptsPifib::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: LptsPifib::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node> > node;
-
-
+        
 }; // LptsPifib::Nodes
 
 
@@ -71,22 +65,19 @@ class LptsPifib::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class TypeValues; //type: LptsPifib::Nodes::Node::TypeValues
         class Hardware; //type: LptsPifib::Nodes::Node::Hardware
 
         std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware> hardware;
         std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::TypeValues> type_values;
-
-
+        
 }; // LptsPifib::Nodes::Node
 
 
@@ -98,19 +89,16 @@ class LptsPifib::Nodes::Node::TypeValues : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TypeValue; //type: LptsPifib::Nodes::Node::TypeValues::TypeValue
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::TypeValues::TypeValue> > type_value;
-
-
+        
 }; // LptsPifib::Nodes::Node::TypeValues
 
 
@@ -122,20 +110,17 @@ class LptsPifib::Nodes::Node::TypeValues::TypeValue : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pifib_type; //type: LptsPifibEnum
-
         class Entry; //type: LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry> > entry;
-
-
+        
 }; // LptsPifib::Nodes::Node::TypeValues::TypeValue
 
 
@@ -147,12 +132,11 @@ class LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf entry; //type: string
         YLeaf vrf_name; //type: string
@@ -182,8 +166,6 @@ class LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry : public Entity
         YLeaf pifib_type; //type: uint8
         YLeaf pifib_program_time; //type: string
 
-
-
 }; // LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry
 
 
@@ -195,13 +177,11 @@ class LptsPifib::Nodes::Node::Hardware : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UsageEntries; //type: LptsPifib::Nodes::Node::Hardware::UsageEntries
         class Police; //type: LptsPifib::Nodes::Node::Hardware::Police
@@ -216,8 +196,7 @@ class LptsPifib::Nodes::Node::Hardware : public Entity
         std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::StaticPolice> static_police;
         std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::Statistics> statistics;
         std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::UsageEntries> usage_entries;
-
-
+        
 }; // LptsPifib::Nodes::Node::Hardware
 
 
@@ -229,19 +208,16 @@ class LptsPifib::Nodes::Node::Hardware::UsageEntries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UsageEntry; //type: LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry> > usage_entry;
-
-
+        
 }; // LptsPifib::Nodes::Node::Hardware::UsageEntries
 
 
@@ -253,20 +229,17 @@ class LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf region_id; //type: UsageAddressFamilyEnum
-
         class UsageInfo; //type: LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo> > usage_info;
-
-
+        
 }; // LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry
 
 
@@ -278,20 +251,17 @@ class LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf pipe_id; //type: uint8
         YLeaf region; //type: uint8
         YLeaf region_id; //type: uint8
         YLeaf size; //type: uint32
         YLeaf used; //type: uint32
-
-
 
 }; // LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo
 
@@ -304,19 +274,16 @@ class LptsPifib::Nodes::Node::Hardware::Police : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PoliceInfo; //type: LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo> > police_info;
-
-
+        
 }; // LptsPifib::Nodes::Node::Hardware::Police
 
 
@@ -328,12 +295,11 @@ class LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf avgrate; //type: uint32
         YLeaf burst; //type: uint32
@@ -347,8 +313,6 @@ class LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo : public Entity
         YLeaf acl_config; //type: uint8
         YLeaf acl_str; //type: string
 
-
-
 }; // LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo
 
 
@@ -360,19 +324,16 @@ class LptsPifib::Nodes::Node::Hardware::StaticPolice : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class StaticInfo; //type: LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo> > static_info;
-
-
+        
 }; // LptsPifib::Nodes::Node::Hardware::StaticPolice
 
 
@@ -384,12 +345,11 @@ class LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf punt_reason; //type: uint32
         YLeaf sid; //type: uint32
@@ -399,8 +359,6 @@ class LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo : public Entity
         YLeaf dropped; //type: uint64
         YLeaf punt_reason_string; //type: string
         YLeaf change_type; //type: uint8
-
-
 
 }; // LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo
 
@@ -413,19 +371,16 @@ class LptsPifib::Nodes::Node::Hardware::Bfd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class BfdEntryInfo; //type: LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo> > bfd_entry_info;
-
-
+        
 }; // LptsPifib::Nodes::Node::Hardware::Bfd
 
 
@@ -437,20 +392,17 @@ class LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: uint8
         YLeaf is_mcast; //type: uint8
         YLeaf fgid_or_vqi; //type: uint32
         YLeaf is_valid; //type: uint8
         YLeaf policer_id; //type: uint32
-
-
 
 }; // LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo
 
@@ -463,19 +415,16 @@ class LptsPifib::Nodes::Node::Hardware::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf accepted; //type: uint64
         YLeaf dropped; //type: uint64
         YLeaf clear_ts; //type: uint64
         YLeaf no_stats_mem_err; //type: uint64
-
-
 
 }; // LptsPifib::Nodes::Node::Hardware::Statistics
 
@@ -488,19 +437,16 @@ class LptsPifib::Nodes::Node::Hardware::IndexEntries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class IndexEntry; //type: LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry> > index_entry;
-
-
+        
 }; // LptsPifib::Nodes::Node::Hardware::IndexEntries
 
 
@@ -512,12 +458,11 @@ class LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: int32
         YLeaf l3protocol; //type: uint32
@@ -566,12 +511,10 @@ class LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry : public Entity
         YLeaf remote_fgid; //type: uint32
         YLeaf acl_str; //type: string
         YLeaf no_stats; //type: uint8
-
         class HwInfo; //type: LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo> > hw_info;
-
-
+        
 }; // LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry
 
 
@@ -583,12 +526,11 @@ class LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf policer; //type: uint32
         YLeaf stats_ptr; //type: uint32
@@ -596,8 +538,6 @@ class LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo : publi
         YLeaf dropped; //type: uint64
         YLeaf sort_start_offset; //type: int32
         YLeaf tm_start_offset; //type: int32
-
-
 
 }; // LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo
 

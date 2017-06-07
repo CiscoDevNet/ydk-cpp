@@ -16,13 +16,10 @@ MplsOam::MplsOam()
 	,packet(std::make_shared<MplsOam::Packet>())
 {
     global->parent = this;
-    children["global"] = global;
 
     interface->parent = this;
-    children["interface"] = interface;
 
     packet->parent = this;
-    children["packet"] = packet;
 
     yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-oper";
 }
@@ -55,12 +52,12 @@ std::string MplsOam::get_segment_path() const
 
 }
 
-EntityPath MplsOam::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -75,87 +72,52 @@ EntityPath MplsOam::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global")
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
-        else
+        if(global == nullptr)
         {
             global = std::make_shared<MplsOam::Global>();
-            global->parent = this;
-            children["global"] = global;
         }
-        return children.at("global");
+        return global;
     }
 
     if(child_yang_name == "interface")
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
-        else
+        if(interface == nullptr)
         {
             interface = std::make_shared<MplsOam::Interface>();
-            interface->parent = this;
-            children["interface"] = interface;
         }
-        return children.at("interface");
+        return interface;
     }
 
     if(child_yang_name == "packet")
     {
-        if(packet != nullptr)
-        {
-            children["packet"] = packet;
-        }
-        else
+        if(packet == nullptr)
         {
             packet = std::make_shared<MplsOam::Packet>();
-            packet->parent = this;
-            children["packet"] = packet;
         }
-        return children.at("packet");
+        return packet;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::get_children() const
 {
-    if(children.find("global") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global != nullptr)
     {
-        if(global != nullptr)
-        {
-            children["global"] = global;
-        }
+        children["global"] = global;
     }
 
-    if(children.find("interface") == children.end())
+    if(interface != nullptr)
     {
-        if(interface != nullptr)
-        {
-            children["interface"] = interface;
-        }
+        children["interface"] = interface;
     }
 
-    if(children.find("packet") == children.end())
+    if(packet != nullptr)
     {
-        if(packet != nullptr)
-        {
-            children["packet"] = packet;
-        }
+        children["packet"] = packet;
     }
 
     return children;
@@ -191,10 +153,8 @@ MplsOam::Interface::Interface()
 	,details(std::make_shared<MplsOam::Interface::Details>())
 {
     briefs->parent = this;
-    children["briefs"] = briefs;
 
     details->parent = this;
-    children["details"] = details;
 
     yang_name = "interface"; yang_parent_name = "mpls-oam";
 }
@@ -225,7 +185,7 @@ std::string MplsOam::Interface::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -248,64 +208,38 @@ EntityPath MplsOam::Interface::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "briefs")
     {
-        if(briefs != nullptr)
-        {
-            children["briefs"] = briefs;
-        }
-        else
+        if(briefs == nullptr)
         {
             briefs = std::make_shared<MplsOam::Interface::Briefs>();
-            briefs->parent = this;
-            children["briefs"] = briefs;
         }
-        return children.at("briefs");
+        return briefs;
     }
 
     if(child_yang_name == "details")
     {
-        if(details != nullptr)
-        {
-            children["details"] = details;
-        }
-        else
+        if(details == nullptr)
         {
             details = std::make_shared<MplsOam::Interface::Details>();
-            details->parent = this;
-            children["details"] = details;
         }
-        return children.at("details");
+        return details;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::get_children() const
 {
-    if(children.find("briefs") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(briefs != nullptr)
     {
-        if(briefs != nullptr)
-        {
-            children["briefs"] = briefs;
-        }
+        children["briefs"] = briefs;
     }
 
-    if(children.find("details") == children.end())
+    if(details != nullptr)
     {
-        if(details != nullptr)
-        {
-            children["details"] = details;
-        }
+        children["details"] = details;
     }
 
     return children;
@@ -353,7 +287,7 @@ std::string MplsOam::Interface::Briefs::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Interface::Briefs::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Briefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -376,15 +310,6 @@ EntityPath MplsOam::Interface::Briefs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::Interface::Briefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "brief")
     {
         for(auto const & c : brief)
@@ -392,28 +317,24 @@ std::shared_ptr<Entity> MplsOam::Interface::Briefs::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsOam::Interface::Briefs::Brief>();
         c->parent = this;
-        brief.push_back(std::move(c));
-        children[segment_path] = brief.back();
-        return children.at(segment_path);
+        brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Briefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Briefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -475,7 +396,7 @@ std::string MplsOam::Interface::Briefs::Brief::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Interface::Briefs::Brief::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Briefs::Brief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -506,20 +427,12 @@ EntityPath MplsOam::Interface::Briefs::Brief::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> MplsOam::Interface::Briefs::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Briefs::Brief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Briefs::Brief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -597,7 +510,7 @@ std::string MplsOam::Interface::Details::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Interface::Details::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -620,15 +533,6 @@ EntityPath MplsOam::Interface::Details::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "detail")
     {
         for(auto const & c : detail)
@@ -636,28 +540,24 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsOam::Interface::Details::Detail>();
         c->parent = this;
-        detail.push_back(std::move(c));
-        children[segment_path] = detail.back();
-        return children.at(segment_path);
+        detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -675,10 +575,8 @@ MplsOam::Interface::Details::Detail::Detail()
 	,packet_statistics(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics>())
 {
     interface_brief->parent = this;
-    children["interface-brief"] = interface_brief;
 
     packet_statistics->parent = this;
-    children["packet-statistics"] = packet_statistics;
 
     yang_name = "detail"; yang_parent_name = "details";
 }
@@ -711,7 +609,7 @@ std::string MplsOam::Interface::Details::Detail::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -735,64 +633,38 @@ EntityPath MplsOam::Interface::Details::Detail::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface-brief")
     {
-        if(interface_brief != nullptr)
-        {
-            children["interface-brief"] = interface_brief;
-        }
-        else
+        if(interface_brief == nullptr)
         {
             interface_brief = std::make_shared<MplsOam::Interface::Details::Detail::InterfaceBrief>();
-            interface_brief->parent = this;
-            children["interface-brief"] = interface_brief;
         }
-        return children.at("interface-brief");
+        return interface_brief;
     }
 
     if(child_yang_name == "packet-statistics")
     {
-        if(packet_statistics != nullptr)
-        {
-            children["packet-statistics"] = packet_statistics;
-        }
-        else
+        if(packet_statistics == nullptr)
         {
             packet_statistics = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics>();
-            packet_statistics->parent = this;
-            children["packet-statistics"] = packet_statistics;
         }
-        return children.at("packet-statistics");
+        return packet_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::get_children() const
 {
-    if(children.find("interface-brief") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_brief != nullptr)
     {
-        if(interface_brief != nullptr)
-        {
-            children["interface-brief"] = interface_brief;
-        }
+        children["interface-brief"] = interface_brief;
     }
 
-    if(children.find("packet-statistics") == children.end())
+    if(packet_statistics != nullptr)
     {
-        if(packet_statistics != nullptr)
-        {
-            children["packet-statistics"] = packet_statistics;
-        }
+        children["packet-statistics"] = packet_statistics;
     }
 
     return children;
@@ -855,7 +727,7 @@ std::string MplsOam::Interface::Details::Detail::InterfaceBrief::get_segment_pat
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::InterfaceBrief::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::InterfaceBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -885,20 +757,12 @@ EntityPath MplsOam::Interface::Details::Detail::InterfaceBrief::get_entity_path(
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::InterfaceBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::InterfaceBrief::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -944,22 +808,16 @@ MplsOam::Interface::Details::Detail::PacketStatistics::PacketStatistics()
 	,working_req_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent>())
 {
     protect_rep_sent->parent = this;
-    children["protect-rep-sent"] = protect_rep_sent;
 
     protect_req_sent->parent = this;
-    children["protect-req-sent"] = protect_req_sent;
 
     received->parent = this;
-    children["received"] = received;
 
     sent->parent = this;
-    children["sent"] = sent;
 
     working_rep_sent->parent = this;
-    children["working-rep-sent"] = working_rep_sent;
 
     working_req_sent->parent = this;
-    children["working-req-sent"] = working_req_sent;
 
     yang_name = "packet-statistics"; yang_parent_name = "detail";
 }
@@ -998,7 +856,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::get_segment_p
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1021,156 +879,94 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::get_entity_pat
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protect-rep-sent")
     {
-        if(protect_rep_sent != nullptr)
-        {
-            children["protect-rep-sent"] = protect_rep_sent;
-        }
-        else
+        if(protect_rep_sent == nullptr)
         {
             protect_rep_sent = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent>();
-            protect_rep_sent->parent = this;
-            children["protect-rep-sent"] = protect_rep_sent;
         }
-        return children.at("protect-rep-sent");
+        return protect_rep_sent;
     }
 
     if(child_yang_name == "protect-req-sent")
     {
-        if(protect_req_sent != nullptr)
-        {
-            children["protect-req-sent"] = protect_req_sent;
-        }
-        else
+        if(protect_req_sent == nullptr)
         {
             protect_req_sent = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent>();
-            protect_req_sent->parent = this;
-            children["protect-req-sent"] = protect_req_sent;
         }
-        return children.at("protect-req-sent");
+        return protect_req_sent;
     }
 
     if(child_yang_name == "received")
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
-        else
+        if(received == nullptr)
         {
             received = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received>();
-            received->parent = this;
-            children["received"] = received;
         }
-        return children.at("received");
+        return received;
     }
 
     if(child_yang_name == "sent")
     {
-        if(sent != nullptr)
-        {
-            children["sent"] = sent;
-        }
-        else
+        if(sent == nullptr)
         {
             sent = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent>();
-            sent->parent = this;
-            children["sent"] = sent;
         }
-        return children.at("sent");
+        return sent;
     }
 
     if(child_yang_name == "working-rep-sent")
     {
-        if(working_rep_sent != nullptr)
-        {
-            children["working-rep-sent"] = working_rep_sent;
-        }
-        else
+        if(working_rep_sent == nullptr)
         {
             working_rep_sent = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent>();
-            working_rep_sent->parent = this;
-            children["working-rep-sent"] = working_rep_sent;
         }
-        return children.at("working-rep-sent");
+        return working_rep_sent;
     }
 
     if(child_yang_name == "working-req-sent")
     {
-        if(working_req_sent != nullptr)
-        {
-            children["working-req-sent"] = working_req_sent;
-        }
-        else
+        if(working_req_sent == nullptr)
         {
             working_req_sent = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent>();
-            working_req_sent->parent = this;
-            children["working-req-sent"] = working_req_sent;
         }
-        return children.at("working-req-sent");
+        return working_req_sent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::get_children() const
 {
-    if(children.find("protect-rep-sent") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protect_rep_sent != nullptr)
     {
-        if(protect_rep_sent != nullptr)
-        {
-            children["protect-rep-sent"] = protect_rep_sent;
-        }
+        children["protect-rep-sent"] = protect_rep_sent;
     }
 
-    if(children.find("protect-req-sent") == children.end())
+    if(protect_req_sent != nullptr)
     {
-        if(protect_req_sent != nullptr)
-        {
-            children["protect-req-sent"] = protect_req_sent;
-        }
+        children["protect-req-sent"] = protect_req_sent;
     }
 
-    if(children.find("received") == children.end())
+    if(received != nullptr)
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
+        children["received"] = received;
     }
 
-    if(children.find("sent") == children.end())
+    if(sent != nullptr)
     {
-        if(sent != nullptr)
-        {
-            children["sent"] = sent;
-        }
+        children["sent"] = sent;
     }
 
-    if(children.find("working-rep-sent") == children.end())
+    if(working_rep_sent != nullptr)
     {
-        if(working_rep_sent != nullptr)
-        {
-            children["working-rep-sent"] = working_rep_sent;
-        }
+        children["working-rep-sent"] = working_rep_sent;
     }
 
-    if(children.find("working-req-sent") == children.end())
+    if(working_req_sent != nullptr)
     {
-        if(working_req_sent != nullptr)
-        {
-            children["working-req-sent"] = working_req_sent;
-        }
+        children["working-req-sent"] = working_req_sent;
     }
 
     return children;
@@ -1198,46 +994,32 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::Received()
 	,received_unknown(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown>())
 {
     protect_protocol_received_good_reply->parent = this;
-    children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
 
     protect_protocol_received_good_request->parent = this;
-    children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
 
     received_error_general->parent = this;
-    children["received-error-general"] = received_error_general;
 
     received_error_ip_header->parent = this;
-    children["received-error-ip-header"] = received_error_ip_header;
 
     received_error_no_interface->parent = this;
-    children["received-error-no-interface"] = received_error_no_interface;
 
     received_error_no_memory->parent = this;
-    children["received-error-no-memory"] = received_error_no_memory;
 
     received_error_queue_full->parent = this;
-    children["received-error-queue-full"] = received_error_queue_full;
 
     received_error_runt->parent = this;
-    children["received-error-runt"] = received_error_runt;
 
     received_error_udp_header->parent = this;
-    children["received-error-udp-header"] = received_error_udp_header;
 
     received_good_bfd_reply->parent = this;
-    children["received-good-bfd-reply"] = received_good_bfd_reply;
 
     received_good_bfd_request->parent = this;
-    children["received-good-bfd-request"] = received_good_bfd_request;
 
     received_good_reply->parent = this;
-    children["received-good-reply"] = received_good_reply;
 
     received_good_request->parent = this;
-    children["received-good-request"] = received_good_request;
 
     received_unknown->parent = this;
-    children["received-unknown"] = received_unknown;
 
     yang_name = "received"; yang_parent_name = "packet-statistics";
 }
@@ -1292,7 +1074,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::get
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1315,340 +1097,206 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protect-protocol-received-good-reply")
     {
-        if(protect_protocol_received_good_reply != nullptr)
-        {
-            children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
-        }
-        else
+        if(protect_protocol_received_good_reply == nullptr)
         {
             protect_protocol_received_good_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply>();
-            protect_protocol_received_good_reply->parent = this;
-            children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
         }
-        return children.at("protect-protocol-received-good-reply");
+        return protect_protocol_received_good_reply;
     }
 
     if(child_yang_name == "protect-protocol-received-good-request")
     {
-        if(protect_protocol_received_good_request != nullptr)
-        {
-            children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
-        }
-        else
+        if(protect_protocol_received_good_request == nullptr)
         {
             protect_protocol_received_good_request = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest>();
-            protect_protocol_received_good_request->parent = this;
-            children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
         }
-        return children.at("protect-protocol-received-good-request");
+        return protect_protocol_received_good_request;
     }
 
     if(child_yang_name == "received-error-general")
     {
-        if(received_error_general != nullptr)
-        {
-            children["received-error-general"] = received_error_general;
-        }
-        else
+        if(received_error_general == nullptr)
         {
             received_error_general = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral>();
-            received_error_general->parent = this;
-            children["received-error-general"] = received_error_general;
         }
-        return children.at("received-error-general");
+        return received_error_general;
     }
 
     if(child_yang_name == "received-error-ip-header")
     {
-        if(received_error_ip_header != nullptr)
-        {
-            children["received-error-ip-header"] = received_error_ip_header;
-        }
-        else
+        if(received_error_ip_header == nullptr)
         {
             received_error_ip_header = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader>();
-            received_error_ip_header->parent = this;
-            children["received-error-ip-header"] = received_error_ip_header;
         }
-        return children.at("received-error-ip-header");
+        return received_error_ip_header;
     }
 
     if(child_yang_name == "received-error-no-interface")
     {
-        if(received_error_no_interface != nullptr)
-        {
-            children["received-error-no-interface"] = received_error_no_interface;
-        }
-        else
+        if(received_error_no_interface == nullptr)
         {
             received_error_no_interface = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface>();
-            received_error_no_interface->parent = this;
-            children["received-error-no-interface"] = received_error_no_interface;
         }
-        return children.at("received-error-no-interface");
+        return received_error_no_interface;
     }
 
     if(child_yang_name == "received-error-no-memory")
     {
-        if(received_error_no_memory != nullptr)
-        {
-            children["received-error-no-memory"] = received_error_no_memory;
-        }
-        else
+        if(received_error_no_memory == nullptr)
         {
             received_error_no_memory = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory>();
-            received_error_no_memory->parent = this;
-            children["received-error-no-memory"] = received_error_no_memory;
         }
-        return children.at("received-error-no-memory");
+        return received_error_no_memory;
     }
 
     if(child_yang_name == "received-error-queue-full")
     {
-        if(received_error_queue_full != nullptr)
-        {
-            children["received-error-queue-full"] = received_error_queue_full;
-        }
-        else
+        if(received_error_queue_full == nullptr)
         {
             received_error_queue_full = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull>();
-            received_error_queue_full->parent = this;
-            children["received-error-queue-full"] = received_error_queue_full;
         }
-        return children.at("received-error-queue-full");
+        return received_error_queue_full;
     }
 
     if(child_yang_name == "received-error-runt")
     {
-        if(received_error_runt != nullptr)
-        {
-            children["received-error-runt"] = received_error_runt;
-        }
-        else
+        if(received_error_runt == nullptr)
         {
             received_error_runt = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt>();
-            received_error_runt->parent = this;
-            children["received-error-runt"] = received_error_runt;
         }
-        return children.at("received-error-runt");
+        return received_error_runt;
     }
 
     if(child_yang_name == "received-error-udp-header")
     {
-        if(received_error_udp_header != nullptr)
-        {
-            children["received-error-udp-header"] = received_error_udp_header;
-        }
-        else
+        if(received_error_udp_header == nullptr)
         {
             received_error_udp_header = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader>();
-            received_error_udp_header->parent = this;
-            children["received-error-udp-header"] = received_error_udp_header;
         }
-        return children.at("received-error-udp-header");
+        return received_error_udp_header;
     }
 
     if(child_yang_name == "received-good-bfd-reply")
     {
-        if(received_good_bfd_reply != nullptr)
-        {
-            children["received-good-bfd-reply"] = received_good_bfd_reply;
-        }
-        else
+        if(received_good_bfd_reply == nullptr)
         {
             received_good_bfd_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply>();
-            received_good_bfd_reply->parent = this;
-            children["received-good-bfd-reply"] = received_good_bfd_reply;
         }
-        return children.at("received-good-bfd-reply");
+        return received_good_bfd_reply;
     }
 
     if(child_yang_name == "received-good-bfd-request")
     {
-        if(received_good_bfd_request != nullptr)
-        {
-            children["received-good-bfd-request"] = received_good_bfd_request;
-        }
-        else
+        if(received_good_bfd_request == nullptr)
         {
             received_good_bfd_request = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest>();
-            received_good_bfd_request->parent = this;
-            children["received-good-bfd-request"] = received_good_bfd_request;
         }
-        return children.at("received-good-bfd-request");
+        return received_good_bfd_request;
     }
 
     if(child_yang_name == "received-good-reply")
     {
-        if(received_good_reply != nullptr)
-        {
-            children["received-good-reply"] = received_good_reply;
-        }
-        else
+        if(received_good_reply == nullptr)
         {
             received_good_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply>();
-            received_good_reply->parent = this;
-            children["received-good-reply"] = received_good_reply;
         }
-        return children.at("received-good-reply");
+        return received_good_reply;
     }
 
     if(child_yang_name == "received-good-request")
     {
-        if(received_good_request != nullptr)
-        {
-            children["received-good-request"] = received_good_request;
-        }
-        else
+        if(received_good_request == nullptr)
         {
             received_good_request = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest>();
-            received_good_request->parent = this;
-            children["received-good-request"] = received_good_request;
         }
-        return children.at("received-good-request");
+        return received_good_request;
     }
 
     if(child_yang_name == "received-unknown")
     {
-        if(received_unknown != nullptr)
-        {
-            children["received-unknown"] = received_unknown;
-        }
-        else
+        if(received_unknown == nullptr)
         {
             received_unknown = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown>();
-            received_unknown->parent = this;
-            children["received-unknown"] = received_unknown;
         }
-        return children.at("received-unknown");
+        return received_unknown;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_children() const
 {
-    if(children.find("protect-protocol-received-good-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protect_protocol_received_good_reply != nullptr)
     {
-        if(protect_protocol_received_good_reply != nullptr)
-        {
-            children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
-        }
+        children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
     }
 
-    if(children.find("protect-protocol-received-good-request") == children.end())
+    if(protect_protocol_received_good_request != nullptr)
     {
-        if(protect_protocol_received_good_request != nullptr)
-        {
-            children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
-        }
+        children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
     }
 
-    if(children.find("received-error-general") == children.end())
+    if(received_error_general != nullptr)
     {
-        if(received_error_general != nullptr)
-        {
-            children["received-error-general"] = received_error_general;
-        }
+        children["received-error-general"] = received_error_general;
     }
 
-    if(children.find("received-error-ip-header") == children.end())
+    if(received_error_ip_header != nullptr)
     {
-        if(received_error_ip_header != nullptr)
-        {
-            children["received-error-ip-header"] = received_error_ip_header;
-        }
+        children["received-error-ip-header"] = received_error_ip_header;
     }
 
-    if(children.find("received-error-no-interface") == children.end())
+    if(received_error_no_interface != nullptr)
     {
-        if(received_error_no_interface != nullptr)
-        {
-            children["received-error-no-interface"] = received_error_no_interface;
-        }
+        children["received-error-no-interface"] = received_error_no_interface;
     }
 
-    if(children.find("received-error-no-memory") == children.end())
+    if(received_error_no_memory != nullptr)
     {
-        if(received_error_no_memory != nullptr)
-        {
-            children["received-error-no-memory"] = received_error_no_memory;
-        }
+        children["received-error-no-memory"] = received_error_no_memory;
     }
 
-    if(children.find("received-error-queue-full") == children.end())
+    if(received_error_queue_full != nullptr)
     {
-        if(received_error_queue_full != nullptr)
-        {
-            children["received-error-queue-full"] = received_error_queue_full;
-        }
+        children["received-error-queue-full"] = received_error_queue_full;
     }
 
-    if(children.find("received-error-runt") == children.end())
+    if(received_error_runt != nullptr)
     {
-        if(received_error_runt != nullptr)
-        {
-            children["received-error-runt"] = received_error_runt;
-        }
+        children["received-error-runt"] = received_error_runt;
     }
 
-    if(children.find("received-error-udp-header") == children.end())
+    if(received_error_udp_header != nullptr)
     {
-        if(received_error_udp_header != nullptr)
-        {
-            children["received-error-udp-header"] = received_error_udp_header;
-        }
+        children["received-error-udp-header"] = received_error_udp_header;
     }
 
-    if(children.find("received-good-bfd-reply") == children.end())
+    if(received_good_bfd_reply != nullptr)
     {
-        if(received_good_bfd_reply != nullptr)
-        {
-            children["received-good-bfd-reply"] = received_good_bfd_reply;
-        }
+        children["received-good-bfd-reply"] = received_good_bfd_reply;
     }
 
-    if(children.find("received-good-bfd-request") == children.end())
+    if(received_good_bfd_request != nullptr)
     {
-        if(received_good_bfd_request != nullptr)
-        {
-            children["received-good-bfd-request"] = received_good_bfd_request;
-        }
+        children["received-good-bfd-request"] = received_good_bfd_request;
     }
 
-    if(children.find("received-good-reply") == children.end())
+    if(received_good_reply != nullptr)
     {
-        if(received_good_reply != nullptr)
-        {
-            children["received-good-reply"] = received_good_reply;
-        }
+        children["received-good-reply"] = received_good_reply;
     }
 
-    if(children.find("received-good-request") == children.end())
+    if(received_good_request != nullptr)
     {
-        if(received_good_request != nullptr)
-        {
-            children["received-good-request"] = received_good_request;
-        }
+        children["received-good-request"] = received_good_request;
     }
 
-    if(children.find("received-unknown") == children.end())
+    if(received_unknown != nullptr)
     {
-        if(received_unknown != nullptr)
-        {
-            children["received-unknown"] = received_unknown;
-        }
+        children["received-unknown"] = received_unknown;
     }
 
     return children;
@@ -1692,7 +1340,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1717,20 +1365,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1780,7 +1420,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1805,20 +1445,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1868,7 +1500,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1893,20 +1525,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1956,7 +1580,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1981,20 +1605,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2044,7 +1660,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2069,20 +1685,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2132,7 +1740,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2157,20 +1765,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2220,7 +1820,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2245,20 +1845,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2308,7 +1900,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2333,20 +1925,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2396,7 +1980,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2421,20 +2005,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2484,7 +2060,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2509,20 +2085,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2572,7 +2140,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Pro
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2597,20 +2165,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Prot
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2660,7 +2220,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Pro
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2685,20 +2245,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Prot
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2748,7 +2300,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2773,20 +2325,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2836,7 +2380,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2861,20 +2405,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rece
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2898,16 +2434,12 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Sent()
 	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "sent"; yang_parent_name = "packet-statistics";
 }
@@ -2942,7 +2474,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_seg
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2965,110 +2497,66 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_enti
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -3112,7 +2600,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Transmi
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3137,20 +2625,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Transmit
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3200,7 +2680,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Transmi
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3225,20 +2705,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Transmit
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3288,7 +2760,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Transmi
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3313,20 +2785,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Transmit
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3376,7 +2840,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoRe
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3401,20 +2865,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoRep
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3438,16 +2894,12 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::WorkingRe
 	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "working-req-sent"; yang_parent_name = "packet-statistics";
 }
@@ -3482,7 +2934,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3505,110 +2957,66 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -3652,7 +3060,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3677,20 +3085,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3740,7 +3140,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3765,20 +3165,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3828,7 +3220,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3853,20 +3245,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3916,7 +3300,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3941,20 +3325,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3978,16 +3354,12 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::WorkingRe
 	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "working-rep-sent"; yang_parent_name = "packet-statistics";
 }
@@ -4022,7 +3394,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4045,110 +3417,66 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -4192,7 +3520,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4217,20 +3545,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4280,7 +3600,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4305,20 +3625,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4368,7 +3680,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4393,20 +3705,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4456,7 +3760,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4481,20 +3785,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4518,16 +3814,12 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::ProtectRe
 	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "protect-req-sent"; yang_parent_name = "packet-statistics";
 }
@@ -4562,7 +3854,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4585,110 +3877,66 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -4732,7 +3980,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4757,20 +4005,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4820,7 +4060,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4845,20 +4085,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4908,7 +4140,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4933,20 +4165,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4996,7 +4220,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5021,20 +4245,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5058,16 +4274,12 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::ProtectRe
 	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "protect-rep-sent"; yang_parent_name = "packet-statistics";
 }
@@ -5102,7 +4314,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5125,110 +4337,66 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -5272,7 +4440,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5297,20 +4465,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5360,7 +4520,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5385,20 +4545,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5448,7 +4600,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5473,20 +4625,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5536,7 +4680,7 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSen
 
 }
 
-EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5561,20 +4705,12 @@ EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent
 
 std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5600,22 +4736,16 @@ MplsOam::Packet::Packet()
 	,working_req_sent(std::make_shared<MplsOam::Packet::WorkingReqSent>())
 {
     protect_rep_sent->parent = this;
-    children["protect-rep-sent"] = protect_rep_sent;
 
     protect_req_sent->parent = this;
-    children["protect-req-sent"] = protect_req_sent;
 
     received->parent = this;
-    children["received"] = received;
 
     sent->parent = this;
-    children["sent"] = sent;
 
     working_rep_sent->parent = this;
-    children["working-rep-sent"] = working_rep_sent;
 
     working_req_sent->parent = this;
-    children["working-req-sent"] = working_req_sent;
 
     yang_name = "packet"; yang_parent_name = "mpls-oam";
 }
@@ -5654,7 +4784,7 @@ std::string MplsOam::Packet::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5677,156 +4807,94 @@ EntityPath MplsOam::Packet::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::Packet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protect-rep-sent")
     {
-        if(protect_rep_sent != nullptr)
-        {
-            children["protect-rep-sent"] = protect_rep_sent;
-        }
-        else
+        if(protect_rep_sent == nullptr)
         {
             protect_rep_sent = std::make_shared<MplsOam::Packet::ProtectRepSent>();
-            protect_rep_sent->parent = this;
-            children["protect-rep-sent"] = protect_rep_sent;
         }
-        return children.at("protect-rep-sent");
+        return protect_rep_sent;
     }
 
     if(child_yang_name == "protect-req-sent")
     {
-        if(protect_req_sent != nullptr)
-        {
-            children["protect-req-sent"] = protect_req_sent;
-        }
-        else
+        if(protect_req_sent == nullptr)
         {
             protect_req_sent = std::make_shared<MplsOam::Packet::ProtectReqSent>();
-            protect_req_sent->parent = this;
-            children["protect-req-sent"] = protect_req_sent;
         }
-        return children.at("protect-req-sent");
+        return protect_req_sent;
     }
 
     if(child_yang_name == "received")
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
-        else
+        if(received == nullptr)
         {
             received = std::make_shared<MplsOam::Packet::Received>();
-            received->parent = this;
-            children["received"] = received;
         }
-        return children.at("received");
+        return received;
     }
 
     if(child_yang_name == "sent")
     {
-        if(sent != nullptr)
-        {
-            children["sent"] = sent;
-        }
-        else
+        if(sent == nullptr)
         {
             sent = std::make_shared<MplsOam::Packet::Sent>();
-            sent->parent = this;
-            children["sent"] = sent;
         }
-        return children.at("sent");
+        return sent;
     }
 
     if(child_yang_name == "working-rep-sent")
     {
-        if(working_rep_sent != nullptr)
-        {
-            children["working-rep-sent"] = working_rep_sent;
-        }
-        else
+        if(working_rep_sent == nullptr)
         {
             working_rep_sent = std::make_shared<MplsOam::Packet::WorkingRepSent>();
-            working_rep_sent->parent = this;
-            children["working-rep-sent"] = working_rep_sent;
         }
-        return children.at("working-rep-sent");
+        return working_rep_sent;
     }
 
     if(child_yang_name == "working-req-sent")
     {
-        if(working_req_sent != nullptr)
-        {
-            children["working-req-sent"] = working_req_sent;
-        }
-        else
+        if(working_req_sent == nullptr)
         {
             working_req_sent = std::make_shared<MplsOam::Packet::WorkingReqSent>();
-            working_req_sent->parent = this;
-            children["working-req-sent"] = working_req_sent;
         }
-        return children.at("working-req-sent");
+        return working_req_sent;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::get_children() const
 {
-    if(children.find("protect-rep-sent") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protect_rep_sent != nullptr)
     {
-        if(protect_rep_sent != nullptr)
-        {
-            children["protect-rep-sent"] = protect_rep_sent;
-        }
+        children["protect-rep-sent"] = protect_rep_sent;
     }
 
-    if(children.find("protect-req-sent") == children.end())
+    if(protect_req_sent != nullptr)
     {
-        if(protect_req_sent != nullptr)
-        {
-            children["protect-req-sent"] = protect_req_sent;
-        }
+        children["protect-req-sent"] = protect_req_sent;
     }
 
-    if(children.find("received") == children.end())
+    if(received != nullptr)
     {
-        if(received != nullptr)
-        {
-            children["received"] = received;
-        }
+        children["received"] = received;
     }
 
-    if(children.find("sent") == children.end())
+    if(sent != nullptr)
     {
-        if(sent != nullptr)
-        {
-            children["sent"] = sent;
-        }
+        children["sent"] = sent;
     }
 
-    if(children.find("working-rep-sent") == children.end())
+    if(working_rep_sent != nullptr)
     {
-        if(working_rep_sent != nullptr)
-        {
-            children["working-rep-sent"] = working_rep_sent;
-        }
+        children["working-rep-sent"] = working_rep_sent;
     }
 
-    if(children.find("working-req-sent") == children.end())
+    if(working_req_sent != nullptr)
     {
-        if(working_req_sent != nullptr)
-        {
-            children["working-req-sent"] = working_req_sent;
-        }
+        children["working-req-sent"] = working_req_sent;
     }
 
     return children;
@@ -5854,46 +4922,32 @@ MplsOam::Packet::Received::Received()
 	,received_unknown(std::make_shared<MplsOam::Packet::Received::ReceivedUnknown>())
 {
     protect_protocol_received_good_reply->parent = this;
-    children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
 
     protect_protocol_received_good_request->parent = this;
-    children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
 
     received_error_general->parent = this;
-    children["received-error-general"] = received_error_general;
 
     received_error_ip_header->parent = this;
-    children["received-error-ip-header"] = received_error_ip_header;
 
     received_error_no_interface->parent = this;
-    children["received-error-no-interface"] = received_error_no_interface;
 
     received_error_no_memory->parent = this;
-    children["received-error-no-memory"] = received_error_no_memory;
 
     received_error_queue_full->parent = this;
-    children["received-error-queue-full"] = received_error_queue_full;
 
     received_error_runt->parent = this;
-    children["received-error-runt"] = received_error_runt;
 
     received_error_udp_header->parent = this;
-    children["received-error-udp-header"] = received_error_udp_header;
 
     received_good_bfd_reply->parent = this;
-    children["received-good-bfd-reply"] = received_good_bfd_reply;
 
     received_good_bfd_request->parent = this;
-    children["received-good-bfd-request"] = received_good_bfd_request;
 
     received_good_reply->parent = this;
-    children["received-good-reply"] = received_good_reply;
 
     received_good_request->parent = this;
-    children["received-good-request"] = received_good_request;
 
     received_unknown->parent = this;
-    children["received-unknown"] = received_unknown;
 
     yang_name = "received"; yang_parent_name = "packet";
 }
@@ -5948,7 +5002,7 @@ std::string MplsOam::Packet::Received::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::Received::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5971,340 +5025,206 @@ EntityPath MplsOam::Packet::Received::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "protect-protocol-received-good-reply")
     {
-        if(protect_protocol_received_good_reply != nullptr)
-        {
-            children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
-        }
-        else
+        if(protect_protocol_received_good_reply == nullptr)
         {
             protect_protocol_received_good_reply = std::make_shared<MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply>();
-            protect_protocol_received_good_reply->parent = this;
-            children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
         }
-        return children.at("protect-protocol-received-good-reply");
+        return protect_protocol_received_good_reply;
     }
 
     if(child_yang_name == "protect-protocol-received-good-request")
     {
-        if(protect_protocol_received_good_request != nullptr)
-        {
-            children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
-        }
-        else
+        if(protect_protocol_received_good_request == nullptr)
         {
             protect_protocol_received_good_request = std::make_shared<MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest>();
-            protect_protocol_received_good_request->parent = this;
-            children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
         }
-        return children.at("protect-protocol-received-good-request");
+        return protect_protocol_received_good_request;
     }
 
     if(child_yang_name == "received-error-general")
     {
-        if(received_error_general != nullptr)
-        {
-            children["received-error-general"] = received_error_general;
-        }
-        else
+        if(received_error_general == nullptr)
         {
             received_error_general = std::make_shared<MplsOam::Packet::Received::ReceivedErrorGeneral>();
-            received_error_general->parent = this;
-            children["received-error-general"] = received_error_general;
         }
-        return children.at("received-error-general");
+        return received_error_general;
     }
 
     if(child_yang_name == "received-error-ip-header")
     {
-        if(received_error_ip_header != nullptr)
-        {
-            children["received-error-ip-header"] = received_error_ip_header;
-        }
-        else
+        if(received_error_ip_header == nullptr)
         {
             received_error_ip_header = std::make_shared<MplsOam::Packet::Received::ReceivedErrorIpHeader>();
-            received_error_ip_header->parent = this;
-            children["received-error-ip-header"] = received_error_ip_header;
         }
-        return children.at("received-error-ip-header");
+        return received_error_ip_header;
     }
 
     if(child_yang_name == "received-error-no-interface")
     {
-        if(received_error_no_interface != nullptr)
-        {
-            children["received-error-no-interface"] = received_error_no_interface;
-        }
-        else
+        if(received_error_no_interface == nullptr)
         {
             received_error_no_interface = std::make_shared<MplsOam::Packet::Received::ReceivedErrorNoInterface>();
-            received_error_no_interface->parent = this;
-            children["received-error-no-interface"] = received_error_no_interface;
         }
-        return children.at("received-error-no-interface");
+        return received_error_no_interface;
     }
 
     if(child_yang_name == "received-error-no-memory")
     {
-        if(received_error_no_memory != nullptr)
-        {
-            children["received-error-no-memory"] = received_error_no_memory;
-        }
-        else
+        if(received_error_no_memory == nullptr)
         {
             received_error_no_memory = std::make_shared<MplsOam::Packet::Received::ReceivedErrorNoMemory>();
-            received_error_no_memory->parent = this;
-            children["received-error-no-memory"] = received_error_no_memory;
         }
-        return children.at("received-error-no-memory");
+        return received_error_no_memory;
     }
 
     if(child_yang_name == "received-error-queue-full")
     {
-        if(received_error_queue_full != nullptr)
-        {
-            children["received-error-queue-full"] = received_error_queue_full;
-        }
-        else
+        if(received_error_queue_full == nullptr)
         {
             received_error_queue_full = std::make_shared<MplsOam::Packet::Received::ReceivedErrorQueueFull>();
-            received_error_queue_full->parent = this;
-            children["received-error-queue-full"] = received_error_queue_full;
         }
-        return children.at("received-error-queue-full");
+        return received_error_queue_full;
     }
 
     if(child_yang_name == "received-error-runt")
     {
-        if(received_error_runt != nullptr)
-        {
-            children["received-error-runt"] = received_error_runt;
-        }
-        else
+        if(received_error_runt == nullptr)
         {
             received_error_runt = std::make_shared<MplsOam::Packet::Received::ReceivedErrorRunt>();
-            received_error_runt->parent = this;
-            children["received-error-runt"] = received_error_runt;
         }
-        return children.at("received-error-runt");
+        return received_error_runt;
     }
 
     if(child_yang_name == "received-error-udp-header")
     {
-        if(received_error_udp_header != nullptr)
-        {
-            children["received-error-udp-header"] = received_error_udp_header;
-        }
-        else
+        if(received_error_udp_header == nullptr)
         {
             received_error_udp_header = std::make_shared<MplsOam::Packet::Received::ReceivedErrorUdpHeader>();
-            received_error_udp_header->parent = this;
-            children["received-error-udp-header"] = received_error_udp_header;
         }
-        return children.at("received-error-udp-header");
+        return received_error_udp_header;
     }
 
     if(child_yang_name == "received-good-bfd-reply")
     {
-        if(received_good_bfd_reply != nullptr)
-        {
-            children["received-good-bfd-reply"] = received_good_bfd_reply;
-        }
-        else
+        if(received_good_bfd_reply == nullptr)
         {
             received_good_bfd_reply = std::make_shared<MplsOam::Packet::Received::ReceivedGoodBfdReply>();
-            received_good_bfd_reply->parent = this;
-            children["received-good-bfd-reply"] = received_good_bfd_reply;
         }
-        return children.at("received-good-bfd-reply");
+        return received_good_bfd_reply;
     }
 
     if(child_yang_name == "received-good-bfd-request")
     {
-        if(received_good_bfd_request != nullptr)
-        {
-            children["received-good-bfd-request"] = received_good_bfd_request;
-        }
-        else
+        if(received_good_bfd_request == nullptr)
         {
             received_good_bfd_request = std::make_shared<MplsOam::Packet::Received::ReceivedGoodBfdRequest>();
-            received_good_bfd_request->parent = this;
-            children["received-good-bfd-request"] = received_good_bfd_request;
         }
-        return children.at("received-good-bfd-request");
+        return received_good_bfd_request;
     }
 
     if(child_yang_name == "received-good-reply")
     {
-        if(received_good_reply != nullptr)
-        {
-            children["received-good-reply"] = received_good_reply;
-        }
-        else
+        if(received_good_reply == nullptr)
         {
             received_good_reply = std::make_shared<MplsOam::Packet::Received::ReceivedGoodReply>();
-            received_good_reply->parent = this;
-            children["received-good-reply"] = received_good_reply;
         }
-        return children.at("received-good-reply");
+        return received_good_reply;
     }
 
     if(child_yang_name == "received-good-request")
     {
-        if(received_good_request != nullptr)
-        {
-            children["received-good-request"] = received_good_request;
-        }
-        else
+        if(received_good_request == nullptr)
         {
             received_good_request = std::make_shared<MplsOam::Packet::Received::ReceivedGoodRequest>();
-            received_good_request->parent = this;
-            children["received-good-request"] = received_good_request;
         }
-        return children.at("received-good-request");
+        return received_good_request;
     }
 
     if(child_yang_name == "received-unknown")
     {
-        if(received_unknown != nullptr)
-        {
-            children["received-unknown"] = received_unknown;
-        }
-        else
+        if(received_unknown == nullptr)
         {
             received_unknown = std::make_shared<MplsOam::Packet::Received::ReceivedUnknown>();
-            received_unknown->parent = this;
-            children["received-unknown"] = received_unknown;
         }
-        return children.at("received-unknown");
+        return received_unknown;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::get_children() const
 {
-    if(children.find("protect-protocol-received-good-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(protect_protocol_received_good_reply != nullptr)
     {
-        if(protect_protocol_received_good_reply != nullptr)
-        {
-            children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
-        }
+        children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
     }
 
-    if(children.find("protect-protocol-received-good-request") == children.end())
+    if(protect_protocol_received_good_request != nullptr)
     {
-        if(protect_protocol_received_good_request != nullptr)
-        {
-            children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
-        }
+        children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
     }
 
-    if(children.find("received-error-general") == children.end())
+    if(received_error_general != nullptr)
     {
-        if(received_error_general != nullptr)
-        {
-            children["received-error-general"] = received_error_general;
-        }
+        children["received-error-general"] = received_error_general;
     }
 
-    if(children.find("received-error-ip-header") == children.end())
+    if(received_error_ip_header != nullptr)
     {
-        if(received_error_ip_header != nullptr)
-        {
-            children["received-error-ip-header"] = received_error_ip_header;
-        }
+        children["received-error-ip-header"] = received_error_ip_header;
     }
 
-    if(children.find("received-error-no-interface") == children.end())
+    if(received_error_no_interface != nullptr)
     {
-        if(received_error_no_interface != nullptr)
-        {
-            children["received-error-no-interface"] = received_error_no_interface;
-        }
+        children["received-error-no-interface"] = received_error_no_interface;
     }
 
-    if(children.find("received-error-no-memory") == children.end())
+    if(received_error_no_memory != nullptr)
     {
-        if(received_error_no_memory != nullptr)
-        {
-            children["received-error-no-memory"] = received_error_no_memory;
-        }
+        children["received-error-no-memory"] = received_error_no_memory;
     }
 
-    if(children.find("received-error-queue-full") == children.end())
+    if(received_error_queue_full != nullptr)
     {
-        if(received_error_queue_full != nullptr)
-        {
-            children["received-error-queue-full"] = received_error_queue_full;
-        }
+        children["received-error-queue-full"] = received_error_queue_full;
     }
 
-    if(children.find("received-error-runt") == children.end())
+    if(received_error_runt != nullptr)
     {
-        if(received_error_runt != nullptr)
-        {
-            children["received-error-runt"] = received_error_runt;
-        }
+        children["received-error-runt"] = received_error_runt;
     }
 
-    if(children.find("received-error-udp-header") == children.end())
+    if(received_error_udp_header != nullptr)
     {
-        if(received_error_udp_header != nullptr)
-        {
-            children["received-error-udp-header"] = received_error_udp_header;
-        }
+        children["received-error-udp-header"] = received_error_udp_header;
     }
 
-    if(children.find("received-good-bfd-reply") == children.end())
+    if(received_good_bfd_reply != nullptr)
     {
-        if(received_good_bfd_reply != nullptr)
-        {
-            children["received-good-bfd-reply"] = received_good_bfd_reply;
-        }
+        children["received-good-bfd-reply"] = received_good_bfd_reply;
     }
 
-    if(children.find("received-good-bfd-request") == children.end())
+    if(received_good_bfd_request != nullptr)
     {
-        if(received_good_bfd_request != nullptr)
-        {
-            children["received-good-bfd-request"] = received_good_bfd_request;
-        }
+        children["received-good-bfd-request"] = received_good_bfd_request;
     }
 
-    if(children.find("received-good-reply") == children.end())
+    if(received_good_reply != nullptr)
     {
-        if(received_good_reply != nullptr)
-        {
-            children["received-good-reply"] = received_good_reply;
-        }
+        children["received-good-reply"] = received_good_reply;
     }
 
-    if(children.find("received-good-request") == children.end())
+    if(received_good_request != nullptr)
     {
-        if(received_good_request != nullptr)
-        {
-            children["received-good-request"] = received_good_request;
-        }
+        children["received-good-request"] = received_good_request;
     }
 
-    if(children.find("received-unknown") == children.end())
+    if(received_unknown != nullptr)
     {
-        if(received_unknown != nullptr)
-        {
-            children["received-unknown"] = received_unknown;
-        }
+        children["received-unknown"] = received_unknown;
     }
 
     return children;
@@ -6348,7 +5268,7 @@ std::string MplsOam::Packet::Received::ReceivedGoodRequest::get_segment_path() c
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedGoodRequest::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedGoodRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6373,20 +5293,12 @@ EntityPath MplsOam::Packet::Received::ReceivedGoodRequest::get_entity_path(Entit
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedGoodRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6436,7 +5348,7 @@ std::string MplsOam::Packet::Received::ReceivedGoodReply::get_segment_path() con
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedGoodReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedGoodReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6461,20 +5373,12 @@ EntityPath MplsOam::Packet::Received::ReceivedGoodReply::get_entity_path(Entity*
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedGoodReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6524,7 +5428,7 @@ std::string MplsOam::Packet::Received::ReceivedUnknown::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedUnknown::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedUnknown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6549,20 +5453,12 @@ EntityPath MplsOam::Packet::Received::ReceivedUnknown::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedUnknown::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedUnknown::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6612,7 +5508,7 @@ std::string MplsOam::Packet::Received::ReceivedErrorIpHeader::get_segment_path()
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedErrorIpHeader::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedErrorIpHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6637,20 +5533,12 @@ EntityPath MplsOam::Packet::Received::ReceivedErrorIpHeader::get_entity_path(Ent
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedErrorIpHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6700,7 +5588,7 @@ std::string MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_segment_path(
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6725,20 +5613,12 @@ EntityPath MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_entity_path(En
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6788,7 +5668,7 @@ std::string MplsOam::Packet::Received::ReceivedErrorRunt::get_segment_path() con
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedErrorRunt::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedErrorRunt::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6813,20 +5693,12 @@ EntityPath MplsOam::Packet::Received::ReceivedErrorRunt::get_entity_path(Entity*
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedErrorRunt::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorRunt::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6876,7 +5748,7 @@ std::string MplsOam::Packet::Received::ReceivedErrorQueueFull::get_segment_path(
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedErrorQueueFull::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedErrorQueueFull::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6901,20 +5773,12 @@ EntityPath MplsOam::Packet::Received::ReceivedErrorQueueFull::get_entity_path(En
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedErrorQueueFull::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6964,7 +5828,7 @@ std::string MplsOam::Packet::Received::ReceivedErrorGeneral::get_segment_path() 
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedErrorGeneral::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedErrorGeneral::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6989,20 +5853,12 @@ EntityPath MplsOam::Packet::Received::ReceivedErrorGeneral::get_entity_path(Enti
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorGeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedErrorGeneral::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorGeneral::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7052,7 +5908,7 @@ std::string MplsOam::Packet::Received::ReceivedErrorNoInterface::get_segment_pat
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedErrorNoInterface::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedErrorNoInterface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7077,20 +5933,12 @@ EntityPath MplsOam::Packet::Received::ReceivedErrorNoInterface::get_entity_path(
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorNoInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedErrorNoInterface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorNoInterface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7140,7 +5988,7 @@ std::string MplsOam::Packet::Received::ReceivedErrorNoMemory::get_segment_path()
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedErrorNoMemory::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedErrorNoMemory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7165,20 +6013,12 @@ EntityPath MplsOam::Packet::Received::ReceivedErrorNoMemory::get_entity_path(Ent
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorNoMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedErrorNoMemory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorNoMemory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7228,7 +6068,7 @@ std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_s
 
 }
 
-EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7253,20 +6093,12 @@ EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_en
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7316,7 +6148,7 @@ std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_seg
 
 }
 
-EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7341,20 +6173,12 @@ EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_enti
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7404,7 +6228,7 @@ std::string MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_segment_path(
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7429,20 +6253,12 @@ EntityPath MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_entity_path(En
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7492,7 +6308,7 @@ std::string MplsOam::Packet::Received::ReceivedGoodBfdReply::get_segment_path() 
 
 }
 
-EntityPath MplsOam::Packet::Received::ReceivedGoodBfdReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Received::ReceivedGoodBfdReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7517,20 +6333,12 @@ EntityPath MplsOam::Packet::Received::ReceivedGoodBfdReply::get_entity_path(Enti
 
 std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodBfdReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Received::ReceivedGoodBfdReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodBfdReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7554,16 +6362,12 @@ MplsOam::Packet::Sent::Sent()
 	,transmit_good(std::make_shared<MplsOam::Packet::Sent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "sent"; yang_parent_name = "packet";
 }
@@ -7598,7 +6402,7 @@ std::string MplsOam::Packet::Sent::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::Sent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Sent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7621,110 +6425,66 @@ EntityPath MplsOam::Packet::Sent::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::Packet::Sent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Packet::Sent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Packet::Sent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Packet::Sent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Packet::Sent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Sent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -7768,7 +6528,7 @@ std::string MplsOam::Packet::Sent::TransmitGood::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::Sent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Sent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7793,20 +6553,12 @@ EntityPath MplsOam::Packet::Sent::TransmitGood::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Sent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7856,7 +6608,7 @@ std::string MplsOam::Packet::Sent::TransmitDrop::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::Sent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Sent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7881,20 +6633,12 @@ EntityPath MplsOam::Packet::Sent::TransmitDrop::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Sent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7944,7 +6688,7 @@ std::string MplsOam::Packet::Sent::TransmitBfdGood::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::Sent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Sent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7969,20 +6713,12 @@ EntityPath MplsOam::Packet::Sent::TransmitBfdGood::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Sent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8032,7 +6768,7 @@ std::string MplsOam::Packet::Sent::BfdNoReply::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::Sent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::Sent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8057,20 +6793,12 @@ EntityPath MplsOam::Packet::Sent::BfdNoReply::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> MplsOam::Packet::Sent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::Sent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8094,16 +6822,12 @@ MplsOam::Packet::WorkingReqSent::WorkingReqSent()
 	,transmit_good(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "working-req-sent"; yang_parent_name = "packet";
 }
@@ -8138,7 +6862,7 @@ std::string MplsOam::Packet::WorkingReqSent::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::WorkingReqSent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingReqSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8161,110 +6885,66 @@ EntityPath MplsOam::Packet::WorkingReqSent::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Packet::WorkingReqSent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingReqSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -8308,7 +6988,7 @@ std::string MplsOam::Packet::WorkingReqSent::TransmitGood::get_segment_path() co
 
 }
 
-EntityPath MplsOam::Packet::WorkingReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8333,20 +7013,12 @@ EntityPath MplsOam::Packet::WorkingReqSent::TransmitGood::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingReqSent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8396,7 +7068,7 @@ std::string MplsOam::Packet::WorkingReqSent::TransmitDrop::get_segment_path() co
 
 }
 
-EntityPath MplsOam::Packet::WorkingReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8421,20 +7093,12 @@ EntityPath MplsOam::Packet::WorkingReqSent::TransmitDrop::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingReqSent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8484,7 +7148,7 @@ std::string MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_segment_path()
 
 }
 
-EntityPath MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8509,20 +7173,12 @@ EntityPath MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_entity_path(Ent
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8572,7 +7228,7 @@ std::string MplsOam::Packet::WorkingReqSent::BfdNoReply::get_segment_path() cons
 
 }
 
-EntityPath MplsOam::Packet::WorkingReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8597,20 +7253,12 @@ EntityPath MplsOam::Packet::WorkingReqSent::BfdNoReply::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingReqSent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8634,16 +7282,12 @@ MplsOam::Packet::WorkingRepSent::WorkingRepSent()
 	,transmit_good(std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "working-rep-sent"; yang_parent_name = "packet";
 }
@@ -8678,7 +7322,7 @@ std::string MplsOam::Packet::WorkingRepSent::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::WorkingRepSent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingRepSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8701,110 +7345,66 @@ EntityPath MplsOam::Packet::WorkingRepSent::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Packet::WorkingRepSent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingRepSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -8848,7 +7448,7 @@ std::string MplsOam::Packet::WorkingRepSent::TransmitGood::get_segment_path() co
 
 }
 
-EntityPath MplsOam::Packet::WorkingRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8873,20 +7473,12 @@ EntityPath MplsOam::Packet::WorkingRepSent::TransmitGood::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingRepSent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8936,7 +7528,7 @@ std::string MplsOam::Packet::WorkingRepSent::TransmitDrop::get_segment_path() co
 
 }
 
-EntityPath MplsOam::Packet::WorkingRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8961,20 +7553,12 @@ EntityPath MplsOam::Packet::WorkingRepSent::TransmitDrop::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingRepSent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9024,7 +7608,7 @@ std::string MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_segment_path()
 
 }
 
-EntityPath MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9049,20 +7633,12 @@ EntityPath MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_entity_path(Ent
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9112,7 +7688,7 @@ std::string MplsOam::Packet::WorkingRepSent::BfdNoReply::get_segment_path() cons
 
 }
 
-EntityPath MplsOam::Packet::WorkingRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::WorkingRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9137,20 +7713,12 @@ EntityPath MplsOam::Packet::WorkingRepSent::BfdNoReply::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::WorkingRepSent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9174,16 +7742,12 @@ MplsOam::Packet::ProtectReqSent::ProtectReqSent()
 	,transmit_good(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "protect-req-sent"; yang_parent_name = "packet";
 }
@@ -9218,7 +7782,7 @@ std::string MplsOam::Packet::ProtectReqSent::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::ProtectReqSent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectReqSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9241,110 +7805,66 @@ EntityPath MplsOam::Packet::ProtectReqSent::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Packet::ProtectReqSent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectReqSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -9388,7 +7908,7 @@ std::string MplsOam::Packet::ProtectReqSent::TransmitGood::get_segment_path() co
 
 }
 
-EntityPath MplsOam::Packet::ProtectReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9413,20 +7933,12 @@ EntityPath MplsOam::Packet::ProtectReqSent::TransmitGood::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectReqSent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9476,7 +7988,7 @@ std::string MplsOam::Packet::ProtectReqSent::TransmitDrop::get_segment_path() co
 
 }
 
-EntityPath MplsOam::Packet::ProtectReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9501,20 +8013,12 @@ EntityPath MplsOam::Packet::ProtectReqSent::TransmitDrop::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectReqSent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9564,7 +8068,7 @@ std::string MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_segment_path()
 
 }
 
-EntityPath MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9589,20 +8093,12 @@ EntityPath MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_entity_path(Ent
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9652,7 +8148,7 @@ std::string MplsOam::Packet::ProtectReqSent::BfdNoReply::get_segment_path() cons
 
 }
 
-EntityPath MplsOam::Packet::ProtectReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9677,20 +8173,12 @@ EntityPath MplsOam::Packet::ProtectReqSent::BfdNoReply::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectReqSent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9714,16 +8202,12 @@ MplsOam::Packet::ProtectRepSent::ProtectRepSent()
 	,transmit_good(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-    children["bfd-no-reply"] = bfd_no_reply;
 
     transmit_bfd_good->parent = this;
-    children["transmit-bfd-good"] = transmit_bfd_good;
 
     transmit_drop->parent = this;
-    children["transmit-drop"] = transmit_drop;
 
     transmit_good->parent = this;
-    children["transmit-good"] = transmit_good;
 
     yang_name = "protect-rep-sent"; yang_parent_name = "packet";
 }
@@ -9758,7 +8242,7 @@ std::string MplsOam::Packet::ProtectRepSent::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Packet::ProtectRepSent::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectRepSent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9781,110 +8265,66 @@ EntityPath MplsOam::Packet::ProtectRepSent::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd-no-reply")
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
-        else
+        if(bfd_no_reply == nullptr)
         {
             bfd_no_reply = std::make_shared<MplsOam::Packet::ProtectRepSent::BfdNoReply>();
-            bfd_no_reply->parent = this;
-            children["bfd-no-reply"] = bfd_no_reply;
         }
-        return children.at("bfd-no-reply");
+        return bfd_no_reply;
     }
 
     if(child_yang_name == "transmit-bfd-good")
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
-        else
+        if(transmit_bfd_good == nullptr)
         {
             transmit_bfd_good = std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitBfdGood>();
-            transmit_bfd_good->parent = this;
-            children["transmit-bfd-good"] = transmit_bfd_good;
         }
-        return children.at("transmit-bfd-good");
+        return transmit_bfd_good;
     }
 
     if(child_yang_name == "transmit-drop")
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
-        else
+        if(transmit_drop == nullptr)
         {
             transmit_drop = std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitDrop>();
-            transmit_drop->parent = this;
-            children["transmit-drop"] = transmit_drop;
         }
-        return children.at("transmit-drop");
+        return transmit_drop;
     }
 
     if(child_yang_name == "transmit-good")
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
-        else
+        if(transmit_good == nullptr)
         {
             transmit_good = std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitGood>();
-            transmit_good->parent = this;
-            children["transmit-good"] = transmit_good;
         }
-        return children.at("transmit-good");
+        return transmit_good;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectRepSent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::get_children() const
 {
-    if(children.find("bfd-no-reply") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
     {
-        if(bfd_no_reply != nullptr)
-        {
-            children["bfd-no-reply"] = bfd_no_reply;
-        }
+        children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    if(children.find("transmit-bfd-good") == children.end())
+    if(transmit_bfd_good != nullptr)
     {
-        if(transmit_bfd_good != nullptr)
-        {
-            children["transmit-bfd-good"] = transmit_bfd_good;
-        }
+        children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
-    if(children.find("transmit-drop") == children.end())
+    if(transmit_drop != nullptr)
     {
-        if(transmit_drop != nullptr)
-        {
-            children["transmit-drop"] = transmit_drop;
-        }
+        children["transmit-drop"] = transmit_drop;
     }
 
-    if(children.find("transmit-good") == children.end())
+    if(transmit_good != nullptr)
     {
-        if(transmit_good != nullptr)
-        {
-            children["transmit-good"] = transmit_good;
-        }
+        children["transmit-good"] = transmit_good;
     }
 
     return children;
@@ -9928,7 +8368,7 @@ std::string MplsOam::Packet::ProtectRepSent::TransmitGood::get_segment_path() co
 
 }
 
-EntityPath MplsOam::Packet::ProtectRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9953,20 +8393,12 @@ EntityPath MplsOam::Packet::ProtectRepSent::TransmitGood::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectRepSent::TransmitGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10016,7 +8448,7 @@ std::string MplsOam::Packet::ProtectRepSent::TransmitDrop::get_segment_path() co
 
 }
 
-EntityPath MplsOam::Packet::ProtectRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10041,20 +8473,12 @@ EntityPath MplsOam::Packet::ProtectRepSent::TransmitDrop::get_entity_path(Entity
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectRepSent::TransmitDrop::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10104,7 +8528,7 @@ std::string MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_segment_path()
 
 }
 
-EntityPath MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10129,20 +8553,12 @@ EntityPath MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_entity_path(Ent
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10192,7 +8608,7 @@ std::string MplsOam::Packet::ProtectRepSent::BfdNoReply::get_segment_path() cons
 
 }
 
-EntityPath MplsOam::Packet::ProtectRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Packet::ProtectRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10217,20 +8633,12 @@ EntityPath MplsOam::Packet::ProtectRepSent::BfdNoReply::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Packet::ProtectRepSent::BfdNoReply::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10254,10 +8662,8 @@ MplsOam::Global::Global()
 	,message_statistics(std::make_shared<MplsOam::Global::MessageStatistics>())
 {
     collaborator_statistics->parent = this;
-    children["collaborator-statistics"] = collaborator_statistics;
 
     message_statistics->parent = this;
-    children["message-statistics"] = message_statistics;
 
     yang_name = "global"; yang_parent_name = "mpls-oam";
 }
@@ -10290,7 +8696,7 @@ std::string MplsOam::Global::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Global::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Global::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10314,64 +8720,38 @@ EntityPath MplsOam::Global::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsOam::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "collaborator-statistics")
     {
-        if(collaborator_statistics != nullptr)
-        {
-            children["collaborator-statistics"] = collaborator_statistics;
-        }
-        else
+        if(collaborator_statistics == nullptr)
         {
             collaborator_statistics = std::make_shared<MplsOam::Global::CollaboratorStatistics>();
-            collaborator_statistics->parent = this;
-            children["collaborator-statistics"] = collaborator_statistics;
         }
-        return children.at("collaborator-statistics");
+        return collaborator_statistics;
     }
 
     if(child_yang_name == "message-statistics")
     {
-        if(message_statistics != nullptr)
-        {
-            children["message-statistics"] = message_statistics;
-        }
-        else
+        if(message_statistics == nullptr)
         {
             message_statistics = std::make_shared<MplsOam::Global::MessageStatistics>();
-            message_statistics->parent = this;
-            children["message-statistics"] = message_statistics;
         }
-        return children.at("message-statistics");
+        return message_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Global::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::get_children() const
 {
-    if(children.find("collaborator-statistics") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(collaborator_statistics != nullptr)
     {
-        if(collaborator_statistics != nullptr)
-        {
-            children["collaborator-statistics"] = collaborator_statistics;
-        }
+        children["collaborator-statistics"] = collaborator_statistics;
     }
 
-    if(children.find("message-statistics") == children.end())
+    if(message_statistics != nullptr)
     {
-        if(message_statistics != nullptr)
-        {
-            children["message-statistics"] = message_statistics;
-        }
+        children["message-statistics"] = message_statistics;
     }
 
     return children;
@@ -10446,7 +8826,7 @@ std::string MplsOam::Global::MessageStatistics::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Global::MessageStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Global::MessageStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10480,20 +8860,12 @@ EntityPath MplsOam::Global::MessageStatistics::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> MplsOam::Global::MessageStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Global::MessageStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::MessageStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10553,16 +8925,12 @@ MplsOam::Global::CollaboratorStatistics::CollaboratorStatistics()
 	,collaborator_rib(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorRib>())
 {
     collaborator_i_parm->parent = this;
-    children["collaborator-i-parm"] = collaborator_i_parm;
 
     collaborator_im->parent = this;
-    children["collaborator-im"] = collaborator_im;
 
     collaborator_net_io->parent = this;
-    children["collaborator-net-io"] = collaborator_net_io;
 
     collaborator_rib->parent = this;
-    children["collaborator-rib"] = collaborator_rib;
 
     yang_name = "collaborator-statistics"; yang_parent_name = "global";
 }
@@ -10597,7 +8965,7 @@ std::string MplsOam::Global::CollaboratorStatistics::get_segment_path() const
 
 }
 
-EntityPath MplsOam::Global::CollaboratorStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Global::CollaboratorStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10620,110 +8988,66 @@ EntityPath MplsOam::Global::CollaboratorStatistics::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "collaborator-i-parm")
     {
-        if(collaborator_i_parm != nullptr)
-        {
-            children["collaborator-i-parm"] = collaborator_i_parm;
-        }
-        else
+        if(collaborator_i_parm == nullptr)
         {
             collaborator_i_parm = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIParm>();
-            collaborator_i_parm->parent = this;
-            children["collaborator-i-parm"] = collaborator_i_parm;
         }
-        return children.at("collaborator-i-parm");
+        return collaborator_i_parm;
     }
 
     if(child_yang_name == "collaborator-im")
     {
-        if(collaborator_im != nullptr)
-        {
-            children["collaborator-im"] = collaborator_im;
-        }
-        else
+        if(collaborator_im == nullptr)
         {
             collaborator_im = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIm>();
-            collaborator_im->parent = this;
-            children["collaborator-im"] = collaborator_im;
         }
-        return children.at("collaborator-im");
+        return collaborator_im;
     }
 
     if(child_yang_name == "collaborator-net-io")
     {
-        if(collaborator_net_io != nullptr)
-        {
-            children["collaborator-net-io"] = collaborator_net_io;
-        }
-        else
+        if(collaborator_net_io == nullptr)
         {
             collaborator_net_io = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo>();
-            collaborator_net_io->parent = this;
-            children["collaborator-net-io"] = collaborator_net_io;
         }
-        return children.at("collaborator-net-io");
+        return collaborator_net_io;
     }
 
     if(child_yang_name == "collaborator-rib")
     {
-        if(collaborator_rib != nullptr)
-        {
-            children["collaborator-rib"] = collaborator_rib;
-        }
-        else
+        if(collaborator_rib == nullptr)
         {
             collaborator_rib = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorRib>();
-            collaborator_rib->parent = this;
-            children["collaborator-rib"] = collaborator_rib;
         }
-        return children.at("collaborator-rib");
+        return collaborator_rib;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Global::CollaboratorStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::get_children() const
 {
-    if(children.find("collaborator-i-parm") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(collaborator_i_parm != nullptr)
     {
-        if(collaborator_i_parm != nullptr)
-        {
-            children["collaborator-i-parm"] = collaborator_i_parm;
-        }
+        children["collaborator-i-parm"] = collaborator_i_parm;
     }
 
-    if(children.find("collaborator-im") == children.end())
+    if(collaborator_im != nullptr)
     {
-        if(collaborator_im != nullptr)
-        {
-            children["collaborator-im"] = collaborator_im;
-        }
+        children["collaborator-im"] = collaborator_im;
     }
 
-    if(children.find("collaborator-net-io") == children.end())
+    if(collaborator_net_io != nullptr)
     {
-        if(collaborator_net_io != nullptr)
-        {
-            children["collaborator-net-io"] = collaborator_net_io;
-        }
+        children["collaborator-net-io"] = collaborator_net_io;
     }
 
-    if(children.find("collaborator-rib") == children.end())
+    if(collaborator_rib != nullptr)
     {
-        if(collaborator_rib != nullptr)
-        {
-            children["collaborator-rib"] = collaborator_rib;
-        }
+        children["collaborator-rib"] = collaborator_rib;
     }
 
     return children;
@@ -10767,7 +9091,7 @@ std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_segm
 
 }
 
-EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10792,20 +9116,12 @@ EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_entit
 
 std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10855,7 +9171,7 @@ std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_segment
 
 }
 
-EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10880,20 +9196,12 @@ EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_entity_p
 
 std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -10943,7 +9251,7 @@ std::string MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_segm
 
 }
 
-EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10968,20 +9276,12 @@ EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_entit
 
 std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -11031,7 +9331,7 @@ std::string MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_segmen
 
 }
 
-EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_entity_path(Entity* ancestor) const
+const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -11056,20 +9356,12 @@ EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_entity_
 
 std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

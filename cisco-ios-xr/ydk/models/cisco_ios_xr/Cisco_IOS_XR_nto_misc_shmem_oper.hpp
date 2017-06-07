@@ -18,23 +18,20 @@ class MemorySummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: MemorySummary::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_nto_misc_shmem_oper::MemorySummary::Nodes> nodes;
-
-
+        
 }; // MemorySummary
 
 
@@ -46,19 +43,16 @@ class MemorySummary::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: MemorySummary::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_nto_misc_shmem_oper::MemorySummary::Nodes::Node> > node;
-
-
+        
 }; // MemorySummary::Nodes
 
 
@@ -70,22 +64,19 @@ class MemorySummary::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Summary; //type: MemorySummary::Nodes::Node::Summary
         class Detail; //type: MemorySummary::Nodes::Node::Detail
 
         std::shared_ptr<Cisco_IOS_XR_nto_misc_shmem_oper::MemorySummary::Nodes::Node::Detail> detail;
         std::shared_ptr<Cisco_IOS_XR_nto_misc_shmem_oper::MemorySummary::Nodes::Node::Summary> summary;
-
-
+        
 }; // MemorySummary::Nodes::Node
 
 
@@ -97,12 +88,11 @@ class MemorySummary::Nodes::Node::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf page_size; //type: uint32
         YLeaf ram_memory; //type: uint64
@@ -115,8 +105,6 @@ class MemorySummary::Nodes::Node::Summary : public Entity
         YLeaf io_memory; //type: uint64
         YLeaf flash_system; //type: uint64
 
-
-
 }; // MemorySummary::Nodes::Node::Summary
 
 
@@ -128,12 +116,11 @@ class MemorySummary::Nodes::Node::Detail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf page_size; //type: uint32
         YLeaf ram_memory; //type: uint64
@@ -151,12 +138,10 @@ class MemorySummary::Nodes::Node::Detail : public Entity
         YLeaf program_text; //type: uint64
         YLeaf program_data; //type: uint64
         YLeaf program_stack; //type: uint64
-
         class SharedWindow; //type: MemorySummary::Nodes::Node::Detail::SharedWindow
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_nto_misc_shmem_oper::MemorySummary::Nodes::Node::Detail::SharedWindow> > shared_window;
-
-
+        
 }; // MemorySummary::Nodes::Node::Detail
 
 
@@ -168,17 +153,14 @@ class MemorySummary::Nodes::Node::Detail::SharedWindow : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf shared_window; //type: string
         YLeaf window_size; //type: uint64
-
-
 
 }; // MemorySummary::Nodes::Node::Detail::SharedWindow
 

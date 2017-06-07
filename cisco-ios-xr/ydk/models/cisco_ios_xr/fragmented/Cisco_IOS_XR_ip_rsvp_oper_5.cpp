@@ -17,7 +17,6 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRro
     flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "unnumbered-rro-sub-object"; yang_parent_name = "rro";
 }
@@ -50,7 +49,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::U
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -75,41 +74,24 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Un
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -170,7 +152,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::U
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -198,20 +180,12 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Un
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -280,7 +254,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::S
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -305,20 +279,12 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Sr
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -346,13 +312,10 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::RsbInfo()
 	,generic_out_label(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel>())
 {
     flow_spec->parent = this;
-    children["flow-spec"] = flow_spec;
 
     generic_flow_spec->parent = this;
-    children["generic-flow-spec"] = generic_flow_spec;
 
     generic_out_label->parent = this;
-    children["generic-out-label"] = generic_out_label;
 
     yang_name = "rsb-info"; yang_parent_name = "psb-rsb-info";
 }
@@ -411,7 +374,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_se
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -442,58 +405,31 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_ent
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flow-spec")
     {
-        if(flow_spec != nullptr)
-        {
-            children["flow-spec"] = flow_spec;
-        }
-        else
+        if(flow_spec == nullptr)
         {
             flow_spec = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec>();
-            flow_spec->parent = this;
-            children["flow-spec"] = flow_spec;
         }
-        return children.at("flow-spec");
+        return flow_spec;
     }
 
     if(child_yang_name == "generic-flow-spec")
     {
-        if(generic_flow_spec != nullptr)
-        {
-            children["generic-flow-spec"] = generic_flow_spec;
-        }
-        else
+        if(generic_flow_spec == nullptr)
         {
             generic_flow_spec = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec>();
-            generic_flow_spec->parent = this;
-            children["generic-flow-spec"] = generic_flow_spec;
         }
-        return children.at("generic-flow-spec");
+        return generic_flow_spec;
     }
 
     if(child_yang_name == "generic-out-label")
     {
-        if(generic_out_label != nullptr)
-        {
-            children["generic-out-label"] = generic_out_label;
-        }
-        else
+        if(generic_out_label == nullptr)
         {
             generic_out_label = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel>();
-            generic_out_label->parent = this;
-            children["generic-out-label"] = generic_out_label;
         }
-        return children.at("generic-out-label");
+        return generic_out_label;
     }
 
     if(child_yang_name == "rro")
@@ -503,52 +439,39 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro>();
         c->parent = this;
-        rro.push_back(std::move(c));
-        children[segment_path] = rro.back();
-        return children.at(segment_path);
+        rro.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_children() const
 {
-    if(children.find("flow-spec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flow_spec != nullptr)
     {
-        if(flow_spec != nullptr)
-        {
-            children["flow-spec"] = flow_spec;
-        }
+        children["flow-spec"] = flow_spec;
     }
 
-    if(children.find("generic-flow-spec") == children.end())
+    if(generic_flow_spec != nullptr)
     {
-        if(generic_flow_spec != nullptr)
-        {
-            children["generic-flow-spec"] = generic_flow_spec;
-        }
+        children["generic-flow-spec"] = generic_flow_spec;
     }
 
-    if(children.find("generic-out-label") == children.end())
+    if(generic_out_label != nullptr)
     {
-        if(generic_out_label != nullptr)
-        {
-            children["generic-out-label"] = generic_out_label;
-        }
+        children["generic-out-label"] = generic_out_label;
     }
 
     for (auto const & c : rro)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -597,7 +520,6 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::G
     generalized_label(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel>())
 {
     generalized_label->parent = this;
-    children["generalized-label"] = generalized_label;
 
     yang_name = "generic-out-label"; yang_parent_name = "rsb-info";
 }
@@ -628,7 +550,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generi
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -652,41 +574,24 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generic
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generalized-label")
     {
-        if(generalized_label != nullptr)
-        {
-            children["generalized-label"] = generalized_label;
-        }
-        else
+        if(generalized_label == nullptr)
         {
             generalized_label = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel>();
-            generalized_label->parent = this;
-            children["generalized-label"] = generalized_label;
         }
-        return children.at("generalized-label");
+        return generalized_label;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_children() const
 {
-    if(children.find("generalized-label") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generalized_label != nullptr)
     {
-        if(generalized_label != nullptr)
-        {
-            children["generalized-label"] = generalized_label;
-        }
+        children["generalized-label"] = generalized_label;
     }
 
     return children;
@@ -741,7 +646,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generi
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -766,20 +671,12 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generic
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -843,7 +740,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSp
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -874,20 +771,12 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpe
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -934,7 +823,6 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G
     g709otn_flow_spec(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec>())
 {
     g709otn_flow_spec->parent = this;
-    children["g709otn-flow-spec"] = g709otn_flow_spec;
 
     yang_name = "generic-flow-spec"; yang_parent_name = "rsb-info";
 }
@@ -965,7 +853,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generi
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -989,41 +877,24 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generic
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g709otn-flow-spec")
     {
-        if(g709otn_flow_spec != nullptr)
-        {
-            children["g709otn-flow-spec"] = g709otn_flow_spec;
-        }
-        else
+        if(g709otn_flow_spec == nullptr)
         {
             g709otn_flow_spec = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec>();
-            g709otn_flow_spec->parent = this;
-            children["g709otn-flow-spec"] = g709otn_flow_spec;
         }
-        return children.at("g709otn-flow-spec");
+        return g709otn_flow_spec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_children() const
 {
-    if(children.find("g709otn-flow-spec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g709otn_flow_spec != nullptr)
     {
-        if(g709otn_flow_spec != nullptr)
-        {
-            children["g709otn-flow-spec"] = g709otn_flow_spec;
-        }
+        children["g709otn-flow-spec"] = g709otn_flow_spec;
     }
 
     return children;
@@ -1077,7 +948,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generi
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1104,20 +975,12 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generic
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1151,16 +1014,12 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Rro()
 	,unnumbered_rro_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject>())
 {
     ipv4rro_sub_object->parent = this;
-    children["ipv4rro-sub-object"] = ipv4rro_sub_object;
 
     label_rro_sub_object->parent = this;
-    children["label-rro-sub-object"] = label_rro_sub_object;
 
     srlg_rro_sub_object->parent = this;
-    children["srlg-rro-sub-object"] = srlg_rro_sub_object;
 
     unnumbered_rro_sub_object->parent = this;
-    children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
 
     yang_name = "rro"; yang_parent_name = "rsb-info";
 }
@@ -1197,7 +1056,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::g
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1221,110 +1080,66 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::ge
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4rro-sub-object")
     {
-        if(ipv4rro_sub_object != nullptr)
-        {
-            children["ipv4rro-sub-object"] = ipv4rro_sub_object;
-        }
-        else
+        if(ipv4rro_sub_object == nullptr)
         {
             ipv4rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject>();
-            ipv4rro_sub_object->parent = this;
-            children["ipv4rro-sub-object"] = ipv4rro_sub_object;
         }
-        return children.at("ipv4rro-sub-object");
+        return ipv4rro_sub_object;
     }
 
     if(child_yang_name == "label-rro-sub-object")
     {
-        if(label_rro_sub_object != nullptr)
-        {
-            children["label-rro-sub-object"] = label_rro_sub_object;
-        }
-        else
+        if(label_rro_sub_object == nullptr)
         {
             label_rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject>();
-            label_rro_sub_object->parent = this;
-            children["label-rro-sub-object"] = label_rro_sub_object;
         }
-        return children.at("label-rro-sub-object");
+        return label_rro_sub_object;
     }
 
     if(child_yang_name == "srlg-rro-sub-object")
     {
-        if(srlg_rro_sub_object != nullptr)
-        {
-            children["srlg-rro-sub-object"] = srlg_rro_sub_object;
-        }
-        else
+        if(srlg_rro_sub_object == nullptr)
         {
             srlg_rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject>();
-            srlg_rro_sub_object->parent = this;
-            children["srlg-rro-sub-object"] = srlg_rro_sub_object;
         }
-        return children.at("srlg-rro-sub-object");
+        return srlg_rro_sub_object;
     }
 
     if(child_yang_name == "unnumbered-rro-sub-object")
     {
-        if(unnumbered_rro_sub_object != nullptr)
-        {
-            children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
-        }
-        else
+        if(unnumbered_rro_sub_object == nullptr)
         {
             unnumbered_rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject>();
-            unnumbered_rro_sub_object->parent = this;
-            children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
         }
-        return children.at("unnumbered-rro-sub-object");
+        return unnumbered_rro_sub_object;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_children() const
 {
-    if(children.find("ipv4rro-sub-object") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4rro_sub_object != nullptr)
     {
-        if(ipv4rro_sub_object != nullptr)
-        {
-            children["ipv4rro-sub-object"] = ipv4rro_sub_object;
-        }
+        children["ipv4rro-sub-object"] = ipv4rro_sub_object;
     }
 
-    if(children.find("label-rro-sub-object") == children.end())
+    if(label_rro_sub_object != nullptr)
     {
-        if(label_rro_sub_object != nullptr)
-        {
-            children["label-rro-sub-object"] = label_rro_sub_object;
-        }
+        children["label-rro-sub-object"] = label_rro_sub_object;
     }
 
-    if(children.find("srlg-rro-sub-object") == children.end())
+    if(srlg_rro_sub_object != nullptr)
     {
-        if(srlg_rro_sub_object != nullptr)
-        {
-            children["srlg-rro-sub-object"] = srlg_rro_sub_object;
-        }
+        children["srlg-rro-sub-object"] = srlg_rro_sub_object;
     }
 
-    if(children.find("unnumbered-rro-sub-object") == children.end())
+    if(unnumbered_rro_sub_object != nullptr)
     {
-        if(unnumbered_rro_sub_object != nullptr)
-        {
-            children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
-        }
+        children["unnumbered-rro-sub-object"] = unnumbered_rro_sub_object;
     }
 
     return children;
@@ -1345,7 +1160,6 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObj
     flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "ipv4rro-sub-object"; yang_parent_name = "rro";
 }
@@ -1376,7 +1190,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::I
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1400,41 +1214,24 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ip
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -1491,7 +1288,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::I
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1519,20 +1316,12 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ip
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1569,7 +1358,6 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubOb
     flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "label-rro-sub-object"; yang_parent_name = "rro";
 }
@@ -1613,7 +1401,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::L
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1640,41 +1428,24 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::La
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -1727,7 +1498,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::L
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1751,20 +1522,12 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::La
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1784,7 +1547,6 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRro
     flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags>())
 {
     flags->parent = this;
-    children["flags"] = flags;
 
     yang_name = "unnumbered-rro-sub-object"; yang_parent_name = "rro";
 }
@@ -1817,7 +1579,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::U
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1842,41 +1604,24 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Un
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "flags")
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
-        else
+        if(flags == nullptr)
         {
             flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags>();
-            flags->parent = this;
-            children["flags"] = flags;
         }
-        return children.at("flags");
+        return flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_children() const
 {
-    if(children.find("flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(flags != nullptr)
     {
-        if(flags != nullptr)
-        {
-            children["flags"] = flags;
-        }
+        children["flags"] = flags;
     }
 
     return children;
@@ -1937,7 +1682,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::U
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1965,20 +1710,12 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Un
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2047,7 +1784,7 @@ std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::S
 
 }
 
-EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2072,20 +1809,12 @@ EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Sr
 
 std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2135,7 +1864,7 @@ std::string Rsvp::HelloInstanceDetails::get_segment_path() const
 
 }
 
-EntityPath Rsvp::HelloInstanceDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::HelloInstanceDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2158,15 +1887,6 @@ EntityPath Rsvp::HelloInstanceDetails::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::HelloInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "hello-instance-detail")
     {
         for(auto const & c : hello_instance_detail)
@@ -2174,28 +1894,24 @@ std::shared_ptr<Entity> Rsvp::HelloInstanceDetails::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::HelloInstanceDetails::HelloInstanceDetail>();
         c->parent = this;
-        hello_instance_detail.push_back(std::move(c));
-        children[segment_path] = hello_instance_detail.back();
-        return children.at(segment_path);
+        hello_instance_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::HelloInstanceDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInstanceDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : hello_instance_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2207,8 +1923,8 @@ void Rsvp::HelloInstanceDetails::set_value(const std::string & value_path, std::
 
 Rsvp::HelloInstanceDetails::HelloInstanceDetail::HelloInstanceDetail()
     :
-    destination_address{YType::str, "destination-address"},
     source_address{YType::str, "source-address"},
+    destination_address{YType::str, "destination-address"},
     communication_lost_hello_missed{YType::uint16, "communication-lost-hello-missed"},
     communication_lost_interface_down{YType::uint16, "communication-lost-interface-down"},
     communication_lost_neighbor_disabled_hello{YType::uint16, "communication-lost-neighbor-disabled-hello"},
@@ -2234,10 +1950,8 @@ Rsvp::HelloInstanceDetails::HelloInstanceDetail::HelloInstanceDetail()
 	,up_time(std::make_shared<Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime>())
 {
     communication_lost_time->parent = this;
-    children["communication-lost-time"] = communication_lost_time;
 
     up_time->parent = this;
-    children["up-time"] = up_time;
 
     yang_name = "hello-instance-detail"; yang_parent_name = "hello-instance-details";
 }
@@ -2248,8 +1962,8 @@ Rsvp::HelloInstanceDetails::HelloInstanceDetail::~HelloInstanceDetail()
 
 bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::has_data() const
 {
-    return destination_address.is_set
-	|| source_address.is_set
+    return source_address.is_set
+	|| destination_address.is_set
 	|| communication_lost_hello_missed.is_set
 	|| communication_lost_interface_down.is_set
 	|| communication_lost_neighbor_disabled_hello.is_set
@@ -2277,8 +1991,8 @@ bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::has_data() const
 bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::has_operation() const
 {
     return is_set(operation)
-	|| is_set(destination_address.operation)
 	|| is_set(source_address.operation)
+	|| is_set(destination_address.operation)
 	|| is_set(communication_lost_hello_missed.operation)
 	|| is_set(communication_lost_interface_down.operation)
 	|| is_set(communication_lost_neighbor_disabled_hello.operation)
@@ -2306,13 +2020,13 @@ bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::has_operation() const
 std::string Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-instance-detail" <<"[destination-address='" <<destination_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "hello-instance-detail" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']";
 
     return path_buffer.str();
 
 }
 
-EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2326,8 +2040,8 @@ EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
     if (communication_lost_hello_missed.is_set || is_set(communication_lost_hello_missed.operation)) leaf_name_data.push_back(communication_lost_hello_missed.get_name_leafdata());
     if (communication_lost_interface_down.is_set || is_set(communication_lost_interface_down.operation)) leaf_name_data.push_back(communication_lost_interface_down.get_name_leafdata());
     if (communication_lost_neighbor_disabled_hello.is_set || is_set(communication_lost_neighbor_disabled_hello.operation)) leaf_name_data.push_back(communication_lost_neighbor_disabled_hello.get_name_leafdata());
@@ -2357,64 +2071,38 @@ EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_entity_path(Enti
 
 std::shared_ptr<Entity> Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "communication-lost-time")
     {
-        if(communication_lost_time != nullptr)
-        {
-            children["communication-lost-time"] = communication_lost_time;
-        }
-        else
+        if(communication_lost_time == nullptr)
         {
             communication_lost_time = std::make_shared<Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime>();
-            communication_lost_time->parent = this;
-            children["communication-lost-time"] = communication_lost_time;
         }
-        return children.at("communication-lost-time");
+        return communication_lost_time;
     }
 
     if(child_yang_name == "up-time")
     {
-        if(up_time != nullptr)
-        {
-            children["up-time"] = up_time;
-        }
-        else
+        if(up_time == nullptr)
         {
             up_time = std::make_shared<Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime>();
-            up_time->parent = this;
-            children["up-time"] = up_time;
         }
-        return children.at("up-time");
+        return up_time;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_children() const
 {
-    if(children.find("communication-lost-time") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(communication_lost_time != nullptr)
     {
-        if(communication_lost_time != nullptr)
-        {
-            children["communication-lost-time"] = communication_lost_time;
-        }
+        children["communication-lost-time"] = communication_lost_time;
     }
 
-    if(children.find("up-time") == children.end())
+    if(up_time != nullptr)
     {
-        if(up_time != nullptr)
-        {
-            children["up-time"] = up_time;
-        }
+        children["up-time"] = up_time;
     }
 
     return children;
@@ -2422,13 +2110,13 @@ std::map<std::string, std::shared_ptr<Entity>> & Rsvp::HelloInstanceDetails::Hel
 
 void Rsvp::HelloInstanceDetails::HelloInstanceDetail::set_value(const std::string & value_path, std::string value)
 {
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-    }
     if(value_path == "source-address")
     {
         source_address = value;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
     }
     if(value_path == "communication-lost-hello-missed")
     {
@@ -2546,7 +2234,7 @@ std::string Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_segment
 
 }
 
-EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2571,20 +2259,12 @@ EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_entity_p
 
 std::shared_ptr<Entity> Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2634,7 +2314,7 @@ std::string Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTi
 
 }
 
-EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2659,20 +2339,12 @@ EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTim
 
 std::shared_ptr<Entity> Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2726,7 +2398,7 @@ std::string Rsvp::GlobalNeighborDetails::get_segment_path() const
 
 }
 
-EntityPath Rsvp::GlobalNeighborDetails::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborDetails::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2749,15 +2421,6 @@ EntityPath Rsvp::GlobalNeighborDetails::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global-neighbor-detail")
     {
         for(auto const & c : global_neighbor_detail)
@@ -2765,28 +2428,24 @@ std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::get_child_by_name(const std
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail>();
         c->parent = this;
-        global_neighbor_detail.push_back(std::move(c));
-        children[segment_path] = global_neighbor_detail.back();
-        return children.at(segment_path);
+        global_neighbor_detail.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborDetails::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : global_neighbor_detail)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2822,19 +2481,14 @@ Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborDetail()
 	,restart_timer_expiry_time(std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime>())
 {
     global_neighbor_flags->parent = this;
-    children["global-neighbor-flags"] = global_neighbor_flags;
 
     recovery_time_left->parent = this;
-    children["recovery-time-left"] = recovery_time_left;
 
     recovery_timer_exp_time->parent = this;
-    children["recovery-timer-exp-time"] = recovery_timer_exp_time;
 
     restart_time_left->parent = this;
-    children["restart-time-left"] = restart_time_left;
 
     restart_timer_expiry_time->parent = this;
-    children["restart-timer-expiry-time"] = restart_timer_expiry_time;
 
     yang_name = "global-neighbor-detail"; yang_parent_name = "global-neighbor-details";
 }
@@ -2968,7 +2622,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_segment_path(
 
 }
 
-EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3012,28 +2666,13 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_entity_path(En
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global-neighbor-flags")
     {
-        if(global_neighbor_flags != nullptr)
-        {
-            children["global-neighbor-flags"] = global_neighbor_flags;
-        }
-        else
+        if(global_neighbor_flags == nullptr)
         {
             global_neighbor_flags = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags>();
-            global_neighbor_flags->parent = this;
-            children["global-neighbor-flags"] = global_neighbor_flags;
         }
-        return children.at("global-neighbor-flags");
+        return global_neighbor_flags;
     }
 
     if(child_yang_name == "lost-communication-time")
@@ -3043,75 +2682,49 @@ std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime>();
         c->parent = this;
-        lost_communication_time.push_back(std::move(c));
-        children[segment_path] = lost_communication_time.back();
-        return children.at(segment_path);
+        lost_communication_time.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "recovery-time-left")
     {
-        if(recovery_time_left != nullptr)
-        {
-            children["recovery-time-left"] = recovery_time_left;
-        }
-        else
+        if(recovery_time_left == nullptr)
         {
             recovery_time_left = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft>();
-            recovery_time_left->parent = this;
-            children["recovery-time-left"] = recovery_time_left;
         }
-        return children.at("recovery-time-left");
+        return recovery_time_left;
     }
 
     if(child_yang_name == "recovery-timer-exp-time")
     {
-        if(recovery_timer_exp_time != nullptr)
-        {
-            children["recovery-timer-exp-time"] = recovery_timer_exp_time;
-        }
-        else
+        if(recovery_timer_exp_time == nullptr)
         {
             recovery_timer_exp_time = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime>();
-            recovery_timer_exp_time->parent = this;
-            children["recovery-timer-exp-time"] = recovery_timer_exp_time;
         }
-        return children.at("recovery-timer-exp-time");
+        return recovery_timer_exp_time;
     }
 
     if(child_yang_name == "restart-time-left")
     {
-        if(restart_time_left != nullptr)
-        {
-            children["restart-time-left"] = restart_time_left;
-        }
-        else
+        if(restart_time_left == nullptr)
         {
             restart_time_left = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft>();
-            restart_time_left->parent = this;
-            children["restart-time-left"] = restart_time_left;
         }
-        return children.at("restart-time-left");
+        return restart_time_left;
     }
 
     if(child_yang_name == "restart-timer-expiry-time")
     {
-        if(restart_timer_expiry_time != nullptr)
-        {
-            children["restart-timer-expiry-time"] = restart_timer_expiry_time;
-        }
-        else
+        if(restart_timer_expiry_time == nullptr)
         {
             restart_timer_expiry_time = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime>();
-            restart_timer_expiry_time->parent = this;
-            children["restart-timer-expiry-time"] = restart_timer_expiry_time;
         }
-        return children.at("restart-timer-expiry-time");
+        return restart_timer_expiry_time;
     }
 
     if(child_yang_name == "up-time")
@@ -3121,76 +2734,54 @@ std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime>();
         c->parent = this;
-        up_time.push_back(std::move(c));
-        children[segment_path] = up_time.back();
-        return children.at(segment_path);
+        up_time.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_children() const
 {
-    if(children.find("global-neighbor-flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global_neighbor_flags != nullptr)
     {
-        if(global_neighbor_flags != nullptr)
-        {
-            children["global-neighbor-flags"] = global_neighbor_flags;
-        }
+        children["global-neighbor-flags"] = global_neighbor_flags;
     }
 
     for (auto const & c : lost_communication_time)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("recovery-time-left") == children.end())
+    if(recovery_time_left != nullptr)
     {
-        if(recovery_time_left != nullptr)
-        {
-            children["recovery-time-left"] = recovery_time_left;
-        }
+        children["recovery-time-left"] = recovery_time_left;
     }
 
-    if(children.find("recovery-timer-exp-time") == children.end())
+    if(recovery_timer_exp_time != nullptr)
     {
-        if(recovery_timer_exp_time != nullptr)
-        {
-            children["recovery-timer-exp-time"] = recovery_timer_exp_time;
-        }
+        children["recovery-timer-exp-time"] = recovery_timer_exp_time;
     }
 
-    if(children.find("restart-time-left") == children.end())
+    if(restart_time_left != nullptr)
     {
-        if(restart_time_left != nullptr)
-        {
-            children["restart-time-left"] = restart_time_left;
-        }
+        children["restart-time-left"] = restart_time_left;
     }
 
-    if(children.find("restart-timer-expiry-time") == children.end())
+    if(restart_timer_expiry_time != nullptr)
     {
-        if(restart_timer_expiry_time != nullptr)
-        {
-            children["restart-timer-expiry-time"] = restart_timer_expiry_time;
-        }
+        children["restart-timer-expiry-time"] = restart_timer_expiry_time;
     }
 
     for (auto const & c : up_time)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3298,7 +2889,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFla
 
 }
 
-EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3323,20 +2914,12 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlag
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3386,7 +2969,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::
 
 }
 
-EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3411,20 +2994,12 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::g
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3474,7 +3049,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpir
 
 }
 
-EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3499,20 +3074,12 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiry
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3562,7 +3129,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft:
 
 }
 
-EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3587,20 +3154,12 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3650,7 +3209,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpT
 
 }
 
-EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3675,20 +3234,12 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTi
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3738,7 +3289,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_segme
 
 }
 
-EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3763,20 +3314,12 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_entity
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3826,7 +3369,7 @@ std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunication
 
 }
 
-EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3851,20 +3394,12 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationT
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3918,7 +3453,7 @@ std::string Rsvp::PsbBriefs::get_segment_path() const
 
 }
 
-EntityPath Rsvp::PsbBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3941,15 +3476,6 @@ EntityPath Rsvp::PsbBriefs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "psb-brief")
     {
         for(auto const & c : psb_brief)
@@ -3957,28 +3483,24 @@ std::shared_ptr<Entity> Rsvp::PsbBriefs::get_child_by_name(const std::string & c
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::PsbBriefs::PsbBrief>();
         c->parent = this;
-        psb_brief.push_back(std::move(c));
-        children[segment_path] = psb_brief.back();
-        return children.at(segment_path);
+        psb_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : psb_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4011,22 +3533,16 @@ Rsvp::PsbBriefs::PsbBrief::PsbBrief()
 	,traffic_spec(std::make_shared<Rsvp::PsbBriefs::PsbBrief::TrafficSpec>())
 {
     generic_traffic_spec->parent = this;
-    children["generic-traffic-spec"] = generic_traffic_spec;
 
     s2l_sub_lsp->parent = this;
-    children["s2l-sub-lsp"] = s2l_sub_lsp;
 
     session->parent = this;
-    children["session"] = session;
 
     session_attribute->parent = this;
-    children["session-attribute"] = session_attribute;
 
     template_->parent = this;
-    children["template"] = template_;
 
     traffic_spec->parent = this;
-    children["traffic-spec"] = traffic_spec;
 
     yang_name = "psb-brief"; yang_parent_name = "psb-briefs";
 }
@@ -4089,7 +3605,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::get_segment_path() const
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4124,156 +3640,94 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "generic-traffic-spec")
     {
-        if(generic_traffic_spec != nullptr)
-        {
-            children["generic-traffic-spec"] = generic_traffic_spec;
-        }
-        else
+        if(generic_traffic_spec == nullptr)
         {
             generic_traffic_spec = std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec>();
-            generic_traffic_spec->parent = this;
-            children["generic-traffic-spec"] = generic_traffic_spec;
         }
-        return children.at("generic-traffic-spec");
+        return generic_traffic_spec;
     }
 
     if(child_yang_name == "s2l-sub-lsp")
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
-        else
+        if(s2l_sub_lsp == nullptr)
         {
             s2l_sub_lsp = std::make_shared<Rsvp::PsbBriefs::PsbBrief::S2LSubLsp>();
-            s2l_sub_lsp->parent = this;
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
         }
-        return children.at("s2l-sub-lsp");
+        return s2l_sub_lsp;
     }
 
     if(child_yang_name == "session")
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
-        else
+        if(session == nullptr)
         {
             session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session>();
-            session->parent = this;
-            children["session"] = session;
         }
-        return children.at("session");
+        return session;
     }
 
     if(child_yang_name == "session-attribute")
     {
-        if(session_attribute != nullptr)
-        {
-            children["session-attribute"] = session_attribute;
-        }
-        else
+        if(session_attribute == nullptr)
         {
             session_attribute = std::make_shared<Rsvp::PsbBriefs::PsbBrief::SessionAttribute>();
-            session_attribute->parent = this;
-            children["session-attribute"] = session_attribute;
         }
-        return children.at("session-attribute");
+        return session_attribute;
     }
 
     if(child_yang_name == "template")
     {
-        if(template_ != nullptr)
-        {
-            children["template"] = template_;
-        }
-        else
+        if(template_ == nullptr)
         {
             template_ = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_>();
-            template_->parent = this;
-            children["template"] = template_;
         }
-        return children.at("template");
+        return template_;
     }
 
     if(child_yang_name == "traffic-spec")
     {
-        if(traffic_spec != nullptr)
-        {
-            children["traffic-spec"] = traffic_spec;
-        }
-        else
+        if(traffic_spec == nullptr)
         {
             traffic_spec = std::make_shared<Rsvp::PsbBriefs::PsbBrief::TrafficSpec>();
-            traffic_spec->parent = this;
-            children["traffic-spec"] = traffic_spec;
         }
-        return children.at("traffic-spec");
+        return traffic_spec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::get_children() const
 {
-    if(children.find("generic-traffic-spec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generic_traffic_spec != nullptr)
     {
-        if(generic_traffic_spec != nullptr)
-        {
-            children["generic-traffic-spec"] = generic_traffic_spec;
-        }
+        children["generic-traffic-spec"] = generic_traffic_spec;
     }
 
-    if(children.find("s2l-sub-lsp") == children.end())
+    if(s2l_sub_lsp != nullptr)
     {
-        if(s2l_sub_lsp != nullptr)
-        {
-            children["s2l-sub-lsp"] = s2l_sub_lsp;
-        }
+        children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
-    if(children.find("session") == children.end())
+    if(session != nullptr)
     {
-        if(session != nullptr)
-        {
-            children["session"] = session;
-        }
+        children["session"] = session;
     }
 
-    if(children.find("session-attribute") == children.end())
+    if(session_attribute != nullptr)
     {
-        if(session_attribute != nullptr)
-        {
-            children["session-attribute"] = session_attribute;
-        }
+        children["session-attribute"] = session_attribute;
     }
 
-    if(children.find("template") == children.end())
+    if(template_ != nullptr)
     {
-        if(template_ != nullptr)
-        {
-            children["template"] = template_;
-        }
+        children["template"] = template_;
     }
 
-    if(children.find("traffic-spec") == children.end())
+    if(traffic_spec != nullptr)
     {
-        if(traffic_spec != nullptr)
-        {
-            children["traffic-spec"] = traffic_spec;
-        }
+        children["traffic-spec"] = traffic_spec;
     }
 
     return children;
@@ -4336,7 +3790,6 @@ Rsvp::PsbBriefs::PsbBrief::Session::Session()
     rsvp_session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession>())
 {
     rsvp_session->parent = this;
-    children["rsvp-session"] = rsvp_session;
 
     yang_name = "session"; yang_parent_name = "psb-brief";
 }
@@ -4365,7 +3818,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Session::get_segment_path() const
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Session::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4388,41 +3841,24 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Session::get_entity_path(Entity* ancestor)
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rsvp-session")
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
-        else
+        if(rsvp_session == nullptr)
         {
             rsvp_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession>();
-            rsvp_session->parent = this;
-            children["rsvp-session"] = rsvp_session;
         }
-        return children.at("rsvp-session");
+        return rsvp_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::get_children() const
 {
-    if(children.find("rsvp-session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_session != nullptr)
     {
-        if(rsvp_session != nullptr)
-        {
-            children["rsvp-session"] = rsvp_session;
-        }
+        children["rsvp-session"] = rsvp_session;
     }
 
     return children;
@@ -4442,16 +3878,12 @@ Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::RsvpSession()
 	,ipv4_uni_session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession>())
 {
     ipv4->parent = this;
-    children["ipv4"] = ipv4;
 
     ipv4_lsp_session->parent = this;
-    children["ipv4-lsp-session"] = ipv4_lsp_session;
 
     ipv4_p2mp_lsp_session->parent = this;
-    children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
 
     ipv4_uni_session->parent = this;
-    children["ipv4-uni-session"] = ipv4_uni_session;
 
     yang_name = "rsvp-session"; yang_parent_name = "session";
 }
@@ -4488,7 +3920,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_segment_path() 
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4512,110 +3944,66 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_entity_path(Enti
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ipv4")
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
-        else
+        if(ipv4 == nullptr)
         {
             ipv4 = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4>();
-            ipv4->parent = this;
-            children["ipv4"] = ipv4;
         }
-        return children.at("ipv4");
+        return ipv4;
     }
 
     if(child_yang_name == "ipv4-lsp-session")
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
-        else
+        if(ipv4_lsp_session == nullptr)
         {
             ipv4_lsp_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession>();
-            ipv4_lsp_session->parent = this;
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
         }
-        return children.at("ipv4-lsp-session");
+        return ipv4_lsp_session;
     }
 
     if(child_yang_name == "ipv4-p2mp-lsp-session")
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
-        else
+        if(ipv4_p2mp_lsp_session == nullptr)
         {
             ipv4_p2mp_lsp_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession>();
-            ipv4_p2mp_lsp_session->parent = this;
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
         }
-        return children.at("ipv4-p2mp-lsp-session");
+        return ipv4_p2mp_lsp_session;
     }
 
     if(child_yang_name == "ipv4-uni-session")
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
-        else
+        if(ipv4_uni_session == nullptr)
         {
             ipv4_uni_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession>();
-            ipv4_uni_session->parent = this;
-            children["ipv4-uni-session"] = ipv4_uni_session;
         }
-        return children.at("ipv4-uni-session");
+        return ipv4_uni_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_children() const
 {
-    if(children.find("ipv4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
     {
-        if(ipv4 != nullptr)
-        {
-            children["ipv4"] = ipv4;
-        }
+        children["ipv4"] = ipv4;
     }
 
-    if(children.find("ipv4-lsp-session") == children.end())
+    if(ipv4_lsp_session != nullptr)
     {
-        if(ipv4_lsp_session != nullptr)
-        {
-            children["ipv4-lsp-session"] = ipv4_lsp_session;
-        }
+        children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
-    if(children.find("ipv4-p2mp-lsp-session") == children.end())
+    if(ipv4_p2mp_lsp_session != nullptr)
     {
-        if(ipv4_p2mp_lsp_session != nullptr)
-        {
-            children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-        }
+        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    if(children.find("ipv4-uni-session") == children.end())
+    if(ipv4_uni_session != nullptr)
     {
-        if(ipv4_uni_session != nullptr)
-        {
-            children["ipv4-uni-session"] = ipv4_uni_session;
-        }
+        children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     return children;
@@ -4666,7 +4054,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_segment_p
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4692,20 +4080,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_entity_pat
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4762,7 +4142,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4788,20 +4168,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4858,7 +4230,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4884,20 +4256,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4954,7 +4318,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession:
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4980,20 +4344,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5044,7 +4400,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_segment_path() const
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5068,20 +4424,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5098,7 +4446,6 @@ Rsvp::PsbBriefs::PsbBrief::Template_::Template_()
     rsvp_filter(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter>())
 {
     rsvp_filter->parent = this;
-    children["rsvp-filter"] = rsvp_filter;
 
     yang_name = "template"; yang_parent_name = "psb-brief";
 }
@@ -5127,7 +4474,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Template_::get_segment_path() const
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5150,41 +4497,24 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "rsvp-filter")
     {
-        if(rsvp_filter != nullptr)
-        {
-            children["rsvp-filter"] = rsvp_filter;
-        }
-        else
+        if(rsvp_filter == nullptr)
         {
             rsvp_filter = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter>();
-            rsvp_filter->parent = this;
-            children["rsvp-filter"] = rsvp_filter;
         }
-        return children.at("rsvp-filter");
+        return rsvp_filter;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Template_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Template_::get_children() const
 {
-    if(children.find("rsvp-filter") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_filter != nullptr)
     {
-        if(rsvp_filter != nullptr)
-        {
-            children["rsvp-filter"] = rsvp_filter;
-        }
+        children["rsvp-filter"] = rsvp_filter;
     }
 
     return children;
@@ -5202,10 +4532,8 @@ Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::RsvpFilter()
 	,udp_ipv4_session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session>())
 {
     p2mp_ipv4_session->parent = this;
-    children["p2mp-ipv4-session"] = p2mp_ipv4_session;
 
     udp_ipv4_session->parent = this;
-    children["udp-ipv4-session"] = udp_ipv4_session;
 
     yang_name = "rsvp-filter"; yang_parent_name = "template";
 }
@@ -5238,7 +4566,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_segment_path()
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5262,64 +4590,38 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_entity_path(Ent
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "p2mp-ipv4-session")
     {
-        if(p2mp_ipv4_session != nullptr)
-        {
-            children["p2mp-ipv4-session"] = p2mp_ipv4_session;
-        }
-        else
+        if(p2mp_ipv4_session == nullptr)
         {
             p2mp_ipv4_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session>();
-            p2mp_ipv4_session->parent = this;
-            children["p2mp-ipv4-session"] = p2mp_ipv4_session;
         }
-        return children.at("p2mp-ipv4-session");
+        return p2mp_ipv4_session;
     }
 
     if(child_yang_name == "udp-ipv4-session")
     {
-        if(udp_ipv4_session != nullptr)
-        {
-            children["udp-ipv4-session"] = udp_ipv4_session;
-        }
-        else
+        if(udp_ipv4_session == nullptr)
         {
             udp_ipv4_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session>();
-            udp_ipv4_session->parent = this;
-            children["udp-ipv4-session"] = udp_ipv4_session;
         }
-        return children.at("udp-ipv4-session");
+        return udp_ipv4_session;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_children() const
 {
-    if(children.find("p2mp-ipv4-session") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(p2mp_ipv4_session != nullptr)
     {
-        if(p2mp_ipv4_session != nullptr)
-        {
-            children["p2mp-ipv4-session"] = p2mp_ipv4_session;
-        }
+        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
     }
 
-    if(children.find("udp-ipv4-session") == children.end())
+    if(udp_ipv4_session != nullptr)
     {
-        if(udp_ipv4_session != nullptr)
-        {
-            children["udp-ipv4-session"] = udp_ipv4_session;
-        }
+        children["udp-ipv4-session"] = udp_ipv4_session;
     }
 
     return children;
@@ -5367,7 +4669,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::ge
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5392,20 +4694,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5461,7 +4755,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::g
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5488,20 +4782,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::ge
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5533,7 +4819,6 @@ Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessionAttribute()
     sess_attribute_flags(std::make_shared<Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags>())
 {
     sess_attribute_flags->parent = this;
-    children["sess-attribute-flags"] = sess_attribute_flags;
 
     yang_name = "session-attribute"; yang_parent_name = "psb-brief";
 }
@@ -5566,7 +4851,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_segment_path() cons
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5591,41 +4876,24 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "sess-attribute-flags")
     {
-        if(sess_attribute_flags != nullptr)
-        {
-            children["sess-attribute-flags"] = sess_attribute_flags;
-        }
-        else
+        if(sess_attribute_flags == nullptr)
         {
             sess_attribute_flags = std::make_shared<Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags>();
-            sess_attribute_flags->parent = this;
-            children["sess-attribute-flags"] = sess_attribute_flags;
         }
-        return children.at("sess-attribute-flags");
+        return sess_attribute_flags;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_children() const
 {
-    if(children.find("sess-attribute-flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sess_attribute_flags != nullptr)
     {
-        if(sess_attribute_flags != nullptr)
-        {
-            children["sess-attribute-flags"] = sess_attribute_flags;
-        }
+        children["sess-attribute-flags"] = sess_attribute_flags;
     }
 
     return children;
@@ -5686,7 +4954,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5714,20 +4982,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5798,7 +5058,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_segment_path() const
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5826,20 +5086,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5875,10 +5127,8 @@ Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::GenericTrafficSpec()
 	,intsrv_tspec(std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec>())
 {
     g709otn_tspec->parent = this;
-    children["g709otn-tspec"] = g709otn_tspec;
 
     intsrv_tspec->parent = this;
-    children["intsrv-tspec"] = intsrv_tspec;
 
     yang_name = "generic-traffic-spec"; yang_parent_name = "psb-brief";
 }
@@ -5911,7 +5161,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_segment_path() co
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5935,64 +5185,38 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_entity_path(Entity
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "g709otn-tspec")
     {
-        if(g709otn_tspec != nullptr)
-        {
-            children["g709otn-tspec"] = g709otn_tspec;
-        }
-        else
+        if(g709otn_tspec == nullptr)
         {
             g709otn_tspec = std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec>();
-            g709otn_tspec->parent = this;
-            children["g709otn-tspec"] = g709otn_tspec;
         }
-        return children.at("g709otn-tspec");
+        return g709otn_tspec;
     }
 
     if(child_yang_name == "intsrv-tspec")
     {
-        if(intsrv_tspec != nullptr)
-        {
-            children["intsrv-tspec"] = intsrv_tspec;
-        }
-        else
+        if(intsrv_tspec == nullptr)
         {
             intsrv_tspec = std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec>();
-            intsrv_tspec->parent = this;
-            children["intsrv-tspec"] = intsrv_tspec;
         }
-        return children.at("intsrv-tspec");
+        return intsrv_tspec;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_children() const
 {
-    if(children.find("g709otn-tspec") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g709otn_tspec != nullptr)
     {
-        if(g709otn_tspec != nullptr)
-        {
-            children["g709otn-tspec"] = g709otn_tspec;
-        }
+        children["g709otn-tspec"] = g709otn_tspec;
     }
 
-    if(children.find("intsrv-tspec") == children.end())
+    if(intsrv_tspec != nullptr)
     {
-        if(intsrv_tspec != nullptr)
-        {
-            children["intsrv-tspec"] = intsrv_tspec;
-        }
+        children["intsrv-tspec"] = intsrv_tspec;
     }
 
     return children;
@@ -6046,7 +5270,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_seg
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6073,20 +5297,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_enti
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6153,7 +5369,7 @@ std::string Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_segm
 
 }
 
-EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6181,20 +5397,12 @@ EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_entit
 
 std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6260,7 +5468,7 @@ std::string Rsvp::GlobalNeighborBriefs::get_segment_path() const
 
 }
 
-EntityPath Rsvp::GlobalNeighborBriefs::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborBriefs::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6283,15 +5491,6 @@ EntityPath Rsvp::GlobalNeighborBriefs::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global-neighbor-brief")
     {
         for(auto const & c : global_neighbor_brief)
@@ -6299,28 +5498,24 @@ std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::get_child_by_name(const std:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief>();
         c->parent = this;
-        global_neighbor_brief.push_back(std::move(c));
-        children[segment_path] = global_neighbor_brief.back();
-        return children.at(segment_path);
+        global_neighbor_brief.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborBriefs::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : global_neighbor_brief)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6344,7 +5539,6 @@ Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborBrief()
     global_neighbor_flags(std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags>())
 {
     global_neighbor_flags->parent = this;
-    children["global-neighbor-flags"] = global_neighbor_flags;
 
     yang_name = "global-neighbor-brief"; yang_parent_name = "global-neighbor-briefs";
 }
@@ -6445,7 +5639,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_segment_path() 
 
 }
 
-EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6480,28 +5674,13 @@ EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_entity_path(Enti
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "global-neighbor-flags")
     {
-        if(global_neighbor_flags != nullptr)
-        {
-            children["global-neighbor-flags"] = global_neighbor_flags;
-        }
-        else
+        if(global_neighbor_flags == nullptr)
         {
             global_neighbor_flags = std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags>();
-            global_neighbor_flags->parent = this;
-            children["global-neighbor-flags"] = global_neighbor_flags;
         }
-        return children.at("global-neighbor-flags");
+        return global_neighbor_flags;
     }
 
     if(child_yang_name == "lost-communication-time")
@@ -6511,15 +5690,13 @@ std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime>();
         c->parent = this;
-        lost_communication_time.push_back(std::move(c));
-        children[segment_path] = lost_communication_time.back();
-        return children.at(segment_path);
+        lost_communication_time.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "up-time")
@@ -6529,44 +5706,34 @@ std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime>();
         c->parent = this;
-        up_time.push_back(std::move(c));
-        children[segment_path] = up_time.back();
-        return children.at(segment_path);
+        up_time.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_children() const
 {
-    if(children.find("global-neighbor-flags") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(global_neighbor_flags != nullptr)
     {
-        if(global_neighbor_flags != nullptr)
-        {
-            children["global-neighbor-flags"] = global_neighbor_flags;
-        }
+        children["global-neighbor-flags"] = global_neighbor_flags;
     }
 
     for (auto const & c : lost_communication_time)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : up_time)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6642,7 +5809,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags
 
 }
 
-EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6667,20 +5834,12 @@ EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags:
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6730,7 +5889,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_segment
 
 }
 
-EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6755,20 +5914,12 @@ EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_entity_p
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6818,7 +5969,7 @@ std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTi
 
 }
 
-EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::get_entity_path(Entity* ancestor) const
+const EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6843,20 +5994,12 @@ EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTim
 
 std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::get_children()
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

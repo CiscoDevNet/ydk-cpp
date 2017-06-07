@@ -46,7 +46,7 @@ std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_segment_
 
 }
 
-EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -72,20 +72,12 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_entity_pa
 
 std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -136,7 +128,7 @@ std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_
 
 }
 
-EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -160,20 +152,12 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_e
 
 std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -234,7 +218,7 @@ std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::get_segment_path
 
 }
 
-EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -264,20 +248,12 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::get_entity_path(E
 
 std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -351,7 +327,7 @@ std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::get_segment_
 
 }
 
-EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -374,15 +350,6 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::get_entity_pa
 
 std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "path-option")
     {
         for(auto const & c : path_option)
@@ -390,28 +357,24 @@ std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption>();
         c->parent = this;
-        path_option.push_back(std::move(c));
-        children[segment_path] = path_option.back();
-        return children.at(segment_path);
+        path_option.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : path_option)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -476,7 +439,7 @@ std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::
 
 }
 
-EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -508,20 +471,12 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::g
 
 std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -605,7 +560,7 @@ std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::get_segment_pa
 
 }
 
-EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -632,20 +587,12 @@ EntityPath MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::get_entity_path
 
 std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -679,10 +626,8 @@ MplsTe::Lcac::Lcac()
 	,flooding_threshold(std::make_shared<MplsTe::Lcac::FloodingThreshold>())
 {
     bfd->parent = this;
-    children["bfd"] = bfd;
 
     flooding_threshold->parent = this;
-    children["flooding-threshold"] = flooding_threshold;
 
     yang_name = "lcac"; yang_parent_name = "mpls-te";
 }
@@ -719,7 +664,7 @@ std::string MplsTe::Lcac::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Lcac::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Lcac::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -745,64 +690,38 @@ EntityPath MplsTe::Lcac::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Lcac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "bfd")
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
-        else
+        if(bfd == nullptr)
         {
             bfd = std::make_shared<MplsTe::Lcac::Bfd>();
-            bfd->parent = this;
-            children["bfd"] = bfd;
         }
-        return children.at("bfd");
+        return bfd;
     }
 
     if(child_yang_name == "flooding-threshold")
     {
-        if(flooding_threshold != nullptr)
-        {
-            children["flooding-threshold"] = flooding_threshold;
-        }
-        else
+        if(flooding_threshold == nullptr)
         {
             flooding_threshold = std::make_shared<MplsTe::Lcac::FloodingThreshold>();
-            flooding_threshold->parent = this;
-            children["flooding-threshold"] = flooding_threshold;
         }
-        return children.at("flooding-threshold");
+        return flooding_threshold;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Lcac::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Lcac::get_children() const
 {
-    if(children.find("bfd") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd != nullptr)
     {
-        if(bfd != nullptr)
-        {
-            children["bfd"] = bfd;
-        }
+        children["bfd"] = bfd;
     }
 
-    if(children.find("flooding-threshold") == children.end())
+    if(flooding_threshold != nullptr)
     {
-        if(flooding_threshold != nullptr)
-        {
-            children["flooding-threshold"] = flooding_threshold;
-        }
+        children["flooding-threshold"] = flooding_threshold;
     }
 
     return children;
@@ -858,7 +777,7 @@ std::string MplsTe::Lcac::Bfd::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Lcac::Bfd::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Lcac::Bfd::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -883,20 +802,12 @@ EntityPath MplsTe::Lcac::Bfd::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> MplsTe::Lcac::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Lcac::Bfd::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Lcac::Bfd::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -946,7 +857,7 @@ std::string MplsTe::Lcac::FloodingThreshold::get_segment_path() const
 
 }
 
-EntityPath MplsTe::Lcac::FloodingThreshold::get_entity_path(Entity* ancestor) const
+const EntityPath MplsTe::Lcac::FloodingThreshold::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -971,20 +882,12 @@ EntityPath MplsTe::Lcac::FloodingThreshold::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> MplsTe::Lcac::FloodingThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & MplsTe::Lcac::FloodingThreshold::get_children()
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::Lcac::FloodingThreshold::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

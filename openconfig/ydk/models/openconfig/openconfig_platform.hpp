@@ -19,23 +19,20 @@ class Components : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Component; //type: Components::Component
 
         std::vector<std::shared_ptr<openconfig_platform::Components::Component> > component;
-
-
+        
 }; // Components
 
 
@@ -47,16 +44,14 @@ class Components::Component : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_platform::Components::Component::Config::name)
         YLeaf name;
-
         class Config; //type: Components::Component::Config
         class State; //type: Components::Component::State
         class Properties; //type: Components::Component::Properties
@@ -70,8 +65,7 @@ class Components::Component : public Entity
         std::shared_ptr<openconfig_platform::Components::Component::State> state;
         std::shared_ptr<openconfig_platform::Components::Component::Subcomponents> subcomponents;
         std::shared_ptr<openconfig_platform::Components::Component::Transceiver> transceiver;
-
-
+        
 }; // Components::Component
 
 
@@ -83,16 +77,13 @@ class Components::Component::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
-
-
 
 }; // Components::Component::Config
 
@@ -105,12 +96,11 @@ class Components::Component::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf type; //type: identityref
@@ -120,8 +110,6 @@ class Components::Component::State : public Entity
         YLeaf version; //type: string
         YLeaf serial_no; //type: string
         YLeaf part_no; //type: string
-
-
 
 }; // Components::Component::State
 
@@ -134,19 +122,16 @@ class Components::Component::Properties : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Property; //type: Components::Component::Properties::Property
 
         std::vector<std::shared_ptr<openconfig_platform::Components::Component::Properties::Property> > property;
-
-
+        
 }; // Components::Component::Properties
 
 
@@ -158,23 +143,20 @@ class Components::Component::Properties::Property : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_platform::Components::Component::Properties::Property::Config::name)
         YLeaf name;
-
         class Config; //type: Components::Component::Properties::Property::Config
         class State; //type: Components::Component::Properties::Property::State
 
         std::shared_ptr<openconfig_platform::Components::Component::Properties::Property::Config> config;
         std::shared_ptr<openconfig_platform::Components::Component::Properties::Property::State> state;
-
-
+        
 }; // Components::Component::Properties::Property
 
 
@@ -186,17 +168,14 @@ class Components::Component::Properties::Property::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf value_; //type: one of uint64, boolean, int64, string, decimal64
-
-
 
 }; // Components::Component::Properties::Property::Config
 
@@ -209,18 +188,15 @@ class Components::Component::Properties::Property::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf name; //type: string
         YLeaf value_; //type: one of uint64, boolean, int64, string, decimal64
         YLeaf configurable; //type: boolean
-
-
 
 }; // Components::Component::Properties::Property::State
 
@@ -233,19 +209,16 @@ class Components::Component::Subcomponents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Subcomponent; //type: Components::Component::Subcomponents::Subcomponent
 
         std::vector<std::shared_ptr<openconfig_platform::Components::Component::Subcomponents::Subcomponent> > subcomponent;
-
-
+        
 }; // Components::Component::Subcomponents
 
 
@@ -257,23 +230,20 @@ class Components::Component::Subcomponents::Subcomponent : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: leafref (refers to openconfig_platform::Components::Component::Subcomponents::Subcomponent::Config::name)
         YLeaf name;
-
         class Config; //type: Components::Component::Subcomponents::Subcomponent::Config
         class State; //type: Components::Component::Subcomponents::Subcomponent::State
 
         std::shared_ptr<openconfig_platform::Components::Component::Subcomponents::Subcomponent::Config> config;
         std::shared_ptr<openconfig_platform::Components::Component::Subcomponents::Subcomponent::State> state;
-
-
+        
 }; // Components::Component::Subcomponents::Subcomponent
 
 
@@ -285,17 +255,14 @@ class Components::Component::Subcomponents::Subcomponent::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_platform::Components::Component::Config::name)
         YLeaf name;
-
-
 
 }; // Components::Component::Subcomponents::Subcomponent::Config
 
@@ -308,17 +275,14 @@ class Components::Component::Subcomponents::Subcomponent::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: string (refers to openconfig_platform::Components::Component::Config::name)
         YLeaf name;
-
-
 
 }; // Components::Component::Subcomponents::Subcomponent::State
 
@@ -331,13 +295,11 @@ class Components::Component::Transceiver : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Components::Component::Transceiver::Config
         class State; //type: Components::Component::Transceiver::State
@@ -346,8 +308,7 @@ class Components::Component::Transceiver : public Entity
         std::shared_ptr<openconfig_platform::Components::Component::Transceiver::Config> config;
         std::shared_ptr<openconfig_platform::Components::Component::Transceiver::PhysicalChannels> physical_channels;
         std::shared_ptr<openconfig_platform::Components::Component::Transceiver::State> state;
-
-
+        
 }; // Components::Component::Transceiver
 
 
@@ -359,17 +320,14 @@ class Components::Component::Transceiver::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf form_factor; //type: Transceiver_Form_Factor_TypeIdentity
-
-
 
 }; // Components::Component::Transceiver::Config
 
@@ -382,12 +340,11 @@ class Components::Component::Transceiver::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf enabled; //type: boolean
         YLeaf form_factor; //type: Transceiver_Form_Factor_TypeIdentity
@@ -403,9 +360,7 @@ class Components::Component::Transceiver::State : public Entity
         YLeaf serial_no; //type: string
         YLeaf date_code; //type: string
         YLeaf fault_condition; //type: boolean
-
         class PresentEnum;
-
 
 }; // Components::Component::Transceiver::State
 
@@ -418,19 +373,16 @@ class Components::Component::Transceiver::PhysicalChannels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Channel; //type: Components::Component::Transceiver::PhysicalChannels::Channel
 
         std::vector<std::shared_ptr<openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel> > channel;
-
-
+        
 }; // Components::Component::Transceiver::PhysicalChannels
 
 
@@ -442,23 +394,20 @@ class Components::Component::Transceiver::PhysicalChannels::Channel : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         //type: uint16 (refers to openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel::Config::index_)
         YLeaf index_;
-
         class Config; //type: Components::Component::Transceiver::PhysicalChannels::Channel::Config
         class State; //type: Components::Component::Transceiver::PhysicalChannels::Channel::State
 
         std::shared_ptr<openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel::Config> config;
         std::shared_ptr<openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel::State> state;
-
-
+        
 }; // Components::Component::Transceiver::PhysicalChannels::Channel
 
 
@@ -470,19 +419,16 @@ class Components::Component::Transceiver::PhysicalChannels::Channel::Config : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: uint16
         YLeaf description; //type: string
         YLeaf tx_laser; //type: boolean
         YLeaf target_output_power; //type: decimal64
-
-
 
 }; // Components::Component::Transceiver::PhysicalChannels::Channel::Config
 
@@ -495,19 +441,17 @@ class Components::Component::Transceiver::PhysicalChannels::Channel::State : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf index_; //type: uint16
         YLeaf description; //type: string
         YLeaf tx_laser; //type: boolean
         YLeaf target_output_power; //type: decimal64
         YLeaf output_frequency; //type: uint64
-
         class OutputPower; //type: Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower
         class InputPower; //type: Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower
         class LaserBiasCurrent; //type: Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent
@@ -515,8 +459,7 @@ class Components::Component::Transceiver::PhysicalChannels::Channel::State : pub
         std::shared_ptr<openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower> input_power;
         std::shared_ptr<openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent> laser_bias_current;
         std::shared_ptr<openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower> output_power;
-
-
+        
 }; // Components::Component::Transceiver::PhysicalChannels::Channel::State
 
 
@@ -528,19 +471,16 @@ class Components::Component::Transceiver::PhysicalChannels::Channel::State::Outp
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower
 
@@ -553,19 +493,16 @@ class Components::Component::Transceiver::PhysicalChannels::Channel::State::Inpu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower
 
@@ -578,19 +515,16 @@ class Components::Component::Transceiver::PhysicalChannels::Channel::State::Lase
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent
 
@@ -603,21 +537,18 @@ class Components::Component::OpticalChannel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Config; //type: Components::Component::OpticalChannel::Config
         class State; //type: Components::Component::OpticalChannel::State
 
         std::shared_ptr<openconfig_platform::Components::Component::OpticalChannel::Config> config;
         std::shared_ptr<openconfig_platform::Components::Component::OpticalChannel::State> state;
-
-
+        
 }; // Components::Component::OpticalChannel
 
 
@@ -629,20 +560,17 @@ class Components::Component::OpticalChannel::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf frequency; //type: uint64
         YLeaf target_output_power; //type: decimal64
         YLeaf operational_mode; //type: uint16
         //type: leafref (refers to openconfig_platform::Components::Component::name)
         YLeaf line_port;
-
-
 
 }; // Components::Component::OpticalChannel::Config
 
@@ -655,12 +583,11 @@ class Components::Component::OpticalChannel::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf frequency; //type: uint64
         YLeaf target_output_power; //type: decimal64
@@ -668,7 +595,6 @@ class Components::Component::OpticalChannel::State : public Entity
         //type: leafref (refers to openconfig_platform::Components::Component::name)
         YLeaf line_port;
         YLeaf group_id; //type: uint32
-
         class OutputPower; //type: Components::Component::OpticalChannel::State::OutputPower
         class InputPower; //type: Components::Component::OpticalChannel::State::InputPower
         class LaserBiasCurrent; //type: Components::Component::OpticalChannel::State::LaserBiasCurrent
@@ -684,8 +610,7 @@ class Components::Component::OpticalChannel::State : public Entity
         std::shared_ptr<openconfig_platform::Components::Component::OpticalChannel::State::PolarizationDependentLoss> polarization_dependent_loss;
         std::shared_ptr<openconfig_platform::Components::Component::OpticalChannel::State::PolarizationModeDispersion> polarization_mode_dispersion;
         std::shared_ptr<openconfig_platform::Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion> second_order_polarization_mode_dispersion;
-
-
+        
 }; // Components::Component::OpticalChannel::State
 
 
@@ -697,19 +622,16 @@ class Components::Component::OpticalChannel::State::OutputPower : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::OpticalChannel::State::OutputPower
 
@@ -722,19 +644,16 @@ class Components::Component::OpticalChannel::State::InputPower : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::OpticalChannel::State::InputPower
 
@@ -747,19 +666,16 @@ class Components::Component::OpticalChannel::State::LaserBiasCurrent : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::OpticalChannel::State::LaserBiasCurrent
 
@@ -772,19 +688,16 @@ class Components::Component::OpticalChannel::State::ChromaticDispersion : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::OpticalChannel::State::ChromaticDispersion
 
@@ -797,19 +710,16 @@ class Components::Component::OpticalChannel::State::PolarizationModeDispersion :
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::OpticalChannel::State::PolarizationModeDispersion
 
@@ -822,19 +732,16 @@ class Components::Component::OpticalChannel::State::SecondOrderPolarizationModeD
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion
 
@@ -847,19 +754,16 @@ class Components::Component::OpticalChannel::State::PolarizationDependentLoss : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf instant; //type: decimal64
         YLeaf avg; //type: decimal64
         YLeaf min; //type: decimal64
         YLeaf max; //type: decimal64
-
-
 
 }; // Components::Component::OpticalChannel::State::PolarizationDependentLoss
 

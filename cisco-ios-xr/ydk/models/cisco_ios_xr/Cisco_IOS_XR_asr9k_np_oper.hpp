@@ -18,23 +18,20 @@ class HardwareModuleNp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
 
-
-
         class Nodes; //type: HardwareModuleNp::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes> nodes;
-
-
+        
 }; // HardwareModuleNp
 
 
@@ -46,19 +43,16 @@ class HardwareModuleNp::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Node; //type: HardwareModuleNp::Nodes::Node
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node> > node;
-
-
+        
 }; // HardwareModuleNp::Nodes
 
 
@@ -70,20 +64,17 @@ class HardwareModuleNp::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf node_name; //type: string
-
         class Nps; //type: HardwareModuleNp::Nodes::Node::Nps
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps> nps;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node
 
 
@@ -95,19 +86,16 @@ class HardwareModuleNp::Nodes::Node::Nps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Np; //type: HardwareModuleNp::Nodes::Node::Nps::Np
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np> > np;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps
 
 
@@ -119,15 +107,13 @@ class HardwareModuleNp::Nodes::Node::Nps::Np : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf np_name; //type: string
-
         class ChnLoad; //type: HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad
         class TcamSummary; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary
         class Counters; //type: HardwareModuleNp::Nodes::Node::Nps::Np::Counters
@@ -137,8 +123,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np : public Entity
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::Counters> counters;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop> fast_drop;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary> tcam_summary;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np
 
 
@@ -150,19 +135,16 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NpChnLoad; //type: HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad> > np_chn_load;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad
 
 
@@ -174,12 +156,11 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf flow_ctr_counter; //type: uint32
         YLeaf avg_rfd_usage; //type: uint32
@@ -187,8 +168,6 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad : public Entity
         YLeaf avg_guar_rfd_usage; //type: uint32
         YLeaf peak_guar_rfd_usage; //type: uint32
         YLeaf interface_name; //type: string
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad
 
@@ -201,21 +180,18 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class InternalTcamInfo; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
         class TcamInfo; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo> internal_tcam_info;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo> tcam_info;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary
 
 
@@ -227,13 +203,11 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TcamLtOds2; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2
         class TcamLtOds8; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8
@@ -242,8 +216,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo : pu
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2> > tcam_lt_l2;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2> tcam_lt_ods2;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8> tcam_lt_ods8;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
 
 
@@ -255,16 +228,14 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_entries; //type: uint32
         YLeaf free_entries; //type: uint32
-
         class AppIdIfib; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib
         class AppIdQos; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos
         class AppIdAcl; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl
@@ -280,8 +251,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr> app_id_pbr;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos> app_id_qos;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry> application_edpl_entry;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2
 
 
@@ -293,18 +263,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib
 
@@ -317,18 +284,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos
 
@@ -341,18 +305,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl
 
@@ -365,18 +326,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon
 
@@ -389,18 +347,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi
 
@@ -413,18 +368,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr
 
@@ -437,18 +389,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry
 
@@ -461,16 +410,14 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf max_entries; //type: uint32
         YLeaf free_entries; //type: uint32
-
         class AppIdIfib; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib
         class AppIdQos; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos
         class AppIdAcl; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl
@@ -486,8 +433,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr> app_id_pbr;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos> app_id_qos;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry> application_edpl_entry;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8
 
 
@@ -499,18 +445,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib
 
@@ -523,18 +466,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos
 
@@ -547,18 +487,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl
 
@@ -571,18 +508,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon
 
@@ -595,18 +529,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi
 
@@ -619,18 +550,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr
 
@@ -643,18 +571,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf total_used_entries; //type: uint32
         YLeaf total_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry
 
@@ -667,18 +592,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tca
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf partition_id; //type: uint32
         YLeaf valid_entries; //type: uint32
         YLeaf free_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2
 
@@ -691,13 +613,11 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class TcamLtOds2; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2
         class TcamLtOds8; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8
@@ -706,8 +626,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo : public Ent
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2> > tcam_lt_l2;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2> tcam_lt_ods2;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8> tcam_lt_ods8;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo
 
 
@@ -719,16 +638,14 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf free_entries; //type: uint32
         YLeaf reserved_entries; //type: uint32
-
         class AclCommon; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon
         class AppIdIfib; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib
         class AppIdQos; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos
@@ -746,8 +663,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2 
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi> app_id_li;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr> app_id_pbr;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos> app_id_qos;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2
 
 
@@ -759,17 +675,14 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf free_entries; //type: uint32
         YLeaf allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon
 
@@ -782,18 +695,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib
 
@@ -806,18 +716,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos
 
@@ -830,18 +737,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl
 
@@ -854,18 +758,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon
 
@@ -878,18 +779,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi
 
@@ -902,18 +800,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr
 
@@ -926,18 +821,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl
 
@@ -950,16 +842,14 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf free_entries; //type: uint32
         YLeaf reserved_entries; //type: uint32
-
         class AclCommon; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon
         class AppIdIfib; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib
         class AppIdQos; //type: HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos
@@ -977,8 +867,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8 
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi> app_id_li;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr> app_id_pbr;
         std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos> app_id_qos;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8
 
 
@@ -990,17 +879,14 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf free_entries; //type: uint32
         YLeaf allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon
 
@@ -1013,18 +899,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib
 
@@ -1037,18 +920,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos
 
@@ -1061,18 +941,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl
 
@@ -1085,18 +962,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon
 
@@ -1109,18 +983,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi
 
@@ -1133,18 +1004,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr
 
@@ -1157,18 +1025,15 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8:
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf num_vmr_ids; //type: uint32
         YLeaf num_active_entries; //type: uint32
         YLeaf num_allocated_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl
 
@@ -1181,19 +1046,16 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2 : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf partition_id; //type: uint32
         YLeaf priority; //type: uint32
         YLeaf valid_entries; //type: uint32
         YLeaf free_entries; //type: uint32
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2
 
@@ -1206,19 +1068,16 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::Counters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NpCounter; //type: HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter> > np_counter;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::Counters
 
 
@@ -1230,20 +1089,17 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf counter_index; //type: uint32
         YLeaf counter_value; //type: uint64
         YLeaf rate; //type: uint32
         YLeaf counter_type; //type: string
         YLeaf counter_name; //type: string
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter
 
@@ -1256,19 +1112,16 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NpFastDrop; //type: HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop> > np_fast_drop;
-
-
+        
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop
 
 
@@ -1280,17 +1133,14 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf interface_name; //type: string
         YLeaf counter_value; //type: uint64
-
-
 
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop
 

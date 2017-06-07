@@ -19,8 +19,6 @@ class IanaInterfaceTypeIdentity : public ietf_interfaces::InterfaceTypeIdentity,
         ~IanaInterfaceTypeIdentity();
 
 
-
-
 }; // IanaInterfaceTypeIdentity
 
 class VoicefxoIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -28,8 +26,6 @@ class VoicefxoIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
     public:
         VoicefxoIdentity();
         ~VoicefxoIdentity();
-
-
 
 
 }; // VoicefxoIdentity
@@ -41,8 +37,6 @@ class AtmvciendptIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
         ~AtmvciendptIdentity();
 
 
-
-
 }; // AtmvciendptIdentity
 
 class Propbwap2MpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -50,8 +44,6 @@ class Propbwap2MpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
     public:
         Propbwap2MpIdentity();
         ~Propbwap2MpIdentity();
-
-
 
 
 }; // Propbwap2MpIdentity
@@ -63,8 +55,6 @@ class PropdocswirelessdownstreamIdentity : public iana_if_type::IanaInterfaceTyp
         ~PropdocswirelessdownstreamIdentity();
 
 
-
-
 }; // PropdocswirelessdownstreamIdentity
 
 class V11Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -72,8 +62,6 @@ class V11Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         V11Identity();
         ~V11Identity();
-
-
 
 
 }; // V11Identity
@@ -85,8 +73,6 @@ class SoftwareloopbackIdentity : public iana_if_type::IanaInterfaceTypeIdentity,
         ~SoftwareloopbackIdentity();
 
 
-
-
 }; // SoftwareloopbackIdentity
 
 class HdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -94,8 +80,6 @@ class HdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         HdlcIdentity();
         ~HdlcIdentity();
-
-
 
 
 }; // HdlcIdentity
@@ -107,8 +91,6 @@ class VoicefgdosIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~VoicefgdosIdentity();
 
 
-
-
 }; // VoicefgdosIdentity
 
 class FastetherfxIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -116,8 +98,6 @@ class FastetherfxIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
     public:
         FastetherfxIdentity();
         ~FastetherfxIdentity();
-
-
 
 
 }; // FastetherfxIdentity
@@ -129,8 +109,6 @@ class DvbtdmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~DvbtdmIdentity();
 
 
-
-
 }; // DvbtdmIdentity
 
 class NfasIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -138,8 +116,6 @@ class NfasIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         NfasIdentity();
         ~NfasIdentity();
-
-
 
 
 }; // NfasIdentity
@@ -151,8 +127,6 @@ class IfpwtypeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~IfpwtypeIdentity();
 
 
-
-
 }; // IfpwtypeIdentity
 
 class L2VlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -160,8 +134,6 @@ class L2VlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         L2VlanIdentity();
         ~L2VlanIdentity();
-
-
 
 
 }; // L2VlanIdentity
@@ -173,8 +145,6 @@ class Adsl2PlusIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~Adsl2PlusIdentity();
 
 
-
-
 }; // Adsl2PlusIdentity
 
 class Ieee802154Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -182,8 +152,6 @@ class Ieee802154Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
     public:
         Ieee802154Identity();
         ~Ieee802154Identity();
-
-
 
 
 }; // Ieee802154Identity
@@ -195,8 +163,6 @@ class VoicefxsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~VoicefxsIdentity();
 
 
-
-
 }; // VoicefxsIdentity
 
 class DvbrcsmaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -204,8 +170,6 @@ class DvbrcsmaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
     public:
         DvbrcsmaclayerIdentity();
         ~DvbrcsmaclayerIdentity();
-
-
 
 
 }; // DvbrcsmaclayerIdentity
@@ -217,8 +181,6 @@ class IdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~IdslIdentity();
 
 
-
-
 }; // IdslIdentity
 
 class InfinibandIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -226,8 +188,6 @@ class InfinibandIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
     public:
         InfinibandIdentity();
         ~InfinibandIdentity();
-
-
 
 
 }; // InfinibandIdentity
@@ -239,8 +199,6 @@ class Ddnx25Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~Ddnx25Identity();
 
 
-
-
 }; // Ddnx25Identity
 
 class Wwanpp2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -248,8 +206,6 @@ class Wwanpp2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         Wwanpp2Identity();
         ~Wwanpp2Identity();
-
-
 
 
 }; // Wwanpp2Identity
@@ -261,8 +217,6 @@ class DocscableupstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity
         ~DocscableupstreamIdentity();
 
 
-
-
 }; // DocscableupstreamIdentity
 
 class Ethernet3MbitIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -270,8 +224,6 @@ class Ethernet3MbitIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
     public:
         Ethernet3MbitIdentity();
         ~Ethernet3MbitIdentity();
-
-
 
 
 }; // Ethernet3MbitIdentity
@@ -283,8 +235,6 @@ class DigitalpowerlineIdentity : public iana_if_type::IanaInterfaceTypeIdentity,
         ~DigitalpowerlineIdentity();
 
 
-
-
 }; // DigitalpowerlineIdentity
 
 class H323ProxyIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -292,8 +242,6 @@ class H323ProxyIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         H323ProxyIdentity();
         ~H323ProxyIdentity();
-
-
 
 
 }; // H323ProxyIdentity
@@ -305,8 +253,6 @@ class GtpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~GtpIdentity();
 
 
-
-
 }; // GtpIdentity
 
 class IpoveratmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -314,8 +260,6 @@ class IpoveratmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         IpoveratmIdentity();
         ~IpoveratmIdentity();
-
-
 
 
 }; // IpoveratmIdentity
@@ -327,8 +271,6 @@ class AlueponIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
         ~AlueponIdentity();
 
 
-
-
 }; // AlueponIdentity
 
 class ImtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -336,8 +278,6 @@ class ImtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         ImtIdentity();
         ~ImtIdentity();
-
-
 
 
 }; // ImtIdentity
@@ -349,8 +289,6 @@ class IpswitchIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~IpswitchIdentity();
 
 
-
-
 }; // IpswitchIdentity
 
 class MsdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -358,8 +296,6 @@ class MsdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         MsdslIdentity();
         ~MsdslIdentity();
-
-
 
 
 }; // MsdslIdentity
@@ -371,8 +307,6 @@ class DvbrccmaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
         ~DvbrccmaclayerIdentity();
 
 
-
-
 }; // DvbrccmaclayerIdentity
 
 class SmdsdxiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -380,8 +314,6 @@ class SmdsdxiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         SmdsdxiIdentity();
         ~SmdsdxiIdentity();
-
-
 
 
 }; // SmdsdxiIdentity
@@ -393,8 +325,6 @@ class VoiceoveratmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vir
         ~VoiceoveratmIdentity();
 
 
-
-
 }; // VoiceoveratmIdentity
 
 class ArapIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -402,8 +332,6 @@ class ArapIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         ArapIdentity();
         ~ArapIdentity();
-
-
 
 
 }; // ArapIdentity
@@ -415,8 +343,6 @@ class FastetherIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~FastetherIdentity();
 
 
-
-
 }; // FastetherIdentity
 
 class MpcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -424,8 +350,6 @@ class MpcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         MpcIdentity();
         ~MpcIdentity();
-
-
 
 
 }; // MpcIdentity
@@ -437,8 +361,6 @@ class LinegroupIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~LinegroupIdentity();
 
 
-
-
 }; // LinegroupIdentity
 
 class HippiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -446,8 +368,6 @@ class HippiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         HippiIdentity();
         ~HippiIdentity();
-
-
 
 
 }; // HippiIdentity
@@ -459,8 +379,6 @@ class RprIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~RprIdentity();
 
 
-
-
 }; // RprIdentity
 
 class Ds1FdlIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -468,8 +386,6 @@ class Ds1FdlIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         Ds1FdlIdentity();
         ~Ds1FdlIdentity();
-
-
 
 
 }; // Ds1FdlIdentity
@@ -481,8 +397,6 @@ class SonetvtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
         ~SonetvtIdentity();
 
 
-
-
 }; // SonetvtIdentity
 
 class VoiceencapIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -490,8 +404,6 @@ class VoiceencapIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
     public:
         VoiceencapIdentity();
         ~VoiceencapIdentity();
-
-
 
 
 }; // VoiceencapIdentity
@@ -503,8 +415,6 @@ class Ss7SiglinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~Ss7SiglinkIdentity();
 
 
-
-
 }; // Ss7SiglinkIdentity
 
 class ArcnetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -512,8 +422,6 @@ class ArcnetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         ArcnetIdentity();
         ~ArcnetIdentity();
-
-
 
 
 }; // ArcnetIdentity
@@ -525,8 +433,6 @@ class ActelismetaloopIdentity : public iana_if_type::IanaInterfaceTypeIdentity, 
         ~ActelismetaloopIdentity();
 
 
-
-
 }; // ActelismetaloopIdentity
 
 class QllcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -534,8 +440,6 @@ class QllcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         QllcIdentity();
         ~QllcIdentity();
-
-
 
 
 }; // QllcIdentity
@@ -547,8 +451,6 @@ class Rfc877X25Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~Rfc877X25Identity();
 
 
-
-
 }; // Rfc877X25Identity
 
 class MpegtransportIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -556,8 +458,6 @@ class MpegtransportIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
     public:
         MpegtransportIdentity();
         ~MpegtransportIdentity();
-
-
 
 
 }; // MpegtransportIdentity
@@ -569,8 +469,6 @@ class X25MlpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~X25MlpIdentity();
 
 
-
-
 }; // X25MlpIdentity
 
 class VirtualtgIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -578,8 +476,6 @@ class VirtualtgIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         VirtualtgIdentity();
         ~VirtualtgIdentity();
-
-
 
 
 }; // VirtualtgIdentity
@@ -591,8 +487,6 @@ class HostpadIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
         ~HostpadIdentity();
 
 
-
-
 }; // HostpadIdentity
 
 class StarlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -600,8 +494,6 @@ class StarlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         StarlanIdentity();
         ~StarlanIdentity();
-
-
 
 
 }; // StarlanIdentity
@@ -613,8 +505,6 @@ class Iso88025DtrIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
         ~Iso88025DtrIdentity();
 
 
-
-
 }; // Iso88025DtrIdentity
 
 class Ibm370ParchanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -622,8 +512,6 @@ class Ibm370ParchanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
     public:
         Ibm370ParchanIdentity();
         ~Ibm370ParchanIdentity();
-
-
 
 
 }; // Ibm370ParchanIdentity
@@ -635,8 +523,6 @@ class Adsl2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~Adsl2Identity();
 
 
-
-
 }; // Adsl2Identity
 
 class OtnotuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -644,8 +530,6 @@ class OtnotuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         OtnotuIdentity();
         ~OtnotuIdentity();
-
-
 
 
 }; // OtnotuIdentity
@@ -657,8 +541,6 @@ class Propwirelessp2PIdentity : public iana_if_type::IanaInterfaceTypeIdentity, 
         ~Propwirelessp2PIdentity();
 
 
-
-
 }; // Propwirelessp2PIdentity
 
 class InterleaveIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -666,8 +548,6 @@ class InterleaveIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
     public:
         InterleaveIdentity();
         ~InterleaveIdentity();
-
-
 
 
 }; // InterleaveIdentity
@@ -679,8 +559,6 @@ class IsupIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~IsupIdentity();
 
 
-
-
 }; // IsupIdentity
 
 class Regular1822Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -688,8 +566,6 @@ class Regular1822Identity : public iana_if_type::IanaInterfaceTypeIdentity, virt
     public:
         Regular1822Identity();
         ~Regular1822Identity();
-
-
 
 
 }; // Regular1822Identity
@@ -701,8 +577,6 @@ class Gr303RdtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~Gr303RdtIdentity();
 
 
-
-
 }; // Gr303RdtIdentity
 
 class PropdocswirelessmaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -710,8 +584,6 @@ class PropdocswirelessmaclayerIdentity : public iana_if_type::IanaInterfaceTypeI
     public:
         PropdocswirelessmaclayerIdentity();
         ~PropdocswirelessmaclayerIdentity();
-
-
 
 
 }; // PropdocswirelessmaclayerIdentity
@@ -723,8 +595,6 @@ class AsyncIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~AsyncIdentity();
 
 
-
-
 }; // AsyncIdentity
 
 class RadiomacIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -732,8 +602,6 @@ class RadiomacIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
     public:
         RadiomacIdentity();
         ~RadiomacIdentity();
-
-
 
 
 }; // RadiomacIdentity
@@ -745,8 +613,6 @@ class OpticalchannelgroupIdentity : public iana_if_type::IanaInterfaceTypeIdenti
         ~OpticalchannelgroupIdentity();
 
 
-
-
 }; // OpticalchannelgroupIdentity
 
 class SixtofourIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -754,8 +620,6 @@ class SixtofourIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         SixtofourIdentity();
         ~SixtofourIdentity();
-
-
 
 
 }; // SixtofourIdentity
@@ -767,8 +631,6 @@ class PropdocswirelessupstreamIdentity : public iana_if_type::IanaInterfaceTypeI
         ~PropdocswirelessupstreamIdentity();
 
 
-
-
 }; // PropdocswirelessupstreamIdentity
 
 class Q2931Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -776,8 +638,6 @@ class Q2931Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         Q2931Identity();
         ~Q2931Identity();
-
-
 
 
 }; // Q2931Identity
@@ -789,8 +649,6 @@ class FddiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~FddiIdentity();
 
 
-
-
 }; // FddiIdentity
 
 class PropcnlsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -798,8 +656,6 @@ class PropcnlsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
     public:
         PropcnlsIdentity();
         ~PropcnlsIdentity();
-
-
 
 
 }; // PropcnlsIdentity
@@ -811,8 +667,6 @@ class Aal2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~Aal2Identity();
 
 
-
-
 }; // Aal2Identity
 
 class DvbasioutIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -820,8 +674,6 @@ class DvbasioutIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         DvbasioutIdentity();
         ~DvbasioutIdentity();
-
-
 
 
 }; // DvbasioutIdentity
@@ -833,8 +685,6 @@ class AluelpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~AluelpIdentity();
 
 
-
-
 }; // AluelpIdentity
 
 class CiscoislvlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -842,8 +692,6 @@ class CiscoislvlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vir
     public:
         CiscoislvlanIdentity();
         ~CiscoislvlanIdentity();
-
-
 
 
 }; // CiscoislvlanIdentity
@@ -855,8 +703,6 @@ class DocscableupstreamrfportIdentity : public iana_if_type::IanaInterfaceTypeId
         ~DocscableupstreamrfportIdentity();
 
 
-
-
 }; // DocscableupstreamrfportIdentity
 
 class Aal5Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -864,8 +710,6 @@ class Aal5Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         Aal5Identity();
         ~Aal5Identity();
-
-
 
 
 }; // Aal5Identity
@@ -877,8 +721,6 @@ class FrdlciendptIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
         ~FrdlciendptIdentity();
 
 
-
-
 }; // FrdlciendptIdentity
 
 class HippiinterfaceIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -886,8 +728,6 @@ class HippiinterfaceIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
     public:
         HippiinterfaceIdentity();
         ~HippiinterfaceIdentity();
-
-
 
 
 }; // HippiinterfaceIdentity
@@ -899,8 +739,6 @@ class L3IpvlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~L3IpvlanIdentity();
 
 
-
-
 }; // L3IpvlanIdentity
 
 class Miox25Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -908,8 +746,6 @@ class Miox25Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         Miox25Identity();
         ~Miox25Identity();
-
-
 
 
 }; // Miox25Identity
@@ -921,8 +757,6 @@ class HssiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~HssiIdentity();
 
 
-
-
 }; // HssiIdentity
 
 class AtmvirtualIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -930,8 +764,6 @@ class AtmvirtualIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
     public:
         AtmvirtualIdentity();
         ~AtmvirtualIdentity();
-
-
 
 
 }; // AtmvirtualIdentity
@@ -943,8 +775,6 @@ class AlugpononuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~AlugpononuIdentity();
 
 
-
-
 }; // AlugpononuIdentity
 
 class Rfc1483Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -952,8 +782,6 @@ class Rfc1483Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         Rfc1483Identity();
         ~Rfc1483Identity();
-
-
 
 
 }; // Rfc1483Identity
@@ -965,8 +793,6 @@ class CnrIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~CnrIdentity();
 
 
-
-
 }; // CnrIdentity
 
 class SipsigIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -974,8 +800,6 @@ class SipsigIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         SipsigIdentity();
         ~SipsigIdentity();
-
-
 
 
 }; // SipsigIdentity
@@ -987,8 +811,6 @@ class MyrinetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
         ~MyrinetIdentity();
 
 
-
-
 }; // MyrinetIdentity
 
 class DlswIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -996,8 +818,6 @@ class DlswIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         DlswIdentity();
         ~DlswIdentity();
-
-
 
 
 }; // DlswIdentity
@@ -1009,8 +829,6 @@ class GigabitethernetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, 
         ~GigabitethernetIdentity();
 
 
-
-
 }; // GigabitethernetIdentity
 
 class X25PleIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1018,8 +836,6 @@ class X25PleIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         X25PleIdentity();
         ~X25PleIdentity();
-
-
 
 
 }; // X25PleIdentity
@@ -1031,8 +847,6 @@ class LmpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~LmpIdentity();
 
 
-
-
 }; // LmpIdentity
 
 class OpticaltransportIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1040,8 +854,6 @@ class OpticaltransportIdentity : public iana_if_type::IanaInterfaceTypeIdentity,
     public:
         OpticaltransportIdentity();
         ~OpticaltransportIdentity();
-
-
 
 
 }; // OpticaltransportIdentity
@@ -1053,8 +865,6 @@ class SdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~SdlcIdentity();
 
 
-
-
 }; // SdlcIdentity
 
 class VoiceemIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1062,8 +872,6 @@ class VoiceemIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         VoiceemIdentity();
         ~VoiceemIdentity();
-
-
 
 
 }; // VoiceemIdentity
@@ -1075,8 +883,6 @@ class X86LapsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
         ~X86LapsIdentity();
 
 
-
-
 }; // X86LapsIdentity
 
 class G9982Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1084,8 +890,6 @@ class G9982Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         G9982Identity();
         ~G9982Identity();
-
-
 
 
 }; // G9982Identity
@@ -1097,8 +901,6 @@ class Iso88022LlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
         ~Iso88022LlcIdentity();
 
 
-
-
 }; // Iso88022LlcIdentity
 
 class DvbasiinIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1106,8 +908,6 @@ class DvbasiinIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
     public:
         DvbasiinIdentity();
         ~DvbasiinIdentity();
-
-
 
 
 }; // DvbasiinIdentity
@@ -1119,8 +919,6 @@ class BgppolicyaccountingIdentity : public iana_if_type::IanaInterfaceTypeIdenti
         ~BgppolicyaccountingIdentity();
 
 
-
-
 }; // BgppolicyaccountingIdentity
 
 class AluepononuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1128,8 +926,6 @@ class AluepononuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
     public:
         AluepononuIdentity();
         ~AluepononuIdentity();
-
-
 
 
 }; // AluepononuIdentity
@@ -1141,8 +937,6 @@ class MfsiglinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~MfsiglinkIdentity();
 
 
-
-
 }; // MfsiglinkIdentity
 
 class DcnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1150,8 +944,6 @@ class DcnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         DcnIdentity();
         ~DcnIdentity();
-
-
 
 
 }; // DcnIdentity
@@ -1163,8 +955,6 @@ class AtmdxiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~AtmdxiIdentity();
 
 
-
-
 }; // AtmdxiIdentity
 
 class VoiceoverframerelayIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1172,8 +962,6 @@ class VoiceoverframerelayIdentity : public iana_if_type::IanaInterfaceTypeIdenti
     public:
         VoiceoverframerelayIdentity();
         ~VoiceoverframerelayIdentity();
-
-
 
 
 }; // VoiceoverframerelayIdentity
@@ -1185,8 +973,6 @@ class GfpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~GfpIdentity();
 
 
-
-
 }; // GfpIdentity
 
 class SonetoverheadchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1194,8 +980,6 @@ class SonetoverheadchannelIdentity : public iana_if_type::IanaInterfaceTypeIdent
     public:
         SonetoverheadchannelIdentity();
         ~SonetoverheadchannelIdentity();
-
-
 
 
 }; // SonetoverheadchannelIdentity
@@ -1207,8 +991,6 @@ class VmwarevirtualnicIdentity : public iana_if_type::IanaInterfaceTypeIdentity,
         ~VmwarevirtualnicIdentity();
 
 
-
-
 }; // VmwarevirtualnicIdentity
 
 class FciplinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1216,8 +998,6 @@ class FciplinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
     public:
         FciplinkIdentity();
         ~FciplinkIdentity();
-
-
 
 
 }; // FciplinkIdentity
@@ -1229,8 +1009,6 @@ class IpoverclawIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~IpoverclawIdentity();
 
 
-
-
 }; // IpoverclawIdentity
 
 class CoffeeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1238,8 +1016,6 @@ class CoffeeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         CoffeeIdentity();
         ~CoffeeIdentity();
-
-
 
 
 }; // CoffeeIdentity
@@ -1251,8 +1027,6 @@ class RadslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~RadslIdentity();
 
 
-
-
 }; // RadslIdentity
 
 class Vdsl2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1260,8 +1034,6 @@ class Vdsl2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         Vdsl2Identity();
         ~Vdsl2Identity();
-
-
 
 
 }; // Vdsl2Identity
@@ -1273,8 +1045,6 @@ class Rs232Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~Rs232Identity();
 
 
-
-
 }; // Rs232Identity
 
 class E1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1282,8 +1052,6 @@ class E1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ident
     public:
         E1Identity();
         ~E1Identity();
-
-
 
 
 }; // E1Identity
@@ -1295,8 +1063,6 @@ class ReachdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~ReachdslIdentity();
 
 
-
-
 }; // ReachdslIdentity
 
 class VoiceovercableIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1304,8 +1070,6 @@ class VoiceovercableIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
     public:
         VoiceovercableIdentity();
         ~VoiceovercableIdentity();
-
-
 
 
 }; // VoiceovercableIdentity
@@ -1317,8 +1081,6 @@ class Tr008Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~Tr008Identity();
 
 
-
-
 }; // Tr008Identity
 
 class VoiceoveripIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1326,8 +1088,6 @@ class VoiceoveripIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
     public:
         VoiceoveripIdentity();
         ~VoiceoveripIdentity();
-
-
 
 
 }; // VoiceoveripIdentity
@@ -1339,8 +1099,6 @@ class AtmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~AtmIdentity();
 
 
-
-
 }; // AtmIdentity
 
 class Ds3Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1348,8 +1106,6 @@ class Ds3Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         Ds3Identity();
         ~Ds3Identity();
-
-
 
 
 }; // Ds3Identity
@@ -1361,8 +1117,6 @@ class Ds0Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~Ds0Identity();
 
 
-
-
 }; // Ds0Identity
 
 class Ds1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1370,8 +1124,6 @@ class Ds1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         Ds1Identity();
         ~Ds1Identity();
-
-
 
 
 }; // Ds1Identity
@@ -1383,8 +1135,6 @@ class SrpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~SrpIdentity();
 
 
-
-
 }; // SrpIdentity
 
 class DocscabledownstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1392,8 +1142,6 @@ class DocscabledownstreamIdentity : public iana_if_type::IanaInterfaceTypeIdenti
     public:
         DocscabledownstreamIdentity();
         ~DocscabledownstreamIdentity();
-
-
 
 
 }; // DocscabledownstreamIdentity
@@ -1405,8 +1153,6 @@ class DvbrcstdmaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~DvbrcstdmaIdentity();
 
 
-
-
 }; // DvbrcstdmaIdentity
 
 class G9983Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1414,8 +1160,6 @@ class G9983Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         G9983Identity();
         ~G9983Identity();
-
-
 
 
 }; // G9983Identity
@@ -1427,8 +1171,6 @@ class PlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~PlcIdentity();
 
 
-
-
 }; // PlcIdentity
 
 class FramerelaympiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1436,8 +1178,6 @@ class FramerelaympiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
     public:
         FramerelaympiIdentity();
         ~FramerelaympiIdentity();
-
-
 
 
 }; // FramerelaympiIdentity
@@ -1449,8 +1189,6 @@ class MvlIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~MvlIdentity();
 
 
-
-
 }; // MvlIdentity
 
 class PropmultiplexorIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1458,8 +1196,6 @@ class PropmultiplexorIdentity : public iana_if_type::IanaInterfaceTypeIdentity, 
     public:
         PropmultiplexorIdentity();
         ~PropmultiplexorIdentity();
-
-
 
 
 }; // PropmultiplexorIdentity
@@ -1471,8 +1207,6 @@ class VoicedidIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~VoicedidIdentity();
 
 
-
-
 }; // VoicedidIdentity
 
 class CompositelinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1480,8 +1214,6 @@ class CompositelinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
     public:
         CompositelinkIdentity();
         ~CompositelinkIdentity();
-
-
 
 
 }; // CompositelinkIdentity
@@ -1493,8 +1225,6 @@ class Proteon10MbitIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
         ~Proteon10MbitIdentity();
 
 
-
-
 }; // Proteon10MbitIdentity
 
 class AtmbondIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1502,8 +1232,6 @@ class AtmbondIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         AtmbondIdentity();
         ~AtmbondIdentity();
-
-
 
 
 }; // AtmbondIdentity
@@ -1515,8 +1243,6 @@ class Frf16MfrbundleIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
         ~Frf16MfrbundleIdentity();
 
 
-
-
 }; // Frf16MfrbundleIdentity
 
 class CctemulIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1524,8 +1250,6 @@ class CctemulIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         CctemulIdentity();
         ~CctemulIdentity();
-
-
 
 
 }; // CctemulIdentity
@@ -1537,8 +1261,6 @@ class MplstunnelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~MplstunnelIdentity();
 
 
-
-
 }; // MplstunnelIdentity
 
 class GponIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1546,8 +1268,6 @@ class GponIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         GponIdentity();
         ~GponIdentity();
-
-
 
 
 }; // GponIdentity
@@ -1559,8 +1279,6 @@ class VdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~VdslIdentity();
 
 
-
-
 }; // VdslIdentity
 
 class PosIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1568,8 +1286,6 @@ class PosIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         PosIdentity();
         ~PosIdentity();
-
-
 
 
 }; // PosIdentity
@@ -1581,8 +1297,6 @@ class Ieee8023AdlagIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
         ~Ieee8023AdlagIdentity();
 
 
-
-
 }; // Ieee8023AdlagIdentity
 
 class DocscablemaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1590,8 +1304,6 @@ class DocscablemaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity
     public:
         DocscablemaclayerIdentity();
         ~DocscablemaclayerIdentity();
-
-
 
 
 }; // DocscablemaclayerIdentity
@@ -1603,8 +1315,6 @@ class DocscablemcmtsdownstreamIdentity : public iana_if_type::IanaInterfaceTypeI
         ~DocscablemcmtsdownstreamIdentity();
 
 
-
-
 }; // DocscablemcmtsdownstreamIdentity
 
 class PppIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1612,8 +1322,6 @@ class PppIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         PppIdentity();
         ~PppIdentity();
-
-
 
 
 }; // PppIdentity
@@ -1625,8 +1333,6 @@ class FramerelayIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~FramerelayIdentity();
 
 
-
-
 }; // FramerelayIdentity
 
 class EplrsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1634,8 +1340,6 @@ class EplrsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         EplrsIdentity();
         ~EplrsIdentity();
-
-
 
 
 }; // EplrsIdentity
@@ -1647,8 +1351,6 @@ class VmwarenicteamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
         ~VmwarenicteamIdentity();
 
 
-
-
 }; // VmwarenicteamIdentity
 
 class CabledownstreamrfportIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1656,8 +1358,6 @@ class CabledownstreamrfportIdentity : public iana_if_type::IanaInterfaceTypeIden
     public:
         CabledownstreamrfportIdentity();
         ~CabledownstreamrfportIdentity();
-
-
 
 
 }; // CabledownstreamrfportIdentity
@@ -1669,8 +1369,6 @@ class MacsecuncontrolledifIdentity : public iana_if_type::IanaInterfaceTypeIdent
         ~MacsecuncontrolledifIdentity();
 
 
-
-
 }; // MacsecuncontrolledifIdentity
 
 class Iso88023CsmacdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1678,8 +1376,6 @@ class Iso88023CsmacdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
     public:
         Iso88023CsmacdIdentity();
         ~Iso88023CsmacdIdentity();
-
-
 
 
 }; // Iso88023CsmacdIdentity
@@ -1691,8 +1387,6 @@ class UsbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~UsbIdentity();
 
 
-
-
 }; // UsbIdentity
 
 class AtmfuniIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1700,8 +1394,6 @@ class AtmfuniIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         AtmfuniIdentity();
         ~AtmfuniIdentity();
-
-
 
 
 }; // AtmfuniIdentity
@@ -1713,8 +1405,6 @@ class TelinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~TelinkIdentity();
 
 
-
-
 }; // TelinkIdentity
 
 class Pon622Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1722,8 +1412,6 @@ class Pon622Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         Pon622Identity();
         ~Pon622Identity();
-
-
 
 
 }; // Pon622Identity
@@ -1735,8 +1423,6 @@ class EconetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~EconetIdentity();
 
 
-
-
 }; // EconetIdentity
 
 class TdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1744,8 +1430,6 @@ class TdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         TdlcIdentity();
         ~TdlcIdentity();
-
-
 
 
 }; // TdlcIdentity
@@ -1757,8 +1441,6 @@ class Ds0BundleIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~Ds0BundleIdentity();
 
 
-
-
 }; // Ds0BundleIdentity
 
 class FastIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1766,8 +1448,6 @@ class FastIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         FastIdentity();
         ~FastIdentity();
-
-
 
 
 }; // FastIdentity
@@ -1779,8 +1459,6 @@ class Ieee1394Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~Ieee1394Identity();
 
 
-
-
 }; // Ieee1394Identity
 
 class CblvectastarIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1788,8 +1466,6 @@ class CblvectastarIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vir
     public:
         CblvectastarIdentity();
         ~CblvectastarIdentity();
-
-
 
 
 }; // CblvectastarIdentity
@@ -1801,8 +1477,6 @@ class RsrbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~RsrbIdentity();
 
 
-
-
 }; // RsrbIdentity
 
 class FramerelayinterconnectIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1810,8 +1484,6 @@ class FramerelayinterconnectIdentity : public iana_if_type::IanaInterfaceTypeIde
     public:
         FramerelayinterconnectIdentity();
         ~FramerelayinterconnectIdentity();
-
-
 
 
 }; // FramerelayinterconnectIdentity
@@ -1823,8 +1495,6 @@ class IsdnsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~IsdnsIdentity();
 
 
-
-
 }; // IsdnsIdentity
 
 class PppmultilinkbundleIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1832,8 +1502,6 @@ class PppmultilinkbundleIdentity : public iana_if_type::IanaInterfaceTypeIdentit
     public:
         PppmultilinkbundleIdentity();
         ~PppmultilinkbundleIdentity();
-
-
 
 
 }; // PppmultilinkbundleIdentity
@@ -1845,8 +1513,6 @@ class Aflane8025Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~Aflane8025Identity();
 
 
-
-
 }; // Aflane8025Identity
 
 class LapbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1854,8 +1520,6 @@ class LapbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         LapbIdentity();
         ~LapbIdentity();
-
-
 
 
 }; // LapbIdentity
@@ -1867,8 +1531,6 @@ class Aflane8023Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~Aflane8023Identity();
 
 
-
-
 }; // Aflane8023Identity
 
 class LapdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1876,8 +1538,6 @@ class LapdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         LapdIdentity();
         ~LapdIdentity();
-
-
 
 
 }; // LapdIdentity
@@ -1889,8 +1549,6 @@ class IsdnuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~IsdnuIdentity();
 
 
-
-
 }; // IsdnuIdentity
 
 class LapfIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1898,8 +1556,6 @@ class LapfIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         LapfIdentity();
         ~LapfIdentity();
-
-
 
 
 }; // LapfIdentity
@@ -1911,8 +1567,6 @@ class CapwapwtpvirtualradioIdentity : public iana_if_type::IanaInterfaceTypeIden
         ~CapwapwtpvirtualradioIdentity();
 
 
-
-
 }; // CapwapwtpvirtualradioIdentity
 
 class IfvfitypeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1920,8 +1574,6 @@ class IfvfitypeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         IfvfitypeIdentity();
         ~IfvfitypeIdentity();
-
-
 
 
 }; // IfvfitypeIdentity
@@ -1933,8 +1585,6 @@ class X25HuntgroupIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vir
         ~X25HuntgroupIdentity();
 
 
-
-
 }; // X25HuntgroupIdentity
 
 class ParaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1942,8 +1592,6 @@ class ParaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         ParaIdentity();
         ~ParaIdentity();
-
-
 
 
 }; // ParaIdentity
@@ -1955,8 +1603,6 @@ class MacseccontrolledifIdentity : public iana_if_type::IanaInterfaceTypeIdentit
         ~MacseccontrolledifIdentity();
 
 
-
-
 }; // MacseccontrolledifIdentity
 
 class Iso88024TokenbusIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1964,8 +1610,6 @@ class Iso88024TokenbusIdentity : public iana_if_type::IanaInterfaceTypeIdentity,
     public:
         Iso88024TokenbusIdentity();
         ~Iso88024TokenbusIdentity();
-
-
 
 
 }; // Iso88024TokenbusIdentity
@@ -1977,8 +1621,6 @@ class LocaltalkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~LocaltalkIdentity();
 
 
-
-
 }; // LocaltalkIdentity
 
 class HyperchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -1986,8 +1628,6 @@ class HyperchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vir
     public:
         HyperchannelIdentity();
         ~HyperchannelIdentity();
-
-
 
 
 }; // HyperchannelIdentity
@@ -1999,8 +1639,6 @@ class MediamailoveripIdentity : public iana_if_type::IanaInterfaceTypeIdentity, 
         ~MediamailoveripIdentity();
 
 
-
-
 }; // MediamailoveripIdentity
 
 class IfGsnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2008,8 +1646,6 @@ class IfGsnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         IfGsnIdentity();
         ~IfGsnIdentity();
-
-
 
 
 }; // IfGsnIdentity
@@ -2021,8 +1657,6 @@ class Capwapdot11ProfileIdentity : public iana_if_type::IanaInterfaceTypeIdentit
         ~Capwapdot11ProfileIdentity();
 
 
-
-
 }; // Capwapdot11ProfileIdentity
 
 class L3IpxvlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2030,8 +1664,6 @@ class L3IpxvlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         L3IpxvlanIdentity();
         ~L3IpxvlanIdentity();
-
-
 
 
 }; // L3IpxvlanIdentity
@@ -2043,8 +1675,6 @@ class AtmsubinterfaceIdentity : public iana_if_type::IanaInterfaceTypeIdentity, 
         ~AtmsubinterfaceIdentity();
 
 
-
-
 }; // AtmsubinterfaceIdentity
 
 class PrimaryisdnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2052,8 +1682,6 @@ class PrimaryisdnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
     public:
         PrimaryisdnIdentity();
         ~PrimaryisdnIdentity();
-
-
 
 
 }; // PrimaryisdnIdentity
@@ -2065,8 +1693,6 @@ class Proteon80MbitIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
         ~Proteon80MbitIdentity();
 
 
-
-
 }; // Proteon80MbitIdentity
 
 class Iso88026ManIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2074,8 +1700,6 @@ class Iso88026ManIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
     public:
         Iso88026ManIdentity();
         ~Iso88026ManIdentity();
-
-
 
 
 }; // Iso88026ManIdentity
@@ -2087,8 +1711,6 @@ class DigitalwrapperoverheadchannelIdentity : public iana_if_type::IanaInterface
         ~DigitalwrapperoverheadchannelIdentity();
 
 
-
-
 }; // DigitalwrapperoverheadchannelIdentity
 
 class DocscableupstreamchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2096,8 +1718,6 @@ class DocscableupstreamchannelIdentity : public iana_if_type::IanaInterfaceTypeI
     public:
         DocscableupstreamchannelIdentity();
         ~DocscableupstreamchannelIdentity();
-
-
 
 
 }; // DocscableupstreamchannelIdentity
@@ -2109,8 +1729,6 @@ class OpticalchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
         ~OpticalchannelIdentity();
 
 
-
-
 }; // OpticalchannelIdentity
 
 class EthernetcsmacdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2118,8 +1736,6 @@ class EthernetcsmacdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
     public:
         EthernetcsmacdIdentity();
         ~EthernetcsmacdIdentity();
-
-
 
 
 }; // EthernetcsmacdIdentity
@@ -2131,8 +1747,6 @@ class BitsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~BitsIdentity();
 
 
-
-
 }; // BitsIdentity
 
 class TunnelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2140,8 +1754,6 @@ class TunnelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         TunnelIdentity();
         ~TunnelIdentity();
-
-
 
 
 }; // TunnelIdentity
@@ -2153,8 +1765,6 @@ class Hdsl2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~Hdsl2Identity();
 
 
-
-
 }; // Hdsl2Identity
 
 class FramerelayserviceIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2162,8 +1772,6 @@ class FramerelayserviceIdentity : public iana_if_type::IanaInterfaceTypeIdentity
     public:
         FramerelayserviceIdentity();
         ~FramerelayserviceIdentity();
-
-
 
 
 }; // FramerelayserviceIdentity
@@ -2175,8 +1783,6 @@ class MplsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~MplsIdentity();
 
 
-
-
 }; // MplsIdentity
 
 class Ieee80211Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2184,8 +1790,6 @@ class Ieee80211Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         Ieee80211Identity();
         ~Ieee80211Identity();
-
-
 
 
 }; // Ieee80211Identity
@@ -2197,8 +1801,6 @@ class Ieee80212Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~Ieee80212Identity();
 
 
-
-
 }; // Ieee80212Identity
 
 class Mocaversion1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2206,8 +1808,6 @@ class Mocaversion1Identity : public iana_if_type::IanaInterfaceTypeIdentity, vir
     public:
         Mocaversion1Identity();
         ~Mocaversion1Identity();
-
-
 
 
 }; // Mocaversion1Identity
@@ -2219,8 +1819,6 @@ class SonetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~SonetIdentity();
 
 
-
-
 }; // SonetIdentity
 
 class EsconIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2228,8 +1826,6 @@ class EsconIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         EsconIdentity();
         ~EsconIdentity();
-
-
 
 
 }; // EsconIdentity
@@ -2241,8 +1837,6 @@ class AlueponlogicallinkIdentity : public iana_if_type::IanaInterfaceTypeIdentit
         ~AlueponlogicallinkIdentity();
 
 
-
-
 }; // AlueponlogicallinkIdentity
 
 class G703At2MbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2250,8 +1844,6 @@ class G703At2MbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         G703At2MbIdentity();
         ~G703At2MbIdentity();
-
-
 
 
 }; // G703At2MbIdentity
@@ -2263,8 +1855,6 @@ class UltraIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~UltraIdentity();
 
 
-
-
 }; // UltraIdentity
 
 class DvbrccdownstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2272,8 +1862,6 @@ class DvbrccdownstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity,
     public:
         DvbrccdownstreamIdentity();
         ~DvbrccdownstreamIdentity();
-
-
 
 
 }; // DvbrccdownstreamIdentity
@@ -2285,8 +1873,6 @@ class SiptgIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~SiptgIdentity();
 
 
-
-
 }; // SiptgIdentity
 
 class SmdsicipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2294,8 +1880,6 @@ class SmdsicipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
     public:
         SmdsicipIdentity();
         ~SmdsicipIdentity();
-
-
 
 
 }; // SmdsicipIdentity
@@ -2307,8 +1891,6 @@ class BridgeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~BridgeIdentity();
 
 
-
-
 }; // BridgeIdentity
 
 class AtmlogicalIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2316,8 +1898,6 @@ class AtmlogicalIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
     public:
         AtmlogicalIdentity();
         ~AtmlogicalIdentity();
-
-
 
 
 }; // AtmlogicalIdentity
@@ -2329,8 +1909,6 @@ class ProppointtopointserialIdentity : public iana_if_type::IanaInterfaceTypeIde
         ~ProppointtopointserialIdentity();
 
 
-
-
 }; // ProppointtopointserialIdentity
 
 class V35Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2338,8 +1916,6 @@ class V35Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         V35Identity();
         ~V35Identity();
-
-
 
 
 }; // V35Identity
@@ -2351,8 +1927,6 @@ class V36Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~V36Identity();
 
 
-
-
 }; // V36Identity
 
 class V37Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2360,8 +1934,6 @@ class V37Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         V37Identity();
         ~V37Identity();
-
-
 
 
 }; // V37Identity
@@ -2373,8 +1945,6 @@ class IpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ident
         ~IpIdentity();
 
 
-
-
 }; // IpIdentity
 
 class Gr303IdtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2382,8 +1952,6 @@ class Gr303IdtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
     public:
         Gr303IdtIdentity();
         ~Gr303IdtIdentity();
-
-
 
 
 }; // Gr303IdtIdentity
@@ -2395,8 +1963,6 @@ class BasicisdnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~BasicisdnIdentity();
 
 
-
-
 }; // BasicisdnIdentity
 
 class G703At64KIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2404,8 +1970,6 @@ class G703At64KIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         G703At64KIdentity();
         ~G703At64KIdentity();
-
-
 
 
 }; // G703At64KIdentity
@@ -2417,8 +1981,6 @@ class ArcnetplusIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~ArcnetplusIdentity();
 
 
-
-
 }; // ArcnetplusIdentity
 
 class PipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2426,8 +1988,6 @@ class PipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         PipIdentity();
         ~PipIdentity();
-
-
 
 
 }; // PipIdentity
@@ -2439,8 +1999,6 @@ class DtmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~DtmIdentity();
 
 
-
-
 }; // DtmIdentity
 
 class SlipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2448,8 +2006,6 @@ class SlipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         SlipIdentity();
         ~SlipIdentity();
-
-
 
 
 }; // SlipIdentity
@@ -2461,8 +2017,6 @@ class Hiperlan2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
         ~Hiperlan2Identity();
 
 
-
-
 }; // Hiperlan2Identity
 
 class AdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2470,8 +2024,6 @@ class AdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         AdslIdentity();
         ~AdslIdentity();
-
-
 
 
 }; // AdslIdentity
@@ -2483,8 +2035,6 @@ class Ieee80216WmanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
         ~Ieee80216WmanIdentity();
 
 
-
-
 }; // Ieee80216WmanIdentity
 
 class AtmimaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2492,8 +2042,6 @@ class AtmimaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
     public:
         AtmimaIdentity();
         ~AtmimaIdentity();
-
-
 
 
 }; // AtmimaIdentity
@@ -2505,8 +2053,6 @@ class IsdnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~IsdnIdentity();
 
 
-
-
 }; // IsdnIdentity
 
 class Capwapdot11BssIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2514,8 +2060,6 @@ class Capwapdot11BssIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
     public:
         Capwapdot11BssIdentity();
         ~Capwapdot11BssIdentity();
-
-
 
 
 }; // Capwapdot11BssIdentity
@@ -2527,8 +2071,6 @@ class SipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~SipIdentity();
 
 
-
-
 }; // SipIdentity
 
 class Pdnetherloop2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2536,8 +2078,6 @@ class Pdnetherloop2Identity : public iana_if_type::IanaInterfaceTypeIdentity, vi
     public:
         Pdnetherloop2Identity();
         ~Pdnetherloop2Identity();
-
-
 
 
 }; // Pdnetherloop2Identity
@@ -2549,8 +2089,6 @@ class VoiceebsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~VoiceebsIdentity();
 
 
-
-
 }; // VoiceebsIdentity
 
 class IpforwardIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2558,8 +2096,6 @@ class IpforwardIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         IpforwardIdentity();
         ~IpforwardIdentity();
-
-
 
 
 }; // IpforwardIdentity
@@ -2571,8 +2107,6 @@ class Iso88025CrfpintIdentity : public iana_if_type::IanaInterfaceTypeIdentity, 
         ~Iso88025CrfpintIdentity();
 
 
-
-
 }; // Iso88025CrfpintIdentity
 
 class PropvirtualIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2580,8 +2114,6 @@ class PropvirtualIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virt
     public:
         PropvirtualIdentity();
         ~PropvirtualIdentity();
-
-
 
 
 }; // PropvirtualIdentity
@@ -2593,8 +2125,6 @@ class WwanppIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~WwanppIdentity();
 
 
-
-
 }; // WwanppIdentity
 
 class OtherIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2602,8 +2132,6 @@ class OtherIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         OtherIdentity();
         ~OtherIdentity();
-
-
 
 
 }; // OtherIdentity
@@ -2615,8 +2143,6 @@ class Pon155Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~Pon155Identity();
 
 
-
-
 }; // Pon155Identity
 
 class QamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2624,8 +2150,6 @@ class QamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         QamIdentity();
         ~QamIdentity();
-
-
 
 
 }; // QamIdentity
@@ -2637,8 +2161,6 @@ class OtnoduIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual I
         ~OtnoduIdentity();
 
 
-
-
 }; // OtnoduIdentity
 
 class Iso88025FiberIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2646,8 +2168,6 @@ class Iso88025FiberIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vi
     public:
         Iso88025FiberIdentity();
         ~Iso88025FiberIdentity();
-
-
 
 
 }; // Iso88025FiberIdentity
@@ -2659,8 +2179,6 @@ class ChannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
         ~ChannelIdentity();
 
 
-
-
 }; // ChannelIdentity
 
 class VoiceemfgdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2668,8 +2186,6 @@ class VoiceemfgdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
     public:
         VoiceemfgdIdentity();
         ~VoiceemfgdIdentity();
-
-
 
 
 }; // VoiceemfgdIdentity
@@ -2681,8 +2197,6 @@ class AlugponphysicaluniIdentity : public iana_if_type::IanaInterfaceTypeIdentit
         ~AlugponphysicaluniIdentity();
 
 
-
-
 }; // AlugponphysicaluniIdentity
 
 class A12MppswitchIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2690,8 +2204,6 @@ class A12MppswitchIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vir
     public:
         A12MppswitchIdentity();
         ~A12MppswitchIdentity();
-
-
 
 
 }; // A12MppswitchIdentity
@@ -2703,8 +2215,6 @@ class IlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~IlanIdentity();
 
 
-
-
 }; // IlanIdentity
 
 class Pdnetherloop1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2712,8 +2222,6 @@ class Pdnetherloop1Identity : public iana_if_type::IanaInterfaceTypeIdentity, vi
     public:
         Pdnetherloop1Identity();
         ~Pdnetherloop1Identity();
-
-
 
 
 }; // Pdnetherloop1Identity
@@ -2725,8 +2233,6 @@ class X213Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
         ~X213Identity();
 
 
-
-
 }; // X213Identity
 
 class SonetpathIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2734,8 +2240,6 @@ class SonetpathIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         SonetpathIdentity();
         ~SonetpathIdentity();
-
-
 
 
 }; // SonetpathIdentity
@@ -2747,8 +2251,6 @@ class VoicefgdeanaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vir
         ~VoicefgdeanaIdentity();
 
 
-
-
 }; // VoicefgdeanaIdentity
 
 class Iso88025TokenringIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2756,8 +2258,6 @@ class Iso88025TokenringIdentity : public iana_if_type::IanaInterfaceTypeIdentity
     public:
         Iso88025TokenringIdentity();
         ~Iso88025TokenringIdentity();
-
-
 
 
 }; // Iso88025TokenringIdentity
@@ -2769,8 +2269,6 @@ class PropatmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
         ~PropatmIdentity();
 
 
-
-
 }; // PropatmIdentity
 
 class AlueponphysicaluniIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2778,8 +2276,6 @@ class AlueponphysicaluniIdentity : public iana_if_type::IanaInterfaceTypeIdentit
     public:
         AlueponphysicaluniIdentity();
         ~AlueponphysicaluniIdentity();
-
-
 
 
 }; // AlueponphysicaluniIdentity
@@ -2791,8 +2287,6 @@ class StacktostackIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vir
         ~StacktostackIdentity();
 
 
-
-
 }; // StacktostackIdentity
 
 class FrforwardIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2800,8 +2294,6 @@ class FrforwardIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtua
     public:
         FrforwardIdentity();
         ~FrforwardIdentity();
-
-
 
 
 }; // FrforwardIdentity
@@ -2813,8 +2305,6 @@ class HomepnaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
         ~HomepnaIdentity();
 
 
-
-
 }; // HomepnaIdentity
 
 class SdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2822,8 +2312,6 @@ class SdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         SdslIdentity();
         ~SdslIdentity();
-
-
 
 
 }; // SdslIdentity
@@ -2835,8 +2323,6 @@ class VirtualipaddressIdentity : public iana_if_type::IanaInterfaceTypeIdentity,
         ~VirtualipaddressIdentity();
 
 
-
-
 }; // VirtualipaddressIdentity
 
 class BscIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2844,8 +2330,6 @@ class BscIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         BscIdentity();
         ~BscIdentity();
-
-
 
 
 }; // BscIdentity
@@ -2857,8 +2341,6 @@ class AtmradioIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual
         ~AtmradioIdentity();
 
 
-
-
 }; // AtmradioIdentity
 
 class AviciopticaletherIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2866,8 +2348,6 @@ class AviciopticaletherIdentity : public iana_if_type::IanaInterfaceTypeIdentity
     public:
         AviciopticaletherIdentity();
         ~AviciopticaletherIdentity();
-
-
 
 
 }; // AviciopticaletherIdentity
@@ -2879,8 +2359,6 @@ class G9981Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~G9981Identity();
 
 
-
-
 }; // G9981Identity
 
 class FibrechannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2888,8 +2366,6 @@ class FibrechannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, vir
     public:
         FibrechannelIdentity();
         ~FibrechannelIdentity();
-
-
 
 
 }; // FibrechannelIdentity
@@ -2901,8 +2377,6 @@ class ShdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
         ~ShdslIdentity();
 
 
-
-
 }; // ShdslIdentity
 
 class EonIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2910,8 +2384,6 @@ class EonIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
     public:
         EonIdentity();
         ~EonIdentity();
-
-
 
 
 }; // EonIdentity
@@ -2923,8 +2395,6 @@ class H323GatekeeperIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
         ~H323GatekeeperIdentity();
 
 
-
-
 }; // H323GatekeeperIdentity
 
 class Hdh1822Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2932,8 +2402,6 @@ class Hdh1822Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         Hdh1822Identity();
         ~Hdh1822Identity();
-
-
 
 
 }; // Hdh1822Identity
@@ -2945,8 +2413,6 @@ class DvbrccupstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, v
         ~DvbrccupstreamIdentity();
 
 
-
-
 }; // DvbrccupstreamIdentity
 
 class NsipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2954,8 +2420,6 @@ class NsipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Ide
     public:
         NsipIdentity();
         ~NsipIdentity();
-
-
 
 
 }; // NsipIdentity
@@ -2967,8 +2431,6 @@ class TransphdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~TransphdlcIdentity();
 
 
-
-
 }; // TransphdlcIdentity
 
 class TermpadIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -2976,8 +2438,6 @@ class TermpadIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual 
     public:
         TermpadIdentity();
         ~TermpadIdentity();
-
-
 
 
 }; // TermpadIdentity
@@ -2989,8 +2449,6 @@ class IpovercdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtu
         ~IpovercdlcIdentity();
 
 
-
-
 }; // IpovercdlcIdentity
 
 class CesIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -3000,8 +2458,6 @@ class CesIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Iden
         ~CesIdentity();
 
 
-
-
 }; // CesIdentity
 
 class ModemIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
@@ -3009,8 +2465,6 @@ class ModemIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Id
     public:
         ModemIdentity();
         ~ModemIdentity();
-
-
 
 
 }; // ModemIdentity

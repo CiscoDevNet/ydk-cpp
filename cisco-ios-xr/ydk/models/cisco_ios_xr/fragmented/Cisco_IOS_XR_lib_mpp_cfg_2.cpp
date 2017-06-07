@@ -14,7 +14,6 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
     peer_class(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass>())
 {
     peer_class->parent = this;
-    children["peer-class"] = peer_class;
 
     yang_name = "http-protocol"; yang_parent_name = "all-interfaces";
 }
@@ -43,7 +42,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -66,41 +65,24 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-class")
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
-        else
+        if(peer_class == nullptr)
         {
             peer_class = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass>();
-            peer_class->parent = this;
-            children["peer-class"] = peer_class;
         }
-        return children.at("peer-class");
+        return peer_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::get_children() const
 {
-    if(children.find("peer-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_class != nullptr)
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
+        children["peer-class"] = peer_class;
     }
 
     return children;
@@ -118,10 +100,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
-    children["peer-v4"] = peer_v4;
 
     peer_v6->parent = this;
-    children["peer-v6"] = peer_v6;
 
     yang_name = "peer-class"; yang_parent_name = "http-protocol";
 }
@@ -154,7 +134,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -178,64 +158,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-v4")
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
-        else
+        if(peer_v4 == nullptr)
         {
             peer_v4 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4>();
-            peer_v4->parent = this;
-            children["peer-v4"] = peer_v4;
         }
-        return children.at("peer-v4");
+        return peer_v4;
     }
 
     if(child_yang_name == "peer-v6")
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
-        else
+        if(peer_v6 == nullptr)
         {
             peer_v6 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6>();
-            peer_v6->parent = this;
-            children["peer-v6"] = peer_v6;
         }
-        return children.at("peer-v6");
+        return peer_v6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::get_children() const
 {
-    if(children.find("peer-v4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_v4 != nullptr)
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
+        children["peer-v4"] = peer_v4;
     }
 
-    if(children.find("peer-v6") == children.end())
+    if(peer_v6 != nullptr)
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
+        children["peer-v6"] = peer_v6;
     }
 
     return children;
@@ -255,10 +209,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v4"; yang_parent_name = "peer-class";
 }
@@ -289,7 +241,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -312,64 +264,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -417,7 +343,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -440,15 +366,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -456,28 +373,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -518,7 +431,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -542,20 +455,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -605,7 +510,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -628,15 +533,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -644,28 +540,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -706,7 +598,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -730,20 +622,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -761,10 +645,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v6"; yang_parent_name = "peer-class";
 }
@@ -795,7 +677,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -818,64 +700,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -923,7 +779,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -946,15 +802,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -962,28 +809,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1024,7 +867,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1048,20 +891,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1111,7 +946,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1134,15 +969,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -1150,28 +976,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1212,7 +1034,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1236,20 +1058,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1266,7 +1080,6 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
     peer_class(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass>())
 {
     peer_class->parent = this;
-    children["peer-class"] = peer_class;
 
     yang_name = "tftp-protocol"; yang_parent_name = "all-interfaces";
 }
@@ -1295,7 +1108,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1318,41 +1131,24 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-class")
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
-        else
+        if(peer_class == nullptr)
         {
             peer_class = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass>();
-            peer_class->parent = this;
-            children["peer-class"] = peer_class;
         }
-        return children.at("peer-class");
+        return peer_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::get_children() const
 {
-    if(children.find("peer-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_class != nullptr)
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
+        children["peer-class"] = peer_class;
     }
 
     return children;
@@ -1370,10 +1166,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
-    children["peer-v4"] = peer_v4;
 
     peer_v6->parent = this;
-    children["peer-v6"] = peer_v6;
 
     yang_name = "peer-class"; yang_parent_name = "tftp-protocol";
 }
@@ -1406,7 +1200,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1430,64 +1224,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-v4")
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
-        else
+        if(peer_v4 == nullptr)
         {
             peer_v4 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4>();
-            peer_v4->parent = this;
-            children["peer-v4"] = peer_v4;
         }
-        return children.at("peer-v4");
+        return peer_v4;
     }
 
     if(child_yang_name == "peer-v6")
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
-        else
+        if(peer_v6 == nullptr)
         {
             peer_v6 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6>();
-            peer_v6->parent = this;
-            children["peer-v6"] = peer_v6;
         }
-        return children.at("peer-v6");
+        return peer_v6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::get_children() const
 {
-    if(children.find("peer-v4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_v4 != nullptr)
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
+        children["peer-v4"] = peer_v4;
     }
 
-    if(children.find("peer-v6") == children.end())
+    if(peer_v6 != nullptr)
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
+        children["peer-v6"] = peer_v6;
     }
 
     return children;
@@ -1507,10 +1275,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v4"; yang_parent_name = "peer-class";
 }
@@ -1541,7 +1307,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1564,64 +1330,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -1669,7 +1409,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1692,15 +1432,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -1708,28 +1439,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1770,7 +1497,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1794,20 +1521,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1857,7 +1576,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1880,15 +1599,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -1896,28 +1606,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1958,7 +1664,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1982,20 +1688,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2013,10 +1711,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v6"; yang_parent_name = "peer-class";
 }
@@ -2047,7 +1743,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2070,64 +1766,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -2175,7 +1845,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2198,15 +1868,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -2214,28 +1875,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2276,7 +1933,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2300,20 +1957,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2363,7 +2012,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2386,15 +2035,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -2402,28 +2042,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2464,7 +2100,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2488,20 +2124,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2518,7 +2146,6 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
     peer_class(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass>())
 {
     peer_class->parent = this;
-    children["peer-class"] = peer_class;
 
     yang_name = "netconf-protocol"; yang_parent_name = "all-interfaces";
 }
@@ -2547,7 +2174,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2570,41 +2197,24 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-class")
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
-        else
+        if(peer_class == nullptr)
         {
             peer_class = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass>();
-            peer_class->parent = this;
-            children["peer-class"] = peer_class;
         }
-        return children.at("peer-class");
+        return peer_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::get_children() const
 {
-    if(children.find("peer-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_class != nullptr)
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
+        children["peer-class"] = peer_class;
     }
 
     return children;
@@ -2622,10 +2232,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
-    children["peer-v4"] = peer_v4;
 
     peer_v6->parent = this;
-    children["peer-v6"] = peer_v6;
 
     yang_name = "peer-class"; yang_parent_name = "netconf-protocol";
 }
@@ -2658,7 +2266,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2682,64 +2290,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-v4")
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
-        else
+        if(peer_v4 == nullptr)
         {
             peer_v4 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4>();
-            peer_v4->parent = this;
-            children["peer-v4"] = peer_v4;
         }
-        return children.at("peer-v4");
+        return peer_v4;
     }
 
     if(child_yang_name == "peer-v6")
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
-        else
+        if(peer_v6 == nullptr)
         {
             peer_v6 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6>();
-            peer_v6->parent = this;
-            children["peer-v6"] = peer_v6;
         }
-        return children.at("peer-v6");
+        return peer_v6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::get_children() const
 {
-    if(children.find("peer-v4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_v4 != nullptr)
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
+        children["peer-v4"] = peer_v4;
     }
 
-    if(children.find("peer-v6") == children.end())
+    if(peer_v6 != nullptr)
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
+        children["peer-v6"] = peer_v6;
     }
 
     return children;
@@ -2759,10 +2341,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v4"; yang_parent_name = "peer-class";
 }
@@ -2793,7 +2373,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2816,64 +2396,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -2921,7 +2475,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2944,15 +2498,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -2960,28 +2505,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3022,7 +2563,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3046,20 +2587,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3109,7 +2642,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3132,15 +2665,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -3148,28 +2672,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3210,7 +2730,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3234,20 +2754,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3265,10 +2777,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v6"; yang_parent_name = "peer-class";
 }
@@ -3299,7 +2809,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3322,64 +2832,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -3427,7 +2911,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3450,15 +2934,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -3466,28 +2941,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3528,7 +2999,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3552,20 +3023,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3615,7 +3078,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3638,15 +3101,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -3654,28 +3108,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3716,7 +3166,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3740,20 +3190,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3770,7 +3212,6 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
     peer_class(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass>())
 {
     peer_class->parent = this;
-    children["peer-class"] = peer_class;
 
     yang_name = "xr-xml"; yang_parent_name = "all-interfaces";
 }
@@ -3799,7 +3240,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3822,41 +3263,24 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-class")
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
-        else
+        if(peer_class == nullptr)
         {
             peer_class = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass>();
-            peer_class->parent = this;
-            children["peer-class"] = peer_class;
         }
-        return children.at("peer-class");
+        return peer_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::get_children() const
 {
-    if(children.find("peer-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_class != nullptr)
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
+        children["peer-class"] = peer_class;
     }
 
     return children;
@@ -3874,10 +3298,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
-    children["peer-v4"] = peer_v4;
 
     peer_v6->parent = this;
-    children["peer-v6"] = peer_v6;
 
     yang_name = "peer-class"; yang_parent_name = "xr-xml";
 }
@@ -3910,7 +3332,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3934,64 +3356,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-v4")
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
-        else
+        if(peer_v4 == nullptr)
         {
             peer_v4 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4>();
-            peer_v4->parent = this;
-            children["peer-v4"] = peer_v4;
         }
-        return children.at("peer-v4");
+        return peer_v4;
     }
 
     if(child_yang_name == "peer-v6")
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
-        else
+        if(peer_v6 == nullptr)
         {
             peer_v6 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6>();
-            peer_v6->parent = this;
-            children["peer-v6"] = peer_v6;
         }
-        return children.at("peer-v6");
+        return peer_v6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::get_children() const
 {
-    if(children.find("peer-v4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_v4 != nullptr)
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
+        children["peer-v4"] = peer_v4;
     }
 
-    if(children.find("peer-v6") == children.end())
+    if(peer_v6 != nullptr)
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
+        children["peer-v6"] = peer_v6;
     }
 
     return children;
@@ -4011,10 +3407,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v4"; yang_parent_name = "peer-class";
 }
@@ -4045,7 +3439,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4068,64 +3462,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -4173,7 +3541,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4196,15 +3564,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -4212,28 +3571,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4274,7 +3629,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4298,20 +3653,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4361,7 +3708,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4384,15 +3731,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -4400,28 +3738,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4462,7 +3796,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4486,20 +3820,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4517,10 +3843,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v6"; yang_parent_name = "peer-class";
 }
@@ -4551,7 +3875,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4574,64 +3898,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -4679,7 +3977,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4702,15 +4000,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -4718,28 +4007,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4780,7 +4065,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4804,20 +4089,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4867,7 +4144,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4890,15 +4167,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -4906,28 +4174,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -4968,7 +4232,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4992,20 +4256,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5022,7 +4278,6 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
     peer_class(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass>())
 {
     peer_class->parent = this;
-    children["peer-class"] = peer_class;
 
     yang_name = "ssh-protocol"; yang_parent_name = "all-interfaces";
 }
@@ -5051,7 +4306,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5074,41 +4329,24 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-class")
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
-        else
+        if(peer_class == nullptr)
         {
             peer_class = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass>();
-            peer_class->parent = this;
-            children["peer-class"] = peer_class;
         }
-        return children.at("peer-class");
+        return peer_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::get_children() const
 {
-    if(children.find("peer-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_class != nullptr)
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
+        children["peer-class"] = peer_class;
     }
 
     return children;
@@ -5126,10 +4364,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
-    children["peer-v4"] = peer_v4;
 
     peer_v6->parent = this;
-    children["peer-v6"] = peer_v6;
 
     yang_name = "peer-class"; yang_parent_name = "ssh-protocol";
 }
@@ -5162,7 +4398,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5186,64 +4422,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-v4")
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
-        else
+        if(peer_v4 == nullptr)
         {
             peer_v4 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4>();
-            peer_v4->parent = this;
-            children["peer-v4"] = peer_v4;
         }
-        return children.at("peer-v4");
+        return peer_v4;
     }
 
     if(child_yang_name == "peer-v6")
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
-        else
+        if(peer_v6 == nullptr)
         {
             peer_v6 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6>();
-            peer_v6->parent = this;
-            children["peer-v6"] = peer_v6;
         }
-        return children.at("peer-v6");
+        return peer_v6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::get_children() const
 {
-    if(children.find("peer-v4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_v4 != nullptr)
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
+        children["peer-v4"] = peer_v4;
     }
 
-    if(children.find("peer-v6") == children.end())
+    if(peer_v6 != nullptr)
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
+        children["peer-v6"] = peer_v6;
     }
 
     return children;
@@ -5263,10 +4473,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v4"; yang_parent_name = "peer-class";
 }
@@ -5297,7 +4505,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5320,64 +4528,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -5425,7 +4607,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5448,15 +4630,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -5464,28 +4637,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5526,7 +4695,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5550,20 +4719,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5613,7 +4774,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5636,15 +4797,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -5652,28 +4804,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5714,7 +4862,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5738,20 +4886,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5769,10 +4909,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v6"; yang_parent_name = "peer-class";
 }
@@ -5803,7 +4941,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5826,64 +4964,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -5931,7 +5043,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5954,15 +5066,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -5970,28 +5073,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6032,7 +5131,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6056,20 +5155,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6119,7 +5210,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6142,15 +5233,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -6158,28 +5240,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6220,7 +5298,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6244,20 +5322,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6274,7 +5344,6 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
     peer_class(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass>())
 {
     peer_class->parent = this;
-    children["peer-class"] = peer_class;
 
     yang_name = "snmp-protocol"; yang_parent_name = "all-interfaces";
 }
@@ -6303,7 +5372,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6326,41 +5395,24 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-class")
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
-        else
+        if(peer_class == nullptr)
         {
             peer_class = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass>();
-            peer_class->parent = this;
-            children["peer-class"] = peer_class;
         }
-        return children.at("peer-class");
+        return peer_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::get_children() const
 {
-    if(children.find("peer-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_class != nullptr)
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
+        children["peer-class"] = peer_class;
     }
 
     return children;
@@ -6378,10 +5430,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
-    children["peer-v4"] = peer_v4;
 
     peer_v6->parent = this;
-    children["peer-v6"] = peer_v6;
 
     yang_name = "peer-class"; yang_parent_name = "snmp-protocol";
 }
@@ -6414,7 +5464,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6438,64 +5488,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-v4")
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
-        else
+        if(peer_v4 == nullptr)
         {
             peer_v4 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4>();
-            peer_v4->parent = this;
-            children["peer-v4"] = peer_v4;
         }
-        return children.at("peer-v4");
+        return peer_v4;
     }
 
     if(child_yang_name == "peer-v6")
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
-        else
+        if(peer_v6 == nullptr)
         {
             peer_v6 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6>();
-            peer_v6->parent = this;
-            children["peer-v6"] = peer_v6;
         }
-        return children.at("peer-v6");
+        return peer_v6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::get_children() const
 {
-    if(children.find("peer-v4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_v4 != nullptr)
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
+        children["peer-v4"] = peer_v4;
     }
 
-    if(children.find("peer-v6") == children.end())
+    if(peer_v6 != nullptr)
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
+        children["peer-v6"] = peer_v6;
     }
 
     return children;
@@ -6515,10 +5539,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v4"; yang_parent_name = "peer-class";
 }
@@ -6549,7 +5571,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6572,64 +5594,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -6677,7 +5673,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6700,15 +5696,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -6716,28 +5703,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6778,7 +5761,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6802,20 +5785,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -6865,7 +5840,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6888,15 +5863,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -6904,28 +5870,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -6966,7 +5928,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -6990,20 +5952,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7021,10 +5975,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v6"; yang_parent_name = "peer-class";
 }
@@ -7055,7 +6007,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7078,64 +6030,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -7183,7 +6109,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7206,15 +6132,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -7222,28 +6139,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7284,7 +6197,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7308,20 +6221,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7371,7 +6276,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7394,15 +6299,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -7410,28 +6306,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -7472,7 +6364,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7496,20 +6388,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -7526,7 +6410,6 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
     peer_class(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass>())
 {
     peer_class->parent = this;
-    children["peer-class"] = peer_class;
 
     yang_name = "telnet-protocol"; yang_parent_name = "all-interfaces";
 }
@@ -7555,7 +6438,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7578,41 +6461,24 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-class")
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
-        else
+        if(peer_class == nullptr)
         {
             peer_class = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass>();
-            peer_class->parent = this;
-            children["peer-class"] = peer_class;
         }
-        return children.at("peer-class");
+        return peer_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::get_children() const
 {
-    if(children.find("peer-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_class != nullptr)
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
+        children["peer-class"] = peer_class;
     }
 
     return children;
@@ -7630,10 +6496,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
-    children["peer-v4"] = peer_v4;
 
     peer_v6->parent = this;
-    children["peer-v6"] = peer_v6;
 
     yang_name = "peer-class"; yang_parent_name = "telnet-protocol";
 }
@@ -7666,7 +6530,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7690,64 +6554,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-v4")
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
-        else
+        if(peer_v4 == nullptr)
         {
             peer_v4 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4>();
-            peer_v4->parent = this;
-            children["peer-v4"] = peer_v4;
         }
-        return children.at("peer-v4");
+        return peer_v4;
     }
 
     if(child_yang_name == "peer-v6")
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
-        else
+        if(peer_v6 == nullptr)
         {
             peer_v6 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6>();
-            peer_v6->parent = this;
-            children["peer-v6"] = peer_v6;
         }
-        return children.at("peer-v6");
+        return peer_v6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::get_children() const
 {
-    if(children.find("peer-v4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_v4 != nullptr)
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
+        children["peer-v4"] = peer_v4;
     }
 
-    if(children.find("peer-v6") == children.end())
+    if(peer_v6 != nullptr)
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
+        children["peer-v6"] = peer_v6;
     }
 
     return children;
@@ -7767,10 +6605,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v4"; yang_parent_name = "peer-class";
 }
@@ -7801,7 +6637,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7824,64 +6660,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -7929,7 +6739,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -7952,15 +6762,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -7968,28 +6769,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8030,7 +6827,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8054,20 +6851,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8117,7 +6906,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8140,15 +6929,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -8156,28 +6936,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8218,7 +6994,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8242,20 +7018,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8273,10 +7041,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v6"; yang_parent_name = "peer-class";
 }
@@ -8307,7 +7073,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8330,64 +7096,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -8435,7 +7175,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8458,15 +7198,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -8474,28 +7205,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8536,7 +7263,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8560,20 +7287,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8623,7 +7342,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8646,15 +7365,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -8662,28 +7372,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -8724,7 +7430,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8748,20 +7454,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -8778,7 +7476,6 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
     peer_class(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass>())
 {
     peer_class->parent = this;
-    children["peer-class"] = peer_class;
 
     yang_name = "all-protocols"; yang_parent_name = "all-interfaces";
 }
@@ -8807,7 +7504,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8830,41 +7527,24 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-class")
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
-        else
+        if(peer_class == nullptr)
         {
             peer_class = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass>();
-            peer_class->parent = this;
-            children["peer-class"] = peer_class;
         }
-        return children.at("peer-class");
+        return peer_class;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::get_children() const
 {
-    if(children.find("peer-class") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_class != nullptr)
     {
-        if(peer_class != nullptr)
-        {
-            children["peer-class"] = peer_class;
-        }
+        children["peer-class"] = peer_class;
     }
 
     return children;
@@ -8882,10 +7562,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
-    children["peer-v4"] = peer_v4;
 
     peer_v6->parent = this;
-    children["peer-v6"] = peer_v6;
 
     yang_name = "peer-class"; yang_parent_name = "all-protocols";
 }
@@ -8918,7 +7596,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -8942,64 +7620,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-v4")
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
-        else
+        if(peer_v4 == nullptr)
         {
             peer_v4 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4>();
-            peer_v4->parent = this;
-            children["peer-v4"] = peer_v4;
         }
-        return children.at("peer-v4");
+        return peer_v4;
     }
 
     if(child_yang_name == "peer-v6")
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
-        else
+        if(peer_v6 == nullptr)
         {
             peer_v6 = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6>();
-            peer_v6->parent = this;
-            children["peer-v6"] = peer_v6;
         }
-        return children.at("peer-v6");
+        return peer_v6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::get_children() const
 {
-    if(children.find("peer-v4") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_v4 != nullptr)
     {
-        if(peer_v4 != nullptr)
-        {
-            children["peer-v4"] = peer_v4;
-        }
+        children["peer-v4"] = peer_v4;
     }
 
-    if(children.find("peer-v6") == children.end())
+    if(peer_v6 != nullptr)
     {
-        if(peer_v6 != nullptr)
-        {
-            children["peer-v6"] = peer_v6;
-        }
+        children["peer-v6"] = peer_v6;
     }
 
     return children;
@@ -9019,10 +7671,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v4"; yang_parent_name = "peer-class";
 }
@@ -9053,7 +7703,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9076,64 +7726,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -9181,7 +7805,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9204,15 +7828,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -9220,28 +7835,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9282,7 +7893,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9306,20 +7917,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9369,7 +7972,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9392,15 +7995,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -9408,28 +8002,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9470,7 +8060,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9494,20 +8084,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9525,10 +8107,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 	,peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers>())
 {
     peer_prefixes->parent = this;
-    children["peer-prefixes"] = peer_prefixes;
 
     peers->parent = this;
-    children["peers"] = peers;
 
     yang_name = "peer-v6"; yang_parent_name = "peer-class";
 }
@@ -9559,7 +8139,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9582,64 +8162,38 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefixes")
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
-        else
+        if(peer_prefixes == nullptr)
         {
             peer_prefixes = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes>();
-            peer_prefixes->parent = this;
-            children["peer-prefixes"] = peer_prefixes;
         }
-        return children.at("peer-prefixes");
+        return peer_prefixes;
     }
 
     if(child_yang_name == "peers")
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
-        else
+        if(peers == nullptr)
         {
             peers = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers>();
-            peers->parent = this;
-            children["peers"] = peers;
         }
-        return children.at("peers");
+        return peers;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::get_children() const
 {
-    if(children.find("peer-prefixes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_prefixes != nullptr)
     {
-        if(peer_prefixes != nullptr)
-        {
-            children["peer-prefixes"] = peer_prefixes;
-        }
+        children["peer-prefixes"] = peer_prefixes;
     }
 
-    if(children.find("peers") == children.end())
+    if(peers != nullptr)
     {
-        if(peers != nullptr)
-        {
-            children["peers"] = peers;
-        }
+        children["peers"] = peers;
     }
 
     return children;
@@ -9687,7 +8241,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9710,15 +8264,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer")
     {
         for(auto const & c : peer)
@@ -9726,28 +8271,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(std::move(c));
-        children[segment_path] = peer.back();
-        return children.at(segment_path);
+        peer.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9788,7 +8329,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9812,20 +8353,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -9875,7 +8408,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -9898,15 +8431,6 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "peer-prefix")
     {
         for(auto const & c : peer_prefix)
@@ -9914,28 +8438,24 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(std::move(c));
-        children[segment_path] = peer_prefix.back();
-        return children.at(segment_path);
+        peer_prefix.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : peer_prefix)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -9976,7 +8496,7 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 
 }
 
-EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
+const EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -10000,20 +8520,12 @@ EntityPath ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::
 
 std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children()
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

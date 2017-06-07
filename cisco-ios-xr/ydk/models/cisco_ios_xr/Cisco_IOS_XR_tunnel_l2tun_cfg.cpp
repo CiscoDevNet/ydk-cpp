@@ -14,7 +14,6 @@ L2Tp::L2Tp()
     classes(std::make_shared<L2Tp::Classes>())
 {
     classes->parent = this;
-    children["classes"] = classes;
 
     yang_name = "l2tp"; yang_parent_name = "Cisco-IOS-XR-tunnel-l2tun-cfg";
 }
@@ -43,12 +42,12 @@ std::string L2Tp::get_segment_path() const
 
 }
 
-EntityPath L2Tp::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -63,41 +62,24 @@ EntityPath L2Tp::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "classes")
     {
-        if(classes != nullptr)
-        {
-            children["classes"] = classes;
-        }
-        else
+        if(classes == nullptr)
         {
             classes = std::make_shared<L2Tp::Classes>();
-            classes->parent = this;
-            children["classes"] = classes;
         }
-        return children.at("classes");
+        return classes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::get_children() const
 {
-    if(children.find("classes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(classes != nullptr)
     {
-        if(classes != nullptr)
-        {
-            children["classes"] = classes;
-        }
+        children["classes"] = classes;
     }
 
     return children;
@@ -165,7 +147,7 @@ std::string L2Tp::Classes::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -188,15 +170,6 @@ EntityPath L2Tp::Classes::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "class")
     {
         for(auto const & c : class_)
@@ -204,28 +177,24 @@ std::shared_ptr<Entity> L2Tp::Classes::get_child_by_name(const std::string & chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tp::Classes::Class_>();
         c->parent = this;
-        class_.push_back(std::move(c));
-        children[segment_path] = class_.back();
-        return children.at(segment_path);
+        class_.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : class_)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -256,19 +225,14 @@ L2Tp::Classes::Class_::Class_()
 	,tunnel(std::make_shared<L2Tp::Classes::Class_::Tunnel>())
 {
     digest->parent = this;
-    children["digest"] = digest;
 
     ip->parent = this;
-    children["ip"] = ip;
 
     retransmit->parent = this;
-    children["retransmit"] = retransmit;
 
     security->parent = this;
-    children["security"] = security;
 
     tunnel->parent = this;
-    children["tunnel"] = tunnel;
 
     yang_name = "class"; yang_parent_name = "classes";
 }
@@ -327,7 +291,7 @@ std::string L2Tp::Classes::Class_::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -361,133 +325,80 @@ EntityPath L2Tp::Classes::Class_::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "digest")
     {
-        if(digest != nullptr)
-        {
-            children["digest"] = digest;
-        }
-        else
+        if(digest == nullptr)
         {
             digest = std::make_shared<L2Tp::Classes::Class_::Digest>();
-            digest->parent = this;
-            children["digest"] = digest;
         }
-        return children.at("digest");
+        return digest;
     }
 
     if(child_yang_name == "ip")
     {
-        if(ip != nullptr)
-        {
-            children["ip"] = ip;
-        }
-        else
+        if(ip == nullptr)
         {
             ip = std::make_shared<L2Tp::Classes::Class_::Ip>();
-            ip->parent = this;
-            children["ip"] = ip;
         }
-        return children.at("ip");
+        return ip;
     }
 
     if(child_yang_name == "retransmit")
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
-        else
+        if(retransmit == nullptr)
         {
             retransmit = std::make_shared<L2Tp::Classes::Class_::Retransmit>();
-            retransmit->parent = this;
-            children["retransmit"] = retransmit;
         }
-        return children.at("retransmit");
+        return retransmit;
     }
 
     if(child_yang_name == "security")
     {
-        if(security != nullptr)
-        {
-            children["security"] = security;
-        }
-        else
+        if(security == nullptr)
         {
             security = std::make_shared<L2Tp::Classes::Class_::Security>();
-            security->parent = this;
-            children["security"] = security;
         }
-        return children.at("security");
+        return security;
     }
 
     if(child_yang_name == "tunnel")
     {
-        if(tunnel != nullptr)
-        {
-            children["tunnel"] = tunnel;
-        }
-        else
+        if(tunnel == nullptr)
         {
             tunnel = std::make_shared<L2Tp::Classes::Class_::Tunnel>();
-            tunnel->parent = this;
-            children["tunnel"] = tunnel;
         }
-        return children.at("tunnel");
+        return tunnel;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::get_children() const
 {
-    if(children.find("digest") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(digest != nullptr)
     {
-        if(digest != nullptr)
-        {
-            children["digest"] = digest;
-        }
+        children["digest"] = digest;
     }
 
-    if(children.find("ip") == children.end())
+    if(ip != nullptr)
     {
-        if(ip != nullptr)
-        {
-            children["ip"] = ip;
-        }
+        children["ip"] = ip;
     }
 
-    if(children.find("retransmit") == children.end())
+    if(retransmit != nullptr)
     {
-        if(retransmit != nullptr)
-        {
-            children["retransmit"] = retransmit;
-        }
+        children["retransmit"] = retransmit;
     }
 
-    if(children.find("security") == children.end())
+    if(security != nullptr)
     {
-        if(security != nullptr)
-        {
-            children["security"] = security;
-        }
+        children["security"] = security;
     }
 
-    if(children.find("tunnel") == children.end())
+    if(tunnel != nullptr)
     {
-        if(tunnel != nullptr)
-        {
-            children["tunnel"] = tunnel;
-        }
+        children["tunnel"] = tunnel;
     }
 
     return children;
@@ -546,7 +457,6 @@ L2Tp::Classes::Class_::Security::Security()
     ip(std::make_shared<L2Tp::Classes::Class_::Security::Ip>())
 {
     ip->parent = this;
-    children["ip"] = ip;
 
     yang_name = "security"; yang_parent_name = "class";
 }
@@ -575,7 +485,7 @@ std::string L2Tp::Classes::Class_::Security::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::Security::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Security::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -598,41 +508,24 @@ EntityPath L2Tp::Classes::Class_::Security::get_entity_path(Entity* ancestor) co
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "ip")
     {
-        if(ip != nullptr)
-        {
-            children["ip"] = ip;
-        }
-        else
+        if(ip == nullptr)
         {
             ip = std::make_shared<L2Tp::Classes::Class_::Security::Ip>();
-            ip->parent = this;
-            children["ip"] = ip;
         }
-        return children.at("ip");
+        return ip;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Security::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Security::get_children() const
 {
-    if(children.find("ip") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip != nullptr)
     {
-        if(ip != nullptr)
-        {
-            children["ip"] = ip;
-        }
+        children["ip"] = ip;
     }
 
     return children;
@@ -673,7 +566,7 @@ std::string L2Tp::Classes::Class_::Security::Ip::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::Security::Ip::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Security::Ip::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -697,20 +590,12 @@ EntityPath L2Tp::Classes::Class_::Security::Ip::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Security::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Security::Ip::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Security::Ip::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -730,10 +615,8 @@ L2Tp::Classes::Class_::Retransmit::Retransmit()
 	,timeout(std::make_shared<L2Tp::Classes::Class_::Retransmit::Timeout>())
 {
     initial->parent = this;
-    children["initial"] = initial;
 
     timeout->parent = this;
-    children["timeout"] = timeout;
 
     yang_name = "retransmit"; yang_parent_name = "class";
 }
@@ -766,7 +649,7 @@ std::string L2Tp::Classes::Class_::Retransmit::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::Retransmit::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Retransmit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -790,64 +673,38 @@ EntityPath L2Tp::Classes::Class_::Retransmit::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "initial")
     {
-        if(initial != nullptr)
-        {
-            children["initial"] = initial;
-        }
-        else
+        if(initial == nullptr)
         {
             initial = std::make_shared<L2Tp::Classes::Class_::Retransmit::Initial>();
-            initial->parent = this;
-            children["initial"] = initial;
         }
-        return children.at("initial");
+        return initial;
     }
 
     if(child_yang_name == "timeout")
     {
-        if(timeout != nullptr)
-        {
-            children["timeout"] = timeout;
-        }
-        else
+        if(timeout == nullptr)
         {
             timeout = std::make_shared<L2Tp::Classes::Class_::Retransmit::Timeout>();
-            timeout->parent = this;
-            children["timeout"] = timeout;
         }
-        return children.at("timeout");
+        return timeout;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Retransmit::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Retransmit::get_children() const
 {
-    if(children.find("initial") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(initial != nullptr)
     {
-        if(initial != nullptr)
-        {
-            children["initial"] = initial;
-        }
+        children["initial"] = initial;
     }
 
-    if(children.find("timeout") == children.end())
+    if(timeout != nullptr)
     {
-        if(timeout != nullptr)
-        {
-            children["timeout"] = timeout;
-        }
+        children["timeout"] = timeout;
     }
 
     return children;
@@ -868,7 +725,6 @@ L2Tp::Classes::Class_::Retransmit::Initial::Initial()
     timeout(std::make_shared<L2Tp::Classes::Class_::Retransmit::Initial::Timeout>())
 {
     timeout->parent = this;
-    children["timeout"] = timeout;
 
     yang_name = "initial"; yang_parent_name = "retransmit";
 }
@@ -899,7 +755,7 @@ std::string L2Tp::Classes::Class_::Retransmit::Initial::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::Retransmit::Initial::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Retransmit::Initial::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -923,41 +779,24 @@ EntityPath L2Tp::Classes::Class_::Retransmit::Initial::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Retransmit::Initial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "timeout")
     {
-        if(timeout != nullptr)
-        {
-            children["timeout"] = timeout;
-        }
-        else
+        if(timeout == nullptr)
         {
             timeout = std::make_shared<L2Tp::Classes::Class_::Retransmit::Initial::Timeout>();
-            timeout->parent = this;
-            children["timeout"] = timeout;
         }
-        return children.at("timeout");
+        return timeout;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Retransmit::Initial::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Retransmit::Initial::get_children() const
 {
-    if(children.find("timeout") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timeout != nullptr)
     {
-        if(timeout != nullptr)
-        {
-            children["timeout"] = timeout;
-        }
+        children["timeout"] = timeout;
     }
 
     return children;
@@ -1005,7 +844,7 @@ std::string L2Tp::Classes::Class_::Retransmit::Initial::Timeout::get_segment_pat
 
 }
 
-EntityPath L2Tp::Classes::Class_::Retransmit::Initial::Timeout::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Retransmit::Initial::Timeout::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1030,20 +869,12 @@ EntityPath L2Tp::Classes::Class_::Retransmit::Initial::Timeout::get_entity_path(
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Retransmit::Initial::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Retransmit::Initial::Timeout::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Retransmit::Initial::Timeout::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1093,7 +924,7 @@ std::string L2Tp::Classes::Class_::Retransmit::Timeout::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::Retransmit::Timeout::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Retransmit::Timeout::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1118,20 +949,12 @@ EntityPath L2Tp::Classes::Class_::Retransmit::Timeout::get_entity_path(Entity* a
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Retransmit::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Retransmit::Timeout::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Retransmit::Timeout::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1178,7 +1001,7 @@ std::string L2Tp::Classes::Class_::Tunnel::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::Tunnel::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Tunnel::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1202,20 +1025,12 @@ EntityPath L2Tp::Classes::Class_::Tunnel::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Tunnel::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Tunnel::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1235,7 +1050,6 @@ L2Tp::Classes::Class_::Digest::Digest()
     secrets(std::make_shared<L2Tp::Classes::Class_::Digest::Secrets>())
 {
     secrets->parent = this;
-    children["secrets"] = secrets;
 
     yang_name = "digest"; yang_parent_name = "class";
 }
@@ -1268,7 +1082,7 @@ std::string L2Tp::Classes::Class_::Digest::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::Digest::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Digest::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1293,41 +1107,24 @@ EntityPath L2Tp::Classes::Class_::Digest::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Digest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "secrets")
     {
-        if(secrets != nullptr)
-        {
-            children["secrets"] = secrets;
-        }
-        else
+        if(secrets == nullptr)
         {
             secrets = std::make_shared<L2Tp::Classes::Class_::Digest::Secrets>();
-            secrets->parent = this;
-            children["secrets"] = secrets;
         }
-        return children.at("secrets");
+        return secrets;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Digest::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Digest::get_children() const
 {
-    if(children.find("secrets") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(secrets != nullptr)
     {
-        if(secrets != nullptr)
-        {
-            children["secrets"] = secrets;
-        }
+        children["secrets"] = secrets;
     }
 
     return children;
@@ -1383,7 +1180,7 @@ std::string L2Tp::Classes::Class_::Digest::Secrets::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::Digest::Secrets::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Digest::Secrets::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1406,15 +1203,6 @@ EntityPath L2Tp::Classes::Class_::Digest::Secrets::get_entity_path(Entity* ances
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Digest::Secrets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "secret")
     {
         for(auto const & c : secret)
@@ -1422,28 +1210,24 @@ std::shared_ptr<Entity> L2Tp::Classes::Class_::Digest::Secrets::get_child_by_nam
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<L2Tp::Classes::Class_::Digest::Secrets::Secret>();
         c->parent = this;
-        secret.push_back(std::move(c));
-        children[segment_path] = secret.back();
-        return children.at(segment_path);
+        secret.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Digest::Secrets::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Digest::Secrets::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : secret)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1487,7 +1271,7 @@ std::string L2Tp::Classes::Class_::Digest::Secrets::Secret::get_segment_path() c
 
 }
 
-EntityPath L2Tp::Classes::Class_::Digest::Secrets::Secret::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Digest::Secrets::Secret::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1512,20 +1296,12 @@ EntityPath L2Tp::Classes::Class_::Digest::Secrets::Secret::get_entity_path(Entit
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Digest::Secrets::Secret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Digest::Secrets::Secret::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Digest::Secrets::Secret::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1572,7 +1348,7 @@ std::string L2Tp::Classes::Class_::Ip::get_segment_path() const
 
 }
 
-EntityPath L2Tp::Classes::Class_::Ip::get_entity_path(Entity* ancestor) const
+const EntityPath L2Tp::Classes::Class_::Ip::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1596,20 +1372,12 @@ EntityPath L2Tp::Classes::Class_::Ip::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> L2Tp::Classes::Class_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & L2Tp::Classes::Class_::Ip::get_children()
+std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Ip::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

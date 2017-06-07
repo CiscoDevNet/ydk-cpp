@@ -16,13 +16,10 @@ SessionRedundancyManager::SessionRedundancyManager()
 	,summary(std::make_shared<SessionRedundancyManager::Summary>())
 {
     groups->parent = this;
-    children["groups"] = groups;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     summary->parent = this;
-    children["summary"] = summary;
 
     yang_name = "session-redundancy-manager"; yang_parent_name = "Cisco-IOS-XR-infra-serg-oper";
 }
@@ -55,12 +52,12 @@ std::string SessionRedundancyManager::get_segment_path() const
 
 }
 
-EntityPath SessionRedundancyManager::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyManager::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -75,87 +72,52 @@ EntityPath SessionRedundancyManager::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SessionRedundancyManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "groups")
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
-        else
+        if(groups == nullptr)
         {
             groups = std::make_shared<SessionRedundancyManager::Groups>();
-            groups->parent = this;
-            children["groups"] = groups;
         }
-        return children.at("groups");
+        return groups;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<SessionRedundancyManager::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "summary")
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
-        else
+        if(summary == nullptr)
         {
             summary = std::make_shared<SessionRedundancyManager::Summary>();
-            summary->parent = this;
-            children["summary"] = summary;
         }
-        return children.at("summary");
+        return summary;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyManager::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::get_children() const
 {
-    if(children.find("groups") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(groups != nullptr)
     {
-        if(groups != nullptr)
-        {
-            children["groups"] = groups;
-        }
+        children["groups"] = groups;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("summary") == children.end())
+    if(summary != nullptr)
     {
-        if(summary != nullptr)
-        {
-            children["summary"] = summary;
-        }
+        children["summary"] = summary;
     }
 
     return children;
@@ -223,7 +185,7 @@ std::string SessionRedundancyManager::Interfaces::get_segment_path() const
 
 }
 
-EntityPath SessionRedundancyManager::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyManager::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -246,15 +208,6 @@ EntityPath SessionRedundancyManager::Interfaces::get_entity_path(Entity* ancesto
 
 std::shared_ptr<Entity> SessionRedundancyManager::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -262,28 +215,24 @@ std::shared_ptr<Entity> SessionRedundancyManager::Interfaces::get_child_by_name(
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyManager::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyManager::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -339,7 +288,7 @@ std::string SessionRedundancyManager::Interfaces::Interface::get_segment_path() 
 
 }
 
-EntityPath SessionRedundancyManager::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyManager::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -368,20 +317,12 @@ EntityPath SessionRedundancyManager::Interfaces::Interface::get_entity_path(Enti
 
 std::shared_ptr<Entity> SessionRedundancyManager::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyManager::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -451,7 +392,7 @@ std::string SessionRedundancyManager::Groups::get_segment_path() const
 
 }
 
-EntityPath SessionRedundancyManager::Groups::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyManager::Groups::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -474,15 +415,6 @@ EntityPath SessionRedundancyManager::Groups::get_entity_path(Entity* ancestor) c
 
 std::shared_ptr<Entity> SessionRedundancyManager::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group")
     {
         for(auto const & c : group)
@@ -490,28 +422,24 @@ std::shared_ptr<Entity> SessionRedundancyManager::Groups::get_child_by_name(cons
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyManager::Groups::Group>();
         c->parent = this;
-        group.push_back(std::move(c));
-        children[segment_path] = group.back();
-        return children.at(segment_path);
+        group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyManager::Groups::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Groups::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -585,7 +513,7 @@ std::string SessionRedundancyManager::Groups::Group::get_segment_path() const
 
 }
 
-EntityPath SessionRedundancyManager::Groups::Group::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyManager::Groups::Group::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -620,20 +548,12 @@ EntityPath SessionRedundancyManager::Groups::Group::get_entity_path(Entity* ance
 
 std::shared_ptr<Entity> SessionRedundancyManager::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyManager::Groups::Group::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Groups::Group::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -765,7 +685,7 @@ std::string SessionRedundancyManager::Summary::get_segment_path() const
 
 }
 
-EntityPath SessionRedundancyManager::Summary::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyManager::Summary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -804,20 +724,12 @@ EntityPath SessionRedundancyManager::Summary::get_entity_path(Entity* ancestor) 
 
 std::shared_ptr<Entity> SessionRedundancyManager::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyManager::Summary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Summary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -894,7 +806,6 @@ SessionRedundancyAgent::SessionRedundancyAgent()
     nodes(std::make_shared<SessionRedundancyAgent::Nodes>())
 {
     nodes->parent = this;
-    children["nodes"] = nodes;
 
     yang_name = "session-redundancy-agent"; yang_parent_name = "Cisco-IOS-XR-infra-serg-oper";
 }
@@ -923,12 +834,12 @@ std::string SessionRedundancyAgent::get_segment_path() const
 
 }
 
-EntityPath SessionRedundancyAgent::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
     }
 
     path_buffer << get_segment_path();
@@ -943,41 +854,24 @@ EntityPath SessionRedundancyAgent::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> SessionRedundancyAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "nodes")
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
-        else
+        if(nodes == nullptr)
         {
             nodes = std::make_shared<SessionRedundancyAgent::Nodes>();
-            nodes->parent = this;
-            children["nodes"] = nodes;
         }
-        return children.at("nodes");
+        return nodes;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::get_children() const
 {
-    if(children.find("nodes") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
     {
-        if(nodes != nullptr)
-        {
-            children["nodes"] = nodes;
-        }
+        children["nodes"] = nodes;
     }
 
     return children;
@@ -1045,7 +939,7 @@ std::string SessionRedundancyAgent::Nodes::get_segment_path() const
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1068,15 +962,6 @@ EntityPath SessionRedundancyAgent::Nodes::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "node")
     {
         for(auto const & c : node)
@@ -1084,28 +969,24 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::get_child_by_name(const s
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node>();
         c->parent = this;
-        node.push_back(std::move(c));
-        children[segment_path] = node.back();
-        return children.at(segment_path);
+        node.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1128,25 +1009,18 @@ SessionRedundancyAgent::Nodes::Node::Node()
 	,stats_global(std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal>())
 {
     client_ids->parent = this;
-    children["client-ids"] = client_ids;
 
     group_id_xr->parent = this;
-    children["group-id-xr"] = group_id_xr;
 
     group_ids->parent = this;
-    children["group-ids"] = group_ids;
 
     group_summaries->parent = this;
-    children["group-summaries"] = group_summaries;
 
     interfaces->parent = this;
-    children["interfaces"] = interfaces;
 
     memory->parent = this;
-    children["memory"] = memory;
 
     stats_global->parent = this;
-    children["stats-global"] = stats_global;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -1189,7 +1063,7 @@ std::string SessionRedundancyAgent::Nodes::Node::get_segment_path() const
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1213,179 +1087,108 @@ EntityPath SessionRedundancyAgent::Nodes::Node::get_entity_path(Entity* ancestor
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-ids")
     {
-        if(client_ids != nullptr)
-        {
-            children["client-ids"] = client_ids;
-        }
-        else
+        if(client_ids == nullptr)
         {
             client_ids = std::make_shared<SessionRedundancyAgent::Nodes::Node::ClientIds>();
-            client_ids->parent = this;
-            children["client-ids"] = client_ids;
         }
-        return children.at("client-ids");
+        return client_ids;
     }
 
     if(child_yang_name == "group-id-xr")
     {
-        if(group_id_xr != nullptr)
-        {
-            children["group-id-xr"] = group_id_xr;
-        }
-        else
+        if(group_id_xr == nullptr)
         {
             group_id_xr = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr>();
-            group_id_xr->parent = this;
-            children["group-id-xr"] = group_id_xr;
         }
-        return children.at("group-id-xr");
+        return group_id_xr;
     }
 
     if(child_yang_name == "group-ids")
     {
-        if(group_ids != nullptr)
-        {
-            children["group-ids"] = group_ids;
-        }
-        else
+        if(group_ids == nullptr)
         {
             group_ids = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds>();
-            group_ids->parent = this;
-            children["group-ids"] = group_ids;
         }
-        return children.at("group-ids");
+        return group_ids;
     }
 
     if(child_yang_name == "group-summaries")
     {
-        if(group_summaries != nullptr)
-        {
-            children["group-summaries"] = group_summaries;
-        }
-        else
+        if(group_summaries == nullptr)
         {
             group_summaries = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupSummaries>();
-            group_summaries->parent = this;
-            children["group-summaries"] = group_summaries;
         }
-        return children.at("group-summaries");
+        return group_summaries;
     }
 
     if(child_yang_name == "interfaces")
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
-        else
+        if(interfaces == nullptr)
         {
             interfaces = std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces>();
-            interfaces->parent = this;
-            children["interfaces"] = interfaces;
         }
-        return children.at("interfaces");
+        return interfaces;
     }
 
     if(child_yang_name == "memory")
     {
-        if(memory != nullptr)
-        {
-            children["memory"] = memory;
-        }
-        else
+        if(memory == nullptr)
         {
             memory = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory>();
-            memory->parent = this;
-            children["memory"] = memory;
         }
-        return children.at("memory");
+        return memory;
     }
 
     if(child_yang_name == "stats-global")
     {
-        if(stats_global != nullptr)
-        {
-            children["stats-global"] = stats_global;
-        }
-        else
+        if(stats_global == nullptr)
         {
             stats_global = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal>();
-            stats_global->parent = this;
-            children["stats-global"] = stats_global;
         }
-        return children.at("stats-global");
+        return stats_global;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::get_children() const
 {
-    if(children.find("client-ids") == children.end())
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(client_ids != nullptr)
     {
-        if(client_ids != nullptr)
-        {
-            children["client-ids"] = client_ids;
-        }
+        children["client-ids"] = client_ids;
     }
 
-    if(children.find("group-id-xr") == children.end())
+    if(group_id_xr != nullptr)
     {
-        if(group_id_xr != nullptr)
-        {
-            children["group-id-xr"] = group_id_xr;
-        }
+        children["group-id-xr"] = group_id_xr;
     }
 
-    if(children.find("group-ids") == children.end())
+    if(group_ids != nullptr)
     {
-        if(group_ids != nullptr)
-        {
-            children["group-ids"] = group_ids;
-        }
+        children["group-ids"] = group_ids;
     }
 
-    if(children.find("group-summaries") == children.end())
+    if(group_summaries != nullptr)
     {
-        if(group_summaries != nullptr)
-        {
-            children["group-summaries"] = group_summaries;
-        }
+        children["group-summaries"] = group_summaries;
     }
 
-    if(children.find("interfaces") == children.end())
+    if(interfaces != nullptr)
     {
-        if(interfaces != nullptr)
-        {
-            children["interfaces"] = interfaces;
-        }
+        children["interfaces"] = interfaces;
     }
 
-    if(children.find("memory") == children.end())
+    if(memory != nullptr)
     {
-        if(memory != nullptr)
-        {
-            children["memory"] = memory;
-        }
+        children["memory"] = memory;
     }
 
-    if(children.find("stats-global") == children.end())
+    if(stats_global != nullptr)
     {
-        if(stats_global != nullptr)
-        {
-            children["stats-global"] = stats_global;
-        }
+        children["stats-global"] = stats_global;
     }
 
     return children;
@@ -1437,7 +1240,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_segment_path() c
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1460,15 +1263,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_entity_path(Entit
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-id")
     {
         for(auto const & c : group_id)
@@ -1476,28 +1270,24 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId>();
         c->parent = this;
-        group_id.push_back(std::move(c));
-        children[segment_path] = group_id.back();
-        return children.at(segment_path);
+        group_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1573,7 +1363,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_segment
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1602,15 +1392,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_entity_p
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "session-detailed-information")
     {
         for(auto const & c : session_detailed_information)
@@ -1618,15 +1399,13 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation>();
         c->parent = this;
-        session_detailed_information.push_back(std::move(c));
-        children[segment_path] = session_detailed_information.back();
-        return children.at(segment_path);
+        session_detailed_information.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "session-sync-error-information")
@@ -1636,36 +1415,29 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId:
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation>();
         c->parent = this;
-        session_sync_error_information.push_back(std::move(c));
-        children[segment_path] = session_sync_error_information.back();
-        return children.at(segment_path);
+        session_sync_error_information.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : session_detailed_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : session_sync_error_information)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -1742,7 +1514,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDeta
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1770,20 +1542,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetai
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1848,7 +1612,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSync
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1874,20 +1638,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncE
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -1945,7 +1701,7 @@ std::string SessionRedundancyAgent::Nodes::Node::ClientIds::get_segment_path() c
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::ClientIds::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::ClientIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1968,15 +1724,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::ClientIds::get_entity_path(Entit
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::ClientIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-id")
     {
         for(auto const & c : client_id)
@@ -1984,28 +1731,24 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::ClientIds::get_chil
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId>();
         c->parent = this;
-        client_id.push_back(std::move(c));
-        children[segment_path] = client_id.back();
-        return children.at(segment_path);
+        client_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::ClientIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::ClientIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2187,7 +1930,7 @@ std::string SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_segmen
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2258,20 +2001,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_entity_
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2529,7 +2264,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Memory::get_segment_path() cons
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::Memory::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::Memory::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2552,15 +2287,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::Memory::get_entity_path(Entity* 
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "edm-memory-info")
     {
         for(auto const & c : edm_memory_info)
@@ -2568,15 +2294,13 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo>();
         c->parent = this;
-        edm_memory_info.push_back(std::move(c));
-        children[segment_path] = edm_memory_info.back();
-        return children.at(segment_path);
+        edm_memory_info.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "memory-info")
@@ -2586,15 +2310,13 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo>();
         c->parent = this;
-        memory_info.push_back(std::move(c));
-        children[segment_path] = memory_info.back();
-        return children.at(segment_path);
+        memory_info.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "string-memory-info")
@@ -2604,44 +2326,34 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::get_child_b
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo>();
         c->parent = this;
-        string_memory_info.push_back(std::move(c));
-        children[segment_path] = string_memory_info.back();
-        return children.at(segment_path);
+        string_memory_info.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::Memory::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Memory::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : edm_memory_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : memory_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : string_memory_info)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -2700,7 +2412,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_segment
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2730,20 +2442,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_entity_p
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2819,7 +2523,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_segm
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2846,20 +2550,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_entit
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -2923,7 +2619,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_s
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2950,20 +2646,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_en
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3025,7 +2713,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIds::get_segment_path() co
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3048,15 +2736,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::get_entity_path(Entity
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-id")
     {
         for(auto const & c : group_id)
@@ -3064,28 +2743,24 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::get_child
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId>();
         c->parent = this;
-        group_id.push_back(std::move(c));
-        children[segment_path] = group_id.back();
-        return children.at(segment_path);
+        group_id.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupIds::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group_id)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3248,7 +2923,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_segment_
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3306,15 +2981,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_entity_pa
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-session-count")
     {
         for(auto const & c : client_session_count)
@@ -3322,15 +2988,13 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount>();
         c->parent = this;
-        client_session_count.push_back(std::move(c));
-        children[segment_path] = client_session_count.back();
-        return children.at(segment_path);
+        client_session_count.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "interface")
@@ -3340,36 +3004,29 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client_session_count)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3553,7 +3210,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessio
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3578,20 +3235,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSession
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3647,7 +3296,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::g
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3674,20 +3323,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::ge
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -3749,7 +3390,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Interfaces::get_segment_path() 
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3772,15 +3413,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::get_entity_path(Enti
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "interface")
     {
         for(auto const & c : interface)
@@ -3788,28 +3420,24 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::get_chi
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(std::move(c));
-        children[segment_path] = interface.back();
-        return children.at(segment_path);
+        interface.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::Interfaces::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : interface)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -3838,10 +3466,8 @@ SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::Interface()
 	,interface_status(std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus>())
 {
     interface_oper->parent = this;
-    children["interface-oper"] = interface_oper;
 
     interface_status->parent = this;
-    children["interface-status"] = interface_status;
 
     yang_name = "interface"; yang_parent_name = "interfaces";
 }
@@ -3906,7 +3532,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_segm
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3941,15 +3567,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_entit
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-status")
     {
         for(auto const & c : client_status)
@@ -3957,74 +3574,52 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interfa
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus>();
         c->parent = this;
-        client_status.push_back(std::move(c));
-        children[segment_path] = client_status.back();
-        return children.at(segment_path);
+        client_status.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "interface-oper")
     {
-        if(interface_oper != nullptr)
-        {
-            children["interface-oper"] = interface_oper;
-        }
-        else
+        if(interface_oper == nullptr)
         {
             interface_oper = std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper>();
-            interface_oper->parent = this;
-            children["interface-oper"] = interface_oper;
         }
-        return children.at("interface-oper");
+        return interface_oper;
     }
 
     if(child_yang_name == "interface-status")
     {
-        if(interface_status != nullptr)
-        {
-            children["interface-status"] = interface_status;
-        }
-        else
+        if(interface_status == nullptr)
         {
             interface_status = std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus>();
-            interface_status->parent = this;
-            children["interface-status"] = interface_status;
         }
-        return children.at("interface-status");
+        return interface_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client_status)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("interface-oper") == children.end())
+    if(interface_oper != nullptr)
     {
-        if(interface_oper != nullptr)
-        {
-            children["interface-oper"] = interface_oper;
-        }
+        children["interface-oper"] = interface_oper;
     }
 
-    if(children.find("interface-status") == children.end())
+    if(interface_status != nullptr)
     {
-        if(interface_status != nullptr)
-        {
-            children["interface-status"] = interface_status;
-        }
+        children["interface-status"] = interface_status;
     }
 
     return children;
@@ -4125,7 +3720,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::Interfac
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4153,20 +3748,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::Interface
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4246,7 +3833,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::Interfac
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4277,20 +3864,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::Interface
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4370,7 +3949,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientSt
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4397,20 +3976,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientSta
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -4475,10 +4046,8 @@ SessionRedundancyAgent::Nodes::Node::StatsGlobal::StatsGlobal()
 	,tx_list_statistics(std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics>())
 {
     intf_status_statistics->parent = this;
-    children["intf-status-statistics"] = intf_status_statistics;
 
     tx_list_statistics->parent = this;
-    children["tx-list-statistics"] = tx_list_statistics;
 
     yang_name = "stats-global"; yang_parent_name = "node";
 }
@@ -4607,7 +4176,7 @@ std::string SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_segment_path()
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4664,15 +4233,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_entity_path(Ent
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "client-status")
     {
         for(auto const & c : client_status)
@@ -4680,30 +4240,22 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus>();
         c->parent = this;
-        client_status.push_back(std::move(c));
-        children[segment_path] = client_status.back();
-        return children.at(segment_path);
+        client_status.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "intf-status-statistics")
     {
-        if(intf_status_statistics != nullptr)
-        {
-            children["intf-status-statistics"] = intf_status_statistics;
-        }
-        else
+        if(intf_status_statistics == nullptr)
         {
             intf_status_statistics = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics>();
-            intf_status_statistics->parent = this;
-            children["intf-status-statistics"] = intf_status_statistics;
         }
-        return children.at("intf-status-statistics");
+        return intf_status_statistics;
     }
 
     if(child_yang_name == "opaque-memory-status")
@@ -4713,15 +4265,13 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus>();
         c->parent = this;
-        opaque_memory_status.push_back(std::move(c));
-        children[segment_path] = opaque_memory_status.back();
-        return children.at(segment_path);
+        opaque_memory_status.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tx-list-over-tcp-status")
@@ -4731,75 +4281,53 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_ch
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus>();
         c->parent = this;
-        tx_list_over_tcp_status.push_back(std::move(c));
-        children[segment_path] = tx_list_over_tcp_status.back();
-        return children.at(segment_path);
+        tx_list_over_tcp_status.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "tx-list-statistics")
     {
-        if(tx_list_statistics != nullptr)
-        {
-            children["tx-list-statistics"] = tx_list_statistics;
-        }
-        else
+        if(tx_list_statistics == nullptr)
         {
             tx_list_statistics = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics>();
-            tx_list_statistics->parent = this;
-            children["tx-list-statistics"] = tx_list_statistics;
         }
-        return children.at("tx-list-statistics");
+        return tx_list_statistics;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : client_status)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("intf-status-statistics") == children.end())
+    if(intf_status_statistics != nullptr)
     {
-        if(intf_status_statistics != nullptr)
-        {
-            children["intf-status-statistics"] = intf_status_statistics;
-        }
+        children["intf-status-statistics"] = intf_status_statistics;
     }
 
     for (auto const & c : opaque_memory_status)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     for (auto const & c : tx_list_over_tcp_status)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
-    if(children.find("tx-list-statistics") == children.end())
+    if(tx_list_statistics != nullptr)
     {
-        if(tx_list_statistics != nullptr)
-        {
-            children["tx-list-statistics"] = tx_list_statistics;
-        }
+        children["tx-list-statistics"] = tx_list_statistics;
     }
 
     return children;
@@ -4988,7 +4516,7 @@ std::string SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatisti
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5016,20 +4544,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistic
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5112,7 +4632,7 @@ std::string SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5144,20 +4664,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::g
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5250,7 +4762,7 @@ std::string SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5280,20 +4792,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_e
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5372,7 +4876,7 @@ std::string SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5400,20 +4904,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus:
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5535,7 +5031,7 @@ std::string SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatu
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5580,20 +5076,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
@@ -5727,7 +5215,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_segment_pat
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5750,15 +5238,6 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_entity_path(
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     if(child_yang_name == "group-summary")
     {
         for(auto const & c : group_summary)
@@ -5766,28 +5245,24 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupSummaries::get
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
             {
-                children[segment_path] = c;
-                return children.at(segment_path);
+                return c;
             }
         }
         auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary>();
         c->parent = this;
-        group_summary.push_back(std::move(c));
-        children[segment_path] = group_summary.back();
-        return children.at(segment_path);
+        group_summary.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : group_summary)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-        {
-            children[c->get_segment_path()] = c;
-        }
+        children[c->get_segment_path()] = c;
     }
 
     return children;
@@ -5864,7 +5339,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::g
 
 }
 
-EntityPath SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_entity_path(Entity* ancestor) const
+const EntityPath SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5900,20 +5375,12 @@ EntityPath SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::ge
 
 std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(children.find(child_yang_name) != children.end())
-    {
-        return children.at(child_yang_name);
-    }
-    else if(children.find(segment_path) != children.end())
-    {
-        return children.at(segment_path);
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> & SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_children()
+std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_children() const
 {
+    std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 

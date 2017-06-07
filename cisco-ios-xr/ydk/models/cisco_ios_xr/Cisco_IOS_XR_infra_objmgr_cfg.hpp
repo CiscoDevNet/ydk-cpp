@@ -18,25 +18,22 @@ class ObjectGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
         std::shared_ptr<Entity> clone_ptr() const override;
         augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
-
-
 
         class Port; //type: ObjectGroup::Port
         class Network; //type: ObjectGroup::Network
 
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network> network;
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port> port;
-
-
+        
 }; // ObjectGroup
 
 
@@ -48,19 +45,16 @@ class ObjectGroup::Port : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UdfObjects; //type: ObjectGroup::Port::UdfObjects
 
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects> udf_objects;
-
-
+        
 }; // ObjectGroup::Port
 
 
@@ -72,19 +66,16 @@ class ObjectGroup::Port::UdfObjects : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UdfObject; //type: ObjectGroup::Port::UdfObjects::UdfObject
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects::UdfObject> > udf_object;
-
-
+        
 }; // ObjectGroup::Port::UdfObjects
 
 
@@ -96,16 +87,14 @@ class ObjectGroup::Port::UdfObjects::UdfObject : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf description; //type: string
-
         class Operators; //type: ObjectGroup::Port::UdfObjects::UdfObject::Operators
         class NestedGroups; //type: ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups
         class PortRanges; //type: ObjectGroup::Port::UdfObjects::UdfObject::PortRanges
@@ -113,8 +102,7 @@ class ObjectGroup::Port::UdfObjects::UdfObject : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups> nested_groups;
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects::UdfObject::Operators> operators;
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects::UdfObject::PortRanges> port_ranges;
-
-
+        
 }; // ObjectGroup::Port::UdfObjects::UdfObject
 
 
@@ -126,19 +114,16 @@ class ObjectGroup::Port::UdfObjects::UdfObject::Operators : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Operator_; //type: ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator_> > operator_;
-
-
+        
 }; // ObjectGroup::Port::UdfObjects::UdfObject::Operators
 
 
@@ -150,17 +135,14 @@ class ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator_ : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf operator_type; //type: PortOperatorEnum
         YLeaf port; //type: one of uint32, enumeration
-
-
 
 }; // ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator_
 
@@ -173,19 +155,16 @@ class ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NestedGroup; //type: ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup> > nested_group;
-
-
+        
 }; // ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups
 
 
@@ -197,16 +176,13 @@ class ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nested_group_name; //type: string
-
-
 
 }; // ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup
 
@@ -219,19 +195,16 @@ class ObjectGroup::Port::UdfObjects::UdfObject::PortRanges : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class PortRange; //type: ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange> > port_range;
-
-
+        
 }; // ObjectGroup::Port::UdfObjects::UdfObject::PortRanges
 
 
@@ -243,17 +216,14 @@ class ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_port; //type: one of uint32, enumeration
         YLeaf end_port; //type: one of uint32, enumeration
-
-
 
 }; // ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange
 
@@ -266,21 +236,18 @@ class ObjectGroup::Network : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Ipv6; //type: ObjectGroup::Network::Ipv6
         class Ipv4; //type: ObjectGroup::Network::Ipv4
 
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4> ipv4;
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6> ipv6;
-
-
+        
 }; // ObjectGroup::Network
 
 
@@ -292,19 +259,16 @@ class ObjectGroup::Network::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UdfObjects; //type: ObjectGroup::Network::Ipv6::UdfObjects
 
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6::UdfObjects> udf_objects;
-
-
+        
 }; // ObjectGroup::Network::Ipv6
 
 
@@ -316,19 +280,16 @@ class ObjectGroup::Network::Ipv6::UdfObjects : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UdfObject; //type: ObjectGroup::Network::Ipv6::UdfObjects::UdfObject
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6::UdfObjects::UdfObject> > udf_object;
-
-
+        
 }; // ObjectGroup::Network::Ipv6::UdfObjects
 
 
@@ -340,16 +301,14 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf description; //type: string
-
         class NestedGroups; //type: ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups
         class AddressRanges; //type: ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges
         class Addresses; //type: ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses
@@ -359,8 +318,7 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses> addresses;
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts> hosts;
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups> nested_groups;
-
-
+        
 }; // ObjectGroup::Network::Ipv6::UdfObjects::UdfObject
 
 
@@ -372,19 +330,16 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NestedGroup; //type: ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroup> > nested_group;
-
-
+        
 }; // ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups
 
 
@@ -396,16 +351,13 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGro
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nested_group_name; //type: string
-
-
 
 }; // ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroup
 
@@ -418,19 +370,16 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AddressRange; //type: ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRange
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRange> > address_range;
-
-
+        
 }; // ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges
 
 
@@ -442,17 +391,14 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_address; //type: string
         YLeaf end_address; //type: string
-
-
 
 }; // ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRange
 
@@ -465,19 +411,16 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Address; //type: ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address> > address;
-
-
+        
 }; // ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses
 
 
@@ -489,17 +432,14 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address
 
@@ -512,19 +452,16 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Host; //type: ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host> > host;
-
-
+        
 }; // ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts
 
 
@@ -536,16 +473,13 @@ class ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_address; //type: string
-
-
 
 }; // ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host
 
@@ -558,19 +492,16 @@ class ObjectGroup::Network::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UdfObjects; //type: ObjectGroup::Network::Ipv4::UdfObjects
 
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4::UdfObjects> udf_objects;
-
-
+        
 }; // ObjectGroup::Network::Ipv4
 
 
@@ -582,19 +513,16 @@ class ObjectGroup::Network::Ipv4::UdfObjects : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class UdfObject; //type: ObjectGroup::Network::Ipv4::UdfObjects::UdfObject
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4::UdfObjects::UdfObject> > udf_object;
-
-
+        
 }; // ObjectGroup::Network::Ipv4::UdfObjects
 
 
@@ -606,16 +534,14 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf object_name; //type: string
         YLeaf description; //type: string
-
         class NestedGroups; //type: ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups
         class AddressRanges; //type: ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges
         class Addresses; //type: ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses
@@ -625,8 +551,7 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses> addresses;
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts> hosts;
         std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups> nested_groups;
-
-
+        
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject
 
 
@@ -638,19 +563,16 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class NestedGroup; //type: ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroup> > nested_group;
-
-
+        
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups
 
 
@@ -662,16 +584,13 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGro
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf nested_group_name; //type: string
-
-
 
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroup
 
@@ -684,19 +603,16 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class AddressRange; //type: ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRange
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRange> > address_range;
-
-
+        
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges
 
 
@@ -708,17 +624,14 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressR
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf start_address; //type: string
         YLeaf end_address; //type: string
-
-
 
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRange
 
@@ -731,19 +644,16 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Address; //type: ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address> > address;
-
-
+        
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses
 
 
@@ -755,17 +665,14 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf prefix; //type: string
         YLeaf prefix_length; //type: uint8
-
-
 
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address
 
@@ -778,19 +685,16 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         class Host; //type: ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host> > host;
-
-
+        
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts
 
 
@@ -802,16 +706,13 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        EntityPath get_entity_path(Entity* parent) const override;
+        const EntityPath get_entity_path(Entity* parent) const override;
         std::string get_segment_path() const override;
         std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
-
+        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
 
         YLeaf host_address; //type: string
-
-
 
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host
 
